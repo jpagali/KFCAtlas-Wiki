@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KFC Atlas — Design System Architecture</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --kfc-red:      #E4002B;
+    --kfc-red-dark: #B8001F;
+    --white:        #FFFFFF;
+    --off-white:    #FFF8F8;
+    --light-gray:   #F5F0F0;
+    --mid-gray:     #D9CECE;
+    --text-dark:    #1A0A0A;
+    --text-mid:     #5A3030;
+    --text-light:   #8A6060;
+    --border:       #E8D8D8;
+    --layer-bg:     #FFF3F3;
+  }
+
+  body {
+    background: var(--off-white);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 24px 64px;
+    color: var(--text-dark);
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 44px;
+    max-width: 640px;
+  }
+  .kfc-logo-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .kfc-stripe { width: 32px; height: 4px; background: var(--kfc-red); border-radius: 2px; }
+  .kfc-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--kfc-red);
+    color: #fff;
+    border-radius: 999px;
+    padding: 5px 14px 5px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+  .kfc-badge .dot { width: 6px; height: 6px; background: rgba(255,255,255,0.7); border-radius: 50%; }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 5vw, 54px);
+    font-weight: 400;
+    color: var(--text-dark);
+    letter-spacing: 0.03em;
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+  h1 span { color: var(--kfc-red); }
+  .subtitle {
+    font-size: 14px;
+    color: var(--text-light);
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  /* ── Diagram ── */
+  .diagram { width: 100%; max-width: 900px; display: flex; flex-direction: column; }
+
+  .layer {
+    border-radius: 14px;
+    padding: 26px 26px 22px;
+    border: 1.5px solid var(--border);
+    background: var(--white);
+    animation: fadeUp 0.45s ease both;
+  }
+  .layer-design  { border-top: 3px solid #7C3AED; animation-delay: 0.05s; }
+  .layer-code    { border-top: 3px solid #0284C7; animation-delay: 0.15s; }
+  .layer-apps    { border-top: 3px solid var(--kfc-red); animation-delay: 0.25s; }
+
+  .layer-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .layer-label .pill {
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+  .layer-design .layer-label .pill { background: #EDE9FE; color: #7C3AED; }
+  .layer-code   .layer-label .pill { background: #E0F2FE; color: #0284C7; }
+  .layer-apps   .layer-label .pill { background: #FFE4E8; color: var(--kfc-red); }
+
+  /* ── Nodes ── */
+  .node {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 11px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: box-shadow 0.18s, border-color 0.18s;
+    cursor: default;
+  }
+  .node:hover { box-shadow: 0 3px 14px rgba(0,0,0,0.08); border-color: #c8a8a8; }
+  .node-note { font-size: 11px; color: var(--text-light); font-weight: 400; margin-top: 2px; line-height: 1.4; }
+  .node-icon { width: 30px; height: 30px; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+
+  .node-purple { border-color: #C4B5FD; } .node-purple .node-icon { background: #EDE9FE; }
+  .node-sky    { border-color: #BAE6FD; } .node-sky    .node-icon { background: #E0F2FE; }
+  .node-teal   { border-color: #99F6E4; } .node-teal   .node-icon { background: #CCFBF1; }
+  .node-slate  { border-color: #CBD5E1; background: #F8FAFC; } .node-slate .node-icon { background: #E2E8F0; }
+  .node-red    { border-color: #FECDD3; background: #FFF1F2; } .node-red   .node-icon { background: #FFE4E8; }
+
+  .node-amber  { border-color: #FCA5A5 !important; background: #FFFBEB; }
+  .node-amber  .node-icon { background: #FEF3C7; }
+
+  .node-optional { border-style: dashed; border-color: #CBD5E1 !important; background: #FAFAFA; }
+  .node-optional .node-icon { background: #F1F5F9; }
+  .optional-tag {
+    font-size: 10px; font-weight: 600; color: #94A3B8;
+    background: #F1F5F9; border: 1px solid #CBD5E1;
+    border-radius: 4px; padding: 1px 6px;
+    margin-left: auto; white-space: nowrap;
+    letter-spacing: 0.05em; text-transform: uppercase;
+  }
+
+  .market-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 5px; }
+  .mchip {
+    font-size: 10px; font-weight: 600; padding: 2px 8px;
+    border-radius: 999px; letter-spacing: 0.06em; text-transform: uppercase;
+    background: #FFE4E8; color: var(--kfc-red); border: 1px solid #FECDD3;
+  }
+
+  /* ── Layout ── */
+  .row { display: flex; gap: 12px; align-items: stretch; }
+  .row > * { flex: 1; }
+  .col { display: flex; flex-direction: column; gap: 10px; }
+
+  /* ── Arrows ── */
+  .arrow-down {
+    display: flex; justify-content: center;
+    height: 30px; position: relative; margin: 4px 0;
+  }
+  .arrow-down::before {
+    content: ''; position: absolute; left: 50%; top: 0;
+    transform: translateX(-50%); width: 1.5px; height: 22px; background: var(--mid-gray);
+  }
+  .arrow-down::after { content: '▾'; position: absolute; bottom: 0; font-size: 13px; color: var(--mid-gray); }
+
+  .layer-connector {
+    display: flex; justify-content: center; height: 28px; position: relative;
+  }
+  .layer-connector::before {
+    content: ''; position: absolute; left: 50%; top: 0;
+    transform: translateX(-50%); width: 2px; height: 100%;
+    background: linear-gradient(to bottom, var(--border), var(--kfc-red)); opacity: 0.4;
+  }
+  .layer-connector::after { content: '▾'; position: absolute; bottom: -2px; font-size: 14px; color: var(--kfc-red); opacity: 0.45; }
+
+  .fork { height: 46px; margin: 4px 0; }
+  .fork svg { width: 100%; height: 100%; overflow: visible; }
+
+  .inner-divider { height: 1px; background: var(--light-gray); margin: 14px 0 12px; }
+  .inner-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); margin-bottom: 10px; }
+
+  .figma-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
+    padding: 10px 14px; background: var(--layer-bg);
+    border-radius: 8px; border: 1px solid #F0D8D8;
+  }
+  .figma-logo { width: 32px; height: 32px; background: #1E1E2E; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .figma-text { font-size: 12px; color: var(--text-mid); font-weight: 500; }
+  .figma-text strong { display: block; color: var(--text-dark); font-size: 13px; }
+
+  @keyframes subtle-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(228,0,43,0.15); }
+    50%       { box-shadow: 0 0 0 7px rgba(228,0,43,0); }
+  }
+  .node-amber { animation: subtle-pulse 2.8s ease infinite; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Legend ── */
+  .legend {
+    display: flex; gap: 18px; justify-content: center; flex-wrap: wrap;
+    margin-top: 32px; padding: 14px 24px;
+    background: var(--white); border: 1.5px solid var(--border);
+    border-radius: 12px; max-width: 900px; width: 100%;
+  }
+  .legend-item { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--text-mid); }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .legend-dashed { width: 18px; height: 0; border-top: 2px dashed #94A3B8; flex-shrink: 0; }
+
+  .footer {
+    margin-top: 28px; font-size: 12px; color: var(--text-light);
+    text-align: center; display: flex; align-items: center; gap: 10px;
+  }
+  .footer::before, .footer::after { content: ''; display: block; width: 40px; height: 1px; background: var(--border); }
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="kfc-logo-mark">
+    <div class="kfc-stripe"></div>
+    <div class="kfc-badge"><span class="dot"></span>Atlas Platform</div>
+    <div class="kfc-stripe"></div>
+  </div>
+  <h1>Helium Design System<br><span>Architecture</span></h1>
+  <p class="subtitle">How the KFC Atlas platform flows from a single design token<br>to every customer-facing screen, globally</p>
+</header>
+
+<div class="diagram">
+
+  <!-- LAYER 1: DESIGN -->
+  <div class="layer layer-design">
+    <div class="layer-label"><span class="pill">Layer 1 — Design</span>&nbsp; Visual Identity &amp; Component Design</div>
+    <div class="figma-row">
+      <div class="figma-logo">&#x1D53D;</div>
+      <div class="figma-text">
+        <strong>Figma</strong>
+        Design tooling environment — where KFC's visual identity is defined and maintained
+      </div>
+    </div>
+    <div class="row">
+      <div class="node node-purple">
+        <div class="node-icon">🎨</div>
+        <div>
+          <div>Tokens Studio</div>
+          <div class="node-note">Brand colours, spacing, typography &amp; border radii — the rulebook</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;color:var(--mid-gray);font-size:20px;flex-shrink:0;padding:0 4px;">→</div>
+      <div class="node node-purple">
+        <div class="node-icon">🧩</div>
+        <div>
+          <div>UI Kit (Components)</div>
+          <div class="node-note">Ready-made Figma components designers assemble into screens</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="layer-connector"></div>
+
+  <!-- LAYER 2: CODE -->
+  <div class="layer layer-code">
+    <div class="layer-label"><span class="pill">Layer 2 — Development</span>&nbsp; Design System in Code</div>
+
+    <div class="node node-sky" style="margin-bottom:4px;">
+      <div class="node-icon">🔑</div>
+      <div>
+        <div>Design Tokens</div>
+        <div class="node-note">Exported from Figma — the single source of truth for all brand values in code</div>
+      </div>
+    </div>
+
+    <div class="arrow-down"></div>
+
+    <div class="node node-amber" style="margin-bottom:4px;">
+      <div class="node-icon">⚙️</div>
+      <div>
+        <div>Style Build Process</div>
+        <div class="node-note">Compiles design tokens into platform-specific style outputs (native &amp; web)</div>
+      </div>
+    </div>
+
+    <div class="fork">
+      <svg viewBox="0 0 500 46" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="250" y1="0"  x2="250" y2="18" stroke="#D1D5DB" stroke-width="1.5"/>
+        <line x1="250" y1="18" x2="100" y2="18" stroke="#D1D5DB" stroke-width="1.5"/>
+        <line x1="250" y1="18" x2="400" y2="18" stroke="#D1D5DB" stroke-width="1.5"/>
+        <line x1="100" y1="18" x2="100" y2="40" stroke="#D1D5DB" stroke-width="1.5"/>
+        <line x1="400" y1="18" x2="400" y2="40" stroke="#D1D5DB" stroke-width="1.5"/>
+        <polygon points="96,38 100,46 104,38" fill="#9CA3AF"/>
+        <polygon points="396,38 400,46 404,38" fill="#9CA3AF"/>
+      </svg>
+    </div>
+
+    <div class="row" style="margin-bottom:10px;">
+      <div class="node node-sky">
+        <div class="node-icon">📱</div>
+        <div>
+          <div>Generated Native Styles</div>
+          <div class="node-note">iOS &amp; Android app styling</div>
+        </div>
+      </div>
+      <div class="node node-sky">
+        <div class="node-icon">🌐</div>
+        <div>
+          <div>Generated Web Styles</div>
+          <div class="node-note">Browser &amp; web app styling</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="node node-teal">
+        <div class="node-icon">🧱</div>
+        <div>
+          <div>Native DSC Components</div>
+          <div class="node-note">Coded building blocks for iOS &amp; Android apps</div>
+        </div>
+      </div>
+      <div class="node node-teal">
+        <div class="node-icon">🧱</div>
+        <div>
+          <div>Web DSC Components</div>
+          <div class="node-note">Coded building blocks for web apps</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="layer-connector"></div>
+
+  <!-- LAYER 3: APPS -->
+  <div class="layer layer-apps">
+    <div class="layer-label"><span class="pill">Layer 3 — Market Applications</span>&nbsp; What Customers See &amp; Use</div>
+
+    <div class="inner-label">Platform Foundations</div>
+    <div class="row" style="margin-bottom:10px;">
+      <div class="node node-slate">
+        <div class="node-icon">📦</div>
+        <div>
+          <div>Core Native App</div>
+          <div class="node-note">Shared mobile foundation all native markets inherit from</div>
+        </div>
+      </div>
+      <div class="node node-slate" style="flex:1.6;">
+        <div class="node-icon">📦</div>
+        <div>
+          <div>Core Web App</div>
+          <div class="node-note">Shared web ordering foundation for all markets</div>
+        </div>
+      </div>
+      <div class="node node-optional" style="flex:1.2;">
+        <div class="node-icon">🔌</div>
+        <div>
+          <div>Menu Module</div>
+          <div class="node-note">Pluggable module for markets with custom menu requirements</div>
+        </div>
+        <span class="optional-tag">Optional</span>
+      </div>
+    </div>
+
+    <div class="inner-divider"></div>
+
+    <div class="inner-label">Active KFC Market Deployments</div>
+    <div class="row" style="flex-wrap:wrap;gap:10px;">
+
+      <div class="node node-red" style="flex:1;min-width:155px;">
+        <div class="node-icon">🍗</div>
+        <div>
+          <div>KFC Japan</div>
+          <div class="market-chips"><span class="mchip">Web</span><span class="mchip">Native</span></div>
+        </div>
+      </div>
+
+      <div class="node node-red" style="flex:1;min-width:155px;">
+        <div class="node-icon">🍗</div>
+        <div>
+          <div>KFC Australia</div>
+          <div class="market-chips"><span class="mchip">Web</span><span class="mchip">Native</span></div>
+        </div>
+      </div>
+
+      <div class="node node-red" style="flex:1;min-width:155px;">
+        <div class="node-icon">🍗</div>
+        <div>
+          <div>KFC UK</div>
+          <div class="market-chips"><span class="mchip">Web</span></div>
+        </div>
+      </div>
+
+      <div class="node node-red" style="flex:1;min-width:155px;">
+        <div class="node-icon">🍗</div>
+        <div>
+          <div>KFC Germany</div>
+          <div class="market-chips"><span class="mchip">Web</span></div>
+        </div>
+      </div>
+
+      <div class="node node-red" style="flex:1;min-width:155px;">
+        <div class="node-icon">🍗</div>
+        <div>
+          <div>KFC Singapore</div>
+          <div class="market-chips"><span class="mchip">Web</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- Legend -->
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#7C3AED;"></div> Design Layer (Figma)</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#0284C7;"></div> Code &amp; Token Layer</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#F59E0B;"></div> Style Build Process</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#14B8A6;"></div> DSC Components</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#64748B;"></div> Core Foundations</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#E4002B;"></div> KFC Market Deployments</div>
+  <div class="legend-item"><div class="legend-dashed"></div> Optional / As Needed</div>
+</div>
+
+<p class="footer">KFC Atlas Platform &nbsp;·&nbsp; Atlas Enablement &amp; Market Success &nbsp;·&nbsp; Helium Design System</p>
+
+</body>
+</html>

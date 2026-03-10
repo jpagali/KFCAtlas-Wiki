@@ -27,6 +27,14 @@ const sidebars = {
         'frontend/market-configurations',
       ],
     },
+    
+    {
+  type: 'category',
+  label: 'Atlas Design System',
+  collapsed: false,
+  items: ['frontend/design-system'],
+},
+
   ],
 
   // ─── ADMIN PORTAL GUIDE ────────────────────────────────────────────────────
