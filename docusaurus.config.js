@@ -2,7 +2,7 @@
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'KFC Atlas Portal',
+  title: 'KFC Atlas Knowledge Center',
   tagline: 'Everything you need to operate the KFC Atlas Platform.',
   customFields: {
     ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY,
@@ -45,14 +45,14 @@ const config = {
 
       announcementBar: {
         id: 'welcome',
-        content: '👋 Welcome to the KFC Atlas Knowledge Portal — your guide to operating the platform.',
+        content: '👋 Welcome to the KFC Atlas Knowledge Center — your guide to operating the platform.',
         backgroundColor: '#13100C',
         textColor: '#ffffff',
         isCloseable: true,
       },
 
       navbar: {
-        title: 'Atlas Portal',
+        title: 'Atlas Knowledge Center',
         style: 'dark',
         logo: {
           alt: 'KFC Atlas Logo',

@@ -8,7 +8,10 @@ const sidebars = {
       type: 'category',
       label: 'Getting Started',
       collapsed: false,
-      items: ['frontend/overview'],
+      items: [
+        'frontend/overview',
+        'frontend/design-system',
+      ],
     },
     {
       type: 'category',
@@ -27,14 +30,44 @@ const sidebars = {
         'frontend/market-configurations',
       ],
     },
-    
     {
-  type: 'category',
-  label: 'Atlas Design System',
-  collapsed: false,
-  items: ['frontend/design-system'],
-},
-
+      type: 'category',
+      label: 'Features',
+      collapsed: false,
+      items: [
+        'frontend/features/index',
+        'frontend/features/kfc-deeplink-universal-link',
+        'frontend/features/branch-deeplink',
+        'frontend/features/martech',
+        'frontend/features/social-sign-in',
+        {
+          type: 'category',
+          label: 'Menu Item Reservation',
+          link: { type: 'doc', id: 'frontend/features/menu-item-reservation' },
+          collapsed: false,
+          items: [
+            'frontend/features/menu-item-reservation-japan-christmas',
+          ],
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Contentful',
+      collapsed: false,
+      items: [
+        'frontend/contentful/index',
+        'frontend/contentful/guide-homepage',
+        'frontend/contentful/guide-category',
+        'frontend/contentful/guide-product',
+        'frontend/contentful/guide-bundles-deals',
+        'frontend/contentful/guide-promo',
+        'frontend/contentful/guide-cross-sell',
+        'frontend/contentful/guide-footer',
+        'frontend/contentful/guide-seo',
+        'frontend/contentful/guide-translations',
+      ],
+    },
   ],
 
   // ─── ADMIN PORTAL GUIDE ────────────────────────────────────────────────────

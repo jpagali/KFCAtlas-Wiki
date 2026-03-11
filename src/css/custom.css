@@ -108,14 +108,24 @@ div[class*='announcementBarClose'] {
   background: rgba(228,0,43,0.04) !important;
 }
 
-/* Sidebar category labels */
-.menu__list-item-collapsible .menu__link {
+/* Sidebar category labels — top-level section headers only */
+.menu__list > .menu__list-item > .menu__list-item-collapsible .menu__link {
   font-family: 'DM Mono', monospace;
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.8px;
   color: #888;
   font-weight: 500;
+}
+
+/* Nested category items (e.g. feature sub-pages) — look like regular links */
+.menu__list .menu__list > .menu__list-item > .menu__list-item-collapsible .menu__link {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.875rem;
+  text-transform: none;
+  letter-spacing: normal;
+  color: #3a3028;
+  font-weight: 400;
 }
 
 /* ── DOC CONTENT ── */
