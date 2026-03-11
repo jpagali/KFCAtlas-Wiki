@@ -66,9 +66,10 @@ const config = {
             label: '🖥️ Front-end Guide',
           },
           {
-            href: 'https://yumkb.yumconnect.dev',
+            type: 'doc',
+            docId: 'admin/index',
             position: 'left',
-            label: '⚙️ Admin Portal Guide',
+            label: 'Admin Portal (KFC)',
           },
           {
             type: 'docSidebar',
