@@ -77,7 +77,7 @@ const sidebars = {
       type: 'category',
       label: 'Getting Started',
       collapsed: false,
-      items: ['admin/overview'],
+      items: ['admin/index', 'admin/overview'],
     },
     {
       type: 'category',
