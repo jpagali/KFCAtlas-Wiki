@@ -12,9 +12,6 @@ Lists all promotions assigned to a store group for visibility and auditing.
 ## Steps
 
 **Step 1:** Start by going to the Promotions screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Click the Store Groups tab
 
 ![Step 2](./img/step-2.png)

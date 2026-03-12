@@ -12,9 +12,6 @@ Generates a unique serialised promotional code within a promotion, used for sing
 ## Steps
 
 **Step 1:** Start by going to the Promotions screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Find the Promotion you’d like to create a serialized code for and click the action button. Then, find and click on “Serialized Code” in the menu.
 
 ![Step 2](./img/step-2.png)

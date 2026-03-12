@@ -270,6 +270,41 @@ table tr:nth-child(even) td {
 ::-webkit-scrollbar-thumb { background: #ddd; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #E4002B; }
 
+/* ── IMAGE ZOOM ── */
+.markdown img {
+  cursor: zoom-in;
+  border-radius: 6px;
+  border: 1px solid #ece6dc;
+  transition: box-shadow 0.2s ease;
+  max-width: 100%;
+}
+.markdown img:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+#img-zoom-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 9999;
+  cursor: zoom-out;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+#img-zoom-overlay.active {
+  display: flex;
+}
+#img-zoom-overlay img {
+  max-width: 92vw;
+  max-height: 92vh;
+  border-radius: 8px;
+  border: none !important;
+  box-shadow: 0 8px 48px rgba(0,0,0,0.6);
+  cursor: zoom-out;
+  object-fit: contain;
+}
+
 /* ── DISABLE DARK MODE (leadership demo is light only) ── */
 [data-theme='dark'] {
   --ifm-background-color: #f8f4ee;

@@ -14,9 +14,6 @@ Manages the ordered list of patches applied to a store's menu, allowing operator
 **Step 1:** Start by going to the Stores screen by clicking here.
 
 **Step 2:** You can search stores by entering the Name, Number, or Franchise Code.
-
-![Step 1](./img/step-1.png)
-
 **Step 3:** Once you find the store you are looking for, click on the stacked dots to open the option window.
 
 **Step 4:** Click on Menus.

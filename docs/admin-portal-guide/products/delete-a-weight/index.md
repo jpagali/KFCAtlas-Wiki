@@ -12,9 +12,6 @@ Removes a weight configuration that is no longer applicable.
 ## Steps
 
 **Step 1:** Start by going to the Products screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Click the Weights tab.
 
 ![Step 2](./img/step-2.png)

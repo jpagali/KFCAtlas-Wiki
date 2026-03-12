@@ -12,9 +12,6 @@ Permanently removes a patch from the system.
 ## Steps
 
 **Step 1:** Start by going to the Menu screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Click on the patches tab
 
 ![Step 2](./img/step-2.png)

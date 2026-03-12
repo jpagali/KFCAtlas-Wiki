@@ -12,9 +12,6 @@ Temporarily removes a specific item from a store's menu for a defined period and
 ## Steps
 
 **Step 1:** Start by going to the Stores screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** You can search stores by entering the Name, Number, or Franchise Code.
 
 ![Step 2](./img/step-2.png)

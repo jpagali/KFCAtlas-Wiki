@@ -14,9 +14,6 @@ Configures a product variant (a specific combination of options with its own pri
 **Step 1:** Start by going to the Products screen by clicking here.
 
 **Step 2:** Click the Variants tab.
-
-![Step 1](./img/step-1.png)
-
 **Step 3:** You can search Variants by entering the Product Name or Option Values or by Tags.
 
 **Step 4:** Click the 3 dots to reveal a panel. Click Edit.

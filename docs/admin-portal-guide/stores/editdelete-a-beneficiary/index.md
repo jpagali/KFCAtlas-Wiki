@@ -14,9 +14,6 @@ Updates or removes an existing beneficiary record.
 **Step 1:** Start by going to the Stores screen by clicking here.
 
 **Step 2:** Search for the beneficiary by name.
-
-![Step 1](./img/step-1.png)
-
 **Step 3:** Click on the Beneficiaries tab.
 
 **Step 4:** Once you find the beneficiary you are looking for, click on the stacked dots to open the option window.

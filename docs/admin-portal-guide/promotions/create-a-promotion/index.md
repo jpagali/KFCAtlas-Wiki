@@ -12,9 +12,6 @@ Builds a new promotional rule in Atlas — defining the discount type, condition
 ## Steps
 
 **Step 1:** Start by going to the Promotions screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** To create a new promotion, click here.
 
 ![Step 2](./img/step-2.png)

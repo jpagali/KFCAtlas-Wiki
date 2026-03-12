@@ -14,9 +14,6 @@ Sets up a charitable beneficiary linked to specific stores, enabling donation ro
 **Step 1:** Start by going to the Stores screen by clicking here.
 
 **Step 2:** Click on the Beneficiaries tab.
-
-![Step 1](./img/step-1.png)
-
 **Step 3:** Click the “+ Create New Beneficiary” button
 
 **Step 4:** Fill in each “*”required field and other valuable information.

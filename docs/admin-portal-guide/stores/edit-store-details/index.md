@@ -12,9 +12,6 @@ Updates an existing store's information such as name, settings, or operational f
 ## Steps
 
 **Step 1:** Start by going to the Stores screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Once you find the store you are looking for, click on the stacked dots to open the option window.
 
 ![Step 2](./img/step-2.png)

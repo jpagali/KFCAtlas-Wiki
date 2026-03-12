@@ -14,9 +14,6 @@ Updates an existing slot's configuration, such as its label or linked items.
 **Step 1:** Start by going to the Products screen by clicking here.
 
 **Step 2:** Click the Slots tab.
-
-![Step 1](./img/step-1.png)
-
 **Step 3:** You can search Slots by entering the Names or Codes or by Tags.
 
 **Step 4:** Click the 3 dots to reveal a panel. Click Edit.

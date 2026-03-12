@@ -12,9 +12,6 @@ Searches for a specific customer order in Atlas using filters such as order ID, 
 ## Steps
 
 **Step 1:** Start by going to the Customer Support screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Fill in as many fields in each box (Order Information, Delivery Address and Customer Information) as you can to help narrow down your search for better results finding the order you are looking for.
 
 ![Step 2](./img/step-2.png)

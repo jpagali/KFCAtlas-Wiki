@@ -12,9 +12,6 @@ Attaches custom metadata to a bundle for market-specific integration or complian
 ## Steps
 
 **Step 1:** Start by going to the Bundles screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Click this  button in the same row your bundle is in and then hit Meta
 
 ![Step 2](./img/step-2.png)

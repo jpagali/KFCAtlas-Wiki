@@ -12,9 +12,6 @@ Builds a new menu structure in Atlas that can be assigned to stores and channels
 ## Steps
 
 **Step 1:** Start by going to the Menu screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Click Create New Menu Button
 
 ![Step 2](./img/step-2.png)

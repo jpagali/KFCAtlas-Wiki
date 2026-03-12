@@ -12,9 +12,6 @@ Defines a reusable price label that can be applied across multiple products or v
 ## Steps
 
 **Step 1:** Start by going to Menus screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Click named price
 
 ![Step 2](./img/step-2.png)

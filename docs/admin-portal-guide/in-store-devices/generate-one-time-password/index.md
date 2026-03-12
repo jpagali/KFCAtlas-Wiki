@@ -12,9 +12,6 @@ Produces a temporary authentication code for a specific in-store device, used du
 ## Steps
 
 **Step 1:** Start by going to the In-Store Devices screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Click this button to Generate a One Time Password
 
 ![Step 2](./img/step-2.png)

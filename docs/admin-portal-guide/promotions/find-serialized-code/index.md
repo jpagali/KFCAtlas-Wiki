@@ -12,9 +12,6 @@ Locates a specific serialised promotional code within Atlas, used when verifying
 ## Steps
 
 **Step 1:** Start by going to the Promotions screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Click this button to find a serialized code.
 
 ![Step 2](./img/step-2.png)

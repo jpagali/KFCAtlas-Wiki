@@ -12,9 +12,6 @@ Removes one or more promotions from a store group, deactivating them across all 
 ## Steps
 
 **Step 1:** Start by going to the Store groups screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** To see all promotions assigned to a certain store group click this button and the click Promotions.
 
 ![Step 2](./img/step-2.png)

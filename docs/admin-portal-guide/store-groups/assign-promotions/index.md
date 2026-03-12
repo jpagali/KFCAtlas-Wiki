@@ -12,9 +12,6 @@ Assigns one or more promotions to a store group, activating them across all memb
 ## Steps
 
 **Step 1:** Start by going to the Store Groups screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Click this assign promotions button
 
 ![Step 2](./img/step-2.png)

@@ -12,9 +12,6 @@ Updates an existing agent's account details, roles, or access permissions.
 ## Steps
 
 **Step 1:** Start by going to the Agents screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** To search for an agent in one of 
 4 ways, by entering their info here.
 

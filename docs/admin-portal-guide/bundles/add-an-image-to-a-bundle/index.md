@@ -12,9 +12,6 @@ Assigns a display image to a bundle so customers see the correct combo visual wh
 ## Steps
 
 **Step 1:** Start by going to the Bundles screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Click this  button in the same row your bundle is in and then hit Images
 
 ![Step 2](./img/step-2.png)

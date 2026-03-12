@@ -12,9 +12,6 @@ Lists all stores currently belonging to a store group for visibility and verific
 ## Steps
 
 **Step 1:** Start by going to the Store Groups screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 ![Step 2](./img/step-2.png)
 
 ![Step 3](./img/step-3.png)

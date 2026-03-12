@@ -12,9 +12,6 @@ Updates an existing named price value.
 ## Steps
 
 **Step 1:** Start by going to Menus screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 1:** Start by going to the Agents screen by clicking here.
 
 ![Step 2](./img/step-2.png)

@@ -12,9 +12,6 @@ Creates a named grouping of stores that share menu, promotion, or tax configurat
 ## Steps
 
 **Step 1:** Start by going to the Store Groups screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Click this button to create a store group.
 
 ![Step 2](./img/step-2.png)

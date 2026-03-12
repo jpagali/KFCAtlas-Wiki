@@ -14,9 +14,6 @@ Attaches custom data to a weight entry for system integration needs.
 **Step 1:** Start by going to the Products screen by clicking here.
 
 **Step 2:** Click the Weights tab.
-
-![Step 1](./img/step-1.png)
-
 **Step 3:** You can search Option Values by entering the Name or Code.
 
 **Step 4:** Click the 3 dots to reveal a panel. Click Meta.

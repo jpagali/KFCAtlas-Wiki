@@ -12,9 +12,6 @@ Displays the full details of an in-store device including its name, station type
 ## Steps
 
 **Step 1:** Start by going to the In-Store Devices screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Click this button in the same row the device you want to configure is in and then hit View
 
 ![Step 2](./img/step-2.png)

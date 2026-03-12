@@ -12,9 +12,6 @@ Deactivates an in-store device in Atlas, preventing it from receiving menu updat
 ## Steps
 
 **Step 1:** Start by going to the In-Store Devices screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Click this button in the same row the device you want to configure is in and then hit Deactivate
 
 ![Step 2](./img/step-2.png)

@@ -14,9 +14,6 @@ Enables market operators to build a new menu item from scratch in Atlas, definin
 **Step 1:** Start by going to the Products screen by clicking here.
 
 **Step 2:** Click the “+ Create New Product” button
-
-![Step 1](./img/step-1.png)
-
 **Step 3:** Fill in each “*”required field and other valuable information.
 
 **Step 4:** When you are finished click next.

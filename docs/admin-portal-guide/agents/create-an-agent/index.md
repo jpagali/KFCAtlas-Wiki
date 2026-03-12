@@ -12,9 +12,6 @@ Creates a new agent user account in Atlas with defined roles and permissions, gr
 ## Steps
 
 **Step 1:** Start by going to the Agents screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** To create a new agent click the “+ Create New Agent” button.
 
 ![Step 2](./img/step-2.png)

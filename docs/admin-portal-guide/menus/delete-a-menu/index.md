@@ -12,9 +12,6 @@ Permanently removes a menu from the system when it is no longer in use.
 ## Steps
 
 **Step 1:** Start by going to the Menu screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Click this button in the same row the menu you’re looking for is in and then hit Delete
 
 ![Step 2](./img/step-2.png)

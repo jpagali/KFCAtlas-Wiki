@@ -12,9 +12,6 @@ Duplicates a menu to use as a starting point for a new menu, saving significant 
 ## Steps
 
 **Step 1:** Start by going to the Menu screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Click this button in the same row the menu you’re looking for is in and then hit Copy
 
 ![Step 2](./img/step-2.png)

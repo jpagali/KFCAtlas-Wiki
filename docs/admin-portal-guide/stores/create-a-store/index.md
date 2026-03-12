@@ -12,9 +12,6 @@ Registers a new store location in Atlas with its required details (name, number,
 ## Steps
 
 **Step 1:** Start by going to the Stores screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Click the “+ Create New Store” button
 
 ![Step 2](./img/step-2.png)

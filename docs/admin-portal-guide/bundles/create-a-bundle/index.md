@@ -14,9 +14,6 @@ Enables operators to build a combo or meal deal by grouping products together un
 **Step 1:** Start by going to the Bundles screen by clicking here.
 
 **Step 2:** In order to create a bundle you need to click on this create new
-
-![Step 1](./img/step-1.png)
-
 **Step 3:** Fill in each “*”required field and other valuable information.
 
 **Step 4:** You can select the step tiles at the top left or click the next button to go to the next step

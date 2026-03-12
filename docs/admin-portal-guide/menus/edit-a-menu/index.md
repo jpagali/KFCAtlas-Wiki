@@ -12,9 +12,6 @@ Updates an existing menu's configuration, such as its name, assigned items, or c
 ## Steps
 
 **Step 1:** Start by going to the Menu screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Click this button in the same row the menu you’re looking for is in and then hit Edit
 
 ![Step 2](./img/step-2.png)

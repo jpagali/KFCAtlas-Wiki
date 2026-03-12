@@ -8,9 +8,6 @@ sidebar_label: "View a Store’s Publish History/ Copy Menu Publish Job ID"
 ## Steps
 
 **Step 1:** Start by going to the Stores screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Click on the Publish History tab.
 
 ![Step 2](./img/step-2.png)

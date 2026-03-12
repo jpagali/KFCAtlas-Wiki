@@ -12,9 +12,6 @@ Permanently removes a product from the Atlas catalogue, used when an item is dis
 ## Steps
 
 **Step 1:** Start by going to the Products screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Click the 3 dots to reveal a panel. Click Delete.
 
 ![Step 2](./img/step-2.png)

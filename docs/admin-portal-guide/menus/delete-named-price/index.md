@@ -12,9 +12,6 @@ Removes a named price that is no longer in use.
 ## Steps
 
 **Step 1:** Start by going to Menus screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Click named price
 
 ![Step 2](./img/step-2.png)

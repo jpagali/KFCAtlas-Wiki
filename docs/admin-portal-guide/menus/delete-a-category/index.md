@@ -12,9 +12,6 @@ Removes a category from a menu when the grouping is no longer needed.
 ## Steps
 
 **Step 1:** Start by going to the Menu screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Click on the categories folder
 
 ![Step 2](./img/step-2.png)

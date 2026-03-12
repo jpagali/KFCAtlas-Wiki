@@ -12,9 +12,6 @@ Looks up a customer account by name, email, or phone number to view their order 
 ## Steps
 
 **Step 1:** Start by going to the Customer Support screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Fill in as many fields in the box as you can to help narrow down your search for better results finding the customer you are looking for.
 
 ![Step 2](./img/step-2.png)

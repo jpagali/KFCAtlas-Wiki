@@ -12,9 +12,6 @@ Publishes the assigned menu to the store's live ordering channels from within th
 ## Steps
 
 **Step 1:** Start by going to the Stores screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Select Publish Menu
 
 ![Step 2](./img/step-2.png)

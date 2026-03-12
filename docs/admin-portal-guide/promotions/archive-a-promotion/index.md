@@ -12,9 +12,6 @@ Marks a promotion as archived to remove it from active use while retaining its r
 ## Steps
 
 **Step 1:** Start by going to the Promotions screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Find the promotion you want to archive, click the action button, then click “Archive”
 
 ![Step 2](./img/step-2.png)

@@ -12,9 +12,6 @@ Updates an existing promotion's configuration, such as validity dates, discount 
 ## Steps
 
 **Step 1:** Start by going to the Promotions screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Once you find the promotion you’re looking for, click the promotion name link
 
 ![Step 2](./img/step-2.png)

@@ -12,9 +12,6 @@ Copies a promotion's unique ID for use in support tickets, integrations, or cros
 ## Steps
 
 **Step 1:** Start by going to the Promotions screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Find the promotion you’d like to copy the ID for, click the action button, then click “Copy ID”
 
 ![Step 2](./img/step-2.png)

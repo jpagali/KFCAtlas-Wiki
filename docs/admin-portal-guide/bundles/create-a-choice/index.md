@@ -12,9 +12,6 @@ Adds a selectable item within a bundle (e.g. 'Choose your drink'), giving custom
 ## Steps
 
 **Step 1:** Start by going to the Bundles screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Click on the choices tab
 
 ![Step 2](./img/step-2.png)

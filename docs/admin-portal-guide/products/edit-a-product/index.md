@@ -12,9 +12,6 @@ Allows operators to update an existing product's name, description, images, or o
 ## Steps
 
 **Step 1:** Start by going to the Products screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Click the 3 dots to reveal a panel. Click Edit.
 
 ![Step 2](./img/step-2.png)

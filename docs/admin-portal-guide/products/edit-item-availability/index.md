@@ -14,9 +14,6 @@ Controls when a modifier is available for ordering by setting occasion windows, 
 **Step 1:** Start by going to the Products screen by clicking here.
 
 **Step 2:** Click the Modifiers tab.
-
-![Step 1](./img/step-1.png)
-
 **Step 3:** You can search Option Values by entering the Name or Code or search by Catalog Tag.
 
 **Step 4:** Click the 3 dots to reveal a panel. Click Availability.

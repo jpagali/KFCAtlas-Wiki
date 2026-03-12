@@ -12,9 +12,6 @@ Defines a position within a product where a modifier or bundle choice can be pla
 ## Steps
 
 **Step 1:** Start by going to the Products screen by clicking here.
-
-![Step 1](./img/step-1.png)
-
 **Step 2:** Click the Slots tab.
 
 ![Step 2](./img/step-2.png)
