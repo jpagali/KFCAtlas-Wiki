@@ -4,6 +4,8 @@ sidebar_label: "Design System"
 sidebar_position: 5
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # KFC Atlas Design System
 ### How Our Platform Is Built — From Visual Identity to Your Screen
 
@@ -76,7 +78,7 @@ KFC Global Enablement and Market Success helps each market take full advantage o
 The diagram below illustrates how the Helium design system flows from design tokens in Figma — through the style build process — into platform components, and finally into the KFC market applications customers use.
 
 <iframe
-  src="/kfc-atlas-design-system-diagram.html"
+  src={useBaseUrl('/kfc-atlas-design-system-diagram.html')}
   width="100%"
   height="900px"
   style={{border: 'none', borderRadius: '12px'}}

@@ -1,3 +1,5 @@
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # KFC Atlas Design System
 ### プラットフォームがどう作られているか — ビジュアルアイデンティティから画面表示まで
 
@@ -72,7 +74,7 @@ KFC Global Enablement and Market Success の役割は、この仕組みを各市
 以下の図は、Helium デザインシステムが Figma 上の design tokens から始まり、style build process を経て、プラットフォームコンポーネントになり、最終的に KFC 各市場のアプリケーションへ流れていく構造を示しています。
 
 <iframe
-  src="/kfc-atlas-design-system-diagram-ja.html"
+  src={useBaseUrl('/kfc-atlas-design-system-diagram-ja.html')}
   width="100%"
   height="900px"
   style={{border: 'none', borderRadius: '12px'}}

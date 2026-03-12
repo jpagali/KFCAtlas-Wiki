@@ -142,7 +142,7 @@ const JAPANESE_SUGGESTED_ARTICLES = {
 };
 
 export default function AtlasChat() {
-  const { i18n } = useDocusaurusContext();
+  const { i18n, siteConfig } = useDocusaurusContext();
   const locale = LOCALE_COPY[i18n.currentLocale] ? i18n.currentLocale : 'en-US';
   const copy = LOCALE_COPY[locale];
   const isJapanese = locale === 'ja-JP';
@@ -186,12 +186,10 @@ export default function AtlasChat() {
     }
   };
 
-  const getLocalizedPath = (path) => {
-    if (locale === 'en-US') {
-      return path;
-    }
-
-    return `/${locale}${path}`;
+  const getLocalizedPath = (path) => (locale === 'en-US' ? path : `/${locale}${path}`);
+  const navigateTo = (path) => {
+    const cleanBaseUrl = (siteConfig.baseUrl || '/').replace(/\/$/, '');
+    window.location.assign(`${cleanBaseUrl}${getLocalizedPath(path)}`);
   };
 
   // ── Render markdown-lite (bold + line breaks)
@@ -344,7 +342,7 @@ export default function AtlasChat() {
                   display: 'flex', flexWrap: 'wrap', gap: 6,
                 }}>
                   {suggestions.map((suggestion, i) => (
-                    <button key={i} onClick={() => window.location.href = getLocalizedPath(suggestion.to)} style={{
+                    <button key={i} type="button" onClick={() => navigateTo(suggestion.to)} style={{
                       background: 'rgba(228,0,43,0.06)', border: '1px solid rgba(228,0,43,0.18)',
                       borderRadius: 20, padding: '5px 11px', fontSize: '0.75rem',
                       color: '#c20025', cursor: 'pointer', fontFamily: 'inherit',
