@@ -7,21 +7,21 @@ sidebar_label: "Admin Portal Guide"
 
 This guide covers all tasks available in the KFC Atlas Admin Portal (Menu Management). Select a section below to get started.
 
-## [Stores](./stores/)
+## [Stores](./stores/index)
 
-## [Menus](./menus/)
+## [Menus](./menus/index)
 
-## [Products](./products/)
+## [Products](./products/index)
 
-## [Promotions](./promotions/)
+## [Promotions](./promotions/index)
 
-## [Store Groups](./store-groups/)
+## [Store Groups](./store-groups/index)
 
-## [In-Store Devices](./in-store-devices/)
+## [In-Store Devices](./in-store-devices/index)
 
-## [Bundles](./bundles/)
+## [Bundles](./bundles/index)
 
-## [Agents](./agents/)
+## [Agents](./agents/index)
 
-## [Customer Support](./customer-support/)
+## [Customer Support](./customer-support/index)
 
