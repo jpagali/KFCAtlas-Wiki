@@ -5,10 +5,10 @@ sidebar_position: 4
 
 # Guide: Product Content
 
-Product Content is where you bring individual menu items to life — assigning images, titles, and display details to products that have already been created in Yum Admin.
+Product Content is where you bring individual menu items to life — assigning images, titles, and display details to products that have already been created in Byte Admin Portal.
 
 :::info
-Products **must exist in Yum Admin first** before they can be configured in Contentful. Products without Contentful content are **hidden from the menu**.
+Products **must exist in Byte Admin Portal first** before they can be configured in Contentful. Products without Contentful content are **hidden from the menu**.
 :::
 
 ---
@@ -65,9 +65,9 @@ Contentful will not allow you to create a duplicate entry for a product, crust, 
 
 ## Use Cases
 
-**New menu item launch** — When a product is created in Yum Admin, create its Contentful entry to bring it live on the menu with imagery and a display name.
+**New menu item launch** — When a product is created in Byte Admin Portal, create its Contentful entry to bring it live on the menu with imagery and a display name.
 
-**Updating product photography** — Refresh images on existing products during brand refreshes or seasonal campaigns without touching any data in Yum Admin.
+**Updating product photography** — Refresh images on existing products during brand refreshes or seasonal campaigns without touching any data in Byte Admin Portal.
 
 **Localising product names** — Enter market-specific titles per locale (e.g. "Zinger Burger" vs "Zinger Sandwich" depending on the market).
 

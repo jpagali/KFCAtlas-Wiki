@@ -1,52 +1,52 @@
 ---
-title: "Create a Beneficiary"
-sidebar_label: "Create a Beneficiary"
+title: “Create a Beneficiary”
+sidebar_label: “Create a Beneficiary”
 ---
 
 # Create a Beneficiary
 
 ## What this guide covers
 
-Sets up a charitable beneficiary linked to specific stores, enabling donation round-up or charity campaign functionality at those locations.
+Sets up a charitable beneficiary linked to specific stores, enabling donation collection or charity campaign functionality at those locations.
 
 ## Steps
 
-**Step 1:** Start by going to the Stores screen by clicking here.
+**Step 1:** Navigate to the **Stores** section using the left-hand navigation menu.
 
-**Step 2:** Click on the Beneficiaries tab.
-**Step 3:** Click the “+ Create New Beneficiary” button
+**Step 2:** Click the **Beneficiaries** tab at the top of the Stores page.
 
-**Step 4:** Fill in each “*”required field and other valuable information.
+**Step 3:** Click the **+ Create New Beneficiary** button.
+
+**Step 4:** Fill in the beneficiary form using the field descriptions below. Fields marked with * are required.
+
+| Field | What to enter | Notes |
+|-------|--------------|-------|
+| **Beneficiary Name** * | Name of the charity or cause | e.g., “KFC Youth Foundation” |
+| **Accepting Donations** | Toggle: Yes or No | Set to Yes to activate donation collection at selected stores |
+| **Stores** * | Search and select stores to associate with this beneficiary | Use the search box to find stores by name, number, or code |
 
 ![Step 2](./img/step-2.png)
 
-**Step 5:** To turn on the new beneficiary click the toggle to set it to Yes.
+**Step 5:** To activate donation collection for this beneficiary, toggle **Accepting Donations** to **Yes**.
 
-**Step 6:** Select/find from the dropdown the stores you would like to be a beneficiary.
+**Step 6:** Use the **Stores** field to search for and select the stores where this beneficiary should be available. You can use the filter options to narrow the store list by store group or other criteria.
 
-**Step 7:** You can use the filter options to see if a store is a beneficiary when the list is long.
-
-**Step 8:** When you are done the Create Beneficiary button will become active to click and save your new beneficiary.
+**Step 7:** Once all required fields are completed, the **Create Beneficiary** button becomes active. Click **Create Beneficiary** to save the new beneficiary.
 
 ![Step 3](./img/step-3.png)
 
-## Notes
-
-:::note
-If you need to see if a beneficiary has already been created you can search for it by name here.
+:::tip
+Before creating a new beneficiary, use the search box to confirm a beneficiary with the same name doesn't already exist. A green checkmark in the “Accepting Donations” column indicates a beneficiary is active.
 :::
 
-:::note
-The “Accepting Donations” column may show a green circle with a check mark to indicate that the Beneficiaries is turned on.
+:::caution
+Clicking **Cancel** at any time discards all unsaved information.
 :::
 
-:::note
-If you need to stop your creation click here. Please be aware that your info will not be saved.
-:::
+## Related guides
 
-## Additional information
-
-- Stores - Create a Beneficiary
+- [View a Store's Beneficiaries](/docs/admin-portal-guide/stores/view-a-stores-beneficiaries/) — See all beneficiaries linked to a store
+- [Edit/Delete a Beneficiary](/docs/admin-portal-guide/stores/editdelete-a-beneficiary/) — Update or remove a beneficiary
 
 ---
 

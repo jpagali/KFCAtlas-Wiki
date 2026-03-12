@@ -11,31 +11,43 @@ Shows a store's connected point-of-sale devices, their status, and allows operat
 
 ## Steps
 
-**Step 1:** Start by going to the Stores screen by clicking here.
-**Step 2:** You can search stores by entering the Name, Number, or Franchise Code.
+**Step 1:** Navigate to the **Stores** section using the left-hand navigation menu.
+
+**Step 2:** Search for the store by **Name**, **Store Number**, or **Franchise Code** using the search box.
 
 ![Step 2](./img/step-2.png)
 
-**Step 3:** Once you find the store you are looking for, click on the stacked dots to open the option window.
+**Step 3:** Once you find the store, click the **three-dot menu** (•••) icon to open the options menu.
 
-**Step 4:** Click on POS.
+**Step 4:** Click **POS** from the dropdown menu. This displays all point-of-sale devices linked to the selected store.
 
 ![Step 3](./img/step-3.png)
 
-## Notes
+**Step 5:** Review the POS devices table, which shows:
 
-:::note
-There are other options in the window  but for this step we are just looking at POS. Others are discussed else where. Please go to the Table of Contents to find where.
+| Column | What it means |
+|--------|--------------|
+| **Device Name** | Display name of the POS device |
+| **Station Type** | Type of POS station (e.g., Register, Kitchen, Counter) |
+| **Device Status** | Current status (Online, Offline, Inactive, etc.) |
+| **Menu Published** | Date the menu was last published to this device |
+| **Last Check-in** | Date and time the device last communicated with Atlas |
+
+**Step 6:** Use the action buttons to manage devices:
+- Click **Update Store Device Settings** to modify device configuration (name, settings, etc.)
+- Click **Generate One-Time Password** to create a temporary password for device authentication
+
+:::tip
+Use **Last Check-in** to verify that POS devices are actively communicating with Atlas. If a device hasn't checked in recently, it may be offline or disconnected.
 :::
 
 :::note
-Within the store pos table you can see the device name, station type, device status, menu date published, last device check in, and do two actions (view and deactivate)
+Devices that are offline or not checking in should be investigated to ensure menu updates are delivered properly.
 :::
 
-## Additional information
+## Related guides
 
-- Update Store Device Settings Clicking this button will open up this drawer and allow you to update the device settings for the store.
-- Generate One-Time Password Click this button and it will open this modal that provides you with a one-time password for the POS Device.
+- [Edit Store Details](/docs/admin-portal-guide/stores/edit-store-details/) — View other store information
 
 ---
 

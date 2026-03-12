@@ -1,30 +1,32 @@
 ---
-title: "Copy Promotion ID"
-sidebar_label: "Copy Promotion ID"
+title: “Copy Promotion ID”
+sidebar_label: “Copy Promotion ID”
 ---
 
 # Copy Promotion ID
 
 ## What this guide covers
 
-Copies a promotion's unique ID for use in support tickets, integrations, or cross-referencing with other systems.
+Copies a promotion’s unique ID to your clipboard for use in support tickets, system integrations, or cross-referencing with other systems.
 
 ## Steps
 
-**Step 1:** Start by going to the Promotions screen by clicking here.
-**Step 2:** Find the promotion you’d like to copy the ID for, click the action button, then click “Copy ID”
+**Step 1:** Navigate to the **Promotions** section using the left-hand navigation menu.
+
+**Step 2:** Find the promotion you want to copy the ID for. Click the **action menu button** (three dots), then select **Copy ID**.
 
 ![Step 2](./img/step-2.png)
 
-## Notes
+**Step 3:** The promotion ID has been copied to your clipboard. You can now paste it into support tickets, integration forms, or other systems as needed.
 
 :::note
-This is the Promotions screen where you  will see a list of all the promotions you have created, create new promotions, search for any you have created, edit and copy, add extra info in the Meta link and  assign them to Store Groups.  Promotions can only be assigned to a Store Group and not a singular store.
+The Promotion ID is a unique identifier assigned by Atlas. Technical teams use this ID to reference the promotion in integrations, debugging, and system records.
 :::
 
-## Additional information
+## Related guides
 
-- Promotions - Copy Promotion ID
+- [Create a Promotion](/docs/admin-portal-guide/promotions/create-a-promotion/)
+- [Add Metadata to Promotion](/docs/admin-portal-guide/promotions/add-metadata-to-promotion/)
 
 ---
 

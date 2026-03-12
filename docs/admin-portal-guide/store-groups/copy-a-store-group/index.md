@@ -7,61 +7,52 @@ sidebar_label: "Copy a Store Group"
 
 ## What this guide covers
 
-Duplicates a store group configuration as a starting point for a new group.
+Duplicates a store group configuration as a starting point for a new group, copying stores and tags but creating an independent new store group.
 
 ## Steps
 
-**Step 1:** Start by going to the Store Groups screen by clicking here.
-**Step 2:** Once you find the store group you are looking for, click on the stacked dots to open the option window.
+**Step 1:** Navigate to the **Store Groups** section using the left-hand navigation menu.
+
+**Step 2:** Find the store group you want to copy by browsing the table or using the search bar. Click the **action menu button** (three dots) next to the store group name.
 
 ![Step 2](./img/step-2.png)
 
-**Step 3:** Click on copy
+**Step 3:** Click **Copy**.
 
 ![Step 3](./img/step-3.png)
 
-**Step 4:** Type in the store group name for the store you want to create and enter any store group tags if needed.
+**Step 4:** Update the store group details:
 
-Since you copied a store group the tags you applied to the group earlier show up
+| Field | What to enter | Notes |
+|-------|--------------|-------|
+| **Store Group Name** * | A new, unique name for this group | The system copies the original name; you must change it. e.g., "NSW Franchise Group - Copy". |
+| **Store Group Tags** | Labels for filtering and reporting | Tags from the original group are automatically included. You can add or remove as needed. |
 
 ![Step 4](./img/step-4.png)
 
-**Step 5:** Toggle this switch to select a store
+**Step 5:** Review and adjust store membership if needed:
+
+- **Stores from the original group are automatically selected** (toggle switches are ON)
+- **Toggle OFF** to remove any stores you don’t want in the new group
+- **Toggle ON** to add additional stores
+- Use the **"Show me included"** filter to quickly view only selected stores
+- **Filter by Store Number, Store Name, or Franchise Code** to find specific stores
 
 ![Step 5](./img/step-5.png)
 
-**Step 6:** Press this create button when finished with each step to finally create your store group.
+**Step 6:** Review the summary of all changes and click the **Create** button to save the new store group.
 
 ![Step 6](./img/step-6.png)
 
-## Notes
-
 :::note
-You can filter by stores and by store groups
+The copied store group is independent from the original. Changes made to either group will not affect the other. Store membership is automatically copied from the original group but can be modified before saving.
 :::
 
-:::note
-Since you copied a store group the stores that you had included previously in the store group are automatically selected. You can view them by selecting show me included.
-:::
+## Related guides
 
-:::note
-This table allows you to filter by store number, store name, and franchise code to find specific stores.
-:::
-
-:::note
-This is a review of all the stores that were added
-:::
-
-:::note
-This is a review of all the actions you’ve done in each step: Store group name/tag, and store selection.
-:::
-
-## Additional information
-
-- Menu Management User Guide
-- Store Groups - Copy a Store Group
-- You can search by store group name and store group tags and see whether or not a store group has a tax association
-- You can select these tiles to navigate forward in this flow or click the next button to go to the next step
+- [Create a Store Group](/docs/admin-portal-guide/store-groups/create-a-store-group/)
+- [Edit a Store Group](/docs/admin-portal-guide/store-groups/edit-a-store-group/)
+- [Delete a Store Group](/docs/admin-portal-guide/store-groups/delete-a-store-group/)
 
 ---
 

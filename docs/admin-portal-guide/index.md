@@ -5,23 +5,31 @@ sidebar_label: "Admin Portal Guide"
 
 # Admin Portal Guide
 
-This guide covers all tasks available in the KFC Atlas Admin Portal (Menu Management). Select a section below to get started.
+This guide covers all tasks available in the KFC Atlas Admin Portal. Select a section below to get started.
 
-## [Stores](./stores/index)
+## [Stores](/docs/admin-portal-guide/stores/)
+Manage restaurant locations, menus, and store settings.
 
-## [Menus](./menus/index)
+## [Menus](/docs/admin-portal-guide/menus/)
+Create and organize product menus and categories for each store.
 
-## [Products](./products/index)
+## [Products](/docs/admin-portal-guide/products/)
+Define individual menu items, ingredients, pricing, and variants.
 
-## [Promotions](./promotions/index)
+## [Bundles](/docs/admin-portal-guide/bundles/)
+Build meal deals and combos by grouping products together.
 
-## [Store Groups](./store-groups/index)
+## [Promotions](/docs/admin-portal-guide/promotions/)
+Create and manage promotional offers and discount campaigns.
 
-## [In-Store Devices](./in-store-devices/index)
+## [Store Groups](/docs/admin-portal-guide/store-groups/)
+Organize multiple stores and manage group-level settings and promotions.
 
-## [Bundles](./bundles/index)
+## [Agents](/docs/admin-portal-guide/agents/)
+Create and manage user accounts with specific portal access and permissions.
 
-## [Agents](./agents/index)
+## [Customer Support](/docs/admin-portal-guide/customer-support/)
+Search orders and customers, issue refunds, and assist with account issues.
 
-## [Customer Support](./customer-support/index)
-
+## [In-Store Devices](/docs/admin-portal-guide/in-store-devices/)
+Manage POS terminals and kiosks, including device setup and authentication.

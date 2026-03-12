@@ -7,31 +7,56 @@ sidebar_label: "Add Metafields to a Bundle"
 
 ## What this guide covers
 
-Attaches custom metadata to a bundle for market-specific integration or compliance fields.
+Attaches custom key-value data to a bundle for integrations, compliance, or internal tracking — only add metafields if your technical team has specified exact keys and values.
 
 ## Steps
 
-**Step 1:** Start by going to the Bundles screen by clicking here.
-**Step 2:** Click this  button in the same row your bundle is in and then hit Meta
+**Step 1:** Navigate to the **Bundles** section using the left-hand navigation menu.
+
+**Step 2:** Find the bundle you want to add metafields to by searching by Bundle Name, Bundle Code, Catalog Tags, or Promo Tags.
+
+**Step 3:** Click the **⋮** (three-dot menu) button in the same row as the bundle, then select **Meta**.
 
 ![Step 2](./img/step-2.png)
 
-**Step 3:** Click this button to add bundle metafield content it will open up this drawer to do so.
+**Step 4:** A drawer opens with two sections: **Public Metafields** and **Private Metafields**. You can add either or both.
+
+**For Public Metafields (visible to integrations):**
+
+**Step 5:** Click **Add Metafield** in the Public Metafields section.
 
 ![Step 3](./img/step-3.png)
 
-**Step 4:** After you finish filling out this content and press add bundle metafields the public metafield will be added to the bundle.
+**Step 6:** Fill in the key-value pairs:
+- **Key**: The metadata field name (e.g., `external_id`, `supplier_code`)
+- **Value**: The corresponding value (e.g., `12345`)
 
-**Step 5:** Click this button to add bundle metafield content it will open up this drawer to do so.
+Click **Add Metafield** to confirm.
 
-**Step 6:** After you finish filling out this content and press add bundle metafields the private metafield will be added to the bundle.
+**For Private Metafields (internal use only):**
+
+**Step 7:** Click **Add Metafield** in the Private Metafields section.
+
+**Step 8:** Fill in the key-value pairs using the same format as above.
+
+Click **Add Metafield** to confirm.
 
 ![Step 4](./img/step-4.png)
 
-## Additional information
+**Step 9:** Once all metafields are added, click **Save** to commit the changes.
 
-- Bundles - Add Metafields to a Bundle
-- You can select these tiles to navigate forward in this flow or click the next button to go to the next step  You do not have to fill out both you can choose to have either private or public metafields
+:::caution
+Only add metafields if your technical team has specified the exact keys and values needed for integrations or compliance. Incorrect metafields can break integrations.
+:::
+
+:::tip
+You can add multiple public and private metafields. You are not required to add both — choose only what your system needs.
+:::
+
+## Related guides
+
+- [Create a Bundle](/docs/admin-portal-guide/bundles/create-a-bundle/)
+- [Edit a Bundle](/docs/admin-portal-guide/bundles/edit-a-bundle/)
 
 ---
 

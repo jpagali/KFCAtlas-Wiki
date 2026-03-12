@@ -7,36 +7,39 @@ sidebar_label: "Delete a Weight"
 
 ## What this guide covers
 
-Removes a weight configuration that is no longer applicable.
+Removes a weight configuration when it is no longer applicable.
 
 ## Steps
 
-**Step 1:** Start by going to the Products screen by clicking here.
-**Step 2:** Click the Weights tab.
+**Step 1:** Navigate to the **Products** section using the left navigation menu.
+
+**Step 2:** Click the **Weights** tab.
 
 ![Step 2](./img/step-2.png)
 
-**Step 3:** You can search Option Values by entering the Name or Code.
+**Step 3:** Search for the weight you want to delete by entering the Weight Name or Weight Code in the search field.
 
-**Step 4:** Click the 3 dots to reveal a panel. Click Delete.
+**Step 4:** Click the three-dot menu next to the weight, then select **Delete**.
 
-**Step 5:** Click the Red button to permanently delete the Slot.
+**Step 5:** A confirmation modal will appear showing all the areas of the system where this weight is used. Review this carefully to ensure you are deleting the correct weight.
+
+**Step 6:** Click the red **Delete** button to permanently remove the weight.
 
 ![Step 3](./img/step-3.png)
 
 ## Notes
 
-:::note
-There are other options in the window  but for this step we are just looking at Delete. Others are discussed else where. Please go to the Table of Contents to find where.
+:::caution
+Deleting a weight is permanent and cannot be undone. The weight will be removed from all slots and modifiers that use it.
 :::
 
-:::note
-If you do not want to delete the Slot click Cancel.
+:::tip
+You can search weights by Weight Name or Weight Code to quickly find the item you want to delete.
 :::
 
-## Additional information
-
-- WARNING: This modal will show you all the different areas of the Catalog that the product will be removed from. We suggest you look this over before deleting. Deleting isn’t reversible.
+:::caution
+Click **Cancel** if you do not want to proceed with deletion.
+:::
 
 ---
 

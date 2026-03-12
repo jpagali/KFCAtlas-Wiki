@@ -1,121 +1,113 @@
 ---
-title: Onboarding a New Restaurant
+title: Create Promotions
 sidebar_position: 1
 ---
 
-# Onboarding a New Restaurant
+# Create Promotions
 
-This playbook walks through everything needed to bring a new KFC restaurant live on the Atlas Platform — from initial setup through to first order. Follow the steps in order.
+This playbook shows how KFC teams should create and launch a promotion in Atlas, from the initial campaign brief through store-group assignment and pre-launch checks.
 
-**Estimated time:** 2–4 hours (spread across 2–3 days for approvals)
-**Who does this:** Regional / BMU Admin, with input from the franchisee
+**Estimated time:** 30-60 minutes for setup, plus approval and QA time
+**Who does this:** Regional / BMU Admin, marketing operations, or campaign owners with Admin Portal access
 
 ---
 
-## Phase 1 — Platform Setup (Regional Admin)
+## What This Playbook Covers
 
-### Step 1: Create the restaurant in the Admin Portal
+Use this playbook when KFC needs to:
 
-**Admin Portal → Restaurants → Add New Restaurant**
+- launch a new digital offer in Atlas
+- configure eligibility and discount logic
+- assign the promotion to the correct stores or store groups
+- complete a basic QA pass before the campaign goes live
 
-Fill in:
-- Restaurant name (as it should appear to customers)
-- Full address (street, suburb/city, postcode)
-- Phone number
-- Market assignment (Japan or Australia)
-- Franchise group (if applicable)
+If you are specifically creating a Buy 1 Get 1 offer, use the dedicated subpage: [Buy 1 Get 1 Promo](/docs/playbooks/buy-one-get-one-promo).
 
-Save. The system generates a **Restaurant ID** — note this down.
+## Prerequisites
 
-### Step 2: Set GPS coordinates
+- approved KFC campaign brief with offer details, dates, and target market
+- promotion copy confirmed with the local marketing team
+- store or store-group scope confirmed
+- Admin Portal access to Promotions and Store Groups
 
-**Restaurants → [New Restaurant] → Profile → Location**
+## Step 1: Confirm the promotion structure
 
-Search for the address and confirm the pin is placed correctly on the map. This is critical — it controls delivery zone eligibility and restaurant discovery in the customer app.
+Before building anything in Atlas, confirm:
 
-:::warning
-Coordinates can only be set by Regional Admins. Once saved, they are locked. Double-check the pin placement before saving.
+- the discount type
+- qualifying products or bundles
+- start and end date/time
+- whether the promotion is automatic or code-based
+- whether the campaign applies to all stores or selected store groups
+
+:::tip
+For KFC campaigns, always confirm whether the offer should appear in app, web, aggregator-linked flows, or a limited set of ordering channels before setup starts.
 :::
 
-### Step 3: Configure operating hours
+## Step 2: Create the promotion shell
 
-**Restaurants → [Restaurant] → Profile → Operating Hours**
+Use the Admin Portal guide page [Create a Promotion](/docs/admin-portal-guide/promotions/create-a-promotion/) to create the promotion record.
 
-Set hours for each day of the week. If Delivery and Dine-in run different hours, configure each channel separately under the **Channel Settings** tab.
+At this stage:
 
-### Step 4: Enable order channels
+- choose the correct promotion flow
+- add the internal promotion name
+- add the customer-facing display name
+- add a clear description for KFC operators and support teams
 
-**Restaurants → [Restaurant] → Channel Settings**
+## Step 3: Add rules and effects
 
-Enable the relevant channels (Dine-in / Delivery / Takeaway). For Delivery:
-- Set the delivery radius (km)
-- Set the minimum order value (if applicable)
+Define:
 
----
+- the conditions that make a customer eligible
+- the effect that should apply once the condition is met
+- any limits, exclusions, or campaign windows
 
-## Phase 2 — Menu Setup
+Examples:
 
-### Step 5: Assign the base menu
+- percentage discount on a meal bundle
+- fixed-value discount for a threshold spend
+- free item or upsell reward after a qualifying purchase
 
-**Restaurants → [Restaurant] → Menu → Assign Menu Template**
+## Step 4: Assign the promotion to stores
 
-Select the market base menu template (Japan Standard or Australia Standard). This gives you the full product catalogue as a starting point.
+If the offer does not apply to every store, assign it through store groups:
 
-### Step 6: Deactivate unavailable items
+- use [Create a Store Group](/docs/admin-portal-guide/promotions/create-a-store-group/) if a new campaign group is needed
+- use [Assign Promotions to Store Groups](/docs/admin-portal-guide/promotions/assign-promotions-to-store-groups/) to link the promotion
+- double-check that only the intended KFC restaurants are included
 
-Review the menu and deactivate any items not available at this location. Do this before go-live to avoid customers ordering items you cannot fulfil.
+## Step 5: QA before launch
 
-### Step 7: Verify pricing
+Before launch:
 
-Spot-check key items against the approved price list for your market. Prices are inherited from the market template but can be adjusted per restaurant.
+- verify the dates and times
+- test the promotion against the target products
+- confirm the discount displays correctly in the KFC customer journey
+- confirm ineligible items do not trigger the reward
+- make sure support teams know the live date and the expected customer-facing behaviour
 
----
+## Step 6: Monitor after launch
 
-## Phase 3 — Access Setup
+Once live, monitor:
 
-### Step 8: Create the franchisee admin account
+- redemption behaviour
+- unexpected stacking with other promos
+- store-group coverage
+- any support tickets from operators or customers
 
-**Settings → Users → Invite User**
+If changes are required, update the promotion immediately in Atlas and notify the campaign owner.
 
-Invite the franchisee using their email address. Assign the **Franchisee Admin** role and link to the new restaurant.
+## Related Admin Portal Guides
 
-### Step 9: Franchisee confirms access
+- [Create a Promotion](/docs/admin-portal-guide/promotions/create-a-promotion/)
+- [Edit a Promotion](/docs/admin-portal-guide/promotions/edit-a-promotion/)
+- [Assign Promotions to Store Groups](/docs/admin-portal-guide/promotions/assign-promotions-to-store-groups/)
+- [Create a Store Group](/docs/admin-portal-guide/promotions/create-a-store-group/)
+- [View Promotions for a Store Group](/docs/admin-portal-guide/promotions/view-promotions-for-a-store-group/)
 
-Ask the franchisee to log in, review their profile, and confirm all details are correct. This is a formal sign-off step before go-live.
+## KFC Notes
 
----
-
-## Phase 4 — Go-Live
-
-### Step 10: Test order
-
-Place a test order through the customer app (using a test account) to confirm the restaurant appears, the menu loads correctly, and checkout completes.
-
-### Step 11: Set the restaurant to live
-
-**Restaurants → [Restaurant] → Profile → Status → Set to Live**
-
-The restaurant will appear in the customer app within 15 minutes.
-
-### Step 12: Notify the team
-
-Send the franchisee the portal URL and their login details. Share the [Front-end Guide](/docs/frontend/overview) and [Admin Portal Guide](/docs/admin/overview) links.
-
----
-
-## Onboarding Checklist
-
-| Task | Done? |
-|---|---|
-| Restaurant created in portal | ☐ |
-| GPS coordinates confirmed | ☐ |
-| Operating hours set | ☐ |
-| Channels enabled and configured | ☐ |
-| Menu template assigned | ☐ |
-| Unavailable items deactivated | ☐ |
-| Pricing verified | ☐ |
-| Franchisee admin account created | ☐ |
-| Franchisee confirmed access | ☐ |
-| Test order completed | ☐ |
-| Restaurant set to live | ☐ |
-| Franchisee notified with portal links | ☐ |
+- use campaign names that clearly identify market, mechanic, and date range
+- align promotion display copy with local KFC marketing approval before launch
+- for high-traffic campaigns, complete QA on both app and web before go-live

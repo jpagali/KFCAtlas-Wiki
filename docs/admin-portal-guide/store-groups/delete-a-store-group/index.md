@@ -7,36 +7,38 @@ sidebar_label: "Delete a Store Group"
 
 ## What this guide covers
 
-Permanently removes a store group from the system.
+Permanently removes a store group from the system, along with all associated promotions and tax rules.
 
 ## Steps
 
-**Step 1:** Start by going to the Store Groups screen by clicking here.
-**Step 2:** Once you find the store group you are looking for, click on the stacked dots to open the option window.
+**Step 1:** Navigate to the **Store Groups** section using the left-hand navigation menu.
+
+**Step 2:** Find the store group you want to delete by browsing the table or using the search bar. Click the **action menu button** (three dots) next to the store group name.
 
 ![Step 2](./img/step-2.png)
 
-**Step 3:** Click delete
+**Step 3:** Click **Delete**.
 
-**Step 4:** Click to delete
+**Step 4:** A confirmation dialog will appear. Review the warning message and click the **Delete Store Group** button to confirm permanent deletion.
 
 ![Step 3](./img/step-3.png)
 
-## Notes
+:::caution
+**This action is permanent and cannot be undone.** Deleting a store group will:
+- Remove the store group from the system
+- Unlink all promotions assigned to this store group
+- Unlink all tax rules associated with this store group
+- The member stores themselves are not deleted, only their grouping and assignments
 
-:::note
-Cancel at anytime if necessary
+:::tip
+If you need to keep the store group configuration for future use, consider **copying** it before deletion.
 :::
 
-:::note
-All tax rules and promotions tied to stores in this store group will be removed if deleted
-:::
+## Related guides
 
-## Additional information
-
-- Menu Management User Guide
-- Store Groups - Delete a Store Group
-- You can search by store group name and store group tags and see whether or not a store group has a tax association
+- [Create a Store Group](/docs/admin-portal-guide/store-groups/create-a-store-group/)
+- [Copy a Store Group](/docs/admin-portal-guide/store-groups/copy-a-store-group/)
+- [Edit a Store Group](/docs/admin-portal-guide/store-groups/edit-a-store-group/)
 
 ---
 

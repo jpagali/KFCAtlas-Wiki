@@ -1,34 +1,46 @@
 ---
-title: "Create Serialized Code"
-sidebar_label: "Create Serialized Code"
+title: “Create Serialized Code”
+sidebar_label: “Create Serialized Code”
 ---
 
 # Create Serialized Code
 
 ## What this guide covers
 
-Generates a unique serialised promotional code within a promotion, used for single-use or tracked redemption campaigns.
+Generates unique single-use promotional codes tied to a promotion, used for tracked redemption campaigns where each customer receives a distinct code.
 
 ## Steps
 
-**Step 1:** Start by going to the Promotions screen by clicking here.
-**Step 2:** Find the Promotion you’d like to create a serialized code for and click the action button. Then, find and click on “Serialized Code” in the menu.
+**Step 1:** Navigate to the **Promotions** section using the left-hand navigation menu.
+
+**Step 2:** Find the promotion for which you want to create serialized codes. Click the **action menu button** (three dots), then select **Serialized Code**.
 
 ![Step 2](./img/step-2.png)
 
-**Step 3:** Click this button to create a new serialized code for a promotion
+**Step 3:** Click the **+ Create New Serialized Code** button (or the equivalent button shown on your screen).
 
 ![Step 3](./img/step-3.png)
 
-**Step 4:** Fill out this form and hit generate codes for it to be created and added to the serialized code list.
+**Step 4:** Fill out the serialized code form with the following details:
+
+| Field | What to enter | Notes |
+|-------|--------------|-------|
+| **Prefix** | Optional text to add to the start of each code | e.g., “KFC-”, “BOGO2024-”. Leave blank if no prefix is needed. |
+| **Quantity** | Number of codes to generate | e.g., “100”, “5000”. Determines how many unique codes are created. |
+| **Expiry Date** | When the codes expire | Select the date after which codes cannot be redeemed. |
 
 ![Step 4](./img/step-4.png)
 
-## Additional information
+**Step 5:** Click **Generate Codes** to create and add the codes to the serialized code list.
 
-- Serialized Code Button
-- This is the Promotions screen where you  will see a list of all the promotions you have created, create new promotions, search for any you have created, edit and copy, add extra info in the Meta link and  assign them to Store Groups.  Promotions can only assigned to a Store Group and not a singular store.
-- Promotions - Create Serialized Code
+:::note
+Serialized codes are unique, single-use redemption codes. Each code can only be redeemed once. Once generated, codes are added to the promotion and ready for distribution to customers.
+:::
+
+## Related guides
+
+- [Find Serialized Code](/docs/admin-portal-guide/promotions/find-serialized-code/)
+- [Create a Promotion](/docs/admin-portal-guide/promotions/create-a-promotion/)
 
 ---
 

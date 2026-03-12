@@ -7,25 +7,40 @@ sidebar_label: "View In-Store Device Details"
 
 ## What this guide covers
 
-Displays the full details of an in-store device including its name, station type, status, and last published menu date — used for device auditing and troubleshooting.
+Displays the complete information for a POS terminal or kiosk, including device name, type, status, and menu publish history — used for device auditing and troubleshooting.
 
 ## Steps
 
-**Step 1:** Start by going to the In-Store Devices screen by clicking here.
-**Step 2:** Click this button in the same row the device you want to configure is in and then hit View
+**Step 1:** Navigate to the **In-Store Devices** section using the left-hand navigation menu.
+
+**Step 2:** Find the device you want to view. You can search or filter by Station Type, Store Number, or Device Status.
+
+**Step 3:** Click the **⋮** (three-dot menu) button in the same row as the device, then select **View**.
 
 ![Step 2](./img/step-2.png)
 
-**Step 3:** View Device Details
+**Step 4:** The device details panel opens, displaying the following information:
+
+| Field | What it shows |
+|-------|--------------|
+| **Device Name** | Name/identifier of the device |
+| **Station Type** | Type of device (e.g., POS Terminal, Kiosk) |
+| **Device Status** | Active or Inactive |
+| **Menu Publish Date** | When the last menu update was sent to this device |
+| **Last Device Check-In** | When the device last communicated with Atlas |
 
 ![Step 3](./img/step-3.png)
 
-## Additional information
+**Step 5:** Review the device details. Use this information to verify the device is active and receiving menu updates correctly. If **Last Device Check-In** is old (more than a day or two), the device may have connectivity issues.
 
-- Menu Management User Guide
-- In-Store Devices - View In-Store Device Details
-- Search/Filter by Station Type, Store Number, and Device Status
-- GO TO (IN-STORE DEVICES)
+:::tip
+Check the **Device Status** to confirm the device is active. An inactive device will not receive menu updates or process orders.
+:::
+
+## Related guides
+
+- [Generate One-Time Password](/docs/admin-portal-guide/in-store-devices/generate-one-time-password/)
+- [Deactivate In-Store](/docs/admin-portal-guide/in-store-devices/deactivate-in-store/)
 
 ---
 

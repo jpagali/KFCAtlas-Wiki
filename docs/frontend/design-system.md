@@ -1,3 +1,9 @@
+---
+title: "Design System"
+sidebar_label: "Design System"
+sidebar_position: 5
+---
+
 # KFC Atlas Design System
 ### How Our Platform Is Built — From Visual Identity to Your Screen
 
@@ -61,7 +67,7 @@ For markets like **Japan, Australia, UK, Germany, and Singapore**, this architec
 - **Scalability** — When Yum! updates a brand token (say, a new red), it flows through every market's app automatically.
 - **Quality** — Components are tested once at the platform level and inherited by all markets.
 
-Atlas Enablement's role is to ensure each market can take full advantage of this system — translating platform capabilities into market-ready features, and surfacing market needs back to the engineering team in a structured way.
+KFC Global Enablement and Market Success helps each market take full advantage of this system — translating platform capabilities into market-ready features, and surfacing market needs back to the engineering team in a structured way.
 
 ---
 
@@ -77,4 +83,4 @@ The diagram below illustrates how the Helium design system flows from design tok
 />
 ---
 
-*Document prepared by Atlas Enablement & Market Success — KFC Global*
+*Document prepared by KFC Global Enablement and Market Success — KFC Global*

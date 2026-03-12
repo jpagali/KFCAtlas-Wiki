@@ -1,55 +1,55 @@
 ---
-title: "Edit a Modifier"
-sidebar_label: "Edit a Modifier"
+title: “Edit a Modifier”
+sidebar_label: “Edit a Modifier”
 ---
 
 # Edit a Modifier
 
 ## What this guide covers
 
-Updates a modifier's details such as name, pricing, or availability.
+Updates a modifier's details such as name, pricing, images, or other properties.
 
 ## Steps
 
-**Step 1:** Start by going to the Products screen by clicking here.
+**Step 1:** Navigate to the **Products** section using the left navigation menu.
 
-**Step 2:** Click the Modifiers tab.
-**Step 3:** You can search Option Values by entering the Name or Code or search by Catalog Tag.
+**Step 2:** Click the **Modifiers** tab.
 
-**Step 4:** Click the 3 dots to reveal a panel. Click Edit.
+**Step 3:** Search for the modifier you want to edit by entering the Name, Code, or Catalog Tag in the search field.
+
+**Step 4:** Click the three-dot menu next to the modifier, then select **Edit**.
 
 ![Step 2](./img/step-2.png)
 
-**Step 5:** Fill in each “*”required field and other valuable information.
+**Step 5:** Update the modifier details. Fields marked with * are required.
 
-**Step 6:** When you are finished editing click the Save button.
+| Field | What to enter | Notes |
+|-------|--------------|-------|
+| **Modifier Code** * | Unique identifier | Cannot be changed after creation |
+| **Modifier Name** * | Name shown to customers | e.g., “Extra Cheese”, “No Pickles”, “Extra Sauce” |
+| **Price** | Additional charge for this modifier | Enter `0` if there is no extra charge |
+| **Image** | Optional image for this modifier | Toggle **Primary Image** to Yes to set as main display image. Click **Add Another Image** to add more. |
+
+**Step 6:** When you are finished editing, click the **Save** button.
 
 ![Step 3](./img/step-3.png)
 
 ## Notes
 
-:::note
-There are other options in the window  but for this step we are just looking at Edit. Others are discussed else where. Please go to the Table of Contents to find where.
+:::caution
+Clicking **Cancel** discards all unsaved changes.
 :::
 
-:::note
-If you need to stop your creation click here. Please be aware that your info will not be saved.
+:::tip
+Toggle **Primary Image** to **Yes** if this image should be the main display image for this modifier.
 :::
 
-:::note
-If you need this image to be the Primary image shown, click to toggle to Yes.
+:::tip
+You can add multiple images by clicking **Add Another Image**.
 :::
 
-:::note
-If you need to add another image, click here and fill in all needed information.
-:::
-
-:::note
-Please read the box for important information before you save.
-:::
-
-:::note
-Depending on your screen size you may need to scroll to see all of the fields.
+:::tip
+You can search modifiers by Name, Code, or Catalog Tag.
 :::
 
 ---

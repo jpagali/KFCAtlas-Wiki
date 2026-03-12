@@ -7,37 +7,40 @@ sidebar_label: "Delete a Choice"
 
 ## What this guide covers
 
-Removes a choice from a bundle when no longer needed.
+Removes a choice and its associated products/variants from the system permanently.
 
 ## Steps
 
-**Step 1:** Start by going to the Bundles screen by clicking here.
-**Step 2:** Click on the choices tab
+**Step 1:** Navigate to the **Bundles** section using the left-hand navigation menu.
+
+**Step 2:** Click the **Choices** tab at the top of the Bundles screen.
 
 ![Step 2](./img/step-2.png)
 
-**Step 3:** Click this  button in the same row the choice you want to delete is in and then click delete
+**Step 3:** Find the choice you want to delete by searching by Choice Name, Choice Code, Choice Display Name, or Catalog Tags.
+
+**Step 4:** Click the **⋮** (three-dot menu) button in the same row as the choice, then select **Delete**.
 
 ![Step 3](./img/step-3.png)
 
-**Step 4:** Click to delete
+**Step 5:** A confirmation modal appears. Click **Confirm** to delete the choice, or click outside the modal or **Cancel** to keep it.
 
 ![Step 4](./img/step-4.png)
 
-## Notes
+:::caution
+This action is permanent. Deleting a choice will:
+- Remove it from all bundles that use it
+- Delete all choice values and corresponding variants
+- Remove any pricing associated with this choice
 
-:::note
-Keep in my mind that deleting this choice will remove all choice values and corresponding variants and pricing from related products.
+You cannot undo this action. Bundles that depend on this choice will no longer function correctly until you add a replacement choice.
 :::
 
-:::note
-Cancel at anytime if necessary
-:::
+## Related guides
 
-## Additional information
-
-- Bundles - Delete a Choice
-- Search by Bundle Name, Bundle Code, Catalog Tags, Promo Tags
+- [Create a Choice](/docs/admin-portal-guide/bundles/create-a-choice/)
+- [Edit a Choice](/docs/admin-portal-guide/bundles/edit-a-choice/)
+- [Copy a Choice](/docs/admin-portal-guide/bundles/copy-a-choice/)
 
 ---
 

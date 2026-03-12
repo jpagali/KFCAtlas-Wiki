@@ -5,7 +5,7 @@ sidebar_position: 8
 
 # Japan — Christmas Ordering
 
-**Feature:** [Menu Item Reservation](./menu-item-reservation) · **Market:** 🇯🇵 Japan · **Operator:** Nihon KFC Holdings
+**Feature:** [Menu Item Reservation](./menu-item-reservation) · **Market:** 🇯🇵 Japan
 
 ---
 
@@ -13,7 +13,7 @@ sidebar_position: 8
 
 KFC Japan's Christmas campaign is one of the most iconic fast food traditions in the world. Since 1974, KFC Japan has run a *"Kurisumasu ni wa Kentakkii"* (ケンタッキーフォークリスマス — "Kentucky for Christmas") campaign that has made KFC the go-to Christmas meal for Japanese families.
 
-On December 24th and 25th, KFC Japan serves approximately **3.6 million customers** — roughly ten times its normal daily volume. To manage this extraordinary demand, Nihon KFC Holdings has operated a **pre-order reservation system** for decades, allowing customers to secure their Christmas meals weeks or months in advance.
+On December 24th and 25th, KFC Japan serves approximately **3.6 million customers** — roughly ten times its normal daily volume. To manage this extraordinary demand, the market has operated a **pre-order reservation system** for decades, allowing customers to secure their Christmas meals weeks or months in advance.
 
 The Menu Item Reservation feature in Atlas is the platform's native implementation of this pre-order capability, replacing legacy point-of-sale reservation workflows with a seamless in-app and web experience.
 
@@ -30,7 +30,7 @@ The centrepiece of the Christmas campaign is the **Party Barrel** — a limited-
 | **Whole Roast Chicken Set** | Full roast chicken, sides, holiday packaging | ¥4,000–¥6,000 |
 
 :::note
-Exact products, contents, and prices are configured annually by Nihon KFC Holdings in Contentful and the Atlas product catalogue. The above are illustrative examples.
+Exact products, contents, and prices are configured annually in Contentful and the Atlas product catalogue. The above are illustrative examples.
 :::
 
 ---
@@ -119,5 +119,5 @@ The Japan Christmas campaign demonstrates how the Menu Item Reservation feature 
 - Confirm via multiple channels (in-app, push, email) — customers need certainty for a planned occasion
 
 :::info Want to enable Menu Item Reservation for your market?
-Contact your **Atlas Enablement representative** to discuss activation and configuration for your next seasonal campaign.
+Contact **KFC Global Enablement and Market Success** to discuss activation and configuration for your next seasonal campaign.
 :::

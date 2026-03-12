@@ -1,56 +1,56 @@
 ---
-title: "Edit a Patch"
-sidebar_label: "Edit a Patch"
+title: “Edit a Patch”
+sidebar_label: “Edit a Patch”
 ---
 
 # Edit a Patch
 
 ## What this guide covers
 
-Updates an existing patch's contents or configuration.
+Updates an existing patch’s name, operations, or items.
 
 ## Steps
 
-**Step 1:** Start by going to the Menu screen by clicking here.
-**Step 2:** Click on the patches tab
+**Step 1:** Navigate to the **Menus** section using the left-hand navigation menu.
+
+**Step 2:** Click on the **Patches** tab to view all patches.
 
 ![Step 2](./img/step-2.png)
 
-**Step 3:** Click this button in the same row the patch you’re looking for is in and then hit Edit
+**Step 3:** Find the patch you want to edit, click the **action menu** (three dots) in the same row, and select **Edit**.
 
 ![Step 3](./img/step-3.png)
 
-**Step 4:** Create a name for the patch (By default since you copied a patch it will be named copy of “patch name”
+**Step 4:** On the Overview tab, you can update the patch name.
+
+| Field | What to enter | Notes |
+|-------|--------------|-------|
+| **Patch Name** | A descriptive name for what this patch changes | e.g., “Sydney Q1 Pricing Override”, “Halal Menu Availability Fix”. Update if the scope or purpose has changed. |
 
 ![Step 4](./img/step-4.png)
 
-**Step 4:** Click save after making edits
+**Step 5:** View and modify the operations in the **Operations** section. You can:
+- Edit an operation by clicking it and updating the items or settings
+- Reorder operations by dragging
+- Copy an operation
+- Delete an operation
+- Add new operations by clicking **Add Operation**
 
 ![Step 5](./img/step-5.png)
 
+**Step 6:** Once you have made all changes, click **Save** to apply them.
+
 ![Step 6](./img/step-6.png)
 
-## Notes
-
 :::note
-Overview Page
+Changes to a patch only affect stores where it is actively assigned. Patches that are not yet assigned or have been removed from a store’s patch list will not be affected.
 :::
 
-:::note
-Edit name if needed
-:::
+## Related guides
 
-:::note
-Here you can see the patches that were apart of the original patch you copied.
-:::
-
-:::note
-You can edit, reorder, copy, and delete patches you’ve added to this list.
-:::
-
-:::note
-You can continue to add more patches by clicking the “select operation dropdown”
-:::
+- [Copy a Patch](/docs/admin-portal-guide/menus/copy-a-patch/) — Duplicate this patch
+- [Delete a Patch](/docs/admin-portal-guide/menus/delete-a-patch/) — Remove this patch
+- [Assign a Patch (Add to Patch List)](/docs/admin-portal-guide/menus/assign-a-patch-add-to-patch-list/) — Assign this patch to stores
 
 ---
 

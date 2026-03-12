@@ -1,6 +1,6 @@
 ---
-title: "Edit an Option"
-sidebar_label: "Edit an Option"
+title: “Edit an Option”
+sidebar_label: “Edit an Option”
 ---
 
 # Edit an Option
@@ -11,37 +11,41 @@ Updates an existing option's name or configuration to reflect menu or UX changes
 
 ## Steps
 
-**Step 1:** Start by going to the Products screen by clicking here.
+**Step 1:** Navigate to the **Products** section using the left navigation menu.
 
-**Step 2:** Click the Options tab.
-**Step 3:** You can search Options by entering the Name or Code or search by Catalog Tag.
+**Step 2:** Click the **Options** tab.
 
-**Step 4:** Click the 3 dots to reveal a panel. Click Edit.
+**Step 3:** Search for the option you want to edit by entering the Option Name, Option Code, or Catalog Tag in the search field.
+
+**Step 4:** Click the three-dot menu next to the option, then select **Edit**.
 
 ![Step 2](./img/step-2.png)
 
-**Step 5:** Fill in each “*”required field and other valuable information.
+**Step 5:** Update the option details. Fields marked with * are required.
 
-**Step 6:** When you are finished adding in all the information, click Save.
+| Field | What to enter | Notes |
+|-------|--------------|-------|
+| **Option Code** * | Unique identifier for this option | Cannot be changed after creation |
+| **Option Name** * | The customisation category name shown to customers | e.g., “Size”, “Flavor”, “Spice Level” |
+
+**Step 6:** To add or manage option values (the individual choices within this option), click **Add Option Value** or manage existing values in the section below.
+
+**Step 7:** When you are finished with your edits, click **Save**.
 
 ![Step 3](./img/step-3.png)
 
 ## Notes
 
-:::note
-There are other options in the window  but for this step we are just looking at Edit. Others are discussed else where. Please go to the Table of Contents to find where.
+:::caution
+Clicking **Cancel** discards all unsaved changes.
 :::
 
-:::note
-If you did not see the Option Value you need or need to create one click here. Another drawer will pull out for you to fill out. Follow the Create Option Value Flow.
+:::tip
+You can add new option values by clicking **Add Option Value**. If you need to create a separate option value, see the “Create an Option Value” guide.
 :::
 
-:::note
-If you need to stop your creation click here. Please be aware that your info will not be saved.
-:::
-
-:::note
-Please read the box below for important information before you save.
+:::tip
+You can search options by Option Name, Option Code, or Catalog Tag.
 :::
 
 ---

@@ -7,71 +7,75 @@ sidebar_label: "Create Tax Rules"
 
 ## What this guide covers
 
-Defines individual tax rules within a store group, specifying the tax rates and conditions applied to items sold at member stores.
+Defines individual tax rules within a store group, specifying the tax rates, conditions, and product filters applied to items sold at member stores.
 
 ## Steps
 
-**Step 1:** Start by going to the Store Groups screen by clicking here.
-**Step 2:** Once you find the store group you are looking for, click on the stacked dots to open the option window.
+**Step 1:** Navigate to the **Store Groups** section using the left-hand navigation menu.
+
+**Step 2:** Find the store group where you want to create a tax rule. Click the **action menu button** (three dots) next to the store group name.
 
 ![Step 2](./img/step-2.png)
 
-**Step 3:** Click taxes
+**Step 3:** Click **Taxes** from the dropdown menu.
 
 ![Step 3](./img/step-3.png)
 
-**Step 4:** Click this button to create a new tax rule
+**Step 4:** Click the **+ Create New Tax Rule** button.
 
 ![Step 4](./img/step-4.png)
 
-**Step 5:** Type in the tax names and when the dates the taxes are effective from. You can also create or add a tax rule group that already exists.
+**Step 5:** Fill in the basic tax rule information. Fields marked with * are required.
+
+| Field | What to enter | Notes |
+|-------|--------------|-------|
+| **Tax Name** * | Internal name for this rule | e.g., "Standard GST 10%", "Delivery Surcharge Tax". Visible to operators. |
+| **Effective From Date** * | Date this rule takes effect | You can use past dates for historic records. Format: DD/MM/YYYY. |
+| **Tax Rule Group** | Assign to an existing or new group | Optional. Groups multiple related tax rules together for easier management. |
 
 ![Step 5](./img/step-5.png)
 
-**Step 5:** Make more selections or remove stores that already selected
+**Step 6:** Add conditions that trigger this tax rule. This section is optional.
+
+| Field | What to enter | Notes |
+|-------|--------------|-------|
+| **Cart Conditions** | Select conditions based on overall order | e.g., "Order contains delivery", "Cart total exceeds $50". Choose from dropdown. |
+| **Product Filters** | Select which products/categories this applies to | e.g., "Only menu items in Burgers category". Choose from dropdown. |
 
 ![Step 6](./img/step-6.png)
 
-**Step 6:** Select a matching condition in this dropdown. (For cart conditions)
-
 ![Step 7](./img/step-7.png)
 
-**Step 7:** Select a matching condition in this dropdown. (For product filters)
+**Step 7:** Click the **+ Add Tax** button to define the tax calculation.
 
 ![Step 8](./img/step-8.png)
 
-**Step 8:** Press this button to add tax. This will open up the field below and allows you input the rate mode, what is apply to, or tax amount %
+**Step 8:** Fill in the tax calculation details:
 
-**Step 9:** Fill out taxes on external fees
+| Field | What to enter | Notes |
+|-------|--------------|-------|
+| **Rate Mode** | Choose how tax is calculated | **Percentage** (e.g., 10% GST) or **Fixed Amount** (e.g., $0.50 per item) |
+| **Applied To** | What the tax applies to | e.g., Subtotal, Delivery Fee, or specific item categories |
+| **Tax Amount %** | Enter the tax rate as a percentage | For percentage mode only. Enter numbers only (e.g., `10` for 10% GST) |
 
-**Step 9:** Click to create the tax rule
+**Step 9:** (Optional) Fill out **Taxes on External Fees** if you need to apply taxes to fees from third-party delivery platforms.
+
+**Step 10:** Click to create the tax rule. A review screen will show all information you've entered. Click **Create** to save.
 
 ![Step 9](./img/step-9.png)
 
-## Notes
-
 :::note
-You can click on each step to navigate throughout each flow
+You can click on any step number in the wizard to navigate to that section without losing your changes. You can also edit, copy, and delete tax rules after creation.
 :::
 
-:::note
-This will be automatically selected to see other stores than you selected uncheck this
+:::tip
+Create a Tax Rule Group first if you want to organize related tax rules together. See [Create Tax Rule Group](/docs/admin-portal-guide/store-groups/create-tax-rule-group/) for instructions.
 :::
 
-:::note
-Here you can review all of the information you filled out in each step.
-:::
+## Related guides
 
-:::note
-You can edit, copy, and delete tax rules.
-:::
-
-## Additional information
-
-- Store Groups - Create Tax Rules
-- You can search by store group name and store group tags and see whether or not a store group has a tax association
-- Taxes on External Fees
-- Tax Screen (Tax Rules)
+- [Create Tax Rule Group](/docs/admin-portal-guide/store-groups/create-tax-rule-group/)
+- [Edit a Store Group](/docs/admin-portal-guide/store-groups/edit-a-store-group/)
 
 ---
 

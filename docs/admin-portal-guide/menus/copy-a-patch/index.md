@@ -1,48 +1,53 @@
 ---
-title: "Copy a Patch"
-sidebar_label: "Copy a Patch"
+title: “Copy a Patch”
+sidebar_label: “Copy a Patch”
 ---
 
 # Copy a Patch
 
 ## What this guide covers
 
-Duplicates a patch to use as a starting point for a similar override set.
+Duplicates an existing patch to use as a starting point for a similar set of overrides.
 
 ## Steps
 
-**Step 1:** Start by going to the Menu screen by clicking here.
-**Step 2:** Click on the patches tab
+**Step 1:** Navigate to the **Menus** section using the left-hand navigation menu.
+
+**Step 2:** Click on the **Patches** tab to view all patches.
 
 ![Step 2](./img/step-2.png)
 
-**Step 3:** Click this button in the same row the patch you’re looking for is in and then hit Copy
+**Step 3:** Find the patch you want to copy, click the **action menu** (three dots) in the same row, and select **Copy**.
 
 ![Step 3](./img/step-3.png)
 
-**Step 4:** Create a name for the patch (By default since you copied a patch it will be named copy of “patch name”
+**Step 4:** Update the patch name. By default, the system will name it “copy of [original patch name]”.
+
+| Field | What to enter | Notes |
+|-------|--------------|-------|
+| **Patch Name** | A descriptive name for this new patch | e.g., “Sydney Q2 Pricing Override” (copied from “Sydney Q1 Pricing Override”). Change the name to reflect what this patch will be used for. |
+
+All operations and items from the original patch are copied automatically.
 
 ![Step 4](./img/step-4.png)
 
-**Step 5:** Click create to make a patch
+**Step 5:** Review the copied operations to ensure they match your needs. You can edit, reorder, add, or delete operations before saving.
+
+**Step 6:** Click **Create** to save the copied patch.
 
 ![Step 5](./img/step-5.png)
 
 ![Step 6](./img/step-6.png)
 
-## Notes
-
 :::note
-Here you can see the patches that were apart of the original patch you copied.
+The copied patch is independent of the original. Changes to one patch will not affect the other. Edit the copied patch after creation if you need to modify the operations or items.
 :::
 
-:::note
-You can edit, reorder, copy, and delete patches you’ve added to this list.
-:::
+## Related guides
 
-:::note
-You can continue to add more patches by clicking the “select operation dropdown”
-:::
+- [Edit a Patch](/docs/admin-portal-guide/menus/edit-a-patch/) — Modify the copied patch’s operations
+- [Delete a Patch](/docs/admin-portal-guide/menus/delete-a-patch/) — Remove a patch
+- [Assign a Patch (Add to Patch List)](/docs/admin-portal-guide/menus/assign-a-patch-add-to-patch-list/) — Assign this patch to stores
 
 ---
 

@@ -1,92 +1,96 @@
 ---
-title: Platform Runbook
+title: Braze Welcome Reward Canvas
 sidebar_position: 3
 ---
 
-# Platform Runbook
+# Braze Welcome Reward Canvas
 
-This runbook covers everything a franchisee or regional team needs to know to run the Atlas Platform day-to-day — routine tasks, scheduled maintenance, and how to keep the platform operating smoothly.
-
----
-
-## Daily Tasks
-
-### Opening Checklist (before trading hours)
-
-| Task | Where | Time |
-|---|---|---|
-| Confirm restaurant is set to Live | Profile → Status | 1 min |
-| Check Temporarily Closed is off | Profile → Temporarily Closed toggle | 30 sec |
-| Verify today's operating hours are correct | Profile → Operating Hours | 1 min |
-| Check for any deactivated items that need restoring | Menu → Items | 2 mins |
-
-### Closing Checklist (end of trading)
-
-| Task | Where | Time |
-|---|---|---|
-| Confirm no pending orders are unactioned | Order Management → Pending | 2 mins |
-| Check tomorrow's hours (especially before public holidays) | Profile → Operating Hours | 1 min |
+This playbook explains how KFC teams can set up a welcome reward canvas in Braze for new customers. Content assumptions are treated as verified for now, so the focus is on structure, timing, and execution flow.
 
 ---
 
-## Weekly Tasks
+## Goal
 
-### Menu Review
-- Check that all active items are available and correctly priced
-- Deactivate any seasonal or promotional items that have ended
-- Review any customer feedback flagged by your BMU
+Use this playbook when KFC wants to welcome a newly identified or newly registered customer with an automated reward journey.
 
-### Reporting
-- Review the weekly performance report under **Reporting → Weekly Summary**
-- Channel breakdown: which channels drove the most orders?
-- Check average order value vs. market benchmark
+Typical examples:
 
----
+- first app signup reward
+- first loyalty registration reward
+- first purchase incentive after account creation
 
-## Monthly Tasks
+## Prerequisites
 
-### User Access Review
-Ask your regional admin to run an access audit — confirm all active users should still have access, and remove any former staff.
+- verified reward content and offer logic
+- approved KFC message copy for push, email, or in-app message
+- agreed audience definition
+- Braze access to create or edit the canvas
+- tracking or deeplink destination confirmed
 
-### Profile Accuracy Check
-- Confirm address, phone number, and operating hours are all still accurate
-- Update public holiday hours for the coming month
+## Step 1: Define the entry audience
 
----
+Common KFC welcome audience options:
 
-## Japan-Specific 🇯🇵 Operations
+- customers who complete app registration
+- customers who join loyalty
+- customers who opt in to marketing during account setup
 
-### Loyalty Programme Maintenance
-- KFC Japan Rewards points are issued automatically — no manual action required
-- If a customer reports missing points, direct them to the KFC Japan app → Support → Missing Points
-- Bulk point corrections require BMU approval
+Make sure the audience only includes genuinely new customers, not existing users re-entering the journey.
 
-### Aggregator Pause Procedure
-If you need to pause Uber Eats or Demae-can orders:
-1. Pause directly in the aggregator's restaurant portal (not Atlas)
-2. Notify your BMU so they can monitor order flow
-3. When resuming, confirm Atlas Delivery channel is still enabled
+## Step 2: Define the trigger and delay
 
----
+Choose:
 
-## Australia-Specific 🇦🇺 Operations
+- the trigger event that starts the canvas
+- any delay before the reward message sends
+- whether the customer should receive the reward immediately or after a wait period
 
-### App Deals / Voucher Management
-- Active vouchers are managed at the market level by Collins Foods / BMU — franchisees do not control which deals are live
-- If a customer presents an expired voucher, direct them to the KFC Australia app → Help
+For KFC, a short delay is often useful if you want the message to feel welcome-oriented rather than transactional.
 
-### Aggregator Pause Procedure
-To pause Uber Eats or DoorDash:
-1. Pause in the aggregator's tablet/portal at the restaurant
-2. In Atlas Admin: Channel Settings → Delivery → toggle off temporarily
-3. Remember to re-enable when resuming — orders will not flow while the channel is disabled in Atlas
+## Step 3: Set the message sequence
 
----
+Recommended canvas flow:
 
-## Key Contacts
+1. welcome message
+2. reward explanation
+3. CTA into the KFC app or ordering flow
+4. optional reminder if the reward is not redeemed within the active window
 
-| Contact | Purpose | How to Reach |
-|---|---|---|
-| Regional / BMU Admin | Market-level issues, user access, configuration | Your market Slack channel |
-| Atlas Platform Support | Technical issues, bugs, feature requests | JIRA Service Desk |
-| Yum! Brands Tech (Emergency) | P1 production issues only | `#atlas-p1-support` Slack |
+Keep the first message simple and branded. The reward details should be easy for customers to understand at a glance.
+
+## Step 4: Attach the reward logic
+
+Confirm:
+
+- what reward the customer receives
+- how long it stays valid
+- whether it should deep link to a specific menu item, category, or landing page
+- whether any market exclusions apply
+
+If the reward depends on a live Atlas promotion, confirm the promotion is already configured and assigned to the correct stores before the Braze canvas launches.
+
+## Step 5: QA the customer journey
+
+Before launch:
+
+1. test audience entry
+2. verify message timing
+3. validate copy, branding, and links
+4. check fallback handling if the reward is unavailable
+5. confirm the CTA lands in the expected KFC experience
+
+## Step 6: Launch and monitor
+
+Once live, monitor:
+
+- entry volume
+- delivery rates
+- click-through to app or ordering destination
+- reward redemption
+- support tickets or customer confusion
+
+## KFC Notes
+
+- match tone and copy to current KFC brand campaigns
+- keep welcome rewards easy to redeem; avoid heavy explanation in the first touch
+- if the reward is market-specific, confirm that Braze audience rules and Atlas promotion coverage match exactly

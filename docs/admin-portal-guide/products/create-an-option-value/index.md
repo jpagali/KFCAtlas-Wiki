@@ -1,46 +1,50 @@
 ---
-title: "Create an Option Value"
-sidebar_label: "Create an Option Value"
+title: “Create an Option Value”
+sidebar_label: “Create an Option Value”
 ---
 
 # Create an Option Value
 
 ## What this guide covers
 
-Adds an individual choice within an option group (e.g. 'Large' under 'Size'), giving customers selectable items during ordering.
+Adds an individual choice within an option group (e.g., “Large” under “Size”), giving customers selectable items during ordering.
 
 ## Steps
 
-**Step 1:** Start by going to the Products screen by clicking here.
-**Step 2:** Click the Option Values tab.
+**Step 1:** Navigate to the **Products** section using the left navigation menu.
+
+**Step 2:** Click the **Option Values** tab.
 
 ![Step 2](./img/step-2.png)
 
-**Step 3:** Click the “+ Create New Option Value” button.
+**Step 3:** Click the **+ Create New Option Value** button.
 
-**Step 4:** Fill in each “*”required field and other valuable information.
+**Step 4:** Fill in the option value details. Fields marked with * are required.
 
-**Step 5:** When you are finished adding in all the information, click the Create Option Value button.
+| Field | What to enter | Notes |
+|-------|--------------|-------|
+| **Option Value Code** * | Unique identifier for this choice | Use uppercase letters, numbers, and hyphens (e.g., “SIZE-LG”) |
+| **Option Value Name** * | The choice displayed to customers | e.g., “Large”, “Original Recipe”, “Hot & Spicy” |
+| **Display Name** | Shorter label for limited screen space | Defaults to Option Value Name if left blank |
+| **Image** | Optional image for this choice | Toggle **Primary Image** to Yes if this is the main display image. Click **Add Another Image** to add more. |
 
 ![Step 3](./img/step-3.png)
 
+**Step 5:** When you are finished adding all the information, click the **Create Option Value** button.
+
 ## Notes
 
-:::note
-If you need to stop your creation click here. Please be aware that your info will not be saved.
+:::caution
+Clicking **Cancel** discards all unsaved information.
 :::
 
-:::note
-If you need this image to be the Primary image shown, click to toggle to Yes.
+:::tip
+Toggle **Primary Image** to **Yes** to set this image as the main display image for this option value.
 :::
 
-:::note
-If you need to add another image, click here and fill in all needed information.
+:::tip
+You can add multiple images by clicking **Add Another Image**.
 :::
-
-## Additional information
-
-- Create an Option Value
 
 ---
 

@@ -11,49 +11,42 @@ Builds a new menu structure in Atlas that can be assigned to stores and channels
 
 ## Steps
 
-**Step 1:** Start by going to the Menu screen by clicking here.
-**Step 2:** Click Create New Menu Button
+**Step 1:** Navigate to the **Menus** section using the left-hand navigation menu.
+
+**Step 2:** Click the **Create New Menu** button.
 
 ![Step 2](./img/step-2.png)
 
-**Step 3:** Create menu code and menu name.
+**Step 3:** Fill in the menu details. Fields marked with * are required.
+
+| Field | What to enter | Notes |
+|-------|--------------|-------|
+| **Menu Code** * | A unique identifier for this menu | Use uppercase letters, numbers, and hyphens only — e.g., `AU-BREAKFAST-2024`. Cannot be changed after creation. |
+| **Menu Name** * | A human-readable name for this menu | e.g., "Australia Breakfast Menu 2024". Displayed in the Menus list and shown when assigning menus to stores. |
 
 ![Step 3](./img/step-3.png)
 
-**Step 4:** Use this to add a category dropdown to add a category
+**Step 4:** Add categories to your menu by clicking the **Add Category** dropdown and selecting from the list. You can add multiple categories.
 
-![Step 4](./img/step-4.png)
+:::tip
+To create a nested subcategory, drag a category into another category in the menu builder. The dragged category becomes nested under the target.
+:::
 
-**Step 5:** After selecting categories press add to officially add them to your menu
+**Step 5:** Once you have added your categories, click the **Add Products/Bundles** dropdown within each category to populate it with items. A drawer will open — search for items and click **Add to Menu**.
 
-**Step 6:** Use this to add a category dropdown to add a category. Drawers will pop that allow you to search for products/bundles to add once you select them hit add to menu
-
-**Step 7:** Hit create when finished.
+**Step 6:** Click **Create** to save the menu.
 
 ![Step 5](./img/step-5.png)
 
-## Notes
-
-:::note
-Use this to create a new category
+:::caution
+Clicking **Cancel** at any time discards all unsaved changes.
 :::
 
-:::note
-Your menu name will show up here
-:::
+## Related guides
 
-:::note
-When you add category make sure to select it when you add products or bundles to it
-:::
-
-:::note
-You can make a subcategory by dragging a category into another one
-:::
-
-## Additional information
-
-- Menus - Create a Menu
-- Create New Menu Button
+- [Assign a Menu](/docs/admin-portal-guide/menus/assign-a-menu/) — Link this menu to stores and channels
+- [Publish a Menu](/docs/admin-portal-guide/menus/publish-a-menu/) — Push the menu to live ordering channels
+- [Create a Category](/docs/admin-portal-guide/menus/create-a-category/) — Create custom categories to add to your menu
 
 ---
 

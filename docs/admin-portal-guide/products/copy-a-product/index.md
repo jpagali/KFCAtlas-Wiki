@@ -1,58 +1,45 @@
 ---
-title: "Copy a Product"
-sidebar_label: "Copy a Product"
+title: “Copy a Product”
+sidebar_label: “Copy a Product”
 ---
 
 # Copy a Product
 
 ## What this guide covers
 
-Speeds up product creation by duplicating an existing product as a starting point, reducing repetitive data entry when adding similar items to the catalogue.
+Duplicates an existing product as a starting point, reducing data entry when creating similar items in the catalogue.
 
 ## Steps
 
-**Step 1:** Start by going to the Products screen by clicking here.
-**Step 2:** Click the 3 dots to reveal a panel. Click Copy.
+**Step 1:** Navigate to the **Products** section using the left navigation menu.
+
+**Step 2:** Find the product you want to copy. You can search by Product Name or Product Code.
+
+**Step 3:** Click the three-dot menu next to the product name, then select **Copy**.
 
 ![Step 2](./img/step-2.png)
 
-**Step 3:** Go through each step like you would creating a Product to add or change any fields as needed. Fill in each “*”required field and other valuable information.
+**Step 4:** The copy form will appear with most of the original product’s information already filled in. Modify any fields as needed.
 
-**Step 4:** When you have finished each step click Next or jump to the area you need by clicking on it in the stepper.
+**Step 5:** Follow the same steps as creating a new product. Go through each page (Basic Information, Options, Variants, Slots, Bulk Actions, Tags, Review) by clicking **Next** or jump directly to a section by clicking its blue header.
 
-**Step 5:** When you are done click Create. The button will turn blue as you make changes.
+**Step 6:** When you have finished making your changes, click the **Create** button. The button will only be clickable after you have made changes.
 
 ![Step 3](./img/step-3.png)
 
 ## Notes
 
-:::note
-You can search Products by entering the Name or Code.
+:::tip
+You can search products by Product Name or Product Code to quickly find the item you want to copy.
 :::
 
-:::note
-Depending on your screen size you may need to scroll to see the other columns.
+:::tip
+Click the blue section headers to jump directly to the section you want to modify instead of navigating step-by-step.
 :::
 
-:::note
-There are other options in the window  but for this step we are just looking at Copy. Others are discussed else where. Please go to the Table of Contents to find where.
+:::caution
+Clicking **Cancel** discards all unsaved changes.
 :::
-
-:::note
-Depending on your screen size you may need to scroll to see all the fields in each step.
-:::
-
-:::note
-The product you copied will have most all of it’s info shown.
-:::
-
-:::note
-If you need to stop your creation click here. Please be aware that your info will not be saved.
-:::
-
-## Additional information
-
-- Edit a Copied Product
 
 ---
 

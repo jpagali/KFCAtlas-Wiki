@@ -7,41 +7,52 @@ sidebar_label: "Add Metafields to a Menu"
 
 ## What this guide covers
 
-Attaches public and private custom metadata to a store's menu for integration with downstream systems or market-specific requirements.
+Attaches public and private custom metadata (key-value pairs) to a store's menu for integration with downstream systems or market-specific requirements.
 
 ## Steps
 
-**Step 1:** Start by going to the Stores screen by clicking here.
+**Step 1:** Navigate to the **Stores** section using the left-hand navigation menu.
 
-**Step 2:** You can search stores by entering the Name, Number, or Franchise Code.
-**Step 3:** Once you find the store you are looking for, click on the stacked dots to open the option window.
+**Step 2:** Search for the store by **Name**, **Store Number**, or **Franchise Code** using the search box.
 
-**Step 4:** Click on Meta.
+**Step 3:** Once you find the store, click the **three-dot menu** (•••) icon to open the options menu.
+
+**Step 4:** Click **Meta** from the dropdown menu. This opens the metafields management screen.
 
 ![Step 2](./img/step-2.png)
 
-**Step 5:** Click this button to add store metafield content it will open up this drawer to do so.
+**Step 5 - Public Metafields:** Click the **Add Public Metafield** button (or tile) to add a public metafield.
 
-**Step 6:** After you finish filling out this content and press add store metafields the public metafield will be added to the store.
+**Step 6:** Fill in the metafield details:
+
+| Field | What to enter | Notes |
+|-------|--------------|-------|
+| **Key** * | The field name or identifier | e.g., "api_version", "integration_id" |
+| **Value** * | The field value | e.g., "v2", "12345" |
+
+**Step 7:** Click **Add Store Metafields** to save the public metafield.
 
 ![Step 3](./img/step-3.png)
 
-**Step 7:** Click this button to add store metafield content it will open up this drawer to do so.
+**Step 8 - Private Metafields:** Click the **Add Private Metafield** button (or tile) to add a private metafield.
 
-**Step 8:** After you finish filling out this content and press add store metafields the private metafield will be added to the store.
+**Step 9:** Fill in the metafield details using the same field structure as above.
+
+**Step 10:** Click **Add Store Metafields** to save the private metafield.
 
 ![Step 4](./img/step-4.png)
 
-## Notes
-
 :::note
-There are other options in the window  but for this step we are just looking at Meta. Others are discussed else where. Please go to the Table of Contents to find where.
+**When to use metafields:** Only add metafields if your technical team has specified key-value pairs for system integration. Public metafields are visible to external systems; private metafields are for internal use only.
 :::
 
-## Additional information
+:::tip
+You do not need to add both public and private metafields. Add only the metafields required for your store's integrations.
+:::
 
-- Stores - Add Metafields
-- You can select these tiles to navigate forward in this flow or click the next button to go to the next step  You do not have to fill out both you can choose to have either private or public metafields
+## Related guides
+
+- [View a Store's Menu](/docs/admin-portal-guide/stores/view-a-stores-menu/) — See menu assignments
 
 ---
 

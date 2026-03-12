@@ -7,30 +7,40 @@ sidebar_label: "Edit a Choice"
 
 ## What this guide covers
 
-Updates an existing choice's options or configuration.
+Updates an existing choice's name, products, variants, or min/max quantity settings.
 
 ## Steps
 
-**Step 1:** Start by going to the Bundles screen by clicking here.
-**Step 2:** Click on the choices tab
+**Step 1:** Navigate to the **Bundles** section using the left-hand navigation menu.
+
+**Step 2:** Click the **Choices** tab at the top of the Bundles screen.
 
 ![Step 2](./img/step-2.png)
 
-**Step 3:** Click this  button in the same row the choice you want to edit is in and then click Edit
+**Step 3:** Find the choice you want to edit. You can search by Choice Name, Choice Code, Choice Display Name, or Catalog Tags.
+
+**Step 4:** Click the **⋮** (three-dot menu) button in the same row as the choice, then select **Edit**.
 
 ![Step 3](./img/step-3.png)
 
-**Step 4:** Make edits to choice
-
-**Step 5:** Hit create choice.
+**Step 5:** Update any of the following fields:
+- **Choice Name** or **Choice Display Name**
+- **Min Quantity** or **Max Quantity**
+- **Products**: Add or remove products and their variants
 
 ![Step 4](./img/step-4.png)
 
-## Additional information
+**Step 6:** Click **Save** to commit your changes.
 
-- Bundles - Edit a Choice
-- Search by Bundle Name, Bundle Code, Catalog Tags, Promo Tags
-- Optional: Add more variants if needed and go through the same process you did for Step 5
+:::tip
+You can add or remove products and variants at any time without affecting bundles that use this choice.
+:::
+
+## Related guides
+
+- [Create a Choice](/docs/admin-portal-guide/bundles/create-a-choice/)
+- [Copy a Choice](/docs/admin-portal-guide/bundles/copy-a-choice/)
+- [Delete a Choice](/docs/admin-portal-guide/bundles/delete-a-choice/)
 
 ---
 

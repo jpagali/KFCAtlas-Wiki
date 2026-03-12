@@ -67,5 +67,5 @@ Menu Item Reservation is enabled at the product level via **Contentful** (for we
 - 🇯🇵 [Japan — Christmas Ordering](./menu-item-reservation-japan-christmas)
 
 :::info
-Menu Item Reservation is a market-activated feature. Contact your Atlas Enablement representative to enable it for your market and configure the reservation parameters.
+Menu Item Reservation is a market-activated feature. Contact **KFC Global Enablement and Market Success** to enable it for your market and configure the reservation parameters.
 :::

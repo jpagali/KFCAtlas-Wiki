@@ -11,36 +11,45 @@ Assigns one or more promotions to a store group, activating them across all memb
 
 ## Steps
 
-**Step 1:** Start by going to the Store Groups screen by clicking here.
-**Step 2:** Click this assign promotions button
+**Step 1:** Navigate to the **Store Groups** section using the left-hand navigation menu.
+
+**Step 2:** Click the **Assign Promotions** button (usually prominently displayed near the top of the page).
 
 ![Step 2](./img/step-2.png)
 
-**Step 3:** Select the promotions that you want to assign to store groups
+**Step 3:** Select the promotion(s) you want to assign. You can:
+
+- **Check the checkbox** next to each promotion name to select it
+- **Use "Select All"** to select all visible promotions (or **"Deselect All"** to clear selections)
+- **Search** for specific promotions using the search bar
 
 ![Step 3](./img/step-3.png)
 
-**Step 4:** To continue to the next step click Next or the appropriate step above.
+**Step 4:** Once you've selected your promotions, click the **Next** button or click on the next step indicator to proceed.
 
-**Step 5:** Select the promotions you want to assign to each store group
+**Step 5:** Select the store group(s) that should receive these promotions. You can:
 
-**Step 6:** After you select the promotions that you want press this assign button
+- **Check the checkbox** next to each store group name
+- **Search** for specific store groups by name or tag
+
+**Step 6:** Review your selections and click the **Assign** button to apply the promotions to the selected store groups.
 
 ![Step 4](./img/step-4.png)
 
-## Notes
-
 :::note
-Note
-You can use this button to select all stores shown in this page / deselect all stores shown in this page.
+Once assigned, the promotions become active immediately for all stores in the selected store groups and are displayed on their digital ordering channels.
 :::
 
-## Additional information
+:::tip
+You can also assign promotions from the Promotions section. See [Assign Promotions to Store Groups](/docs/admin-portal-guide/promotions/assign-promotions-to-store-groups/) for that workflow.
+:::
 
-- Menu Management User Guide
-- Store Groups - Assign Promotions
-- Assign Promotions Button
-- You can search by store group name and store group tags and see whether or not a store group has a tax association
+## Related guides
+
+- [Create a Promotion](/docs/admin-portal-guide/promotions/create-a-promotion/)
+- [Edit Promotions](/docs/admin-portal-guide/store-groups/edit-promotions/)
+- [Unassign Promotions from Store Group](/docs/admin-portal-guide/store-groups/unassign-promotions-from-store-group/)
+- [Import Promotions for a Store Group](/docs/admin-portal-guide/store-groups/import-promotions-for-a-store-group/)
 
 ---
 

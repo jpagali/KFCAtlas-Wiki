@@ -19,17 +19,17 @@ Think of it as the control panel for what customers *see* across KFC digital tou
 
 ## What Can Be Managed
 
-| Content Area | Description |
-|---|---|
-| **Homepage** | Hero banners, featured products, campaign tiles |
-| **Categories** | Menu category structure, labels, and imagery |
-| **Products** | Individual product details, descriptions, and pricing display |
-| **Bundles & Deals** | Meal deals, combo offers, and bundle configuration |
-| **Promotions** | Time-limited promo banners and campaign content |
-| **Cross-Sell in Cart** | Recommended products shown during checkout |
-| **Footer** | Navigation links, legal text, and social icons |
-| **SEO** | Page titles, meta descriptions, and canonical URLs |
-| **Translations** | Multi-language content for all of the above |
+| Content Area | Description | Guide |
+|---|---|---|
+| **Homepage** | Hero banners, featured products, campaign tiles | [Guide: Homepage Content](./guide-homepage) |
+| **Categories** | Menu category structure, labels, and imagery | [Guide: Category Content](./guide-category) |
+| **Products** | Individual product details, descriptions, and pricing display | [Guide: Product Content](./guide-product) |
+| **Bundles & Deals** | Meal deals, combo offers, and bundle configuration | [Guide: Bundles & Deals](./guide-bundles-deals) |
+| **Promotions** | Time-limited promo banners and campaign content | [Guide: Promotions Content](./guide-promo) |
+| **Cross-Sell in Cart** | Recommended products shown during checkout | [Guide: Cross-Sell in Cart](./guide-cross-sell) |
+| **Footer** | Navigation links, legal text, and social icons | [Guide: Footer Content](./guide-footer) |
+| **SEO** | Page titles, meta descriptions, and canonical URLs | [Guide: SEO](./guide-seo) |
+| **Translations** | Multi-language content for all of the above | [Guide: Translations](./guide-translations) |
 
 ## How Publishing Works
 

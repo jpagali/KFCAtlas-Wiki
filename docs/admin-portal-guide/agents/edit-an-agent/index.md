@@ -7,70 +7,55 @@ sidebar_label: "Edit an Agent"
 
 ## What this guide covers
 
-Updates an existing agent's account details, roles, or access permissions.
+Updates an existing agent’s account details, roles, or access permissions.
 
 ## Steps
 
-**Step 1:** Start by going to the Agents screen by clicking here.
-**Step 2:** To search for an agent in one of 
-4 ways, by entering their info here.
+**Step 1:** Navigate to the **Agents** section using the left-hand navigation menu.
+
+**Step 2:** Search for the agent you want to edit. You can search by:
+- First Name
+- Last Name
+- Email Address
+- Username
+
+Enter any of these details and the list will filter.
 
 ![Step 2](./img/step-2.png)
 
-**Step 3:** Once you find the agent you are looking to Edit, click here. then click Edit
+**Step 3:** Once you find the agent, click the **⋮** (three-dot menu) button in the same row, then select **Edit**.
 
 ![Step 3](./img/step-3.png)
 
-**Step 4:** To edit any information you click
-one of the two blue links or Next.
+**Step 4:** The edit form opens with the same sections as agent creation:
+- **Agent Information** (Page 1): First Name, Last Name, Email, Username
+- **Roles & Permissions** (Page 2): Role checkboxes
+- **Review** (Page 3): Summary of all changes
 
-**Step 5:** When you have completed all
-of your changes in any of the steps
-you can click Save.
+Click blue section headers to jump between pages, or click **Next** to move through them sequentially.
 
-**Step 6:** After saving your changes click
-quit to exit the edit screens.
+**Step 5:** Make any necessary changes to the agent’s details or roles. You can:
+- Update First Name, Last Name, or Email Address
+- Add or remove roles by checking/unchecking boxes
+- **Note**: Username cannot be edited after creation
+
+**Step 6:** Once you’ve made all changes, click **Save** to commit them.
 
 ![Step 4](./img/step-4.png)
 
-## Notes
+**Step 7:** After saving, click **Quit** to exit the edit screen and return to the Agents list.
 
 :::note
-Agent roles and permissions
-will be shown here for a quick view.
+The agent’s current roles and permissions are displayed at the top for quick reference. You can remove all roles if needed, but you cannot delete an agent account entirely — only strip their permissions.
 :::
 
-:::note
-You can not delete and agent but you can
-remove all roles and permissions.
+:::caution
+Clicking **Cancel** discards all unsaved changes.
 :::
 
-:::note
-If you would like to see up to 50
-results at a time click here and choose
-a count from the list.
-:::
+## Related guides
 
-:::note
-If you need to stop your edits click here.
-Please be aware that your info will not be saved.
-:::
-
-:::note
-If you need to stop your edits click here.
-Please be aware that your info will not be saved.
-:::
-
-:::note
-If you need to go back and change
-something on the previous screen, 
-click Back.
-:::
-
-## Additional information
-
-- Menu Management User Guide
-- Edit the Agents’ info
+- [Create an Agent](/docs/admin-portal-guide/agents/create-an-agent/)
 
 ---
 

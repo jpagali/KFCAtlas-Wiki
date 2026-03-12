@@ -1,40 +1,47 @@
 ---
-title: "Create a Store"
-sidebar_label: "Create a Store"
+title: “Create a Store”
+sidebar_label: “Create a Store”
 ---
 
 # Create a Store
 
 ## What this guide covers
 
-Registers a new store location in Atlas with its required details (name, number, franchise code), making it available for menu assignment and digital ordering operations.
+Registers a new store location in Atlas with its required details, making it available for menu assignment and digital ordering.
 
 ## Steps
 
-**Step 1:** Start by going to the Stores screen by clicking here.
-**Step 2:** Click the “+ Create New Store” button
+**Step 1:** Navigate to the **Stores** section using the left-hand navigation menu.
+
+**Step 2:** Click the **+ Create New Store** button in the top-right corner of the screen.
 
 ![Step 2](./img/step-2.png)
 
-**Step 3:** Fill in each “*”required field and other valuable information.
+**Step 3:** Fill in the store details form. Fields marked with * are required.
 
-**Step 4:** When you are done the Save button will become active to click and save your new store.  That’s it,  you have created your store.
+| Field | What to enter | Notes |
+|-------|--------------|-------|
+| **Store Name** * | Full display name of the store | e.g., “KFC George Street Sydney” |
+| **Store Number** * | Unique numeric identifier assigned by market operations | Must match the POS-assigned store number |
+| **Franchise Code** * | Alphanumeric code identifying the franchisee | Provided by your regional manager |
+| **Time Zone** | The store’s local time zone | Required for item snooze and future order accuracy |
+
+**Step 4:** Once all required fields are completed, the **Save** button becomes active. Click **Save** to create the store.
 
 ![Step 3](./img/step-3.png)
 
-## Notes
-
-:::note
-You can search stores by entering the Name, Number, or Franchise Code.
+:::tip
+Before creating a new store, search the Stores list by Name, Number, or Franchise Code to confirm it doesn’t already exist.
 :::
 
-:::note
-If you need to stop your creation click here. Please be aware that your info will not be saved.
+:::caution
+Clicking **Cancel** at any time discards all unsaved information.
 :::
 
-## Additional information
+## Related guides
 
-- Stores - Create a Store
+- [Edit Store Details](/docs/admin-portal-guide/stores/edit-store-details/) — Update the store after creation
+- [Assign New Menu](/docs/admin-portal-guide/stores/assign-new-menu/) — Link a menu to the new store
 
 ---
 

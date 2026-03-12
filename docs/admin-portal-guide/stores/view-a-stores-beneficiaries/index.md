@@ -1,9 +1,9 @@
 ---
-title: "View a Store's Beneficiaries"
-sidebar_label: "View a Store's Beneficiaries"
+title: "View a Store’s Beneficiaries"
+sidebar_label: "View a Store’s Beneficiaries"
 ---
 
-# View a Store's Beneficiaries
+# View a Store’s Beneficiaries
 
 ## What this guide covers
 
@@ -11,33 +11,32 @@ Lists the beneficiaries linked to a specific store for visibility and management
 
 ## Steps
 
-**Step 1:** Start by going to the Stores screen by clicking here.
-**Step 2:** You can search stores by entering the Name, Number, or Franchise Code.
+**Step 1:** Navigate to the **Stores** section using the left-hand navigation menu.
+
+**Step 2:** Search for the store by **Name**, **Store Number**, or **Franchise Code** using the search box.
 
 ![Step 2](./img/step-2.png)
 
-**Step 3:** Once you find the store you are looking for, click on the stacked dots to open the option window.
+**Step 3:** Once you find the store, click the **three-dot menu** (•••) icon to open the options menu.
 
-**Step 4:** Click on Beneficiaries.
+**Step 4:** Click **Beneficiaries** from the dropdown menu. This displays all beneficiaries associated with the selected store.
 
-**Step 5:** Search for the beneficiary by name.
+**Step 5:** Use the search box to filter beneficiaries by **name** if the list is long.
 
 ![Step 3](./img/step-3.png)
 
-## Notes
+The table shows:
+- **Beneficiary Name** — The name of the charity or cause
+- **Accepting Donations** — Status indicator (green checkmark = active donations)
 
-:::note
-There are other options in the window  but for this step we are just looking at Beneficiaries. Others are discussed else where. Please go to the Table of Contents to find where.
+:::tip
+To remove a specific store from a beneficiary, go to [Edit/Delete a Beneficiary](/docs/admin-portal-guide/stores/editdelete-a-beneficiary/) and unselect the store from the Associated Stores list.
 :::
 
-:::note
-If you are looking to delete a Beneficiary from a store, please follow the steps on Edit a Beneficiary and delete the store from the Associated Stores list.
-:::
+## Related guides
 
-## Additional information
-
-- Stores - View a Store’s Beneficiaries
-- A stores beneficiary list
+- [Create a Beneficiary](/docs/admin-portal-guide/stores/create-a-beneficiary/) — Set up a new beneficiary
+- [Edit/Delete a Beneficiary](/docs/admin-portal-guide/stores/editdelete-a-beneficiary/) — Update or remove beneficiaries
 
 ---
 

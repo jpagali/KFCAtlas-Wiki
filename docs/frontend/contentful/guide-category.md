@@ -8,7 +8,7 @@ sidebar_position: 3
 Categories are how the KFC menu is organised — grouping products into sections like Chicken, Sides, Drinks, or Desserts. Contentful lets you control the **sequence** of products within a category and manage **subcategories** for more granular menu structure.
 
 :::info
-Categories themselves are created and managed in **Yum Admin**. Contentful is where you control sequencing and subcategory structure. Products that haven't been configured in Contentful are **hidden from the menu**.
+Categories themselves are created and managed in **Byte Admin Portal**. Contentful is where you control sequencing and subcategory structure. Products that haven't been configured in Contentful are **hidden from the menu**.
 :::
 
 ---
@@ -19,7 +19,7 @@ Categories themselves are created and managed in **Yum Admin**. Contentful is wh
 
 **Subcategories** — Within a category page, subcategories act as tabs or filter groups (e.g. within "Chicken" you might have "Original Recipe", "Zinger", "Wraps"). Products are nested within each subcategory.
 
-**Product sequence** — The order in which products appear within a category or subcategory is controlled in Contentful. If no sequence is set in Contentful, the order falls back to whatever is defined in Yum Admin.
+**Product sequence** — The order in which products appear within a category or subcategory is controlled in Contentful. If no sequence is set in Contentful, the order falls back to whatever is defined in Byte Admin Portal.
 
 ---
 
@@ -27,7 +27,7 @@ Categories themselves are created and managed in **Yum Admin**. Contentful is wh
 
 ### Sequencing Products in a Category
 
-1. Once the category has been created in Yum Admin with products assigned, navigate to the **Category** entry in Contentful
+1. Once the category has been created in Byte Admin Portal with products assigned, navigate to the **Category** entry in Contentful
 2. Scroll down to the **Menu Items** section
 3. Click **Add Existing Content** and select the products or bundles you want to include — click **Select Entries** to confirm
 4. Drag the right-hand handle of each entry to reorder them
@@ -65,7 +65,7 @@ Categories themselves are created and managed in **Yum Admin**. Contentful is wh
 
 ## Use Cases
 
-**New product launch** — When a new item is added in Yum Admin, add and position it in the correct Contentful category so it appears in the right place on the menu immediately.
+**New product launch** — When a new item is added in Byte Admin Portal, add and position it in the correct Contentful category so it appears in the right place on the menu immediately.
 
 **Seasonal menu restructure** — Reorder products or promote a subcategory (e.g. move "Holiday Specials" to the top of the menu) for a promotional period without a code deployment.
 

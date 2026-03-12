@@ -1,39 +1,47 @@
 ---
-title: "Import Promotions for a Store Group"
-sidebar_label: "Import Promotions for a Store Group"
+title: “Import Promotions for a Store Group”
+sidebar_label: “Import Promotions for a Store Group”
 ---
 
 # Import Promotions for a Store Group
 
 ## What this guide covers
 
-Bulk-imports promotion assignments into a store group, used when setting up large promotion campaigns across many stores.
+Bulk-imports promotion assignments from one store group to another, used when setting up large promotion campaigns across many stores or duplicating promotions from an existing configuration.
 
 ## Steps
 
-**Step 1:** Start by going to the Promotions screen by clicking here.
-**Step 2:** Click the Store Groups tab
+**Step 1:** Navigate to the **Promotions** section using the left-hand navigation menu.
+
+**Step 2:** Click the **Store Groups** tab.
 
 ![Step 2](./img/step-2.png)
 
-**Step 3:** Find the store group you want to receive promotions from another store group
+**Step 3:** Find the store group that will **receive** the promotions (the destination group). This is the group you want to import promotions into.
 
 ![Step 3](./img/step-3.png)
 
-**Step 4:** Click the Action button then click on “Import Promotions”
+**Step 4:** Click the **action menu button** (three dots) next to the store group name, then select **Import Promotions**.
 
-**Step 5:** Search for the store group you want to import promotions from to copy over to the selected store group
+**Step 5:** A dialog will appear asking you to select the store group to import promotions **from** (the source group). Search for and select the store group that has the promotions you want to copy.
 
-**Step 6:** Click Save and the promotions will be imported
+**Step 6:** Review the import summary and click **Save** to complete the import.
 
 ![Step 4](./img/step-4.png)
 
-## Additional information
+:::caution
+**Important:** Importing promotions will **replace** any existing promotions linked to the destination store group. The operation cannot be undone. Make sure you are importing to the correct store group before confirming.
+:::
 
-- Promotions - Import Promotions for a Store Group
-- Import Promotions for a Store Group
-- This is the Promotions screen where you  will see a list of all the promotions you have created, create new promotions, search for any you have created, edit and copy, add extra info in the Meta link and  assign them to Store Groups.  Promotions can only assigned to a Store Group and not a singular store.
-- Review the recipient store group to make sure you are importing to the correct store group. Existing promotions linked to the recipient will be replaced and cannot be undone
+:::tip
+If you want to import specific promotions rather than all of them, toggle off the “Import All” option and select individual promotions instead.
+:::
+
+## Related guides
+
+- [View Promotions for a Store Group](/docs/admin-portal-guide/promotions/view-promotions-for-a-store-group/)
+- [Assign Promotions to Store Groups](/docs/admin-portal-guide/promotions/assign-promotions-to-store-groups/)
+- [Import Promotions (Store Groups section)](/docs/admin-portal-guide/store-groups/import-promotions-for-a-store-group/)
 
 ---
 

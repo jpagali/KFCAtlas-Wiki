@@ -5,10 +5,10 @@ sidebar_position: 5
 
 # Guide: Bundles & Deals
 
-Bundles are combo meals — a fixed set of products sold together. Deals are promotional groupings that combine products or bundles at a special price, often with a target link for deeper navigation. Both require content configuration in Contentful after being set up in Yum Admin.
+Bundles are combo meals — a fixed set of products sold together. Deals are promotional groupings that combine products or bundles at a special price, often with a target link for deeper navigation. Both require content configuration in Contentful after being set up in Byte Admin Portal.
 
 :::info
-Bundles and Deals **must be created in Yum Admin first** before they can be configured in Contentful. Items without content are **hidden from the menu**.
+Bundles and Deals **must be created in Byte Admin Portal first** before they can be configured in Contentful. Items without content are **hidden from the menu**.
 :::
 
 ---
@@ -48,7 +48,7 @@ Both content types can be featured on the **Homepage** as promoted items when co
 
 ## Use Cases
 
-**New combo meal** — When a bundle is created in Yum Admin, create its Contentful entry with imagery and a display title so it appears on the menu with the correct visual treatment.
+**New combo meal** — When a bundle is created in Byte Admin Portal, create its Contentful entry with imagery and a display title so it appears on the menu with the correct visual treatment.
 
 **Promotional deal page** — Create a Deal entry that groups several products under a campaign name (e.g. "Family Feast") and links to a dedicated deals landing page.
 

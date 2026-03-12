@@ -1,31 +1,39 @@
 ---
-title: "Edit a Promotion"
-sidebar_label: "Edit a Promotion"
+title: “Edit a Promotion”
+sidebar_label: “Edit a Promotion”
 ---
 
 # Edit a Promotion
 
 ## What this guide covers
 
-Updates an existing promotion's configuration, such as validity dates, discount values, or assignment scope.
+Updates an existing promotion’s configuration, such as validity dates, discount values, or requirement and effect settings.
 
 ## Steps
 
-**Step 1:** Start by going to the Promotions screen by clicking here.
-**Step 2:** Once you find the promotion you’re looking for, click the promotion name link
+**Step 1:** Navigate to the **Promotions** section using the left-hand navigation menu.
+
+**Step 2:** Find the promotion you want to edit by browsing the table or using the search bar. Click the **promotion name** to open the Promotion Wizard.
 
 ![Step 2](./img/step-2.png)
 
 ![Step 3](./img/step-3.png)
 
+**Step 3:** Update any promotion details (name, display name, description, flow type, requirements, effects, or validity period).
+
 ![Step 4](./img/step-4.png)
 
-## Additional information
+**Step 4:** When you have finished making changes, click the **Save** button to apply your updates.
 
-- Either search for the promotion you’re looking for or you can browse through this table using the arrows below
-- This is the Promotions screen where you  will see a list of all the promotions you have created, create new promotions, search for any you have created, edit and copy, add extra info in the Meta link and  assign them to Store Groups.  Promotions can only assigned to a Store Group and not a singular store.
-- You will be taken to the Promotion Wizard where you can edit any details.
-- After making changes, remember to click the “Save” button before leaving the wizard.
+:::note
+The Promotion Wizard guides you through each section. You can click on any step number to jump to that section or proceed sequentially.
+:::
+
+## Related guides
+
+- [Create a Promotion](/docs/admin-portal-guide/promotions/create-a-promotion/)
+- [Copy a Promotion](/docs/admin-portal-guide/promotions/copy-promotion/)
+- [Archive a Promotion](/docs/admin-portal-guide/promotions/archive-a-promotion/)
 
 ---
 

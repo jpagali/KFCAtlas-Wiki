@@ -7,40 +7,34 @@ sidebar_label: "Delete Named Price"
 
 ## What this guide covers
 
-Removes a named price that is no longer in use.
+Permanently removes a named price that is no longer in use. Deletes the price label only — products using it must be reassigned to a different price.
 
 ## Steps
 
-**Step 1:** Start by going to Menus screen by clicking here.
-**Step 2:** Click named price
+**Step 1:** Navigate to the **Menus** section using the left-hand navigation menu.
+
+**Step 2:** Click the **Named Prices** tab to view all named prices.
 
 ![Step 2](./img/step-2.png)
 
-**Step 3:** Once you find the menu you are looking to Delete, click here. then click Delete
+**Step 3:** Find the named price you want to delete in the list. You can use the search box to locate it or adjust the number of results displayed per page.
+
+**Step 4:** Click the **action menu** (three dots) in the same row, then select **Delete**.
 
 ![Step 3](./img/step-3.png)
 
-**Step 4:** Click delete button to delete the named price.
+**Step 5:** A confirmation dialog will appear. Click the **Delete** button to permanently remove the named price.
 
 ![Step 4](./img/step-4.png)
 
-## Notes
-
-:::note
-If you would like to see up to 50 results at a time click here and choose a count from the list.
+:::caution
+Deleting a named price will remove it from all products and variants that use it. Products will need to be reassigned to a different named price or a direct price value. This action cannot be undone. Before deleting, consider which products are using this price.
 :::
 
-:::note
-Here you can search to find a specific named price
-:::
+## Related guides
 
-:::note
-Deleting a named price will remove from all associations
-:::
-
-## Additional information
-
-- Menus - Delete Named Price
+- [Create a Named Price](/docs/admin-portal-guide/menus/create-a-named-price/) — Create a replacement named price if needed
+- [Edit Named Price](/docs/admin-portal-guide/menus/edit-named-price/) — Update a named price instead of deleting it
 
 ---
 

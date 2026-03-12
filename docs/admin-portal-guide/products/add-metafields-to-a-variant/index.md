@@ -1,102 +1,75 @@
 ---
-title: "Add Metafields to a Variant"
-sidebar_label: "Add Metafields to a Variant"
+title: “Add Metafields to a Variant”
+sidebar_label: “Add Metafields to a Variant”
 ---
 
 # Add Metafields to a Variant
 
 ## What this guide covers
 
-Attaches market-specific structured data to a product variant for downstream system requirements.
+Attaches market-specific structured data to a product variant for system integration or downstream requirements.
 
 ## Steps
 
-**Step 1:** Start by going to the Products screen by clicking here.
+**Step 1:** Navigate to the **Products** section using the left navigation menu.
 
-**Step 2:** Click the Variants tab.
-**Step 3:** You can search Variants by entering the Product Name or Option Values or by Tags.
+**Step 2:** Click the **Variants** tab.
 
-**Step 4:** Click the 3 dots to reveal a panel. Click Meta.
+**Step 3:** Search for the variant by entering the Product Name, Option Values, or Tags in the search field.
+
+**Step 4:** Click the three-dot menu next to the variant, then select **Meta**.
 
 ![Step 2](./img/step-2.png)
 
-**Step 5:** Click here to open the drawer to fill in.
+**Step 5:** A drawer will open showing both **Public** and **Private** metafield sections.
 
-**Step 5:** Click the 3 dots and choose Edit. A drawer will pull out for you to edit.
+**Step 6:** Click the **Add** button to add a new metafield.
+
+**Step 7:** Fill in each metafield with the exact key and value your technical team has specified.
 
 ![Step 3](./img/step-3.png)
 
-**Step 5:** Click the 3 dots and choose Copy. A drawer will pull out for you to edit.
+### To Edit an Existing Metafield
 
-**Step 5:** Click the 3 dots and choose Delete. A modal will appear (below).
+**Step 8:** Click the three-dot menu next to the metafield you want to edit, then select **Edit**.
+
+**Step 9:** Update the key and value as needed, then click **Save**.
+
+### To Copy a Metafield
+
+**Step 10:** Click the three-dot menu next to the metafield you want to copy, then select **Copy**.
+
+**Step 11:** A new metafield entry will be created with the same key and value. Edit if needed.
+
+### To Delete a Metafield
+
+**Step 12:** Click the three-dot menu next to the metafield you want to delete, then select **Delete**.
+
+**Step 13:** Click the red **Delete** button to permanently remove the metafield.
 
 ![Step 4](./img/step-4.png)
 
-**Step 6:** Fill in each “*”required field and other valuable information.
-
-**Step 6:** You can edit any of the enabled fields. Fill in each “*”required field and other valuable information.
+**Step 14:** When you are finished, click **Close** to close the drawer.
 
 ![Step 5](./img/step-5.png)
 
-**Step 6:** Click the red button to delete.
-
-**Step 7:** When you start filling in the info this button will turn blue, click it when you are done.
-
-**Step 7:** When you are finished with your edits, click Save.
-
-**Step 7:** When you are finished with your edits, click “Copy Variant Metafields” button.
-
-**Step 7:** When you are done, click close.
-
-**Step 8:** When you are done, click close.
-
-![Step 6](./img/step-6.png)
-
 ## Notes
 
-:::note
-There are other options in the window  but for this step we are just looking at Edit. Others are discussed else where. Please go to the Table of Contents to find where.
+:::caution
+Only add metafields if your technical team has specified the exact keys and values to use. Incorrect metafields may cause integration failures.
 :::
 
-:::note
-If you need to stop click Cancel. Please be aware that your info will not be saved.
+:::tip
+You can search for metafields by looking in the dropdown or by typing the key name in the search field.
 :::
 
-:::note
-Adding Metafields to Public or Private is exactly the same.
+:::tip
+Adding metafields to **Public** or **Private** follows the same process.
 :::
 
-:::note
-When you have finished or need to jump to a different area you can do so by clicking on it in the stepper or Next.
+:::caution
+Deleting a metafield is permanent. Confirm you are removing the correct entry before clicking Delete.
 :::
-
-:::note
-Follow Steps 1-4.
-:::
-
-:::note
-You can search for the Metafield you need by looking for it in the dropdown or by Key in the search field.
-:::
-
-:::note
-There are other options in the window but for this step we are just looking at Edit. Others are discussed next.
-:::
-
-:::note
-There are other options in the window but for this step we are just looking at Copy. Others are discussed next.
-:::
-
-:::note
-There are other options in the window but for this step we are just looking at Delete. Others are discussed next.
-:::
-
-:::note
-If you do not want to Delete, click Cancel.
-:::
-
-## Additional information
-
-- Add/Edit/Copy/Delete Meta Data on a Variant
 
 ---
 

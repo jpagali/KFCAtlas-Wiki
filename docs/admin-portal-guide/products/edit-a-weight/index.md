@@ -1,41 +1,51 @@
 ---
-title: "Edit a Weight"
-sidebar_label: "Edit a Weight"
+title: “Edit a Weight”
+sidebar_label: “Edit a Weight”
 ---
 
 # Edit a Weight
 
 ## What this guide covers
 
-Updates an existing weight definition.
+Updates an existing weight definition such as the name, max value, or default status.
 
 ## Steps
 
-**Step 1:** Start by going to the Products screen by clicking here.
-**Step 2:** Click the Weights tab.
+**Step 1:** Navigate to the **Products** section using the left navigation menu.
+
+**Step 2:** Click the **Weights** tab.
 
 ![Step 2](./img/step-2.png)
 
-**Step 4:** Click the 3 dots to reveal a panel. Click Edit.
+**Step 3:** Search for the weight you want to edit by entering the Weight Name or Weight Code in the search field.
 
-**Step 4:** Fill in each “*”required field and other valuable information.
+**Step 4:** Click the three-dot menu next to the weight, then select **Edit**.
 
-**Step 5:** When you are finished adding in all the information, click the Create Weight button.
+**Step 5:** Update the weight details. Fields marked with * are required.
+
+| Field | What to enter | Notes |
+|-------|--------------|-------|
+| **Weight Code** * | Unique identifier | Cannot be changed after creation |
+| **Weight Name** * | Describes the portion size | e.g., “Regular”, “Large”, “Double” |
+| **Max Weight Value** | Numeric maximum weight value | e.g., “500” (in grams or your unit) |
+| **Default** | Toggle to mark as default | Only one weight should be marked as default per option |
+
+**Step 6:** When you are finished adding all the information, click the **Save** button.
 
 ![Step 3](./img/step-3.png)
 
 ## Notes
 
-:::note
-There are other options in the window  but for this step we are just looking at Edit. Others are discussed else where. Please go to the Table of Contents to find where.
+:::caution
+Clicking **Cancel** discards all unsaved changes.
 :::
 
-:::note
-If you need to stop your creation click here. Please be aware that your info will not be saved.
+:::tip
+You can search weights by Weight Name or Weight Code to quickly find the item you want to edit.
 :::
 
-:::note
-Please read the box for important information before you save.
+:::tip
+Toggle **Default** to Yes to make this the pre-selected weight option for customers.
 :::
 
 ---

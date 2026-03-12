@@ -7,18 +7,32 @@ const config = {
   customFields: {
     ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY,
   },
-  favicon: 'img/favicon.ico',
+  favicon: 'img/atlas-favicon.png',
 
   // Update this after Vercel deployment
   url: 'https://kfc-atlas-portal.vercel.app',
   baseUrl: '/',
 
   onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
+  },
 
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'en-US',
+    locales: ['en-US', 'ja-JP'],
+    localeConfigs: {
+      'en-US': {
+        htmlLang: 'en-US',
+        label: 'EN',
+      },
+      'ja-JP': {
+        htmlLang: 'ja-JP',
+        label: 'JP',
+      },
+    },
   },
 
   presets: [
@@ -56,7 +70,7 @@ const config = {
         style: 'dark',
         logo: {
           alt: 'KFC Atlas Logo',
-          src: 'img/logo.png',
+          src: 'img/atlas-logo.png',
         },
         items: [
           {
@@ -81,6 +95,10 @@ const config = {
             type: 'search',
             position: 'right',
           },
+          {
+            type: 'localeDropdown',
+            position: 'right',
+          },
         ],
       },
 
@@ -94,23 +112,32 @@ const config = {
               { label: 'Customer Journey', to: '/docs/frontend/customer-journey' },
               { label: 'Order Channels', to: '/docs/frontend/order-channels' },
               { label: 'Market Configurations', to: '/docs/frontend/market-configurations' },
+              { label: 'Design System', to: '/docs/frontend/design-system' },
+              { label: 'Contentful', to: '/docs/frontend/contentful/' },
             ],
           },
           {
             title: '⚙️ Admin Portal Guide',
             items: [
-              { label: 'Overview', to: '/docs/admin-portal-guide/index' },
-              { label: 'Stores', to: '/docs/admin-portal-guide/stores/index' },
-              { label: 'Menus', to: '/docs/admin-portal-guide/menus/index' },
-              { label: 'Products', to: '/docs/admin-portal-guide/products/index' },
+              { label: 'Overview', to: '/docs/admin-portal-guide/' },
+              { label: 'Stores', to: '/docs/admin-portal-guide/stores/' },
+              { label: 'Menus', to: '/docs/admin-portal-guide/menus/' },
+              { label: 'Products', to: '/docs/admin-portal-guide/products/' },
+              { label: 'Promotions', to: '/docs/admin-portal-guide/promotions/' },
+              { label: 'Store Groups', to: '/docs/admin-portal-guide/store-groups/' },
+              { label: 'Bundles', to: '/docs/admin-portal-guide/bundles/' },
+              { label: 'Agents', to: '/docs/admin-portal-guide/agents/' },
+              { label: 'Customer Support', to: '/docs/admin-portal-guide/customer-support/' },
+              { label: 'In-Store Devices', to: '/docs/admin-portal-guide/in-store-devices/' },
             ],
           },
           {
             title: '📋 Playbooks',
             items: [
-              { label: 'Onboarding a New Restaurant', to: '/docs/playbooks/onboarding' },
+              { label: 'Create Promotions', to: '/docs/playbooks/onboarding' },
+              { label: 'Buy 1 Get 1 Promo', to: '/docs/playbooks/buy-one-get-one-promo' },
+              { label: 'Braze Welcome Reward Canvas', to: '/docs/playbooks/runbook' },
               { label: 'Troubleshooting & Escalation', to: '/docs/playbooks/troubleshooting' },
-              { label: 'Platform Runbook', to: '/docs/playbooks/runbook' },
             ],
           },
         ],

@@ -1,6 +1,6 @@
 ---
-title: "Accept Online Orders (Turn On or Off)"
-sidebar_label: "Accept Online Orders (Turn On or Off)"
+title: “Accept Online Orders (Turn On or Off)”
+sidebar_label: “Accept Online Orders (Turn On or Off)”
 ---
 
 # Accept Online Orders (Turn On or Off)
@@ -11,33 +11,33 @@ Toggles whether a store accepts online orders through digital channels — used 
 
 ## Steps
 
-**Step 1:** Start by going to the Stores screen by clicking here.
-**Step 2:** You can search stores by entering the Name, Number, or Franchise Code.
+**Step 1:** Navigate to the **Stores** section using the left-hand navigation menu.
+
+**Step 2:** Search for the store by **Name**, **Store Number**, or **Franchise Code** using the search box.
 
 ![Step 2](./img/step-2.png)
 
-**Step 3:** Once you find the store you are looking for, click on any of it’s blue hyper-links or on the stacked dots to open the option window, then click Edit.
+**Step 3:** Once you find the store, click the **store name** (or any blue hyperlink) to view the store details, or click the **three-dot menu** (•••) icon and select **Edit**.
 
-**Step 4:** Toggle the “Accepting Online Orders” to your desired option either No or Yes.
+**Step 4:** Locate the **Accepting Online Orders** toggle and set it to your desired state:
+- **Yes**: Store accepts online orders through digital channels
+- **No**: Store does not accept online orders (orders are temporarily disabled)
 
-**Step 5:** When you are done click the Save button.
+**Step 5:** Click the **Save** button to apply the change.
 
 ![Step 3](./img/step-3.png)
 
-## Notes
-
-:::note
-There are other options in the window  but for this step we are just looking at Edit. Others are discussed else where. Please go to the Table of Contents to find where.
+:::tip
+Use **No** to quickly disable ordering during store closures, system maintenance, or staff shortages without needing to edit other store settings.
 :::
 
-:::note
-If you need to stop your creation click here. Please be aware that your info will not be saved.
+:::caution
+Clicking **Cancel** at any time discards your change.
 :::
 
-## Additional information
+## Related guides
 
-- Stores - Accept Online Orders (Turn On or Off)
-- Accepting Online Orders
+- [Edit Store Details](/docs/admin-portal-guide/stores/edit-store-details/) — Update other store information
 
 ---
 

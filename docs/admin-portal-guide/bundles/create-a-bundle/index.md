@@ -1,68 +1,73 @@
 ---
-title: "Create a Bundle"
-sidebar_label: "Create a Bundle"
+title: “Create a Bundle”
+sidebar_label: “Create a Bundle”
 ---
 
 # Create a Bundle
 
 ## What this guide covers
 
-Enables operators to build a combo or meal deal by grouping products together under a single purchasable item, with its own code, pricing, and display information.
+Builds a combo or meal deal by grouping products together under a single purchasable item, with its own code, pricing, and display information.
 
 ## Steps
 
-**Step 1:** Start by going to the Bundles screen by clicking here.
+**Step 1:** Navigate to the **Bundles** section using the left-hand navigation menu.
 
-**Step 2:** In order to create a bundle you need to click on this create new
-**Step 3:** Fill in each “*”required field and other valuable information.
+**Step 2:** Click the **+ Create New Bundle** button.
 
-**Step 4:** You can select the step tiles at the top left or click the next button to go to the next step
+**Step 3:** Fill in the bundle details on Page 1. Fields marked with * are required.
+
+| Field | What to enter | Notes |
+|-------|--------------|-------|
+| **Bundle Code** * | Unique system identifier | Use uppercase letters, numbers, and hyphens — e.g., `BUNDLE-3PC-MEAL` |
+| **Bundle Name** * | Display name shown to customers | e.g., “3-Piece Meal” |
+| **Display Name** | Shorter label for limited-space screens | Defaults to Bundle Name if left blank |
+| **Description** | Customer-facing description of the bundle | Keep it appealing and clear |
+
+:::tip
+Click the **Add Details** button (or “...”) to add optional information such as Nutrition Information, a Bundle Identifier, Catalog Tags, and Promo Tags.
+:::
+
+:::tip
+Click the **Item Availability** drawer to set availability windows (e.g., “Lunch 11am–3pm”) when this bundle should be orderable.
+:::
+
+**Step 4:** Click **Next** or select the next step tile at the top to proceed to Page 2 — Choices.
 
 ![Step 2](./img/step-2.png)
 
-**Step 5a:** If you need to create a new choice, click this button it will open this drawer below to do so.
+**Step 5:** Add choices to your bundle. A choice is a selection slot (e.g., “Choose Your Side”).
 
-**Step 5:** Fill in each “*”required field and other valuable information.
+- To add an **existing choice**: Click **Add Existing Choice**. A search drawer opens — type to search and click the choice to select it, then click **Add**.
+- To create a **new choice inline**: Click **Create New Choice** and fill in the fields:
+
+| Field | What to enter | Notes |
+|-------|--------------|-------|
+| **Choice Code** * | Unique identifier | e.g., `CHOICE-SIDE` |
+| **Choice Name** * | Label shown to customers | e.g., “Choose Your Side”, “Select Your Drink” |
+| **Min Quantity** | Minimum selections required | Set to `0` to make the choice optional |
+| **Max Quantity** | Maximum selections allowed | e.g., `1` for a single-select choice |
+| **Products** | Items available within this choice | Search and add from the product list |
 
 ![Step 3](./img/step-3.png)
 
-**Step 6:** Add an existing choice. It will open this drawer to do so.
-
-**Step 7:** You can select the step tiles at the top left or click the next button to go to the next step.
+**Step 6:** Click **Next** to proceed to Page 3 — Review.
 
 ![Step 4](./img/step-4.png)
 
-**Step 8:** Take on last look at all the entered details making sure they are right. Depending on your screen sizes you may need to scroll down to see all of the products details.
-
-**Step 9:** When you are finished reviewing click Create.
+**Step 7:** Review all entered details. Click any blue section header to jump back and make corrections. Click **Create** to finalise the bundle.
 
 ![Step 5](./img/step-5.png)
 
-## Notes
-
-:::note
-Click to add extra information such as nutrition information, Bundle Identifier, Catalog Tags, and Promo Tags.
+:::caution
+Clicking **Cancel** at any time discards all unsaved information.
 :::
 
-:::note
-To add item availability details to the bundle, click here and a drawer will pull.
-:::
+## Related guides
 
-:::note
-If you need to stop your creation click here. Please be aware that your info will not be saved.
-:::
-
-:::note
-If you need to go back to the specific step click on the Blue titles like this one.
-:::
-
-:::note
-Need to go back to the previous screen, click Back.
-:::
-
-## Additional information
-
-- Bundles - Create a Bundle
+- [Add an Image to a Bundle](/docs/admin-portal-guide/bundles/add-an-image-to-a-bundle/)
+- [Edit a Bundle](/docs/admin-portal-guide/bundles/edit-a-bundle/)
+- [Copy a Bundle](/docs/admin-portal-guide/bundles/copy-a-bundle/)
 
 ---
 

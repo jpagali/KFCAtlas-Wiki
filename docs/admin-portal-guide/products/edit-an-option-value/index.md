@@ -1,55 +1,55 @@
 ---
-title: "Edit an Option Value"
-sidebar_label: "Edit an Option Value"
+title: “Edit an Option Value”
+sidebar_label: “Edit an Option Value”
 ---
 
 # Edit an Option Value
 
 ## What this guide covers
 
-Updates the name, pricing, or properties of an existing option value.
+Updates an existing option value's name, display properties, or images to reflect menu changes.
 
 ## Steps
 
-**Step 1:** Start by going to the Products screen by clicking here.
+**Step 1:** Navigate to the **Products** section using the left navigation menu.
 
-**Step 2:** Click the Options tab.
-**Step 3:** You can search Option Values by entering the Name or Code or search by Catalog Tag.
+**Step 2:** Click the **Option Values** tab.
 
-**Step 4:** Click the 3 dots to reveal a panel. Click Edit.
+**Step 3:** Search for the option value you want to edit by entering the Name, Code, or Catalog Tag in the search field.
+
+**Step 4:** Click the three-dot menu next to the option value, then select **Edit**.
 
 ![Step 2](./img/step-2.png)
 
-**Step 5:** Fill in each “*”required field and other valuable information.
+**Step 5:** Update the option value details. Fields marked with * are required.
 
-**Step 6:** When you are finished editing click the Save button.
+| Field | What to enter | Notes |
+|-------|--------------|-------|
+| **Option Value Code** * | Unique identifier | Cannot be changed after creation |
+| **Option Value Name** * | The choice displayed to customers | e.g., “Large”, “Original Recipe”, “Hot & Spicy” |
+| **Display Name** | Shorter label for limited screen space | Defaults to Option Value Name if left blank |
+| **Image** | Optional image for this choice | Toggle **Primary Image** to Yes if this is the main display image. Click **Add Another Image** to add more. |
+
+**Step 6:** When you are finished editing, click the **Save** button.
 
 ![Step 3](./img/step-3.png)
 
 ## Notes
 
-:::note
-If you need to stop your creation click here. Please be aware that your info will not be saved.
+:::caution
+Clicking **Cancel** discards all unsaved changes.
 :::
 
-:::note
-If you need this image to be the Primary image shown, click to toggle to Yes.
+:::tip
+Toggle **Primary Image** to **Yes** to set this image as the main display image for this option value.
 :::
 
-:::note
-If you need to add another image, click here and fill in all needed information.
+:::tip
+You can add multiple images by clicking **Add Another Image**.
 :::
 
-:::note
-Please read the box below for important information before you save.
-:::
-
-:::note
-There are other options in the window  but for this step we are just looking at Edit. Others are discussed else where. Please go to the Table of Contents to find where.
-:::
-
-:::note
-To Edit an Option Value you can also click on the blue copy.
+:::tip
+You can search option values by Name, Code, or Catalog Tag.
 :::
 
 ---

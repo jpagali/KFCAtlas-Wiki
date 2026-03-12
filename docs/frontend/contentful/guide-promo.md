@@ -8,7 +8,7 @@ sidebar_position: 6
 Promotion Content is used to display coupon and promotional information to customers in the basket and at checkout. It can also surface a promotion as a menu card — making it browsable in the menu as if it were a regular product.
 
 :::info
-A promotion **must be created in Yum Admin first** before it can be configured as a Promotion Content entry in Contentful.
+A promotion **must be created in Byte Admin Portal first** before it can be configured as a Promotion Content entry in Contentful.
 :::
 
 ---
@@ -24,7 +24,7 @@ A promotion **must be created in Yum Admin first** before it can be configured a
 ## What to Configure in Contentful
 
 1. In Contentful, navigate to the **Promotion** Content Type and open it
-2. Click **Select from Yum** to see a list of promotions created in Yum Admin
+2. Click **Select from Yum** to see a list of promotions created in Byte Admin Portal
 3. Select the promotion you want to configure
 
 **Configure Display Name** — The name shown to the customer on the UI (e.g. "Zinger Box Deal"). Set this per locale.

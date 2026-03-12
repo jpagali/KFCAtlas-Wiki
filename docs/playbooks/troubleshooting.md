@@ -5,7 +5,7 @@ sidebar_position: 2
 
 # Troubleshooting & Escalation
 
-This playbook covers the most common issues franchisees and regional teams encounter on the Atlas Platform, and the correct escalation path when self-service doesn't resolve the problem.
+This playbook covers the most common issues restaurant and regional teams encounter on the Atlas Platform, and the correct escalation path when self-service doesn't resolve the problem.
 
 ---
 

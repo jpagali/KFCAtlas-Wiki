@@ -1,47 +1,44 @@
 ---
-title: "Edit a Product"
-sidebar_label: "Edit a Product"
+title: “Edit a Product”
+sidebar_label: “Edit a Product”
 ---
 
 # Edit a Product
 
 ## What this guide covers
 
-Allows operators to update an existing product's name, description, images, or other fields to reflect menu changes, pricing corrections, or branding updates without needing to recreate the item.
+Updates an existing product's information such as name, description, images, pricing, or availability to reflect menu changes, corrections, or branding updates without recreating the item.
 
 ## Steps
 
-**Step 1:** Start by going to the Products screen by clicking here.
-**Step 2:** Click the 3 dots to reveal a panel. Click Edit.
+**Step 1:** Navigate to the **Products** section using the left navigation menu.
+
+**Step 2:** Find the product you want to edit. You can search by entering the Product Name or Product Code in the search field.
+
+**Step 3:** Click the three-dot menu next to the product name, then select **Edit**.
 
 ![Step 2](./img/step-2.png)
 
-**Step 3:** To be taking to the area you need to make Edits to, click on the blue header of that section or to go step by step, click on Next. Make sure you fill in each “*”required field and other valuable information.
+**Step 4:** You will see the edit form with all pages from the creation process. To jump directly to a section, click on the blue section header (e.g., “Basic Information”, “Options”, “Variants”). To navigate step-by-step, click **Next**.
 
-**Step 4:** When you are finished with your edits click Save. As you make changes the Save button will be clickable.
+**Step 5:** Make your changes. Fields marked with * are required. Only the **Save** button will be active when you have made changes.
+
+**Step 6:** When you have finished your edits, click the **Save** button.
 
 ![Step 3](./img/step-3.png)
 
 ## Notes
 
-:::note
-Depending on your screen size you may need to expand your browser or scroll to see all of the sections to edit.
+:::caution
+Clicking **Cancel** discards all unsaved changes.
 :::
 
-:::note
-If you need to stop your creation click here. Please be aware that your info will not be saved.
+:::tip
+You can search products by Product Name or Product Code to quickly find the item you want to edit.
 :::
 
-:::note
-You can search Products by entering the Name or Code.
-:::
-
-:::note
-Depending on your screen size you may need to scroll to see the other columns.
-:::
-
-:::note
-There are other options in the window  but for this step we are just looking at Edit. Others are discussed else where. Please go to the Table of Contents to find where.
+:::tip
+Click the blue section headers to jump directly to the section you want to edit instead of navigating step-by-step.
 :::
 
 ---

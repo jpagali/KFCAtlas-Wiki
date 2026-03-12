@@ -1,187 +1,149 @@
 ---
-title: "Create a Product"
-sidebar_label: "Create a Product"
+title: “Create a Product”
+sidebar_label: “Create a Product”
 ---
 
 # Create a Product
 
 ## What this guide covers
 
-Enables market operators to build a new menu item from scratch in Atlas, defining its product code, display name, variants, pricing, images, and item availability windows so it is ready to be included in menus and sold across digital channels.
+Builds a complete product from scratch, defining its code, name, variants, options, pricing, slots, modifiers, and availability windows so it is ready to sell across digital channels.
 
 ## Steps
 
-**Step 1:** Start by going to the Products screen by clicking here.
+### Page 1: Basic Product Information
 
-**Step 2:** Click the “+ Create New Product” button
-**Step 3:** Fill in each “*”required field and other valuable information.
+**Step 1:** Navigate to the **Products** section using the left navigation menu.
 
-**Step 4:** When you are finished click next.
+**Step 2:** Click the **+ Create New Product** button.
+
+**Step 3:** Fill in the product details. Fields marked with * are required.
+
+| Field | What to enter | Notes |
+|-------|--------------|-------|
+| **Product Code** * | Unique system identifier for this product | Use uppercase letters, numbers, and hyphens only (e.g., “ZINGER-BURGER”). Cannot be changed after creation. |
+| **Product Name** * | Full display name shown to customers | e.g., “Zinger Burger” |
+| **Display Name** | Short name for limited screen space | Defaults to Product Name if left blank |
+| **Description** | Product description for customers | Keep it clear and appetising |
+| **Item Availability** | When this product is available for ordering | Click to open a drawer and set time windows (e.g., “Breakfast” 6am–11am). Leave blank for all-day availability. |
+| **Tags** | Optional labels for reporting and filtering | Enter or select from dropdown |
+
+**Step 4:** Click **Next** to proceed to the Options page.
 
 ![Step 2](./img/step-2.png)
 
-**Step 5:** Fill in the “*”required field by clicking on the down arrow and choose from the list.
+### Page 2: Options
 
-**Step 6:** When you are finished click next.
+**Step 5:** Add customisation groups (e.g., “Size”, “Spice Level”) that customers can choose from when ordering.
+
+| Field | What to enter | Notes |
+|-------|--------------|-------|
+| **Options** | Customisation groups for this product | Select existing options from the dropdown. If the option you need doesn’t exist, click **Create New Option**. |
+
+**Step 6:** To reorder options, click and drag the six-dot drag handle to arrange them in the order you want customers to see them.
+
+**Step 7:** To remove an option, click the **X** next to the option name.
+
+**Step 8:** Click **Next** to proceed to the Variants page.
 
 ![Step 3](./img/step-3.png)
 
-**Step 7:** Fill in the “*”required field by clicking on the down arrow and choose from the list.
+### Page 3: Variants
 
-**Step 8:** Add a Variant Code by clicking in the box to open the field, enter the code, then click save. If you click Cancel it will not be saved.
+**Step 9:** Define each purchasable combination of options (e.g., “Zinger Burger - Regular”).
+
+**Step 10:** For each variant, click in the **Variant Code** field to open the edit box, enter a unique code (e.g., “ZINGER-REGULAR”), then click **Save**. Clicking **Cancel** will discard the code.
 
 ![Step 4](./img/step-4.png)
 
-**Step 9:** When you are finished click next.
+**Step 11:** To set a default variant that customers see first, click the **Default Variant** dropdown and select the variant.
 
-**Step 10:** Select all or individually select the variants you need to add a Slot too.
+**Step 12:** To reorder variants, click and drag the six-dot drag handle.
+
+**Step 13:** To delete a variant, click the three-dot menu next to the variant and select **Delete**.
+
+**Step 14:** Click **Next** to proceed to the Slots page.
 
 ![Step 5](./img/step-5.png)
 
-**Step 11:** Apply bulk slots to your selected Variants by clicking here. The button will turn blue after you select a Variant.
+### Page 4: Slots
 
-**Step 12:** Choose your Slots from the dropdown.
+**Step 15:** Add slots (positions where modifiers can be placed, e.g., “Sauce Selection”, “Cheese Options”).
+
+**Step 16:** Select variants (individually or all) to apply slots to them.
+
+**Step 17:** Click **Apply Bulk Slots** to add the same slots to multiple selected variants at once. Or click **Edit** on a specific variant to add slots to just that variant.
+
+**Step 18:** Select your slots from the dropdown and click **Add**.
+
+**Step 19:** Click **Save** when finished.
 
 ![Step 6](./img/step-6.png)
 
-**Step 13:** When you are done click save.
-
-**Step 14:** When you are finished click next.
+**Step 20:** Click **Next** to proceed to the Bulk Actions page.
 
 ![Step 7](./img/step-7.png)
 
-**Step 15:** Select all or individually select the variants you need to add needed info.
+### Page 5: Bulk Actions
 
-**Step 16:** Apply bulk actions to your selected Variants by clicking any of these 4 here. The button will turn blue after you select a Variant. Each will open a drawer which are shown next on Part 5a.
+**Step 21:** Add pricing, weights, nutrition, or exclusions to variants in bulk.
+
+**Step 22:** Select variants (individually or all).
+
+**Step 23:** Click one of these bulk action buttons to apply to all selected variants:
+- **Add Pricing**: Enter the price for each variant. To use a price range, toggle **Range** to Yes and fill in min/max values.
+- **Add Weights**: Enter the max weight value and select default weight(s).
+- **Add Nutrition**: Click the three-dot menu > **Edit** to add nutritional information.
+- **Add Exclusions**: Check all allergen or dietary exclusion boxes that apply.
 
 ![Step 8](./img/step-8.png)
 
-**Step 16a:** Apply individual actions to a selected Variant by clicking any of these 4 here. Each will open a drawer which are shown next on Part 5a.
+**Step 24:** Click **Save** in each drawer when finished, or **Cancel** to discard changes.
 
-**Step 17:** When you are finished click next.
+**Step 25:** Click **Next** to proceed to the Tags page.
 
 ![Step 9](./img/step-9.png)
 
-**Step 18:** Click on the field to start entering in your tag or choose from the drop down.
+### Page 6: Variant Tags
 
-**Step 19:** When you are finished click next.
+**Step 26:** Add optional tags to variants for reporting and filtering.
+
+**Step 27:** Click **Add** to reveal the required fields. Select a **Variant** from the first dropdown, then enter or select a tag value from the second field.
+
+**Step 28:** Click **Add** again to add more tags if needed.
+
+**Step 29:** Click **Next** to proceed to the Review page.
 
 ![Step 10](./img/step-10.png)
 
-**Step 20:** Take on last look at all the entered details making sure they are right. Depending on your screen sizes you may need to scroll down to see all of the products details.
+### Page 7: Review
 
-**Step 21:** When you are finished reviewing click Create.
+**Step 30:** Review all entered details to ensure they are correct. Use the blue section headers to jump back to a specific page and make corrections if needed.
+
+**Step 31:** When satisfied, click the **Create** button to save the product.
 
 ![Step 11](./img/step-11.png)
 
 ## Notes
 
-:::note
-Depending on your screen size you may need to scroll to see the other columns.
+:::caution
+Clicking **Cancel** at any step discards all unsaved information.
 :::
 
-:::note
-Depending on your screen size you may need to expand your browser or scroll to see all of the input fields.
+:::tip
+You can jump directly to any page by clicking the blue section header instead of clicking **Next** repeatedly.
 :::
 
-:::note
-If you need to add more than one image click here.
+:::tip
+If you need to add more than one image, you can do so on the variant edit screen after creation.
 :::
 
-:::note
-If you need to add the item availability click here and a drawer will pull on that looks like this.
+:::tip
+If you don’t see the option you need in the dropdown, click **Create New Option** to create it first.
 :::
 
-:::note
-If you need to stop your creation click here. Please be aware that your info will not be saved.
-:::
-
-:::note
-When there is more than one Option and you need to put them in order as you see fit, Click on the six dots, Drag and Drop where you need it to be.
-:::
-
-:::note
-Need to go back to the previous screen, click Back.
-:::
-
-:::note
-If you don’t see your Option in the drop down list, click here to create it.
-:::
-
-:::note
-If you need to delete an Option from the list there are two ways of doing it. Click the Delete or on the Circle X next to the Option in the field above.
-:::
-
-:::note
-When there is more than one Variant and you need to put them in order as you see fit, Click/Hold on the six dots, Drag and Drop where you need it to be.
-:::
-
-:::note
-If you need to delete an Option from the list there are two ways of doing it. Click three dots to open the Action Panel, the, click Delete or on the Circle X next to the Option in the field above.
-:::
-
-:::note
-The other actions in this panel are covered next - Part 3a.
-:::
-
-:::note
-If a Default Variant is needed click on the down arrow and choose from the list.
-:::
-
-:::note
-If you need to delete a variant click on Remove. If you need to add a Slot to one variant you can also do that here by clicking Edit.
-:::
-
-:::note
-If you need to stop click here. Please be aware that your info will not be saved.
-:::
-
-:::note
-If you need to apply a filter to easily find your Variants, click here.
-:::
-
-:::note
-You can put your Slots in any order you need by Click/Hold the 6 dots, then drag and drop in the order you need.
-:::
-
-:::note
-If you want to add Variant Tags click here to reveal the two fields that are required “*”. Click on the Arrow in the first field to show a drop down to choose a Variant from. In the second field enter in what you want or choose from the drop down. If you need to add another just click the Add button again.
-:::
-
-:::note
-If you need to go back to the specific step click on the Blue titles like this one.
-:::
-
-:::note
-When you are done in each drawer click Save. Click cancel if you need to stop - Please be aware that your info will not be saved.
-:::
-
-:::note
-Add pricing as needed in each field.
-:::
-
-:::note
-Enter your max Weight Value here. Then select your default(s) from the active boxes shown.
-:::
-
-:::note
-Add/Edit Nutrition info by clicking on the 3 dots and then Edit. If you need to add more click on the Add button.
-:::
-
-:::note
-Chose your exclusions by checking all the boxes that apply.
-:::
-
-:::note
-To apply a Range in pricing toggle to Yes and fill all necessary and required “*” fields. Need to add more click on the Add Range button after filling in the  first one.
-:::
-
-:::note
-Delete was covered on the previous page.
-:::
-
-:::note
-All listed Actions below will add info to the Variant Code you created from the previous step - Part 3. Click on the one you need, a drawer will pull out for you to fill in all that is required, then click Save. If you do not need it just click Cancel.
+:::tip
+You can drag and drop options and variants using the six-dot drag handles to reorder them.
 :::
 
 ---

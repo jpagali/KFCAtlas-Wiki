@@ -7,41 +7,39 @@ sidebar_label: "Delete an Option Value"
 
 ## What this guide covers
 
-Removes a specific choice from an option group when it is discontinued.
+Removes a specific choice from an option group when it is discontinued or no longer needed.
 
 ## Steps
 
-**Step 1:** Start by going to the Products screen by clicking here.
-**Step 2:** Click the Option Values tab.
+**Step 1:** Navigate to the **Products** section using the left navigation menu.
+
+**Step 2:** Click the **Option Values** tab.
 
 ![Step 2](./img/step-2.png)
 
-**Step 3:** You can search Option Values by entering the Name or Code or search by Catalog Tag.
+**Step 3:** Search for the option value you want to delete by entering the Name, Code, or Catalog Tag in the search field.
 
-**Step 4:** Click the 3 dots to reveal a panel. Click Delete.
+**Step 4:** Click the three-dot menu next to the option value, then select **Delete**.
 
-**Step 5:** Click the Red button to permanently delete the Option Value.
+**Step 5:** A confirmation modal will appear showing all the areas of the system where this option value is used. Review this carefully to ensure you are deleting the correct choice.
+
+**Step 6:** Click the red **Delete** button to permanently remove the option value.
 
 ![Step 3](./img/step-3.png)
 
 ## Notes
 
-:::note
-There are other options in the window  but for this step we are just looking at Delete. Others are discussed else where. Please go to the Table of Contents to find where.
+:::caution
+Deleting an option value is permanent and cannot be undone. The choice will be removed from all products that offer it.
 :::
 
-:::note
-To Edit an Option Value you can also click on the blue copy.
+:::tip
+You can search option values by Name, Code, or Catalog Tag to quickly find the item you want to delete.
 :::
 
-:::note
-If you do not want to delete the Option Value click Cancel.
+:::caution
+Click **Cancel** if you do not want to proceed with deletion.
 :::
-
-## Additional information
-
-- Delete an Option Value
-- WARNING: This modal will show you all the different areas of the Catalog that the product will be removed from. We suggest you look this over before deleting. Deleting isn’t reversible.
 
 ---
 

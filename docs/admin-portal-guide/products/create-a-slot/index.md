@@ -1,77 +1,86 @@
 ---
-title: "Create a Slot"
-sidebar_label: "Create a Slot"
+title: “Create a Slot”
+sidebar_label: “Create a Slot”
 ---
 
 # Create a Slot
 
 ## What this guide covers
 
-Defines a position within a product where a modifier or bundle choice can be placed, structuring how add-ons are presented to customers.
+Creates a position within a product where modifiers can be placed (e.g., “Sauce Selection”, “Cheese Options”), structuring how add-ons are presented to customers.
 
 ## Steps
 
-**Step 1:** Start by going to the Products screen by clicking here.
-**Step 2:** Click the Slots tab.
+### Step 1: Basic Slot Information
+
+**Step 1:** Navigate to the **Products** section using the left navigation menu.
+
+**Step 2:** Click the **Slots** tab.
 
 ![Step 2](./img/step-2.png)
 
-**Step 3:** Click the “+ Create New Slot” button.
+**Step 3:** Click the **+ Create New Slot** button.
 
-![Step 3](./img/step-3.png)
+**Step 4:** Fill in the slot details. Fields marked with * are required.
 
-**Step 4:** Fill in each “*”required field and other valuable information.
+| Field | What to enter | Notes |
+|-------|--------------|-------|
+| **Slot Code** * | Unique identifier for this slot | Use uppercase letters, numbers, and hyphens (e.g., “SLOT-SAUCE”) |
+| **Slot Name** * | Describes what customisation this slot offers | e.g., “Sauce Selection”, “Cheese Options” |
+| **Min Quantity** | Minimum number of modifier selections required | 0 = optional |
+| **Max Quantity** | Maximum number of modifier selections allowed | Leave blank for unlimited |
 
 ![Step 4](./img/step-4.png)
 
-**Step 5:** When you are finished adding in all the information, click Next to continue.
+**Step 5:** When you are finished, click **Next** to proceed to the Modifiers page.
 
 ![Step 5](./img/step-5.png)
 
-**Step 6:** Choose all Modifiers needed from the drop down and then click the Add button.
+### Step 2: Add Modifiers
+
+**Step 6:** Select all modifiers needed for this slot from the dropdown, then click **Add** for each one.
+
+**Step 7:** If you do not see the modifier you need, click **Create New Modifier** to create it first.
 
 ![Step 6](./img/step-6.png)
 
-**Step 7:** Choose all the Weights needed from the drop down and then click the Add button.
+**Step 8:** To reorder modifiers, click and drag the six-dot drag handle.
+
+**Step 9:** Click **Next** to proceed to the Weights page.
+
+### Step 3: Add Weights
+
+**Step 10:** Select weight options (portion sizes) for each modifier from the dropdown, then click **Add**.
+
+**Step 11:** If multiple modifiers share the same weights, check the **Apply to all** box to assign those weights to all modifiers at once.
+
+**Step 12:** To reorder weights, click and drag the six-dot drag handle.
 
 ![Step 7](./img/step-7.png)
 
+**Step 13:** Click **Create** to save the slot.
+
 ## Notes
 
-:::note
-If you need to stop your creation click here. Please be aware that your info will not be saved.
+:::caution
+Clicking **Cancel** discards all unsaved information.
 :::
 
-:::note
-If you do not see a Modifier you need click the Create New Modifier and follow the steps. Creating a Modifier will not be discussed in this flow.
+:::tip
+If you do not see a modifier you need, click **Create New Modifier** to add it before proceeding.
 :::
 
-:::note
-If you need to go back a step, click Back. Your info will not be lost by going back.
+:::tip
+You can reorder modifiers and weights using the six-dot drag handles.
 :::
 
-:::note
-After adding Modifiers a notification will let you know that you need to add Weights to the modifier.
+:::tip
+Use **Apply to all** to quickly assign the same weights to multiple modifiers at once.
 :::
 
-:::note
-If your Modifiers will be using the same Weights, then check this box for a bulk action.
+:::tip
+You can go back to previous steps by clicking **Back** without losing information.
 :::
-
-:::note
-If needed drag and drop them in the order you need them to be by clicking on the 6 Vertical dots.
-:::
-
-:::note
-If you need to go back a step, click Back or on the step you need on the sides. Your info will not be lost by going back.
-:::
-
-## Additional information
-
-- Create a Slot - Step 1
-- Create a Slot - Step 2
-- Create a Slot - Step 2, cont’d
-- Create a Slot - Step 3
 
 ---
 
