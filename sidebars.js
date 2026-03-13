@@ -11,6 +11,16 @@ const sidebars = {
       items: [
         'frontend/overview',
         'frontend/design-system',
+        {
+          type: 'category',
+          label: 'Release Notes',
+          link: { type: 'doc', id: 'release-notes/index' },
+          collapsed: false,
+          items: [
+            'release-notes/2026-03-13',
+            'release-notes/2026-03-12',
+          ],
+        },
       ],
     },
     {

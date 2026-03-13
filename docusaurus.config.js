@@ -3,6 +3,11 @@
 /** @type {import('@docusaurus/types').Config} */
 const isGitHubPagesBuild =
   process.env.GITHUB_PAGES === 'true' || process.env.GITHUB_ACTIONS === 'true';
+const buildUpdatedDate = new Intl.DateTimeFormat('en-US', {
+  month: '2-digit',
+  day: '2-digit',
+  year: 'numeric',
+}).format(new Date());
 
 const config = {
   title: 'KFC Atlas Knowledge Center',
@@ -157,10 +162,11 @@ const config = {
             title: 'About',
             items: [
               { label: 'About the Knowledge Center', to: '/docs/about-knowledge-center' },
+              { label: 'Changelog', to: '/docs/release-notes' },
             ],
           },
         ],
-        copyright: `© ${new Date().getFullYear()} Yum! Brands. KFC Atlas Platform.`,
+        copyright: `© ${new Date().getFullYear()} Yum! Brands. KFC Atlas Platform. Updated: ${buildUpdatedDate}`,
       },
 
       prism: {
