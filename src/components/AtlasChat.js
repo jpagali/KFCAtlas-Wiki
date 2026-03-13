@@ -7,6 +7,8 @@ const PAGE_CONTEXT = {
   '/docs/frontend/overview':            'Front-end Overview — the Atlas platform customer-facing layer, markets in scope (Japan, Australia), audience roles.',
   '/docs/frontend/customer-journey':    'Customer Journey — the 6-step ordering flow, loyalty & promotions per market (Japan points-based, Australia voucher-based), market configuration matrix.',
   '/docs/frontend/order-channels':      'Order Channels — Dine-in, Delivery, Takeaway configuration per restaurant, channel capabilities, Japan and Australia channel status.',
+  '/docs/frontend/customer-engagement-surveys': 'Customer Engagement Surveys — KFC Listens style guest feedback programmes, survey touchpoints, market operating model, and Qualtrics as the survey platform.',
+  '/docs/frontend/customer-engagement-surveys/qualtrics': 'Qualtrics — survey delivery platform for KFC Listens style programmes, data capture, escalation flows, and CX reporting workflows.',
   '/docs/frontend/market-configurations': 'Market Configurations — feature flag architecture, what can be configured per market, Japan and Australia current settings, how to request changes.',
   '/docs/admin-portal-guide/':          'Admin Portal Guide — operational guide for stores, menus, products, promotions, and support workflows.',
   '/docs/admin-portal-guide/stores/':   'Stores — store setup, menu publishing, order toggles, taxes, and beneficiary management.',
@@ -27,6 +29,16 @@ const SUGGESTED_ARTICLES = {
   '/docs/frontend/order-channels': [
     { label: 'Read order channel details', to: '/docs/frontend/order-channels' },
     { label: 'See the customer journey', to: '/docs/frontend/customer-journey' },
+    { label: 'Review market configurations', to: '/docs/frontend/market-configurations' },
+  ],
+  '/docs/frontend/customer-engagement-surveys': [
+    { label: 'Open customer engagement surveys', to: '/docs/frontend/customer-engagement-surveys' },
+    { label: 'Read the Qualtrics page', to: '/docs/frontend/customer-engagement-surveys/qualtrics' },
+    { label: 'See the customer journey', to: '/docs/frontend/customer-journey' },
+  ],
+  '/docs/frontend/customer-engagement-surveys/qualtrics': [
+    { label: 'Read the Qualtrics page', to: '/docs/frontend/customer-engagement-surveys/qualtrics' },
+    { label: 'Open customer engagement surveys', to: '/docs/frontend/customer-engagement-surveys' },
     { label: 'Review market configurations', to: '/docs/frontend/market-configurations' },
   ],
   '/docs/admin-portal-guide/stores/': [
@@ -107,6 +119,16 @@ const JAPANESE_SUGGESTED_ARTICLES = {
   '/docs/frontend/order-channels': [
     { label: '注文チャネル詳細を読む', to: '/docs/frontend/order-channels' },
     { label: 'カスタマージャーニーを見る', to: '/docs/frontend/customer-journey' },
+    { label: '市場設定を確認する', to: '/docs/frontend/market-configurations' },
+  ],
+  '/docs/frontend/customer-engagement-surveys': [
+    { label: '顧客エンゲージメント調査を見る', to: '/docs/frontend/customer-engagement-surveys' },
+    { label: 'Qualtricsページを読む', to: '/docs/frontend/customer-engagement-surveys/qualtrics' },
+    { label: 'カスタマージャーニーを見る', to: '/docs/frontend/customer-journey' },
+  ],
+  '/docs/frontend/customer-engagement-surveys/qualtrics': [
+    { label: 'Qualtricsページを読む', to: '/docs/frontend/customer-engagement-surveys/qualtrics' },
+    { label: '顧客エンゲージメント調査を見る', to: '/docs/frontend/customer-engagement-surveys' },
     { label: '市場設定を確認する', to: '/docs/frontend/market-configurations' },
   ],
   '/docs/admin-portal-guide/stores/': [

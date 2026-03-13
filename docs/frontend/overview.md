@@ -15,6 +15,7 @@ The Atlas front-end spans three areas:
 
 - **Customer Journey** — the end-to-end flow from discovery to order confirmation
 - **Order Channels** — how Dine-in, Delivery, and Takeaway are presented and managed per restaurant
+- **Customer Engagement Surveys** — how KFC Listens-style feedback programmes collect post-order sentiment
 - **Market Configurations** — what can be switched on or off per market (loyalty, promos, scheduling)
 
 ## Design System

@@ -31,7 +31,7 @@ const HOME_CONTENT = {
         desc: 'Understand the end-to-end ordering journey — from discovery through checkout. Covers market-specific configurations for loyalty, promotions, and order channels in Japan and Australia.',
         link: '/docs/frontend/overview',
         cta: 'Read the guide',
-        items: ['Customer Journey', 'Order Channels', 'Market Configurations'],
+        items: ['Customer Journey', 'Order Channels', 'Customer Engagement Surveys'],
       },
       {
         emoji: '⚙️',
@@ -83,7 +83,7 @@ const HOME_CONTENT = {
         desc: '発見からチェックアウトまで、注文体験全体を理解できます。日本とオーストラリアにおけるロイヤルティ、プロモーション、注文チャネルの市場別設定もカバーしています。',
         link: '/docs/frontend/overview',
         cta: 'ガイドを見る',
-        items: ['カスタマージャーニー', '注文チャネル', '市場設定'],
+        items: ['カスタマージャーニー', '注文チャネル', '顧客エンゲージメント調査'],
       },
       {
         emoji: '⚙️',

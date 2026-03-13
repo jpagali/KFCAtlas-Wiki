@@ -123,6 +123,7 @@ const config = {
               { label: 'Overview', to: '/docs/frontend/overview' },
               { label: 'Customer Journey', to: '/docs/frontend/customer-journey' },
               { label: 'Order Channels', to: '/docs/frontend/order-channels' },
+              { label: 'Customer Engagement Surveys', to: '/docs/frontend/customer-engagement-surveys' },
               { label: 'Market Configurations', to: '/docs/frontend/market-configurations' },
               { label: 'Design System', to: '/docs/frontend/design-system' },
               { label: 'Contentful', to: '/docs/frontend/contentful/' },
