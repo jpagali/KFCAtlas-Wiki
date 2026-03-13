@@ -113,7 +113,7 @@ const config = {
             position: 'right',
           },
           {
-            type: 'localeDropdown',
+            type: 'custom-locale-switcher',
             position: 'right',
           },
         ],

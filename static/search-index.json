@@ -2837,6 +2837,65 @@
     "url": "/docs/playbooks/troubleshooting/"
   },
   {
+    "locale": "en-US",
+    "title": "Release 2026.03.12",
+    "headings": [
+      "Highlights",
+      "What Changed",
+      "Admin Portal Guide",
+      "Image Handling",
+      "Supporting Improvements",
+      "In Plain English"
+    ],
+    "body": "Release 2026.03.12 Released on March 12, 2026 . This release was centered on a major expansion of the Admin Portal Guide. The work was mostly about scale and cleanup: adding a large amount of operational content, fixing navigation and links, and making article pages more usable. Highlights The Admin Portal Guide was expanded in a major way A very large set of admin topics was added, bringing much broader operational coverage into the Knowledge Center. Navigation and slugs were cleaned up Sidebar document IDs, markdown links, and index paths were corrected so the growing guide would resolve properly inside Docusaurus. Article structure was improved Admin Portal Guide content was reworked into a more structured format, including article reorganization and image handling improvements. Image behavior became cleaner and more stable Figma splash images were removed, image zoom was added, and an SSR related image issue was fixed. General docs polish continued The footer content and design system references were improved to better connect sections of the site. What Changed Admin Portal Guide Expanded the Admin Portal Guide with a large set of new topics and images Restructured admin articles to work better as documentation pages Fixed sidebar IDs to match Docusaurus slugs Fixed internal markdown links in admin content Replaced directory style links with explicit index paths Appended to sidebar IDs after the subdirectory restructure Image Handling Removed Figma splash images from articles Added image zoom behavior Replaced the previous location based image zoom approach to avoid SSR crashes Supporting Improvements Improved admin guide quality and consistency Refreshed footer content Added stronger design system links In Plain English This was the release that gave the Admin Portal Guide real weight. It added a lot more operational material, fixed the rough edges that come with a large content expansion, and made the guide much easier to navigate and maintain.",
+    "summary": "Release 2026.03.12",
+    "section": "release-notes",
+    "url": "/docs/release-notes/2026-03-12/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Release 2026.03.13",
+    "headings": [
+      "Highlights",
+      "What Changed",
+      "Front end Guide",
+      "Platform and Site Experience",
+      "Localization",
+      "In Plain English"
+    ],
+    "body": "Release 2026.03.13 Released on March 13, 2026 . This release focused on turning the Knowledge Center into a more complete, navigable product. The biggest improvements were around publishing, customer journey coverage, and making the front end guide feel more structured and easier to browse. Highlights GitHub Pages deployment was set up and published The Knowledge Center now has a clearer deployment path and a published demo snapshot, making it easier to review and share outside local development. Search and routing were stabilized for Pages Search routing and embedded diagram behavior were cleaned up so the hosted experience is more reliable. Customer Journey documentation became a real documentation tree Instead of a single overview page, the customer journey is now broken into step by step sections with individual subpages for the main ordering flow and supporting journeys. Customer Engagement Surveys were added to the front end guide A dedicated survey area now exists, including Qualtrics coverage, so post order feedback behavior is easier to locate and explain. Japanese navigation support was expanded The site gained additional Japanese customer journey documentation and navigation translation coverage. What Changed Front end Guide Added a structured Customer Journey section with subpages for: Setup Order Find Products Find Deals and Rewards Preview Product and Customize Order and Get Track Order Added Supporting Journeys for: Access Account and Manage Profile Get Help Find a Store Learn About KFC Added Customer Engagement Surveys documentation, including a Qualtrics page Updated overview and site copy to reflect the newer front end structure Platform and Site Experience Set up GitHub Pages deployment Published a current demo snapshot Fixed Atlas chat links and diagram embeds Improved Pages search routing Localization Added Japanese customer journey docs and navigation translations In Plain English This was the release that made the site feel more like a usable product and less like a loose collection of pages. Navigation is stronger, deployment is clearer, and the customer facing documentation now has a much better structure for future content.",
+    "summary": "Release 2026.03.13",
+    "section": "release-notes",
+    "url": "/docs/release-notes/2026-03-13/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Release 2026.03.14",
+    "headings": [
+      "Highlights",
+      "What Changed",
+      "Localization",
+      "Site Experience",
+      "Developer Experience",
+      "In Plain English"
+    ],
+    "body": "Release 2026.03.14 Released on March 14, 2026 . This release focused on cleanup and stability. The main goal was to make localization feel reliable in practice, especially when moving between English and Japanese while browsing real documentation pages. Highlights Locale switching now follows the current page The language switcher now uses Docusaurus' page aware alternate URL logic, so switching between EN and JP keeps you on the equivalent route instead of relying on brittle path rewriting. Japanese documentation coverage was filled in where it was visibly broken Missing Japanese survey pages and related overview references were added so key front end documentation paths resolve correctly. Local testing is simpler and less confusing The temporary dual server dev workaround was removed. The docs now point people toward a cleaner workflow: use a normal locale specific dev server for editing and a single port built preview for cross locale testing. Changelog navigation was decluttered Release notes remain available in the footer without taking space in the left documentation sidebar. What Changed Localization Replaced manual locale URL rewriting with Docusaurus alternate page resolution in the navbar locale switcher Improved Japanese footer translation coverage for newly added footer items Added Japanese customer engagement survey pages, including Qualtrics Updated the Japanese front end overview so newer sections are represented consistently Site Experience Removed release notes from the front end left navigation Kept changelog access in the footer only Rebuilt the static output so the latest locale behavior is reflected in the current site assets Developer Experience Removed the temporary multi server locale launcher Simplified local scripts back to a cleaner default setup Clarified in the README that one port built preview is the right way to test EN/JP switching In Plain English This was the cleanup release. The site now switches languages more predictably, the Japanese paths that were obviously missing have been filled in, and the local workflow is easier to understand without carrying around experimental setup code.",
+    "summary": "Release 2026.03.14",
+    "section": "release-notes",
+    "url": "/docs/release-notes/2026-03-14/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Changelog",
+    "headings": [
+      "Recent Releases"
+    ],
+    "body": "Changelog This section is the living changelog for the Atlas Knowledge Center. It keeps a simple, human readable record of what changed, when it changed, and what those updates mean in practice. For now, releases are tracked using a lightweight calendar version: for the March 14, 2026 release for the March 12, 2026 release for the March 13, 2026 release As the site matures, this can evolve into a more formal release cadence. For now, the goal is clarity over ceremony. Recent Releases",
+    "summary": "Changelog",
+    "section": "release-notes",
+    "url": "/docs/release-notes/"
+  },
+  {
     "locale": "ja-JP",
     "title": "ナレッジセンターについて",
     "headings": [
@@ -4737,6 +4796,39 @@
   },
   {
     "locale": "ja-JP",
+    "title": "\"カスタマーエンゲージメント調査\"",
+    "headings": [
+      "この機能でできること",
+      "カスタマージャーニー上のどこで表示されるか",
+      "市場がこれを使う理由",
+      "代表的な運用モデル",
+      "現在の調査プラットフォーム"
+    ],
+    "body": "カスタマーエンゲージメント調査 カスタマーエンゲージメント調査は、注文、来店、またはサポート対応の後に、お客様から構造化されたフィードバックを収集するための仕組みです。Atlas では、主に KFC Listens のようなプログラムで利用され、満足度の把握、サービス課題の特定、市場チーム向けのインサイト抽出に使われます。 この機能でできること カスタマーエンゲージメント調査により、市場は以下を実施できます。 購入後のお客様にフィードバックを依頼する チャネル、店舗、キャンペーンごとの満足度を測定する 回答結果をレポーティング基盤へ連携し、分析に活用する 低評価、苦情、サービスリカバリーの対象に対してフォローアップを開始する カスタマージャーニー上のどこで表示されるか 調査への導線は、市場設定に応じて複数のタッチポイントに配置できます。 タッチポイント 表示例 注文完了 チェックアウト後や確認画面で案内を出す メールレシート レシートメール内にアンケート CTA を含める プッシュ通知 受け渡し完了後にフォローアップ案内を送る 店頭掲示物 QR コードやレシート URL からアンケートへ誘導する 市場がこれを使う理由 KFC Listens のようなプログラムは、料理の品質、提供スピード、スタッフ対応、注文精度などについて、お客様から直接シグナルを得る手段になります。このフィードバックは市場にとって次の価値があります。 店舗パフォーマンスの比較 継続的に発生している課題の発見 キャンペーンや商品変更の効果確認 低評価回答への優先的なサービスリカバリー 代表的な運用モデル 領域 主な担当 アンケート設計とロジック CX / Insights チーム 招待トリガー設定 デジタルプロダクトまたは CRM チーム 回答レポーティング 市場運営 / Insights サービスリカバリー運用 カスタマーサポートまたは店舗運営 現在の調査プラットフォーム 現在ドキュメント化されているカスタマーエンゲージメント調査プラットフォームは次の通りです。 :::info アンケートプログラムは市場ごとに設定されます。配信タイミング、チャネル、インセンティブ、エスカレーションルールは、日本、オーストラリア、今後の市場で異なる場合があります。 :::",
+    "summary": "カスタマーエンゲージメント調査",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-engagement-surveys/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"Qualtrics\"",
+    "headings": [
+      "Qualtrics が担うこと",
+      "代表的な KFC Listens フロー",
+      "代表的に収集されるデータ",
+      "運用上の考慮点",
+      "アンケート配信タイミング",
+      "インセンティブ",
+      "エスカレーション",
+      "連携メモ"
+    ],
+    "body": "Qualtrics 機能領域: Qualtrics は、 KFC Listens 型のカスタマーエンゲージメント調査で使われるアンケート基盤です。アンケート配信、分岐ロジック、回答収集、レポーティング運用を担い、顧客体験チームや市場運営チームが活用します。 Qualtrics が担うこと Atlas のエコシステムでは、Qualtrics は通常次の用途を支えます。 Web リンクや QR コードから表示されるアンケートフォーム チャネル、市場、回答タイプに応じた条件分岐質問 CSAT、NPS、理由コードなどの満足度指標 CX レポーティング用の回答エクスポートとダッシュボード フォローアップが必要な低評価回答へのアラート 代表的な KFC Listens フロー 代表的に収集されるデータ データ項目 例 来店または注文参照情報 注文番号、店舗 ID、来店日 チャネル 店内飲食、持ち帰り、デリバリー、アプリ、Web 満足度スコア 来店または注文全体の評価 課題カテゴリ 商品品質、不足品、スピード、スタッフ対応 自由記述フィードバック お客様自身のコメント 運用上の考慮点 アンケート配信タイミング 市場はいつお客様へ招待を送るかを決めます。一般的には、チェックアウト直後、受け渡し後、または店頭で使われるレシートリンク経由などのパターンがあります。 インセンティブ プログラムによっては、アンケート完了後に認証コードやオファーを提供することがあります。インセンティブルールは市場レベルで管理され、プロモーションまたは CRM チームとの調整が必要になる場合があります。 エスカレーション 低評価回答は、カスタマーサポートや CX レビューフローへ送られることがあります。市場は次の点を定義しておく必要があります。 どのスコア閾値でアラートを作るか どのチームがフォローアップを担当するか どれくらいの時間内にお客様へ連絡すべきか 連携メモ Qualtrics は Atlas に隣接する仕組みであり、コアの注文フローそのものではありません。アンケート体験は Atlas の注文データを参照できますが、アンケート基盤自体はメインの注文アプリケーションとは別で管理されます。 :::tip KFC Listens プログラムを開始または変更する場合は、公開前にアンケート文言、配信タイミング、サービスリカバリーの SLA を揃えてください。タイミングがよくてもフォローアップ責任が曖昧だと、有益なインサイトではなく運用ノイズになりやすくなります。 :::",
+    "summary": "Qualtrics",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-engagement-surveys/qualtrics/"
+  },
+  {
+    "locale": "ja-JP",
     "title": "\"アカウント\"",
     "headings": [
       "この体験設計の意図"
@@ -5425,7 +5517,7 @@
       "対象市場",
       "このガイドを読むべき人"
     ],
-    "body": "フロントエンド概要 KFC Atlasのフロントエンド は、お客様が触れるプラットフォームの画面群です。オンライン注文、KFCアプリ、外部アグリゲーター経由の注文時に表示される体験がここに含まれます。 このガイドは、 店舗チームとBMU 向けです。お客様にどのような体験が提供されるのか、市場ごとにどう振る舞うのか、またプロダクトの再デプロイなしで何を設定できるのかを理解するために使います。 フロントエンドで扱う内容 Atlasのフロントエンドは、主に次の3領域で構成されています。 カスタマージャーニー — 検索から注文確定までの一連の流れ 注文チャネル — 店内飲食、デリバリー、持ち帰りが店舗ごとにどう表示・管理されるか 市場設定 — 市場ごとにオン・オフできる機能（ロイヤルティ、プロモーション、スケジュール設定など） 対象市場 市場 アプリプラットフォーム 🇯🇵 Japan KFC Japan App + Web 🇦🇺 Australia KFC Australia App + Web このガイドを読むべき人 役割 関連する理由 店舗運営者 / 市場チーム お客様の体験と、自分たちで設定できる項目を理解するため BMU / 地域オフィス 市場レベルの設定項目と、機能の有効化方法を理解するため プリセールス / 新市場オンボーディング担当 ローンチ前に、標準機能として何が提供されるかを把握するため :::info フロントエンドは、すべての市場で共通のコードベース上に構築されています。市場ごとの差分は個別ビルドではなく、設定で制御されます。 :::",
+    "body": "フロントエンド概要 KFC Atlasのフロントエンド は、お客様が触れるプラットフォームの画面群です。オンライン注文、KFCアプリ、外部アグリゲーター経由の注文時に表示される体験がここに含まれます。 このガイドは、 店舗チームとBMU 向けです。お客様にどのような体験が提供されるのか、市場ごとにどう振る舞うのか、またプロダクトの再デプロイなしで何を設定できるのかを理解するために使います。 フロントエンドで扱う内容 Atlasのフロントエンドは、主に次の4領域で構成されています。 カスタマージャーニー — 検索から注文確定までの一連の流れ 注文チャネル — 店内飲食、デリバリー、持ち帰りが店舗ごとにどう表示・管理されるか カスタマーエンゲージメント調査 — KFC Listens 型のフィードバックプログラムが注文後にどう機能するか 市場設定 — 市場ごとにオン・オフできる機能（ロイヤルティ、プロモーション、スケジュール設定など） 対象市場 市場 アプリプラットフォーム 🇯🇵 Japan KFC Japan App + Web 🇦🇺 Australia KFC Australia App + Web このガイドを読むべき人 役割 関連する理由 店舗運営者 / 市場チーム お客様の体験と、自分たちで設定できる項目を理解するため BMU / 地域オフィス 市場レベルの設定項目と、機能の有効化方法を理解するため プリセールス / 新市場オンボーディング担当 ローンチ前に、標準機能として何が提供されるかを把握するため :::info フロントエンドは、すべての市場で共通のコードベース上に構築されています。市場ごとの差分は個別ビルドではなく、設定で制御されます。 :::",
     "summary": "フロントエンド概要",
     "section": "frontend",
     "url": "/ja-JP/docs/frontend/overview/"

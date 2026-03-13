@@ -23,6 +23,10 @@
     "message": "注文チャネル",
     "description": "The label of footer link with label=Order Channels linking to /docs/frontend/order-channels"
   },
+  "link.item.label.Customer Engagement Surveys": {
+    "message": "カスタマーエンゲージメント調査",
+    "description": "The label of footer link with label=Customer Engagement Surveys linking to /docs/frontend/customer-engagement-surveys"
+  },
   "link.item.label.Market Configurations": {
     "message": "市場設定",
     "description": "The label of footer link with label=Market Configurations linking to /docs/frontend/market-configurations"
@@ -86,6 +90,18 @@
   "link.item.label.Troubleshooting & Escalation": {
     "message": "トラブル対応とエスカレーション",
     "description": "The label of footer link with label=Troubleshooting & Escalation linking to /docs/playbooks/troubleshooting"
+  },
+  "link.title.About": {
+    "message": "このサイトについて",
+    "description": "The title of the footer links column with title=About in the footer"
+  },
+  "link.item.label.About the Knowledge Center": {
+    "message": "ナレッジセンターについて",
+    "description": "The label of footer link with label=About the Knowledge Center linking to /docs/about-knowledge-center"
+  },
+  "link.item.label.Changelog": {
+    "message": "変更履歴",
+    "description": "The label of footer link with label=Changelog linking to /docs/release-notes"
   },
   "copyright": {
     "message": "© 2026 Yum! Brands. KFC Atlas Platform.",

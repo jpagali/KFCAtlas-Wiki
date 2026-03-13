@@ -14,25 +14,15 @@ yarn
 npm run start
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+This command starts the English Docusaurus development server on `http://localhost:3001/`.
 
-### Locale-specific local preview
-
-Docusaurus local development serves one locale at a time. That means a default `npm run start` session will not expose `/ja-JP/` routes unless the server itself is started in Japanese mode.
-
-Use:
-
-```bash
-npm run start:en
-```
-
-for English, or:
+If you want to inspect the Japanese locale directly, use:
 
 ```bash
 npm run start:ja
 ```
 
-for Japanese.
+That starts the Japanese Docusaurus development server on `http://localhost:3002/ja-JP/`.
 
 If you need to verify that both locales are generated correctly, use:
 
@@ -41,6 +31,14 @@ npm run build
 ```
 
 and inspect the output in `build/` and `build/ja-JP/`.
+
+To preview the full built site locally, including cross-locale navigation between English and Japanese, use:
+
+```bash
+npm run preview
+```
+
+This serves the generated `build/` output from one port, which is the recommended way to test EN/JP switching because it includes both `/` and `/ja-JP/` in the same site instance.
 
 ## Build
 
