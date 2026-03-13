@@ -8,8 +8,8 @@ const HOME_CONTENT = {
   'en-US': {
     description: 'KFC Atlas Platform Knowledge Center',
     badge: 'Atlas Platform · Knowledge Center',
-    titleLead: 'Everything you need to',
-    titleAccent: 'operate the platform.',
+    titleLead: 'The secret recipe for',
+    titleAccent: 'running the platform.',
     summary:
       'Your complete guide to the KFC Atlas Platform — from the customer ordering experience to day-to-day restaurant operations across Japan and Australia.',
     heroSearchPlaceholder: 'Search guides, articles, and headings',

@@ -26,16 +26,22 @@ This command generates static content into the `build` directory and can be serv
 
 ## Deployment
 
-Using SSH:
+This site is deployed to GitHub Pages via GitHub Actions.
+
+Production deploys run automatically when changes are pushed to the `main` branch.
+
+The workflow is defined in `.github/workflows/deploy-gh-pages.yml` and will:
 
 ```bash
-USE_SSH=true yarn deploy
+npm ci
+npm run build
 ```
 
-Not using SSH:
+Then publish the generated `build` output to GitHub Pages.
 
-```bash
-GIT_USER=<Your GitHub username> yarn deploy
-```
+## Release Flow
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+1. Push changes to `staging` for review/testing.
+2. Merge `staging` into `main`.
+3. Push `main`.
+4. GitHub Actions deploys the site to GitHub Pages automatically.
