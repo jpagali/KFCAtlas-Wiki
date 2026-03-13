@@ -1876,19 +1876,557 @@
   },
   {
     "locale": "en-US",
+    "title": "Customer Engagement Surveys",
+    "headings": [
+      "What This Capability Does",
+      "Where It Appears in the Customer Journey",
+      "Why Markets Use It",
+      "Typical Operating Model",
+      "Current Survey Platform"
+    ],
+    "body": "Customer Engagement Surveys Customer engagement surveys help KFC capture structured guest feedback after an order, visit, or support interaction. In Atlas, this capability is typically used for KFC Listens style programmes that measure satisfaction, identify service issues, and surface insights for market teams. What This Capability Does Customer engagement surveys let markets: Invite customers to share post purchase feedback Measure satisfaction across channels, stores, and campaigns Route survey responses into a reporting platform for analysis Trigger follow up actions for detractors, complaints, or recovery workflows Where It Appears in the Customer Journey Survey invitations can be placed at different touchpoints depending on the market setup: Touchpoint Example Behaviour Order confirmation Prompt after checkout or on the confirmation screen Email receipt Include a survey CTA in the receipt email Push notification Send a follow up invite after fulfilment In store collateral QR code or receipt URL driving to the survey Why Markets Use It KFC Listens and similar programmes give operators a direct signal from customers about food quality, speed, staff friendliness, and order accuracy. That feedback helps markets: Benchmark store performance Detect recurring customer pain points Validate campaign or product changes Prioritise service recovery for low scoring responses Typical Operating Model Area Owner Survey design and logic CX / Insights team Invitation trigger rules Digital product or CRM team Response reporting Market operations / Insights Service recovery workflows Customer support or store operations Current Survey Platform The current documented survey platform for customer engagement surveys is: :::info Survey programmes are market configured. Trigger timing, channels, incentives, and escalation rules may differ between Japan, Australia, and future markets. :::",
+    "summary": "Customer Engagement Surveys",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-engagement-surveys/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Qualtrics",
+    "headings": [
+      "What Qualtrics Handles",
+      "Typical KFC Listens Flow",
+      "Common Data Captured",
+      "Operational Considerations",
+      "Survey Triggering",
+      "Incentives",
+      "Escalations",
+      "Integration Notes"
+    ],
+    "body": "Qualtrics Feature area: Qualtrics is used as the survey platform for KFC Listens style customer engagement surveys. It handles survey delivery, branching logic, response capture, and reporting workflows used by customer experience and market operations teams. What Qualtrics Handles Within the Atlas ecosystem, Qualtrics typically supports: Survey forms presented through web links or QR codes Conditional survey questions based on channel, market, or response type Satisfaction metrics such as CSAT, NPS, and reason codes Response exports and dashboards for CX reporting Alerts for low score responses that may require follow up Typical KFC Listens Flow Common Data Captured Data Point Example Visit or order reference Order number, store ID, visit date Channel Dine in, Takeaway, Delivery, App, Web Satisfaction score Overall visit or order rating Issue category Food quality, missing items, speed, staff service Free text feedback Customer comments in their own words Operational Considerations Survey Triggering Markets choose when to invite customers. Common patterns include immediately after checkout, after fulfilment, or from printed receipt links used in store. Incentives Some programmes include an incentive, such as a validation code or offer after survey completion. Incentive rules are managed at the market level and may require coordination with promotions or CRM teams. Escalations Low scoring responses can be routed into customer support or CX review workflows. Markets should define: What score threshold creates an alert Which team owns follow up How quickly customers should be contacted Integration Notes Qualtrics is adjacent to Atlas rather than a core ordering flow dependency. The survey experience can reference Atlas order data, but the survey platform itself is managed separately from the main customer ordering application. :::tip When launching or changing a KFC Listens programme, align the survey wording, trigger timing, and service recovery SLA before going live. A well timed survey with unclear follow up ownership usually creates operational noise instead of useful insight. :::",
+    "summary": "Qualtrics",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-engagement-surveys/qualtrics/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Account",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Account This page covers profile tools such as order history, favorite orders, saved stores and addresses, communication preferences, settings, and gift cards. Why This Step Is Designed This Way Account spaces support repeat behavior, personalization, and self service management across the full lifecycle.",
+    "summary": "Account",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/access-account-and-manage-profile/account/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Access Account and Manage Profile",
+    "headings": [
+      "Pages in This Section"
+    ],
+    "body": "Access Account and Manage Profile This supporting journey covers account entry, authentication, profile management, and history based utilities used before, during, or after ordering. Pages in This Section",
+    "summary": "Access Account and Manage Profile",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/access-account-and-manage-profile/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Sign In",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Sign In This page covers authentication flows for returning customers. Why This Step Is Designed This Way Returning customers value speed and reliability, so sign in needs to support fast re entry into active tasks.",
+    "summary": "Sign In",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/access-account-and-manage-profile/sign-in/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Sign Up",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Sign Up This page covers account creation through email, OTP, or social sign in. Why This Step Is Designed This Way Registration should feel lightweight so customers can create an account without losing purchase momentum.",
+    "summary": "Sign Up",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/access-account-and-manage-profile/sign-up/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Find a KFC",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Find a KFC This page covers store search, store listing, and geo based restaurant discovery. Why This Step Is Designed This Way Location discovery is a common pre order behavior, especially for new, travelling, or infrequent customers.",
+    "summary": "Find a KFC",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-a-store/find-a-kfc/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Find a Store",
+    "headings": [
+      "Pages in This Section"
+    ],
+    "body": "Find a Store This supporting journey covers how customers search for restaurants and view store details outside the main ordering flow. Pages in This Section",
+    "summary": "Find a Store",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-a-store/"
+  },
+  {
+    "locale": "en-US",
+    "title": "KFC Store Details",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "KFC Store Details This page covers store hours, amenities, services, and the handoff into directions or ordering. Why This Step Is Designed This Way Customers often validate service confidence before ordering, especially when store hours or fulfillment modes are uncertain.",
+    "summary": "KFC Store Details",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-a-store/kfc-store-details/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Challenge",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Challenge This page covers gamified reward or milestone experiences. Why This Step Is Designed This Way Challenge mechanics create repeat engagement by linking progress, motivation, and reward visibility in one place.",
+    "summary": "Challenge",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-deals-and-rewards/challenge/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Step 3 Find Deals and Rewards",
+    "headings": [
+      "Pages in This Section"
+    ],
+    "body": "Step 3 Find Deals and Rewards This step covers how customers find offers, understand value, and move from an offer into an orderable experience. Pages in This Section",
+    "summary": "This step covers how customers find offers, understand value, and move from an offer into an orderable experience.",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-deals-and-rewards/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Loyalty Tile",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Loyalty Tile This page covers the main entry point into rewards and member led value experiences. Why This Step Is Designed This Way Rewards need a visible entry point that encourages exploration without interrupting the rest of the ordering flow.",
+    "summary": "Loyalty Tile",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-deals-and-rewards/loyalty-tile/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Promo Options",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Promo Options This page covers promotional choices tied to categories, bundles, or specific offer templates. Why This Step Is Designed This Way Promotions work best when customers can compare value paths without losing momentum in the browse flow.",
+    "summary": "Promo Options",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-deals-and-rewards/promo-options/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Rewards Listing",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Rewards Listing This page covers how customers browse redeemable rewards, messages, and value states. Why This Step Is Designed This Way Customers need a clear way to understand what they can redeem now, what they are progressing toward, and what actions are available next.",
+    "summary": "Rewards Listing",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-deals-and-rewards/rewards-listing/"
+  },
+  {
+    "locale": "en-US",
+    "title": "BYOB Select",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "BYOB Select This page covers how customers enter and browse build your own bundle experiences. Why This Step Is Designed This Way Build your own flows let customers assemble value meals in a way that feels guided rather than overwhelming.",
+    "summary": "BYOB Select",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-products/byob-select/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Catering Menu",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Catering Menu This page covers how customers discover catering and large order menu options. Why This Step Is Designed This Way Large order behavior has different needs from everyday ordering, so catering deserves a clearer entry point and a separate browse pattern.",
+    "summary": "Catering Menu",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-products/catering-menu/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Children's Only",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Children's Only This page covers kid focused entry points and menu groupings. Why This Step Is Designed This Way Family ordering benefits from dedicated shortcuts that reduce search time and make age specific items easier to find.",
+    "summary": "Children's Only",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-products/childrens-only/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Format Options",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Format Options This page covers structured browse paths such as build your own, mix and match, or create a box experiences. Why This Step Is Designed This Way Some product groups are easier to shop through guided formats than standard category listings, especially for bundles and customizable meals.",
+    "summary": "Format Options",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-products/format-options/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Home Page",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Home Page This page covers the main discovery surface customers see after setup, including hero prompts, promo banners, category shortcuts, and personalized messaging. Why This Step Is Designed This Way The homepage acts as a fast decision surface that balances inspiration, speed, and shortcuts into high intent journeys.",
+    "summary": "Home Page",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-products/home-page/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Step 2 Find Products",
+    "headings": [
+      "Pages in This Section"
+    ],
+    "body": "Step 2 Find Products This step covers how customers discover what they can order once the ordering context is set. Pages in This Section",
+    "summary": "This step covers how customers discover what they can order once the ordering context is set.",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-products/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Menu Landing",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Menu Landing This page covers the first structured menu view, including category entry points, featured sections, and quick routes into food discovery. Why This Step Is Designed This Way Customers often scan before they commit, so the menu landing page needs to reduce cognitive load while surfacing the most relevant starting points.",
+    "summary": "Menu Landing",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-products/menu-landing/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Menu Listing",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Menu Listing This page covers how products are browsed within a category or listing view. Why This Step Is Designed This Way Listing pages help customers compare options quickly and narrow choices without leaving the browse flow.",
+    "summary": "Menu Listing",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-products/menu-listing/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Contact KFC",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Contact KFC This page covers contact entry points such as calling the restaurant or sending a support enquiry. Why This Step Is Designed This Way When self service is not enough, customers need a clear escalation path that feels immediate and trustworthy.",
+    "summary": "Contact KFC",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/get-help/contact-kfc/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Enquiry Form",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Enquiry Form This page covers structured issue submission and support follow up entry. Why This Step Is Designed This Way Structured forms help route customer issues accurately while capturing the details needed for follow up.",
+    "summary": "Enquiry Form",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/get-help/enquiry-form/"
+  },
+  {
+    "locale": "en-US",
+    "title": "FAQs",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "FAQs This page covers browse and search patterns for self service support. Why This Step Is Designed This Way Self service is often the fastest recovery path for both customers and support teams.",
+    "summary": "FAQs",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/get-help/faqs/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Get Help",
+    "headings": [
+      "Pages in This Section"
+    ],
+    "body": "Get Help This supporting journey covers self service support and direct assistance when customers have questions or issues. Pages in This Section",
+    "summary": "Get Help",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/get-help/"
+  },
+  {
+    "locale": "en-US",
     "title": "Customer Journey",
     "headings": [
-      "The Six Steps",
-      "Step 5 — Loyalty & Promotions",
-      "Japan 🇯🇵",
-      "Australia 🇦🇺",
-      "Market Configuration Matrix",
-      "FAQs"
+      "Core Ordering Journey",
+      "Supporting Journeys",
+      "Why This Organization Makes Sense",
+      "Coverage Checklist"
     ],
-    "body": "Customer Journey The customer journey on the Atlas Platform is a six step configurable flow . The core steps are consistent across all markets — but key touchpoints (loyalty, promotions, scheduling) are switched on or off per market by the regional team. The Six Steps Step Name Description 1 Discovery Customer finds KFC via the app, website, or aggregator 2 Restaurant Selection Customer selects a restaurant by location or delivery address 3 Menu Browse Customer browses the menu, localised per restaurant 4 Cart & Customise Customer adds items, selects modifiers and combos 5 Loyalty & Promotions Market configured — points, vouchers, promo codes 6 Checkout Payment, order confirmation, and digital receipt Step 5 — Loyalty & Promotions This is the most market variable step. Each market controls its own loyalty and promotion rules independently. Japan 🇯🇵 KFC Japan operates a points based loyalty programme integrated into the KFC Japan app. Customers earn points on every order and redeem them at checkout. Promo codes are also supported and can be stacked with points in most campaigns. Australia 🇦🇺 KFC Australia uses a voucher based system delivered through the KFC app. Customers browse active deals, select a voucher before ordering, and it is applied automatically at checkout. A separate promo code field supports campaign specific codes. Market Configuration Matrix Feature Japan 🇯🇵 Australia 🇦🇺 Loyalty points earn & redeem ✅ — Voucher selection at ordering — ✅ Promo code at checkout ✅ ✅ Combo upsell prompt ✅ ✅ Scheduled future orders ✅ — Guest checkout (no login) ✅ ✅ Digital receipt via email ✅ ✅ FAQs Can a customer use a loyalty reward AND a promo code together? Yes — if both are enabled for that market. The promo code is applied first, and loyalty points are calculated on the post discount total. This behaviour is configurable per market under Admin Portal → Market Settings → Loyalty Rules. What happens if a customer is offline during checkout? The app caches the menu and cart locally. Checkout requires connectivity. If the customer loses connection, the order is held in the cart and they are prompted to retry when connectivity is restored. Can we turn off guest checkout for a specific market? Yes — this is a market level toggle in the Admin Portal under Market Settings → Customer Journey.",
+    "body": "Customer Journey This section uses the interaction model as the template for customer facing documentation. Instead of organizing content by internal platform modules, we organize it by how a customer actually moves through the experience. The structure below follows the most common digital ordering pattern seen globally: customers first set fulfillment context, then browse food and value options, then review and customize products, then complete checkout, and finally track the order. Supporting journeys such as account, store lookup, help, and brand content sit alongside that primary path rather than inside it. Each interaction in this journey has its own subpage. Those pages are where we can place the mockup, the reasoning behind the design, business rules, and market specific variations. Core Ordering Journey Step Journey Stage What the customer is trying to do 1 Setup Order Set location, order mode, store, and schedule so the platform can show the right menu 2 Find Products Browse the menu, categories, and product entry points 3 Find Deals and Rewards Discover promotions, vouchers, loyalty benefits, and value led offers 4 Preview Product and Customize Understand a product, choose modifiers, and review add ons before adding it 5 Order and Get Review the cart, apply promos, choose payment, and place the order 6 Track Order Follow pickup or delivery status until handoff is complete Supporting Journeys Why This Organization Makes Sense 1. Customers set context first because location, fulfillment mode, and timing determine what can actually be ordered. 2. Customers then browse products and value opportunities in parallel, often moving between menu discovery and deals before committing. 3. Customers only spend effort on detail, customization, cart review, and checkout after they have found a likely product or offer. 4. After purchase, their behavior changes from shopping to tracking and support. 5. Account, help, store lookup, and brand content remain important, but they work best as supporting journeys because they can happen before, during, or after ordering. Coverage Checklist Setup Order Access Account + Manage Profile Get Help Find Products Find Deals & Rewards Preview Product & Customize Order + Get Track Order Find a Store Learn About KFC",
     "summary": "Customer Journey",
     "section": "frontend",
     "url": "/docs/frontend/customer-journey/"
+  },
+  {
+    "locale": "en-US",
+    "title": "App Tour",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "App Tour This page covers guided onboarding and feature education for new or returning users. Why This Step Is Designed This Way App tours help customers understand value quickly, especially when the product has multiple ordering, rewards, or fulfillment models.",
+    "summary": "App Tour",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/learn-about-kfc/app-tour/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Content Landing",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Content Landing This page covers brand, service, and informational content entry points. Why This Step Is Designed This Way Not every visit starts with ordering intent, so content spaces help orient, inform, and build trust.",
+    "summary": "Content Landing",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/learn-about-kfc/content-landing/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Learn About KFC",
+    "headings": [
+      "Pages in This Section"
+    ],
+    "body": "Learn About KFC This supporting journey covers informational and brand led content that helps customers understand the app, product information, and broader KFC content. Pages in This Section",
+    "summary": "Learn About KFC",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/learn-about-kfc/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Nutrition and Allergen",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Nutrition and Allergen This page covers searchable and browseable product information outside the main product detail flow. Why This Step Is Designed This Way Some customers start with dietary research rather than product selection, so this content needs a standalone route.",
+    "summary": "Nutrition and Allergen",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/learn-about-kfc/nutrition-and-allergen/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Cart",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Cart This page covers item review, promo entry, quantity changes, and order summary before checkout. Why This Step Is Designed This Way The cart is the final review space where customers validate value, accuracy, and readiness before they commit to payment.",
+    "summary": "Cart",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/order-and-get/cart/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Checkout",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Checkout This page covers address confirmation, payment, final checks, and order submission. Why This Step Is Designed This Way Checkout needs to minimize friction while still collecting everything required to fulfill the order correctly.",
+    "summary": "Checkout",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/order-and-get/checkout/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Step 5 Order and Get",
+    "headings": [
+      "Pages in This Section"
+    ],
+    "body": "Step 5 Order and Get This step covers the conversion stage, where the customer moves from intent into a completed order. Pages in This Section",
+    "summary": "This step covers the conversion stage, where the customer moves from intent into a completed order.",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/order-and-get/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Add on and Cross sell",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Add on and Cross sell This page covers suggested items, upgrades, and extension offers shown during product review. Why This Step Is Designed This Way Add on moments are most effective after the customer has shown purchase intent but before they leave the product decision flow.",
+    "summary": "Add on and Cross sell",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/preview-product-and-customize/add-on-and-cross-sell/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Customize",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Customize This page covers modifier groups, option selections, ingredient changes, and price updates. Why This Step Is Designed This Way Customization needs to feel guided and predictable so customers can personalize items without second guessing the order.",
+    "summary": "Customize",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/preview-product-and-customize/customize/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Step 4 Preview Product and Customize",
+    "headings": [
+      "Pages in This Section"
+    ],
+    "body": "Step 4 Preview Product and Customize This step covers the point where customers inspect a likely product, understand what is included, and personalize it before adding it to the order. Pages in This Section",
+    "summary": "This step covers the point where customers inspect a likely product, understand what is included, and personalize it before adding it to the order.",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/preview-product-and-customize/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Nutrition and Allergen",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Nutrition and Allergen This page covers nutrition data, allergen visibility, and product information within the product preview flow. Why This Step Is Designed This Way Customers need trustworthy product information close to the purchase decision, especially when health or dietary concerns affect selection.",
+    "summary": "Nutrition and Allergen",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/preview-product-and-customize/nutrition-and-allergen/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Product Detail",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Product Detail This page covers the main product detail view, including imagery, pricing, description, components, and add to bag entry. Why This Step Is Designed This Way Customers need enough detail to decide with confidence, but not so much friction that it slows down purchase intent.",
+    "summary": "Product Detail",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/preview-product-and-customize/product-detail/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Address or Store Selection",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Address or Store Selection This page covers how customers choose a delivery address, pickup store, or serviceable location before browsing products. Why This Step Is Designed This Way Store and address selection determine availability, store specific assortments, service hours, and fulfillment eligibility.",
+    "summary": "Address or Store Selection",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/setup-order/address-or-store-selection/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Change Order Mode",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Change Order Mode This page covers how customers revise fulfillment mode, store, or schedule after a session has already started. Why This Step Is Designed This Way Customers often discover availability or preference changes mid session, so the platform needs a safe way to reset ordering conditions without losing clarity.",
+    "summary": "Change Order Mode",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/setup-order/change-order-mode/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Step 1 Setup Order",
+    "headings": [
+      "Pages in This Section",
+      "Why This Comes First"
+    ],
+    "body": "Step 1 Setup Order This step covers everything the customer must define before the menu becomes relevant. These conditions shape what the customer can see, buy, schedule, or reorder. Pages in This Section Why This Comes First Atlas changes the product catalogue, availability, pricing context, and fulfillment path based on setup conditions. That makes setup order the true starting point of the customer journey.",
+    "summary": "This step covers everything the customer must define before the menu becomes relevant. These conditions shape what the customer can see, buy, schedule, or reorder.",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/setup-order/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Reorder",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Reorder This page covers how customers repeat a previous order under the same or updated fulfillment conditions. Why This Step Is Designed This Way Reorder shortens time to purchase for repeat customers while still accounting for store availability, current schedules, and assortment changes.",
+    "summary": "Reorder",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/setup-order/reorder/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Review Order Settings",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Review Order Settings This page covers confirmation prompts that ask customers to review store, time, or order mode before continuing. Why This Step Is Designed This Way Small confirmation moments reduce ordering mistakes and help customers understand the context that will shape the rest of the journey.",
+    "summary": "Review Order Settings",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/setup-order/review-order-settings/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Set Order Mode",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Set Order Mode This page covers how customers choose delivery, pickup, dine in, catering, or scheduled ordering as the first step into the experience. Why This Step Is Designed This Way The platform needs order mode first because menu visibility, service availability, timing, and downstream checkout rules all depend on it.",
+    "summary": "Set Order Mode",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/setup-order/set-order-mode/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Store Unavailable Handling",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Store Unavailable Handling This page covers fallback states when a selected store or service option is not available. Why This Step Is Designed This Way Availability failures are common in real ordering behavior, so the journey needs clear recovery paths instead of dead ends.",
+    "summary": "Store Unavailable Handling",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/setup-order/store-unavailable-handling/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Delivery",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Delivery This page covers status tracking, delivery timing, and handoff progress for delivery orders. Why This Step Is Designed This Way Delivery customers need transparency after payment because uncertainty is highest during waiting and fulfillment.",
+    "summary": "Delivery",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/track-order/delivery/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Step 6 Track Order",
+    "headings": [
+      "Pages in This Section"
+    ],
+    "body": "Step 6 Track Order This step covers the post purchase experience after the order is placed. Pages in This Section",
+    "summary": "This step covers the post purchase experience after the order is placed.",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/track-order/"
+  },
+  {
+    "locale": "en-US",
+    "title": "Pickup",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "body": "Pickup This page covers readiness states, pickup instructions, arrival confirmation, and handoff messaging for pickup orders. Why This Step Is Designed This Way Pickup customers need reassurance and precise timing so they know when to arrive and what to do next.",
+    "summary": "Pickup",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/track-order/pickup/"
   },
   {
     "locale": "en-US",
@@ -2040,13 +2578,17 @@
     "locale": "en-US",
     "title": "Order Channels",
     "headings": [
-      "Channel Capabilities",
-      "Market Channel Status",
-      "Japan 🇯🇵",
-      "Australia 🇦🇺",
-      "Configuring Channels"
+      "Product View",
+      "Digital is the core customer ordering surface",
+      "Order modes live inside the channel experience",
+      "Channel based menu strategy is a strength",
+      "Scheduled ordering is controlled, not assumed",
+      "Store operations directly shape the customer experience",
+      "Recommended Positioning",
+      "What We Should Avoid Overstating",
+      "Admin Portal Sources Behind These Presumptions"
     ],
-    "body": "Order Channels The Atlas Platform supports three order channels per restaurant: Dine in , Delivery , and Takeaway . Each channel can be independently enabled, configured, and scheduled without affecting the others. Channel Capabilities Configuration Dine in Delivery Takeaway Enable / disable per restaurant ✅ ✅ ✅ Separate operating hours ✅ ✅ ✅ Minimum order value — ✅ — Delivery radius (km) — ✅ — Promo codes ✅ ✅ ✅ Loyalty points ✅ ✅ ✅ Table number capture ✅ — — Estimated wait time display — ✅ ✅ Market Channel Status Japan 🇯🇵 All three channels are available. Delivery operates through both the KFC Japan platform and aggregator integrations (Uber Eats, Demae can). Dine in table ordering is active in select high traffic locations. Australia 🇦🇺 Delivery and Takeaway are the primary channels. Dine in ordering is available but less widely deployed. Delivery integrates with Uber Eats and DoorDash in addition to the native KFC app. Configuring Channels All channel settings are managed per restaurant in the Admin Portal → Restaurants → [Restaurant] → Channel Settings . :::tip Disabling a channel for one restaurant has no effect on any other restaurant. All channel settings are scoped per location. ::: :::warning If all three channels are disabled simultaneously, the restaurant will appear as Temporarily Closed in the customer app. Make sure at least one channel is active during trading hours. :::",
+    "body": "Order Channels :::warning All content below should be treated as placeholder product framing based on what is currently supported in the Admin Portal Guide. Validate market specific deployment details before using this page as a final source of truth. ::: Atlas supports a multi channel ordering model per store , allowing teams to shape how menus, availability, and ordering experiences are delivered across customer touchpoints. Rather than treating order channels as a fixed global trio like , Atlas is better understood as a channel based distribution platform . Stores can publish different menus to different destinations such as Digital , Kiosk , and In Store , while the frontend experience adapts accordingly. For the front end, this creates two layers of experience design: the ordering channel the store is configured to serve the order mode the customer selects inside that experience, such as delivery, pickup, or dine in Product View Digital is the core customer ordering surface The digital channel is the foundation for app and web ordering. It is where menu availability becomes customer visible, where online ordering is operationally controlled, and where the storefront experience becomes actionable. From a product perspective, this gives teams a clear operating model: customers only see live menus that have been assigned and published to that store's digital channel turning off Accepting Online Orders suppresses ordering without requiring broader menu changes storefront availability can be managed at the store level without changing the overall product experience This makes Atlas operationally flexible while keeping the customer journey simple. Order modes live inside the channel experience The frontend journey already treats delivery , pickup , dine in , catering , and scheduled ordering as customer choices. The Admin Portal Guide, however, describes channel labels such as Digital , Kiosk , and In Store . The cleanest product interpretation is: Digital is the operational channel delivery and pickup sit within that digital channel as customer order modes Kiosk and In Store can carry their own menu strategy and experience rules This distinction matters because it allows the platform to separate operational distribution from customer fulfillment choice . Channel based menu strategy is a strength The Admin Portal Guide confirms that stores can assign different menus to different channels and publish them independently. That creates strong product value on the frontend: product availability may differ between app/web, kiosk, and in store ordering pricing, bundles, or category structure may differ by channel a menu change can appear on one surface before it appears on another if publishing is done channel by channel This is especially useful when the business wants to tailor the experience by touchpoint instead of forcing one menu to serve every use case. Scheduled ordering is controlled, not assumed The Admin Portal Guide documents an Allows Future Orders toggle and notes that it depends on a supported ordering channel. For the frontend, this positions scheduled ordering as a managed experience: scheduled ordering exists as a configurable capability it appears only where the store and channel setup support it it can be introduced selectively without redefining the whole journey That gives markets room to launch the feature intentionally instead of making it mandatory everywhere. Store operations directly shape the customer experience The Admin Portal exposes store controls such as Accepting Online Orders and store specific menu publishing. This means the frontend is store sensitive by design: one store may be orderable while another is temporarily unavailable one store may show a digital menu while another has no live digital menu published temporary closures or operational pauses may be explained by store settings rather than a platform outage This is a valuable product characteristic because it allows operations teams to react quickly while preserving a consistent platform pattern. Recommended Positioning The strongest way to position Atlas today is: Atlas supports multiple ordering channels per store channel names are implementation specific, with examples including Digital , Kiosk , and In Store the digital customer journey sits on top of a store's digital channel configuration customer facing order modes such as delivery and pickup are experiences within that digital layer, not the same thing as admin publishing channels menu visibility and ordering availability are shaped by per store channel assignment, publish state, and operational toggles :::tip If you need to document market specific frontend behavior, verify the actual channel labels and menu assignments in the store's Menus view first, then describe the customer journey on top of that operational setup. ::: What We Should Avoid Overstating that all markets use the same three customer channels that every channel supports the same capabilities that aggregator behaviour can be inferred from the current Admin Portal Guide alone that any specific market has dine in, delivery, and takeaway deployed in the same way at every store Admin Portal Sources Behind These Presumptions",
     "summary": "Order Channels",
     "section": "frontend",
     "url": "/docs/frontend/order-channels/"
@@ -2060,7 +2602,7 @@
       "Markets in Scope",
       "Who Should Read This"
     ],
-    "body": "Front end Overview The KFC Atlas front end is the customer facing layer of the platform — what your guests interact with when they order online, through the KFC app, or via a third party aggregator. This guide is for restaurant teams and BMUs who need to understand what the platform delivers to customers, how it behaves in each market, and what is configurable without requiring a product deployment. What the Front end Covers The Atlas front end spans three areas: Customer Journey — the end to end flow from discovery to order confirmation Order Channels — how Dine in, Delivery, and Takeaway are presented and managed per restaurant Market Configurations — what can be switched on or off per market (loyalty, promos, scheduling) Design System The KFC Atlas front end is built on Helium , Yum!'s enterprise design system — a shared set of design tokens, UI components, and style rules that ensures consistency across every market, platform, and device. See for a full explanation of how the visual identity flows from Figma all the way to the screen. Markets in Scope Market App Platform 🇯🇵 Japan KFC Japan App + Web 🇦🇺 Australia KFC Australia App + Web Who Should Read This Role Why it's relevant Restaurant Operator / Market Team Understand what your customers experience and what you can configure BMU / Regional Office Understand market level configuration options and how to activate features Pre sales / New Market Onboarding Understand the baseline platform capabilities before go live :::info The front end is built on a shared codebase across all markets. Market differences are controlled by configuration — not separate builds. :::",
+    "body": "Front end Overview The KFC Atlas front end is the customer facing layer of the platform — what your guests interact with when they order online, through the KFC app, or via a third party aggregator. This guide is for restaurant teams and BMUs who need to understand what the platform delivers to customers, how it behaves in each market, and what is configurable without requiring a product deployment. What the Front end Covers The Atlas front end spans three areas: Customer Journey — the end to end flow from discovery to order confirmation Order Channels — how Dine in, Delivery, and Takeaway are presented and managed per restaurant Customer Engagement Surveys — how KFC Listens style feedback programmes collect post order sentiment Market Configurations — what can be switched on or off per market (loyalty, promos, scheduling) Design System The KFC Atlas front end is built on Helium , Yum!'s enterprise design system — a shared set of design tokens, UI components, and style rules that ensures consistency across every market, platform, and device. See for a full explanation of how the visual identity flows from Figma all the way to the screen. Markets in Scope Market App Platform 🇯🇵 Japan KFC Japan App + Web 🇦🇺 Australia KFC Australia App + Web Who Should Read This Role Why it's relevant Restaurant Operator / Market Team Understand what your customers experience and what you can configure BMU / Regional Office Understand market level configuration options and how to activate features Pre sales / New Market Onboarding Understand the baseline platform capabilities before go live :::info The front end is built on a shared codebase across all markets. Market differences are controlled by configuration — not separate builds. :::",
     "summary": "Front end Overview",
     "section": "frontend",
     "url": "/docs/frontend/overview/"
@@ -4195,23 +4737,528 @@
   },
   {
     "locale": "ja-JP",
+    "title": "\"アカウント\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "アカウント このページでは、注文履歴、お気に入り注文、保存済み店舗・住所、配信設定、各種設定、ギフトカードなどのプロフィール機能を扱います。 この体験設計の意図 アカウント画面は、リピート利用、パーソナライズ、セルフサービス管理をライフサイクル全体で支えます。",
+    "summary": "アカウント",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/access-account-and-manage-profile/account/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"アカウントとプロフィール管理\"",
+    "headings": [
+      "このセクションのページ"
+    ],
+    "body": "アカウントとプロフィール管理 この補助ジャーニーでは、注文前・注文中・注文後に利用されるアカウント導線、認証、プロフィール管理、履歴活用機能を扱います。 このセクションのページ",
+    "summary": "アカウントとプロフィール管理",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/access-account-and-manage-profile/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"サインイン\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "サインイン このページでは、既存顧客向けの認証フローを扱います。 この体験設計の意図 既存顧客は速度と確実性を重視するため、サインインは進行中の行動へ素早く戻れる設計が必要です。",
+    "summary": "サインイン",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/access-account-and-manage-profile/sign-in/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"新規登録\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "新規登録 このページでは、メール、OTP、またはソーシャルサインインによるアカウント作成を扱います。 この体験設計の意図 新規登録は軽く感じられる必要があり、お客様の購買意欲を失わせずにアカウント作成できるべきです。",
+    "summary": "新規登録",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/access-account-and-manage-profile/sign-up/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"KFCを探す\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "KFCを探す このページでは、店舗検索、店舗一覧、位置情報ベースの店舗発見を扱います。 この体験設計の意図 位置情報からの店舗発見は、特に新規顧客、旅行中の顧客、利用頻度の低い顧客に多い注文前行動です。",
+    "summary": "KFCを探す",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-a-store/find-a-kfc/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"店舗を探す\"",
+    "headings": [
+      "このセクションのページ"
+    ],
+    "body": "店舗を探す この補助ジャーニーでは、メインの注文導線外でお客様が店舗を検索し、店舗詳細を確認する流れを扱います。 このセクションのページ",
+    "summary": "店舗を探す",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-a-store/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"KFC店舗詳細\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "KFC店舗詳細 このページでは、営業時間、設備、提供サービス、地図案内や注文への遷移を扱います。 この体験設計の意図 特に営業時間や受け取り方法が不確かな場合、お客様は注文前にサービスの確からしさを確認します。",
+    "summary": "KFC店舗詳細",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-a-store/kfc-store-details/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"チャレンジ\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "チャレンジ このページでは、ゲーム化された特典体験やマイルストーン体験を扱います。 この体験設計の意図 チャレンジの仕組みは、進捗、動機、特典の見える化をひとつにまとめることで継続利用を生みます。",
+    "summary": "チャレンジ",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-deals-and-rewards/challenge/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ステップ3 ディールと特典を探す\"",
+    "headings": [
+      "このセクションのページ"
+    ],
+    "body": "ステップ3 ディールと特典を探す このステップでは、お客様がオファーを見つけ、価値を理解し、そのまま注文可能な体験へ進む流れを扱います。 このセクションのページ",
+    "summary": "このステップでは、お客様がオファーを見つけ、価値を理解し、そのまま注文可能な体験へ進む流れを扱います。",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-deals-and-rewards/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ロイヤルティタイル\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "ロイヤルティタイル このページでは、特典導線と会員価値体験への主な入口を扱います。 この体験設計の意図 特典導線には、注文フローを邪魔せず探索を促す見つけやすい入口が必要です。",
+    "summary": "ロイヤルティタイル",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-deals-and-rewards/loyalty-tile/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"プロモオプション\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "プロモオプション このページでは、カテゴリ、バンドル、または特定オファーテンプレートに紐づくプロモ選択肢を扱います。 この体験設計の意図 プロモーションは、閲覧の勢いを保ったまま価値の選択肢を比較できるときに最も機能します。",
+    "summary": "プロモオプション",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-deals-and-rewards/promo-options/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"特典一覧\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "特典一覧 このページでは、お客様が利用可能な特典、メッセージ、価値状態を閲覧する流れを扱います。 この体験設計の意図 お客様は、今使える特典、達成に向かっている状態、次に取れる行動を明確に理解できる必要があります。",
+    "summary": "特典一覧",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-deals-and-rewards/rewards-listing/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"BYOB選択\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "BYOB選択 このページでは、お客様がビルドユアオウン型バンドルに入り、内容を閲覧する流れを扱います。 この体験設計の意図 ビルドユアオウン導線は、圧倒的にならずに価値あるセットを組み立てられる体験を実現します。",
+    "summary": "BYOB選択",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-products/byob-select/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ケータリングメニュー\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "ケータリングメニュー このページでは、お客様がケータリングや大量注文向けメニューを見つける流れを扱います。 この体験設計の意図 大量注文は日常注文と必要条件が異なるため、ケータリングには明確な入口と独立した閲覧導線が必要です。",
+    "summary": "ケータリングメニュー",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-products/catering-menu/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"キッズ向けメニュー\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "キッズ向けメニュー このページでは、キッズ向けの入口とメニュー構成を扱います。 この体験設計の意図 ファミリー注文では、検索時間を減らし年齢に合った商品を見つけやすくする専用導線が効果的です。",
+    "summary": "キッズ向けメニュー",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-products/childrens-only/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"フォーマットオプション\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "フォーマットオプション このページでは、ビルドユアオウン、ミックスアンドマッチ、ボックス作成などの構造化された閲覧導線を扱います。 この体験設計の意図 一部の商品群は標準カテゴリ一覧よりもガイド付きフォーマットの方が購入しやすく、特にバンドルやカスタマイズ可能な食事で有効です。",
+    "summary": "フォーマットオプション",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-products/format-options/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ホームページ\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "ホームページ このページでは、注文設定後にお客様が最初に見る発見導線を扱います。ヒーロー訴求、プロモバナー、カテゴリ導線、パーソナライズされたメッセージを含みます。 この体験設計の意図 ホームページは、ひらめき、スピード、高意図導線へのショートカットを両立する高速な意思決定面として機能します。",
+    "summary": "ホームページ",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-products/home-page/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ステップ2 商品を探す\"",
+    "headings": [
+      "このセクションのページ"
+    ],
+    "body": "ステップ2 商品を探す このステップでは、注文条件が決まった後にお客様が購入可能な商品を見つける流れを扱います。 このセクションのページ",
+    "summary": "このステップでは、注文条件が決まった後にお客様が購入可能な商品を見つける流れを扱います。",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-products/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"メニューランディング\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "メニューランディング このページでは、カテゴリ入口、注目セクション、商品探索への近道を含む、最初の構造化メニュー画面を扱います。 この体験設計の意図 お客様は購入前に全体を見渡すことが多いため、メニューランディングは認知負荷を下げつつ適切な入口を見せる必要があります。",
+    "summary": "メニューランディング",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-products/menu-landing/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"メニュー一覧\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "メニュー一覧 このページでは、カテゴリまたは一覧画面内で商品を閲覧する流れを扱います。 この体験設計の意図 一覧画面は、閲覧導線を崩さずに選択肢を比較し、候補を絞るのに役立ちます。",
+    "summary": "メニュー一覧",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-products/menu-listing/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"KFCに連絡する\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "KFCに連絡する このページでは、店舗への電話やサポート問い合わせ送信などの連絡導線を扱います。 この体験設計の意図 セルフサービスで足りない場合、お客様にはすぐ使えて信頼できるエスカレーション導線が必要です。",
+    "summary": "KFCに連絡する",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/get-help/contact-kfc/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"お問い合わせフォーム\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "お問い合わせフォーム このページでは、構造化された問い合わせ送信とサポート追跡の入口を扱います。 この体験設計の意図 構造化フォームは、フォローアップに必要な情報を集めながら、問い合わせを適切に振り分けるのに役立ちます。",
+    "summary": "お問い合わせフォーム",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/get-help/enquiry-form/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"よくある質問\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "よくある質問 このページでは、セルフサポート向けの閲覧・検索導線を扱います。 この体験設計の意図 セルフサービスは、多くの場合、お客様にもサポートチームにも最も早い解決導線です。",
+    "summary": "よくある質問",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/get-help/faqs/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ヘルプを受ける\"",
+    "headings": [
+      "このセクションのページ"
+    ],
+    "body": "ヘルプを受ける この補助ジャーニーでは、お客様が疑問や問題を抱えたときのセルフサポートと直接サポート導線を扱います。 このセクションのページ",
+    "summary": "ヘルプを受ける",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/get-help/"
+  },
+  {
+    "locale": "ja-JP",
     "title": "\"カスタマージャーニー\"",
     "headings": [
-      "6つのステップ",
-      "ステップ5 — ロイヤルティとプロモーション",
-      "Japan 🇯🇵",
-      "Australia 🇦🇺",
-      "市場別設定マトリクス",
-      "よくある質問"
+      "主要な注文ジャーニー",
+      "補助ジャーニー",
+      "この構成が適している理由",
+      "対象範囲チェックリスト"
     ],
-    "body": "カスタマージャーニー Atlas Platformにおけるカスタマージャーニーは、 6段階で構成される設定可能なフロー です。中核となる流れは全市場で共通ですが、ロイヤルティ、プロモーション、スケジュール注文などの主要な接点は地域チームが市場ごとに有効化・無効化できます。 6つのステップ ステップ 名称 説明 1 検索・発見 お客様がアプリ、Webサイト、アグリゲーター経由でKFCを見つける 2 店舗選択 位置情報または配送先住所に基づいて店舗を選ぶ 3 メニュー閲覧 店舗ごとにローカライズされたメニューを閲覧する 4 カート・カスタマイズ 商品を追加し、モディファイアやセット内容を選ぶ 5 ロイヤルティとプロモーション 市場設定に応じてポイント、バウチャー、プロモコードを適用 6 チェックアウト 支払い、注文確定、デジタルレシート受領 ステップ5 — ロイヤルティとプロモーション この工程は市場差が最も大きい部分です。各市場が独自にロイヤルティとプロモーションのルールを管理します。 Japan 🇯🇵 KFC Japanでは、KFC Japanアプリに統合された ポイント制ロイヤルティプログラム を運用しています。お客様は各注文でポイントを獲得し、チェックアウト時に利用できます。プロモコードにも対応しており、多くのキャンペーンではポイントとの併用が可能です。 Australia 🇦🇺 KFC Australiaでは、KFCアプリ内で提供される バウチャー方式 を採用しています。お客様は有効なディールを確認し、注文前にバウチャーを選択すると、チェックアウト時に自動適用されます。加えて、キャンペーン専用のプロモコード入力欄もあります。 市場別設定マトリクス 機能 Japan 🇯🇵 Australia 🇦🇺 Loyalty points earn & redeem ✅ — Voucher selection at ordering — ✅ Promo code at checkout ✅ ✅ Combo upsell prompt ✅ ✅ Scheduled future orders ✅ — Guest checkout (no login) ✅ ✅ Digital receipt via email ✅ ✅ よくある質問 お客様はロイヤルティ特典とプロモコードを同時に使えますか。 はい。両方がその市場で有効になっていれば併用できます。先にプロモコードが適用され、その後の割引後金額に対してロイヤルティポイントが計算されます。この挙動は市場ごとに Admin Portal → Market Settings → Loyalty Rules で設定できます。 チェックアウト中にお客様がオフラインになった場合はどうなりますか。 アプリはメニューとカートをローカルに保持しますが、チェックアウトには通信が必要です。接続が切れた場合、注文内容はカートに保持され、通信復旧後に再試行を促されます。 特定の市場でゲストチェックアウトを無効にできますか。 はい。これは市場レベルのトグルで、Admin Portal の Market Settings → Customer Journey から変更できます。",
+    "body": "カスタマージャーニー このセクションでは、顧客向けドキュメントを実際の利用行動に沿って整理します。内部機能単位ではなく、お客様が体験の中をどう移動するかを基準に構成しています。 以下の構成は、グローバルで最も一般的なデジタル注文パターンに沿っています。お客様は最初に受け取り条件を決め、その後に商品やお得情報を探し、商品詳細を確認してカスタマイズし、チェックアウトを完了し、最後に注文を追跡します。アカウント、店舗検索、ヘルプ、ブランドコンテンツなどの補助導線は、この主導線の外側に並行して存在します。 このジャーニー内の各接点には専用のサブページがあります。各ページでは、モックアップ、設計意図、業務ルール、市場別の差分を整理できます。 主要な注文ジャーニー ステップ ジャーニー段階 お客様が達成したいこと 1 注文設定 適切なメニューを表示するために、場所、注文モード、店舗、時間を設定する 2 商品を探す メニュー、カテゴリ、商品入口を閲覧する 3 ディールと特典を探す プロモーション、バウチャー、ロイヤルティ特典、お得なオファーを見つける 4 商品確認とカスタマイズ 商品内容を理解し、モディファイアを選び、追加提案を確認してから追加する 5 注文と受け取り カート確認、プロモ適用、支払い方法選択、注文確定を行う 6 注文追跡 受け取りまたは配送の状態を受け渡し完了まで確認する 補助ジャーニー この構成が適している理由 1. 最初に条件設定が必要なのは、場所、受け取り方法、時間によって実際に注文できる内容が決まるためです。 2. その後、お客様は商品探索とお得情報探索を行き来しながら候補を比較します。 3. 商品やオファーの候補が見つかってから、詳細確認、カスタマイズ、カート確認、チェックアウトに進みます。 4. 購入後は、行動の中心が商品探索から追跡とサポートへ移ります。 5. アカウント、ヘルプ、店舗検索、ブランド情報も重要ですが、注文前・注文中・注文後のどこでも起こり得るため、補助ジャーニーとして整理するのが適しています。 対象範囲チェックリスト 注文設定 アカウントとプロフィール管理 ヘルプを受ける 商品を探す ディールと特典を探す 商品確認とカスタマイズ 注文と受け取り 注文追跡 店舗を探す KFCを知る",
     "summary": "カスタマージャーニー",
     "section": "frontend",
     "url": "/ja-JP/docs/frontend/customer-journey/"
   },
   {
     "locale": "ja-JP",
-    "title": "KFC Atlas Design System",
+    "title": "\"アプリツアー\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "アプリツアー このページでは、新規または再訪ユーザー向けのガイド付きオンボーディングと機能説明を扱います。 この体験設計の意図 アプリツアーは、特に複数の注文方式、特典、受け取りモデルがある場合に、価値を素早く理解してもらうのに役立ちます。",
+    "summary": "アプリツアー",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/learn-about-kfc/app-tour/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"コンテンツランディング\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "コンテンツランディング このページでは、ブランド情報、サービス情報、各種案内コンテンツへの入口を扱います。 この体験設計の意図 すべての訪問が注文目的から始まるわけではないため、コンテンツ導線は理解促進、案内、信頼形成に役立ちます。",
+    "summary": "コンテンツランディング",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/learn-about-kfc/content-landing/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"KFCを知る\"",
+    "headings": [
+      "このセクションのページ"
+    ],
+    "body": "KFCを知る この補助ジャーニーでは、アプリ理解、商品情報、ブランド理解を支える情報コンテンツ導線を扱います。 このセクションのページ",
+    "summary": "KFCを知る",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/learn-about-kfc/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"栄養・アレルゲン情報\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "栄養・アレルゲン情報 This page covers searchable and browseable product information outside the main product detail flow. この体験設計の意図 Some customers start with dietary research rather than product selection, so this content needs a standalone route.",
+    "summary": "栄養・アレルゲン情報",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/learn-about-kfc/nutrition-and-allergen/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"カート\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "カート このページでは、チェックアウト前の商品確認、プロモ入力、数量変更、注文サマリーを扱います。 この体験設計の意図 カートは、お客様が支払い前に価値、正確さ、購入準備を最終確認する場です。",
+    "summary": "カート",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/order-and-get/cart/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"チェックアウト\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "チェックアウト このページでは、住所確認、支払い、最終確認、注文送信を扱います。 この体験設計の意図 チェックアウトは、注文を正しく履行するための情報を集めながらも、摩擦を最小限に抑える必要があります。",
+    "summary": "チェックアウト",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/order-and-get/checkout/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ステップ5 注文と受け取り\"",
+    "headings": [
+      "このセクションのページ"
+    ],
+    "body": "ステップ5 注文と受け取り このステップでは、お客様の購入意図が実際の注文完了へ変わるコンバージョン段階を扱います。 このセクションのページ",
+    "summary": "このステップでは、お客様の購入意図が実際の注文完了へ変わるコンバージョン段階を扱います。",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/order-and-get/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"アドオンとクロスセル\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "アドオンとクロスセル このページでは、商品確認中に表示されるおすすめ商品、アップグレード、追加提案を扱います。 この体験設計の意図 アドオン提案は、お客様が購入意欲を示した後かつ商品判断フローを離れる前に最も効果を発揮します。",
+    "summary": "アドオンとクロスセル",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/preview-product-and-customize/add-on-and-cross-sell/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"カスタマイズ\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "カスタマイズ このページでは、モディファイアグループ、オプション選択、食材変更、価格更新を扱います。 この体験設計の意図 カスタマイズは、注文内容に不安を感じさせずに商品を自分向けに調整できる、ガイドされた予測可能な体験である必要があります。",
+    "summary": "カスタマイズ",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/preview-product-and-customize/customize/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ステップ4 商品確認とカスタマイズ\"",
+    "headings": [
+      "このセクションのページ"
+    ],
+    "body": "ステップ4 商品確認とカスタマイズ このステップでは、お客様が候補商品を確認し、内容を理解し、注文に追加する前にカスタマイズする流れを扱います。 このセクションのページ",
+    "summary": "このステップでは、お客様が候補商品を確認し、内容を理解し、注文に追加する前にカスタマイズする流れを扱います。",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/preview-product-and-customize/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"栄養・アレルゲン情報\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "栄養・アレルゲン情報 このページでは、商品確認フロー内での栄養情報、アレルゲン表示、商品情報を扱います。 この体験設計の意図 特に健康や食事制限が選択に影響する場合、お客様には購入判断の直前で信頼できる商品情報が必要です。",
+    "summary": "栄養・アレルゲン情報",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/preview-product-and-customize/nutrition-and-allergen/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"商品詳細\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "商品詳細 このページでは、画像、価格、説明、構成内容、カート追加導線を含む商品詳細画面を扱います。 この体験設計の意図 お客様には安心して判断できる十分な情報が必要ですが、購入意欲を下げるほどの摩擦は避けるべきです。",
+    "summary": "商品詳細",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/preview-product-and-customize/product-detail/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"住所または店舗を選択する\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "住所または店舗を選択する このページでは、お客様が商品閲覧前に配送先住所、受け取り店舗、またはサービス提供可能な場所を選ぶ流れを扱います。 この体験設計の意図 店舗と住所の選択によって、購入可能商品、店舗別品揃え、営業時間、受け取り可否が決まります。",
+    "summary": "住所または店舗を選択する",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/setup-order/address-or-store-selection/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"注文モードを変更する\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "注文モードを変更する このページでは、注文開始後にお客様が受け取り方法、店舗、または時間指定を変更する流れを扱います。 この体験設計の意図 注文途中で提供可否や希望条件が変わることはよくあるため、体験を壊さずに注文条件を切り替えられる設計が必要です。",
+    "summary": "注文モードを変更する",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/setup-order/change-order-mode/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ステップ1 注文設定\"",
+    "headings": [
+      "このセクションのページ",
+      "なぜ最初に必要か"
+    ],
+    "body": "ステップ1 注文設定 このステップでは、メニュー閲覧前にお客様が決める必要のある条件を扱います。これらの条件によって、表示される商品、購入可否、予約可否、再注文可否が決まります。 このセクションのページ なぜ最初に必要か Atlas は注文前の設定条件に応じて、商品構成、在庫表示、価格文脈、受け取り導線を切り替えます。そのため、注文設定はカスタマージャーニーの実質的な出発点です。",
+    "summary": "このステップでは、メニュー閲覧前にお客様が決める必要のある条件を扱います。これらの条件によって、表示される商品、購入可否、予約可否、再注文可否が決まります。",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/setup-order/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"再注文\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "再注文 このページでは、お客様が以前の注文を同じ条件または更新後の条件で繰り返す流れを扱います。 この体験設計の意図 再注文はリピーターの購入時間を短縮しつつ、店舗の営業状況、現在の時間条件、品揃え変更も反映できる必要があります。",
+    "summary": "再注文",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/setup-order/reorder/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"注文設定を確認する\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "注文設定を確認する このページでは、お客様に店舗、時間、注文モードを確認してもらう確認導線を扱います。 この体験設計の意図 小さな確認導線は注文ミスを減らし、その後の体験を決める条件をお客様に理解してもらうのに役立ちます。",
+    "summary": "注文設定を確認する",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/setup-order/review-order-settings/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"注文モードを設定する\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "注文モードを設定する このページでは、お客様が配送、受け取り、店内利用、ケータリング、予約注文を体験の最初に選ぶ流れを扱います。 この体験設計の意図 メニュー表示、提供可否、時間設定、その後のチェックアウト条件はすべて注文モードに依存するため、最初に選ばせる必要があります.",
+    "summary": "注文モードを設定する",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/setup-order/set-order-mode/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"店舗利用不可時の案内\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "店舗利用不可時の案内 このページでは、選択した店舗やサービスが利用できないときの代替導線を扱います。 この体験設計の意図 提供不可は実際の注文行動で頻繁に起こるため、行き止まりではなく回復導線を用意する必要があります。",
+    "summary": "店舗利用不可時の案内",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/setup-order/store-unavailable-handling/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"配送\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "配送 このページでは、配送注文におけるステータス追跡、到着時間、受け渡し進捗を扱います。 この体験設計の意図 配送注文では、待機中と履行中に不確実性が最も高まるため、支払い後の透明性が重要です。",
+    "summary": "配送",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/track-order/delivery/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ステップ6 注文追跡\"",
+    "headings": [
+      "このセクションのページ"
+    ],
+    "body": "ステップ6 注文追跡 このステップでは、注文完了後の購入後体験を扱います。 このセクションのページ",
+    "summary": "このステップでは、注文完了後の購入後体験を扱います。",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/track-order/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"受け取り\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "body": "受け取り このページでは、受け取り注文における準備完了状態、受け取り案内、到着確認、受け渡しメッセージを扱います。 この体験設計の意図 受け取り注文のお客様には、いつ到着すべきか、次に何をすべきかが分かる安心感と正確なタイミング案内が必要です。",
+    "summary": "受け取り",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/track-order/pickup/"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "KFC Atlasデザインシステム",
     "headings": [
       "プラットフォームがどう作られているか — ビジュアルアイデンティティから画面表示まで",
       "デザインシステムとは",
@@ -4222,7 +5269,7 @@
       "Atlas 市場にとっての意味",
       "プラットフォームアーキテクチャ図"
     ],
-    "body": "import useBaseUrl from '@docusaurus/useBaseUrl'; KFC Atlas Design System プラットフォームがどう作られているか — ビジュアルアイデンティティから画面表示まで デザインシステムとは デザインシステムは、KFC のデジタル体験がどこでも同じ基準で見え、同じように動くための 共通ルールブック です。たとえば、KFC Japan のアプリにあるボタンと、KFC Australia の Web 体験にあるボタンが、同じ見た目と同じ振る舞いになるように支える仕組みです。 これがなければ、市場ごとに似た UI を何度も作り直し、少しずつ異なるものになってしまいます。デザインシステムがあることで、すべてのチームが同じ土台の上で開発できます。 KFC Atlas プラットフォームでは、Yum! のエンタープライズデザインシステムである Helium を使っています。以下で、その全体像を説明します。 3つのレイヤー レイヤー1 — Design（見た目を定義する） すべては、Atlas UI/UX チームが使うデザインツール Figma から始まります。Figma の中では、 Tokens Studio というプラグインを使って design tokens を管理します。これは、KFC のブランドカラー、文字サイズ、余白、角丸などを定義する元データです。 その tokens をもとに、チームは UI Kit を組み立てます。UI Kit は、ボタン、カード、ナビゲーションバー、入力欄など、すぐ使える部品のライブラリです。デザイナーはそれらを組み合わせて新しい画面を作ります。各コンポーネントは tokens に紐づいているため、1つの色を変えるだけで全体へ一括反映できます。 簡単に言うと: Tokens Studio はブランドルール、UI Kit はブランド化された Lego パーツ集です。デザイナーはその部品を組み合わせて画面を作ります。 レイヤー2 — Code（実装に変換する） デザインが承認されると、エンジニアは同じ design tokens を使って実装を進めます。この時点で tokens はソフトウェアで使える形にエクスポートされます。 style build process によって、tokens から 2 種類の出力が生成されます。 Native styles — iOS / Android アプリ向け Web styles — ブラウザ体験向け これらのスタイルは Design System Components（DSC） に取り込まれます。DSC は、デザイン上の UI Kit をコード化した実装部品です。Atlas の新機能を作るとき、エンジニアはこの部品を使います。これにより、市場ごとに勝手に異なるフォントやブランド外の色が入ることを防げます。 簡単に言うと: design tokens はコードへ「コンパイル」され、各市場のエンジニアが共通で使うブランド準拠コンポーネント集になります。 レイヤー3 — Market Applications（実際に公開されるもの） スタックの一番下には、お客様が実際に使うアプリケーションがあります。 アプリケーション 内容 KFC Web App Atlas 上に構築された、KFC 市場向けの主要 Web 注文体験 Core Web App KFC Web App などの土台になる共通 Web 基盤 Core Native App ネイティブ iOS / Android 体験の共通モバイル基盤 各市場のフロントエンドは、上記の Core アプリと DSC Components を組み合わせて構築されます。これにより、各市場は自然に一貫性を得られ、カスタマイズも制御された方法で行えます。 Atlas 市場にとっての意味 Japan、Australia、UK、Germany、Singapore のような市場にとって、この構造には次の価値があります。 Speed — 共通要素を毎回作り直さなくてよいため、新機能をより早く出せる Consistency — あらゆる市場、あらゆるデバイスで KFC ブランドらしい見た目を保てる Scalability — Yum! がブランド token を更新すると、その変更を市場全体へ広げられる Quality — コンポーネントはプラットフォームレベルで検証され、市場側はその品質を引き継げる KFC Global Enablement and Market Success の役割は、この仕組みを各市場が最大限活用できるようにすることです。つまり、プラットフォーム機能を市場で使える形へ翻訳し、逆に市場ニーズを構造化してエンジニアリングチームへ戻すことにあります。 プラットフォームアーキテクチャ図 以下の図は、Helium デザインシステムが Figma 上の design tokens から始まり、style build process を経て、プラットフォームコンポーネントになり、最終的に KFC 各市場のアプリケーションへ流れていく構造を示しています。 <iframe src={useBaseUrl('/kfc atlas design system diagram ja.html')} width=\"100%\" height=\"900px\" style={{border: 'none', borderRadius: '12px'}} / Document prepared by KFC Global Enablement and Market Success — KFC Global",
+    "body": "import useBaseUrl from '@docusaurus/useBaseUrl'; KFC Atlasデザインシステム プラットフォームがどう作られているか — ビジュアルアイデンティティから画面表示まで デザインシステムとは デザインシステムは、KFC のデジタル体験がどこでも同じ基準で見え、同じように動くための 共通ルールブック です。たとえば、KFC Japan のアプリにあるボタンと、KFC Australia の Web 体験にあるボタンが、同じ見た目と同じ振る舞いになるように支える仕組みです。 これがなければ、市場ごとに似た UI を何度も作り直し、少しずつ異なるものになってしまいます。デザインシステムがあることで、すべてのチームが同じ土台の上で開発できます。 KFC Atlas プラットフォームでは、Yum! のエンタープライズデザインシステムである Helium を使っています。以下で、その全体像を説明します。 3つのレイヤー レイヤー1 — Design（見た目を定義する） すべては、Atlas UI/UX チームが使うデザインツール Figma から始まります。Figma の中では、 Tokens Studio というプラグインを使って design tokens を管理します。これは、KFC のブランドカラー、文字サイズ、余白、角丸などを定義する元データです。 その tokens をもとに、チームは UI Kit を組み立てます。UI Kit は、ボタン、カード、ナビゲーションバー、入力欄など、すぐ使える部品のライブラリです。デザイナーはそれらを組み合わせて新しい画面を作ります。各コンポーネントは tokens に紐づいているため、1つの色を変えるだけで全体へ一括反映できます。 簡単に言うと: Tokens Studio はブランドルール、UI Kit はブランド化された Lego パーツ集です。デザイナーはその部品を組み合わせて画面を作ります。 レイヤー2 — Code（実装に変換する） デザインが承認されると、エンジニアは同じ design tokens を使って実装を進めます。この時点で tokens はソフトウェアで使える形にエクスポートされます。 style build process によって、tokens から 2 種類の出力が生成されます。 Native styles — iOS / Android アプリ向け Web styles — ブラウザ体験向け これらのスタイルは Design System Components（DSC） に取り込まれます。DSC は、デザイン上の UI Kit をコード化した実装部品です。Atlas の新機能を作るとき、エンジニアはこの部品を使います。これにより、市場ごとに勝手に異なるフォントやブランド外の色が入ることを防げます。 簡単に言うと: design tokens はコードへ「コンパイル」され、各市場のエンジニアが共通で使うブランド準拠コンポーネント集になります。 レイヤー3 — Market Applications（実際に公開されるもの） スタックの一番下には、お客様が実際に使うアプリケーションがあります。 アプリケーション 内容 KFC Web App Atlas 上に構築された、KFC 市場向けの主要 Web 注文体験 Core Web App KFC Web App などの土台になる共通 Web 基盤 Core Native App ネイティブ iOS / Android 体験の共通モバイル基盤 各市場のフロントエンドは、上記の Core アプリと DSC Components を組み合わせて構築されます。これにより、各市場は自然に一貫性を得られ、カスタマイズも制御された方法で行えます。 Atlas 市場にとっての意味 Japan、Australia、UK、Germany、Singapore のような市場にとって、この構造には次の価値があります。 Speed — 共通要素を毎回作り直さなくてよいため、新機能をより早く出せる Consistency — あらゆる市場、あらゆるデバイスで KFC ブランドらしい見た目を保てる Scalability — Yum! がブランド token を更新すると、その変更を市場全体へ広げられる Quality — コンポーネントはプラットフォームレベルで検証され、市場側はその品質を引き継げる KFC Global Enablement and Market Success の役割は、この仕組みを各市場が最大限活用できるようにすることです。つまり、プラットフォーム機能を市場で使える形へ翻訳し、逆に市場ニーズを構造化してエンジニアリングチームへ戻すことにあります。 プラットフォームアーキテクチャ図 以下の図は、Helium デザインシステムが Figma 上の design tokens から始まり、style build process を経て、プラットフォームコンポーネントになり、最終的に KFC 各市場のアプリケーションへ流れていく構造を示しています。 <iframe src={useBaseUrl('/kfc atlas design system diagram ja.html')} width=\"100%\" height=\"900px\" style={{border: 'none', borderRadius: '12px'}} / Document prepared by KFC Global Enablement and Market Success — KFC Global",
     "summary": "import useBaseUrl from '@docusaurus/useBaseUrl';",
     "section": "frontend",
     "url": "/ja-JP/docs/frontend/design-system/"

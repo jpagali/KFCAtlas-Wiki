@@ -18,8 +18,136 @@ const sidebars = {
       label: 'Customer Experience',
       collapsed: false,
       items: [
-        'frontend/customer-journey',
+        {
+          type: 'category',
+          label: 'Customer Journey',
+          link: { type: 'doc', id: 'frontend/customer-journey/index' },
+          collapsed: false,
+          items: [
+            {
+              type: 'category',
+              label: 'Step 1 - Setup Order',
+              link: { type: 'doc', id: 'frontend/customer-journey/setup-order/index' },
+              items: [
+                'frontend/customer-journey/setup-order/set-order-mode',
+                'frontend/customer-journey/setup-order/address-or-store-selection',
+                'frontend/customer-journey/setup-order/change-order-mode',
+                'frontend/customer-journey/setup-order/reorder',
+                'frontend/customer-journey/setup-order/review-order-settings',
+                'frontend/customer-journey/setup-order/store-unavailable-handling',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Step 2 - Find Products',
+              link: { type: 'doc', id: 'frontend/customer-journey/find-products/index' },
+              items: [
+                'frontend/customer-journey/find-products/home-page',
+                'frontend/customer-journey/find-products/menu-landing',
+                'frontend/customer-journey/find-products/menu-listing',
+                'frontend/customer-journey/find-products/format-options',
+                'frontend/customer-journey/find-products/byob-select',
+                'frontend/customer-journey/find-products/childrens-only',
+                'frontend/customer-journey/find-products/catering-menu',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Step 3 - Find Deals and Rewards',
+              link: { type: 'doc', id: 'frontend/customer-journey/find-deals-and-rewards/index' },
+              items: [
+                'frontend/customer-journey/find-deals-and-rewards/loyalty-tile',
+                'frontend/customer-journey/find-deals-and-rewards/rewards-listing',
+                'frontend/customer-journey/find-deals-and-rewards/promo-options',
+                'frontend/customer-journey/find-deals-and-rewards/challenge',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Step 4 - Preview Product and Customize',
+              link: { type: 'doc', id: 'frontend/customer-journey/preview-product-and-customize/index' },
+              items: [
+                'frontend/customer-journey/preview-product-and-customize/product-detail',
+                'frontend/customer-journey/preview-product-and-customize/add-on-and-cross-sell',
+                'frontend/customer-journey/preview-product-and-customize/customize',
+                'frontend/customer-journey/preview-product-and-customize/nutrition-and-allergen',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Step 5 - Order and Get',
+              link: { type: 'doc', id: 'frontend/customer-journey/order-and-get/index' },
+              items: [
+                'frontend/customer-journey/order-and-get/cart',
+                'frontend/customer-journey/order-and-get/checkout',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Step 6 - Track Order',
+              link: { type: 'doc', id: 'frontend/customer-journey/track-order/index' },
+              items: [
+                'frontend/customer-journey/track-order/pickup',
+                'frontend/customer-journey/track-order/delivery',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Supporting Journeys',
+              items: [
+                {
+                  type: 'category',
+                  label: 'Access Account and Manage Profile',
+                  link: { type: 'doc', id: 'frontend/customer-journey/access-account-and-manage-profile/index' },
+                  items: [
+                    'frontend/customer-journey/access-account-and-manage-profile/sign-up',
+                    'frontend/customer-journey/access-account-and-manage-profile/sign-in',
+                    'frontend/customer-journey/access-account-and-manage-profile/account',
+                  ],
+                },
+                {
+                  type: 'category',
+                  label: 'Get Help',
+                  link: { type: 'doc', id: 'frontend/customer-journey/get-help/index' },
+                  items: [
+                    'frontend/customer-journey/get-help/faqs',
+                    'frontend/customer-journey/get-help/contact-kfc',
+                    'frontend/customer-journey/get-help/enquiry-form',
+                  ],
+                },
+                {
+                  type: 'category',
+                  label: 'Find a Store',
+                  link: { type: 'doc', id: 'frontend/customer-journey/find-a-store/index' },
+                  items: [
+                    'frontend/customer-journey/find-a-store/find-a-kfc',
+                    'frontend/customer-journey/find-a-store/kfc-store-details',
+                  ],
+                },
+                {
+                  type: 'category',
+                  label: 'Learn About KFC',
+                  link: { type: 'doc', id: 'frontend/customer-journey/learn-about-kfc/index' },
+                  items: [
+                    'frontend/customer-journey/learn-about-kfc/content-landing',
+                    'frontend/customer-journey/learn-about-kfc/nutrition-and-allergen',
+                    'frontend/customer-journey/learn-about-kfc/app-tour',
+                  ],
+                },
+              ],
+            },
+          ],
+        },
         'frontend/order-channels',
+        {
+          type: 'category',
+          label: 'Customer Engagement Surveys',
+          link: { type: 'doc', id: 'frontend/customer-engagement-surveys/index' },
+          collapsed: false,
+          items: [
+            'frontend/customer-engagement-surveys/qualtrics',
+          ],
+        },
       ],
     },
     {
