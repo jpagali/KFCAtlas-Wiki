@@ -389,6 +389,7 @@ table tr:nth-child(even) td {
   color: #fff;
   font-size: clamp(2rem, 4vw, 2.5rem);
   line-height: 1.05;
+  overflow-wrap: anywhere;
 }
 
 .access-gate__subtitle {
@@ -477,6 +478,32 @@ table tr:nth-child(even) td {
     padding: 9px 12px;
     font-size: 0.76rem;
   }
+
+  .access-gate {
+    padding: 14px;
+    align-items: flex-start;
+  }
+
+  .access-gate__panel {
+    width: 100%;
+    padding: 22px;
+    border-radius: 16px;
+    margin-top: 32px;
+  }
+
+  .access-gate__title {
+    font-size: 1.75rem;
+    line-height: 1.02;
+  }
+
+  .access-gate__subtitle {
+    font-size: 0.94rem;
+  }
+
+  .access-gate__input,
+  .access-gate__button {
+    padding: 13px 14px;
+  }
 }
 
 html[lang='ja-JP'] {
@@ -554,6 +581,14 @@ html[lang='ja-JP'] .footer__title {
 .navbar-contribute-button:hover {
   color: #fff !important;
   text-decoration: none;
+}
+
+.navbar-contribute-button--compact {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.74rem;
+  box-shadow:
+    0 0 0 1px rgba(255, 81, 119, 0.15),
+    0 0 8px rgba(255, 56, 102, 0.24);
 }
 
 .navbar-contribute-button__spark {
@@ -697,14 +732,41 @@ html[lang='ja-JP'] .footer__title {
 }
 
 @media (max-width: 996px) {
-  .navbar-search {
+  .navbar {
+    height: auto;
+    padding-bottom: 0.65rem;
+  }
+
+  .navbar__inner {
+    flex-wrap: wrap;
+    row-gap: 0.55rem;
+    align-items: center;
+  }
+
+  .navbar__brand {
+    min-width: 0;
+    margin-right: auto;
+  }
+
+  .navbar__items--right {
     width: 100%;
-    margin: 0.6rem 0 0;
+    order: 3;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 0.15rem;
+  }
+
+  .navbar-search {
+    width: min(100%, 320px);
+    margin: 0;
   }
 
   .navbar-contribute-button {
     width: fit-content;
     font-size: 0.76rem;
+    flex-shrink: 0;
   }
 
   .navbar-search__dropdown {
