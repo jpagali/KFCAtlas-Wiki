@@ -588,7 +588,7 @@
 
 @media (max-width: 720px) {
   .page {
-    padding: 1.25rem 0.75rem 3rem;
+    padding: 0.9rem 0.65rem 2.25rem;
   }
 
   .hero,
@@ -599,15 +599,87 @@
   }
 
   .hero {
-    padding: 1.5rem;
+    padding: 1.15rem;
+    gap: 1rem;
   }
 
   .heroCopy h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  .heroCopy p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .heroBadge {
+    padding: 1rem;
+  }
+
+  .templateStrip,
+  .panel {
+    padding: 1rem;
+  }
+
+  .templateStripHeader,
+  .panelHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .templateGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .toolbar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 0.7rem;
+    margin-inline: -0.15rem;
+  }
+
+  .toolbarGroup {
+    flex-shrink: 0;
+  }
+
+  .toolbarSelect,
+  .toolbarButton {
+    min-height: 42px;
+    padding: 0.72rem 0.8rem;
+    white-space: nowrap;
+  }
+
+  .toolbarSelect {
+    min-width: 132px;
   }
 
   .editorSurface {
-    min-height: 420px;
+    min-height: 360px;
+    padding: 1rem;
+  }
+
+  .previewSurface,
+  .previewCollapsed {
+    padding: 1rem;
+  }
+
+  .previewTitle {
+    font-size: 1.55rem;
+  }
+
+  .previewMeta {
+    gap: 0.45rem;
+  }
+
+  .panelHeaderActions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .previewToggle {
+    width: 100%;
+    text-align: center;
   }
 
   .pageActions {
@@ -616,5 +688,15 @@
 
   .primaryAction {
     width: 100%;
+  }
+
+  .modal {
+    padding: 1.15rem;
+  }
+
+  .modalHeader,
+  .modalActions {
+    flex-direction: column;
+    align-items: stretch;
   }
 }
