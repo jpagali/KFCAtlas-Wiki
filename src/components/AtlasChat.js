@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useLocation } from '@docusaurus/router';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 // ── Page-aware context: maps doc paths to their topic
 const PAGE_CONTEXT = {
@@ -165,6 +166,7 @@ const JAPANESE_SUGGESTED_ARTICLES = {
 
 export default function AtlasChat() {
   const { i18n, siteConfig } = useDocusaurusContext();
+  const chatLogoSrc = useBaseUrl('/img/atlas-chat-logo.svg');
   const locale = LOCALE_COPY[i18n.currentLocale] ? i18n.currentLocale : 'en-US';
   const copy = LOCALE_COPY[locale];
   const isJapanese = locale === 'ja-JP';
@@ -240,24 +242,28 @@ export default function AtlasChat() {
           style={{
             position: 'fixed', bottom: 28, right: 28, zIndex: 9999,
             width: 56, height: 56, borderRadius: '50%',
-            background: '#E4002B', border: 'none', cursor: 'pointer',
-            boxShadow: '0 4px 20px rgba(228,0,43,0.45), 0 2px 8px rgba(0,0,0,0.2)',
+            background: '#13100C', border: '1px solid rgba(255,255,255,0.08)', cursor: 'pointer',
+            boxShadow: '0 8px 24px rgba(19,16,12,0.28), 0 4px 14px rgba(228,0,43,0.22)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             transition: 'transform 0.2s, box-shadow 0.2s',
+            overflow: 'hidden',
+            padding: 0,
           }}
           onMouseEnter={e => {
             e.currentTarget.style.transform = 'scale(1.08)';
-            e.currentTarget.style.boxShadow = '0 6px 28px rgba(228,0,43,0.55), 0 3px 12px rgba(0,0,0,0.25)';
+            e.currentTarget.style.boxShadow = '0 10px 28px rgba(19,16,12,0.34), 0 6px 18px rgba(228,0,43,0.28)';
           }}
           onMouseLeave={e => {
             e.currentTarget.style.transform = 'scale(1)';
-            e.currentTarget.style.boxShadow = '0 4px 20px rgba(228,0,43,0.45), 0 2px 8px rgba(0,0,0,0.2)';
+            e.currentTarget.style.boxShadow = '0 8px 24px rgba(19,16,12,0.28), 0 4px 14px rgba(228,0,43,0.22)';
           }}
         >
-          {/* Chat bubble icon */}
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-          </svg>
+          <img
+            src={chatLogoSrc}
+            alt=""
+            aria-hidden="true"
+            style={{ width: '100%', height: '100%', display: 'block' }}
+          />
         </button>
       )}
 
@@ -288,14 +294,17 @@ export default function AtlasChat() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
               <div style={{
                 width: 32, height: 32, borderRadius: '50%',
-                background: '#E4002B',
+                background: '#13100C',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 flexShrink: 0,
+                overflow: 'hidden',
               }}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10"/>
-                  <path d="M12 16v-4M12 8h.01"/>
-                </svg>
+                <img
+                  src={chatLogoSrc}
+                  alt=""
+                  aria-hidden="true"
+                  style={{ width: '100%', height: '100%', display: 'block' }}
+                />
               </div>
               <div>
                 <div style={{ color: 'white', fontWeight: 700, fontSize: '0.88rem', lineHeight: 1.2 }}>{copy.assistantName}</div>
