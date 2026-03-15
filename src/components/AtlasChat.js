@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useLocation } from '@docusaurus/router';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import useBaseUrl from '@docusaurus/useBaseUrl';
+import useBaseUrl, { useBaseUrlUtils } from '@docusaurus/useBaseUrl';
 
 // ── Page-aware context: maps doc paths to their topic
 const PAGE_CONTEXT = {
@@ -165,8 +165,9 @@ const JAPANESE_SUGGESTED_ARTICLES = {
 };
 
 export default function AtlasChat() {
-  const { i18n, siteConfig } = useDocusaurusContext();
+  const { i18n } = useDocusaurusContext();
   const chatLogoSrc = useBaseUrl('/img/atlas-chat-logo.svg');
+  const { withBaseUrl } = useBaseUrlUtils();
   const locale = LOCALE_COPY[i18n.currentLocale] ? i18n.currentLocale : 'en-US';
   const copy = LOCALE_COPY[locale];
   const isJapanese = locale === 'ja-JP';
@@ -210,10 +211,8 @@ export default function AtlasChat() {
     }
   };
 
-  const getLocalizedPath = (path) => (locale === 'en-US' ? path : `/${locale}${path}`);
   const navigateTo = (path) => {
-    const cleanBaseUrl = (siteConfig.baseUrl || '/').replace(/\/$/, '');
-    window.location.assign(`${cleanBaseUrl}${getLocalizedPath(path)}`);
+    window.location.assign(withBaseUrl(path));
   };
 
   // ── Render markdown-lite (bold + line breaks)
