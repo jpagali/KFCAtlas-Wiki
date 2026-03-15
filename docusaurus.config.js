@@ -103,10 +103,9 @@ const config = {
             label: '📋 Playbooks',
           },
           {
-            type: 'doc',
-            docId: 'about-knowledge-center',
+            to: '/whats-new',
             position: 'left',
-            label: 'About',
+            label: "What's New",
           },
           {
             type: 'custom-search',
