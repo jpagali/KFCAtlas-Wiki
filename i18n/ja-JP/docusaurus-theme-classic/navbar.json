@@ -19,8 +19,8 @@
     "message": "📋 プレイブック",
     "description": "Navbar item with label 📋 Playbooks"
   },
-  "item.label.About": {
-    "message": "このサイトについて",
-    "description": "Navbar item with label About"
+  "item.label.What's New": {
+    "message": "最新情報",
+    "description": "Navbar item with label What's New"
   }
 }
