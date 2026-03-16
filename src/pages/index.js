@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import SearchBox from '@site/src/components/SearchBox';
 import styles from './index.module.css';
@@ -147,46 +148,55 @@ export default function Home() {
   const locale = HOME_CONTENT[i18n.currentLocale] ? i18n.currentLocale : 'en-US';
   const content = HOME_CONTENT[locale];
   const isJapanese = locale === 'ja-JP';
+  const heroVideoSrc = useBaseUrl('/video/colonel-sanders-cooking-chicken.mp4');
 
   return (
     <Layout title="Home" description={content.description}>
       <div className={styles.hero}>
         <div className={styles.heroTexture} />
+        <div className={styles.heroMedia} aria-hidden="true">
+          <video className={styles.heroVideo} autoPlay muted loop playsInline preload="metadata">
+            <source src={heroVideoSrc} type="video/mp4" />
+          </video>
+          <div className={styles.heroMediaOverlay} />
+        </div>
 
-        <div className={styles.heroContent}>
-          <div className={styles.badge}>
-            <div className={styles.badgeDot} />
-            <span className={localeClass(styles.badgeText, isJapanese)}>{content.badge}</span>
-          </div>
+        <div className={styles.heroInner}>
+          <div className={styles.heroContent}>
+            <div className={styles.badge}>
+              <div className={styles.badgeDot} />
+              <span className={localeClass(styles.badgeText, isJapanese)}>{content.badge}</span>
+            </div>
 
-          <h1 className={localeClass(styles.heroTitle, isJapanese)}>
-            {content.titleLead}
-            <br />
-            <span className={styles.heroTitleAccent}>{content.titleAccent}</span>
-          </h1>
+            <h1 className={localeClass(styles.heroTitle, isJapanese)}>
+              {content.titleLead}
+              <br />
+              <span className={styles.heroTitleAccent}>{content.titleAccent}</span>
+            </h1>
 
-          <p className={localeClass(styles.heroSummary, isJapanese)}>{content.summary}</p>
+            <p className={localeClass(styles.heroSummary, isJapanese)}>{content.summary}</p>
 
-          <div className={styles.searchWrap}>
-            <SearchBox
-              className="hero-search"
-              inputClassName="hero-search__input"
-              dropdownClassName="hero-search__dropdown"
-              resultClassName="hero-search__result"
-              titleClassName="hero-search__title"
-              metaClassName="hero-search__meta"
-              emptyClassName="hero-search__empty"
-              placeholder={content.heroSearchPlaceholder}
-            />
-          </div>
+            <div className={styles.searchWrap}>
+              <SearchBox
+                className="hero-search"
+                inputClassName="hero-search__input"
+                dropdownClassName="hero-search__dropdown"
+                resultClassName="hero-search__result"
+                titleClassName="hero-search__title"
+                metaClassName="hero-search__meta"
+                emptyClassName="hero-search__empty"
+                placeholder={content.heroSearchPlaceholder}
+              />
+            </div>
 
-          <div className={styles.heroActions}>
-            <Link to="/docs/frontend/overview" className={`${styles.button} ${styles.buttonPrimary}`}>
-              {content.heroPrimaryCta}
-            </Link>
-            <Link to="/docs/admin-portal-guide/" className={`${styles.button} ${styles.buttonSecondary}`}>
-              {content.heroSecondaryCta}
-            </Link>
+            <div className={styles.heroActions}>
+              <Link to="/docs/frontend/overview" className={`${styles.button} ${styles.buttonPrimary}`}>
+                {content.heroPrimaryCta}
+              </Link>
+              <Link to="/docs/admin-portal-guide/" className={`${styles.button} ${styles.buttonSecondary}`}>
+                {content.heroSecondaryCta}
+              </Link>
+            </div>
           </div>
         </div>
       </div>
