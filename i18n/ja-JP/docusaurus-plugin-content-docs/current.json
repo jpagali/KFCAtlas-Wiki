@@ -3,9 +3,9 @@
     "message": "Next",
     "description": "The label for version current"
   },
-  "sidebar.frontendSidebar.category.Getting Started": {
-    "message": "はじめに",
-    "description": "The label for category 'Getting Started' in sidebar 'frontendSidebar'"
+  "sidebar.frontendSidebar.category.Front-end Overview": {
+    "message": "フロントエンド概要",
+    "description": "The label for category 'Front-end Overview' in sidebar 'frontendSidebar'"
   },
   "sidebar.frontendSidebar.category.Customer Experience": {
     "message": "顧客体験",

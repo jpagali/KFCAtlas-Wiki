@@ -1,0 +1,3567 @@
+[
+  {
+    "locale": "en-US",
+    "title": "About the Knowledge Center",
+    "headings": [
+      "What Is the Knowledge Center",
+      "Who Created the Knowledge Center",
+      "Why We Are Building It",
+      "Who It Aims To Cater To",
+      "What the Knowledge Center Aims To Do",
+      "Core Features",
+      "Design Principles",
+      "Long Term Role",
+      "In One Sentence"
+    ],
+    "summary": "About the Knowledge Center",
+    "section": "about-knowledge-center.md",
+    "url": "/docs/about-knowledge-center/",
+    "normalizedTitle": "about the knowledge center",
+    "normalizedHeadings": "what is the knowledge center who created the knowledge center why we are building it who it aims to cater to what the knowledge center aims to do core features design principles long term role in one sentence",
+    "normalizedSummary": "about the knowledge center",
+    "normalizedSection": "about knowledge center md"
+  },
+  {
+    "locale": "en-US",
+    "title": "Create an Agent",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Sets up a new user account with specific roles and permissions, granting market operators or support staff access to manage the Byte Commerce Admin Portal.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/agents/create-an-agent/",
+    "normalizedTitle": "create an agent",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "sets up a new user account with specific roles and permissions granting market operators or support staff access to manage the byte commerce admin portal",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Edit an Agent",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Updates an existing agent’s account details, roles, or access permissions.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/agents/edit-an-agent/",
+    "normalizedTitle": "edit an agent",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "updates an existing agent s account details roles or access permissions",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Agents",
+    "headings": [
+      "Topics"
+    ],
+    "summary": "Agents",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/agents/",
+    "normalizedTitle": "agents",
+    "normalizedHeadings": "topics",
+    "normalizedSummary": "agents",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Add an Image to a Bundle",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Uploads or links a display image to a bundle so customers see the correct combo visual when ordering on online channels.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/bundles/add-an-image-to-a-bundle/",
+    "normalizedTitle": "add an image to a bundle",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "uploads or links a display image to a bundle so customers see the correct combo visual when ordering on online channels",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Add Metafields to a Bundle",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Attaches custom key value data to a bundle for integrations, compliance, or internal tracking — only add metafields if your technical team has specified exact keys and values.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/bundles/add-metafields-to-a-bundle/",
+    "normalizedTitle": "add metafields to a bundle",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "attaches custom key value data to a bundle for integrations compliance or internal tracking only add metafields if your technical team has specified exact keys and values",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Copy a Bundle",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Duplicates an existing bundle to quickly create similar offerings with the same choices and configuration.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/bundles/copy-a-bundle/",
+    "normalizedTitle": "copy a bundle",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "duplicates an existing bundle to quickly create similar offerings with the same choices and configuration",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Copy a Choice",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Duplicates an existing choice to quickly create similar selection slots for other bundles.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/bundles/copy-a-choice/",
+    "normalizedTitle": "copy a choice",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "duplicates an existing choice to quickly create similar selection slots for other bundles",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Create a Bundle",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Builds a combo or meal deal by grouping products together under a single purchasable item, with its own code, pricing, and display information.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/bundles/create-a-bundle/",
+    "normalizedTitle": "create a bundle",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "builds a combo or meal deal by grouping products together under a single purchasable item with its own code pricing and display information",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Create a Choice",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Creates a selection slot within a bundle (e.g., \"Choose Your Side\" or \"Select Your Drink\"), letting customers personalise their combo by selecting from available products.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/bundles/create-a-choice/",
+    "normalizedTitle": "create a choice",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "creates a selection slot within a bundle e g choose your side or select your drink letting customers personalise their combo by selecting from available products",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Delete a Bundle",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Permanently removes a bundle from the catalogue and all menus where it is assigned.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/bundles/delete-a-bundle/",
+    "normalizedTitle": "delete a bundle",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "permanently removes a bundle from the catalogue and all menus where it is assigned",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Delete a Choice",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Removes a choice and its associated products/variants from the system permanently.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/bundles/delete-a-choice/",
+    "normalizedTitle": "delete a choice",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "removes a choice and its associated products variants from the system permanently",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Edit a Bundle",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Updates an existing bundle's name, code, choices, pricing, or description.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/bundles/edit-a-bundle/",
+    "normalizedTitle": "edit a bundle",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "updates an existing bundle s name code choices pricing or description",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Edit a Choice",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Updates an existing choice's name, products, variants, or min/max quantity settings.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/bundles/edit-a-choice/",
+    "normalizedTitle": "edit a choice",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "updates an existing choice s name products variants or min max quantity settings",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Bundles",
+    "headings": [
+      "Topics",
+      "Bundles",
+      "Choices"
+    ],
+    "summary": "Bundles",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/bundles/",
+    "normalizedTitle": "bundles",
+    "normalizedHeadings": "topics bundles choices",
+    "normalizedSummary": "bundles",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Customer Search",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Finds a customer account by name, email, or phone number to view their profile and order history — used by support teams to assist customers with account issues or reset passwords.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/customer-support/customer-search/",
+    "normalizedTitle": "customer search",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "finds a customer account by name email or phone number to view their profile and order history used by support teams to assist customers with account issues or reset passwords",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Customer Support",
+    "headings": [
+      "Topics",
+      "Orders",
+      "Customers"
+    ],
+    "summary": "Customer Support",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/customer-support/",
+    "normalizedTitle": "customer support",
+    "normalizedHeadings": "topics orders customers",
+    "normalizedSummary": "customer support",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Order Search",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Resending Receipts",
+      "Issuing Refunds",
+      "Navigation Tips",
+      "Related guides"
+    ],
+    "summary": "Finds a specific customer order using filters like Order ID, date, or customer name — the primary tool for support agents investigating order issues, issuing refunds, or resendi...",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/customer-support/order-search/",
+    "normalizedTitle": "order search",
+    "normalizedHeadings": "what this guide covers steps resending receipts issuing refunds navigation tips related guides",
+    "normalizedSummary": "finds a specific customer order using filters like order id date or customer name the primary tool for support agents investigating order issues issuing refunds or resendi",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Deactivate In Store",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Disables a POS terminal or kiosk from receiving menu updates and processing orders. This action is reversible — the device can be reactivated at any time.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/in-store-devices/deactivate-in-store/",
+    "normalizedTitle": "deactivate in store",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "disables a pos terminal or kiosk from receiving menu updates and processing orders this action is reversible the device can be reactivated at any time",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Generate One Time Password",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Creates a temporary authentication code for a POS terminal or kiosk, used during initial device setup or when re authenticating an existing device.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/in-store-devices/generate-one-time-password/",
+    "normalizedTitle": "generate one time password",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "creates a temporary authentication code for a pos terminal or kiosk used during initial device setup or when re authenticating an existing device",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "In Store Devices",
+    "headings": [
+      "Topics"
+    ],
+    "summary": "In Store Devices",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/in-store-devices/",
+    "normalizedTitle": "in store devices",
+    "normalizedHeadings": "topics",
+    "normalizedSummary": "in store devices",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "View In Store Device Details",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Displays the complete information for a POS terminal or kiosk, including device name, type, status, and menu publish history — used for device auditing and troubleshooting.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/in-store-devices/view-in-store-device-details/",
+    "normalizedTitle": "view in store device details",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "displays the complete information for a pos terminal or kiosk including device name type status and menu publish history used for device auditing and troubleshooting",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Admin Portal Guide",
+    "headings": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "summary": "Admin Portal Guide",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/",
+    "normalizedTitle": "admin portal guide",
+    "normalizedHeadings": "",
+    "normalizedSummary": "admin portal guide",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Add Metafields to a Category",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Attaches custom key value data to a category for integration with external systems or market specific requirements.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/menus/add-metafields-to-a-category/",
+    "normalizedTitle": "add metafields to a category",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "attaches custom key value data to a category for integration with external systems or market specific requirements",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Assign a Menu",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Links a menu to specific stores and ordering channels so the correct catalogue is served to customers.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/menus/assign-a-menu/",
+    "normalizedTitle": "assign a menu",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "links a menu to specific stores and ordering channels so the correct catalogue is served to customers",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Assign a Patch (Add to Patch List)",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Adds a patch to a store's active patch list without removing existing patches.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/menus/assign-a-patch-add-to-patch-list/",
+    "normalizedTitle": "assign a patch add to patch list",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "adds a patch to a store s active patch list without removing existing patches",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Assign a Patch (Replace Existing List)",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Replaces a store's entire patch list with a new single patch, removing any previously assigned patches. Use this when you need a full reset of patches for a store or channel.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/menus/assign-a-patch-replace-existing-list/",
+    "normalizedTitle": "assign a patch replace existing list",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "replaces a store s entire patch list with a new single patch removing any previously assigned patches use this when you need a full reset of patches for a store or channel",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Copy a Category",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Duplicates an existing category to speed up menu structuring without having to recreate it from scratch.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/menus/copy-a-category/",
+    "normalizedTitle": "copy a category",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "duplicates an existing category to speed up menu structuring without having to recreate it from scratch",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Copy a Menu",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Duplicates an existing menu to use as a starting point for a new menu, saving significant setup time.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/menus/copy-a-menu/",
+    "normalizedTitle": "copy a menu",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "duplicates an existing menu to use as a starting point for a new menu saving significant setup time",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Copy a Patch",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Duplicates an existing patch to use as a starting point for a similar set of overrides.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/menus/copy-a-patch/",
+    "normalizedTitle": "copy a patch",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "duplicates an existing patch to use as a starting point for a similar set of overrides",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Create a Category",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Creates a grouping label (e.g. 'Chicken', 'Sides', 'Desserts') to organize products within a menu for customers browsing the ordering interface.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/menus/create-a-category/",
+    "normalizedTitle": "create a category",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "creates a grouping label e g chicken sides desserts to organize products within a menu for customers browsing the ordering interface",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Create a Menu",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Builds a new menu structure in Atlas that can be assigned to stores and channels, defining the catalogue of products and bundles available for ordering.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/menus/create-a-menu/",
+    "normalizedTitle": "create a menu",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "builds a new menu structure in atlas that can be assigned to stores and channels defining the catalogue of products and bundles available for ordering",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Create a Named Price",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Defines a reusable price label that can be applied across multiple products or variants, enabling consistent pricing management at scale.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/menus/create-a-named-price/",
+    "normalizedTitle": "create a named price",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "defines a reusable price label that can be applied across multiple products or variants enabling consistent pricing management at scale",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Create a Patch",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Creates a menu patch — a targeted override that modifies specific items (products, bundles, or variants) in a menu without replacing the entire menu.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/menus/create-a-patch/",
+    "normalizedTitle": "create a patch",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "creates a menu patch a targeted override that modifies specific items products bundles or variants in a menu without replacing the entire menu",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Delete a Category",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Permanently removes a category from the system when it is no longer needed.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/menus/delete-a-category/",
+    "normalizedTitle": "delete a category",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "permanently removes a category from the system when it is no longer needed",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Delete a Menu",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Permanently removes a menu from the system when it is no longer in use.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/menus/delete-a-menu/",
+    "normalizedTitle": "delete a menu",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "permanently removes a menu from the system when it is no longer in use",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Delete a Patch",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Permanently removes a patch from the system.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/menus/delete-a-patch/",
+    "normalizedTitle": "delete a patch",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "permanently removes a patch from the system",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Delete Named Price",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Permanently removes a named price that is no longer in use. Deletes the price label only — products using it must be reassigned to a different price.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/menus/delete-named-price/",
+    "normalizedTitle": "delete named price",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "permanently removes a named price that is no longer in use deletes the price label only products using it must be reassigned to a different price",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Edit a Category",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Updates a category’s name, display settings, or configuration.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/menus/edit-a-category/",
+    "normalizedTitle": "edit a category",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "updates a category s name display settings or configuration",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Edit a Menu",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Updates an existing menu’s configuration, such as its name, assigned items, or category structure.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/menus/edit-a-menu/",
+    "normalizedTitle": "edit a menu",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "updates an existing menu s configuration such as its name assigned items or category structure",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Edit a Patch",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Updates an existing patch’s name, operations, or items.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/menus/edit-a-patch/",
+    "normalizedTitle": "edit a patch",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "updates an existing patch s name operations or items",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Edit Named Price",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Updates an existing named price value or name. All products using this price will automatically reflect the updated value.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/menus/edit-named-price/",
+    "normalizedTitle": "edit named price",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "updates an existing named price value or name all products using this price will automatically reflect the updated value",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Menus",
+    "headings": [
+      "Menus",
+      "Categories",
+      "Patches",
+      "Named Prices"
+    ],
+    "summary": "Menus",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/menus/",
+    "normalizedTitle": "menus",
+    "normalizedHeadings": "menus categories patches named prices",
+    "normalizedSummary": "menus",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Publish a Menu",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Pushes an assigned menu to live digital ordering channels. This process makes the menu available to customers for ordering.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/menus/publish-a-menu/",
+    "normalizedTitle": "publish a menu",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "pushes an assigned menu to live digital ordering channels this process makes the menu available to customers for ordering",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Add an Image to a Product",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Notes"
+    ],
+    "summary": "Uploads and assigns display images to a product so customers see accurate visuals when ordering through digital channels.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/add-an-image-to-a-product/",
+    "normalizedTitle": "add an image to a product",
+    "normalizedHeadings": "what this guide covers steps notes",
+    "normalizedSummary": "uploads and assigns display images to a product so customers see accurate visuals when ordering through digital channels",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Add Metafields to a Modifier",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "To Edit an Existing Metafield",
+      "To Copy a Metafield",
+      "To Delete a Metafield",
+      "Notes"
+    ],
+    "summary": "Attaches structured custom data to a modifier for integration or compliance purposes.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/add-metafields-to-a-modifier/",
+    "normalizedTitle": "add metafields to a modifier",
+    "normalizedHeadings": "what this guide covers steps to edit an existing metafield to copy a metafield to delete a metafield notes",
+    "normalizedSummary": "attaches structured custom data to a modifier for integration or compliance purposes",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Add Metafields to a Product",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "To Edit an Existing Metafield",
+      "To Copy a Metafield",
+      "To Delete a Metafield",
+      "Notes"
+    ],
+    "summary": "Attaches custom metadata to a product for market specific data requirements, such as regulatory tags, integration fields, or compliance information.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/add-metafields-to-a-product/",
+    "normalizedTitle": "add metafields to a product",
+    "normalizedHeadings": "what this guide covers steps to edit an existing metafield to copy a metafield to delete a metafield notes",
+    "normalizedSummary": "attaches custom metadata to a product for market specific data requirements such as regulatory tags integration fields or compliance information",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Add Metafields to a Slot",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "To Edit an Existing Metafield",
+      "To Copy a Metafield",
+      "To Delete a Metafield",
+      "Notes"
+    ],
+    "summary": "Attaches custom metadata to a slot for system integration needs or market specific requirements.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/add-metafields-to-a-slot/",
+    "normalizedTitle": "add metafields to a slot",
+    "normalizedHeadings": "what this guide covers steps to edit an existing metafield to copy a metafield to delete a metafield notes",
+    "normalizedSummary": "attaches custom metadata to a slot for system integration needs or market specific requirements",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Add Metafields to a Variant",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "To Edit an Existing Metafield",
+      "To Copy a Metafield",
+      "To Delete a Metafield",
+      "Notes"
+    ],
+    "summary": "Attaches market specific structured data to a product variant for system integration or downstream requirements.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/add-metafields-to-a-variant/",
+    "normalizedTitle": "add metafields to a variant",
+    "normalizedHeadings": "what this guide covers steps to edit an existing metafield to copy a metafield to delete a metafield notes",
+    "normalizedSummary": "attaches market specific structured data to a product variant for system integration or downstream requirements",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Add Metafields to a Weight",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "To Edit an Existing Metafield",
+      "To Copy a Metafield",
+      "To Delete a Metafield",
+      "Notes"
+    ],
+    "summary": "Attaches custom metadata to a weight entry for system integration needs or market specific requirements.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/add-metafields-to-a-weight/",
+    "normalizedTitle": "add metafields to a weight",
+    "normalizedHeadings": "what this guide covers steps to edit an existing metafield to copy a metafield to delete a metafield notes",
+    "normalizedSummary": "attaches custom metadata to a weight entry for system integration needs or market specific requirements",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Add Metafields to an Option Value",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "To Edit an Existing Metafield",
+      "To Copy a Metafield",
+      "To Delete a Metafield",
+      "Notes"
+    ],
+    "summary": "Attaches custom metadata to an option value for market specific data requirements or system integration needs.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/add-metafields-to-an-option-value/",
+    "normalizedTitle": "add metafields to an option value",
+    "normalizedHeadings": "what this guide covers steps to edit an existing metafield to copy a metafield to delete a metafield notes",
+    "normalizedSummary": "attaches custom metadata to an option value for market specific data requirements or system integration needs",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Copy a Modifier",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Notes"
+    ],
+    "summary": "Duplicates a modifier to quickly build similar add ons without re entering all information.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/copy-a-modifier/",
+    "normalizedTitle": "copy a modifier",
+    "normalizedHeadings": "what this guide covers steps notes",
+    "normalizedSummary": "duplicates a modifier to quickly build similar add ons without re entering all information",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Copy a Product",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Notes"
+    ],
+    "summary": "Duplicates an existing product as a starting point, reducing data entry when creating similar items in the catalogue.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/copy-a-product/",
+    "normalizedTitle": "copy a product",
+    "normalizedHeadings": "what this guide covers steps notes",
+    "normalizedSummary": "duplicates an existing product as a starting point reducing data entry when creating similar items in the catalogue",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Copy a Slot",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Notes"
+    ],
+    "summary": "Duplicates a slot to speed up product configuration when creating similar customisation structures.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/copy-a-slot/",
+    "normalizedTitle": "copy a slot",
+    "normalizedHeadings": "what this guide covers steps notes",
+    "normalizedSummary": "duplicates a slot to speed up product configuration when creating similar customisation structures",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Copy a Weight",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Notes"
+    ],
+    "summary": "Duplicates a weight entry to reduce setup time when creating similar weight configurations.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/copy-a-weight/",
+    "normalizedTitle": "copy a weight",
+    "normalizedHeadings": "what this guide covers steps notes",
+    "normalizedSummary": "duplicates a weight entry to reduce setup time when creating similar weight configurations",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Copy an Option",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Notes"
+    ],
+    "summary": "Duplicates an option group to save time when creating similar customisation sets across multiple products.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/copy-an-option/",
+    "normalizedTitle": "copy an option",
+    "normalizedHeadings": "what this guide covers steps notes",
+    "normalizedSummary": "duplicates an option group to save time when creating similar customisation sets across multiple products",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Copy an Option Value",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Notes"
+    ],
+    "summary": "Duplicates an option value to quickly create similar choices within an option group.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/copy-an-option-value/",
+    "normalizedTitle": "copy an option value",
+    "normalizedHeadings": "what this guide covers steps notes",
+    "normalizedSummary": "duplicates an option value to quickly create similar choices within an option group",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Create a Modifier",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Notes"
+    ],
+    "summary": "Creates an add on or customisation item (e.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/create-a-modifier/",
+    "normalizedTitle": "create a modifier",
+    "normalizedHeadings": "what this guide covers steps notes",
+    "normalizedSummary": "creates an add on or customisation item e",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Create a Product",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Page 1: Basic Product Information",
+      "Page 2: Options",
+      "Page 3: Variants",
+      "Page 4: Slots",
+      "Page 5: Bulk Actions",
+      "Page 6: Variant Tags",
+      "Page 7: Review",
+      "Notes"
+    ],
+    "summary": "Builds a complete product from scratch, defining its code, name, variants, options, pricing, slots, modifiers, and availability windows so it is ready to sell across digital cha...",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/create-a-product/",
+    "normalizedTitle": "create a product",
+    "normalizedHeadings": "what this guide covers steps page 1 basic product information page 2 options page 3 variants page 4 slots page 5 bulk actions page 6 variant tags page 7 review notes",
+    "normalizedSummary": "builds a complete product from scratch defining its code name variants options pricing slots modifiers and availability windows so it is ready to sell across digital cha",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Create a Slot",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Step 1: Basic Slot Information",
+      "Step 2: Add Modifiers",
+      "Step 3: Add Weights",
+      "Notes"
+    ],
+    "summary": "Creates a position within a product where modifiers can be placed (e.g., “Sauce Selection”, “Cheese Options”), structuring how add ons are presented to customers.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/create-a-slot/",
+    "normalizedTitle": "create a slot",
+    "normalizedHeadings": "what this guide covers steps step 1 basic slot information step 2 add modifiers step 3 add weights notes",
+    "normalizedSummary": "creates a position within a product where modifiers can be placed e g sauce selection cheese options structuring how add ons are presented to customers",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Create a Weight",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Notes"
+    ],
+    "summary": "Defines a weight or portion size configuration for a product, used in markets where items are tracked or priced by weight.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/create-a-weight/",
+    "normalizedTitle": "create a weight",
+    "normalizedHeadings": "what this guide covers steps notes",
+    "normalizedSummary": "defines a weight or portion size configuration for a product used in markets where items are tracked or priced by weight",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Create an Option",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Notes"
+    ],
+    "summary": "Creates a customisation group (e.g., “Size”, “Spice Level”) that can be linked to products, allowing customers to personalise their order with choices.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/create-an-option/",
+    "normalizedTitle": "create an option",
+    "normalizedHeadings": "what this guide covers steps notes",
+    "normalizedSummary": "creates a customisation group e g size spice level that can be linked to products allowing customers to personalise their order with choices",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Create an Option Value",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Notes"
+    ],
+    "summary": "Adds an individual choice within an option group (e.g., “Large” under “Size”), giving customers selectable items during ordering.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/create-an-option-value/",
+    "normalizedTitle": "create an option value",
+    "normalizedHeadings": "what this guide covers steps notes",
+    "normalizedSummary": "adds an individual choice within an option group e g large under size giving customers selectable items during ordering",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Delete a Modifier",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Notes"
+    ],
+    "summary": "Permanently removes a modifier from the system when it is no longer needed.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/delete-a-modifier/",
+    "normalizedTitle": "delete a modifier",
+    "normalizedHeadings": "what this guide covers steps notes",
+    "normalizedSummary": "permanently removes a modifier from the system when it is no longer needed",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Delete a Product",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Notes"
+    ],
+    "summary": "Permanently removes a product from the system when it is discontinued or was created in error.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/delete-a-product/",
+    "normalizedTitle": "delete a product",
+    "normalizedHeadings": "what this guide covers steps notes",
+    "normalizedSummary": "permanently removes a product from the system when it is discontinued or was created in error",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Delete a Slot",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Notes"
+    ],
+    "summary": "Removes a slot from the system when the configuration is no longer needed.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/delete-a-slot/",
+    "normalizedTitle": "delete a slot",
+    "normalizedHeadings": "what this guide covers steps notes",
+    "normalizedSummary": "removes a slot from the system when the configuration is no longer needed",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Delete a Weight",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Notes"
+    ],
+    "summary": "Removes a weight configuration when it is no longer applicable.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/delete-a-weight/",
+    "normalizedTitle": "delete a weight",
+    "normalizedHeadings": "what this guide covers steps notes",
+    "normalizedSummary": "removes a weight configuration when it is no longer applicable",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Delete an Option",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Notes"
+    ],
+    "summary": "Removes an option group from the system when it is no longer needed.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/delete-an-option/",
+    "normalizedTitle": "delete an option",
+    "normalizedHeadings": "what this guide covers steps notes",
+    "normalizedSummary": "removes an option group from the system when it is no longer needed",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Delete an Option Value",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Notes"
+    ],
+    "summary": "Removes a specific choice from an option group when it is discontinued or no longer needed.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/delete-an-option-value/",
+    "normalizedTitle": "delete an option value",
+    "normalizedHeadings": "what this guide covers steps notes",
+    "normalizedSummary": "removes a specific choice from an option group when it is discontinued or no longer needed",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Edit a Modifier",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Notes"
+    ],
+    "summary": "Updates a modifier's details such as name, pricing, images, or other properties.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/edit-a-modifier/",
+    "normalizedTitle": "edit a modifier",
+    "normalizedHeadings": "what this guide covers steps notes",
+    "normalizedSummary": "updates a modifier s details such as name pricing images or other properties",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Edit a Product",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Notes"
+    ],
+    "summary": "Updates an existing product's information such as name, description, images, pricing, or availability to reflect menu changes, corrections, or branding updates without recreatin...",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/edit-a-product/",
+    "normalizedTitle": "edit a product",
+    "normalizedHeadings": "what this guide covers steps notes",
+    "normalizedSummary": "updates an existing product s information such as name description images pricing or availability to reflect menu changes corrections or branding updates without recreatin",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Edit a Slot",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Notes"
+    ],
+    "summary": "Updates an existing slot's configuration, such as its label, minimum/maximum quantities, modifiers, or weights.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/edit-a-slot/",
+    "normalizedTitle": "edit a slot",
+    "normalizedHeadings": "what this guide covers steps notes",
+    "normalizedSummary": "updates an existing slot s configuration such as its label minimum maximum quantities modifiers or weights",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Edit a Variant",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Variant Code",
+      "Pricing",
+      "Availability",
+      "Nutrition Information",
+      "Allergens/Exclusions",
+      "Images",
+      "Notes"
+    ],
+    "summary": "Updates a product variant's code, pricing, slots, availability, nutrition info, allergens, exclusions, or images after the product has been created.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/edit-a-variant/",
+    "normalizedTitle": "edit a variant",
+    "normalizedHeadings": "what this guide covers steps variant code pricing availability nutrition information allergens exclusions images notes",
+    "normalizedSummary": "updates a product variant s code pricing slots availability nutrition info allergens exclusions or images after the product has been created",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Edit a Weight",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Notes"
+    ],
+    "summary": "Updates an existing weight definition such as the name, max value, or default status.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/edit-a-weight/",
+    "normalizedTitle": "edit a weight",
+    "normalizedHeadings": "what this guide covers steps notes",
+    "normalizedSummary": "updates an existing weight definition such as the name max value or default status",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Edit an Option",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Notes"
+    ],
+    "summary": "Updates an existing option's name or configuration to reflect menu or UX changes.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/edit-an-option/",
+    "normalizedTitle": "edit an option",
+    "normalizedHeadings": "what this guide covers steps notes",
+    "normalizedSummary": "updates an existing option s name or configuration to reflect menu or ux changes",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Edit an Option Value",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Notes"
+    ],
+    "summary": "Updates an existing option value's name, display properties, or images to reflect menu changes.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/edit-an-option-value/",
+    "normalizedTitle": "edit an option value",
+    "normalizedHeadings": "what this guide covers steps notes",
+    "normalizedSummary": "updates an existing option value s name display properties or images to reflect menu changes",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Edit Item Availability",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Notes"
+    ],
+    "summary": "Sets time based availability windows for a product or modifier, controlling when it appears on the menu and is available for ordering (e.g., “Breakfast 6am–11am”).",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/edit-item-availability/",
+    "normalizedTitle": "edit item availability",
+    "normalizedHeadings": "what this guide covers steps notes",
+    "normalizedSummary": "sets time based availability windows for a product or modifier controlling when it appears on the menu and is available for ordering e g breakfast 6am 11am",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Products",
+    "headings": [
+      "Products",
+      "Options",
+      "Option Values",
+      "Slots",
+      "Modifiers",
+      "Weights",
+      "Variants"
+    ],
+    "summary": "Products",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/products/",
+    "normalizedTitle": "products",
+    "normalizedHeadings": "products options option values slots modifiers weights variants",
+    "normalizedSummary": "products",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Add Metadata to Promotion",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Attaches custom metadata (key value pairs) to a promotion for system integration or market specific tracking needs.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/promotions/add-metadata-to-promotion/",
+    "normalizedTitle": "add metadata to promotion",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "attaches custom metadata key value pairs to a promotion for system integration or market specific tracking needs",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Advanced Promotions Search",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Provides enhanced filtering and search capabilities across all promotions, allowing operators to locate specific promotions by complex criteria — useful when searching for all p...",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/promotions/advanced-promotions-search/",
+    "normalizedTitle": "advanced promotions search",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "provides enhanced filtering and search capabilities across all promotions allowing operators to locate specific promotions by complex criteria useful when searching for all p",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Archive a Promotion",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "To find and restore archived promotions",
+      "Related guides"
+    ],
+    "summary": "Marks a promotion as archived to remove it from active use while retaining its record for historical reporting.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/promotions/archive-a-promotion/",
+    "normalizedTitle": "archive a promotion",
+    "normalizedHeadings": "what this guide covers steps to find and restore archived promotions related guides",
+    "normalizedSummary": "marks a promotion as archived to remove it from active use while retaining its record for historical reporting",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Assign Promotions to Store Groups",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Links existing promotions to store groups, making them active for all stores within those groups simultaneously.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/promotions/assign-promotions-to-store-groups/",
+    "normalizedTitle": "assign promotions to store groups",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "links existing promotions to store groups making them active for all stores within those groups simultaneously",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Copy Promotion",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Duplicates an existing promotion as a starting point for a new one, reducing setup time for similar offers.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/promotions/copy-promotion/",
+    "normalizedTitle": "copy promotion",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "duplicates an existing promotion as a starting point for a new one reducing setup time for similar offers",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Copy Promotion ID",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Copies a promotion’s unique ID to your clipboard for use in support tickets, system integrations, or cross referencing with other systems.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/promotions/copy-promotion-id/",
+    "normalizedTitle": "copy promotion id",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "copies a promotion s unique id to your clipboard for use in support tickets system integrations or cross referencing with other systems",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Create a Promotion",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Builds a new promotional rule in Atlas — defining the discount type, conditions, validity period, and applicable store groups — so it can be surfaced to customers through digita...",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/promotions/create-a-promotion/",
+    "normalizedTitle": "create a promotion",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "builds a new promotional rule in atlas defining the discount type conditions validity period and applicable store groups so it can be surfaced to customers through digita",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Create a Store Group",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Creates a named grouping of stores that share menu, promotion, or tax configurations — a foundational structure for managing multiple locations at scale.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/promotions/create-a-store-group/",
+    "normalizedTitle": "create a store group",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "creates a named grouping of stores that share menu promotion or tax configurations a foundational structure for managing multiple locations at scale",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Create Serialized Code",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Generates unique single use promotional codes tied to a promotion, used for tracked redemption campaigns where each customer receives a distinct code.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/promotions/create-serialized-code/",
+    "normalizedTitle": "create serialized code",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "generates unique single use promotional codes tied to a promotion used for tracked redemption campaigns where each customer receives a distinct code",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Delete a Store Group",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Notes",
+      "Additional information"
+    ],
+    "summary": "Permanently removes a store group from the system.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/promotions/delete-a-store-group/",
+    "normalizedTitle": "delete a store group",
+    "normalizedHeadings": "what this guide covers steps notes additional information",
+    "normalizedSummary": "permanently removes a store group from the system",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Edit a Promotion",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Updates an existing promotion’s configuration, such as validity dates, discount values, or requirement and effect settings.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/promotions/edit-a-promotion/",
+    "normalizedTitle": "edit a promotion",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "updates an existing promotion s configuration such as validity dates discount values or requirement and effect settings",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Edit a Store Group",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Notes",
+      "Additional information"
+    ],
+    "summary": "Updates a store group's details or membership.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/promotions/edit-a-store-group/",
+    "normalizedTitle": "edit a store group",
+    "normalizedHeadings": "what this guide covers steps notes additional information",
+    "normalizedSummary": "updates a store group s details or membership",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Find Serialized Code",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Locates a specific serialized promotional code within Atlas, used when verifying redemption status, troubleshooting issues, or managing code validity.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/promotions/find-serialized-code/",
+    "normalizedTitle": "find serialized code",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "locates a specific serialized promotional code within atlas used when verifying redemption status troubleshooting issues or managing code validity",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Import Promotions for a Store Group",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Bulk imports promotion assignments from one store group to another, used when setting up large promotion campaigns across many stores or duplicating promotions from an existing...",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/promotions/import-promotions-for-a-store-group/",
+    "normalizedTitle": "import promotions for a store group",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "bulk imports promotion assignments from one store group to another used when setting up large promotion campaigns across many stores or duplicating promotions from an existing",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Promotions",
+    "headings": [
+      "Topics",
+      "Guides",
+      "Promotions",
+      "Store Groups",
+      "Advanced Promotions Search"
+    ],
+    "summary": "Promotions",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/promotions/",
+    "normalizedTitle": "promotions",
+    "normalizedHeadings": "topics guides promotions store groups advanced promotions search",
+    "normalizedSummary": "promotions",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "View Promotions for a Store Group",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Lists all promotions assigned to a store group for visibility and auditing purposes.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/promotions/view-promotions-for-a-store-group/",
+    "normalizedTitle": "view promotions for a store group",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "lists all promotions assigned to a store group for visibility and auditing purposes",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Assign Promotions",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Assigns one or more promotions to a store group, activating them across all member stores simultaneously.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/store-groups/assign-promotions/",
+    "normalizedTitle": "assign promotions",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "assigns one or more promotions to a store group activating them across all member stores simultaneously",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Copy a Store Group",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Duplicates a store group configuration as a starting point for a new group, copying stores and tags but creating an independent new store group.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/store-groups/copy-a-store-group/",
+    "normalizedTitle": "copy a store group",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "duplicates a store group configuration as a starting point for a new group copying stores and tags but creating an independent new store group",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Create a Store Group",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Creates a named grouping of stores that share menu, promotion, or tax configurations — a foundational structure for managing multiple locations at scale.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/store-groups/create-a-store-group/",
+    "normalizedTitle": "create a store group",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "creates a named grouping of stores that share menu promotion or tax configurations a foundational structure for managing multiple locations at scale",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Create Tax Rule Group",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Creates a named tax rule group that bundles multiple related tax rules together, allowing you to organize and reuse tax configurations across store groups.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/store-groups/create-tax-rule-group/",
+    "normalizedTitle": "create tax rule group",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "creates a named tax rule group that bundles multiple related tax rules together allowing you to organize and reuse tax configurations across store groups",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Create Tax Rules",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Defines individual tax rules within a store group, specifying the tax rates, conditions, and product filters applied to items sold at member stores.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/store-groups/create-tax-rules/",
+    "normalizedTitle": "create tax rules",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "defines individual tax rules within a store group specifying the tax rates conditions and product filters applied to items sold at member stores",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Delete a Store Group",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Permanently removes a store group from the system, along with all associated promotions and tax rules.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/store-groups/delete-a-store-group/",
+    "normalizedTitle": "delete a store group",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "permanently removes a store group from the system along with all associated promotions and tax rules",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Edit a Store Group",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Updates a store group’s details, name, store membership, or associated tax rules.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/store-groups/edit-a-store-group/",
+    "normalizedTitle": "edit a store group",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "updates a store group s details name store membership or associated tax rules",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Edit Promotions",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Adds or removes promotion assignments for a specific store group, allowing you to modify which promotions are active at member stores.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/store-groups/edit-promotions/",
+    "normalizedTitle": "edit promotions",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "adds or removes promotion assignments for a specific store group allowing you to modify which promotions are active at member stores",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Import Promotions for a Store Group",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Bulk imports promotion assignments from one store group to another for large scale campaign setup or configuration duplication.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/store-groups/import-promotions-for-a-store-group/",
+    "normalizedTitle": "import promotions for a store group",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "bulk imports promotion assignments from one store group to another for large scale campaign setup or configuration duplication",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Store Groups",
+    "headings": [
+      "Topics",
+      "Store Groups Taxes",
+      "Store Groups Promotions"
+    ],
+    "summary": "Store Groups",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/store-groups/",
+    "normalizedTitle": "store groups",
+    "normalizedHeadings": "topics store groups taxes store groups promotions",
+    "normalizedSummary": "store groups",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Unassign Promotions from Store Group",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Removes one or more promotions from a store group, immediately deactivating them across all member stores.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/store-groups/unassign-promotions-from-store-group/",
+    "normalizedTitle": "unassign promotions from store group",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "removes one or more promotions from a store group immediately deactivating them across all member stores",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "View Stores in a Store Group",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Lists all stores currently belonging to a store group for visibility and verification purposes.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/store-groups/view-stores-in-a-store-group/",
+    "normalizedTitle": "view stores in a store group",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "lists all stores currently belonging to a store group for visibility and verification purposes",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Accept Online Orders (Turn On or Off)",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Toggles whether a store accepts online orders through digital channels — used to quickly disable ordering during closures or operational issues.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/stores/2a-accept-online-orders-turn-on-or-off/",
+    "normalizedTitle": "accept online orders turn on or off",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "toggles whether a store accepts online orders through digital channels used to quickly disable ordering during closures or operational issues",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Appear in Search Result (Turn On or Off)",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Controls whether a store appears in customer facing search results, allowing operators to hide a location without fully removing it.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/stores/2b-appear-in-search-result-turn-on-or-off/",
+    "normalizedTitle": "appear in search result turn on or off",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "controls whether a store appears in customer facing search results allowing operators to hide a location without fully removing it",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Allow Future Orders (Turn On or Off)",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Enables or disables a store’s ability to accept orders placed in advance, relevant for pre order or scheduled delivery capabilities.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/stores/2c-allow-future-orders-turn-on-or-off/",
+    "normalizedTitle": "allow future orders turn on or off",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "enables or disables a store s ability to accept orders placed in advance relevant for pre order or scheduled delivery capabilities",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Add Metafields to a Menu",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Attaches public and private custom metadata (key value pairs) to a store's menu for integration with downstream systems or market specific requirements.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/stores/add-metafields-to-a-menu/",
+    "normalizedTitle": "add metafields to a menu",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "attaches public and private custom metadata key value pairs to a store s menu for integration with downstream systems or market specific requirements",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Assign New Menu",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Links a published menu to a store's ordering channel (e.g., Digital, Kiosk, In Store), determining what customers see when ordering from that location.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/stores/assign-new-menu/",
+    "normalizedTitle": "assign new menu",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "links a published menu to a store s ordering channel e g digital kiosk in store determining what customers see when ordering from that location",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Create a Beneficiary",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Sets up a charitable beneficiary linked to specific stores, enabling donation collection or charity campaign functionality at those locations.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/stores/create-a-beneficiary/",
+    "normalizedTitle": "create a beneficiary",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "sets up a charitable beneficiary linked to specific stores enabling donation collection or charity campaign functionality at those locations",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Create a Store",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Registers a new store location in Atlas with its required details, making it available for menu assignment and digital ordering.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/stores/create-a-store/",
+    "normalizedTitle": "create a store",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "registers a new store location in atlas with its required details making it available for menu assignment and digital ordering",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Edit Patch List",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Manages the ordered list of patches applied to a store's menu, allowing operators to add, remove, or reorder patches that layer overrides on the base menu (e.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/stores/edit-patch-list/",
+    "normalizedTitle": "edit patch list",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "manages the ordered list of patches applied to a store s menu allowing operators to add remove or reorder patches that layer overrides on the base menu e",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Edit Store Details",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Updates an existing store's information such as name, settings, or operational fields.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/stores/edit-store-details/",
+    "normalizedTitle": "edit store details",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "updates an existing store s information such as name settings or operational fields",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Edit/Delete a Beneficiary",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "To Edit:",
+      "To Delete:",
+      "Related guides"
+    ],
+    "summary": "Updates or removes an existing beneficiary record, including its name, donation status, and associated stores.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/stores/editdelete-a-beneficiary/",
+    "normalizedTitle": "edit delete a beneficiary",
+    "normalizedHeadings": "what this guide covers steps to edit to delete related guides",
+    "normalizedSummary": "updates or removes an existing beneficiary record including its name donation status and associated stores",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Stores",
+    "headings": [
+      "Topics",
+      "Store Setup",
+      "Menu Management",
+      "Item & Availability Management",
+      "Store Information & Compliance",
+      "Beneficiary Management"
+    ],
+    "summary": "Stores",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/stores/",
+    "normalizedTitle": "stores",
+    "normalizedHeadings": "topics store setup menu management item availability management store information compliance beneficiary management",
+    "normalizedSummary": "stores",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Item Snooze",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Temporarily removes a specific item from a store’s menu for a defined period and reason (e.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/stores/item-snooze/",
+    "normalizedTitle": "item snooze",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "temporarily removes a specific item from a store s menu for a defined period and reason e",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "POS",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Shows a store's connected point of sale devices, their status, and allows operators to update device settings or generate one time passwords for device authentication.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/stores/pos/",
+    "normalizedTitle": "pos",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "shows a store s connected point of sale devices their status and allows operators to update device settings or generate one time passwords for device authentication",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Publish a Menu",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Publishes the assigned menu to the store's live ordering channels, making menu changes visible to customers.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/stores/publish-a-menu/",
+    "normalizedTitle": "publish a menu",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "publishes the assigned menu to the store s live ordering channels making menu changes visible to customers",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Publish Menu",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Triggers a menu publish directly from the store's Menus view, pushing the current menu configuration live to ordering channels.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/stores/publish-menu/",
+    "normalizedTitle": "publish menu",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "triggers a menu publish directly from the store s menus view pushing the current menu configuration live to ordering channels",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Transfer Patch List",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Copies a store's patch list configuration to one or more other stores, streamlining patch management across multiple locations with the same overrides.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/stores/transfer-patch-list/",
+    "normalizedTitle": "transfer patch list",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "copies a store s patch list configuration to one or more other stores streamlining patch management across multiple locations with the same overrides",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "View a Store’s Beneficiaries",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Lists the beneficiaries linked to a specific store for visibility and management.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/stores/view-a-stores-beneficiaries/",
+    "normalizedTitle": "view a store s beneficiaries",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "lists the beneficiaries linked to a specific store for visibility and management",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "View a Store’s Menu",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Displays all menus assigned to a store, showing which menu is active on each ordering channel (Digital, Kiosk, In Store, etc.).",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/stores/view-a-stores-menu/",
+    "normalizedTitle": "view a store s menu",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "displays all menus assigned to a store showing which menu is active on each ordering channel digital kiosk in store etc",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "View a Store’s Publish History / Copy Menu Publish Job ID",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Displays a log of all menu publish jobs for a store, including status and timestamps.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/stores/view-a-stores-publish-history-copy-menu-publish-job-id/",
+    "normalizedTitle": "view a store s publish history copy menu publish job id",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "displays a log of all menu publish jobs for a store including status and timestamps",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "View Promotions",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Displays all promotions currently assigned to a store, allowing you to search and filter by promotion name or redemption code.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/stores/view-promotions/",
+    "normalizedTitle": "view promotions",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "displays all promotions currently assigned to a store allowing you to search and filter by promotion name or redemption code",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "View Taxes",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "Related guides"
+    ],
+    "summary": "Displays all tax rule groups and associated tax rules applied to a store, separated by store group — used to verify tax configuration for compliance purposes.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/stores/view-taxes/",
+    "normalizedTitle": "view taxes",
+    "normalizedHeadings": "what this guide covers steps related guides",
+    "normalizedSummary": "displays all tax rule groups and associated tax rules applied to a store separated by store group used to verify tax configuration for compliance purposes",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "View/Unassign a Store's Store Groups",
+    "headings": [
+      "What this guide covers",
+      "Steps",
+      "To Unassign a Store from a Group:",
+      "Related guides"
+    ],
+    "summary": "Displays the store groups a store belongs to and allows operators to unassign the store from a group when needed.",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/stores/viewunassign-a-stores-store-groups/",
+    "normalizedTitle": "view unassign a store s store groups",
+    "normalizedHeadings": "what this guide covers steps to unassign a store from a group related guides",
+    "normalizedSummary": "displays the store groups a store belongs to and allows operators to unassign the store from a group when needed",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "\"Guide: Bundles & Deals\"",
+    "headings": [
+      "Where You See It in the Front End",
+      "What to Configure in Contentful",
+      "Publishing a Bundle with Content",
+      "Publishing a Deal with Content",
+      "Use Cases"
+    ],
+    "summary": "Guide: Bundles & Deals",
+    "section": "frontend",
+    "url": "/docs/frontend/contentful/guide-bundles-deals/",
+    "normalizedTitle": "guide bundles deals",
+    "normalizedHeadings": "where you see it in the front end what to configure in contentful publishing a bundle with content publishing a deal with content use cases",
+    "normalizedSummary": "guide bundles deals",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "\"Guide: Category Content\"",
+    "headings": [
+      "Where You See It in the Front End",
+      "What to Configure in Contentful",
+      "Sequencing Products in a Category",
+      "Creating a Subcategory",
+      "Adding a Subcategory to a Category",
+      "Sequencing Subcategories",
+      "Sequencing Products Within a Subcategory",
+      "Use Cases"
+    ],
+    "summary": "Guide: Category Content",
+    "section": "frontend",
+    "url": "/docs/frontend/contentful/guide-category/",
+    "normalizedTitle": "guide category content",
+    "normalizedHeadings": "where you see it in the front end what to configure in contentful sequencing products in a category creating a subcategory adding a subcategory to a category sequencing subcategories sequencing products within a subcategory use cases",
+    "normalizedSummary": "guide category content",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "\"Guide: Cross Sell in Cart\"",
+    "headings": [
+      "Where You See It in the Front End",
+      "What to Configure in Contentful",
+      "Use Cases"
+    ],
+    "summary": "Guide: Cross Sell in Cart",
+    "section": "frontend",
+    "url": "/docs/frontend/contentful/guide-cross-sell/",
+    "normalizedTitle": "guide cross sell in cart",
+    "normalizedHeadings": "where you see it in the front end what to configure in contentful use cases",
+    "normalizedSummary": "guide cross sell in cart",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "\"Guide: Footer Content\"",
+    "headings": [
+      "Where You See It in the Front End",
+      "Content Types Overview",
+      "Adding a New Section to the Footer",
+      "Creating a Footer Link",
+      "Adding a Linked PDF to the Footer",
+      "Use Cases",
+      "Related Guides"
+    ],
+    "summary": "Guide: Footer Content",
+    "section": "frontend",
+    "url": "/docs/frontend/contentful/guide-footer/",
+    "normalizedTitle": "guide footer content",
+    "normalizedHeadings": "where you see it in the front end content types overview adding a new section to the footer creating a footer link adding a linked pdf to the footer use cases related guides",
+    "normalizedSummary": "guide footer content",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "\"Guide: Homepage Content\"",
+    "headings": [
+      "Where You See It in the Front End",
+      "What to Configure in Contentful",
+      "Updating the Homepage Title",
+      "Updating the Hero Banner",
+      "Use Cases"
+    ],
+    "summary": "Guide: Homepage Content",
+    "section": "frontend",
+    "url": "/docs/frontend/contentful/guide-homepage/",
+    "normalizedTitle": "guide homepage content",
+    "normalizedHeadings": "where you see it in the front end what to configure in contentful updating the homepage title updating the hero banner use cases",
+    "normalizedSummary": "guide homepage content",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "\"Guide: Product Content\"",
+    "headings": [
+      "Where You See It in the Front End",
+      "What to Configure in Contentful",
+      "Publishing a Product with Content",
+      "Publishing Pizza Crust Content",
+      "Publishing Pizza Size Content",
+      "Publishing Pizza Topping Content",
+      "Use Cases"
+    ],
+    "summary": "Guide: Product Content",
+    "section": "frontend",
+    "url": "/docs/frontend/contentful/guide-product/",
+    "normalizedTitle": "guide product content",
+    "normalizedHeadings": "where you see it in the front end what to configure in contentful publishing a product with content publishing pizza crust content publishing pizza size content publishing pizza topping content use cases",
+    "normalizedSummary": "guide product content",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "\"Guide: Promo Content\"",
+    "headings": [
+      "Where You See It in the Front End",
+      "What to Configure in Contentful",
+      "Use Cases"
+    ],
+    "summary": "Guide: Promo Content",
+    "section": "frontend",
+    "url": "/docs/frontend/contentful/guide-promo/",
+    "normalizedTitle": "guide promo content",
+    "normalizedHeadings": "where you see it in the front end what to configure in contentful use cases",
+    "normalizedSummary": "guide promo content",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "\"Guide: SEO Tags & Management\"",
+    "headings": [
+      "Where You See It in the Front End",
+      "What to Configure in Contentful",
+      "Use Cases"
+    ],
+    "summary": "Guide: SEO Tags & Management",
+    "section": "frontend",
+    "url": "/docs/frontend/contentful/guide-seo/",
+    "normalizedTitle": "guide seo tags management",
+    "normalizedHeadings": "where you see it in the front end what to configure in contentful use cases",
+    "normalizedSummary": "guide seo tags management",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "\"Guide: Content Translations\"",
+    "headings": [
+      "Where You See It in the Front End",
+      "What to Configure in Contentful",
+      "Enabling Translator Mode",
+      "Updating a Translation",
+      "Use Cases"
+    ],
+    "summary": "Guide: Content Translations",
+    "section": "frontend",
+    "url": "/docs/frontend/contentful/guide-translations/",
+    "normalizedTitle": "guide content translations",
+    "normalizedHeadings": "where you see it in the front end what to configure in contentful enabling translator mode updating a translation use cases",
+    "normalizedSummary": "guide content translations",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Contentful Overview",
+    "headings": [
+      "Who Uses It",
+      "What Can Be Managed",
+      "How Publishing Works",
+      "Platform Support"
+    ],
+    "summary": "Contentful",
+    "section": "frontend",
+    "url": "/docs/frontend/contentful/",
+    "normalizedTitle": "contentful overview",
+    "normalizedHeadings": "who uses it what can be managed how publishing works platform support",
+    "normalizedSummary": "contentful",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Customer Engagement Surveys",
+    "headings": [
+      "What This Capability Does",
+      "Where It Appears in the Customer Journey",
+      "Why Markets Use It",
+      "Typical Operating Model",
+      "Current Survey Platform"
+    ],
+    "summary": "Customer Engagement Surveys",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-engagement-surveys/",
+    "normalizedTitle": "customer engagement surveys",
+    "normalizedHeadings": "what this capability does where it appears in the customer journey why markets use it typical operating model current survey platform",
+    "normalizedSummary": "customer engagement surveys",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Qualtrics",
+    "headings": [
+      "What Qualtrics Handles",
+      "Typical KFC Listens Flow",
+      "Common Data Captured",
+      "Operational Considerations",
+      "Survey Triggering",
+      "Incentives",
+      "Escalations",
+      "Integration Notes"
+    ],
+    "summary": "Qualtrics",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-engagement-surveys/qualtrics/",
+    "normalizedTitle": "qualtrics",
+    "normalizedHeadings": "what qualtrics handles typical kfc listens flow common data captured operational considerations survey triggering incentives escalations integration notes",
+    "normalizedSummary": "qualtrics",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Account",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Account",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/access-account-and-manage-profile/account/",
+    "normalizedTitle": "account",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "account",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Access Account and Manage Profile",
+    "headings": [
+      "Pages in This Section"
+    ],
+    "summary": "Access Account and Manage Profile",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/access-account-and-manage-profile/",
+    "normalizedTitle": "access account and manage profile",
+    "normalizedHeadings": "pages in this section",
+    "normalizedSummary": "access account and manage profile",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Sign In",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Sign In",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/access-account-and-manage-profile/sign-in/",
+    "normalizedTitle": "sign in",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "sign in",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Sign Up",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Sign Up",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/access-account-and-manage-profile/sign-up/",
+    "normalizedTitle": "sign up",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "sign up",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Find a KFC",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Find a KFC",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-a-store/find-a-kfc/",
+    "normalizedTitle": "find a kfc",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "find a kfc",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Find a Store",
+    "headings": [
+      "Pages in This Section"
+    ],
+    "summary": "Find a Store",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-a-store/",
+    "normalizedTitle": "find a store",
+    "normalizedHeadings": "pages in this section",
+    "normalizedSummary": "find a store",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "KFC Store Details",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "KFC Store Details",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-a-store/kfc-store-details/",
+    "normalizedTitle": "kfc store details",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "kfc store details",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Challenge",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Challenge",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-deals-and-rewards/challenge/",
+    "normalizedTitle": "challenge",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "challenge",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Step 3 Find Deals and Rewards",
+    "headings": [
+      "Pages in This Section"
+    ],
+    "summary": "This step covers how customers find offers, understand value, and move from an offer into an orderable experience.",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-deals-and-rewards/",
+    "normalizedTitle": "step 3 find deals and rewards",
+    "normalizedHeadings": "pages in this section",
+    "normalizedSummary": "this step covers how customers find offers understand value and move from an offer into an orderable experience",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Loyalty Tile",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Loyalty Tile",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-deals-and-rewards/loyalty-tile/",
+    "normalizedTitle": "loyalty tile",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "loyalty tile",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Promo Options",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Promo Options",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-deals-and-rewards/promo-options/",
+    "normalizedTitle": "promo options",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "promo options",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Rewards Listing",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Rewards Listing",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-deals-and-rewards/rewards-listing/",
+    "normalizedTitle": "rewards listing",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "rewards listing",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "BYOB Select",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "BYOB Select",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-products/byob-select/",
+    "normalizedTitle": "byob select",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "byob select",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Catering Menu",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Catering Menu",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-products/catering-menu/",
+    "normalizedTitle": "catering menu",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "catering menu",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Children's Only",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Children's Only",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-products/childrens-only/",
+    "normalizedTitle": "children s only",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "children s only",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Format Options",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Format Options",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-products/format-options/",
+    "normalizedTitle": "format options",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "format options",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Home Page",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Home Page",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-products/home-page/",
+    "normalizedTitle": "home page",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "home page",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Step 2 Find Products",
+    "headings": [
+      "Pages in This Section"
+    ],
+    "summary": "This step covers how customers discover what they can order once the ordering context is set.",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-products/",
+    "normalizedTitle": "step 2 find products",
+    "normalizedHeadings": "pages in this section",
+    "normalizedSummary": "this step covers how customers discover what they can order once the ordering context is set",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Menu Landing",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Menu Landing",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-products/menu-landing/",
+    "normalizedTitle": "menu landing",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "menu landing",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Menu Listing",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Menu Listing",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/find-products/menu-listing/",
+    "normalizedTitle": "menu listing",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "menu listing",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Contact KFC",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Contact KFC",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/get-help/contact-kfc/",
+    "normalizedTitle": "contact kfc",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "contact kfc",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Enquiry Form",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Enquiry Form",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/get-help/enquiry-form/",
+    "normalizedTitle": "enquiry form",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "enquiry form",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "FAQs",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "FAQs",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/get-help/faqs/",
+    "normalizedTitle": "faqs",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "faqs",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Get Help",
+    "headings": [
+      "Pages in This Section"
+    ],
+    "summary": "Get Help",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/get-help/",
+    "normalizedTitle": "get help",
+    "normalizedHeadings": "pages in this section",
+    "normalizedSummary": "get help",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Customer Journey",
+    "headings": [
+      "Core Ordering Journey",
+      "Supporting Journeys",
+      "Why This Organization Makes Sense",
+      "Coverage Checklist"
+    ],
+    "summary": "Customer Journey",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/",
+    "normalizedTitle": "customer journey",
+    "normalizedHeadings": "core ordering journey supporting journeys why this organization makes sense coverage checklist",
+    "normalizedSummary": "customer journey",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "App Tour",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "App Tour",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/learn-about-kfc/app-tour/",
+    "normalizedTitle": "app tour",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "app tour",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Content Landing",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Content Landing",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/learn-about-kfc/content-landing/",
+    "normalizedTitle": "content landing",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "content landing",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Learn About KFC",
+    "headings": [
+      "Pages in This Section"
+    ],
+    "summary": "Learn About KFC",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/learn-about-kfc/",
+    "normalizedTitle": "learn about kfc",
+    "normalizedHeadings": "pages in this section",
+    "normalizedSummary": "learn about kfc",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Nutrition and Allergen",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Nutrition and Allergen",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/learn-about-kfc/nutrition-and-allergen/",
+    "normalizedTitle": "nutrition and allergen",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "nutrition and allergen",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Cart",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Cart",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/order-and-get/cart/",
+    "normalizedTitle": "cart",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "cart",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Checkout",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Checkout",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/order-and-get/checkout/",
+    "normalizedTitle": "checkout",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "checkout",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Step 5 Order and Get",
+    "headings": [
+      "Pages in This Section"
+    ],
+    "summary": "This step covers the conversion stage, where the customer moves from intent into a completed order.",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/order-and-get/",
+    "normalizedTitle": "step 5 order and get",
+    "normalizedHeadings": "pages in this section",
+    "normalizedSummary": "this step covers the conversion stage where the customer moves from intent into a completed order",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Add on and Cross sell",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Add on and Cross sell",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/preview-product-and-customize/add-on-and-cross-sell/",
+    "normalizedTitle": "add on and cross sell",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "add on and cross sell",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Customize",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Customize",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/preview-product-and-customize/customize/",
+    "normalizedTitle": "customize",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "customize",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Step 4 Preview Product and Customize",
+    "headings": [
+      "Pages in This Section"
+    ],
+    "summary": "This step covers the point where customers inspect a likely product, understand what is included, and personalize it before adding it to the order.",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/preview-product-and-customize/",
+    "normalizedTitle": "step 4 preview product and customize",
+    "normalizedHeadings": "pages in this section",
+    "normalizedSummary": "this step covers the point where customers inspect a likely product understand what is included and personalize it before adding it to the order",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Nutrition and Allergen",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Nutrition and Allergen",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/preview-product-and-customize/nutrition-and-allergen/",
+    "normalizedTitle": "nutrition and allergen",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "nutrition and allergen",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Product Detail",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Product Detail",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/preview-product-and-customize/product-detail/",
+    "normalizedTitle": "product detail",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "product detail",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Address or Store Selection",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Address or Store Selection",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/setup-order/address-or-store-selection/",
+    "normalizedTitle": "address or store selection",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "address or store selection",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Change Order Mode",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Change Order Mode",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/setup-order/change-order-mode/",
+    "normalizedTitle": "change order mode",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "change order mode",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Step 1 Setup Order",
+    "headings": [
+      "Pages in This Section",
+      "Why This Comes First"
+    ],
+    "summary": "This step covers everything the customer must define before the menu becomes relevant. These conditions shape what the customer can see, buy, schedule, or reorder.",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/setup-order/",
+    "normalizedTitle": "step 1 setup order",
+    "normalizedHeadings": "pages in this section why this comes first",
+    "normalizedSummary": "this step covers everything the customer must define before the menu becomes relevant these conditions shape what the customer can see buy schedule or reorder",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Reorder",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Reorder",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/setup-order/reorder/",
+    "normalizedTitle": "reorder",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "reorder",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Review Order Settings",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Review Order Settings",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/setup-order/review-order-settings/",
+    "normalizedTitle": "review order settings",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "review order settings",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Set Order Mode",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Set Order Mode",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/setup-order/set-order-mode/",
+    "normalizedTitle": "set order mode",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "set order mode",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Store Unavailable Handling",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Store Unavailable Handling",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/setup-order/store-unavailable-handling/",
+    "normalizedTitle": "store unavailable handling",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "store unavailable handling",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Delivery",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Delivery",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/track-order/delivery/",
+    "normalizedTitle": "delivery",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "delivery",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Step 6 Track Order",
+    "headings": [
+      "Pages in This Section"
+    ],
+    "summary": "This step covers the post purchase experience after the order is placed.",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/track-order/",
+    "normalizedTitle": "step 6 track order",
+    "normalizedHeadings": "pages in this section",
+    "normalizedSummary": "this step covers the post purchase experience after the order is placed",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Pickup",
+    "headings": [
+      "Why This Step Is Designed This Way"
+    ],
+    "summary": "Pickup",
+    "section": "frontend",
+    "url": "/docs/frontend/customer-journey/track-order/pickup/",
+    "normalizedTitle": "pickup",
+    "normalizedHeadings": "why this step is designed this way",
+    "normalizedSummary": "pickup",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "\"Design System\"",
+    "headings": [
+      "How Our Platform Is Built — From Visual Identity to Your Screen",
+      "What Is a Design System?",
+      "The Three Layers",
+      "Layer 1 — Design (What It Looks Like)",
+      "Layer 2 — Code (How It Gets Built)",
+      "Layer 3 — Market Applications (What Goes Live)",
+      "Why This Matters for Atlas Markets",
+      "Platform Architecture Diagram"
+    ],
+    "summary": "import useBaseUrl from '@docusaurus/useBaseUrl';",
+    "section": "frontend",
+    "url": "/docs/frontend/design-system/",
+    "normalizedTitle": "design system",
+    "normalizedHeadings": "how our platform is built from visual identity to your screen what is a design system the three layers layer 1 design what it looks like layer 2 code how it gets built layer 3 market applications what goes live why this matters for atlas markets platform architecture diagram",
+    "normalizedSummary": "import usebaseurl from docusaurus usebaseurl",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Branch Deeplink",
+    "headings": [
+      "What It Does",
+      "Key Capabilities",
+      "How It Relates to Universal Links",
+      "Platforms"
+    ],
+    "summary": "Branch Deeplink",
+    "section": "frontend",
+    "url": "/docs/frontend/features/branch-deeplink/",
+    "normalizedTitle": "branch deeplink",
+    "normalizedHeadings": "what it does key capabilities how it relates to universal links platforms",
+    "normalizedSummary": "branch deeplink",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Features Overview",
+    "headings": [
+      "What Counts as a Feature?",
+      "Current Features",
+      "Feature Dependencies"
+    ],
+    "summary": "Features",
+    "section": "frontend",
+    "url": "/docs/frontend/features/",
+    "normalizedTitle": "features overview",
+    "normalizedHeadings": "what counts as a feature current features feature dependencies",
+    "normalizedSummary": "features",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "KFC Deeplink Universal Link",
+    "headings": [
+      "What It Does",
+      "Why It Matters",
+      "Scope",
+      "Entry Points",
+      "Platforms"
+    ],
+    "summary": "KFC Deeplink Universal Link",
+    "section": "frontend",
+    "url": "/docs/frontend/features/kfc-deeplink-universal-link/",
+    "normalizedTitle": "kfc deeplink universal link",
+    "normalizedHeadings": "what it does why it matters scope entry points platforms",
+    "normalizedSummary": "kfc deeplink universal link",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "MarTech",
+    "headings": [
+      "What It Does",
+      "How the Data Flows",
+      "Components",
+      "Event Tracking",
+      "mParticle",
+      "Braze",
+      "Platforms"
+    ],
+    "summary": "MarTech",
+    "section": "frontend",
+    "url": "/docs/frontend/features/martech/",
+    "normalizedTitle": "martech",
+    "normalizedHeadings": "what it does how the data flows components event tracking mparticle braze platforms",
+    "normalizedSummary": "martech",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "\"Japan — Christmas Ordering\"",
+    "headings": [
+      "Background",
+      "The Product: KFC Christmas Party Barrel",
+      "How the Reservation Flow Works in Japan",
+      "1. Campaign Opens (October–November)",
+      "2. Customer Reserves",
+      "3. Confirmation",
+      "4. Pickup (December 23–25)",
+      "Why Pre Payment Is Required",
+      "Volume and Capacity Management",
+      "Configuration Summary",
+      "Learnings for Other Markets"
+    ],
+    "summary": "Japan — Christmas Ordering",
+    "section": "frontend",
+    "url": "/docs/frontend/features/menu-item-reservation-japan-christmas/",
+    "normalizedTitle": "japan christmas ordering",
+    "normalizedHeadings": "background the product kfc christmas party barrel how the reservation flow works in japan 1 campaign opens october november 2 customer reserves 3 confirmation 4 pickup december 23 25 why pre payment is required volume and capacity management configuration summary learnings for other markets",
+    "normalizedSummary": "japan christmas ordering",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Menu Item Reservation",
+    "headings": [
+      "What It Does",
+      "Why It Exists",
+      "How It Works",
+      "Reservation Window",
+      "Time Slots",
+      "Payment",
+      "Configuration",
+      "Platforms",
+      "Market Specific Use Cases"
+    ],
+    "summary": "Menu Item Reservation",
+    "section": "frontend",
+    "url": "/docs/frontend/features/menu-item-reservation/",
+    "normalizedTitle": "menu item reservation",
+    "normalizedHeadings": "what it does why it exists how it works reservation window time slots payment configuration platforms market specific use cases",
+    "normalizedSummary": "menu item reservation",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Social Sign In",
+    "headings": [
+      "What It Does",
+      "Supported Providers",
+      "How It Works",
+      "Market Enablement",
+      "Platforms"
+    ],
+    "summary": "Social Sign In",
+    "section": "frontend",
+    "url": "/docs/frontend/features/social-sign-in/",
+    "normalizedTitle": "social sign in",
+    "normalizedHeadings": "what it does supported providers how it works market enablement platforms",
+    "normalizedSummary": "social sign in",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Market Configurations",
+    "headings": [
+      "What Can Be Configured Per Market",
+      "Japan 🇯🇵 — Current Configuration",
+      "Australia 🇦🇺 — Current Configuration",
+      "Requesting a Configuration Change"
+    ],
+    "summary": "Market Configurations",
+    "section": "frontend",
+    "url": "/docs/frontend/market-configurations/",
+    "normalizedTitle": "market configurations",
+    "normalizedHeadings": "what can be configured per market japan current configuration australia current configuration requesting a configuration change",
+    "normalizedSummary": "market configurations",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Order Channels",
+    "headings": [
+      "Product View",
+      "Digital is the core customer ordering surface",
+      "Order modes live inside the channel experience",
+      "Channel based menu strategy is a strength",
+      "Scheduled ordering is controlled, not assumed",
+      "Store operations directly shape the customer experience",
+      "Recommended Positioning",
+      "What We Should Avoid Overstating",
+      "Admin Portal Sources Behind These Presumptions"
+    ],
+    "summary": "Order Channels",
+    "section": "frontend",
+    "url": "/docs/frontend/order-channels/",
+    "normalizedTitle": "order channels",
+    "normalizedHeadings": "product view digital is the core customer ordering surface order modes live inside the channel experience channel based menu strategy is a strength scheduled ordering is controlled not assumed store operations directly shape the customer experience recommended positioning what we should avoid overstating admin portal sources behind these presumptions",
+    "normalizedSummary": "order channels",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Front end Overview",
+    "headings": [
+      "What the Front end Covers",
+      "Design System",
+      "Markets in Scope",
+      "Who Should Read This"
+    ],
+    "summary": "Front end Overview",
+    "section": "frontend",
+    "url": "/docs/frontend/overview/",
+    "normalizedTitle": "front end overview",
+    "normalizedHeadings": "what the front end covers design system markets in scope who should read this",
+    "normalizedSummary": "front end overview",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "en-US",
+    "title": "Create Promotions",
+    "headings": [
+      "What This Playbook Covers",
+      "Prerequisites",
+      "Step 1: Confirm the promotion structure",
+      "Step 2: Create the promotion shell",
+      "Step 3: Add rules and effects",
+      "Step 4: Assign the promotion to stores",
+      "Step 5: QA before launch",
+      "Step 6: Monitor after launch",
+      "Related Admin Portal Guides",
+      "KFC Notes"
+    ],
+    "summary": "Create Promotions",
+    "section": "playbooks",
+    "url": "/docs/playbooks/onboarding/",
+    "normalizedTitle": "create promotions",
+    "normalizedHeadings": "what this playbook covers prerequisites step 1 confirm the promotion structure step 2 create the promotion shell step 3 add rules and effects step 4 assign the promotion to stores step 5 qa before launch step 6 monitor after launch related admin portal guides kfc notes",
+    "normalizedSummary": "create promotions",
+    "normalizedSection": "playbooks"
+  },
+  {
+    "locale": "en-US",
+    "title": "App Exclusive Deal",
+    "headings": [
+      "Goal",
+      "Requirements",
+      "Effects"
+    ],
+    "summary": "20% off available only on the KFC mobile app.",
+    "section": "playbooks",
+    "url": "/docs/playbooks/promotion-recipes/app-exclusive-deal/",
+    "normalizedTitle": "app exclusive deal",
+    "normalizedHeadings": "goal requirements effects",
+    "normalizedSummary": "20 off available only on the kfc mobile app",
+    "normalizedSection": "playbooks"
+  },
+  {
+    "locale": "en-US",
+    "title": "Buy 1 Get 1 Free (BOGO)",
+    "headings": [
+      "Goal",
+      "Requirements",
+      "Effects"
+    ],
+    "summary": "Customer buys one Zinger Burger and gets a second one free.",
+    "section": "playbooks",
+    "url": "/docs/playbooks/promotion-recipes/buy-1-get-1-free-bogo/",
+    "normalizedTitle": "buy 1 get 1 free bogo",
+    "normalizedHeadings": "goal requirements effects",
+    "normalizedSummary": "customer buys one zinger burger and gets a second one free",
+    "normalizedSection": "playbooks"
+  },
+  {
+    "locale": "en-US",
+    "title": "Coupon Code Discount",
+    "headings": [
+      "Goal",
+      "Basic Information",
+      "Requirements",
+      "Effects"
+    ],
+    "summary": "$10 off for customers who enter the code .",
+    "section": "playbooks",
+    "url": "/docs/playbooks/promotion-recipes/coupon-code-discount/",
+    "normalizedTitle": "coupon code discount",
+    "normalizedHeadings": "goal basic information requirements effects",
+    "normalizedSummary": "10 off for customers who enter the code",
+    "normalizedSection": "playbooks"
+  },
+  {
+    "locale": "en-US",
+    "title": "Daily Deal (Once Per Customer Per Day)",
+    "headings": [
+      "Goal",
+      "Requirements",
+      "Effects"
+    ],
+    "summary": "A free drink with any meal, limited to one per customer per day.",
+    "section": "playbooks",
+    "url": "/docs/playbooks/promotion-recipes/daily-deal-once-per-customer-per-day/",
+    "normalizedTitle": "daily deal once per customer per day",
+    "normalizedHeadings": "goal requirements effects",
+    "normalizedSummary": "a free drink with any meal limited to one per customer per day",
+    "normalizedSection": "playbooks"
+  },
+  {
+    "locale": "en-US",
+    "title": "Drive Thru Only Deal",
+    "headings": [
+      "Goal",
+      "Requirements",
+      "Effects"
+    ],
+    "summary": "Free upgrade available only at Drive Thru.",
+    "section": "playbooks",
+    "url": "/docs/playbooks/promotion-recipes/drive-thru-only-deal/",
+    "normalizedTitle": "drive thru only deal",
+    "normalizedHeadings": "goal requirements effects",
+    "normalizedSummary": "free upgrade available only at drive thru",
+    "normalizedSection": "playbooks"
+  },
+  {
+    "locale": "en-US",
+    "title": "Free Delivery on Large Orders",
+    "headings": [
+      "Goal",
+      "Requirements",
+      "Effects"
+    ],
+    "summary": "Free delivery when the cart total exceeds $40.",
+    "section": "playbooks",
+    "url": "/docs/playbooks/promotion-recipes/free-delivery-on-large-orders/",
+    "normalizedTitle": "free delivery on large orders",
+    "normalizedHeadings": "goal requirements effects",
+    "normalizedSummary": "free delivery when the cart total exceeds 40",
+    "normalizedSection": "playbooks"
+  },
+  {
+    "locale": "en-US",
+    "title": "Lunch Special (Time Limited)",
+    "headings": [
+      "Goal",
+      "Requirements",
+      "Effects"
+    ],
+    "summary": "$2 off any order placed between 11am and 2pm, Monday to Friday.",
+    "section": "playbooks",
+    "url": "/docs/playbooks/promotion-recipes/lunch-special-time-limited/",
+    "normalizedTitle": "lunch special time limited",
+    "normalizedHeadings": "goal requirements effects",
+    "normalizedSummary": "2 off any order placed between 11am and 2pm monday to friday",
+    "normalizedSection": "playbooks"
+  },
+  {
+    "locale": "en-US",
+    "title": "Minimum Spend Discount",
+    "headings": [
+      "Goal",
+      "Requirements",
+      "Effects"
+    ],
+    "summary": "Customer gets $5 off any order over $30.",
+    "section": "playbooks",
+    "url": "/docs/playbooks/promotion-recipes/minimum-spend-discount/",
+    "normalizedTitle": "minimum spend discount",
+    "normalizedHeadings": "goal requirements effects",
+    "normalizedSummary": "customer gets 5 off any order over 30",
+    "normalizedSection": "playbooks"
+  },
+  {
+    "locale": "en-US",
+    "title": "Registered Customer Exclusive",
+    "headings": [
+      "Goal",
+      "Requirements",
+      "Effects"
+    ],
+    "summary": "15% off for logged in loyalty members only.",
+    "section": "playbooks",
+    "url": "/docs/playbooks/promotion-recipes/registered-customer-exclusive/",
+    "normalizedTitle": "registered customer exclusive",
+    "normalizedHeadings": "goal requirements effects",
+    "normalizedSummary": "15 off for logged in loyalty members only",
+    "normalizedSection": "playbooks"
+  },
+  {
+    "locale": "en-US",
+    "title": "Stacked Multi Condition Promotion",
+    "headings": [
+      "Goal",
+      "Requirements",
+      "Effects"
+    ],
+    "summary": "App only, registered users get 10% off orders over $25 on weekends.",
+    "section": "playbooks",
+    "url": "/docs/playbooks/promotion-recipes/stacked-multi-condition-promotion/",
+    "normalizedTitle": "stacked multi condition promotion",
+    "normalizedHeadings": "goal requirements effects",
+    "normalizedSummary": "app only registered users get 10 off orders over 25 on weekends",
+    "normalizedSection": "playbooks"
+  },
+  {
+    "locale": "en-US",
+    "title": "Promotions Setup Guide",
+    "headings": [
+      "What You Can Build",
+      "Recipe Pages",
+      "The 4 Step Wizard",
+      "Step 1 — Basic Information",
+      "Required Fields",
+      "Standard Fields",
+      "Automatic vs. Redemption Code",
+      "Additional Options",
+      "Step 2 — Requirements",
+      "Channel",
+      "Item Exclusion",
+      "Item Presence",
+      "Item Quantity",
+      "Manager Approval",
+      "Max Number of Times a Promotion Can Be Used",
+      "Max Total Uses Per Customer",
+      "Max Total Uses Per Customer Per Day",
+      "Max Total Uses Per Redemption Code",
+      "Occasion",
+      "Subtotal",
+      "Time Frame",
+      "User Status",
+      "Step 3 — Effects",
+      "Effect Type: Order Level",
+      "Effect Type: Item Level",
+      "Effect Type: Delivery, Service, and Regulatory Fees",
+      "Pricing Effect Types — Full Comparison",
+      "Step 4 — Review",
+      "Common Promotion Recipes",
+      "Related Guides"
+    ],
+    "summary": "Promotions Setup Guide",
+    "section": "playbooks",
+    "url": "/docs/playbooks/promotions-setup-guide/",
+    "normalizedTitle": "promotions setup guide",
+    "normalizedHeadings": "what you can build recipe pages the 4 step wizard step 1 basic information required fields standard fields automatic vs redemption code additional options step 2 requirements channel item exclusion item presence item quantity manager approval max number of times a promotion can be used max total uses per customer max total uses per customer per day max total uses per redemption code occasion subtotal time frame user status step 3 effects effect type order level effect type item level effect type delivery service and regulatory fees pricing effect types full comparison step 4 review common promotion recipes related guides",
+    "normalizedSummary": "promotions setup guide",
+    "normalizedSection": "playbooks"
+  },
+  {
+    "locale": "en-US",
+    "title": "Braze Welcome Reward Canvas",
+    "headings": [
+      "Goal",
+      "Prerequisites",
+      "Step 1: Define the entry audience",
+      "Step 2: Define the trigger and delay",
+      "Step 3: Set the message sequence",
+      "Step 4: Attach the reward logic",
+      "Step 5: QA the customer journey",
+      "Step 6: Launch and monitor",
+      "KFC Notes"
+    ],
+    "summary": "Use this playbook when KFC wants to welcome a newly identified or newly registered customer with an automated reward journey.",
+    "section": "playbooks",
+    "url": "/docs/playbooks/runbook/",
+    "normalizedTitle": "braze welcome reward canvas",
+    "normalizedHeadings": "goal prerequisites step 1 define the entry audience step 2 define the trigger and delay step 3 set the message sequence step 4 attach the reward logic step 5 qa the customer journey step 6 launch and monitor kfc notes",
+    "normalizedSummary": "use this playbook when kfc wants to welcome a newly identified or newly registered customer with an automated reward journey",
+    "normalizedSection": "playbooks"
+  },
+  {
+    "locale": "en-US",
+    "title": "Troubleshooting & Escalation",
+    "headings": [
+      "Common Issues & Fixes",
+      "Restaurant not appearing in the customer app",
+      "Customer cannot complete checkout",
+      "Menu item showing incorrect price",
+      "Franchisee locked out of Admin Portal",
+      "Orders not coming through on delivery",
+      "Escalation Path",
+      "Severity Levels",
+      "JIRA Service Desk"
+    ],
+    "summary": "Troubleshooting & Escalation",
+    "section": "playbooks",
+    "url": "/docs/playbooks/troubleshooting/",
+    "normalizedTitle": "troubleshooting escalation",
+    "normalizedHeadings": "common issues fixes restaurant not appearing in the customer app customer cannot complete checkout menu item showing incorrect price franchisee locked out of admin portal orders not coming through on delivery escalation path severity levels jira service desk",
+    "normalizedSummary": "troubleshooting escalation",
+    "normalizedSection": "playbooks"
+  },
+  {
+    "locale": "en-US",
+    "title": "Release 2026.03.12",
+    "headings": [
+      "Highlights",
+      "What Changed",
+      "Admin Portal Guide",
+      "Image Handling",
+      "Supporting Improvements",
+      "In Plain English"
+    ],
+    "summary": "Release 2026.03.12",
+    "section": "release-notes",
+    "url": "/docs/release-notes/2026-03-12/",
+    "normalizedTitle": "release 2026 03 12",
+    "normalizedHeadings": "highlights what changed admin portal guide image handling supporting improvements in plain english",
+    "normalizedSummary": "release 2026 03 12",
+    "normalizedSection": "release notes"
+  },
+  {
+    "locale": "en-US",
+    "title": "Release 2026.03.13",
+    "headings": [
+      "Highlights",
+      "What Changed",
+      "Front end Guide",
+      "Platform and Site Experience",
+      "Localization",
+      "In Plain English"
+    ],
+    "summary": "Release 2026.03.13",
+    "section": "release-notes",
+    "url": "/docs/release-notes/2026-03-13/",
+    "normalizedTitle": "release 2026 03 13",
+    "normalizedHeadings": "highlights what changed front end guide platform and site experience localization in plain english",
+    "normalizedSummary": "release 2026 03 13",
+    "normalizedSection": "release notes"
+  },
+  {
+    "locale": "en-US",
+    "title": "Release 2026.03.14",
+    "headings": [
+      "Highlights",
+      "What Changed",
+      "Contribution Workflow",
+      "Site Experience",
+      "Localization and Stability",
+      "Developer Experience",
+      "In Plain English"
+    ],
+    "summary": "Release 2026.03.14",
+    "section": "release-notes",
+    "url": "/docs/release-notes/2026-03-14/",
+    "normalizedTitle": "release 2026 03 14",
+    "normalizedHeadings": "highlights what changed contribution workflow site experience localization and stability developer experience in plain english",
+    "normalizedSummary": "release 2026 03 14",
+    "normalizedSection": "release notes"
+  },
+  {
+    "locale": "en-US",
+    "title": "Release 2026.03.15",
+    "headings": [
+      "Highlights",
+      "What Changed",
+      "Navigation and Entry Points",
+      "What's New Experience",
+      "Localization",
+      "Layout Polish",
+      "In Plain English"
+    ],
+    "summary": "Release 2026.03.15",
+    "section": "release-notes",
+    "url": "/docs/release-notes/2026-03-15/",
+    "normalizedTitle": "release 2026 03 15",
+    "normalizedHeadings": "highlights what changed navigation and entry points what s new experience localization layout polish in plain english",
+    "normalizedSummary": "release 2026 03 15",
+    "normalizedSection": "release notes"
+  },
+  {
+    "locale": "en-US",
+    "title": "Changelog",
+    "headings": [
+      "Recent Releases"
+    ],
+    "summary": "Changelog",
+    "section": "release-notes",
+    "url": "/docs/release-notes/",
+    "normalizedTitle": "changelog",
+    "normalizedHeadings": "recent releases",
+    "normalizedSummary": "changelog",
+    "normalizedSection": "release notes"
+  }
+]

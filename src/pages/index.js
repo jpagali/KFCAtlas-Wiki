@@ -19,6 +19,15 @@ const HOME_CONTENT = {
     sectionEyebrow: 'Three sections',
     sectionTitle: 'Built for everyone who operates the platform',
     marketsLabel: 'Markets',
+    marketsSublabel: 'Onboarding — rolling out through end of 2026',
+    upcomingMarketsLabel: 'Coming after',
+    upcomingMarkets: [
+      { flag: '🇨🇦', name: 'Canada' },
+      { flag: '🇫🇷', name: 'France' },
+      { flag: '🇩🇪', name: 'Germany' },
+      { flag: '🇪🇸', name: 'Spain' },
+      { flag: '🇹🇭', name: 'Thailand' },
+    ],
     stats: [
       { value: 2000, suffix: '+', label: 'Stores', sub: 'Stores Onboard' },
       { value: '3', label: 'Core Modules', sub: 'Front-End · Admin · Martech' },
@@ -71,6 +80,15 @@ const HOME_CONTENT = {
     sectionEyebrow: '3つのセクション',
     sectionTitle: 'プラットフォームを運用するすべての人のために設計されています',
     marketsLabel: '市場',
+    marketsSublabel: 'Onboarding — rolling out through end of 2026',
+    upcomingMarketsLabel: 'Coming after',
+    upcomingMarkets: [
+      { flag: '🇨🇦', name: 'Canada' },
+      { flag: '🇫🇷', name: 'France' },
+      { flag: '🇩🇪', name: 'Germany' },
+      { flag: '🇪🇸', name: 'Spain' },
+      { flag: '🇹🇭', name: 'Thailand' },
+    ],
     stats: [
       { value: 2000, suffix: '+', label: '店舗数', sub: '導入済み店舗' },
       { value: '3', label: '主要モジュール', sub: 'フロントエンド ・ Admin ・ Martech' },
@@ -185,11 +203,22 @@ export default function Home() {
 
       <div className={styles.marketsSection}>
         <div className={localeClass(styles.sectionLabel, isJapanese)}>{content.marketsLabel}</div>
+        <div className={styles.marketsSublabel}>{content.marketsSublabel}</div>
         <div className={styles.marketsGrid}>
           {content.markets.map((market) => (
             <div key={market.name} className={styles.marketCard}>
               <div className={styles.marketFlag}>{market.flag}</div>
               <div className={styles.marketName}>{market.name}</div>
+            </div>
+          ))}
+        </div>
+        <div className={styles.upcomingDivider} />
+        <div className={styles.upcomingMarketsLabel}>{content.upcomingMarketsLabel}</div>
+        <div className={styles.upcomingMarketsGrid}>
+          {content.upcomingMarkets.map((market) => (
+            <div key={market.name} className={styles.upcomingMarketCard}>
+              <div className={styles.upcomingMarketFlag}>{market.flag}</div>
+              <div className={styles.upcomingMarketName}>{market.name}</div>
             </div>
           ))}
         </div>

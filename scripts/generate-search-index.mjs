@@ -11,7 +11,18 @@ const jaDocsDir = path.join(
   'docusaurus-plugin-content-docs',
   'current',
 );
-const outputPath = path.join(rootDir, 'static', 'search-index.json');
+const localeConfigs = [
+  {
+    locale: 'en-US',
+    docsDir,
+    outputPath: path.join(rootDir, 'static', 'search-index.en-US.json'),
+  },
+  {
+    locale: 'ja-JP',
+    docsDir: jaDocsDir,
+    outputPath: path.join(rootDir, 'static', 'search-index.ja-JP.json'),
+  },
+];
 
 function walkMarkdownFiles(dir) {
   if (!fs.existsSync(dir)) return [];
@@ -128,7 +139,6 @@ function createRecord(locale, filePath) {
   const {frontMatter, content} = parseFrontMatter(source);
   const headings = extractHeadings(content);
   const title = stripMarkdown(frontMatter.title || headings[0] || path.basename(path.dirname(filePath)));
-  const body = stripMarkdown(content);
   const summary = extractSummary(content, locale);
 
   const relativePath = path.relative(locale === 'ja-JP' ? jaDocsDir : docsDir, filePath).replace(/\\/g, '/');
@@ -138,22 +148,20 @@ function createRecord(locale, filePath) {
     locale,
     title,
     headings: headings.slice(1),
-    body,
     summary,
     section,
     url: toDocUrl(locale, filePath),
     ...buildNormalizedSearchFields({
       title,
       headings: headings.slice(1),
-      body,
+      summary,
+      section,
     }),
   };
 }
 
-const records = [
-  ...walkMarkdownFiles(docsDir).map((filePath) => createRecord('en-US', filePath)),
-  ...walkMarkdownFiles(jaDocsDir).map((filePath) => createRecord('ja-JP', filePath)),
-];
-
-fs.writeFileSync(outputPath, JSON.stringify(records, null, 2));
-console.log(`Wrote ${records.length} search records to ${outputPath}`);
+localeConfigs.forEach(({locale, docsDir: localeDocsDir, outputPath}) => {
+  const records = walkMarkdownFiles(localeDocsDir).map((filePath) => createRecord(locale, filePath));
+  fs.writeFileSync(outputPath, JSON.stringify(records, null, 2));
+  console.log(`Wrote ${records.length} ${locale} search records to ${outputPath}`);
+});

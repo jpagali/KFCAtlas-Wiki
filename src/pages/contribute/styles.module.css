@@ -283,20 +283,33 @@
   min-height: 620px;
   padding: 1.4rem;
   border-radius: 20px;
-  background:
-    linear-gradient(180deg, rgba(18, 14, 13, 0.98), rgba(13, 10, 9, 0.98)),
-    linear-gradient(90deg, rgba(228, 0, 43, 0.08), transparent 14%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.03);
+  background: #ffffff;
+  border: 1px solid rgba(112, 90, 72, 0.18);
+  box-shadow: inset 0 1px 1px rgba(36, 23, 14, 0.03);
   font-size: 1rem;
   line-height: 1.8;
-  color: #fff7f3;
+  color: #1f1a17;
 }
 
-.editorSurface:focus {
+/* Tiptap focuses the inner .ProseMirror div, not the wrapper */
+.editorSurface:focus-within {
   outline: none;
   border-color: rgba(228, 0, 43, 0.36);
   box-shadow: 0 0 0 4px rgba(228, 0, 43, 0.08);
+}
+
+/* Suppress browser default outline on the ProseMirror editable div */
+.editorSurface :global(.ProseMirror) {
+  outline: none;
+  min-height: 560px;
+}
+
+.editorSurface :global(.ProseMirror p.is-editor-empty:first-child::before) {
+  content: attr(data-placeholder);
+  color: rgba(31, 26, 23, 0.35);
+  pointer-events: none;
+  float: left;
+  height: 0;
 }
 
 .previewHelp {
@@ -699,4 +712,176 @@
     flex-direction: column;
     align-items: stretch;
   }
+}
+
+/* ── Tiptap icon toolbar buttons ───────────────────────────────────────────── */
+
+.tbBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 0.45rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: linear-gradient(180deg, #2a211e, #1d1714);
+  color: rgba(255, 244, 238, 0.82);
+  cursor: pointer;
+  transition: transform 110ms ease, border-color 110ms ease, box-shadow 110ms ease, background 110ms ease, color 110ms ease;
+  flex-shrink: 0;
+}
+
+.tbBtn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: rgba(228, 0, 43, 0.32);
+  box-shadow: 0 6px 14px rgba(228, 0, 43, 0.1);
+  color: #fff5f1;
+}
+
+.tbBtn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.tbBtnActive {
+  background: linear-gradient(180deg, rgba(228, 0, 43, 0.22), rgba(180, 0, 30, 0.18));
+  border-color: rgba(228, 0, 43, 0.45);
+  color: #ff6b82;
+  box-shadow: 0 0 0 2px rgba(228, 0, 43, 0.12);
+}
+
+.tbBtnLabel {
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* ── Popover anchor (relative container for the floating panel) ─────────────── */
+
+.popoverAnchor {
+  position: relative;
+  display: inline-flex;
+}
+
+/* ── URL popover panel ─────────────────────────────────────────────────────── */
+
+.urlPopover {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 200;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0.85rem;
+  border-radius: 14px;
+  background: #1e1714;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(228, 0, 43, 0.06);
+}
+
+.urlPopover::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 14px;
+  width: 10px;
+  height: 10px;
+  background: #1e1714;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  transform: rotate(45deg);
+}
+
+.urlPopoverLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 244, 238, 0.5);
+}
+
+.urlPopoverRow {
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+}
+
+.urlPopoverInput {
+  flex: 1;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #130f0e;
+  border-radius: 9px;
+  padding: 0.48rem 0.65rem;
+  font: inherit;
+  font-size: 0.84rem;
+  color: #fff7f3;
+  outline: none;
+  transition: border-color 120ms, box-shadow 120ms;
+  min-width: 0;
+}
+
+.urlPopoverInput::placeholder {
+  color: rgba(255, 244, 238, 0.28);
+}
+
+.urlPopoverInput:focus {
+  border-color: rgba(228, 0, 43, 0.42);
+  box-shadow: 0 0 0 3px rgba(228, 0, 43, 0.1);
+}
+
+.urlPopoverApply {
+  border: none;
+  border-radius: 8px;
+  padding: 0.48rem 0.8rem;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, #ff254f, #c70024);
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: transform 110ms, box-shadow 110ms;
+}
+
+.urlPopoverApply:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(228, 0, 43, 0.3);
+}
+
+.urlPopoverHint {
+  font-size: 0.76rem;
+  color: rgba(255, 244, 238, 0.38);
+  line-height: 1.5;
+}
+
+/* ── Image live preview strip ──────────────────────────────────────────────── */
+
+.imagePreviewStrip {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0d0b0a;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imagePreviewImg {
+  max-width: 100%;
+  max-height: 130px;
+  object-fit: contain;
+  display: block;
+}
+
+.imagePreviewError {
+  font-size: 0.8rem;
+  color: rgba(228, 0, 43, 0.8);
+  padding: 0.5rem 0.75rem;
+  text-align: center;
 }
