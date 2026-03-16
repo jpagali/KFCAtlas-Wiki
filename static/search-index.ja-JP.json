@@ -3554,6 +3554,7 @@
       "ハイライト",
       "変更内容",
       "ホームページ体験",
+      "RNA Sneak Peek プレビュー",
       "ナビゲーションと情報設計",
       "レスポンシブ対応",
       "わかりやすく言うと"
@@ -3562,7 +3563,7 @@
     "section": "release-notes",
     "url": "/ja-JP/docs/release-notes/2026-03-16/",
     "normalizedTitle": "リリース 2026 03 16",
-    "normalizedHeadings": "ハイライト 変更内容 ホームページ体験 ナビゲーションと情報設計 レスポンシブ対応 わかりやすく言うと",
+    "normalizedHeadings": "ハイライト 変更内容 ホームページ体験 rna sneak peek プレビュー ナビゲーションと情報設計 レスポンシブ対応 わかりやすく言うと",
     "normalizedSummary": "リリース 2026 03 16",
     "normalizedSection": "release notes"
   },

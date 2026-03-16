@@ -3557,6 +3557,7 @@
       "Highlights",
       "What Changed",
       "Homepage Experience",
+      "RNA Sneak Peek Preview",
       "Navigation and Information Architecture",
       "Responsive Behavior",
       "In Plain English"
@@ -3565,7 +3566,7 @@
     "section": "release-notes",
     "url": "/docs/release-notes/2026-03-16/",
     "normalizedTitle": "release 2026 03 16",
-    "normalizedHeadings": "highlights what changed homepage experience navigation and information architecture responsive behavior in plain english",
+    "normalizedHeadings": "highlights what changed homepage experience rna sneak peek preview navigation and information architecture responsive behavior in plain english",
     "normalizedSummary": "release 2026 03 16",
     "normalizedSection": "release notes"
   },

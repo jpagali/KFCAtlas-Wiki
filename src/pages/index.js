@@ -17,8 +17,14 @@ const HOME_CONTENT = {
     heroSearchPlaceholder: 'Search guides, articles, and headings',
     heroPrimaryCta: 'Start with the Front-end Guide →',
     heroSecondaryCta: 'Start with the Admin Portal Guide →',
+    heroPrototypeCta: 'RNA Sneak Peek →',
     sectionEyebrow: 'Three sections',
     sectionTitle: 'Built for everyone who operates the platform',
+    prototypeCardEyebrow: 'Interactive preview',
+    prototypeCardTitle: 'RNA Sneak Peek',
+    prototypeCardBody:
+      'Explore a stateful multilingual customer journey prototype that behaves like a mini app instead of a linear slideshow.',
+    prototypeCardCta: 'Open the sneak peek',
     marketsLabel: 'Markets',
     marketsSublabel: 'Onboarding — rolling out through end of 2026',
     upcomingMarketsLabel: 'Coming after',
@@ -78,8 +84,14 @@ const HOME_CONTENT = {
     heroSearchPlaceholder: 'ガイド、記事、見出しを検索',
     heroPrimaryCta: 'フロントエンドガイドから始める →',
     heroSecondaryCta: 'Admin Portal Guideから始める →',
+    heroPrototypeCta: 'RNA Sneak Peek →',
     sectionEyebrow: '3つのセクション',
     sectionTitle: 'プラットフォームを運用するすべての人のために設計されています',
+    prototypeCardEyebrow: 'インタラクティブ プレビュー',
+    prototypeCardTitle: 'RNA Sneak Peek',
+    prototypeCardBody:
+      '直線的なスライドではなく、小さなアプリのように動く多言語の顧客体験プロトタイプを確認できます。',
+    prototypeCardCta: 'Sneak Peek を開く',
     marketsLabel: '市場',
     marketsSublabel: 'Onboarding — rolling out through end of 2026',
     upcomingMarketsLabel: 'Coming after',
@@ -208,6 +220,9 @@ export default function Home() {
               <Link to="/docs/admin-portal-guide/" className={`${styles.button} ${styles.buttonSecondary}`}>
                 {content.heroSecondaryCta}
               </Link>
+              <Link to="/rna-sneak-peek" className={`${styles.button} ${styles.buttonTertiary}`}>
+                {content.heroPrototypeCta}
+              </Link>
             </div>
           </div>
         </div>
@@ -224,6 +239,14 @@ export default function Home() {
       </div>
 
       <div className={styles.marketsSection}>
+        <div className={styles.prototypeCallout}>
+          <div className={localeClass(styles.prototypeEyebrow, isJapanese)}>{content.prototypeCardEyebrow}</div>
+          <h2 className={localeClass(styles.prototypeTitle, isJapanese)}>{content.prototypeCardTitle}</h2>
+          <p className={styles.prototypeBody}>{content.prototypeCardBody}</p>
+          <Link to="/rna-sneak-peek" className={`${styles.button} ${styles.prototypeButton}`}>
+            {content.prototypeCardCta} →
+          </Link>
+        </div>
         <div className={localeClass(styles.sectionLabel, isJapanese)}>{content.marketsLabel}</div>
         <div className={styles.marketsSublabel}>{content.marketsSublabel}</div>
         <div className={styles.marketsGrid}>

@@ -1,0 +1,2212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>RNA Ordering Prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080808;
+      --panel: #121212;
+      --panel-2: #1b1b1b;
+      --panel-3: #252525;
+      --line: rgba(255, 255, 255, 0.08);
+      --text: #fff8f1;
+      --muted: rgba(255, 248, 241, 0.64);
+      --red: #e4002b;
+      --red-soft: rgba(228, 0, 43, 0.18);
+      --gold: #ffbf5b;
+      --green: #52d890;
+      --shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+      --font-display: "Bebas Neue", sans-serif;
+      --font-body: "Space Grotesk", sans-serif;
+      --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+      background:
+        radial-gradient(circle at top left, rgba(228, 0, 43, 0.14), transparent 22%),
+        radial-gradient(circle at bottom right, rgba(255, 191, 91, 0.1), transparent 20%),
+        #050505;
+      font-family: var(--font-body);
+      color: var(--text);
+    }
+
+    button, input {
+      font: inherit;
+    }
+
+    .stage {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: clamp(8px, 2vw, 24px);
+    }
+
+    .phone-wrap {
+      position: relative;
+      width: min(390px, calc(100vw - 16px));
+      height: min(844px, calc(100vh - 16px));
+      aspect-ratio: 390 / 844;
+      border-radius: 54px;
+      padding: 12px;
+      background: linear-gradient(180deg, #1f1f1f 0%, #0d0d0d 100%);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .phone-wrap::before {
+      content: "";
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 124px;
+      height: 30px;
+      border-radius: 999px;
+      background: #050505;
+      z-index: 30;
+    }
+
+    .phone {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 42px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 18%),
+        #0b0b0b;
+    }
+
+    .ambient {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 85% 18%, rgba(228, 0, 43, 0.18), transparent 22%),
+        radial-gradient(circle at 18% 78%, rgba(255, 191, 91, 0.08), transparent 24%);
+      opacity: 0.9;
+    }
+
+    .status-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 25;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 22px 0;
+      height: 52px;
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .viewport {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topbar {
+      padding: 58px 18px 12px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(10, 10, 10, 0.84);
+      backdrop-filter: blur(18px);
+    }
+
+    .topbar-left {
+      min-width: 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #ff9eb1;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 0 16px rgba(228, 0, 43, 0.45);
+    }
+
+    .screen-title {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 38px;
+      line-height: 0.94;
+      letter-spacing: 0.03em;
+    }
+
+    .screen-subtitle {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+      max-width: 210px;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-end;
+      flex-shrink: 0;
+    }
+
+    .nav-cluster,
+    .locale-switch {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .icon-btn,
+    .toggle-btn,
+    .pill,
+    .nav-btn,
+    .cta,
+    .ghost-btn,
+    .qty-btn {
+      border: 0;
+      cursor: pointer;
+      transition: transform 0.15s var(--ease), background 0.15s var(--ease), opacity 0.15s var(--ease);
+    }
+
+    .icon-btn,
+    .toggle-btn,
+    .pill,
+    .ghost-btn,
+    .qty-btn {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+    }
+
+    .icon-btn,
+    .toggle-btn {
+      min-width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .toggle-btn {
+      padding: 0 12px;
+      min-width: auto;
+    }
+
+    .toggle-btn.active {
+      background: var(--red);
+    }
+
+    .icon-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+      padding: 18px 18px 120px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.26) rgba(255, 255, 255, 0.06);
+    }
+
+    .content::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .content::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 999px;
+    }
+
+    .content::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.26);
+      border-radius: 999px;
+    }
+
+    .content::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.38);
+    }
+
+    .stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .card,
+    .hero-card,
+    .product-card,
+    .cart-item,
+    .sheet {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+    }
+
+    .card,
+    .hero-card,
+    .cart-item,
+    .sheet {
+      padding: 16px;
+    }
+
+    .hero-card {
+      padding: 18px;
+      background:
+        radial-gradient(circle at top right, rgba(228, 0, 43, 0.22), transparent 26%),
+        linear-gradient(135deg, rgba(30, 8, 10, 0.98), rgba(15, 14, 14, 0.96));
+    }
+
+    .kicker {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .hero-card h3 {
+      margin: 0 0 8px;
+      font-family: var(--font-display);
+      font-size: 34px;
+      line-height: 0.95;
+      letter-spacing: 0.03em;
+    }
+
+    .hero-card p,
+    .card p,
+    .meta,
+    .store-address,
+    .store-note,
+    .helper,
+    .cart-meta {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .context-strip {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--line);
+    }
+
+    .context-strip strong,
+    .section-head strong,
+    .price,
+    .total {
+      display: block;
+      font-weight: 700;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .section-head h4 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .section-tag {
+      color: #ff9eb1;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+    }
+
+    .choice-grid,
+    .slot-grid,
+    .store-list,
+    .menu-grid,
+    .cart-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .choice-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .slot-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 10px;
+    }
+
+    .pill {
+      min-height: 48px;
+      padding: 10px 12px;
+      border-radius: 16px;
+      text-align: left;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .pill small {
+      display: block;
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 2px;
+      font-weight: 600;
+    }
+
+    .pill.active {
+      background: linear-gradient(180deg, rgba(228, 0, 43, 0.96), rgba(182, 0, 35, 0.96));
+      color: white;
+    }
+
+    .pill.active small {
+      color: rgba(255, 255, 255, 0.74);
+    }
+
+    .pill.disabled {
+      opacity: 0.34;
+      cursor: not-allowed;
+    }
+
+    .store-row {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: border-color 0.15s var(--ease), background 0.15s var(--ease), transform 0.15s var(--ease);
+    }
+
+    .store-row.active {
+      border-color: rgba(228, 0, 43, 0.6);
+      background: rgba(228, 0, 43, 0.12);
+    }
+
+    .store-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.08);
+      font-size: 22px;
+    }
+
+    .store-name {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .badge.live {
+      background: rgba(82, 216, 144, 0.14);
+      color: var(--green);
+    }
+
+    .badge.warn {
+      background: rgba(255, 191, 91, 0.14);
+      color: var(--gold);
+    }
+
+    .search {
+      position: relative;
+    }
+
+    .search input {
+      width: 100%;
+      height: 50px;
+      padding: 0 14px 0 44px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      outline: none;
+    }
+
+    .search::before {
+      content: "⌕";
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 18px;
+      pointer-events: none;
+    }
+
+    .chip-row {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      scrollbar-width: none;
+    }
+
+    .chip-row::-webkit-scrollbar {
+      display: none;
+    }
+
+    .menu-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .product-card {
+      padding: 0;
+      cursor: pointer;
+      transition: transform 0.15s var(--ease), border-color 0.15s var(--ease);
+    }
+
+    .product-card.unavailable {
+      opacity: 0.48;
+      cursor: default;
+    }
+
+    .product-visual {
+      height: 118px;
+      display: grid;
+      place-items: center;
+      font-size: 52px;
+      background:
+        radial-gradient(circle at top right, rgba(228, 0, 43, 0.18), transparent 25%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+      border-bottom: 1px solid var(--line);
+    }
+
+    .product-body {
+      padding: 12px;
+    }
+
+    .product-title {
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .product-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .product-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .mini-btn {
+      flex: 1;
+      min-height: 34px;
+      border-radius: 10px;
+      border: 0;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .mini-btn.primary {
+      background: var(--red);
+      color: white;
+    }
+
+    .price {
+      color: var(--gold);
+      font-size: 14px;
+    }
+
+    .add-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      border: 0;
+      background: var(--red);
+      color: white;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .unavailable-note {
+      margin-top: 8px;
+      color: rgba(255, 255, 255, 0.54);
+      font-size: 10px;
+      line-height: 1.45;
+    }
+
+    .detail-hero {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .detail-emoji {
+      width: 88px;
+      height: 88px;
+      border-radius: 26px;
+      display: grid;
+      place-items: center;
+      font-size: 40px;
+      background:
+        radial-gradient(circle at top right, rgba(228, 0, 43, 0.24), transparent 24%),
+        rgba(255, 255, 255, 0.05);
+    }
+
+    .detail-name {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.1;
+      font-weight: 700;
+    }
+
+    .option-group {
+      display: grid;
+      gap: 8px;
+    }
+
+    .option-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ff9eb1;
+      font-weight: 700;
+    }
+
+    .detail-footer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 72px;
+      z-index: 10;
+      padding: 14px 18px 18px;
+      background:
+        linear-gradient(180deg, rgba(11, 11, 11, 0), rgba(11, 11, 11, 0.96) 20%, rgba(11, 11, 11, 1) 100%);
+      display: grid;
+      gap: 12px;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .qty {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .qty-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .qty-value {
+      min-width: 20px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .cta,
+    .ghost-btn {
+      width: 100%;
+      min-height: 52px;
+      border-radius: 18px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .cta {
+      background: linear-gradient(180deg, #f1224f 0%, #d4002a 100%);
+      color: white;
+      box-shadow: 0 12px 30px rgba(228, 0, 43, 0.28);
+    }
+
+    .ghost-btn {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .cart-art {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .cart-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .cart-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .summary {
+      display: grid;
+      gap: 10px;
+    }
+
+    .summary-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 13px;
+    }
+
+    .summary-row span:first-child {
+      color: var(--muted);
+    }
+
+    .total {
+      color: var(--gold);
+      font-size: 20px;
+    }
+
+    .checkout-field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .checkout-field input {
+      width: 100%;
+      height: 48px;
+      padding: 0 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      outline: none;
+    }
+
+    .tracking {
+      display: grid;
+      gap: 12px;
+    }
+
+    .track-line {
+      display: grid;
+      grid-template-columns: auto 1fr auto 1fr auto;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .track-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .track-dot.done {
+      background: var(--green);
+    }
+
+    .track-dot.current {
+      background: var(--red);
+      box-shadow: 0 0 0 8px rgba(228, 0, 43, 0.12);
+    }
+
+    .track-bar {
+      height: 2px;
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .track-labels {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .bottom-nav {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 22;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      padding: 12px 14px 22px;
+      border-top: 1px solid var(--line);
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(20px);
+    }
+
+    .nav-btn {
+      min-height: 50px;
+      border-radius: 16px;
+      background: transparent;
+      color: var(--muted);
+      display: grid;
+      place-items: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-btn span {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 3px;
+    }
+
+    .nav-btn.active {
+      background: rgba(228, 0, 43, 0.12);
+      color: white;
+    }
+
+    .toast {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 94px;
+      z-index: 24;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(24, 24, 24, 0.94);
+      border: 1px solid var(--line);
+      color: white;
+      transform: translateY(18px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s var(--ease), transform 0.2s var(--ease);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .empty {
+      padding: 36px 20px;
+      border-radius: var(--radius-lg);
+      border: 1px dashed rgba(255, 255, 255, 0.12);
+      text-align: center;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 440px) {
+      html, body {
+        min-height: 100vh;
+      }
+
+      .stage {
+        min-height: 100vh;
+        padding: 0;
+      }
+
+      .phone-wrap {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+        padding: 0;
+      }
+
+      .phone {
+        border-radius: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <div class="phone-wrap">
+      <div class="phone">
+        <div class="ambient"></div>
+        <div class="status-bar">
+          <span>9:41</span>
+          <span>5G ▰▰▰ 🔋</span>
+        </div>
+        <div class="viewport">
+          <div class="topbar">
+            <div class="topbar-left">
+              <div class="eyebrow" id="preview-badge"></div>
+              <h1 class="screen-title" id="screen-title"></h1>
+              <div class="screen-subtitle" id="screen-subtitle"></div>
+            </div>
+            <div class="toolbar">
+              <div class="nav-cluster">
+                <button class="icon-btn" id="back-btn">←</button>
+                <button class="icon-btn" id="forward-btn">→</button>
+              </div>
+              <div class="locale-switch">
+                <button class="toggle-btn" data-locale="en-US">EN</button>
+                <button class="toggle-btn" data-locale="ja-JP">JP</button>
+              </div>
+            </div>
+          </div>
+          <div class="content" id="content"></div>
+          <div class="detail-footer" id="detail-footer" hidden></div>
+          <div class="toast" id="toast">
+            <span id="toast-text"></span>
+            <strong id="toast-points"></strong>
+          </div>
+          <div class="bottom-nav" id="bottom-nav"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const copy = {
+      "en-US": {
+        previewBadge: "RNA prototype · simulated",
+        nav: {
+          location: ["📍", "Setup"],
+          home: ["🏠", "Home"],
+          menu: ["🍗", "Menu"],
+          cart: ["🛒", "Cart"],
+          rewards: ["⭐", "Rewards"]
+        },
+        screens: {
+          location: {
+            title: "Start the Session",
+            subtitle: "Choose store, fulfillment, and order timing so the rest of the app reacts like a real order flow."
+          },
+          home: {
+            title: "Order Home",
+            subtitle: "The app now remembers context, keeps the cart live, and lets you move naturally between surfaces."
+          },
+          menu: {
+            title: "Live Menu",
+            subtitle: "Filters and search affect a stateful product grid instead of stepping through staged cards."
+          },
+          detail: {
+            title: "Customize Item",
+            subtitle: "Product choices persist while you move back to cart or menu."
+          },
+          cart: {
+            title: "Basket",
+            subtitle: "The basket persists across navigation and reflects the current store session."
+          },
+          checkout: {
+            title: "Checkout",
+            subtitle: "Delivery details and payment remain editable without collapsing the rest of the flow."
+          },
+          confirmation: {
+            title: "Order Placed",
+            subtitle: "The prototype ends on a believable tracking snapshot instead of a dead-end slide."
+          },
+          rewards: {
+            title: "Loyalty",
+            subtitle: "Rewards remain connected to the same session, so the prototype feels like a single app."
+          }
+        },
+        labels: {
+          currentSession: "Current Session",
+          storeSection: "Nearby Stores",
+          modeSection: "Fulfillment",
+          timingSection: "Order Timing",
+          slotSection: "Scheduled Slots",
+          availabilitySection: "Availability Snapshot",
+          livePreview: "Live preview",
+          featuredKicker: "RNA Sneak Peek",
+          featuredTitle: "A real ordering app should feel alive",
+          featuredBody: "Store, order mode, and timing should all reshape what the guest can buy. This version behaves like a miniature iPhone ordering app instead of a slideshow.",
+          featuredCta: "Open live menu",
+          recommendations: "Recommended For You",
+          searchPlaceholder: "Search items, bundles, drinks...",
+          categoryAll: "All",
+          categoryChicken: "Chicken",
+          categoryBurger: "Burgers",
+          categoryCombos: "Combos",
+          categorySides: "Sides",
+          categoryDrinks: "Drinks",
+          detail: "Details",
+          heat: "Heat Level",
+          size: "Size",
+          extras: "Extras",
+          addToCart: "Add to cart",
+          continueShopping: "Continue shopping",
+          viewProduct: "View details",
+          quickAdd: "Quick add",
+          proceedCheckout: "Proceed to checkout",
+          deliveryAddress: "Delivery Address",
+          payment: "Payment",
+          orderSummary: "Order Summary",
+          placeOrder: "Place order",
+          tracking: "Tracking Snapshot",
+          backHome: "Back to home",
+          emptyCart: "Your cart is empty. Add something from the menu to keep exploring the flow.",
+          rewardsHeadline: "Colonel's Club",
+          rewardsBody: "Because the experience is one app now, loyalty stays accessible instead of feeling like a disconnected demo screen.",
+          points: "points",
+          redeem: "Redeem",
+          redeemed: "Redeemed",
+          available: "Available",
+          unavailable: "Unavailable",
+          asap: "ASAP",
+          schedule: "Schedule",
+          subtotal: "Subtotal",
+          delivery: "Delivery",
+          free: "FREE",
+          total: "Total",
+          earned: "Points earned",
+          placed: "Placed",
+          cooking: "Cooking",
+          dispatch: "Dispatch"
+        },
+        helper: {
+          location: "Switching store or fulfillment mode updates the whole session, including availability and delivery promise.",
+          menu: "Unavailable items stay visible with reasons, so the prototype explains system behavior instead of hiding it.",
+          checkout: "This is still simulated. The goal is to test app behavior, not connect to real APIs."
+        },
+        storeModes: {
+          delivery: "Delivery",
+          pickup: "Pickup",
+          dinein: "Dine-in"
+        },
+        timings: {
+          asapMeta: "Fastest route",
+          scheduleMeta: "Choose a slot"
+        },
+        toasts: {
+          added: "Added to basket",
+          redeemed: "Reward redeemed"
+        },
+        itemReasons: {
+          outOfStock: "Sold out at this store",
+          pickupOnly: "Pickup only here",
+          deliveryBlocked: "Not available for delivery",
+          eveningOnly: "Only available for scheduled evening slots",
+          closedAsap: "Store is closed for ASAP"
+        }
+      },
+      "ja-JP": {
+        previewBadge: "RNA プロトタイプ ・ シミュレーション",
+        nav: {
+          location: ["📍", "設定"],
+          home: ["🏠", "ホーム"],
+          menu: ["🍗", "メニュー"],
+          cart: ["🛒", "カート"],
+          rewards: ["⭐", "特典"]
+        },
+        screens: {
+          location: {
+            title: "セッション開始",
+            subtitle: "店舗、受取方法、注文タイミングを選ぶと、その後の体験全体が実アプリのように変化します。"
+          },
+          home: {
+            title: "注文ホーム",
+            subtitle: "コンテキストとカートを保持したまま、自然に画面を行き来できる構成です。"
+          },
+          menu: {
+            title: "ライブメニュー",
+            subtitle: "検索とフィルターが、演出用の固定カードではなく状態保持型のグリッドに反映されます。"
+          },
+          detail: {
+            title: "商品カスタマイズ",
+            subtitle: "商品オプションを選んだ状態のまま、カートやメニューに戻れます。"
+          },
+          cart: {
+            title: "カート",
+            subtitle: "カートはナビゲーション全体で維持され、現在の店舗セッションを反映します。"
+          },
+          checkout: {
+            title: "チェックアウト",
+            subtitle: "配送情報や支払い方法を変更しても、他の状態は崩れません。"
+          },
+          confirmation: {
+            title: "注文完了",
+            subtitle: "最後は行き止まりのスライドではなく、追跡画面らしい終点になります。"
+          },
+          rewards: {
+            title: "ロイヤルティ",
+            subtitle: "リワードも同じアプリ内体験としてつながるため、別デモのように見えません。"
+          }
+        },
+        labels: {
+          currentSession: "現在のセッション",
+          storeSection: "近くの店舗",
+          modeSection: "受取方法",
+          timingSection: "注文タイミング",
+          slotSection: "予約枠",
+          availabilitySection: "在庫スナップショット",
+          livePreview: "ライブプレビュー",
+          featuredKicker: "RNA Sneak Peek",
+          featuredTitle: "本物の注文アプリは、体験が生きているべき",
+          featuredBody: "店舗、注文方法、時間帯によって購入可能商品が変わるべきです。この版はスライドではなく、iPhone 向けの小さな注文アプリとして動きます。",
+          featuredCta: "ライブメニューを開く",
+          recommendations: "おすすめ",
+          searchPlaceholder: "商品、セット、ドリンクを検索...",
+          categoryAll: "すべて",
+          categoryChicken: "チキン",
+          categoryBurger: "バーガー",
+          categoryCombos: "セット",
+          categorySides: "サイド",
+          categoryDrinks: "ドリンク",
+          detail: "詳細",
+          heat: "辛さ",
+          size: "サイズ",
+          extras: "追加",
+          addToCart: "カートに追加",
+          continueShopping: "買い物を続ける",
+          viewProduct: "詳細を見る",
+          quickAdd: "追加する",
+          proceedCheckout: "チェックアウトへ",
+          deliveryAddress: "配送先住所",
+          payment: "支払い方法",
+          orderSummary: "注文内容",
+          placeOrder: "注文する",
+          tracking: "追跡スナップショット",
+          backHome: "ホームに戻る",
+          emptyCart: "カートは空です。メニューから商品を追加してフローを続けてください。",
+          rewardsHeadline: "Colonel's Club",
+          rewardsBody: "アプリ全体がつながっているため、ロイヤルティも独立したデモ画面ではなく自然に確認できます。",
+          points: "ポイント",
+          redeem: "交換する",
+          redeemed: "交換済み",
+          available: "利用可能",
+          unavailable: "利用不可",
+          asap: "今すぐ",
+          schedule: "予約",
+          subtotal: "小計",
+          delivery: "配達料",
+          free: "無料",
+          total: "合計",
+          earned: "獲得ポイント",
+          placed: "受付済み",
+          cooking: "調理中",
+          dispatch: "配達準備"
+        },
+        helper: {
+          location: "店舗や受取方法を変えると、在庫や配達時間を含むセッション全体が変わります。",
+          menu: "利用不可の商品も理由付きで表示するため、システム挙動を説明できます。",
+          checkout: "これはシミュレーションです。目的は API 接続ではなく、アプリらしい挙動の確認です。"
+        },
+        storeModes: {
+          delivery: "デリバリー",
+          pickup: "受け取り",
+          dinein: "店内利用"
+        },
+        timings: {
+          asapMeta: "最短ルート",
+          scheduleMeta: "時間を選ぶ"
+        },
+        toasts: {
+          added: "カートに追加しました",
+          redeemed: "特典を交換しました"
+        },
+        itemReasons: {
+          outOfStock: "この店舗では売り切れ",
+          pickupOnly: "この店舗では受け取りのみ",
+          deliveryBlocked: "デリバリー対象外",
+          eveningOnly: "夜の予約枠のみ利用可",
+          closedAsap: "今すぐ注文では営業時間外"
+        }
+      }
+    };
+
+    const stores = [
+      {
+        id: "downtown",
+        emoji: "🍗",
+        name: { "en-US": "KFC Downtown", "ja-JP": "KFC Downtown" },
+        address: { "en-US": "142 S Grand Ave, Los Angeles", "ja-JP": "142 S Grand Ave, Los Angeles" },
+        distance: "0.8 km",
+        eta: { delivery: "15-20 min", pickup: "10 min", dinein: "Walk in" },
+        modes: ["delivery", "pickup", "dinein"],
+        note: { "en-US": "Full menu · Halal certified", "ja-JP": "フルメニュー ・ ハラール認証" }
+      },
+      {
+        id: "westside",
+        emoji: "🍔",
+        name: { "en-US": "KFC Westside", "ja-JP": "KFC Westside" },
+        address: { "en-US": "8900 Santa Monica Blvd", "ja-JP": "8900 Santa Monica Blvd" },
+        distance: "2.1 km",
+        eta: { delivery: "25-30 min", pickup: "12 min", dinein: "Walk in" },
+        modes: ["pickup", "dinein"],
+        note: { "en-US": "Pickup-first site", "ja-JP": "受け取り中心の店舗" }
+      },
+      {
+        id: "airport",
+        emoji: "✈️",
+        name: { "en-US": "KFC LAX Airport", "ja-JP": "KFC LAX Airport" },
+        address: { "en-US": "Terminal 5, LAX", "ja-JP": "Terminal 5, LAX" },
+        distance: "4.2 km",
+        eta: { delivery: "Closed", pickup: "20 min", dinein: "12 min wait" },
+        modes: ["pickup", "dinein"],
+        note: { "en-US": "Restricted access menu", "ja-JP": "限定メニュー" }
+      }
+    ];
+
+    const products = [
+      {
+        id: "original",
+        emoji: "🍗",
+        category: "chicken",
+        basePrice: 6.99,
+        name: { "en-US": "Original Recipe", "ja-JP": "オリジナルチキン" },
+        desc: {
+          "en-US": "The always-on anchor product that keeps the flow feeling dependable.",
+          "ja-JP": "常に表示される、体験の軸となる定番商品です。"
+        },
+        options: {
+          heat: { "en-US": ["Original", "Spicy"], "ja-JP": ["オリジナル", "スパイシー"] },
+          size: { "en-US": ["2 pcs", "4 pcs"], "ja-JP": ["2 ピース", "4 ピース"] },
+          extras: { "en-US": ["Extra dip +$0.50"], "ja-JP": ["ディップ追加 +$0.50"] }
+        }
+      },
+      {
+        id: "zinger",
+        emoji: "🍔",
+        category: "burger",
+        basePrice: 8.99,
+        name: { "en-US": "Zinger Tower Burger", "ja-JP": "ジンガータワーバーガー" },
+        desc: {
+          "en-US": "A hero item used to show realistic item detail and customization.",
+          "ja-JP": "商品詳細とカスタマイズを見せる主役商品です。"
+        },
+        options: {
+          heat: { "en-US": ["Mild", "Spicy", "Fire"], "ja-JP": ["マイルド", "スパイシー", "ファイア"] },
+          size: { "en-US": ["Regular", "Large"], "ja-JP": ["レギュラー", "ラージ"] },
+          extras: { "en-US": ["Extra sauce +$0.50", "Double fillet +$2.00"], "ja-JP": ["ソース追加 +$0.50", "ダブルフィレ +$2.00"] }
+        }
+      },
+      {
+        id: "feast",
+        emoji: "🪣",
+        category: "combos",
+        basePrice: 24.99,
+        name: { "en-US": "Family Feast Bucket", "ja-JP": "ファミリーフィーストバケット" },
+        desc: {
+          "en-US": "A bundle that demonstrates mode-sensitive availability.",
+          "ja-JP": "受取方法によって在庫が変わるセット商品です。"
+        },
+        options: {
+          heat: { "en-US": ["Original", "Mixed"], "ja-JP": ["オリジナル", "ミックス"] },
+          size: { "en-US": ["8 pcs", "12 pcs"], "ja-JP": ["8 ピース", "12 ピース"] },
+          extras: { "en-US": ["Add gravy +$1.00"], "ja-JP": ["グレービー追加 +$1.00"] }
+        }
+      },
+      {
+        id: "fries",
+        emoji: "🍟",
+        category: "sides",
+        basePrice: 2.99,
+        name: { "en-US": "Crispy Fries", "ja-JP": "クリスピーフライ" },
+        desc: {
+          "en-US": "A fast add-on item that makes the basket feel active.",
+          "ja-JP": "カートの変化を見せやすい追加商品です。"
+        },
+        options: {
+          heat: { "en-US": ["Classic seasoning"], "ja-JP": ["クラシックシーズニング"] },
+          size: { "en-US": ["Small", "Regular", "Large"], "ja-JP": ["スモール", "レギュラー", "ラージ"] },
+          extras: { "en-US": ["Cheese sauce +$0.80"], "ja-JP": ["チーズソース +$0.80"] }
+        }
+      },
+      {
+        id: "pepsi",
+        emoji: "🥤",
+        category: "drinks",
+        basePrice: 2.49,
+        name: { "en-US": "Pepsi Max", "ja-JP": "ペプシマックス" },
+        desc: {
+          "en-US": "A stable item that stays available in almost every branch.",
+          "ja-JP": "ほぼすべての条件で利用可能な安定商品です。"
+        },
+        options: {
+          heat: { "en-US": ["Original"], "ja-JP": ["オリジナル"] },
+          size: { "en-US": ["Regular", "Large"], "ja-JP": ["レギュラー", "ラージ"] },
+          extras: { "en-US": ["No ice"], "ja-JP": ["氷なし"] }
+        }
+      },
+      {
+        id: "twister",
+        emoji: "🌯",
+        category: "burger",
+        basePrice: 7.49,
+        name: { "en-US": "Twister Wrap", "ja-JP": "ツイスターラップ" },
+        desc: {
+          "en-US": "A deliberately unstable item that helps explain availability rules.",
+          "ja-JP": "利用条件の違いを説明するための変動商品です。"
+        },
+        options: {
+          heat: { "en-US": ["Original"], "ja-JP": ["オリジナル"] },
+          size: { "en-US": ["Regular"], "ja-JP": ["レギュラー"] },
+          extras: { "en-US": ["Extra lettuce +$0.40"], "ja-JP": ["レタス追加 +$0.40"] }
+        }
+      },
+      {
+        id: "breakfast",
+        emoji: "🥞",
+        category: "combos",
+        basePrice: 5.99,
+        name: { "en-US": "Breakfast Box", "ja-JP": "ブレックファストボックス" },
+        desc: {
+          "en-US": "Only appears when the customer shifts to a scheduled evening preview.",
+          "ja-JP": "予約時間帯に切り替えたときだけ見せる時間依存商品です。"
+        },
+        options: {
+          heat: { "en-US": ["Classic"], "ja-JP": ["クラシック"] },
+          size: { "en-US": ["Regular"], "ja-JP": ["レギュラー"] },
+          extras: { "en-US": ["Coffee add-on +$1.20"], "ja-JP": ["コーヒー追加 +$1.20"] }
+        }
+      }
+    ];
+
+    const scheduleSlots = ["18:30", "19:00", "19:30", "20:00"];
+
+    const state = {
+      locale: "en-US",
+      screen: "location",
+      storeId: "downtown",
+      mode: "delivery",
+      timing: "asap",
+      slot: "18:30",
+      search: "",
+      category: "all",
+      selectedProductId: "zinger",
+      detailQty: 1,
+      selectedOptions: {},
+      cart: [],
+      checkout: {
+        address1: "123 Main Street, Apt 4B",
+        address2: "Los Angeles, CA 90001",
+        payment: "Apple Pay"
+      }
+    };
+
+    const historyStack = [];
+    const futureStack = [];
+
+    const els = {
+      content: document.getElementById("content"),
+      title: document.getElementById("screen-title"),
+      subtitle: document.getElementById("screen-subtitle"),
+      previewBadge: document.getElementById("preview-badge"),
+      back: document.getElementById("back-btn"),
+      forward: document.getElementById("forward-btn"),
+      bottomNav: document.getElementById("bottom-nav"),
+      detailFooter: document.getElementById("detail-footer"),
+      toast: document.getElementById("toast"),
+      toastText: document.getElementById("toast-text"),
+      toastPoints: document.getElementById("toast-points")
+    };
+
+    function t() {
+      return copy[state.locale];
+    }
+
+    function getStore() {
+      return stores.find((store) => store.id === state.storeId) || stores[0];
+    }
+
+    function getProduct(id) {
+      return products.find((product) => product.id === id) || products[0];
+    }
+
+    function clone(value) {
+      return JSON.parse(JSON.stringify(value));
+    }
+
+    function snapshot() {
+      return clone(state);
+    }
+
+    function restore(next) {
+      Object.assign(state, clone(next));
+      render();
+    }
+
+    function commit(mutator) {
+      historyStack.push(snapshot());
+      futureStack.length = 0;
+      mutator();
+      render();
+    }
+
+    function goBack() {
+      if (!historyStack.length) return;
+      futureStack.unshift(snapshot());
+      restore(historyStack.pop());
+    }
+
+    function goForward() {
+      if (!futureStack.length) return;
+      historyStack.push(snapshot());
+      restore(futureStack.shift());
+    }
+
+    function setLocale(locale) {
+      state.locale = locale;
+      render();
+    }
+
+    function navigate(screen) {
+      if (state.screen === screen) return;
+      commit(() => {
+        state.screen = screen;
+      });
+    }
+
+    function getAvailability(product) {
+      const labels = t().itemReasons;
+      const store = getStore();
+
+      if (!store.modes.includes(state.mode)) {
+        return { available: false, reason: labels.closedAsap };
+      }
+
+      if (product.id === "twister" && state.storeId === "westside") {
+        return { available: false, reason: labels.outOfStock };
+      }
+
+      if (product.id === "feast" && state.mode === "dinein") {
+        return { available: false, reason: labels.deliveryBlocked };
+      }
+
+      if (product.id === "twister" && state.storeId === "airport" && state.mode === "delivery") {
+        return { available: false, reason: labels.pickupOnly };
+      }
+
+      if (product.id === "breakfast" && state.timing !== "schedule") {
+        return { available: false, reason: labels.eveningOnly };
+      }
+
+      if (product.id === "original" && state.storeId === "airport" && state.timing === "asap") {
+        return { available: false, reason: labels.closedAsap };
+      }
+
+      return { available: true, reason: t().labels.available };
+    }
+
+    function getSelectedOptions(product) {
+      if (!state.selectedOptions[product.id]) {
+        state.selectedOptions[product.id] = {
+          heat: product.options.heat[state.locale][0],
+          size: product.options.size[state.locale][0],
+          extras: []
+        };
+      }
+      return state.selectedOptions[product.id];
+    }
+
+    function money(value) {
+      return `$${value.toFixed(2)}`;
+    }
+
+    function cartCount() {
+      return state.cart.reduce((sum, item) => sum + item.qty, 0);
+    }
+
+    function cartTotal() {
+      return state.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    }
+
+    function pointsEarned() {
+      return cartCount() * 50;
+    }
+
+    function showToast(text, points = "") {
+      els.toastText.textContent = text;
+      els.toastPoints.textContent = points;
+      els.toast.classList.add("show");
+      clearTimeout(showToast.timer);
+      showToast.timer = setTimeout(() => els.toast.classList.remove("show"), 2200);
+    }
+
+    function renderBottomNav() {
+      const navKeys = ["location", "home", "menu", "cart", "rewards"];
+      els.bottomNav.innerHTML = navKeys.map((key) => {
+        const [icon, label] = t().nav[key];
+        const active = state.screen === key ? "active" : "";
+        const cartLabel = key === "cart" ? `${label} ${cartCount() ? `(${cartCount()})` : ""}`.trim() : label;
+        return `<button class="nav-btn ${active}" data-nav="${key}"><div><span>${icon}</span>${cartLabel}</div></button>`;
+      }).join("");
+      els.bottomNav.querySelectorAll("[data-nav]").forEach((button) => {
+        button.addEventListener("click", () => navigate(button.dataset.nav));
+      });
+    }
+
+    function renderTopbar() {
+      const screenCopy = t().screens[state.screen];
+      els.previewBadge.textContent = t().previewBadge;
+      els.title.textContent = screenCopy.title;
+      els.subtitle.textContent = screenCopy.subtitle;
+      els.back.disabled = historyStack.length === 0;
+      els.forward.disabled = futureStack.length === 0;
+      document.querySelectorAll("[data-locale]").forEach((button) => {
+        button.classList.toggle("active", button.dataset.locale === state.locale);
+      });
+    }
+
+    function renderLocation() {
+      const store = getStore();
+      return `
+        <div class="stack">
+          <div class="context-strip">
+            <div>
+              <strong>${t().labels.currentSession}</strong>
+              <div class="meta">${store.name[state.locale]} · ${t().storeModes[state.mode]} · ${state.timing === "schedule" ? `${t().labels.schedule} ${state.slot}` : t().labels.asap}</div>
+            </div>
+            <span class="badge live">${store.eta[state.mode] || store.eta.pickup}</span>
+          </div>
+
+          <div class="card">
+            <div class="section-head">
+              <h4>${t().labels.storeSection}</h4>
+              <span class="section-tag">${t().labels.livePreview}</span>
+            </div>
+            <div class="store-list">
+              ${stores.map((storeItem) => `
+                <div class="store-row ${storeItem.id === state.storeId ? "active" : ""}" data-store="${storeItem.id}">
+                  <div class="store-icon">${storeItem.emoji}</div>
+                  <div>
+                    <div class="store-name">${storeItem.name[state.locale]}</div>
+                    <div class="store-address">${storeItem.address[state.locale]} · ${storeItem.distance}</div>
+                    <div class="store-note">${storeItem.note[state.locale]}</div>
+                  </div>
+                  <span class="badge ${storeItem.id === state.storeId ? "live" : "warn"}">${storeItem.eta.pickup}</span>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="section-head"><h4>${t().labels.modeSection}</h4></div>
+            <div class="choice-grid">
+              ${["delivery", "pickup", "dinein"].map((mode) => {
+                const enabled = store.modes.includes(mode);
+                return `
+                  <button class="pill ${state.mode === mode ? "active" : ""} ${enabled ? "" : "disabled"}" data-mode="${mode}" ${enabled ? "" : "disabled"}>
+                    ${t().storeModes[mode]}
+                    <small>${store.eta[mode] || "--"}</small>
+                  </button>
+                `;
+              }).join("")}
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="section-head"><h4>${t().labels.timingSection}</h4></div>
+            <div class="choice-grid" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+              <button class="pill ${state.timing === "asap" ? "active" : ""}" data-timing="asap">${t().labels.asap}<small>${t().timings.asapMeta}</small></button>
+              <button class="pill ${state.timing === "schedule" ? "active" : ""}" data-timing="schedule">${t().labels.schedule}<small>${t().timings.scheduleMeta}</small></button>
+            </div>
+            ${state.timing === "schedule" ? `
+              <div class="slot-grid">
+                ${scheduleSlots.map((slot) => `<button class="pill ${state.slot === slot ? "active" : ""}" data-slot="${slot}">${slot}</button>`).join("")}
+              </div>
+            ` : ""}
+          </div>
+
+          <div class="card">
+            <div class="section-head"><h4>${t().labels.availabilitySection}</h4></div>
+            <div class="stack">
+              ${products.slice(0, 4).map((product) => {
+                const availability = getAvailability(product);
+                return `
+                  <div class="context-strip">
+                    <div>
+                      <strong>${product.emoji} ${product.name[state.locale]}</strong>
+                      <div class="meta">${availability.reason}</div>
+                    </div>
+                    <span class="badge ${availability.available ? "live" : "warn"}">${availability.available ? t().labels.available : t().labels.unavailable}</span>
+                  </div>
+                `;
+              }).join("")}
+            </div>
+          </div>
+
+          <div class="card">
+            <p class="helper">${t().helper.location}</p>
+            <button class="cta" data-action="to-home" style="margin-top:12px">${t().labels.featuredCta}</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderHome() {
+      const store = getStore();
+      const visible = products.filter((product) => getAvailability(product).available).slice(0, 4);
+      return `
+        <div class="stack">
+          <div class="context-strip">
+            <div>
+              <strong>${t().labels.currentSession}</strong>
+              <div class="meta">${store.name[state.locale]} · ${t().storeModes[state.mode]} · ${state.timing === "schedule" ? `${t().labels.schedule} ${state.slot}` : t().labels.asap}</div>
+            </div>
+            <button class="ghost-btn" data-nav="location" style="width:auto;min-height:44px;padding:0 14px">Edit</button>
+          </div>
+
+          <div class="hero-card">
+            <div class="kicker">${t().labels.featuredKicker}</div>
+            <h3>${t().labels.featuredTitle}</h3>
+            <p>${t().labels.featuredBody}</p>
+            <button class="cta" data-nav="menu" style="margin-top:14px">${t().labels.featuredCta}</button>
+          </div>
+
+          <div class="card">
+            <div class="section-head">
+              <h4>Add-to-cart journey</h4>
+              <span class="section-tag">${cartCount()} live</span>
+            </div>
+            <p class="helper">1. Open a product. 2. Choose options. 3. Add it to basket. 4. Move into checkout without losing state.</p>
+            <div class="product-actions" style="margin-top:12px">
+              <button class="mini-btn" data-detail-cta="zinger">${t().labels.viewProduct}</button>
+              <button class="mini-btn primary" data-quick-add="zinger">${t().labels.quickAdd}</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="section-head">
+              <h4>${t().labels.recommendations}</h4>
+              <span class="section-tag">${cartCount()} in cart</span>
+            </div>
+            <div class="menu-grid">
+              ${visible.map((product) => `
+                <div class="product-card" data-detail="${product.id}">
+                  <div class="product-visual">${product.emoji}</div>
+                  <div class="product-body">
+                    <div class="product-title">${product.name[state.locale]}</div>
+                    <div class="meta">${product.desc[state.locale]}</div>
+                    <div class="product-foot">
+                      <span class="price">${money(product.basePrice)}</span>
+                      <span class="badge live">${t().labels.available}</span>
+                    </div>
+                    <div class="product-actions">
+                      <button class="mini-btn" data-detail-cta="${product.id}">${t().labels.viewProduct}</button>
+                      <button class="mini-btn primary" data-quick-add="${product.id}">${t().labels.quickAdd}</button>
+                    </div>
+                  </div>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderMenu() {
+      const categories = [
+        ["all", t().labels.categoryAll],
+        ["chicken", t().labels.categoryChicken],
+        ["burger", t().labels.categoryBurger],
+        ["combos", t().labels.categoryCombos],
+        ["sides", t().labels.categorySides],
+        ["drinks", t().labels.categoryDrinks]
+      ];
+
+      const visibleProducts = products.filter((product) => {
+        const categoryMatch = state.category === "all" || product.category === state.category;
+        const searchMatch = product.name[state.locale].toLowerCase().includes(state.search.toLowerCase());
+        return categoryMatch && searchMatch;
+      });
+
+      return `
+        <div class="stack">
+          <div class="search">
+            <input id="menu-search" value="${escapeHtml(state.search)}" placeholder="${t().labels.searchPlaceholder}">
+          </div>
+
+          <div class="chip-row">
+            ${categories.map(([id, label]) => `<button class="pill ${state.category === id ? "active" : ""}" data-category="${id}" style="min-height:40px;padding:0 14px;white-space:nowrap">${label}</button>`).join("")}
+          </div>
+
+          <div class="card">
+            <p class="helper">${t().helper.menu}</p>
+          </div>
+
+          <div class="menu-grid">
+            ${visibleProducts.map((product) => {
+              const availability = getAvailability(product);
+              return `
+                <div class="product-card ${availability.available ? "" : "unavailable"}" ${availability.available ? `data-detail="${product.id}"` : ""}>
+                  <div class="product-visual">${product.emoji}</div>
+                  <div class="product-body">
+                    <div class="product-title">${product.name[state.locale]}</div>
+                    <div class="meta">${product.desc[state.locale]}</div>
+                    <div class="product-foot">
+                      <span class="price">${money(product.basePrice)}</span>
+                      ${availability.available ? `<span class="badge live">${t().labels.available}</span>` : `<span class="badge warn">${t().labels.unavailable}</span>`}
+                    </div>
+                    ${availability.available ? `
+                      <div class="product-actions">
+                        <button class="mini-btn" data-detail-cta="${product.id}">${t().labels.viewProduct}</button>
+                        <button class="mini-btn primary" data-quick-add="${product.id}">${t().labels.quickAdd}</button>
+                      </div>
+                    ` : ""}
+                    ${availability.available ? "" : `<div class="unavailable-note">${availability.reason}</div>`}
+                  </div>
+                </div>
+              `;
+            }).join("")}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderDetail() {
+      const product = getProduct(state.selectedProductId);
+      const options = getSelectedOptions(product);
+      const availability = getAvailability(product);
+      const extraPrice = options.extras.length * 0.5;
+      const total = (product.basePrice + extraPrice) * state.detailQty;
+
+      els.detailFooter.hidden = false;
+      els.detailFooter.innerHTML = `
+        <div class="price-row">
+          <div>
+            <div class="meta">${t().labels.total}</div>
+            <strong class="total">${money(total)}</strong>
+          </div>
+          <div class="qty">
+            <button class="qty-btn" data-qty="-1">−</button>
+            <div class="qty-value">${state.detailQty}</div>
+            <button class="qty-btn" data-qty="1">+</button>
+          </div>
+        </div>
+        <button class="cta" data-action="detail-add" ${availability.available ? "" : "disabled"}>${t().labels.addToCart}</button>
+      `;
+
+      return `
+        <div class="stack" style="padding-bottom:120px">
+          <div class="card">
+            <div class="detail-hero">
+              <div class="detail-emoji">${product.emoji}</div>
+              <div>
+                <h3 class="detail-name">${product.name[state.locale]}</h3>
+                <p>${product.desc[state.locale]}</p>
+                <div class="badge ${availability.available ? "live" : "warn"}" style="margin-top:10px">${availability.available ? t().labels.available : availability.reason}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card option-group">
+            <div class="option-label">${t().labels.heat}</div>
+            <div class="chip-row">
+              ${product.options.heat[state.locale].map((value) => `<button class="pill ${options.heat === value ? "active" : ""}" data-option="heat" data-value="${escapeHtml(value)}" style="min-height:40px;padding:0 14px;white-space:nowrap">${value}</button>`).join("")}
+            </div>
+          </div>
+
+          <div class="card option-group">
+            <div class="option-label">${t().labels.size}</div>
+            <div class="chip-row">
+              ${product.options.size[state.locale].map((value) => `<button class="pill ${options.size === value ? "active" : ""}" data-option="size" data-value="${escapeHtml(value)}" style="min-height:40px;padding:0 14px;white-space:nowrap">${value}</button>`).join("")}
+            </div>
+          </div>
+
+          <div class="card option-group">
+            <div class="option-label">${t().labels.extras}</div>
+            <div class="stack">
+              ${product.options.extras[state.locale].map((value) => `<button class="pill ${options.extras.includes(value) ? "active" : ""}" data-option="extras" data-value="${escapeHtml(value)}">${value}</button>`).join("")}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderCart() {
+      els.detailFooter.hidden = true;
+      return `
+        <div class="stack">
+          ${state.cart.length ? `
+            <div class="cart-list">
+              ${state.cart.map((item) => `
+                <div class="cart-item">
+                  <div class="cart-art">${item.emoji}</div>
+                  <div>
+                    <div class="cart-title">${item.name}</div>
+                    <div class="cart-meta">${item.summary}</div>
+                  </div>
+                  <div class="cart-actions">
+                    <button class="qty-btn" data-cart-qty="${item.key}" data-change="-1">−</button>
+                    <strong>${item.qty}</strong>
+                    <button class="qty-btn" data-cart-qty="${item.key}" data-change="1">+</button>
+                  </div>
+                </div>
+              `).join("")}
+            </div>
+
+            <div class="card summary">
+              <div class="summary-row"><span>${t().labels.subtotal}</span><strong>${money(cartTotal())}</strong></div>
+              <div class="summary-row"><span>${t().labels.delivery}</span><strong>${t().labels.free}</strong></div>
+              <div class="summary-row"><span>${t().labels.earned}</span><strong>+${pointsEarned()} ${t().labels.points}</strong></div>
+              <div class="summary-row"><span>${t().labels.total}</span><strong class="total">${money(cartTotal())}</strong></div>
+            </div>
+
+            <button class="cta" data-nav="checkout">${t().labels.proceedCheckout}</button>
+          ` : `
+            <div class="empty">
+              ${t().labels.emptyCart}
+              <div style="margin-top:16px"><button class="ghost-btn" data-nav="menu" style="padding:0 18px">${t().labels.continueShopping}</button></div>
+            </div>
+          `}
+        </div>
+      `;
+    }
+
+    function renderCheckout() {
+      els.detailFooter.hidden = true;
+      return `
+        <div class="stack">
+          <div class="card">
+            <div class="section-head"><h4>${t().labels.deliveryAddress}</h4></div>
+            <div class="checkout-field">
+              <input id="address1" value="${escapeHtml(state.checkout.address1)}">
+              <input id="address2" value="${escapeHtml(state.checkout.address2)}">
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="section-head"><h4>${t().labels.payment}</h4></div>
+            <div class="choice-grid">
+              ${["Apple Pay", "Card", "PayPal"].map((method) => `<button class="pill ${state.checkout.payment === method ? "active" : ""}" data-payment="${method}">${method}</button>`).join("")}
+            </div>
+          </div>
+
+          <div class="card summary">
+            <div class="section-head"><h4>${t().labels.orderSummary}</h4></div>
+            ${state.cart.map((item) => `<div class="summary-row"><span>${item.emoji} ${item.name} ×${item.qty}</span><strong>${money(item.price * item.qty)}</strong></div>`).join("")}
+            <div class="summary-row"><span>${t().labels.delivery}</span><strong>${t().labels.free}</strong></div>
+            <div class="summary-row"><span>${t().labels.total}</span><strong class="total">${money(cartTotal())}</strong></div>
+          </div>
+
+          <div class="card"><p class="helper">${t().helper.checkout}</p></div>
+
+          <button class="cta" data-action="place-order">${t().labels.placeOrder}</button>
+        </div>
+      `;
+    }
+
+    function renderConfirmation() {
+      els.detailFooter.hidden = true;
+      return `
+        <div class="stack">
+          <div class="hero-card">
+            <div class="kicker">${t().labels.tracking}</div>
+            <h3>RNA-2048</h3>
+            <p>${getStore().name[state.locale]} · ${t().storeModes[state.mode]} · ${state.timing === "schedule" ? `${t().labels.schedule} ${state.slot}` : t().labels.asap}</p>
+          </div>
+
+          <div class="card tracking">
+            <div class="section-head"><h4>${t().labels.tracking}</h4></div>
+            <div class="track-line">
+              <div class="track-dot done"></div>
+              <div class="track-bar"></div>
+              <div class="track-dot current"></div>
+              <div class="track-bar"></div>
+              <div class="track-dot"></div>
+            </div>
+            <div class="track-labels">
+              <div>${t().labels.placed}</div>
+              <div>${t().labels.cooking}</div>
+              <div>${t().labels.dispatch}</div>
+            </div>
+          </div>
+
+          <div class="card summary">
+            <div class="summary-row"><span>${t().labels.total}</span><strong class="total">${money(cartTotal())}</strong></div>
+            <div class="summary-row"><span>${t().labels.earned}</span><strong>+${pointsEarned()} ${t().labels.points}</strong></div>
+          </div>
+
+          <button class="cta" data-action="reset">${t().labels.backHome}</button>
+        </div>
+      `;
+    }
+
+    function renderRewards() {
+      els.detailFooter.hidden = true;
+      return `
+        <div class="stack">
+          <div class="hero-card">
+            <div class="kicker">${t().labels.rewardsHeadline}</div>
+            <h3>2,840 ${t().labels.points}</h3>
+            <p>${t().labels.rewardsBody}</p>
+          </div>
+
+          ${[500, 1000, 2000].map((cost, index) => `
+            <div class="card">
+              <div class="section-head">
+                <h4>Reward ${index + 1}</h4>
+                <span class="badge warn">${cost} ${t().labels.points}</span>
+              </div>
+              <p>${index === 0 ? "Free fries or side unlock." : index === 1 ? "Meal upgrade perk." : "Premium bundle reward."}</p>
+              <button class="ghost-btn" data-redeem="${cost}" style="margin-top:12px">${cost <= 1000 ? t().labels.redeem : t().labels.redeemed}</button>
+            </div>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    function renderScreen() {
+      switch (state.screen) {
+        case "location":
+          return renderLocation();
+        case "home":
+          return renderHome();
+        case "menu":
+          return renderMenu();
+        case "detail":
+          return renderDetail();
+        case "cart":
+          return renderCart();
+        case "checkout":
+          return renderCheckout();
+        case "confirmation":
+          return renderConfirmation();
+        case "rewards":
+          return renderRewards();
+        default:
+          return renderHome();
+      }
+    }
+
+    function attachEvents() {
+      document.querySelectorAll("[data-store]").forEach((el) => {
+        el.addEventListener("click", () => {
+          commit(() => {
+            state.storeId = el.dataset.store;
+            const store = getStore();
+            if (!store.modes.includes(state.mode)) state.mode = "pickup";
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-mode]").forEach((el) => {
+        el.addEventListener("click", () => {
+          if (el.disabled) return;
+          commit(() => {
+            state.mode = el.dataset.mode;
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-timing]").forEach((el) => {
+        el.addEventListener("click", () => {
+          commit(() => {
+            state.timing = el.dataset.timing;
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-slot]").forEach((el) => {
+        el.addEventListener("click", () => {
+          commit(() => {
+            state.slot = el.dataset.slot;
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-nav]").forEach((el) => {
+        el.addEventListener("click", () => navigate(el.dataset.nav));
+      });
+
+      document.querySelectorAll("[data-category]").forEach((el) => {
+        el.addEventListener("click", () => {
+          state.category = el.dataset.category;
+          render();
+        });
+      });
+
+      document.querySelectorAll("[data-detail]").forEach((el) => {
+        el.addEventListener("click", (event) => {
+          if (event.target.closest("[data-quick-add]") || event.target.closest("[data-detail-cta]")) return;
+          commit(() => {
+            state.selectedProductId = el.dataset.detail;
+            state.detailQty = 1;
+            state.screen = "detail";
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-detail-cta]").forEach((el) => {
+        el.addEventListener("click", () => {
+          commit(() => {
+            state.selectedProductId = el.dataset.detailCta;
+            state.detailQty = 1;
+            state.screen = "detail";
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-quick-add]").forEach((el) => {
+        el.addEventListener("click", (event) => {
+          event.stopPropagation();
+          quickAdd(el.dataset.quickAdd);
+        });
+      });
+
+      document.querySelectorAll("[data-option]").forEach((el) => {
+        el.addEventListener("click", () => {
+          const product = getProduct(state.selectedProductId);
+          const options = getSelectedOptions(product);
+          const type = el.dataset.option;
+          const value = el.dataset.value;
+          if (type === "extras") {
+            const exists = options.extras.includes(value);
+            options.extras = exists ? options.extras.filter((item) => item !== value) : [...options.extras, value];
+          } else {
+            options[type] = value;
+          }
+          render();
+        });
+      });
+
+      document.querySelectorAll("[data-qty]").forEach((el) => {
+        el.addEventListener("click", () => {
+          const change = Number(el.dataset.qty);
+          state.detailQty = Math.max(1, state.detailQty + change);
+          render();
+        });
+      });
+
+      document.querySelectorAll("[data-cart-qty]").forEach((el) => {
+        el.addEventListener("click", () => {
+          const key = el.dataset.cartQty;
+          const change = Number(el.dataset.change);
+          commit(() => {
+            state.cart = state.cart
+              .map((item) => item.key === key ? { ...item, qty: item.qty + change } : item)
+              .filter((item) => item.qty > 0);
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-payment]").forEach((el) => {
+        el.addEventListener("click", () => {
+          commit(() => {
+            state.checkout.payment = el.dataset.payment;
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-action='to-home']").forEach((el) => {
+        el.addEventListener("click", () => navigate("home"));
+      });
+
+      document.querySelectorAll("[data-action='detail-add']").forEach((el) => {
+        el.addEventListener("click", addFromDetail);
+      });
+
+      document.querySelectorAll("[data-action='place-order']").forEach((el) => {
+        el.addEventListener("click", () => {
+          commit(() => {
+            state.screen = "confirmation";
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-action='reset']").forEach((el) => {
+        el.addEventListener("click", () => {
+          commit(() => {
+            state.screen = "home";
+            state.cart = [];
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-redeem]").forEach((el) => {
+        el.addEventListener("click", () => {
+          const cost = Number(el.dataset.redeem);
+          if (cost > 1000) return;
+          showToast(t().toasts.redeemed, `-${cost}`);
+        });
+      });
+
+      const search = document.getElementById("menu-search");
+      if (search) {
+        search.addEventListener("input", () => {
+          state.search = search.value;
+          render();
+        });
+      }
+
+      const address1 = document.getElementById("address1");
+      const address2 = document.getElementById("address2");
+      if (address1) address1.addEventListener("input", () => { state.checkout.address1 = address1.value; });
+      if (address2) address2.addEventListener("input", () => { state.checkout.address2 = address2.value; });
+    }
+
+    function quickAdd(productId) {
+      const product = getProduct(productId);
+      const options = getSelectedOptions(product);
+      const key = [product.id, options.heat, options.size, ...options.extras].join("|");
+      const existing = state.cart.find((item) => item.key === key);
+
+      commit(() => {
+        if (existing) {
+          existing.qty += 1;
+        } else {
+          state.cart.push({
+            key,
+            id: product.id,
+            emoji: product.emoji,
+            name: product.name[state.locale],
+            price: product.basePrice,
+            qty: 1,
+            summary: [options.heat, options.size, ...options.extras].filter(Boolean).join(" · ")
+          });
+        }
+      });
+
+      showToast(t().toasts.added, "+50");
+    }
+
+    function addFromDetail() {
+      const product = getProduct(state.selectedProductId);
+      const options = getSelectedOptions(product);
+      const key = [product.id, options.heat, options.size, ...options.extras].join("|");
+      const existing = state.cart.find((item) => item.key === key);
+
+      commit(() => {
+        if (existing) {
+          existing.qty += state.detailQty;
+        } else {
+          state.cart.push({
+            key,
+            id: product.id,
+            emoji: product.emoji,
+            name: product.name[state.locale],
+            price: product.basePrice + (options.extras.length * 0.5),
+            qty: state.detailQty,
+            summary: [options.heat, options.size, ...options.extras].filter(Boolean).join(" · ")
+          });
+        }
+        state.screen = "cart";
+      });
+
+      showToast(t().toasts.added, `+${state.detailQty * 50}`);
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function render() {
+      renderTopbar();
+      renderBottomNav();
+      els.content.innerHTML = renderScreen();
+      if (state.screen !== "detail") {
+        els.detailFooter.hidden = true;
+        els.detailFooter.innerHTML = "";
+      }
+      attachEvents();
+    }
+
+    els.back.addEventListener("click", goBack);
+    els.forward.addEventListener("click", goForward);
+    document.querySelectorAll("[data-locale]").forEach((button) => {
+      button.addEventListener("click", () => setLocale(button.dataset.locale));
+    });
+
+    render();
+  </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+.page {
+  min-height: 100vh;
+  padding: 32px 20px 56px;
+  background:
+    radial-gradient(circle at top left, rgba(228, 0, 43, 0.18), transparent 24%),
+    linear-gradient(180deg, #090806 0%, #150d0a 100%);
+}
+
+.hero,
+.prototypeWrap {
+  width: min(1280px, 100%);
+  margin: 0 auto;
+}
+
+.heroCopy {
+  padding: 28px;
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at right top, rgba(255, 169, 73, 0.12), transparent 20%),
+    linear-gradient(135deg, rgba(18, 12, 10, 0.96), rgba(36, 18, 16, 0.96));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #fff7f1;
+  box-shadow: 0 26px 72px rgba(0, 0, 0, 0.22);
+}
+
+.eyebrow {
+  display: inline-flex;
+  margin-bottom: 12px;
+  color: #ff9eb1;
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.heroCopy h1 {
+  margin: 0 0 14px;
+  font-size: clamp(2.5rem, 6vw, 4.8rem);
+  line-height: 0.94;
+}
+
+.heroCopy p {
+  max-width: 70ch;
+  color: rgba(255, 247, 241, 0.76);
+  line-height: 1.7;
+}
+
+.bullets {
+  margin: 20px 0;
+  padding-left: 18px;
+  color: rgba(255, 247, 241, 0.82);
+  line-height: 1.8;
+}
+
+.notice {
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 247, 241, 0.74);
+}
+
+.backLink {
+  display: inline-flex;
+  margin-top: 18px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: #e4002b;
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.backLink:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.prototypeWrap {
+  margin-top: 24px;
+}
+
+.frameShell {
+  border-radius: 32px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 26px 72px rgba(0, 0, 0, 0.22);
+  background: rgba(10, 10, 10, 0.92);
+}
+
+.prototypeFrame {
+  display: block;
+  width: 100%;
+  height: min(980px, calc(100vh - 120px));
+  min-height: 720px;
+  border: 0;
+  background: #050505;
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 20px 14px 40px;
+  }
+
+  .heroCopy {
+    padding: 22px;
+  }
+
+  .prototypeFrame {
+    height: calc(100vh - 90px);
+    min-height: 720px;
+  }
+}
