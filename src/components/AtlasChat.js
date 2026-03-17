@@ -183,12 +183,13 @@ export default function AtlasChat() {
     basePath && basePath !== '/' && rawPath.startsWith(basePath)
       ? (rawPath.slice(basePath.length) || '/')
       : rawPath;
+  const pathWithoutAnyLocale = pathWithoutBase.replace(/^\/(?:en-US|ja-JP)(?=\/|$)/, '') || '/';
   const localePrefix = `/${locale}`;
   const currentPath = pathWithoutBase.startsWith(localePrefix)
     ? (pathWithoutBase.slice(localePrefix.length) || '/')
     : pathWithoutBase;
   const normalizedPath = currentPath.endsWith('/docs/admin-portal-guide') ? '/docs/admin-portal-guide/' : currentPath;
-  const hideOnRoute = normalizedPath === '/rna-sneak-peek';
+  const hideOnRoute = pathWithoutAnyLocale === '/rna-sneak-peek';
   const pageContext = PAGE_CONTEXT[normalizedPath] || null;
   const suggestionsMap = isJapanese ? JAPANESE_SUGGESTED_ARTICLES : SUGGESTED_ARTICLES;
   const suggestions = suggestionsMap[normalizedPath] || copy.defaultSuggestions;
