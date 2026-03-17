@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>RNA Ordering Prototype</title>
+  <title>Atlas Prototype</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -50,7 +50,6 @@
     html, body {
       margin: 0;
       min-height: 100%;
-      min-height: 100dvh;
       overflow-x: hidden;
       overflow-y: auto;
       background:
@@ -74,7 +73,6 @@
 
     .stage {
       min-height: 100vh;
-      min-height: 100dvh;
       display: grid;
       place-items: center;
       padding: clamp(8px, 2vw, 24px);
@@ -84,7 +82,6 @@
       position: relative;
       width: min(390px, calc(100vw - 16px));
       height: min(844px, calc(100vh - 16px));
-      height: min(844px, calc(100dvh - 16px));
       aspect-ratio: 390 / 844;
       border-radius: 54px;
       padding: 12px;
@@ -93,9 +90,101 @@
       border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
+    .browser-chrome {
+      display: none;
+      position: relative;
+      z-index: 35;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(28, 28, 28, 0.96), rgba(16, 16, 16, 0.94));
+    }
+
+    .browser-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .browser-dots {
+      display: flex;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .browser-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .browser-dots span:nth-child(1) { background: #ff5f57; }
+    .browser-dots span:nth-child(2) { background: #febc2e; }
+    .browser-dots span:nth-child(3) { background: #28c840; }
+
+    .browser-address {
+      flex: 1;
+      min-width: 0;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: rgba(255, 248, 241, 0.78);
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .browser-url {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .browser-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .browser-pill.install {
+      background: var(--red);
+      border-color: transparent;
+      color: white;
+    }
+
     html[data-theme="light"] .phone-wrap {
       background: linear-gradient(180deg, #efe5dc 0%, #d9cec3 100%);
       border-color: rgba(66, 40, 30, 0.12);
+    }
+
+    html[data-theme="light"] .browser-chrome {
+      background: linear-gradient(180deg, rgba(255, 249, 243, 0.98), rgba(244, 236, 228, 0.94));
+      border-bottom-color: rgba(66, 40, 30, 0.08);
+    }
+
+    html[data-theme="light"] .browser-address,
+    html[data-theme="light"] .browser-pill {
+      background: rgba(255, 255, 255, 0.78);
+      border-color: rgba(66, 40, 30, 0.1);
+      color: rgba(35, 24, 21, 0.72);
+    }
+
+    html[data-theme="light"] .browser-pill.install {
+      color: white;
     }
 
     .phone-wrap::before {
@@ -190,8 +279,88 @@
       background: rgba(255, 249, 243, 0.92);
     }
 
+    html[data-theme="light"] .web-nav {
+      border-bottom-color: rgba(66, 40, 30, 0.08);
+      background: rgba(255, 249, 243, 0.96);
+    }
+
+    html[data-theme="light"] .web-brand img {
+      background: rgba(66, 40, 30, 0.06);
+    }
+
     .topbar-left {
       min-width: 0;
+    }
+
+    .web-nav {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(12, 12, 12, 0.92);
+      backdrop-filter: blur(18px);
+    }
+
+    .web-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .web-brand img {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 4px;
+    }
+
+    .web-brand-copy {
+      min-width: 0;
+    }
+
+    .web-brand-title {
+      font-family: var(--font-display);
+      font-size: 28px;
+      line-height: 0.9;
+      letter-spacing: 0.04em;
+    }
+
+    .web-brand-subtitle {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .web-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .web-link {
+      border: 0;
+      min-height: 38px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .web-link.active {
+      background: rgba(228, 0, 43, 0.16);
+      color: white;
     }
 
     .eyebrow {
@@ -1122,6 +1291,11 @@
       gap: 12px;
     }
 
+    .detail-footer[hidden],
+    .toast[hidden] {
+      display: none !important;
+    }
+
     .price-row {
       display: flex;
       align-items: center;
@@ -1369,7 +1543,6 @@
     .stage.fullscreen-mode .phone-wrap {
       width: 100vw;
       height: 100vh;
-      height: 100dvh;
       max-width: none;
       max-height: none;
       border-radius: 0;
@@ -1384,22 +1557,114 @@
       border-radius: 0;
     }
 
+    .stage.shell-browser .phone-wrap {
+      width: min(1180px, calc(100vw - 24px));
+      height: min(860px, calc(100vh - 24px));
+      max-width: none;
+      max-height: none;
+      aspect-ratio: auto;
+      padding: 0;
+      border-radius: 30px;
+      overflow: hidden;
+      background: linear-gradient(180deg, #1a1918 0%, #101010 100%);
+    }
+
+    .stage.shell-browser .phone-wrap::before {
+      display: none;
+    }
+
+    .stage.shell-browser .browser-chrome {
+      display: block;
+    }
+
+    .stage.shell-browser .phone {
+      height: calc(100% - 65px);
+      border-radius: 0 0 28px 28px;
+    }
+
+    .stage.shell-browser .status-bar {
+      display: none;
+    }
+
+    .stage.shell-browser .topbar {
+      display: none;
+    }
+
+    .stage.shell-browser .web-nav {
+      display: flex;
+    }
+
+    .stage.shell-browser .toolbar {
+      position: static;
+      top: auto;
+      left: auto;
+      right: auto;
+      transform: none;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    .stage.shell-browser .bottom-nav {
+      display: none;
+    }
+
+    .stage.shell-browser .menu-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .stage.shell-browser .product-card {
+      min-width: 0;
+    }
+
+    .stage.shell-browser .product-visual {
+      height: 142px;
+    }
+
+    .stage.shell-browser .product-body {
+      padding: 12px 12px 14px;
+    }
+
+    .stage.shell-browser .product-title {
+      font-size: 14px;
+      line-height: 1.3;
+    }
+
+    .stage.shell-browser .product-card .meta {
+      font-size: 11px;
+      line-height: 1.45;
+      min-height: 32px;
+    }
+
+    .stage.shell-browser .product-actions {
+      gap: 6px;
+    }
+
+    .stage.shell-browser .mini-btn {
+      min-height: 32px;
+      font-size: 11px;
+      padding: 0 10px;
+    }
+
+    @media (max-width: 980px) {
+      .stage.shell-browser .menu-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
     @media (max-width: 440px) {
       html, body {
         min-height: 100vh;
-        min-height: 100dvh;
       }
 
       .stage {
         min-height: 100vh;
-        min-height: 100dvh;
         padding: 0;
       }
 
       .phone-wrap {
         width: 100vw;
         height: 100vh;
-        height: 100dvh;
         border-radius: 0;
         padding: 0;
       }
@@ -1425,6 +1690,22 @@
         gap: 6px;
       }
 
+      .stage.shell-browser .toolbar {
+        top: 10px;
+        right: 12px;
+      }
+
+      .web-nav {
+        padding: 12px 14px;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .web-links {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
       .nav-cluster,
       .locale-switch,
       .view-switch {
@@ -1442,6 +1723,16 @@
       .toggle-btn,
       .view-btn {
         padding: 0 10px;
+      }
+
+      .stage.shell-browser .phone-wrap {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+      }
+
+      .stage.shell-browser .phone {
+        border-radius: 0;
       }
 
       .screen-title {
@@ -1519,6 +1810,21 @@
 <body>
   <div class="stage">
     <div class="phone-wrap">
+      <div class="browser-chrome" id="browser-chrome">
+        <div class="browser-bar">
+          <div class="browser-dots" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="browser-address">
+            <span>Secure</span>
+            <span class="browser-url" id="browser-url">https://order.kfc.com/home</span>
+          </div>
+          <div class="browser-pill" id="browser-cache-pill">Web preview</div>
+          <button class="browser-pill install" id="browser-install-pill" type="button">App view</button>
+        </div>
+      </div>
       <div class="phone">
         <div class="ambient"></div>
         <div class="status-bar">
@@ -1526,6 +1832,16 @@
           <span>5G ▰▰▰ 🔋</span>
         </div>
         <div class="viewport">
+          <div class="web-nav" id="web-nav">
+            <div class="web-brand">
+              <img src="https://images.ctfassets.net/wtodlh47qxpt/30HPXFOIOQLBBfuwplbndu/992a3b2157906181dc39be71202f4f3f/kfc_logo_icon.svg" alt="KFC logo">
+              <div class="web-brand-copy">
+                <div class="web-brand-title">KFC Order</div>
+                <div class="web-brand-subtitle" id="web-nav-subtitle">Website shell</div>
+              </div>
+            </div>
+            <div class="web-links" id="web-links"></div>
+          </div>
           <div class="topbar">
             <div class="topbar-left">
               <div class="eyebrow" id="preview-badge"></div>
@@ -1538,6 +1854,7 @@
                 <button class="icon-btn" id="forward-btn">→</button>
               </div>
               <div class="view-switch">
+                <button class="toggle-btn view-btn" id="shell-btn">App Shell</button>
                 <button class="toggle-btn view-btn" id="fullscreen-btn">Fullscreen</button>
               </div>
               <div class="locale-switch">
@@ -1562,25 +1879,19 @@
     const queryParams = new URLSearchParams(window.location.search);
     const themeParam = queryParams.get("theme");
     const localeParam = queryParams.get("locale");
+    const shellParam = queryParams.get("shell");
     if (themeParam === "light" || themeParam === "dark") {
       document.documentElement.dataset.theme = themeParam;
     }
 
-    window.addEventListener("message", (event) => {
-      if (event.origin !== window.location.origin) return;
-      if (event.data?.type !== "rna-prototype-theme") return;
-      if (event.data.theme === "light" || event.data.theme === "dark") {
-        document.documentElement.dataset.theme = event.data.theme;
-      }
-    });
-
     const stageEl = document.querySelector(".stage");
     const fullscreenBtn = document.getElementById("fullscreen-btn");
+    const shellBtn = document.getElementById("shell-btn");
     let embeddedFullscreenMode = false;
 
     const copy = {
       "en-US": {
-        previewBadge: "RNA prototype · simulated",
+        previewBadge: "Atlas prototype · simulated",
         nav: {
           home: ["🏠", "Home"],
           menu: ["🍗", "Menu"],
@@ -1689,7 +2000,7 @@
           dateSection: "Date",
           slotSection: "Scheduled Slots",
           livePreview: "Live preview",
-          featuredKicker: "RNA Sneak Peek",
+          featuredKicker: "Atlas Peek",
           featuredTitle: "A real ordering app should feel alive",
           featuredBody: "Store, order mode, and timing should all reshape what the guest can buy. This version behaves like a miniature iPhone ordering app instead of a slideshow.",
           featuredCta: "Open live menu",
@@ -1779,7 +2090,7 @@
         }
       },
       "ja-JP": {
-        previewBadge: "RNA プロトタイプ ・ シミュレーション",
+        previewBadge: "Atlas プロトタイプ ・ シミュレーション",
         nav: {
           home: ["🏠", "ホーム"],
           menu: ["🍗", "メニュー"],
@@ -1888,7 +2199,7 @@
           dateSection: "日付",
           slotSection: "予約枠",
           livePreview: "ライブプレビュー",
-          featuredKicker: "RNA Sneak Peek",
+          featuredKicker: "Atlas Peek",
           featuredTitle: "本物の注文アプリは、体験が生きているべき",
           featuredBody: "店舗、注文方法、時間帯によって購入可能商品が変わるべきです。この版はスライドではなく、iPhone 向けの小さな注文アプリとして動きます。",
           featuredCta: "ライブメニューを開く",
@@ -2175,6 +2486,7 @@
 
     const state = {
       locale: localeParam === "ja-JP" ? "ja-JP" : "en-US",
+      appShell: shellParam === "browser" ? "browser" : "app",
       screen: "home",
       storeId: null,
       mode: "pickup",
@@ -2217,11 +2529,35 @@
       toast: document.getElementById("toast"),
       toastText: document.getElementById("toast-text"),
       toastPoints: document.getElementById("toast-points"),
+      browserUrl: document.getElementById("browser-url"),
+      browserCachePill: document.getElementById("browser-cache-pill"),
+      browserInstallPill: document.getElementById("browser-install-pill"),
+      webLinks: document.getElementById("web-links"),
+      webNavSubtitle: document.getElementById("web-nav-subtitle"),
+      shellBtn,
       fullscreenBtn
     };
 
     function t() {
       return copy[state.locale];
+    }
+
+    function shellCopy() {
+      return state.locale === "ja-JP" ? {
+        app: "アプリ",
+        browser: "Web",
+        shellBtn: state.appShell === "app" ? "Web表示" : "アプリ表示",
+        install: "アプリ表示",
+        cache: "Web preview",
+        badge: state.appShell === "app" ? "App view" : "Web view"
+      } : {
+        app: "App",
+        browser: "Web",
+        shellBtn: state.appShell === "app" ? "Web View" : "App View",
+        install: "App View",
+        cache: "Web Preview",
+        badge: state.appShell === "app" ? "App view" : "Web view"
+      };
     }
 
     function getStore() {
@@ -2299,6 +2635,16 @@
         if (state.mode === "pickup" && state.storeId === "westside" && product.id === "twister") return false;
         return true;
       });
+    }
+
+    function expandMenuProducts(items, multiplier = 3) {
+      return Array.from({ length: multiplier }, (_, round) =>
+        items.map((product) => ({
+          ...product,
+          displayKey: `${product.id}-${round}`,
+          displayName: round === 0 ? product.name[state.locale] : `${product.name[state.locale]} ${round + 1}`
+        }))
+      ).flat();
     }
 
     function filteredAddressSuggestions() {
@@ -2400,6 +2746,53 @@
       showToast.timer = setTimeout(() => els.toast.classList.remove("show"), 2200);
     }
 
+    function browserPathForScreen() {
+      const lookup = {
+        home: "home",
+        location: "start-order",
+        deliveryLocation: "delivery-address",
+        deliveryMap: "confirm-destination",
+        store: "stores",
+        menu: "menu",
+        detail: "menu/item",
+        rewards: "rewards",
+        cart: "cart",
+        checkout: "checkout",
+        confirmation: "track-order",
+        account: "account"
+      };
+      return lookup[state.screen] || "home";
+    }
+
+    function renderShell() {
+      const shellText = shellCopy();
+      const isBrowserShell = state.appShell === "browser";
+      stageEl.classList.toggle("shell-browser", isBrowserShell);
+      els.shellBtn.textContent = shellText.shellBtn;
+      els.browserUrl.textContent = `https://order.kfc.com/${browserPathForScreen()}`;
+      els.browserCachePill.textContent = shellText.cache;
+      els.browserInstallPill.textContent = shellText.install;
+      els.webNavSubtitle.textContent = isBrowserShell ? (state.locale === "ja-JP" ? "Website view" : "Website view") : "";
+      renderWebNav();
+    }
+
+    function renderWebNav() {
+      const navKeys = ["home", "menu", "rewards", "cart", "account"];
+      const activeScreen = (
+        state.screen === "location" || state.screen === "store" || state.screen === "deliveryLocation" || state.screen === "deliveryMap" ? "home" :
+        state.screen === "detail" ? "menu" :
+        state.screen === "checkout" || state.screen === "confirmation" ? "cart" :
+        state.screen
+      );
+      els.webLinks.innerHTML = navKeys.map((key) => {
+        const [, label] = t().nav[key];
+        return `<button class="web-link ${activeScreen === key ? "active" : ""}" data-web-nav="${key}">${label}</button>`;
+      }).join("");
+      els.webLinks.querySelectorAll("[data-web-nav]").forEach((button) => {
+        button.addEventListener("click", () => navigate(button.dataset.webNav));
+      });
+    }
+
     function renderBottomNav() {
       const navKeys = ["home", "menu", "rewards", "cart", "account"];
       const activeScreen = (
@@ -2421,7 +2814,7 @@
 
     function renderTopbar() {
       const screenCopy = t().screens[state.screen];
-      els.previewBadge.textContent = t().previewBadge;
+      els.previewBadge.textContent = `${t().previewBadge} · ${shellCopy().badge}`;
       const isHomeScreen = state.screen === "home";
       els.title.classList.toggle("screen-title-logo", isHomeScreen);
       if (isHomeScreen) {
@@ -2646,7 +3039,7 @@
           </div>
 
           <div class="card">
-            <div class="section-head"><h4>${t().labels.journeyFlow}</h4><span class="section-tag">RNA</span></div>
+            <div class="section-head"><h4>${t().labels.journeyFlow}</h4><span class="section-tag">Atlas</span></div>
             <div class="stack">
               <div class="context-strip">
                 <div>
@@ -2725,6 +3118,7 @@
         const searchMatch = product.name[state.locale].toLowerCase().includes(state.search.toLowerCase());
         return categoryMatch && searchMatch;
       });
+      const expandedProducts = expandMenuProducts(visibleProducts);
 
       return `
         <div class="stack">
@@ -2761,11 +3155,11 @@
           </div>
 
           <div class="menu-grid">
-            ${visibleProducts.map((product) => `
-              <div class="product-card" data-detail="${product.id}">
-                <div class="product-visual"><img src="${product.image}" alt="${escapeHtml(product.name[state.locale])}"></div>
+            ${expandedProducts.map((product) => `
+              <div class="product-card" data-detail="${product.id}" data-display-key="${product.displayKey}">
+                <div class="product-visual"><img src="${product.image}" alt="${escapeHtml(product.displayName)}"></div>
                 <div class="product-body">
-                  <div class="product-title">${product.name[state.locale]}</div>
+                  <div class="product-title">${product.displayName}</div>
                   <div class="meta">${product.desc[state.locale]}</div>
                   <div class="product-foot">
                     ${state.browseOnlyMenu ? `<span class="badge warn">${t().labels.browseOnly}</span>` : `<span class="price">${money(product.basePrice)}</span><span class="badge live">${t().labels.available}</span>`}
@@ -2954,7 +3348,7 @@
         <div class="stack">
           <div class="hero-card">
             <div class="kicker">${t().labels.postOrderAssumption}</div>
-            <h3>RNA-2048</h3>
+            <h3>ATLAS-2048</h3>
             <p>${displaySessionContext()}</p>
           </div>
 
@@ -3464,6 +3858,7 @@
     }
 
     function render() {
+      renderShell();
       renderTopbar();
       renderBottomNav();
       els.content.innerHTML = renderScreen();
@@ -3476,6 +3871,14 @@
 
     els.back.addEventListener("click", goBack);
     els.forward.addEventListener("click", goForward);
+    shellBtn.addEventListener("click", () => {
+      state.appShell = state.appShell === "app" ? "browser" : "app";
+      render();
+    });
+    els.browserInstallPill.addEventListener("click", () => {
+      state.appShell = "app";
+      render();
+    });
     fullscreenBtn.addEventListener("click", async () => {
       if (window.self !== window.top) {
         embeddedFullscreenMode = !embeddedFullscreenMode;
