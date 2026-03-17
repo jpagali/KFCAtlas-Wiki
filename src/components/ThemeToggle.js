@@ -7,7 +7,7 @@ const OPTIONS = [
   {value: 'dark', label: 'Dark', symbol: '☾'},
 ];
 
-export default function ThemeToggle({mobile}) {
+export default function ThemeToggle({mobile, className}) {
   const {colorMode, setColorMode} = useColorMode();
 
   const control = (
@@ -44,5 +44,5 @@ export default function ThemeToggle({mobile}) {
     );
   }
 
-  return <div className="navbar-theme-toggle">{control}</div>;
+  return <div className={clsx('navbar-theme-toggle', className)}>{control}</div>;
 }

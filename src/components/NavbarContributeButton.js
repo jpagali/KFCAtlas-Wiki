@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -21,10 +22,14 @@ function getViewportMode() {
     return 'tablet';
   }
 
+  if (window.matchMedia('(max-width: 1360px)').matches) {
+    return 'compact-desktop';
+  }
+
   return 'desktop';
 }
 
-export default function NavbarContributeButton() {
+export default function NavbarContributeButton({className}) {
   const {
     i18n: {currentLocale},
   } = useDocusaurusContext();
@@ -49,11 +54,15 @@ export default function NavbarContributeButton() {
     return null;
   }
 
-  const isCompact = viewportMode === 'tablet';
+  const isCompact = viewportMode === 'tablet' || viewportMode === 'compact-desktop';
 
   return (
     <Link
-      className={`navbar-contribute-button${isCompact ? ' navbar-contribute-button--compact' : ''}`}
+      className={clsx(
+        'navbar-contribute-button',
+        isCompact && 'navbar-contribute-button--compact',
+        className,
+      )}
       to={to}
     >
       {!isCompact ? <span className="navbar-contribute-button__spark" aria-hidden="true" /> : null}
