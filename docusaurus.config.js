@@ -3,6 +3,8 @@
 /** @type {import('@docusaurus/types').Config} */
 const isGitHubPagesBuild =
   process.env.GITHUB_PAGES === 'true' || process.env.GITHUB_ACTIONS === 'true';
+const githubRepository = process.env.GITHUB_REPOSITORY ?? 'jpagali/KFCAtlas-Wiki';
+const [, githubProjectName = 'KFCAtlas-Wiki'] = githubRepository.split('/');
 const buildUpdatedDate = new Intl.DateTimeFormat('en-US', {
   month: '2-digit',
   day: '2-digit',
@@ -17,12 +19,12 @@ const config = {
   },
   favicon: 'img/atlas-favicon.png',
   organizationName: 'jpagali',
-  projectName: 'KFC-Atlas-Knowledge-Center',
+  projectName: githubProjectName,
 
   url: isGitHubPagesBuild
     ? 'https://jpagali.github.io'
     : 'https://kfc-atlas-portal.vercel.app',
-  baseUrl: isGitHubPagesBuild ? '/KFC-Atlas-Knowledge-Center/' : '/',
+  baseUrl: isGitHubPagesBuild ? `/${githubProjectName}/` : '/',
 
   onBrokenLinks: 'warn',
   markdown: {
