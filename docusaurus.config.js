@@ -114,7 +114,7 @@ const config = {
             className: 'navbar-item--whats-new',
           },
           {
-            to: '/rna-sneak-peek',
+            to: '/sneak-peek',
             position: 'left',
             label: 'Atlas Peek',
             className: 'navbar__cta navbar__cta--sneak-peek navbar-item--rna',

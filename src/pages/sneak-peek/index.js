@@ -29,7 +29,7 @@ const PAGE_CONTENT = {
     eyebrow: 'インタラクティブ プロトタイプ',
     heroTitle: 'Atlas Peek',
     heroBody:
-      'このページでは、Atlas Wiki 内で RNA プロトタイプを小さな製品サンドボックスとして体験でき、フロー、ロケール挙動、ナビゲーション状態を 1 か所で確認できます。',
+      'このページでは、Atlas Wiki 内で Atlas Peek プロトタイプを小さな製品サンドボックスとして体験でき、フロー、ロケール挙動、ナビゲーション状態を 1 か所で確認できます。',
     bullets: [
       '店舗、受取方法、時間帯、カート、チェックアウトがつながった実セッション型の状態を確認できます。',
       'プロトタイプ内で英語と日本語を切り替えても、セッションをやり直さずに確認できます。',
@@ -41,19 +41,19 @@ const PAGE_CONTENT = {
   },
 };
 
-export default function RnaSneakPeekPage() {
+export default function SneakPeekPage() {
   const { i18n } = useDocusaurusContext();
   const locale = PAGE_CONTENT[i18n.currentLocale] ? i18n.currentLocale : 'en-US';
   const content = PAGE_CONTENT[locale];
 
   return (
     <Layout title={content.title} description={content.description}>
-      <RnaSneakPeekContent content={content} locale={locale} />
+      <SneakPeekContent content={content} locale={locale} />
     </Layout>
   );
 }
 
-function RnaSneakPeekContent({content, locale}) {
+function SneakPeekContent({content, locale}) {
   const {colorMode} = useColorMode();
   const [immersiveMode, setImmersiveMode] = React.useState(false);
   const frameShellRef = React.useRef(null);
@@ -63,7 +63,7 @@ function RnaSneakPeekContent({content, locale}) {
   React.useEffect(() => {
     const onMessage = (event) => {
       if (event.origin !== window.location.origin) return;
-      if (event.data?.type !== 'rna-prototype-fullscreen') return;
+      if (event.data?.type !== 'sneak-peek-prototype-fullscreen') return;
       setImmersiveMode(Boolean(event.data.enabled));
     };
 
@@ -93,7 +93,7 @@ function RnaSneakPeekContent({content, locale}) {
     const syncTheme = () => {
       frameWindow.postMessage(
         {
-          type: 'rna-prototype-theme',
+          type: 'sneak-peek-prototype-theme',
           theme: prototypeTheme,
         },
         window.location.origin,
@@ -107,7 +107,7 @@ function RnaSneakPeekContent({content, locale}) {
   }, [prototypeTheme, locale]);
 
   const prototypeSrc = useBaseUrl(
-    `/rna-sneak-peek-prototype.html?theme=${prototypeTheme}&locale=${encodeURIComponent(locale)}`,
+    `/sneak-peek-prototype.html?theme=${prototypeTheme}&locale=${encodeURIComponent(locale)}`,
   );
 
   return (

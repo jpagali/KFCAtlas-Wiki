@@ -3884,7 +3884,7 @@
         embeddedFullscreenMode = !embeddedFullscreenMode;
         stageEl.classList.toggle("fullscreen-mode", embeddedFullscreenMode);
         window.parent.postMessage(
-          { type: "rna-prototype-fullscreen", enabled: embeddedFullscreenMode },
+          { type: "sneak-peek-prototype-fullscreen", enabled: embeddedFullscreenMode },
           window.location.origin
         );
         renderTopbar();

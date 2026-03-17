@@ -220,7 +220,7 @@ export default function Home() {
               <Link to="/docs/admin-portal-guide/" className={`${styles.button} ${styles.buttonSecondary}`}>
                 {content.heroSecondaryCta}
               </Link>
-              <Link to="/rna-sneak-peek" className={`${styles.button} ${styles.buttonTertiary}`}>
+              <Link to="/sneak-peek" className={`${styles.button} ${styles.buttonTertiary}`}>
                 {content.heroPrototypeCta}
               </Link>
             </div>
@@ -243,7 +243,7 @@ export default function Home() {
           <div className={localeClass(styles.prototypeEyebrow, isJapanese)}>{content.prototypeCardEyebrow}</div>
           <h2 className={localeClass(styles.prototypeTitle, isJapanese)}>{content.prototypeCardTitle}</h2>
           <p className={styles.prototypeBody}>{content.prototypeCardBody}</p>
-          <Link to="/rna-sneak-peek" className={`${styles.button} ${styles.prototypeButton}`}>
+          <Link to="/sneak-peek" className={`${styles.button} ${styles.prototypeButton}`}>
             {content.prototypeCardCta} →
           </Link>
         </div>
