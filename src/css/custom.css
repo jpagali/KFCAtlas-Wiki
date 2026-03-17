@@ -879,6 +879,21 @@ html[lang='ja-JP'] .footer__title {
   z-index: 1200;
 }
 
+.navbar,
+.navbar-sidebar,
+.navbar-sidebar__backdrop {
+  z-index: 1300;
+}
+
+.navbar .dropdown,
+.navbar .dropdown--hoverable {
+  position: relative;
+}
+
+.navbar .dropdown__menu {
+  z-index: 1400;
+}
+
 .navbar-search__result {
   display: flex;
   flex-direction: column;
@@ -1070,7 +1085,7 @@ html[lang='ja-JP'] .footer__title {
 
 @media (min-width: 997px) {
   .navbar {
-    overflow: hidden;
+    overflow: visible;
   }
 
   .navbar__inner {
@@ -1085,7 +1100,7 @@ html[lang='ja-JP'] .footer__title {
     min-width: 0;
     gap: 0.9rem;
     flex-wrap: nowrap;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .theme-layout-navbar-left .navbar__item {

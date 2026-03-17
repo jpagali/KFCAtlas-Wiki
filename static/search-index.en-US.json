@@ -3557,7 +3557,7 @@
       "Highlights",
       "What Changed",
       "Homepage Experience",
-      "RNA Sneak Peek Preview",
+      "Atlas Peek Preview",
       "Navigation and Information Architecture",
       "Responsive Behavior",
       "In Plain English"
@@ -3566,7 +3566,7 @@
     "section": "release-notes",
     "url": "/docs/release-notes/2026-03-16/",
     "normalizedTitle": "release 2026 03 16",
-    "normalizedHeadings": "highlights what changed homepage experience rna sneak peek preview navigation and information architecture responsive behavior in plain english",
+    "normalizedHeadings": "highlights what changed homepage experience atlas peek preview navigation and information architecture responsive behavior in plain english",
     "normalizedSummary": "release 2026 03 16",
     "normalizedSection": "release notes"
   },
@@ -3577,7 +3577,7 @@
       "Highlights",
       "What Changed",
       "Theme Infrastructure",
-      "RNA Sneak Peek Prototype",
+      "Atlas Peek Prototype",
       "Global Visual System",
       "Atlas Wiki Chrome",
       "Design System Docs",
@@ -3590,7 +3590,7 @@
     "section": "release-notes",
     "url": "/docs/release-notes/2026-03-17/",
     "normalizedTitle": "release 2026 03 17",
-    "normalizedHeadings": "highlights what changed theme infrastructure rna sneak peek prototype global visual system atlas wiki chrome design system docs homepage and what s new contribution studio documentation readability in plain english",
+    "normalizedHeadings": "highlights what changed theme infrastructure atlas peek prototype global visual system atlas wiki chrome design system docs homepage and what s new contribution studio documentation readability in plain english",
     "normalizedSummary": "release 2026 03 17",
     "normalizedSection": "release notes"
   },

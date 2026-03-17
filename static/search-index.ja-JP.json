@@ -3554,7 +3554,7 @@
       "ハイライト",
       "変更内容",
       "ホームページ体験",
-      "RNA Sneak Peek プレビュー",
+      "Atlas Peek プレビュー",
       "ナビゲーションと情報設計",
       "レスポンシブ対応",
       "わかりやすく言うと"
@@ -3563,7 +3563,7 @@
     "section": "release-notes",
     "url": "/ja-JP/docs/release-notes/2026-03-16/",
     "normalizedTitle": "リリース 2026 03 16",
-    "normalizedHeadings": "ハイライト 変更内容 ホームページ体験 rna sneak peek プレビュー ナビゲーションと情報設計 レスポンシブ対応 わかりやすく言うと",
+    "normalizedHeadings": "ハイライト 変更内容 ホームページ体験 atlas peek プレビュー ナビゲーションと情報設計 レスポンシブ対応 わかりやすく言うと",
     "normalizedSummary": "リリース 2026 03 16",
     "normalizedSection": "release notes"
   },
@@ -3574,9 +3574,10 @@
       "ハイライト",
       "変更内容",
       "Theme Infrastructure",
-      "RNA Sneak Peek Prototype",
+      "Atlas Peek Prototype",
       "Global Visual System",
       "Atlas Wiki Chrome",
+      "Homepage and What's New",
       "Design System Docs",
       "Contribution Studio",
       "Documentation Readability",
@@ -3586,7 +3587,7 @@
     "section": "release-notes",
     "url": "/ja-JP/docs/release-notes/2026-03-17/",
     "normalizedTitle": "リリース 2026 03 17",
-    "normalizedHeadings": "ハイライト 変更内容 theme infrastructure rna sneak peek prototype global visual system atlas wiki chrome design system docs contribution studio documentation readability わかりやすく言うと",
+    "normalizedHeadings": "ハイライト 変更内容 theme infrastructure atlas peek prototype global visual system atlas wiki chrome homepage and what s new design system docs contribution studio documentation readability わかりやすく言うと",
     "normalizedSummary": "リリース 2026 03 17",
     "normalizedSection": "release notes"
   },
