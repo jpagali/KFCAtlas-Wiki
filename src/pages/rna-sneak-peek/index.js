@@ -8,32 +8,32 @@ import styles from './styles.module.css';
 
 const PAGE_CONTENT = {
   'en-US': {
-    title: 'RNA Sneak Peek',
-    description: 'A multilingual, stateful RNA prototype preview inside Atlas Wiki.',
+    title: 'Atlas Peek',
+    description: 'A multilingual, stateful Atlas prototype preview inside Atlas Wiki.',
     eyebrow: 'Interactive prototype',
-    heroTitle: 'RNA Sneak Peek',
+    heroTitle: 'Atlas Peek',
     heroBody:
       'This page turns the prototype into a miniature product sandbox inside Atlas Wiki so stakeholders can inspect flows, locale behavior, and navigation state in one place.',
     bullets: [
       'Demonstrates a real session model: store, fulfillment mode, timing, cart, and checkout all stay connected.',
       'Lets reviewers switch between English and Japanese inside the same prototype without restarting.',
-      'Frames RNA as a preview surface, not production, with explicit simulated-data labeling.',
+      'Frames Atlas as a preview surface, not production, with explicit simulated-data labeling.',
     ],
     disclaimer:
       'This is a clickable simulation for planning and review. It does not connect to live APIs, production content, or real order processing.',
     backLink: 'Return to homepage',
   },
   'ja-JP': {
-    title: 'RNA Sneak Peek',
-    description: 'Atlas Wiki 内で確認できる、多言語対応の状態保持型 RNA プロトタイプです。',
+    title: 'Atlas Peek',
+    description: 'Atlas Wiki 内で確認できる、多言語対応の状態保持型 Atlas プロトタイプです。',
     eyebrow: 'インタラクティブ プロトタイプ',
-    heroTitle: 'RNA Sneak Peek',
+    heroTitle: 'Atlas Peek',
     heroBody:
       'このページでは、Atlas Wiki 内で RNA プロトタイプを小さな製品サンドボックスとして体験でき、フロー、ロケール挙動、ナビゲーション状態を 1 か所で確認できます。',
     bullets: [
       '店舗、受取方法、時間帯、カート、チェックアウトがつながった実セッション型の状態を確認できます。',
       'プロトタイプ内で英語と日本語を切り替えても、セッションをやり直さずに確認できます。',
-      'シミュレーションデータであることを明示しつつ、RNA をレビュー用プレビューとして位置づけます。',
+      'シミュレーションデータであることを明示しつつ、Atlas をレビュー用プレビューとして位置づけます。',
     ],
     disclaimer:
       'これは計画とレビューのためのクリック可能なシミュレーションです。実際の API、プロダクションコンテンツ、注文処理には接続していません。',
