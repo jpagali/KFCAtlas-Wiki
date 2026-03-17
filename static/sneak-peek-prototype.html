@@ -346,6 +346,30 @@
       justify-content: flex-end;
     }
 
+    .web-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: auto;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .web-locale-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    html[data-theme="light"] .web-locale-switch {
+      background: rgba(255, 255, 255, 0.78);
+      border-color: rgba(66, 40, 30, 0.1);
+    }
+
     .web-link {
       border: 0;
       min-height: 38px;
@@ -360,6 +384,21 @@
 
     .web-link.active {
       background: rgba(228, 0, 43, 0.16);
+      color: white;
+    }
+
+    .web-locale-switch .toggle-btn {
+      min-width: 40px;
+      height: 32px;
+      padding: 0 12px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+    }
+
+    .web-locale-switch .toggle-btn.active {
+      background: var(--red);
       color: white;
     }
 
@@ -1701,6 +1740,12 @@
         flex-direction: column;
       }
 
+      .web-nav-actions {
+        width: 100%;
+        margin-left: 0;
+        justify-content: space-between;
+      }
+
       .web-links {
         width: 100%;
         justify-content: flex-start;
@@ -1840,7 +1885,13 @@
                 <div class="web-brand-subtitle" id="web-nav-subtitle">Website shell</div>
               </div>
             </div>
-            <div class="web-links" id="web-links"></div>
+            <div class="web-nav-actions">
+              <div class="web-links" id="web-links"></div>
+              <div class="web-locale-switch" aria-label="Language switch">
+                <button class="toggle-btn" data-locale="en-US">EN</button>
+                <button class="toggle-btn" data-locale="ja-JP">JP</button>
+              </div>
+            </div>
           </div>
           <div class="topbar">
             <div class="topbar-left">
@@ -1857,7 +1908,7 @@
                 <button class="toggle-btn view-btn" id="shell-btn">App Shell</button>
                 <button class="toggle-btn view-btn" id="fullscreen-btn">Fullscreen</button>
               </div>
-              <div class="locale-switch">
+              <div class="locale-switch" aria-label="Language switch">
                 <button class="toggle-btn" data-locale="en-US">EN</button>
                 <button class="toggle-btn" data-locale="ja-JP">JP</button>
               </div>
