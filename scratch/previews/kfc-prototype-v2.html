@@ -613,6 +613,170 @@
       line-height: 1.55;
     }
 
+    .rank-inline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-top: 14px;
+    }
+
+    .rank-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 88px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+    }
+
+    .rank-badge.rank-bronze {
+      color: #ffd8ba;
+      background: linear-gradient(135deg, rgba(110, 67, 44, 0.96), rgba(61, 35, 24, 0.96));
+      border-color: rgba(255, 208, 177, 0.24);
+    }
+
+    .rank-badge.rank-silver {
+      color: #f6f6f8;
+      background: linear-gradient(135deg, rgba(137, 145, 161, 0.96), rgba(78, 84, 96, 0.96));
+      border-color: rgba(241, 244, 255, 0.24);
+    }
+
+    .rank-badge.rank-gold {
+      color: #221204;
+      background: linear-gradient(135deg, rgba(255, 213, 107, 0.98), rgba(255, 166, 40, 0.98));
+      border-color: rgba(255, 240, 194, 0.36);
+    }
+
+    .rank-badge.rank-platinum {
+      color: #f8fbff;
+      background: linear-gradient(135deg, rgba(145, 232, 255, 0.96), rgba(111, 147, 255, 0.96));
+      border-color: rgba(234, 249, 255, 0.34);
+    }
+
+    .rank-meta {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    .rank-card {
+      position: relative;
+      overflow: hidden;
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background:
+        radial-gradient(circle at top right, rgba(255, 213, 107, 0.22), transparent 26%),
+        radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.08), transparent 24%),
+        linear-gradient(135deg, rgba(24, 20, 13, 0.98), rgba(12, 11, 12, 0.98));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    html[data-theme="light"] .rank-card {
+      border-color: rgba(66, 40, 30, 0.1);
+      background:
+        radial-gradient(circle at top right, rgba(255, 213, 107, 0.18), transparent 26%),
+        radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.36), transparent 24%),
+        linear-gradient(135deg, rgba(255, 250, 241, 0.98), rgba(247, 238, 228, 0.98));
+    }
+
+    .rank-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -20% -55% 40%;
+      height: 180px;
+      background: radial-gradient(circle, rgba(255, 209, 92, 0.2), transparent 64%);
+      pointer-events: none;
+    }
+
+    .rank-card-top {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+
+    .rank-card-title {
+      margin: 4px 0 0;
+      font-family: var(--font-display);
+      font-size: 34px;
+      line-height: 0.95;
+      letter-spacing: 0.04em;
+    }
+
+    .rank-progress {
+      position: relative;
+      z-index: 1;
+      height: 12px;
+      margin-top: 14px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.28);
+    }
+
+    .rank-progress-fill {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #ffe191 0%, #ffbf5b 42%, #ff9a24 100%);
+      box-shadow: 0 0 18px rgba(255, 191, 91, 0.42);
+    }
+
+    .rank-meter {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .perk-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .perk-card {
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(6px);
+    }
+
+    html[data-theme="light"] .perk-card {
+      border-color: rgba(66, 40, 30, 0.08);
+      background: rgba(255, 255, 255, 0.68);
+    }
+
+    .perk-card strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+
+    .perk-card p {
+      margin: 0;
+    }
+
     .context-strip {
       display: grid;
       grid-template-columns: 1fr auto;
@@ -1540,6 +1704,19 @@
           emptyCart: "Your cart is empty. Add something from the menu to keep exploring the flow.",
           rewardsHeadline: "Colonel's Club",
           rewardsBody: "Because the experience is one app now, loyalty stays accessible instead of feeling like a disconnected demo screen.",
+          tierStatusLine: "Gold status is live across rewards, checkout, and your account.",
+          currentTier: "Current tier",
+          nextTier: "Next tier",
+          pointsToNext: "to Platinum",
+          tierProgress: "Tier progress",
+          tierPerks: "Unlocked perks",
+          rankMomentum: "Status secured",
+          rankPerk1Title: "Priority drops",
+          rankPerk1Body: "Early access to limited bundles and meal launches before the wider guest base sees them.",
+          rankPerk2Title: "Combo boost",
+          rankPerk2Body: "Earn accelerated points on premium meals, bundles, and late-night orders.",
+          rankPerk3Title: "VIP surprise rewards",
+          rankPerk3Body: "Unlock higher-value reward moments that feel earned instead of randomly scattered.",
           support: "Get help",
           orderHistory: "Review orders",
           giftCard: "Gift card",
@@ -1726,6 +1903,19 @@
           emptyCart: "カートは空です。メニューから商品を追加してフローを続けてください。",
           rewardsHeadline: "Colonel's Club",
           rewardsBody: "アプリ全体がつながっているため、ロイヤルティも独立したデモ画面ではなく自然に確認できます。",
+          tierStatusLine: "Gold ステータスが rewards、checkout、account 全体に反映されています。",
+          currentTier: "現在のティア",
+          nextTier: "次のティア",
+          pointsToNext: "で Platinum",
+          tierProgress: "ティア進行状況",
+          tierPerks: "利用中の特典",
+          rankMomentum: "現在のステータス",
+          rankPerk1Title: "先行ドロップ",
+          rankPerk1Body: "限定バンドルや新作ミールに、一般公開より先にアクセスできます。",
+          rankPerk2Title: "コンボブースト",
+          rankPerk2Body: "プレミアム meal や bundle、夜帯注文で獲得ポイントが増えます。",
+          rankPerk3Title: "VIP サプライズ特典",
+          rankPerk3Body: "ランダムではなく、到達に見合った高価値の reward が解放されます。",
           support: "ヘルプ",
           orderHistory: "注文履歴",
           giftCard: "ギフトカード",
@@ -2163,6 +2353,30 @@
       return cartCount() * 50;
     }
 
+    function getLoyaltyStatus() {
+      const tiers = [
+        { key: "bronze", label: "Bronze", floor: 0 },
+        { key: "silver", label: "Silver", floor: 1200 },
+        { key: "gold", label: "Gold", floor: 2400 },
+        { key: "platinum", label: "Platinum", floor: 4000 }
+      ];
+      const points = 2840;
+      const current = tiers.find((tier) => tier.key === "gold");
+      const next = tiers[tiers.indexOf(current) + 1] || current;
+      const currentFloor = current.floor;
+      const nextFloor = next.floor;
+      const span = Math.max(1, nextFloor - currentFloor);
+      const progress = Math.min(100, Math.max(0, ((points - currentFloor) / span) * 100));
+
+      return {
+        points,
+        current,
+        next,
+        progress,
+        pointsToNext: Math.max(0, nextFloor - points)
+      };
+    }
+
     function showToast(text, points = "") {
       els.toastText.textContent = text;
       els.toastPoints.textContent = points;
@@ -2389,6 +2603,7 @@
 
     function renderHome() {
       const visible = getVisibleProducts().slice(0, 4);
+      const loyalty = getLoyaltyStatus();
       return `
         <div class="stack">
           <div class="promo-banner">
@@ -2399,7 +2614,12 @@
 
           <div class="hero-card">
             <div class="kicker">${t().labels.welcomeBack}</div>
-            <h3>Justin</h3>
+            <h3>Justin · ${loyalty.current.label}</h3>
+            <p>${t().labels.tierStatusLine}</p>
+            <div class="rank-inline">
+              <span class="rank-badge rank-${loyalty.current.key}">${loyalty.current.label}</span>
+              <span class="rank-meta">${loyalty.pointsToNext.toLocaleString(state.locale)} ${t().labels.points} ${t().labels.pointsToNext}</span>
+            </div>
           </div>
 
           <div class="context-strip">
@@ -2475,6 +2695,7 @@
     }
 
     function renderMenu() {
+      const loyalty = getLoyaltyStatus();
       const categories = [
         ["all", t().labels.categoryAll],
         ["chicken", t().labels.categoryChicken],
@@ -2510,9 +2731,9 @@
           <div class="mini-hero-card">
             <div class="section-head" style="margin-bottom:8px">
               <h4>${t().labels.dealsRewards}</h4>
-              <span class="section-tag">${t().labels.points}</span>
+              <span class="section-tag">${loyalty.current.label}</span>
             </div>
-            <p>${t().screens.rewards.subtitle}</p>
+            <p>${loyalty.pointsToNext.toLocaleString(state.locale)} ${t().labels.points} ${t().labels.pointsToNext}</p>
             <button class="ghost-btn" data-nav="rewards" style="margin-top:12px;min-height:42px">${t().labels.dealsRewards}</button>
           </div>
 
@@ -2614,6 +2835,7 @@
     }
 
     function renderCart() {
+      const loyalty = getLoyaltyStatus();
       els.detailFooter.hidden = true;
       return `
         <div class="stack">
@@ -2639,6 +2861,7 @@
               <div class="summary-row"><span>${t().labels.subtotal}</span><strong>${money(cartTotal())}</strong></div>
               <div class="summary-row"><span>${t().labels.delivery}</span><strong>${t().labels.free}</strong></div>
               <div class="summary-row"><span>${t().labels.earned}</span><strong>+${pointsEarned()} ${t().labels.points}</strong></div>
+              <div class="summary-row"><span>${t().labels.nextTier}</span><strong>${loyalty.pointsToNext.toLocaleString(state.locale)} ${t().labels.pointsToNext}</strong></div>
               <div class="summary-row"><span>${t().labels.total}</span><strong class="total">${money(cartTotal())}</strong></div>
             </div>
 
@@ -2659,6 +2882,7 @@
     }
 
     function renderCheckout() {
+      const loyalty = getLoyaltyStatus();
       els.detailFooter.hidden = true;
       return `
         <div class="stack">
@@ -2693,6 +2917,7 @@
             <div class="section-head"><h4>${t().labels.orderSummary}</h4></div>
             ${state.cart.map((item) => `<div class="summary-row"><span>${item.emoji} ${item.name} ×${item.qty}</span><strong>${money(item.price * item.qty)}</strong></div>`).join("")}
             <div class="summary-row"><span>${t().labels.delivery}</span><strong>${t().labels.free}</strong></div>
+            <div class="summary-row"><span>${t().labels.nextTier}</span><strong>${loyalty.pointsToNext.toLocaleString(state.locale)} ${t().labels.pointsToNext}</strong></div>
             <div class="summary-row"><span>${t().labels.total}</span><strong class="total">${money(cartTotal())}</strong></div>
           </div>
 
@@ -2708,6 +2933,7 @@
     }
 
     function renderConfirmation() {
+      const loyalty = getLoyaltyStatus();
       els.detailFooter.hidden = true;
       return `
         <div class="stack">
@@ -2749,6 +2975,7 @@
           <div class="card summary">
             <div class="summary-row"><span>${t().labels.total}</span><strong class="total">${money(cartTotal())}</strong></div>
             <div class="summary-row"><span>${t().labels.earned}</span><strong>+${pointsEarned()} ${t().labels.points}</strong></div>
+            <div class="summary-row"><span>${t().labels.nextTier}</span><strong>${loyalty.pointsToNext.toLocaleString(state.locale)} ${t().labels.pointsToNext}</strong></div>
           </div>
 
           <div class="product-actions">
@@ -2760,13 +2987,50 @@
     }
 
     function renderRewards() {
+      const loyalty = getLoyaltyStatus();
       els.detailFooter.hidden = true;
       return `
         <div class="stack">
           <div class="hero-card">
             <div class="kicker">${t().labels.rewardsHeadline}</div>
-            <h3>2,840 ${t().labels.points}</h3>
+            <h3>${loyalty.points.toLocaleString(state.locale)} ${t().labels.points}</h3>
             <p>${t().labels.rewardsBody}</p>
+          </div>
+
+          <div class="rank-card">
+            <div class="rank-card-top">
+              <div>
+                <div class="kicker">${t().labels.currentTier}</div>
+                <div class="rank-card-title">${loyalty.current.label}</div>
+                <div class="rank-meta">${t().labels.rankMomentum} · ${t().labels.tierStatusLine}</div>
+              </div>
+              <span class="rank-badge rank-${loyalty.current.key}">${loyalty.current.label}</span>
+            </div>
+            <div class="section-head" style="position:relative;z-index:1;margin-bottom:0">
+              <h4>${t().labels.tierProgress}</h4>
+              <span class="section-tag">${loyalty.pointsToNext.toLocaleString(state.locale)} ${t().labels.pointsToNext}</span>
+            </div>
+            <div class="rank-progress">
+              <div class="rank-progress-fill" style="width:${loyalty.progress}%"></div>
+            </div>
+            <div class="rank-meter">
+              <span>${loyalty.current.label} ${loyalty.current.floor.toLocaleString(state.locale)}</span>
+              <span>${loyalty.next.label} ${loyalty.next.floor.toLocaleString(state.locale)}</span>
+            </div>
+            <div class="perk-grid">
+              <div class="perk-card">
+                <strong>${t().labels.rankPerk1Title}</strong>
+                <p>${t().labels.rankPerk1Body}</p>
+              </div>
+              <div class="perk-card">
+                <strong>${t().labels.rankPerk2Title}</strong>
+                <p>${t().labels.rankPerk2Body}</p>
+              </div>
+              <div class="perk-card">
+                <strong>${t().labels.rankPerk3Title}</strong>
+                <p>${t().labels.rankPerk3Body}</p>
+              </div>
+            </div>
           </div>
 
           ${[500, 1000, 2000].map((cost, index) => `
@@ -2785,6 +3049,7 @@
     }
 
     function renderAccount() {
+      const loyalty = getLoyaltyStatus();
       els.detailFooter.hidden = true;
       return `
         <div class="stack">
@@ -2792,6 +3057,10 @@
             <div class="kicker">${t().labels.accountTools}</div>
             <h3>Justin</h3>
             <p>${t().screens.account.subtitle}</p>
+            <div class="rank-inline">
+              <span class="rank-badge rank-${loyalty.current.key}">${loyalty.current.label}</span>
+              <span class="rank-meta">${loyalty.points.toLocaleString(state.locale)} ${t().labels.points} · ${t().labels.rankMomentum}</span>
+            </div>
           </div>
 
           <div class="card">
