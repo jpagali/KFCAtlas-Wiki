@@ -3572,6 +3572,27 @@
   },
   {
     "locale": "en-US",
+    "title": "Release 2026.03.17",
+    "headings": [
+      "Highlights",
+      "What Changed",
+      "Theme Infrastructure",
+      "Global Visual System",
+      "Homepage and What's New",
+      "Contribution Studio",
+      "Documentation Readability",
+      "In Plain English"
+    ],
+    "summary": "Release 2026.03.17",
+    "section": "release-notes",
+    "url": "/docs/release-notes/2026-03-17/",
+    "normalizedTitle": "release 2026 03 17",
+    "normalizedHeadings": "highlights what changed theme infrastructure global visual system homepage and what s new contribution studio documentation readability in plain english",
+    "normalizedSummary": "release 2026 03 17",
+    "normalizedSection": "release notes"
+  },
+  {
+    "locale": "en-US",
     "title": "Changelog",
     "headings": [
       "Recent Releases"
