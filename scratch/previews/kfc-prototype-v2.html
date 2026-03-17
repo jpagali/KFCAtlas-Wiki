@@ -223,6 +223,22 @@
       letter-spacing: 0.03em;
     }
 
+    .screen-title.screen-title-logo {
+      display: flex;
+      align-items: center;
+      min-height: 45px;
+      letter-spacing: 0;
+    }
+
+    .screen-title-logo-image {
+      display: block;
+      width: 74px;
+      max-width: min(20vw, 74px);
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.24));
+    }
+
     .topbar.compact .screen-title {
       font-size: 22px;
       line-height: 1;
@@ -352,10 +368,11 @@
       overflow: hidden;
       min-height: 184px;
       border-radius: var(--radius-lg);
-      border: 1px solid var(--line);
+      border: 0;
       background:
         linear-gradient(180deg, rgba(8, 8, 8, 0.08), rgba(8, 8, 8, 0.55)),
         url("https://images.ctfassets.net/a2mgcrjjefyo/5VacEuaF9u5SJ5bOx5bsd9/5922fe00c43d0d18120d50006576b2ac/Web_750x1040_EN.png?w=430&fm=webp") center/cover no-repeat;
+      box-shadow: inset 0 0 0 1px rgba(94, 43, 24, 0.9);
       display: flex;
       align-items: flex-end;
       padding: 16px;
@@ -2176,7 +2193,13 @@
     function renderTopbar() {
       const screenCopy = t().screens[state.screen];
       els.previewBadge.textContent = t().previewBadge;
-      els.title.textContent = screenCopy.title;
+      const isHomeScreen = state.screen === "home";
+      els.title.classList.toggle("screen-title-logo", isHomeScreen);
+      if (isHomeScreen) {
+        els.title.innerHTML = '<img class="screen-title-logo-image" src="https://images.ctfassets.net/wtodlh47qxpt/30HPXFOIOQLBBfuwplbndu/992a3b2157906181dc39be71202f4f3f/kfc_logo_icon.svg" alt="KFC logo">';
+      } else {
+        els.title.textContent = screenCopy.title;
+      }
       els.subtitle.textContent = screenCopy.subtitle;
       document.querySelector(".topbar").classList.toggle("compact", state.screen === "menu");
       els.back.disabled = historyStack.length === 0;

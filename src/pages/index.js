@@ -10,10 +10,10 @@ const HOME_CONTENT = {
   'en-US': {
     description: 'KFC Atlas Platform Wiki',
     badge: 'Atlas Platform · Wiki',
-    titleLead: 'The secret recipe for',
-    titleAccent: 'running the platform.',
+    titleLead: 'Atlas.',
+    titleAccent: 'Done right.',
     summary:
-      'Your complete guide to the KFC Atlas Platform — from the customer ordering experience to day-to-day restaurant operations across Japan and Australia.',
+      'Everything you need to launch, operate, and scale Atlas — from customer experience to restaurant operations.',
     heroSearchPlaceholder: 'Search guides, articles, and headings',
     heroPrimaryCta: 'Start with the Front-end Guide →',
     heroSecondaryCta: 'Start with the Admin Portal Guide →',
