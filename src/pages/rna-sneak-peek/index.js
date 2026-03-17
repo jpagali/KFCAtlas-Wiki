@@ -3,6 +3,7 @@ import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import {useColorMode} from '@docusaurus/theme-common';
 import styles from './styles.module.css';
 
 const PAGE_CONTENT = {
@@ -44,58 +45,107 @@ export default function RnaSneakPeekPage() {
   const { i18n } = useDocusaurusContext();
   const locale = PAGE_CONTENT[i18n.currentLocale] ? i18n.currentLocale : 'en-US';
   const content = PAGE_CONTENT[locale];
-  const [prototypeTheme, setPrototypeTheme] = React.useState('dark');
+
+  return (
+    <Layout title={content.title} description={content.description}>
+      <RnaSneakPeekContent content={content} locale={locale} />
+    </Layout>
+  );
+}
+
+function RnaSneakPeekContent({content, locale}) {
+  const {colorMode} = useColorMode();
+  const [immersiveMode, setImmersiveMode] = React.useState(false);
+  const frameShellRef = React.useRef(null);
+  const iframeRef = React.useRef(null);
+  const prototypeTheme = colorMode === 'light' ? 'light' : 'dark';
 
   React.useEffect(() => {
-    const root = document.documentElement;
+    const onMessage = (event) => {
+      if (event.origin !== window.location.origin) return;
+      if (event.data?.type !== 'rna-prototype-fullscreen') return;
+      setImmersiveMode(Boolean(event.data.enabled));
+    };
+
+    window.addEventListener('message', onMessage);
+    return () => window.removeEventListener('message', onMessage);
+  }, []);
+
+  React.useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    if (immersiveMode) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = previousOverflow || '';
+    }
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [immersiveMode]);
+
+  React.useEffect(() => {
+    const frameWindow = iframeRef.current?.contentWindow;
+    if (!frameWindow) {
+      return undefined;
+    }
 
     const syncTheme = () => {
-      setPrototypeTheme(root.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
+      frameWindow.postMessage(
+        {
+          type: 'rna-prototype-theme',
+          theme: prototypeTheme,
+        },
+        window.location.origin,
+      );
     };
 
     syncTheme();
+    const timeoutId = window.setTimeout(syncTheme, 120);
 
-    const observer = new MutationObserver(syncTheme);
-    observer.observe(root, { attributes: true, attributeFilter: ['data-theme'] });
-
-    return () => observer.disconnect();
-  }, []);
+    return () => window.clearTimeout(timeoutId);
+  }, [prototypeTheme, locale]);
 
   const prototypeSrc = useBaseUrl(
     `/rna-sneak-peek-prototype.html?theme=${prototypeTheme}&locale=${encodeURIComponent(locale)}`,
   );
 
   return (
-    <Layout title={content.title} description={content.description}>
-      <div className={styles.page}>
-        <div className={styles.hero}>
-          <div className={styles.heroCopy}>
-            <span className={styles.eyebrow}>{content.eyebrow}</span>
-            <h1>{content.heroTitle}</h1>
-            <p>{content.heroBody}</p>
-            <ul className={styles.bullets}>
-              {content.bullets.map((bullet) => (
-                <li key={bullet}>{bullet}</li>
-              ))}
-            </ul>
-            <div className={styles.notice}>{content.disclaimer}</div>
-            <Link to="/" className={styles.backLink}>
-              {content.backLink}
-            </Link>
-          </div>
-        </div>
-
-        <div className={styles.prototypeWrap}>
-          <div className={styles.frameShell}>
-            <iframe
-              className={styles.prototypeFrame}
-              src={prototypeSrc}
-              title={content.title}
-              loading="lazy"
-            />
-          </div>
+    <div className={styles.page}>
+      <div className={styles.hero}>
+        <div className={styles.heroCopy}>
+          <span className={styles.eyebrow}>{content.eyebrow}</span>
+          <h1>{content.heroTitle}</h1>
+          <p>{content.heroBody}</p>
+          <ul className={styles.bullets}>
+            {content.bullets.map((bullet) => (
+              <li key={bullet}>{bullet}</li>
+            ))}
+          </ul>
+          <div className={styles.notice}>{content.disclaimer}</div>
+          <Link to="/" className={styles.backLink}>
+            {content.backLink}
+          </Link>
         </div>
       </div>
-    </Layout>
+
+      <div className={styles.prototypeWrap}>
+        <div
+          ref={frameShellRef}
+          className={`${styles.frameShell} ${immersiveMode ? styles.frameShellImmersive : ''}`}
+        >
+          <iframe
+            key={`${locale}-${prototypeTheme}`}
+            ref={iframeRef}
+            className={styles.prototypeFrame}
+            src={prototypeSrc}
+            title={content.title}
+            loading="lazy"
+            allow="fullscreen"
+            allowFullScreen
+          />
+        </div>
+      </div>
+    </div>
   );
 }

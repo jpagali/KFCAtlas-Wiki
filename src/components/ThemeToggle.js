@@ -3,8 +3,8 @@ import clsx from 'clsx';
 import {useColorMode} from '@docusaurus/theme-common';
 
 const OPTIONS = [
-  {value: 'light', label: 'Light'},
-  {value: 'dark', label: 'Dark'},
+  {value: 'light', label: 'Light', symbol: '☀'},
+  {value: 'dark', label: 'Dark', symbol: '☾'},
 ];
 
 export default function ThemeToggle({mobile}) {
@@ -24,8 +24,11 @@ export default function ThemeToggle({mobile}) {
             type="button"
             className={clsx('theme-toggle-option', isActive && 'theme-toggle-option--active')}
             aria-pressed={isActive}
+            aria-label={option.label}
             onClick={() => setColorMode(option.value)}>
-            {option.label}
+            <span className="theme-toggle-option__symbol" aria-hidden="true">
+              {option.symbol}
+            </span>
           </button>
         );
       })}

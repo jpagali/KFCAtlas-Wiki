@@ -181,6 +181,7 @@ export default function AtlasChat() {
   const localePrefix = `/${locale}`;
   const currentPath = rawPath.startsWith(localePrefix) ? (rawPath.slice(localePrefix.length) || '/') : rawPath;
   const normalizedPath = currentPath.endsWith('/docs/admin-portal-guide') ? '/docs/admin-portal-guide/' : currentPath;
+  const hideOnRoute = normalizedPath === '/rna-sneak-peek';
   const pageContext = PAGE_CONTEXT[normalizedPath] || null;
   const suggestionsMap = isJapanese ? JAPANESE_SUGGESTED_ARTICLES : SUGGESTED_ARTICLES;
   const suggestions = suggestionsMap[normalizedPath] || copy.defaultSuggestions;
@@ -195,6 +196,10 @@ export default function AtlasChat() {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages, isOpen]);
+
+  if (hideOnRoute) {
+    return null;
+  }
 
   const getWelcomeMessage = () => {
     if (pageContext) {

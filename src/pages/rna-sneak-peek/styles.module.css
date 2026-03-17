@@ -116,6 +116,15 @@ html[data-theme='light'] .heroCopy .notice {
   background: rgba(10, 10, 10, 0.92);
 }
 
+.frameShellImmersive {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  border-radius: 0;
+  border: 0;
+  background: #050505;
+}
+
 html[data-theme='light'] .frameShell {
   border: 1px solid rgba(74, 45, 35, 0.08);
   background: rgba(255, 250, 245, 0.96);
@@ -128,6 +137,11 @@ html[data-theme='light'] .frameShell {
   min-height: 720px;
   border: 0;
   background: #050505;
+}
+
+.frameShellImmersive .prototypeFrame {
+  height: 100vh;
+  min-height: 100vh;
 }
 
 @media (max-width: 640px) {

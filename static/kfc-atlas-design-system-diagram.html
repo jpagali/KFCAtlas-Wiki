@@ -161,6 +161,19 @@
   .row { display: flex; gap: 12px; align-items: stretch; }
   .row > * { flex: 1; }
   .col { display: flex; flex-direction: column; gap: 10px; }
+  .row-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--mid-gray);
+    font-size: 20px;
+    flex: 0 0 auto;
+    padding: 0 4px;
+  }
+  .market-row { flex-wrap: wrap; gap: 10px; }
+  .market-card { flex: 1; min-width: 155px; }
+  .foundation-core-web { flex: 1.6; }
+  .foundation-menu-module { flex: 1.2; }
 
   /* ── Arrows ── */
   .arrow-down {
@@ -225,6 +238,155 @@
     text-align: center; display: flex; align-items: center; gap: 10px;
   }
   .footer::before, .footer::after { content: ''; display: block; width: 40px; height: 1px; background: var(--border); }
+
+  @media (max-width: 720px) {
+    body {
+      padding: 28px 14px 40px;
+    }
+
+    .page-header {
+      margin-bottom: 28px;
+    }
+
+    .subtitle br {
+      display: none;
+    }
+
+    .layer {
+      padding: 18px 16px;
+      border-radius: 12px;
+    }
+
+    .layer-label {
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 6px;
+      line-height: 1.4;
+    }
+
+    .row {
+      flex-direction: column;
+    }
+
+    .row > * {
+      min-width: 0;
+    }
+
+    .row-arrow {
+      transform: rotate(90deg);
+      padding: 2px 0;
+      font-size: 18px;
+    }
+
+    .fork {
+      height: 30px;
+      margin: 2px 0 8px;
+    }
+
+    .fork svg {
+      display: none;
+    }
+
+    .fork::before {
+      content: '⇣';
+      display: block;
+      text-align: center;
+      color: var(--mid-gray);
+      font-size: 22px;
+      line-height: 30px;
+    }
+
+    .node {
+      align-items: flex-start;
+      padding: 12px 14px;
+      gap: 10px;
+    }
+
+    .node > div:last-child {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .node-note,
+    .figma-text,
+    .legend-item,
+    .footer {
+      overflow-wrap: anywhere;
+    }
+
+    .optional-tag {
+      margin-left: 0;
+      align-self: flex-start;
+    }
+
+    .legend {
+      margin-top: 22px;
+      padding: 14px 16px;
+      justify-content: flex-start;
+      gap: 10px 14px;
+    }
+
+    .legend-item {
+      font-size: 11px;
+    }
+
+    .footer {
+      gap: 6px;
+      font-size: 11px;
+    }
+
+    .footer::before,
+    .footer::after {
+      width: 20px;
+      flex-shrink: 0;
+    }
+
+    .foundation-core-web,
+    .foundation-menu-module,
+    .market-card {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .kfc-logo-mark {
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .kfc-stripe {
+      width: 24px;
+    }
+
+    h1 {
+      font-size: clamp(30px, 12vw, 42px);
+    }
+
+    .subtitle {
+      font-size: 13px;
+    }
+
+    .figma-row {
+      align-items: flex-start;
+      padding: 10px 12px;
+    }
+
+    .layer-label,
+    .inner-label {
+      font-size: 9px;
+    }
+
+    .node {
+      font-size: 12px;
+    }
+
+    .node-icon {
+      width: 28px;
+      height: 28px;
+      font-size: 14px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -259,7 +421,7 @@
           <div class="node-note">Brand colours, spacing, typography &amp; border radii — the rulebook</div>
         </div>
       </div>
-      <div style="display:flex;align-items:center;color:var(--mid-gray);font-size:20px;flex-shrink:0;padding:0 4px;">→</div>
+      <div class="row-arrow">→</div>
       <div class="node node-purple">
         <div class="node-icon">🧩</div>
         <div>
@@ -356,14 +518,14 @@
           <div class="node-note">Shared mobile foundation all native markets inherit from</div>
         </div>
       </div>
-      <div class="node node-slate" style="flex:1.6;">
+      <div class="node node-slate foundation-core-web">
         <div class="node-icon">📦</div>
         <div>
           <div>Core Web App</div>
           <div class="node-note">Shared web ordering foundation for all markets</div>
         </div>
       </div>
-      <div class="node node-optional" style="flex:1.2;">
+      <div class="node node-optional foundation-menu-module">
         <div class="node-icon">🔌</div>
         <div>
           <div>Menu Module</div>
@@ -376,9 +538,9 @@
     <div class="inner-divider"></div>
 
     <div class="inner-label">Active KFC Market Deployments</div>
-    <div class="row" style="flex-wrap:wrap;gap:10px;">
+    <div class="row market-row">
 
-      <div class="node node-red" style="flex:1;min-width:155px;">
+      <div class="node node-red market-card">
         <div class="node-icon">🍗</div>
         <div>
           <div>KFC Japan</div>
@@ -386,7 +548,7 @@
         </div>
       </div>
 
-      <div class="node node-red" style="flex:1;min-width:155px;">
+      <div class="node node-red market-card">
         <div class="node-icon">🍗</div>
         <div>
           <div>KFC Australia</div>

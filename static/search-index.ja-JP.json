@@ -3576,6 +3576,8 @@
       "Theme Infrastructure",
       "RNA Sneak Peek Prototype",
       "Global Visual System",
+      "Atlas Wiki Chrome",
+      "Design System Docs",
       "Contribution Studio",
       "Documentation Readability",
       "わかりやすく言うと"
@@ -3584,7 +3586,7 @@
     "section": "release-notes",
     "url": "/ja-JP/docs/release-notes/2026-03-17/",
     "normalizedTitle": "リリース 2026 03 17",
-    "normalizedHeadings": "ハイライト 変更内容 theme infrastructure rna sneak peek prototype global visual system contribution studio documentation readability わかりやすく言うと",
+    "normalizedHeadings": "ハイライト 変更内容 theme infrastructure rna sneak peek prototype global visual system atlas wiki chrome design system docs contribution studio documentation readability わかりやすく言うと",
     "normalizedSummary": "リリース 2026 03 17",
     "normalizedSection": "release notes"
   },
