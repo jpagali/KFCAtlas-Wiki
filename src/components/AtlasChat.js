@@ -165,7 +165,7 @@ const JAPANESE_SUGGESTED_ARTICLES = {
 };
 
 export default function AtlasChat() {
-  const { i18n } = useDocusaurusContext();
+  const { i18n, siteConfig } = useDocusaurusContext();
   const chatLogoSrc = useBaseUrl('/img/atlas-chat-logo.svg');
   const { withBaseUrl } = useBaseUrlUtils();
   const locale = LOCALE_COPY[i18n.currentLocale] ? i18n.currentLocale : 'en-US';
@@ -178,8 +178,15 @@ export default function AtlasChat() {
   const location = useLocation();
 
   const rawPath = location.pathname.replace(/\/$/, '') || '/';
+  const basePath = (siteConfig.baseUrl || '/').replace(/\/$/, '');
+  const pathWithoutBase =
+    basePath && basePath !== '/' && rawPath.startsWith(basePath)
+      ? (rawPath.slice(basePath.length) || '/')
+      : rawPath;
   const localePrefix = `/${locale}`;
-  const currentPath = rawPath.startsWith(localePrefix) ? (rawPath.slice(localePrefix.length) || '/') : rawPath;
+  const currentPath = pathWithoutBase.startsWith(localePrefix)
+    ? (pathWithoutBase.slice(localePrefix.length) || '/')
+    : pathWithoutBase;
   const normalizedPath = currentPath.endsWith('/docs/admin-portal-guide') ? '/docs/admin-portal-guide/' : currentPath;
   const hideOnRoute = normalizedPath === '/rna-sneak-peek';
   const pageContext = PAGE_CONTEXT[normalizedPath] || null;

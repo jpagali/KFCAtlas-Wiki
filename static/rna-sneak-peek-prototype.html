@@ -50,6 +50,7 @@
     html, body {
       margin: 0;
       min-height: 100%;
+      min-height: 100dvh;
       overflow-x: hidden;
       overflow-y: auto;
       background:
@@ -73,6 +74,7 @@
 
     .stage {
       min-height: 100vh;
+      min-height: 100dvh;
       display: grid;
       place-items: center;
       padding: clamp(8px, 2vw, 24px);
@@ -82,6 +84,7 @@
       position: relative;
       width: min(390px, calc(100vw - 16px));
       height: min(844px, calc(100vh - 16px));
+      height: min(844px, calc(100dvh - 16px));
       aspect-ratio: 390 / 844;
       border-radius: 54px;
       padding: 12px;
@@ -1185,6 +1188,7 @@
     .stage.fullscreen-mode .phone-wrap {
       width: 100vw;
       height: 100vh;
+      height: 100dvh;
       max-width: none;
       max-height: none;
       border-radius: 0;
@@ -1202,16 +1206,19 @@
     @media (max-width: 440px) {
       html, body {
         min-height: 100vh;
+        min-height: 100dvh;
       }
 
       .stage {
         min-height: 100vh;
+        min-height: 100dvh;
         padding: 0;
       }
 
       .phone-wrap {
         width: 100vw;
         height: 100vh;
+        height: 100dvh;
         border-radius: 0;
         padding: 0;
       }
