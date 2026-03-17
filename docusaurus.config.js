@@ -119,6 +119,10 @@ const config = {
             type: 'localeDropdown',
             position: 'right',
           },
+          {
+            type: 'custom-theme-toggle',
+            position: 'right',
+          },
         ],
       },
 
@@ -178,7 +182,7 @@ const config = {
       },
 
       colorMode: {
-        defaultMode: 'light',
+        defaultMode: 'dark',
         disableSwitch: true,
         respectPrefersColorScheme: false,
       },

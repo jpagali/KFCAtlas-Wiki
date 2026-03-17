@@ -1332,6 +1332,16 @@ export default function ContributePage() {
                 readyText={copy.ready}
                 checkingText={copy.checking}
               />
+              <div className={styles.panelAction}>
+                <button
+                  type="button"
+                  className={styles.primaryAction}
+                  onClick={() => setModalOpen(true)}
+                  disabled={!markdownReady}
+                >
+                  {copy.send}
+                </button>
+              </div>
             </div>
           </aside>
 
@@ -1407,17 +1417,6 @@ export default function ContributePage() {
             </div>
           </div>
         </section>
-
-        <div className={styles.pageActions}>
-          <button
-            type="button"
-            className={styles.primaryAction}
-            onClick={() => setModalOpen(true)}
-            disabled={!markdownReady}
-          >
-            {copy.send}
-          </button>
-        </div>
 
         {modalOpen ? (
           <div className={styles.modalBackdrop} role="presentation" onClick={() => setModalOpen(false)}>

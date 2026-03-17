@@ -1,0 +1,45 @@
+import React from 'react';
+import clsx from 'clsx';
+import {useColorMode} from '@docusaurus/theme-common';
+
+const OPTIONS = [
+  {value: 'light', label: 'Light'},
+  {value: 'dark', label: 'Dark'},
+];
+
+export default function ThemeToggle({mobile}) {
+  const {colorMode, setColorMode} = useColorMode();
+
+  const control = (
+    <div
+      className={clsx('theme-toggle-control', mobile && 'theme-toggle-control--mobile')}
+      role="group"
+      aria-label="Theme">
+      {OPTIONS.map((option) => {
+        const isActive = colorMode === option.value;
+
+        return (
+          <button
+            key={option.value}
+            type="button"
+            className={clsx('theme-toggle-option', isActive && 'theme-toggle-option--active')}
+            aria-pressed={isActive}
+            onClick={() => setColorMode(option.value)}>
+            {option.label}
+          </button>
+        );
+      })}
+    </div>
+  );
+
+  if (mobile) {
+    return (
+      <li className="menu__list-item navbar-sidebar-theme-toggle">
+        <div className="navbar-sidebar-theme-toggle__label">Theme</div>
+        {control}
+      </li>
+    );
+  }
+
+  return <div className="navbar-theme-toggle">{control}</div>;
+}

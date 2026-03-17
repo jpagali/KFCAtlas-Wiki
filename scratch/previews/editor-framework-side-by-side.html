@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Knowledge Center Editor Framework Prototype</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css"
+    />
+    <style>
+      :root {
+        --bg: #f4efe6;
+        --paper: rgba(255, 250, 242, 0.92);
+        --panel: rgba(255, 255, 255, 0.82);
+        --ink: #26120b;
+        --muted: #6e5448;
+        --line: rgba(76, 44, 31, 0.14);
+        --accent: #d62828;
+        --accent-soft: rgba(214, 40, 40, 0.12);
+        --green: #1d6f42;
+        --shadow: 0 28px 70px rgba(71, 36, 21, 0.12);
+        --radius-xl: 28px;
+        --radius-lg: 20px;
+        --radius-md: 14px;
+        --font-display: "Avenir Next", "Segoe UI", sans-serif;
+        --font-body: "IBM Plex Sans", "Segoe UI", sans-serif;
+        --font-code: "IBM Plex Mono", "SFMono-Regular", monospace;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: var(--font-body);
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(214, 40, 40, 0.14), transparent 28%),
+          radial-gradient(circle at top right, rgba(255, 191, 105, 0.28), transparent 26%),
+          linear-gradient(180deg, #fcf8f2 0%, #f0e5d6 100%);
+      }
+
+      .shell {
+        width: min(1440px, calc(100vw - 32px));
+        margin: 20px auto 40px;
+      }
+
+      .hero {
+        padding: 36px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-xl);
+        background: linear-gradient(145deg, rgba(255, 252, 247, 0.92), rgba(248, 239, 228, 0.78));
+        box-shadow: var(--shadow);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: auto -80px -120px auto;
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(214, 40, 40, 0.18), transparent 68%);
+        pointer-events: none;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.76);
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 16px 0 12px;
+        font-family: var(--font-display);
+        font-size: clamp(32px, 5vw, 56px);
+        line-height: 0.95;
+        max-width: 10ch;
+      }
+
+      .hero p {
+        margin: 0;
+        max-width: 70ch;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      .hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 24px;
+      }
+
+      .hero-pill {
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(255, 255, 255, 0.9);
+        font-size: 13px;
+      }
+
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+        margin: 22px 0 18px;
+      }
+
+      .locale-switch,
+      .template-switch {
+        display: inline-flex;
+        gap: 8px;
+        padding: 6px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.75);
+        border: 1px solid var(--line);
+      }
+
+      .chip {
+        border: 0;
+        border-radius: 999px;
+        padding: 10px 16px;
+        cursor: pointer;
+        background: transparent;
+        color: var(--muted);
+        font: inherit;
+        font-weight: 600;
+      }
+
+      .chip.active {
+        background: var(--ink);
+        color: white;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1.02fr 1.08fr;
+        gap: 18px;
+      }
+
+      .panel {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .panel-head {
+        padding: 18px 20px 14px;
+        border-bottom: 1px solid var(--line);
+        background: linear-gradient(180deg, rgba(255,255,255,0.65), rgba(255,255,255,0.25));
+      }
+
+      .panel-title-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .panel h2,
+      .panel h3 {
+        margin: 0;
+        font-family: var(--font-display);
+      }
+
+      .panel-subtitle {
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .badge {
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      .panel-body {
+        padding: 18px;
+      }
+
+      .stack {
+        display: grid;
+        gap: 16px;
+      }
+
+      .card {
+        padding: 16px;
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--line);
+        background: var(--panel);
+      }
+
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .toolbar button,
+      .toolbar select {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 10px 12px;
+        background: white;
+        color: var(--ink);
+        font: inherit;
+      }
+
+      .toolbar button {
+        cursor: pointer;
+      }
+
+      .legacy-editor,
+      .modern-editor {
+        min-height: 360px;
+        padding: 18px;
+        border-radius: 18px;
+        background: white;
+        border: 1px solid rgba(76, 44, 31, 0.1);
+        outline: none;
+        line-height: 1.65;
+      }
+
+      .legacy-editor:focus,
+      .modern-editor:focus-within {
+        border-color: rgba(214, 40, 40, 0.5);
+        box-shadow: 0 0 0 4px rgba(214, 40, 40, 0.12);
+      }
+
+      .modern-editor .ql-container {
+        border: 0;
+        font: inherit;
+      }
+
+      .modern-editor .ql-toolbar {
+        display: none;
+      }
+
+      .modern-editor .ql-editor {
+        outline: none;
+        min-height: 320px;
+        padding: 0;
+      }
+
+      .modern-editor .ql-editor h1,
+      .modern-editor .ql-editor h2,
+      .modern-editor .ql-editor h3 {
+        max-width: none;
+        line-height: 1.15;
+        margin: 1rem 0 0.5rem;
+      }
+
+      .modern-editor .ql-editor p,
+      .modern-editor .ql-editor ul,
+      .modern-editor .ql-editor ol,
+      .modern-editor .ql-editor blockquote,
+      .modern-editor .ql-editor pre {
+        margin: 0.8rem 0;
+      }
+
+      .modern-editor .ql-editor blockquote {
+        border-left: 4px solid var(--accent);
+        padding-left: 14px;
+        color: var(--muted);
+      }
+
+      .modern-editor .ql-editor pre {
+        background: #241711;
+        color: #f9f2e9;
+        padding: 14px;
+        border-radius: 12px;
+        overflow: auto;
+      }
+
+      .modern-editor .ql-editor img {
+        max-width: 100%;
+        border-radius: 14px;
+        display: block;
+      }
+
+      .comparison-metrics {
+        display: grid;
+        gap: 10px;
+      }
+
+      .metric {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 10px 12px;
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        font-size: 14px;
+      }
+
+      .metric strong.good {
+        color: var(--green);
+      }
+
+      .metric strong.warn {
+        color: var(--accent);
+      }
+
+      .markdown {
+        min-height: 280px;
+        padding: 16px;
+        border-radius: 18px;
+        background: #fffdfa;
+        border: 1px solid rgba(76, 44, 31, 0.08);
+        font-family: var(--font-code);
+        font-size: 13px;
+        line-height: 1.6;
+        white-space: pre-wrap;
+        overflow: auto;
+      }
+
+      .notes {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .note h3 {
+        margin: 0 0 8px;
+        font-size: 16px;
+      }
+
+      .note p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.55;
+      }
+
+      .footer {
+        margin-top: 18px;
+        padding: 18px 20px;
+        border-radius: 20px;
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,0.7);
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .loading {
+        display: grid;
+        place-items: center;
+        min-height: 360px;
+        color: var(--muted);
+        border-radius: 18px;
+        border: 1px dashed var(--line);
+        background: rgba(255,255,255,0.5);
+      }
+
+      @media (max-width: 1100px) {
+        .grid,
+        .notes {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <section class="hero">
+        <div class="eyebrow">Local-only prototype</div>
+        <h1 id="hero-title">Editor framework comparison</h1>
+        <p id="hero-copy">
+          Side-by-side comparison between the current lightweight studio pattern and a real free editor
+          framework. This stays outside the app so we can judge the authoring feel before we touch production.
+        </p>
+        <div class="hero-meta">
+          <div class="hero-pill" id="meta-free">Free framework candidate: Quill</div>
+          <div class="hero-pill" id="meta-local">Isolated in scratch/previews</div>
+          <div class="hero-pill" id="meta-bilingual">Locale toggle: EN + JP</div>
+        </div>
+      </section>
+
+      <section class="controls">
+        <div class="locale-switch" aria-label="Locale switcher">
+          <button class="chip active" data-locale="en">English</button>
+          <button class="chip" data-locale="ja">日本語</button>
+        </div>
+        <div class="template-switch" aria-label="Template switcher">
+          <button class="chip active" data-template="howto">How-to</button>
+          <button class="chip" data-template="runbook">Runbook</button>
+          <button class="chip" data-template="faq">FAQ</button>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="panel">
+          <div class="panel-head">
+            <div class="panel-title-row">
+              <h2 id="legacy-title">Current studio style</h2>
+              <span class="badge" id="legacy-badge">contentEditable</span>
+            </div>
+            <div class="panel-subtitle" id="legacy-copy">
+              This simulates the current hand-rolled editor approach: browser commands, raw HTML, and custom
+              conversion logic.
+            </div>
+          </div>
+          <div class="panel-body stack">
+            <section class="card">
+              <div class="toolbar">
+                <select id="legacy-block">
+                  <option value="p">Paragraph</option>
+                  <option value="h1">Heading 1</option>
+                  <option value="h2">Heading 2</option>
+                  <option value="h3">Heading 3</option>
+                  <option value="blockquote">Quote</option>
+                </select>
+                <button data-cmd="bold">Bold</button>
+                <button data-cmd="italic">Italic</button>
+                <button data-cmd="insertUnorderedList">Bullets</button>
+                <button data-cmd="insertOrderedList">Numbered</button>
+                <button id="legacy-link">Link</button>
+                <button id="legacy-image">Image</button>
+                <button id="legacy-code">Code</button>
+                <button id="legacy-table">Table</button>
+              </div>
+              <div id="legacy-editor" class="legacy-editor" contenteditable="true"></div>
+            </section>
+            <section class="card">
+              <h3 id="legacy-markdown-title">Markdown output</h3>
+              <div id="legacy-markdown" class="markdown"></div>
+            </section>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <div class="panel-title-row">
+              <h2 id="modern-title">Proposed framework</h2>
+              <span class="badge" id="modern-badge">Quill Free</span>
+            </div>
+            <div class="panel-subtitle" id="modern-copy">
+              This uses a real editor framework with a document model, extensions, and cleaner behavior for
+              headings, links, code, tables, and images.
+            </div>
+          </div>
+          <div class="panel-body stack">
+            <section class="card">
+              <div class="toolbar" id="modern-toolbar"></div>
+              <div id="modern-mount" class="modern-editor">
+                <div class="loading" id="modern-loading">Loading free editor framework...</div>
+              </div>
+            </section>
+            <section class="card">
+              <h3 id="modern-markdown-title">Markdown output</h3>
+              <div id="modern-markdown" class="markdown"></div>
+            </section>
+            <section class="card">
+              <h3 id="comparison-title">What changes if we adopt this</h3>
+              <div class="comparison-metrics">
+                <div class="metric">
+                  <span id="metric-ux-label">Authoring feel</span>
+                  <strong class="warn" id="metric-legacy-ux">Current: brittle</strong>
+                </div>
+                <div class="metric">
+                  <span id="metric-framework-label">Framework support</span>
+                  <strong class="good" id="metric-modern-framework">Proposed: mature extension model</strong>
+                </div>
+                <div class="metric">
+                  <span id="metric-markdown-label">Markdown handoff</span>
+                  <strong class="good" id="metric-markdown-value">Still possible through controlled export</strong>
+                </div>
+              </div>
+            </section>
+          </div>
+        </article>
+      </section>
+
+      <section class="notes">
+        <article class="panel note">
+          <div class="panel-body">
+            <h3 id="note-demo-title">What this demo proves</h3>
+            <p id="note-demo-copy">
+              We can keep the downstream goal as Markdown while improving the writing experience by swapping only
+              the editor surface and export pipeline.
+            </p>
+          </div>
+        </article>
+        <article class="panel note">
+          <div class="panel-body">
+            <h3 id="note-gap-title">What is intentionally fake here</h3>
+            <p id="note-gap-copy">
+              No repo wiring, no Docusaurus integration, no asset uploads, and no persistence. This is just a safe
+              UX spike for comparison.
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <div class="footer" id="footer-copy">
+        If this direction feels right, the next step is to replace the production editor surface with a real editor framework inside
+        the contribute page while preserving the existing metadata, preview, and Markdown download flow.
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/turndown@7.2.0/dist/turndown.js"></script>
+    <script>
+
+      const copy = {
+        en: {
+          heroTitle: "Editor framework comparison",
+          heroCopy:
+            "Side-by-side comparison between the current lightweight studio pattern and a real free editor framework. This stays outside the app so we can judge the authoring feel before we touch production.",
+          metaFree: "Free framework candidate: Quill",
+          metaLocal: "Isolated in scratch/previews",
+          metaBilingual: "Locale toggle: EN + JP",
+          legacyTitle: "Current studio style",
+          legacyBadge: "contentEditable",
+          legacyCopy:
+            "This simulates the current hand-rolled editor approach: browser commands, raw HTML, and custom conversion logic.",
+          modernTitle: "Proposed framework",
+          modernBadge: "Quill Free",
+          modernCopy:
+            "This uses a real editor framework with structured formatting, cleaner keyboard behavior, and a far more stable editing surface than raw contentEditable.",
+          markdownTitle: "Markdown output",
+          comparisonTitle: "What changes if we adopt this",
+          metricUxLabel: "Authoring feel",
+          metricLegacyUx: "Current: brittle",
+          metricFrameworkLabel: "Framework support",
+          metricModernFramework: "Proposed: stable free editor foundation",
+          metricMarkdownLabel: "Markdown handoff",
+          metricMarkdownValue: "Still possible through controlled export",
+          noteDemoTitle: "What this demo proves",
+          noteDemoCopy:
+            "We can keep the downstream goal as Markdown while improving the writing experience by swapping only the editor surface and export pipeline.",
+          noteGapTitle: "What is intentionally fake here",
+          noteGapCopy:
+            "No repo wiring, no Docusaurus integration, no asset uploads, and no persistence. This is just a safe UX spike for comparison.",
+          footerCopy:
+            "If this direction feels right, the next step is to replace the production editor surface with a real editor framework inside the contribute page while preserving the existing metadata, preview, and Markdown download flow.",
+          toolbar: {
+            paragraph: "Paragraph",
+            h1: "Heading 1",
+            h2: "Heading 2",
+            h3: "Heading 3",
+            quote: "Quote",
+            bullets: "Bullets",
+            numbered: "Numbered",
+            bold: "Bold",
+            italic: "Italic",
+            underline: "Underline",
+            link: "Link",
+            image: "Image",
+            code: "Code",
+            rule: "Rule",
+          },
+          prompts: {
+            link: "Enter a link URL",
+            image: "Enter an image URL",
+            code: "Paste the code block content",
+          },
+        },
+        ja: {
+          heroTitle: "エディタ比較プロトタイプ",
+          heroCopy:
+            "現在の軽量スタジオ方式と、無料で使える本格的なエディタフレームワークを横並びで比較します。本番には触れず、まず執筆体験だけを安全に評価できます。",
+          metaFree: "無料フレームワーク候補: Quill",
+          metaLocal: "scratch/previews に隔離",
+          metaBilingual: "ロケール切り替え: 英語 + 日本語",
+          legacyTitle: "現在のスタジオ方式",
+          legacyBadge: "contentEditable",
+          legacyCopy:
+            "ブラウザコマンド、素の HTML、独自の変換ロジックに依存する現行方式を簡易再現しています。",
+          modernTitle: "提案フレームワーク",
+          modernBadge: "Quill Free",
+          modernCopy:
+            "素の contentEditable より安定した入力面と整った書式操作を持つ、無料の本格エディタです。",
+          markdownTitle: "Markdown 出力",
+          comparisonTitle: "採用すると何が変わるか",
+          metricUxLabel: "執筆体験",
+          metricLegacyUx: "現状: 不安定",
+          metricFrameworkLabel: "フレームワーク基盤",
+          metricModernFramework: "提案: 安定した無料エディタ基盤",
+          metricMarkdownLabel: "Markdown 受け渡し",
+          metricMarkdownValue: "制御されたエクスポートで継続可能",
+          noteDemoTitle: "このデモで確認できること",
+          noteDemoCopy:
+            "最終成果物を Markdown のまま維持しつつ、エディタ部分だけを差し替えて執筆体験を改善できることを確認できます。",
+          noteGapTitle: "ここで意図的に省いているもの",
+          noteGapCopy:
+            "リポジトリ連携、Docusaurus 組み込み、画像アップロード、永続化は未実装です。これは安全な UX スパイクです。",
+          footerCopy:
+            "この方向性がよければ、次は本番の寄稿ページで本格エディタを組み込み、既存のメタデータ、プレビュー、Markdown ダウンロードの流れを維持したまま置き換えます。",
+          toolbar: {
+            paragraph: "段落",
+            h1: "見出し 1",
+            h2: "見出し 2",
+            h3: "見出し 3",
+            quote: "引用",
+            bullets: "箇条書き",
+            numbered: "番号付き",
+            bold: "太字",
+            italic: "斜体",
+            underline: "下線",
+            link: "リンク",
+            image: "画像",
+            code: "コード",
+            rule: "区切り線",
+          },
+          prompts: {
+            link: "リンク URL を入力してください",
+            image: "画像 URL を入力してください",
+            code: "コードブロックの内容を貼り付けてください",
+          },
+        },
+      };
+
+      const templates = {
+        howto: {
+          en: `
+            <h1>How to update a promotion</h1>
+            <p>Use this guide when you need to change an active promotion safely.</p>
+            <h2>Before you begin</h2>
+            <ul>
+              <li>Confirm the promo ID</li>
+              <li>Check the market and date window</li>
+            </ul>
+            <h2>Steps</h2>
+            <ol>
+              <li>Open the promotion detail page.</li>
+              <li>Update the fields that changed.</li>
+              <li>Save and validate the storefront preview.</li>
+            </ol>
+          `,
+          ja: `
+            <h1>プロモーションを更新する方法</h1>
+            <p>有効中のプロモーションを安全に変更するときに使うガイドです。</p>
+            <h2>事前確認</h2>
+            <ul>
+              <li>プロモ ID を確認する</li>
+              <li>対象市場と適用期間を確認する</li>
+            </ul>
+            <h2>手順</h2>
+            <ol>
+              <li>プロモーション詳細ページを開く。</li>
+              <li>変更が必要な項目を更新する。</li>
+              <li>保存してストアフロントのプレビューを確認する。</li>
+            </ol>
+          `,
+        },
+        runbook: {
+          en: `
+            <h1>Runbook: image publish incident</h1>
+            <p>Use this when article images fail after a content release.</p>
+            <h2>Trigger</h2>
+            <p>Images render as broken links in one or more locales.</p>
+            <h2>Actions</h2>
+            <ol>
+              <li>Check whether the asset URL is reachable.</li>
+              <li>Confirm the image was attached to the publishing request.</li>
+              <li>Re-publish after the asset path is corrected.</li>
+            </ol>
+            <blockquote>Escalate to the platform owner if the same path fails across markets.</blockquote>
+          `,
+          ja: `
+            <h1>ランブック: 画像公開インシデント</h1>
+            <p>コンテンツ公開後に記事画像が表示されない場合に使用します。</p>
+            <h2>トリガー</h2>
+            <p>1 つ以上のロケールで画像がリンク切れとして表示される。</p>
+            <h2>対応</h2>
+            <ol>
+              <li>画像 URL に到達できるか確認する。</li>
+              <li>公開依頼に画像が添付されていたか確認する。</li>
+              <li>画像パス修正後に再公開する。</li>
+            </ol>
+            <blockquote>同じパス障害が複数市場で発生している場合は platform owner にエスカレーションする。</blockquote>
+          `,
+        },
+        faq: {
+          en: `
+            <h1>FAQ</h1>
+            <h2>Can we still export Markdown?</h2>
+            <p>Yes. The editor can own the writing experience while export stays controlled.</p>
+            <h2>Will EN and JP both work?</h2>
+            <p>Yes. Toolbar labels and starter content can localize without changing the framework choice.</p>
+          `,
+          ja: `
+            <h1>FAQ</h1>
+            <h2>Markdown は引き続き出力できますか？</h2>
+            <p>はい。執筆体験はエディタが担い、エクスポートは別途制御できます。</p>
+            <h2>英語と日本語の両方で使えますか？</h2>
+            <p>はい。ツールバー表示と初期テンプレートは、フレームワークを変えずにローカライズできます。</p>
+          `,
+        },
+      };
+
+      const state = {
+        locale: "en",
+        template: "howto",
+      };
+
+      const legacyEditor = document.getElementById("legacy-editor");
+      const legacyMarkdown = document.getElementById("legacy-markdown");
+      const modernMarkdown = document.getElementById("modern-markdown");
+      const legacyBlock = document.getElementById("legacy-block");
+      const modernToolbar = document.getElementById("modern-toolbar");
+      const modernMount = document.getElementById("modern-mount");
+      const turndown = new TurndownService({ bulletListMarker: "-", codeBlockStyle: "fenced" });
+
+      turndown.addRule("strikethrough", {
+        filter: ["del", "s", "strike"],
+        replacement(content) {
+          return "~~" + content + "~~";
+        },
+      });
+
+      function toMarkdown(html) {
+        return turndown.turndown(html || "").trim();
+      }
+
+      function escapeHtml(value) {
+        return value
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll("\"", "&quot;")
+          .replaceAll("'", "&#39;");
+      }
+
+      function setText(id, value) {
+        const node = document.getElementById(id);
+        if (node) {
+          node.textContent = value;
+        }
+      }
+
+      function updateCopy() {
+        const t = copy[state.locale];
+        setText("hero-title", t.heroTitle);
+        setText("hero-copy", t.heroCopy);
+        setText("meta-free", t.metaFree);
+        setText("meta-local", t.metaLocal);
+        setText("meta-bilingual", t.metaBilingual);
+        setText("legacy-title", t.legacyTitle);
+        setText("legacy-badge", t.legacyBadge);
+        setText("legacy-copy", t.legacyCopy);
+        setText("modern-title", t.modernTitle);
+        setText("modern-badge", t.modernBadge);
+        setText("modern-copy", t.modernCopy);
+        setText("legacy-markdown-title", t.markdownTitle);
+        setText("modern-markdown-title", t.markdownTitle);
+        setText("comparison-title", t.comparisonTitle);
+        setText("metric-ux-label", t.metricUxLabel);
+        setText("metric-legacy-ux", t.metricLegacyUx);
+        setText("metric-framework-label", t.metricFrameworkLabel);
+        setText("metric-modern-framework", t.metricModernFramework);
+        setText("metric-markdown-label", t.metricMarkdownLabel);
+        setText("metric-markdown-value", t.metricMarkdownValue);
+        setText("note-demo-title", t.noteDemoTitle);
+        setText("note-demo-copy", t.noteDemoCopy);
+        setText("note-gap-title", t.noteGapTitle);
+        setText("note-gap-copy", t.noteGapCopy);
+        setText("footer-copy", t.footerCopy);
+
+        legacyBlock.options[0].text = t.toolbar.paragraph;
+        legacyBlock.options[1].text = t.toolbar.h1;
+        legacyBlock.options[2].text = t.toolbar.h2;
+        legacyBlock.options[3].text = t.toolbar.h3;
+        legacyBlock.options[4].text = t.toolbar.quote;
+      }
+
+      function updateActiveChips(selector, value) {
+        document.querySelectorAll(selector).forEach((button) => {
+          button.classList.toggle("active", button.dataset.locale === value || button.dataset.template === value);
+        });
+      }
+
+      function execLegacy(command, value = null) {
+        legacyEditor.focus();
+        document.execCommand(command, false, value);
+        updateLegacyMarkdown();
+      }
+
+      function insertLegacyHtml(html) {
+        legacyEditor.focus();
+        document.execCommand("insertHTML", false, html);
+        updateLegacyMarkdown();
+      }
+
+      function updateLegacyMarkdown() {
+        legacyMarkdown.textContent = toMarkdown(legacyEditor.innerHTML);
+      }
+
+      modernMount.innerHTML = "";
+      const editor = new Quill(modernMount, {
+        theme: "snow",
+        modules: {
+          toolbar: false,
+        },
+      });
+
+      function getModernHtml() {
+        return editor.root.innerHTML;
+      }
+
+      function updateModernMarkdown() {
+        modernMarkdown.textContent = toMarkdown(getModernHtml());
+      }
+
+      editor.on("text-change", updateModernMarkdown);
+
+      function setModernContent() {
+        editor.clipboard.dangerouslyPasteHTML(templates[state.template][state.locale]);
+        updateModernMarkdown();
+      }
+
+      function buildModernToolbar() {
+        modernToolbar.innerHTML = "";
+        const t = copy[state.locale].toolbar;
+        const defs = [
+          { label: t.paragraph, action: () => applyQuillFormat("header", false) },
+          { label: t.h1, action: () => applyQuillFormat("header", 1) },
+          { label: t.h2, action: () => applyQuillFormat("header", 2) },
+          { label: t.h3, action: () => applyQuillFormat("header", 3) },
+          { label: t.bold, action: () => toggleQuillInline("bold") },
+          { label: t.italic, action: () => toggleQuillInline("italic") },
+          { label: t.underline, action: () => toggleQuillInline("underline") },
+          { label: t.bullets, action: () => applyQuillFormat("list", "bullet") },
+          { label: t.numbered, action: () => applyQuillFormat("list", "ordered") },
+          { label: t.link, action: () => {
+              const url = window.prompt(copy[state.locale].prompts.link);
+              if (url) {
+                applyQuillFormat("link", url);
+              }
+            } },
+          { label: t.image, action: () => {
+              const src = window.prompt(copy[state.locale].prompts.image);
+              if (src) {
+                const range = editor.getSelection(true);
+                editor.insertEmbed(range.index, "image", src, "user");
+                editor.setSelection(range.index + 1, 0);
+                updateModernMarkdown();
+              }
+            } },
+          { label: t.code, action: () => {
+              const code = window.prompt(copy[state.locale].prompts.code);
+              if (code) {
+                const range = editor.getSelection(true);
+                editor.insertText(range.index, code, { "code-block": true });
+                editor.setSelection(range.index + code.length, 0);
+                updateModernMarkdown();
+              }
+            } },
+          { label: t.rule, action: () => {
+              const range = editor.getSelection(true);
+              editor.insertText(range.index, "\n--------------------\n", "user");
+              editor.setSelection(range.index + 22, 0);
+              updateModernMarkdown();
+            } },
+        ];
+
+        defs.forEach((def) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.textContent = def.label;
+          button.addEventListener("click", def.action);
+          modernToolbar.appendChild(button);
+        });
+      }
+
+      function getQuillCurrentFormat(name) {
+        const range = editor.getSelection(true);
+        return editor.getFormat(range)[name];
+      }
+
+      function applyQuillFormat(name, value) {
+        const range = editor.getSelection(true);
+        editor.format(name, value, "user");
+        editor.setSelection(range.index, range.length);
+        updateModernMarkdown();
+      }
+
+      function toggleQuillInline(name) {
+        const active = getQuillCurrentFormat(name);
+        applyQuillFormat(name, !active);
+      }
+
+      function setTemplateContent() {
+        legacyEditor.innerHTML = templates[state.template][state.locale];
+        updateLegacyMarkdown();
+        setModernContent();
+      }
+
+      document.querySelectorAll("[data-locale]").forEach((button) => {
+        button.addEventListener("click", () => {
+          state.locale = button.dataset.locale;
+          updateActiveChips("[data-locale]", state.locale);
+          updateCopy();
+          buildModernToolbar();
+          setTemplateContent();
+        });
+      });
+
+      document.querySelectorAll("[data-template]").forEach((button) => {
+        button.addEventListener("click", () => {
+          state.template = button.dataset.template;
+          updateActiveChips("[data-template]", state.template);
+          setTemplateContent();
+        });
+      });
+
+      legacyEditor.addEventListener("input", updateLegacyMarkdown);
+      legacyBlock.addEventListener("change", (event) => execLegacy("formatBlock", event.target.value));
+
+      document.querySelectorAll("[data-cmd]").forEach((button) => {
+        button.addEventListener("click", () => execLegacy(button.dataset.cmd));
+      });
+
+      document.getElementById("legacy-link").addEventListener("click", () => {
+        const url = window.prompt(copy[state.locale].prompts.link);
+        if (url) {
+          execLegacy("createLink", url);
+        }
+      });
+
+      document.getElementById("legacy-image").addEventListener("click", () => {
+        const src = window.prompt(copy[state.locale].prompts.image);
+        if (src) {
+          execLegacy("insertImage", src);
+        }
+      });
+
+      document.getElementById("legacy-code").addEventListener("click", () => {
+        const code = window.prompt(copy[state.locale].prompts.code);
+        if (code) {
+          insertLegacyHtml(`<pre><code>${escapeHtml(code)}</code></pre>`);
+        }
+      });
+
+      document.getElementById("legacy-table").addEventListener("click", () => {
+        insertLegacyHtml(
+          "<table><thead><tr><th>Column A</th><th>Column B</th></tr></thead><tbody><tr><td>Value</td><td>Value</td></tr><tr><td>Value</td><td>Value</td></tr></tbody></table><p></p>"
+        );
+      });
+
+      updateCopy();
+      updateActiveChips("[data-locale]", state.locale);
+      updateActiveChips("[data-template]", state.template);
+      buildModernToolbar();
+      setTemplateContent();
+    </script>
+  </body>
+</html>

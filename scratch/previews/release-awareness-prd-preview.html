@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Release Awareness PRD Preview</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+    :root {
+      --bg: #f4efe7;
+      --surface: rgba(255, 251, 246, 0.92);
+      --surface-strong: #fffdfa;
+      --ink: #171310;
+      --muted: #62564d;
+      --line: rgba(23, 19, 16, 0.1);
+      --brand: #d61f2c;
+      --brand-soft: rgba(214, 31, 44, 0.1);
+      --accent: #163f8c;
+      --good: #1e7a4f;
+      --warn: #bf7b14;
+      --shadow: 0 30px 80px rgba(60, 28, 14, 0.12);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(214, 31, 44, 0.08), transparent 24%),
+        radial-gradient(circle at 85% 10%, rgba(22, 63, 140, 0.08), transparent 20%),
+        linear-gradient(180deg, #fffaf3 0%, #f3eadf 55%, #efe3d4 100%);
+    }
+
+    .page {
+      width: min(1440px, calc(100% - 28px));
+      margin: 14px auto 28px;
+      background: rgba(255, 252, 248, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(18px);
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 22px;
+      background: #1a1410;
+      color: white;
+      border-bottom: 2px solid rgba(214, 31, 44, 0.55);
+    }
+
+    .title-wrap strong {
+      display: block;
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+
+    .title-wrap span {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.86rem;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .badge {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: 360px minmax(0, 1fr);
+      min-height: calc(100vh - 120px);
+    }
+
+    .sidebar {
+      padding: 22px;
+      border-right: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.34), rgba(255,255,255,0.1));
+    }
+
+    .content {
+      padding: 22px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-weight: 800;
+      color: var(--brand);
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 14px 40px rgba(44, 18, 9, 0.06);
+    }
+
+    .nav-card, .summary-card, .mock-card, .section-card {
+      padding: 18px;
+    }
+
+    .nav-card { margin-bottom: 16px; }
+
+    .nav-button {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      text-align: left;
+      padding: 12px 12px;
+      border-radius: 14px;
+      cursor: pointer;
+      margin-bottom: 8px;
+      transition: 180ms ease;
+      font: inherit;
+      color: var(--ink);
+    }
+
+    .nav-button:hover, .nav-button.active {
+      background: linear-gradient(135deg, rgba(214, 31, 44, 0.1), rgba(214, 31, 44, 0.03));
+      transform: translateX(3px);
+    }
+
+    .nav-button strong {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+
+    .nav-button span {
+      color: var(--muted);
+      font-size: 0.83rem;
+      line-height: 1.45;
+    }
+
+    .summary-card h3, .section-card h2, .mock-card h2 {
+      margin: 0 0 10px;
+    }
+
+    .summary-card p, .section-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.93rem;
+    }
+
+    .chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .chip {
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: white;
+      border: 1px solid var(--line);
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 420px;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .hero-card {
+      padding: 24px;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(214, 31, 44, 0.12), transparent 24%),
+        linear-gradient(135deg, rgba(255,255,255,0.95), rgba(252,243,235,0.92));
+    }
+
+    .hero-card h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-card h1 span { color: var(--brand); }
+
+    .hero-card p {
+      margin: 0 0 18px;
+      max-width: 60ch;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .stat {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.45rem;
+      margin-bottom: 4px;
+    }
+
+    .stat span {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 800;
+    }
+
+    .recommendation {
+      padding: 22px;
+      background: linear-gradient(180deg, #191411, #2a1b16);
+      color: white;
+    }
+
+    .recommendation p {
+      color: rgba(255,255,255,0.76);
+      margin: 0 0 16px;
+      line-height: 1.65;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 11px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      margin: 0 8px 8px 0;
+    }
+
+    .pill.good { background: rgba(30,122,79,0.18); color: #b6f1cf; }
+    .pill.warn { background: rgba(191,123,20,0.18); color: #ffdca4; }
+    .pill.info { background: rgba(22,63,140,0.18); color: #c8dcff; }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .section-card ul {
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .mockups {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .mock-card {
+      background: var(--surface-strong);
+    }
+
+    .frame {
+      margin-top: 14px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      background: #fcfaf7;
+    }
+
+    .frame-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 12px;
+      background: #f2ece4;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .frame-body {
+      padding: 14px;
+      min-height: 260px;
+    }
+
+    .release-banner {
+      padding: 14px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(214, 31, 44, 0.12), rgba(214, 31, 44, 0.03));
+      border: 1px solid rgba(214, 31, 44, 0.12);
+      margin-bottom: 12px;
+    }
+
+    .release-banner strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .release-banner p,
+    .mini-panel p,
+    .use-case p,
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 0.85rem;
+    }
+
+    .mini-panel, .use-case, .step {
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: white;
+      margin-bottom: 10px;
+    }
+
+    .mini-panel strong, .use-case strong, .step strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+    }
+
+    .step-row {
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(22,63,140,0.06);
+      color: var(--accent);
+      font-size: 0.86rem;
+      line-height: 1.55;
+      border: 1px solid rgba(22,63,140,0.08);
+    }
+
+    .mono {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.78rem;
+    }
+
+    @media (max-width: 1180px) {
+      .shell, .hero, .section-grid, .mockups {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        width: calc(100% - 12px);
+        margin: 6px auto 18px;
+        border-radius: 20px;
+      }
+
+      .topbar, .sidebar, .content {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .stat-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="topbar">
+      <div class="title-wrap">
+        <strong>Recommended Feature + PRD</strong>
+        <span>Preview-only concept for release awareness</span>
+      </div>
+      <div class="badge-row">
+        <div class="badge">Mockup only</div>
+        <div class="badge">No development</div>
+        <div class="badge">Placeholder data</div>
+      </div>
+    </div>
+
+    <div class="shell">
+      <aside class="sidebar">
+        <p class="eyebrow">Preview sections</p>
+        <div class="card nav-card">
+          <button class="nav-button active" data-target="recommendation">
+            <strong>Recommended feature</strong>
+            <span>Shift from passive release notes to role-based in-product change awareness.</span>
+          </button>
+          <button class="nav-button" data-target="prd">
+            <strong>PRD</strong>
+            <span>Problem, goals, users, success metrics, and scope.</span>
+          </button>
+          <button class="nav-button" data-target="mockups">
+            <strong>Mockups</strong>
+            <span>Three simple surfaces for announcement, education, and relevance.</span>
+          </button>
+        </div>
+
+        <div class="card summary-card">
+          <h3>Best-practice take</h3>
+          <p>
+            A release note alone is rarely enough. The stronger pattern is a small “What changed and why it matters”
+            system that combines announcement, business value, role relevance, and a lightweight way to learn or dismiss.
+          </p>
+          <div class="chip-list">
+            <div class="chip">What’s new</div>
+            <div class="chip">Why it matters</div>
+            <div class="chip">Who should care</div>
+            <div class="chip">How to use it</div>
+            <div class="chip">Business examples</div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="content">
+        <section class="hero" id="recommendation">
+          <div class="card hero-card">
+            <p class="eyebrow">Recommended feature direction</p>
+            <h1>BUILD A <span>WHAT'S NEW CENTER</span> NOT JUST RELEASE NOTES</h1>
+            <p>
+              The recommended product pattern is an in-product release awareness layer with role-based targeting.
+              Each release item should answer four questions fast: what changed, why the business should care,
+              how to use it, and when this is relevant. This turns “we never know what shipped” into a habit loop
+              users can trust without forcing them to go hunt in documentation.
+            </p>
+
+            <div class="stat-grid">
+              <div class="stat">
+                <strong>1</strong>
+                <span>primary source of truth</span>
+              </div>
+              <div class="stat">
+                <strong>4</strong>
+                <span>required content blocks</span>
+              </div>
+              <div class="stat">
+                <strong>3</strong>
+                <span>UI surfaces</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card recommendation">
+            <h2 style="margin-top:0;">Core recommendation</h2>
+            <p>
+              Use a “What’s New Center” with targeted badges, dismissible highlight cards, and a searchable archive.
+              Keep release notes as the long-tail record, but promote a shorter, user-centered summary in-product.
+            </p>
+            <div>
+              <span class="pill good">Solves discoverability</span>
+              <span class="pill info">Teaches usage in context</span>
+              <span class="pill good">Makes value explicit</span>
+              <span class="pill warn">Requires content discipline</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="prd">
+          <div class="section-grid">
+            <div class="card section-card">
+              <p class="eyebrow">PRD</p>
+              <h2>Problem statement</h2>
+              <p>
+                Market users do not reliably know what features were released recently, which leads to low awareness,
+                repeated enablement work, slower adoption, and the perception that the platform is not improving even
+                when meaningful functionality ships.
+              </p>
+              <ul>
+                <li>Release notes are too passive and require users to seek them out.</li>
+                <li>Users need business relevance, not only a changelog.</li>
+                <li>Different roles care about different launches.</li>
+                <li>Teams need a faster path from awareness to first use.</li>
+              </ul>
+            </div>
+
+            <div class="card section-card">
+              <p class="eyebrow">PRD</p>
+              <h2>Goals and non-goals</h2>
+              <ul>
+                <li>Increase awareness of relevant new features among market users.</li>
+                <li>Improve time-to-understanding for newly shipped functionality.</li>
+                <li>Drive first-use and adoption of targeted launches.</li>
+                <li>Reduce reliance on manual stakeholder reminders.</li>
+                <li>Non-goal: replace full documentation or training programs.</li>
+                <li>Non-goal: create a feed for every tiny backend change.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="section-grid">
+            <div class="card section-card">
+              <p class="eyebrow">PRD</p>
+              <h2>Target users</h2>
+              <ul>
+                <li>Market operators who need to know what is newly available and whether it affects their workflows.</li>
+                <li>Regional managers who need business framing and rollout clarity.</li>
+                <li>Admin users who need quick enablement for newly shipped tasks or settings.</li>
+              </ul>
+            </div>
+
+            <div class="card section-card">
+              <p class="eyebrow">PRD</p>
+              <h2>Required content model</h2>
+              <ul>
+                <li><strong>What’s new:</strong> concise feature headline and release status.</li>
+                <li><strong>Why it matters:</strong> business problem solved and expected value.</li>
+                <li><strong>How to use it:</strong> short path to first action or guide.</li>
+                <li><strong>Where it fits:</strong> example business cases and relevant roles/markets.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="section-grid">
+            <div class="card section-card">
+              <p class="eyebrow">PRD</p>
+              <h2>Success metrics</h2>
+              <ul>
+                <li>Open rate on “What’s New” items by relevant audience.</li>
+                <li>Click-through rate from announcement to guide or workflow.</li>
+                <li>Feature adoption among targeted users within 30 days.</li>
+                <li>Reduction in “I didn’t know this exists” feedback.</li>
+              </ul>
+            </div>
+
+            <div class="card section-card">
+              <p class="eyebrow">PRD</p>
+              <h2>Scope v1</h2>
+              <ul>
+                <li>One inbox-style “What’s New” center in the portal.</li>
+                <li>One homepage highlight card for recent important launches.</li>
+                <li>Per-item structure with summary, value, usage, and examples.</li>
+                <li>Dismiss state and “mark as read” only.</li>
+                <li>No comments, no reactions, no complex personalization engine in v1.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="mockups">
+          <p class="eyebrow">Mockups</p>
+          <div class="mockups">
+            <div class="card mock-card">
+              <h2>1. Homepage feature spotlight</h2>
+              <p>A lightweight card that catches attention without becoming noisy.</p>
+              <div class="frame">
+                <div class="frame-bar">
+                  <span>Portal home</span>
+                  <span class="mono">role-targeted banner</span>
+                </div>
+                <div class="frame-body">
+                  <div class="release-banner">
+                    <strong>New: Scheduled Menu Publish</strong>
+                    <p>Plan menu updates ahead of time instead of relying on same-day manual changes.</p>
+                  </div>
+                  <div class="mini-panel">
+                    <strong>Why this matters</strong>
+                    <p>Reduces coordination errors during campaign launches and improves market confidence during change windows.</p>
+                  </div>
+                  <div class="mini-panel">
+                    <strong>Who should look</strong>
+                    <p>Menu owners, regional operations, and launch managers in JP and AU.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card mock-card">
+              <h2>2. What's New detail page</h2>
+              <p>A canonical item format that explains value before technical detail.</p>
+              <div class="frame">
+                <div class="frame-bar">
+                  <span>What's New Center</span>
+                  <span class="mono">single release item</span>
+                </div>
+                <div class="frame-body">
+                  <div class="use-case">
+                    <strong>Business problem</strong>
+                    <p>Teams need safer rollout timing for menu changes across multiple stores and markets.</p>
+                  </div>
+                  <div class="use-case">
+                    <strong>How to use it</strong>
+                    <p>Go to Menus, choose Publish, set the future publish window, and confirm store assignment.</p>
+                  </div>
+                  <div class="use-case">
+                    <strong>Where this fits</strong>
+                    <p>Promotion launches, breakfast/lunch transitions, and overnight menu updates.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card mock-card">
+              <h2>3. Quick-start panel</h2>
+              <p>An activation shortcut for users who are ready to try the feature immediately.</p>
+              <div class="frame">
+                <div class="frame-bar">
+                  <span>Try it now</span>
+                  <span class="mono">first-use guidance</span>
+                </div>
+                <div class="frame-body">
+                  <div class="step-row">
+                    <div class="step">
+                      <strong>Step 1</strong>
+                      <p>Open the relevant module or guide.</p>
+                    </div>
+                    <div class="step">
+                      <strong>Step 2</strong>
+                      <p>Follow a three-step setup with screenshots or a short checklist.</p>
+                    </div>
+                    <div class="step">
+                      <strong>Step 3</strong>
+                      <p>Confirm success and dismiss the card once adopted.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="footer-note" id="note">
+          This is a visual product concept only. All features, flows, and examples on this page are placeholders intended to help discuss the operating model, content structure, and UX direction before any implementation.
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll(".nav-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".nav-button").forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+        const target = document.getElementById(button.dataset.target);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

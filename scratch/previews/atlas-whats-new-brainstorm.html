@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atlas What's New Preview</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Manrope:wght@400;500;700;800&display=swap');
+
+    :root {
+      --bg: #070606;
+      --paper: rgba(18, 14, 12, 0.92);
+      --paper-strong: #120f0e;
+      --ink: #fff8f2;
+      --muted: rgba(255, 244, 238, 0.68);
+      --line: rgba(255, 255, 255, 0.08);
+      --brand: #e4002b;
+      --brand-dark: #b30022;
+      --gold: #ffcf66;
+      --green: #1b7a4f;
+      --blue: #214d9d;
+      --shadow: 0 28px 80px rgba(0, 0, 0, 0.34);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(228, 0, 43, 0.22), transparent 24%),
+        radial-gradient(circle at top right, rgba(255, 255, 255, 0.05), transparent 24%),
+        linear-gradient(180deg, #050505 0%, #0c0807 55%, #120909 100%);
+    }
+
+    .page {
+      width: min(1440px, calc(100% - 24px));
+      margin: 12px auto 28px;
+      border-radius: 32px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(10, 8, 7, 0.82);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 24px;
+      background: linear-gradient(180deg, #17120e, #201611);
+      color: white;
+      border-bottom: 2px solid rgba(228, 0, 43, 0.55);
+    }
+
+    .brand strong {
+      display: block;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.15rem;
+      letter-spacing: -0.03em;
+    }
+
+    .brand span {
+      color: rgba(255,255,255,0.68);
+      font-size: 0.86rem;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      color: rgba(255,255,255,0.88);
+      text-decoration: none;
+      font-size: 0.86rem;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .content {
+      padding: 22px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) 340px;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--paper);
+      box-shadow: 0 14px 40px rgba(45, 22, 10, 0.06);
+    }
+
+    .hero-card {
+      padding: 28px;
+      background:
+        radial-gradient(circle at 85% 15%, rgba(228, 0, 43, 0.18), transparent 22%),
+        linear-gradient(135deg, rgba(10, 7, 5, 0.96), rgba(51, 14, 18, 0.92));
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-weight: 800;
+      color: var(--brand);
+    }
+
+    h1, h2, h3, h4 { margin: 0; }
+
+    .hero-card h1 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(2.2rem, 4.8vw, 4rem);
+      line-height: 0.96;
+      letter-spacing: -0.05em;
+      margin-bottom: 14px;
+      max-width: 12ch;
+    }
+
+    .hero-card h1 span {
+      color: var(--brand);
+    }
+
+    .hero-card p {
+      margin: 0;
+      max-width: 58ch;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .hero-metrics {
+      display: grid;
+      gap: 12px;
+    }
+
+    .metric-card {
+      padding: 18px;
+      background: linear-gradient(180deg, #1a1410, #281a14);
+      color: white;
+      border-radius: var(--radius-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .metric-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -20px -60px auto;
+      width: 140px;
+      height: 140px;
+      background: radial-gradient(circle, rgba(228, 0, 43, 0.18), transparent 62%);
+    }
+
+    .metric-card strong {
+      display: block;
+      font-size: 2rem;
+      margin-bottom: 6px;
+    }
+
+    .metric-card span {
+      display: block;
+      color: rgba(255,255,255,0.76);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .section {
+      margin-bottom: 18px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .section-header h2 {
+      font-size: 1.15rem;
+    }
+
+    .label {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .roadmap {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .roadmap-column {
+      border-radius: 18px;
+      padding: 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      border: 1px solid var(--line);
+    }
+
+    .roadmap-column h3 {
+      font-size: 0.92rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 12px;
+    }
+
+    .roadmap-column ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .featured {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) 360px;
+      gap: 18px;
+      padding: 20px;
+    }
+
+    .featured-main {
+      padding: 24px;
+      border-radius: 22px;
+      background:
+        linear-gradient(135deg, rgba(228, 0, 43, 0.16), rgba(228, 0, 43, 0.04)),
+        #140f0f;
+      border: 1px solid rgba(228, 0, 43, 0.22);
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--brand-dark);
+      margin-bottom: 12px;
+    }
+
+    .featured-main h3 {
+      font-size: 1.9rem;
+      margin-bottom: 12px;
+    }
+
+    .featured-main p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .impact-list, .detail-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .impact-item, .detail-item {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--line);
+    }
+
+    .impact-item strong, .detail-item strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.92rem;
+    }
+
+    .impact-item span, .detail-item span {
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--brand), #ff4f63);
+      color: white;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .feature-card {
+      padding: 18px;
+      background: var(--paper-strong);
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 7px 10px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .status.new { background: rgba(27, 122, 79, 0.12); color: var(--green); }
+    .status.rolling { background: rgba(33, 77, 157, 0.12); color: var(--blue); }
+    .status.planned { background: rgba(255, 207, 102, 0.22); color: #8e5a00; }
+
+    .feature-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .meta span {
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--muted);
+      border: 1px solid var(--line);
+    }
+
+    .simple-list {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .list-box {
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--line);
+    }
+
+    .list-box h3 {
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+
+    .list-box ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .coming-soon {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .coming-card {
+      padding: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+    }
+
+    .coming-card h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .coming-card p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 0.9rem;
+    }
+
+    .footer-note {
+      margin-top: 8px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: rgba(255, 244, 238, 0.74);
+      font-size: 0.86rem;
+      line-height: 1.55;
+    }
+
+    .brand-strip {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .logo-badge {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: white;
+      box-shadow: 0 16px 28px rgba(228, 0, 43, 0.16);
+      flex: 0 0 auto;
+    }
+
+    .brand-note {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: rgba(255, 244, 238, 0.84);
+      letter-spacing: 0.02em;
+    }
+
+    .visual-stack {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .visual-card {
+      position: relative;
+      min-height: 150px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: linear-gradient(135deg, #090707, #321014);
+    }
+
+    .visual-card svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    @media (max-width: 1180px) {
+      .hero,
+      .featured,
+      .roadmap {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .grid,
+      .simple-list,
+      .coming-soon {
+        grid-template-columns: 1fr;
+      }
+
+      .page {
+        width: calc(100% - 10px);
+        margin: 5px auto 18px;
+        border-radius: 20px;
+      }
+
+      .topbar,
+      .content {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <strong>KFC Atlas Knowledge Center</strong>
+        <span>What's New brainstorm preview</span>
+      </div>
+      <nav class="nav">
+        <a href="#home">Home</a>
+        <a href="#features">Features</a>
+        <a href="#admin">Admin Portal</a>
+        <a href="#playbooks">Playbooks</a>
+        <a href="#whats-new">What's New</a>
+      </nav>
+    </header>
+
+    <main class="content">
+      <section class="hero" id="whats-new">
+        <div class="card hero-card">
+          <p class="eyebrow">What's new in Atlas</p>
+          <h1>DISCOVER WHAT SHIPPED <span>AND WHY IT MATTERS</span></h1>
+          <p>
+            A concept page for helping markets quickly see the latest platform capabilities, understand the
+            business problem behind each launch, and decide where each feature fits in their day-to-day operations.
+          </p>
+        </div>
+
+        <div class="hero-metrics">
+          <div class="metric-card">
+            <strong>6</strong>
+            <span>new feature launches highlighted this quarter</span>
+          </div>
+          <div class="metric-card">
+            <strong>3</strong>
+            <span>coming-soon themes with clear rollout intent</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <h2>Roadmap Snapshot</h2>
+          <span class="label">Now / Next / Later</span>
+        </div>
+        <div class="card roadmap">
+          <div class="roadmap-column">
+            <h3>Now</h3>
+            <ul>
+              <li>Guest Checkout OTP</li>
+              <li>Admin Portal Bulk Editing</li>
+            </ul>
+          </div>
+          <div class="roadmap-column">
+            <h3>Next</h3>
+            <ul>
+              <li>Address Autocomplete</li>
+              <li>Promotion Eligibility API</li>
+            </ul>
+          </div>
+          <div class="roadmap-column">
+            <h3>Later</h3>
+            <ul>
+              <li>Menu Personalization</li>
+              <li>Smart Recommendations</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <h2>Featured Launch</h2>
+          <span class="label">High impact</span>
+        </div>
+        <div class="card featured">
+          <div class="featured-main">
+            <div class="kicker">Starred launch</div>
+            <div class="brand-strip">
+              <div class="logo-badge" aria-hidden="true">
+                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="64" height="64" rx="18" fill="#ffffff"/>
+                  <rect x="0" y="0" width="16" height="64" fill="#E4002B"/>
+                  <rect x="24" y="0" width="16" height="64" fill="#E4002B"/>
+                  <circle cx="44" cy="20" r="8" fill="#17120E"/>
+                  <path d="M42 30c-9 0-14 5-14 10v4h24v-4c0-5-5-10-10-10Z" fill="#17120E"/>
+                  <path d="M28 46h24v6H28z" fill="#17120E"/>
+                </svg>
+              </div>
+              <div class="brand-note">KFC-branded launch story with richer visuals for higher scan appeal</div>
+            </div>
+            <h3>Passwordless Authentication</h3>
+            <p>
+              Removes password dependency and enables OTP login for faster, more secure customer authentication,
+              especially in high-friction mobile flows.
+            </p>
+            <div class="impact-list">
+              <div class="impact-item">
+                <strong>Expected impact</strong>
+                <span>Higher login conversion and reduced password reset friction for customers returning to order.</span>
+              </div>
+              <div class="impact-item">
+                <strong>Where it fits</strong>
+                <span>Markets focused on conversion, repeat ordering, and simplifying authentication support overhead.</span>
+              </div>
+            </div>
+            <a class="button" href="#">Read Product Guide</a>
+            <div class="visual-stack">
+              <div class="visual-card" aria-hidden="true">
+                <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="phoneBg" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#170F0F"/>
+                      <stop offset="100%" stop-color="#3A0D16"/>
+                    </linearGradient>
+                  </defs>
+                  <rect width="640" height="300" fill="url(#phoneBg)"/>
+                  <circle cx="570" cy="46" r="90" fill="rgba(228,0,43,0.18)"/>
+                  <rect x="52" y="30" width="180" height="240" rx="28" fill="#0D0A09" stroke="rgba(255,255,255,0.16)"/>
+                  <rect x="68" y="54" width="148" height="188" rx="20" fill="#FFF7F3"/>
+                  <rect x="84" y="70" width="116" height="18" rx="9" fill="#E4002B"/>
+                  <rect x="84" y="102" width="116" height="32" rx="16" fill="#17120E"/>
+                  <text x="142" y="123" text-anchor="middle" fill="#FFF7F3" font-size="14" font-family="Manrope, sans-serif">Send OTP</text>
+                  <rect x="84" y="148" width="116" height="22" rx="11" fill="#F2E6DD"/>
+                  <rect x="84" y="178" width="90" height="22" rx="11" fill="#F2E6DD"/>
+                  <rect x="280" y="58" width="280" height="184" rx="24" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.12)"/>
+                  <text x="308" y="100" fill="#FFF8F2" font-size="20" font-family="Space Grotesk, sans-serif">Launch Story</text>
+                  <text x="308" y="136" fill="rgba(255,248,242,0.82)" font-size="16" font-family="Manrope, sans-serif">Faster sign-in for high-intent customers</text>
+                  <text x="308" y="166" fill="rgba(255,248,242,0.62)" font-size="14" font-family="Manrope, sans-serif">OTP-first login reduces password friction</text>
+                  <text x="308" y="190" fill="rgba(255,248,242,0.62)" font-size="14" font-family="Manrope, sans-serif">and helps markets recover more repeat users.</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-list">
+            <div class="detail-item">
+              <strong>Business problem</strong>
+              <span>Passwords create login abandonment and customer support friction during checkout and re-engagement.</span>
+            </div>
+            <div class="detail-item">
+              <strong>How to use it</strong>
+              <span>Enable OTP-based authentication and configure the login experience for supported flows.</span>
+            </div>
+            <div class="detail-item">
+              <strong>Best-fit markets</strong>
+              <span>Teams prioritizing reduced friction in sign-in and better mobile conversion performance.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <h2>New Features</h2>
+          <span class="label">Adoption-focused cards</span>
+        </div>
+        <div class="grid" id="features">
+          <article class="card feature-card">
+            <div class="status new">New</div>
+            <h3>AI Menu Personalization</h3>
+            <p>Reorders menu recommendations based on past orders, time of day, and likely next-best items.</p>
+            <div class="meta">
+              <span>Personalization</span>
+              <span>Revenue lift</span>
+            </div>
+            <p><strong>Best for:</strong> markets trying to increase conversion, upsell attach rate, and repeat ordering.</p>
+            <a class="button" href="#">Read Product Guide</a>
+          </article>
+
+          <article class="card feature-card">
+            <div class="status new">New</div>
+            <h3>One-Tap Wallet Checkout</h3>
+            <p>Accelerates checkout with Apple Pay, Google Pay, and saved-wallet flows tuned for mobile conversion.</p>
+            <div class="meta">
+              <span>Checkout</span>
+              <span>Mobile-first</span>
+            </div>
+            <p><strong>Best for:</strong> markets where checkout speed and reduced payment friction directly affect order completion.</p>
+            <a class="button" href="#">Read Product Guide</a>
+          </article>
+
+          <article class="card feature-card">
+            <div class="status rolling">Rolling Out</div>
+            <h3>Conversational Shopping Assistant</h3>
+            <p>Guides customers to meals, bundles, and offers through natural-language prompts instead of rigid navigation.</p>
+            <div class="meta">
+              <span>AI discovery</span>
+              <span>Engagement</span>
+            </div>
+            <p><strong>Best for:</strong> markets exploring Gen Z-friendly discovery and faster path-to-basket experiences.</p>
+            <a class="button" href="#">Read Product Guide</a>
+          </article>
+
+          <article class="card feature-card">
+            <div class="status rolling">Rolling Out</div>
+            <h3>Passwordless + OTP Identity</h3>
+            <p>Combines passwordless sign-in with guest-order verification to reduce fraud and remove login friction.</p>
+            <div class="meta">
+              <span>Identity</span>
+              <span>Fraud reduction</span>
+            </div>
+            <p><strong>Best for:</strong> markets balancing high-volume campaigns with trust, security, and repeat-user convenience.</p>
+            <a class="button" href="#">Read Product Guide</a>
+          </article>
+
+          <article class="card feature-card">
+            <div class="status new">New</div>
+            <h3>Loyalty Wallet and Offer Hub</h3>
+            <p>Centralizes points, rewards, and personalized offers in one mobile-friendly wallet experience.</p>
+            <div class="meta">
+              <span>Loyalty</span>
+              <span>Retention</span>
+            </div>
+            <p><strong>Best for:</strong> markets trying to drive more repeat purchase behavior and clearer customer value exchange.</p>
+            <a class="button" href="#">Read Product Guide</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <h2>Recent Improvements</h2>
+          <span class="label">Smaller shipped wins</span>
+        </div>
+        <div class="card simple-list">
+          <div class="list-box">
+            <h3>Promotion API Enhancement</h3>
+            <ul>
+              <li>Cleaner campaign rule support</li>
+              <li>Better extensibility for future promo logic</li>
+            </ul>
+          </div>
+          <div class="list-box">
+            <h3>Checkout Address Autocomplete</h3>
+            <ul>
+              <li>Fewer address entry errors</li>
+              <li>Faster delivery checkout flow</li>
+            </ul>
+          </div>
+          <div class="list-box" id="admin">
+            <h3>Admin Portal Bulk Configuration</h3>
+            <ul>
+              <li>Reduced repeated manual updates</li>
+              <li>Faster operational setup across stores</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <h2>Coming Soon</h2>
+          <span class="label">High-confidence upcoming work</span>
+        </div>
+        <div class="coming-soon">
+          <article class="card coming-card">
+            <div class="status planned">Planned</div>
+            <h3>Menu Personalization</h3>
+            <p>Customers will see more relevant menu items based on past ordering behavior and repeat-purchase patterns.</p>
+            <div class="meta">
+              <span>Growth</span>
+              <span>Personalization</span>
+            </div>
+          </article>
+
+          <article class="card coming-card">
+            <div class="status planned">In Development</div>
+            <h3>Delivery ETA Improvements</h3>
+            <p>More accurate delivery time predictions to set better expectations and reduce customer uncertainty.</p>
+            <div class="meta">
+              <span>Operations</span>
+              <span>Delivery</span>
+            </div>
+          </article>
+
+          <article class="card coming-card" id="playbooks">
+            <div class="status planned">Planned</div>
+            <h3>Localization Enhancements</h3>
+            <p>Improved language support and stronger market-specific controls for regional teams managing local needs.</p>
+            <div class="meta">
+              <span>Market enablement</span>
+              <span>Localization</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <div class="footer-note" id="home">
+        Preview note: all content on this page is mock content for discussion only. The goal is to explore how Atlas could present launches as an adoption page, not just a release-note archive.
+      </div>
+    </main>
+  </div>
+</body>
+</html>
