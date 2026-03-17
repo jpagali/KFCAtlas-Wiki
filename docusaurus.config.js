@@ -116,7 +116,7 @@ const config = {
           {
             to: '/rna-sneak-peek',
             position: 'left',
-            label: 'RNA Sneak Peek',
+            label: 'Atlas Peek',
             className: 'navbar__cta navbar__cta--sneak-peek navbar-item--rna',
           },
           {

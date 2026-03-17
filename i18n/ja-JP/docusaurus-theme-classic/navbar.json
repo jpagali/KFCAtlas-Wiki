@@ -23,8 +23,8 @@
     "message": "最新情報",
     "description": "Navbar item with label What's New"
   },
-  "item.label.RNA Sneak Peek": {
-    "message": "RNA Sneak Peek",
-    "description": "Navbar item with label RNA Sneak Peek"
+  "item.label.Atlas Peek": {
+    "message": "Atlas Peek",
+    "description": "Navbar item with label Atlas Peek"
   }
 }
