@@ -88,7 +88,7 @@ export default function SearchBox({
   const messages = {
     placeholder:
       placeholder ||
-      (currentLocale === 'ja-JP' ? '記事や見出しを検索' : 'Search articles and headings'),
+      (currentLocale === 'ja-JP' ? '気になることは？' : "What's on your mind?"),
     empty:
       emptyMessage ||
       (currentLocale === 'ja-JP' ? '一致する記事が見つかりません。' : 'No matching articles found.'),

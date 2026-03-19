@@ -28,10 +28,10 @@ const config = {
 
   onBrokenLinks: 'warn',
   markdown: {
-    hooks: {
-      onBrokenMarkdownLinks: 'warn',
-    },
+    mermaid: true,
   },
+
+  themes: ['@docusaurus/theme-mermaid'],
 
   i18n: {
     defaultLocale: 'en-US',
@@ -108,6 +108,13 @@ const config = {
             className: 'navbar-item--playbooks',
           },
           {
+            type: 'docSidebar',
+            sidebarId: 'byteCapabilitiesSidebar',
+            position: 'left',
+            label: '🧩 Byte Capabilities',
+            className: 'navbar-item--byte-capabilities',
+          },
+          {
             to: '/whats-new',
             position: 'left',
             label: "What's New",
@@ -123,11 +130,6 @@ const config = {
             type: 'custom-search',
             position: 'right',
             className: 'navbar-item--search',
-          },
-          {
-            type: 'custom-contribute',
-            position: 'right',
-            className: 'navbar-item--contribute',
           },
           {
             type: 'localeDropdown',
@@ -179,6 +181,17 @@ const config = {
               { label: 'Promotion Recipes', to: '/docs/playbooks/promotions-setup-guide' },
               { label: 'Braze Welcome Reward Canvas', to: '/docs/playbooks/runbook' },
               { label: 'Troubleshooting & Escalation', to: '/docs/playbooks/troubleshooting' },
+            ],
+          },
+          {
+            title: '🧩 Byte Capabilities',
+            items: [
+              { label: 'Start Here', to: '/docs/byte-capabilities/' },
+              { label: 'Mental Model', to: '/docs/byte-capabilities/mental-model' },
+              { label: 'Domains', to: '/docs/byte-capabilities/domains/identity' },
+              { label: 'Reality Check', to: '/docs/byte-capabilities/enablement/reality-check' },
+              { label: 'Market Launch Checklist', to: '/docs/byte-capabilities/enablement/market-launch-checklist' },
+              { label: 'Glossary', to: '/docs/byte-capabilities/reference/glossary' },
             ],
           },
           {
