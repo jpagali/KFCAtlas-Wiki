@@ -11,10 +11,12 @@ It keeps a simple, human-readable record of what changed, when it changed, and w
 
 For now, releases are tracked using a lightweight calendar version:
 
+- `2026.03.19` for the March 19, 2026 release
 - `2026.03.17` for the March 17, 2026 release
 - `2026.03.16` for the March 16, 2026 release
 - `2026.03.15` for the March 15, 2026 release
 - `2026.03.14` for the March 14, 2026 release
+- `2026.03.13` for the March 13, 2026 release
 - `2026.03.12` for the March 12, 2026 release
 - `2026.03.13` for the March 13, 2026 release
 
@@ -22,6 +24,7 @@ As the site matures, this can evolve into a more formal release cadence. For now
 
 ## Recent Releases
 
+- [Release 2026.03.19](/docs/release-notes/2026-03-19)
 - [Release 2026.03.17](/docs/release-notes/2026-03-17)
 - [Release 2026.03.16](/docs/release-notes/2026-03-16)
 - [Release 2026.03.15](/docs/release-notes/2026-03-15)
