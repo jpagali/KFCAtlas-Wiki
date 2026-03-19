@@ -210,7 +210,6 @@ const sidebars = {
         {
           type: 'category',
           label: 'Stores',
-          key: 'admin-root-stores',
           link: { type: 'doc', id: 'admin-portal-guide/stores/index' },
           items: [
             {
@@ -222,8 +221,7 @@ const sidebars = {
             },
             {
               type: 'category',
-              label: 'Stores',
-              key: 'admin-stores-section',
+              label: 'Store Tasks',
               items: [
                 'admin-portal-guide/stores/create-a-store/index',
                 'admin-portal-guide/stores/edit-store-details/index',
@@ -258,7 +256,6 @@ const sidebars = {
         {
           type: 'category',
           label: 'Menus',
-          key: 'admin-root-menus',
           link: { type: 'doc', id: 'admin-portal-guide/menus/index' },
           items: [
             {
@@ -295,8 +292,7 @@ const sidebars = {
             },
             {
               type: 'category',
-              label: 'Menus',
-              key: 'admin-menus-section',
+              label: 'Menu Tasks',
               items: [
                 'admin-portal-guide/menus/publish-a-menu/index',
                 'admin-portal-guide/menus/create-a-menu/index',
@@ -311,13 +307,11 @@ const sidebars = {
         {
           type: 'category',
           label: 'Products',
-          key: 'admin-root-products',
           link: { type: 'doc', id: 'admin-portal-guide/products/index' },
           items: [
             {
               type: 'category',
-              label: 'Products',
-              key: 'admin-products-section',
+              label: 'Product Tasks',
               items: [
                 'admin-portal-guide/products/edit-a-product/index',
                 'admin-portal-guide/products/copy-a-product/index',
@@ -395,13 +389,11 @@ const sidebars = {
         {
           type: 'category',
           label: 'Promotions',
-          key: 'admin-root-promotions',
           link: { type: 'doc', id: 'admin-portal-guide/promotions/index' },
           items: [
             {
               type: 'category',
-              label: 'Promotions',
-              key: 'admin-promotions-section',
+              label: 'Promotion Tasks',
               items: [
                 'admin-portal-guide/promotions/create-a-promotion/index',
                 'admin-portal-guide/promotions/edit-a-promotion/index',
@@ -416,8 +408,7 @@ const sidebars = {
             },
             {
               type: 'category',
-              label: 'Store Groups',
-              key: 'admin-promotions-store-groups-section',
+              label: 'Store Group Tasks',
               items: [
                 'admin-portal-guide/promotions/create-a-store-group/index',
                 'admin-portal-guide/promotions/edit-a-store-group/index',
@@ -438,7 +429,6 @@ const sidebars = {
         {
           type: 'category',
           label: 'Store Groups',
-          key: 'admin-root-store-groups',
           link: { type: 'doc', id: 'admin-portal-guide/store-groups/index' },
           items: [
             'admin-portal-guide/store-groups/create-a-store-group/index',
@@ -479,13 +469,11 @@ const sidebars = {
         {
           type: 'category',
           label: 'Bundles',
-          key: 'admin-root-bundles',
           link: { type: 'doc', id: 'admin-portal-guide/bundles/index' },
           items: [
             {
               type: 'category',
-              label: 'Bundles',
-              key: 'admin-bundles-section',
+              label: 'Bundle Tasks',
               items: [
                 'admin-portal-guide/bundles/create-a-bundle/index',
                 'admin-portal-guide/bundles/edit-a-bundle/index',
@@ -537,6 +525,63 @@ const sidebars = {
             },
           ],
         },
+      ],
+    },
+  ],
+
+  // ─── BYTE CAPABILITIES ─────────────────────────────────────────────────────
+  // Platform knowledge layer — what the platform does, domain-by-domain
+  byteCapabilitiesSidebar: [
+    {
+      type: 'category',
+      label: 'Byte Capabilities',
+      link: { type: 'doc', id: 'byte-capabilities/index' },
+      collapsed: false,
+      items: [
+        'byte-capabilities/mental-model',
+        'byte-capabilities/platform-layers',
+        {
+          type: 'category',
+          label: '🧩 Domains',
+          collapsed: false,
+          items: [
+            'byte-capabilities/domains/identity',
+            'byte-capabilities/domains/localisation',
+            'byte-capabilities/domains/menu',
+            'byte-capabilities/domains/cart',
+            'byte-capabilities/domains/checkout',
+            'byte-capabilities/domains/payments',
+            'byte-capabilities/domains/promotions-loyalty',
+            'byte-capabilities/domains/donations-tips',
+            'byte-capabilities/domains/order-tracking',
+            'byte-capabilities/domains/content-legal',
+            'byte-capabilities/domains/engagement',
+            'byte-capabilities/domains/portal-admin',
+          ],
+        },
+        {
+          type: 'category',
+          label: '⚠️ Enablement',
+          collapsed: false,
+          items: [
+            'byte-capabilities/enablement/reality-check',
+            'byte-capabilities/enablement/capability-boundaries',
+            'byte-capabilities/enablement/market-launch-checklist',
+          ],
+        },
+        {
+          type: 'category',
+          label: '📚 Reference',
+          collapsed: true,
+          items: [
+            'byte-capabilities/reference/tag-index',
+            'byte-capabilities/reference/performance-slos',
+            'byte-capabilities/reference/api-versioning',
+            'byte-capabilities/reference/commerce-backend',
+            'byte-capabilities/reference/glossary',
+          ],
+        },
+        'byte-capabilities/credits',
       ],
     },
   ],

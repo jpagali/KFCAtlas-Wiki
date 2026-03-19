@@ -270,10 +270,14 @@
       position: relative;
     }
 
-    html[data-theme="light"] .topbar {
-      border-bottom-color: rgba(66, 40, 30, 0.08);
-      background: rgba(255, 249, 243, 0.92);
-    }
+     html[data-theme="light"] .topbar {
+       border-bottom-color: rgba(66, 40, 30, 0.08);
+       background: #ffffff;
+     }
+
+     html[data-theme="light"] .web-nav {
+       background: #ffffff;
+     }
 
     .topbar-left {
       min-width: 0;
@@ -559,9 +563,39 @@
       text-transform: uppercase;
     }
 
-    .journey-shell-chip span {
+    html[data-theme="light"] .journey-shell-chip {
+      color: #000000;
+      background: #ffffff;
+    }
+
+    html[data-theme="light"] .journey-shell-bar {
+      background: #ffffff;
+    }
+
+    html[data-theme="light"] .journey-shell-chevron svg path {
+      stroke: #000000;
+    }
+
+    html[data-theme="light"] .journey-shell-chip span {
       overflow: visible;
       text-overflow: clip;
+    }
+
+    html[data-theme="light"] .journey-shell-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-width: auto;
+      border: 0;
+      padding: 0;
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1;
+      white-space: nowrap;
+      text-decoration: none;
+      font-style: italic;
+      text-transform: uppercase;
     }
 
     .journey-shell-chevron {
@@ -1569,8 +1603,22 @@
       color: white;
     }
 
-    .pill.active small {
-      color: rgba(255, 255, 255, 0.74);
+    html[data-theme="light"] .pill {
+      background: rgba(0, 0, 0, 0.06);
+      color: var(--text);
+    }
+
+    html[data-theme="light"] .pill small {
+      color: rgba(35, 24, 21, 0.64);
+    }
+
+    html[data-theme="light"] .pill.active {
+      background: linear-gradient(180deg, #e4002b 0%, #b30021 100%);
+      color: white;
+    }
+
+    html[data-theme="light"] .pill.active small {
+      color: rgba(255, 255, 255, 0.78);
     }
 
     .pill.disabled {
