@@ -273,6 +273,7 @@ const sidebars = {
               label: 'Dayparts',
               items: [
                 'admin-portal-guide/menus/dayparts-overview/index',
+                'admin-portal-guide/menus/create-a-daypart/index',
                 'admin-portal-guide/menus/customizing-dayparts-at-the-store-level/index',
                 'admin-portal-guide/menus/setting-daypart-prices-and-availability/index',
                 'admin-portal-guide/menus/setting-daypart-visibility-on-categories/index',

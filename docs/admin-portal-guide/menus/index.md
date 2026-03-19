@@ -42,7 +42,7 @@ This section covers all menu management tasks in the Byte Commerce Admin Portal,
 ## Dayparts
 
 - [Introduction](/docs/admin-portal-guide/menus/dayparts-overview/) — Understand what dayparts are and how Byte supports them
-- [Defining Dayparts](/docs/admin-portal-guide/stores/create-a-daypart/) — Create a reusable daypart with one or more time frames
+- [Defining Dayparts](/docs/admin-portal-guide/menus/create-a-daypart/) — Create a reusable daypart with one or more time frames
 - [Customizing Dayparts at the Store-level](/docs/admin-portal-guide/menus/customizing-dayparts-at-the-store-level/) — Override org-level daypart behavior for a specific store
 - [Setting Daypart Prices and Availability](/docs/admin-portal-guide/menus/setting-daypart-prices-and-availability/) — Apply time-based pricing and availability to products, variants, or bundles
 - [Setting Daypart Visibility on Categories](/docs/admin-portal-guide/menus/setting-daypart-visibility-on-categories/) — Control which categories appear during a daypart

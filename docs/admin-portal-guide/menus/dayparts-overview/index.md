@@ -51,7 +51,7 @@ Dayparts are especially useful when the same menu entity needs to behave differe
 
 ## Related guides
 
-- [Defining Dayparts](/docs/admin-portal-guide/stores/create-a-daypart/) — Add a new daypart and define its first time frame
+- [Defining Dayparts](/docs/admin-portal-guide/menus/create-a-daypart/) — Add a new daypart and define its first time frame
 - [Customizing Dayparts at the Store-level](/docs/admin-portal-guide/menus/customizing-dayparts-at-the-store-level/) — Override org-level behavior for a specific store
 - [Setting Daypart Prices and Availability](/docs/admin-portal-guide/menus/setting-daypart-prices-and-availability/) — Apply time-based pricing and availability rules
 - [Setting Daypart Visibility on Categories](/docs/admin-portal-guide/menus/setting-daypart-visibility-on-categories/) — Control which categories appear during a daypart

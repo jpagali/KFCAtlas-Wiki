@@ -63,7 +63,7 @@ The **Status** column for this daypart will now display **Default**, indicating 
 
 ## Related guides
 
-- [Defining Dayparts](/docs/admin-portal-guide/stores/create-a-daypart/) — Create the org-level daypart first
+- [Defining Dayparts](/docs/admin-portal-guide/menus/create-a-daypart/) — Create the org-level daypart first
 - [Introduction](/docs/admin-portal-guide/menus/dayparts-overview/) — Review how org-level and store-level dayparts relate
 
 ---

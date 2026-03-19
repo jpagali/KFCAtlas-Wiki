@@ -66,7 +66,6 @@ export default function ThemeSyncedIframe({
     window.addEventListener('message', handleMessage);
     return () => window.removeEventListener('message', handleMessage);
   }, [heightMessageType]);
-
   return (
     <iframe
       ref={iframeRef}

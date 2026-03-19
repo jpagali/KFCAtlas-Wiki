@@ -508,6 +508,24 @@
   },
   {
     "locale": "en-US",
+    "title": "Defining Dayparts",
+    "headings": [
+      "Summary",
+      "Defining dayparts in Byte Portal",
+      "Editing dayparts",
+      "Deleting dayparts",
+      "Related guides"
+    ],
+    "summary": "Defining Dayparts",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/menus/create-a-daypart/",
+    "normalizedTitle": "defining dayparts",
+    "normalizedHeadings": "summary defining dayparts in byte portal editing dayparts deleting dayparts related guides",
+    "normalizedSummary": "defining dayparts",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
     "title": "Create a Menu",
     "headings": [
       "What this guide covers",
