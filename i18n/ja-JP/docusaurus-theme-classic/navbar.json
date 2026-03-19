@@ -1,6 +1,6 @@
 {
   "title": {
-    "message": "Atlas Knowledge Center",
+    "message": "Atlas Wiki",
     "description": "The title in the navbar"
   },
   "logo.alt": {
@@ -22,5 +22,9 @@
   "item.label.What's New": {
     "message": "最新情報",
     "description": "Navbar item with label What's New"
+  },
+  "item.label.Atlas Peek": {
+    "message": "Atlas Peek",
+    "description": "Navbar item with label Atlas Peek"
   }
 }

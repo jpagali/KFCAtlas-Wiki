@@ -287,6 +287,9 @@ function LaunchVisual() {
           <stop offset="0%" stopColor="#170F0F" />
           <stop offset="100%" stopColor="#3A0D16" />
         </linearGradient>
+        <clipPath id="overlayClip">
+          <rect x="280" y="58" width="280" height="184" rx="24" />
+        </clipPath>
       </defs>
       <rect width="640" height="300" fill="url(#phoneBgReal)" />
       <circle cx="570" cy="46" r="90" fill="rgba(228,0,43,0.18)" />
@@ -297,11 +300,14 @@ function LaunchVisual() {
       <text x="142" y="123" textAnchor="middle" fill="#FFF7F3" fontSize="14" fontFamily="DM Sans, sans-serif">Send OTP</text>
       <rect x="84" y="148" width="116" height="22" rx="11" fill="#F2E6DD" />
       <rect x="84" y="178" width="90" height="22" rx="11" fill="#F2E6DD" />
-      <rect x="280" y="58" width="280" height="184" rx="24" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.12)" />
-      <text x="308" y="100" fill="#FFF8F2" fontSize="20" fontFamily="Bebas Neue, sans-serif">Launch Story</text>
-      <text x="308" y="136" fill="rgba(255,248,242,0.82)" fontSize="16" fontFamily="DM Sans, sans-serif">Faster sign-in for high-intent customers</text>
-      <text x="308" y="166" fill="rgba(255,248,242,0.62)" fontSize="14" fontFamily="DM Sans, sans-serif">OTP-first login reduces password friction</text>
-      <text x="308" y="190" fill="rgba(255,248,242,0.62)" fontSize="14" fontFamily="DM Sans, sans-serif">and helps markets recover more repeat users.</text>
+      <g clipPath="url(#overlayClip)">
+        <rect x="280" y="58" width="280" height="184" rx="24" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.12)" />
+        <text x="308" y="100" fill="#FFF8F2" fontSize="20" fontFamily="Bebas Neue, sans-serif">Launch Story</text>
+        <text x="308" y="128" fill="rgba(255,248,242,0.82)" fontSize="13" fontFamily="DM Sans, sans-serif">Faster sign-in for</text>
+        <text x="308" y="146" fill="rgba(255,248,242,0.82)" fontSize="13" fontFamily="DM Sans, sans-serif">high-intent customers</text>
+        <text x="308" y="170" fill="rgba(255,248,242,0.62)" fontSize="12" fontFamily="DM Sans, sans-serif">OTP-first login reduces password friction</text>
+        <text x="308" y="190" fill="rgba(255,248,242,0.62)" fontSize="12" fontFamily="DM Sans, sans-serif">and helps markets recover more repeat users.</text>
+      </g>
     </svg>
   );
 }
@@ -382,9 +388,9 @@ export default function WhatsNewPage() {
                       <span>{content.featured.fit}</span>
                     </div>
                   </div>
-                  <Link className={styles.button} to={releaseNotesUrl}>
-                    {content.featured.cta}
-                  </Link>
+                  <span className={styles.buttonDisabled} title="Coming soon">
+                    Coming Soon
+                  </span>
                   <div className={styles.visualStack}>
                     <div className={styles.visualCard}>
                       <LaunchVisual />
@@ -428,7 +434,7 @@ export default function WhatsNewPage() {
                       ))}
                     </div>
                     <p><strong>{content.bestForLabel}:</strong> {feature.fit}</p>
-                    <Link className={styles.button} to={releaseNotesUrl}>{content.cardCta}</Link>
+                    <span className={styles.buttonDisabled} title="Coming soon">Coming Soon</span>
                   </article>
                 ))}
               </div>

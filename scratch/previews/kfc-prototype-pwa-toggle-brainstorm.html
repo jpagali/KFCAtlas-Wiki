@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KFC Prototype PWA Toggle Brainstorm</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0a09;
+      --bg-soft: #171311;
+      --panel: rgba(22, 18, 17, 0.84);
+      --panel-strong: #201917;
+      --panel-muted: #2e2522;
+      --line: rgba(255, 248, 241, 0.08);
+      --text: #fff6ef;
+      --muted: rgba(255, 246, 239, 0.66);
+      --brand: #e4002b;
+      --brand-soft: rgba(228, 0, 43, 0.16);
+      --accent: #ffbf5b;
+      --success: #64db96;
+      --radius-xl: 32px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+      --shadow: 0 32px 90px rgba(0, 0, 0, 0.42);
+      --font-display: "Bebas Neue", sans-serif;
+      --font-body: "Space Grotesk", sans-serif;
+      --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background:
+        radial-gradient(circle at top left, rgba(228, 0, 43, 0.18), transparent 22%),
+        radial-gradient(circle at bottom right, rgba(255, 191, 91, 0.1), transparent 18%),
+        linear-gradient(180deg, #070606, #110d0b 58%, #0a0908);
+      color: var(--text);
+      font-family: var(--font-body);
+    }
+
+    button {
+      font: inherit;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    .page {
+      min-height: 100vh;
+      padding: 28px;
+      display: grid;
+      gap: 24px;
+      grid-template-columns: minmax(300px, 420px) minmax(320px, 1fr);
+      align-items: start;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      backdrop-filter: blur(18px);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+    }
+
+    .sidebar {
+      padding: 28px;
+      position: sticky;
+      top: 28px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 10px;
+      font-weight: 700;
+      color: #ff9cae;
+      width: fit-content;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--brand);
+      box-shadow: 0 0 18px rgba(228, 0, 43, 0.48);
+    }
+
+    h1 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(42px, 7vw, 68px);
+      line-height: 0.9;
+      letter-spacing: 0.03em;
+    }
+
+    .lede {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 15px;
+    }
+
+    .toggle-row,
+    .nav-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .segmented {
+      display: inline-flex;
+      gap: 6px;
+      padding: 6px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--line);
+      width: fit-content;
+    }
+
+    .segmented button,
+    .nav-chip {
+      border: 0;
+      border-radius: 999px;
+      min-height: 42px;
+      padding: 0 16px;
+      background: transparent;
+      color: var(--muted);
+      transition: background 0.18s var(--ease), color 0.18s var(--ease), transform 0.18s var(--ease);
+    }
+
+    .segmented button.active,
+    .nav-chip.active {
+      background: var(--brand);
+      color: white;
+    }
+
+    .nav-chip {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--line);
+      color: var(--text);
+    }
+
+    .notes {
+      display: grid;
+      gap: 12px;
+    }
+
+    .note-card,
+    .summary-card {
+      padding: 16px;
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--line);
+    }
+
+    .note-card h3,
+    .summary-card h3 {
+      margin: 0 0 8px;
+      font-size: 14px;
+    }
+
+    .note-card p,
+    .summary-card p,
+    .summary-card li {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .summary-card ul {
+      margin: 10px 0 0;
+      padding-left: 18px;
+    }
+
+    .canvas {
+      padding: 24px;
+      display: grid;
+      place-items: center;
+      min-height: calc(100vh - 56px);
+    }
+
+    .experience {
+      width: min(1180px, 100%);
+      display: grid;
+      gap: 22px;
+      grid-template-columns: minmax(320px, 430px) minmax(320px, 1fr);
+      align-items: start;
+    }
+
+    .shell-stage {
+      position: relative;
+      padding-top: 74px;
+    }
+
+    .floating-toggle {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+    }
+
+    .native-shell,
+    .browser-shell {
+      transition: opacity 0.22s var(--ease), transform 0.22s var(--ease);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .phone-wrap {
+      width: min(390px, 100%);
+      aspect-ratio: 390 / 844;
+      padding: 12px;
+      border-radius: 54px;
+      background: linear-gradient(180deg, #1f1b19 0%, #0d0c0c 100%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: var(--shadow);
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .phone-wrap::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 18px;
+      transform: translateX(-50%);
+      width: 122px;
+      height: 28px;
+      border-radius: 999px;
+      background: #090909;
+      z-index: 3;
+    }
+
+    .phone {
+      height: 100%;
+      border-radius: 42px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 90% 12%, rgba(228, 0, 43, 0.18), transparent 20%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 18%),
+        #0b0b0b;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .browser-shell {
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #161211;
+      box-shadow: var(--shadow);
+    }
+
+    .browser-chrome {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      display: grid;
+      gap: 12px;
+    }
+
+    .chrome-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .traffic {
+      display: flex;
+      gap: 7px;
+    }
+
+    .traffic span {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .traffic span:first-child { background: #ff5f57; }
+    .traffic span:nth-child(2) { background: #ffbd2e; }
+    .traffic span:last-child { background: #28c840; }
+
+    .address-bar {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 44px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .pwa-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .pwa-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--line);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .badge.live {
+      color: var(--success);
+    }
+
+    .badge.warn {
+      color: var(--accent);
+    }
+
+    .install-btn {
+      border: 0;
+      min-height: 38px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: var(--brand);
+    }
+
+    .app-frame {
+      min-height: 740px;
+      background:
+        radial-gradient(circle at 88% 12%, rgba(228, 0, 43, 0.18), transparent 22%),
+        radial-gradient(circle at 14% 86%, rgba(255, 191, 91, 0.08), transparent 18%),
+        #0b0b0b;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+    }
+
+    .app-topbar {
+      padding: 22px 20px 14px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(10, 10, 10, 0.84);
+      backdrop-filter: blur(16px);
+    }
+
+    .app-topbar small {
+      display: block;
+      color: #ff9cae;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 10px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .app-title-row {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .app-title {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 0.95;
+      letter-spacing: 0.03em;
+    }
+
+    .app-subtitle {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+      max-width: 520px;
+    }
+
+    .content {
+      padding: 18px;
+      display: grid;
+      gap: 14px;
+      align-content: start;
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.03);
+      padding: 16px;
+    }
+
+    .hero {
+      min-height: 190px;
+      display: flex;
+      align-items: end;
+      background:
+        linear-gradient(180deg, rgba(8, 8, 8, 0.05), rgba(8, 8, 8, 0.74)),
+        url("https://images.ctfassets.net/a2mgcrjjefyo/5VacEuaF9u5SJ5bOx5bsd9/5922fe00c43d0d18120d50006576b2ac/Web_750x1040_EN.png?w=700&fm=webp") center/cover no-repeat;
+      box-shadow: inset 0 0 0 1px rgba(94, 43, 24, 0.7);
+    }
+
+    .hero h3,
+    .card h3,
+    .card h4 {
+      margin: 0 0 6px;
+    }
+
+    .hero p,
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 13px;
+    }
+
+    .split {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .chips,
+    .cta-row,
+    .product-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .pill,
+    .cta,
+    .ghost {
+      border: 0;
+      min-height: 42px;
+      padding: 0 14px;
+      border-radius: 999px;
+    }
+
+    .pill {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--line);
+      color: var(--text);
+    }
+
+    .pill.active,
+    .cta {
+      background: var(--brand);
+      color: white;
+    }
+
+    .ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--line);
+    }
+
+    .product-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .product {
+      display: grid;
+      grid-template-columns: 84px 1fr;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .product img {
+      width: 84px;
+      height: 84px;
+      object-fit: cover;
+      border-radius: 18px;
+      background: #221917;
+    }
+
+    .meta-row,
+    .order-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .helper {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .bottom-nav {
+      padding: 12px 14px 16px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+      background: rgba(10, 10, 10, 0.88);
+      backdrop-filter: blur(16px);
+    }
+
+    .tab {
+      border: 0;
+      min-height: 54px;
+      border-radius: 18px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .tab strong {
+      display: block;
+      color: inherit;
+      margin-bottom: 2px;
+      font-size: 13px;
+    }
+
+    .tab.active {
+      background: rgba(228, 0, 43, 0.16);
+      color: white;
+    }
+
+    .right-rail {
+      display: grid;
+      gap: 14px;
+    }
+
+    @media (max-width: 1080px) {
+      .page,
+      .experience {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+      }
+
+      .shell-stage {
+        padding-top: 88px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 16px;
+      }
+
+      .sidebar,
+      .canvas {
+        padding: 18px;
+      }
+
+      .split {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <aside class="panel sidebar">
+      <div class="eyebrow">Brainstorm preview</div>
+      <h1>Same flow. Different container.</h1>
+      <p class="lede">
+        This concept keeps the same ordering journey, content, and feature set as the current prototype. The only variable is the shell:
+        a native-style app frame versus a browser-based PWA frame with install and offline cues.
+      </p>
+
+      <div class="summary-card">
+        <h3>Working assumption</h3>
+        <p>
+          We are not redesigning the product. We are pressure-testing whether the exact same experience can convincingly live in a web browser format.
+        </p>
+      </div>
+
+      <div class="notes" id="mode-notes"></div>
+      <div class="notes" id="screen-notes"></div>
+    </aside>
+
+    <main class="panel canvas">
+      <div class="experience">
+        <section class="shell-stage">
+          <div class="floating-toggle segmented toggle-row" id="shell-toggle">
+            <button type="button" class="active" data-shell="native">Native App</button>
+            <button type="button" data-shell="pwa">PWA Browser</button>
+          </div>
+
+          <div class="native-shell" id="native-shell">
+            <div class="phone-wrap">
+              <div class="phone">
+                <div class="app-frame" id="native-frame"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="browser-shell hidden" id="browser-shell">
+            <div class="browser-chrome">
+              <div class="chrome-top">
+                <div class="traffic">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <div class="address-bar">https://order.kfc.com/home</div>
+                <div class="badge">Secure</div>
+              </div>
+              <div class="pwa-strip">
+                <div class="pwa-badges">
+                  <span class="badge live">Installable</span>
+                  <span class="badge warn">Offline cache</span>
+                  <span class="badge">Standalone capable</span>
+                </div>
+                <button type="button" class="install-btn">Install app</button>
+              </div>
+            </div>
+            <div class="app-frame" id="browser-frame"></div>
+          </div>
+        </section>
+
+        <section class="right-rail">
+          <div class="panel" style="padding:16px;">
+            <div class="nav-row" id="screen-toggle"></div>
+          </div>
+          <div class="panel" style="padding:16px;">
+            <div id="comparison-copy"></div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const state = {
+      shell: "native",
+      screen: "home"
+    };
+
+    const screens = {
+      home: {
+        label: "Home",
+        title: "Welcome back, Justin",
+        subtitle: "Resume a live order, see personalized offers, and jump into menu browsing.",
+        nativeNoteTitle: "Native framing",
+        nativeNoteBody: "Feels like a dedicated ordering app with minimal chrome, immediate trust, and persistent bottom navigation.",
+        pwaNoteTitle: "PWA framing",
+        pwaNoteBody: "Same hero and same actions, but now framed by URL, install affordance, and browser trust signals.",
+        comparison: [
+          "The home screen itself stays mostly unchanged.",
+          "PWA mode adds browser chrome, install language, and a stronger hint that the experience can be launched from the home screen.",
+          "If we productionize this, we would decide whether the browser header disappears after install or remains visible in some desktop states."
+        ]
+      },
+      location: {
+        label: "Location",
+        title: "Choose delivery or pickup",
+        subtitle: "Confirm the order context before menu availability and timing lock in.",
+        nativeNoteTitle: "Native framing",
+        nativeNoteBody: "This reads like the start of a mobile checkout funnel, with compact choices and app-like momentum.",
+        pwaNoteTitle: "PWA framing",
+        pwaNoteBody: "The same setup step becomes more browser-legible when paired with permission, location, and offline fallback language.",
+        comparison: [
+          "The key PWA opportunity here is permission handling: current location, saved addresses, and graceful fallback if location fails.",
+          "The step order does not need to change.",
+          "The browser version may need clearer empty states and web-safe copy around geolocation."
+        ]
+      },
+      menu: {
+        label: "Menu",
+        title: "Browse the menu",
+        subtitle: "Deals, recommendations, category browsing, and fast add all stay intact.",
+        nativeNoteTitle: "Native framing",
+        nativeNoteBody: "Feels tactile and app-first, especially with dense cards and bottom anchored actions.",
+        pwaNoteTitle: "PWA framing",
+        pwaNoteBody: "The menu is the clearest proof point that a PWA can preserve the same commerce speed while using web conventions.",
+        comparison: [
+          "This screen changes the least between modes.",
+          "The main difference is whether top-level navigation feels like tabs in an app or sections inside a browser-hosted product.",
+          "A production PWA should be careful about performance, image caching, and scroll restoration here."
+        ]
+      },
+      cart: {
+        label: "Cart",
+        title: "Review your basket",
+        subtitle: "Subtotal, loyalty earnings, and checkout readiness remain the same in both shells.",
+        nativeNoteTitle: "Native framing",
+        nativeNoteBody: "The cart feels transactional and focused, with less visual noise competing for conversion.",
+        pwaNoteTitle: "PWA framing",
+        pwaNoteBody: "In a browser context we can still keep conversion tight, but trust, payment, and resume-state cues become more important.",
+        comparison: [
+          "PWA mode should emphasize that the basket persists across browser sessions and installed launches.",
+          "Saved payment and account state need especially clear handling in the web context.",
+          "The visual structure can remain almost identical."
+        ]
+      },
+      tracking: {
+        label: "Tracking",
+        title: "Track your order live",
+        subtitle: "Status progression, ETA, and delivery context continue the same post-purchase story.",
+        nativeNoteTitle: "Native framing",
+        nativeNoteBody: "Tracking naturally fits a native mental model because it feels always-on and notification-friendly.",
+        pwaNoteTitle: "PWA framing",
+        pwaNoteBody: "Tracking is where the PWA story gets strategic: push, re-entry, and install value become much more tangible.",
+        comparison: [
+          "This is the strongest screen for making the case for PWA install value.",
+          "A browser-first version should show what happens if the customer leaves and comes back later.",
+          "If we continue this concept, I would explore push notification and re-open states next."
+        ]
+      }
+    };
+
+    const products = [
+      {
+        name: "Crunchin' Chicken Burger",
+        price: "$7.99",
+        image: "https://images.ctfassets.net/a2mgcrjjefyo/1yrfwVriM7BqhmIlR7XamT/cf6f9f809c4c5c95fe4b02f8776ae3aa/kfc-burger.png?w=300&fm=webp",
+        blurb: "Fast add recommendation with customization."
+      },
+      {
+        name: "Hot and Crispy Combo",
+        price: "$11.49",
+        image: "https://images.ctfassets.net/a2mgcrjjefyo/3Z6KfQ8zGJmH0r9Ch4bQOQ/2da4f2d3baf7629ef8d5f66d781ecbe1/KFC_Combo.png?w=300&fm=webp",
+        blurb: "High intent order path with clear upsell moments."
+      }
+    ];
+
+    const modeNotesEl = document.getElementById("mode-notes");
+    const screenNotesEl = document.getElementById("screen-notes");
+    const comparisonCopyEl = document.getElementById("comparison-copy");
+    const nativeShellEl = document.getElementById("native-shell");
+    const browserShellEl = document.getElementById("browser-shell");
+    const nativeFrameEl = document.getElementById("native-frame");
+    const browserFrameEl = document.getElementById("browser-frame");
+    const shellToggleEl = document.getElementById("shell-toggle");
+    const screenToggleEl = document.getElementById("screen-toggle");
+
+    function renderScreenToggle() {
+      screenToggleEl.innerHTML = Object.entries(screens).map(([key, screen]) => {
+        const active = state.screen === key ? "active" : "";
+        return `<button type="button" class="nav-chip ${active}" data-screen="${key}">${screen.label}</button>`;
+      }).join("");
+    }
+
+    function renderNotes() {
+      const screen = screens[state.screen];
+      modeNotesEl.innerHTML = `
+        <div class="note-card">
+          <h3>What changes in the toggle</h3>
+          <p>
+            Navigation framing, install language, browser chrome, and offline cues change. The flow, content, and commerce actions do not.
+          </p>
+        </div>
+        <div class="note-card">
+          <h3>${state.shell === "native" ? screen.nativeNoteTitle : screen.pwaNoteTitle}</h3>
+          <p>${state.shell === "native" ? screen.nativeNoteBody : screen.pwaNoteBody}</p>
+        </div>
+      `;
+
+      screenNotesEl.innerHTML = `
+        <div class="summary-card">
+          <h3>Current screen</h3>
+          <p><strong>${screen.label}</strong></p>
+          <p style="margin-top:8px;">${screen.subtitle}</p>
+        </div>
+      `;
+
+      comparisonCopyEl.innerHTML = `
+        <div class="summary-card">
+          <h3>${screen.label} in ${state.shell === "native" ? "Native App" : "PWA Browser"} mode</h3>
+          <ul>
+            ${screen.comparison.map((item) => `<li>${item}</li>`).join("")}
+          </ul>
+        </div>
+      `;
+    }
+
+    function homeContent() {
+      return `
+        <div class="content">
+          <div class="card hero">
+            <div>
+              <h3>Crunchin' Chicken Burger Combo</h3>
+              <p>Same promotional surface, same featured meal, same re-entry point into ordering.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="meta-row">
+              <div>
+                <h3>Gold tier member</h3>
+                <p>2,840 points. 1,160 points to Platinum.</p>
+              </div>
+              <span class="badge live">Session live</span>
+            </div>
+          </div>
+          <div class="card">
+            <h4>Start or resume your order</h4>
+            <p>Delivery to 123 Main Street. ETA 22 min.</p>
+            <div class="cta-row" style="margin-top:12px;">
+              <button class="cta" type="button">Resume order</button>
+              <button class="ghost" type="button">Change location</button>
+            </div>
+          </div>
+          <div class="card">
+            <h4>Recommended for you</h4>
+            <div class="product-grid" style="margin-top:12px;">
+              ${products.map((product) => `
+                <div class="product">
+                  <img src="${product.image}" alt="${product.name}">
+                  <div>
+                    <div class="meta-row">
+                      <strong>${product.name}</strong>
+                      <strong>${product.price}</strong>
+                    </div>
+                    <p>${product.blurb}</p>
+                    <div class="product-actions" style="margin-top:10px;">
+                      <button class="ghost" type="button">View</button>
+                      <button class="cta" type="button">Quick add</button>
+                    </div>
+                  </div>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function locationContent() {
+      return `
+        <div class="content">
+          <div class="card">
+            <h3>Choose your order mode</h3>
+            <p>Keep this identical to the current prototype: delivery and pickup are still the fork that controls downstream availability.</p>
+            <div class="chips" style="margin-top:12px;">
+              <button class="pill active" type="button">Delivery</button>
+              <button class="pill" type="button">Pickup</button>
+            </div>
+          </div>
+          <div class="split">
+            <div class="card">
+              <h4>Saved address</h4>
+              <p>123 Main Street, Los Angeles, CA</p>
+              <p class="helper" style="margin-top:8px;">ETA 22 min from nearest store</p>
+            </div>
+            <div class="card">
+              <h4>Timing</h4>
+              <div class="chips" style="margin-top:12px;">
+                <button class="pill active" type="button">ASAP</button>
+                <button class="pill" type="button">Schedule</button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <h4>Browser-specific question</h4>
+            <p>In PWA mode, this is where geolocation permissions and graceful fallback copy would need to feel much more explicit.</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function menuContent() {
+      return `
+        <div class="content">
+          <div class="card">
+            <div class="meta-row">
+              <div>
+                <h3>Menu categories</h3>
+                <p>Deals, burgers, buckets, sides, drinks.</p>
+              </div>
+              <span class="badge">2 items in cart</span>
+            </div>
+            <div class="chips" style="margin-top:12px;">
+              <button class="pill active" type="button">Featured</button>
+              <button class="pill" type="button">Combos</button>
+              <button class="pill" type="button">For one</button>
+              <button class="pill" type="button">Family meals</button>
+            </div>
+          </div>
+          <div class="card">
+            <h4>Fast commerce behavior stays the same</h4>
+            <div class="product-grid" style="margin-top:12px;">
+              ${products.map((product) => `
+                <div class="product">
+                  <img src="${product.image}" alt="${product.name}">
+                  <div>
+                    <div class="meta-row">
+                      <strong>${product.name}</strong>
+                      <strong>${product.price}</strong>
+                    </div>
+                    <p>${product.blurb}</p>
+                    <div class="product-actions" style="margin-top:10px;">
+                      <button class="ghost" type="button">Customize</button>
+                      <button class="cta" type="button">Add</button>
+                    </div>
+                  </div>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function cartContent() {
+      return `
+        <div class="content">
+          <div class="card">
+            <h3>Your basket</h3>
+            <div class="order-row" style="margin-top:12px;">
+              <span>Crunchin' Chicken Burger x1</span>
+              <strong>$7.99</strong>
+            </div>
+            <div class="order-row" style="margin-top:10px;">
+              <span>Hot and Crispy Combo x1</span>
+              <strong>$11.49</strong>
+            </div>
+          </div>
+          <div class="card">
+            <div class="order-row"><span>Subtotal</span><strong>$19.48</strong></div>
+            <div class="order-row" style="margin-top:10px;"><span>Delivery</span><strong>Free</strong></div>
+            <div class="order-row" style="margin-top:10px;"><span>Points earned</span><strong>+100</strong></div>
+            <div class="order-row" style="margin-top:10px;"><span>Total</span><strong>$19.48</strong></div>
+          </div>
+          <div class="card">
+            <h4>Checkout readiness</h4>
+            <p>Same CTA. Same basket logic. In PWA form, we likely add stronger language around payment trust and saved session continuity.</p>
+            <div class="cta-row" style="margin-top:12px;">
+              <button class="cta" type="button">Proceed to checkout</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function trackingContent() {
+      return `
+        <div class="content">
+          <div class="card">
+            <div class="meta-row">
+              <div>
+                <h3>Order #A1847 is on the way</h3>
+                <p>Estimated arrival in 11 minutes.</p>
+              </div>
+              <span class="badge live">Live tracking</span>
+            </div>
+          </div>
+          <div class="card">
+            <h4>Status progression</h4>
+            <div class="chips" style="margin-top:12px;">
+              <button class="pill active" type="button">Confirmed</button>
+              <button class="pill active" type="button">Cooking</button>
+              <button class="pill active" type="button">Out for delivery</button>
+              <button class="pill" type="button">Delivered</button>
+            </div>
+          </div>
+          <div class="card">
+            <h4>Why this matters in PWA</h4>
+            <p>This screen is where install value becomes easiest to justify: return visits, push-style re-entry, and reliable resume state.</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function screenContent() {
+      switch (state.screen) {
+        case "location":
+          return locationContent();
+        case "menu":
+          return menuContent();
+        case "cart":
+          return cartContent();
+        case "tracking":
+          return trackingContent();
+        case "home":
+        default:
+          return homeContent();
+      }
+    }
+
+    function frameMarkup(modeLabel) {
+      const screen = screens[state.screen];
+      return `
+        <div class="app-topbar">
+          <small>${modeLabel}</small>
+          <div class="app-title-row">
+            <div>
+              <h2 class="app-title">${screen.title}</h2>
+              <p class="app-subtitle">${screen.subtitle}</p>
+            </div>
+            <span class="badge ${state.screen === "tracking" ? "live" : "warn"}">${state.screen === "tracking" ? "ETA 11 min" : "RNA flow"}</span>
+          </div>
+        </div>
+        ${screenContent()}
+        <div class="bottom-nav">
+          ${Object.entries(screens).map(([key, screenItem]) => `
+            <button type="button" class="tab ${state.screen === key ? "active" : ""}" data-screen="${key}">
+              <strong>${screenItem.label}</strong>
+              ${key === "cart" ? "2 items" : key === "tracking" ? "Live" : "Flow"}
+            </button>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    function bindScreenClicks() {
+      document.querySelectorAll("[data-screen]").forEach((button) => {
+        button.addEventListener("click", () => {
+          state.screen = button.dataset.screen;
+          render();
+        });
+      });
+    }
+
+    function renderShell() {
+      const showNative = state.shell === "native";
+      nativeShellEl.classList.toggle("hidden", !showNative);
+      browserShellEl.classList.toggle("hidden", showNative);
+      nativeFrameEl.innerHTML = frameMarkup("Native app shell");
+      browserFrameEl.innerHTML = frameMarkup("PWA browser shell");
+      bindScreenClicks();
+    }
+
+    function renderToggles() {
+      shellToggleEl.querySelectorAll("[data-shell]").forEach((button) => {
+        button.classList.toggle("active", button.dataset.shell === state.shell);
+      });
+    }
+
+    function render() {
+      renderScreenToggle();
+      renderToggles();
+      renderShell();
+      renderNotes();
+      bindScreenClicks();
+    }
+
+    shellToggleEl.querySelectorAll("[data-shell]").forEach((button) => {
+      button.addEventListener("click", () => {
+        state.shell = button.dataset.shell;
+        render();
+      });
+    });
+
+    render();
+  </script>
+</body>
+</html>

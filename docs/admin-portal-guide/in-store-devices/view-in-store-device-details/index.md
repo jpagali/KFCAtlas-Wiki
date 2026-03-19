@@ -9,6 +9,12 @@ sidebar_label: View In-Store Device Details
 
 Displays the complete information for a POS terminal or kiosk, including device name, type, status, and menu publish history — used for device auditing and troubleshooting.
 
+:::note Byte POS Caveat
+This device-detail view is written for **Byte POS** device management in Admin Portal.
+
+If the market is not on Byte POS, **Byte Connect** is the bridge between Byte Commerce and the market POS, and the device visibility or support workflow may differ from what is shown here.
+:::
+
 ## Steps
 
 **Step 1:** Navigate to the **In-Store Devices** section using the left-hand navigation menu.
@@ -41,6 +47,7 @@ Check the **Device Status** to confirm the device is active. An inactive device 
 
 - [Generate One-Time Password](/docs/admin-portal-guide/in-store-devices/generate-one-time-password/)
 - [Deactivate In-Store](/docs/admin-portal-guide/in-store-devices/deactivate-in-store/)
+- [Byte Connect](/docs/byte-capabilities/enablement/byte-connect)
 
 ---
 

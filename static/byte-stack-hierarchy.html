@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-locale="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Byte Stack — Platform Hierarchy</title>
+  <style>
+    /* ── Tokens ─────────────────────────────────────────── */
+    :root {
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
+      --font-mono: "SFMono-Regular", Consolas, monospace;
+
+      /* Wiki-light palette */
+      --bg:          #f8f9fa;
+      --bg-surface:  #ffffff;
+      --bg-sidebar:  #f0f2f5;
+      --border:      #d0d7de;
+      --border-soft: #e8eaed;
+      --text:        #202122;
+      --text-muted:  #54595d;
+      --text-faint:  #72777d;
+      --link:        #1a73e8;
+      --link-hover:  #1558b0;
+      --shadow:      0 1px 4px rgba(0,0,0,.08), 0 2px 12px rgba(0,0,0,.04);
+      --shadow-md:   0 4px 16px rgba(0,0,0,.10);
+
+      /* Subsystem accent colours */
+      --helium-h:    #c8000a;   /* KFC red */
+      --helium-bg:   #fff5f5;
+      --helium-pill: #fde8e8;
+      --bcom-h:      #1765cc;   /* backend blue */
+      --bcom-bg:     #f0f4ff;
+      --bcom-pill:   #dce8ff;
+      --portal-h:    #0a7c42;   /* admin green */
+      --portal-bg:   #f0fbf4;
+      --portal-pill: #d3f0e1;
+
+      --radius:   8px;
+      --radius-sm: 4px;
+      --transition: .18s cubic-bezier(.4,0,.2,1);
+    }
+
+    [data-theme="dark"] {
+      --bg:          #0d1117;
+      --bg-surface:  #161b22;
+      --bg-sidebar:  #0d1117;
+      --border:      #30363d;
+      --border-soft: #21262d;
+      --text:        #e6edf3;
+      --text-muted:  #8b949e;
+      --text-faint:  #6e7681;
+      --link:        #58a6ff;
+      --link-hover:  #79b8ff;
+      --shadow:      0 1px 4px rgba(0,0,0,.4), 0 2px 12px rgba(0,0,0,.2);
+      --shadow-md:   0 4px 16px rgba(0,0,0,.4);
+
+      --helium-h:    #f87171;
+      --helium-bg:   #1c0f0f;
+      --helium-pill: #3b1515;
+      --bcom-h:      #60a5fa;
+      --bcom-bg:     #0d1629;
+      --bcom-pill:   #162040;
+      --portal-h:    #34d399;
+      --portal-bg:   #0a1f15;
+      --portal-pill: #0f2e1c;
+    }
+
+    /* ── Reset / Base ────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.6;
+      transition: background var(--transition), color var(--transition);
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--link-hover); text-decoration: underline; }
+
+    /* ── Layout ──────────────────────────────────────────── */
+    .wiki-wrap {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      grid-template-rows: auto 1fr;
+      min-height: 100vh;
+    }
+
+    /* ── Top Bar ─────────────────────────────────────────── */
+    .topbar {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 20px;
+      height: 52px;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .topbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--text);
+      flex-shrink: 0;
+    }
+    .topbar-logo .logo-badge {
+      background: #6e40c9;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: var(--radius-sm);
+      letter-spacing: .5px;
+    }
+    .topbar-search {
+      flex: 1;
+      max-width: 380px;
+      margin-left: auto;
+    }
+    .topbar-search input {
+      width: 100%;
+      padding: 6px 12px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 13px;
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .topbar-search input:focus {
+      border-color: var(--link);
+      box-shadow: 0 0 0 3px rgba(26,115,232,.15);
+    }
+    .topbar-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: 16px;
+    }
+    .ctrl-btn {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 11px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--bg-surface);
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background var(--transition), border-color var(--transition);
+      white-space: nowrap;
+    }
+    .ctrl-btn:hover { background: var(--bg-sidebar); border-color: var(--link); }
+    .ctrl-btn svg { flex-shrink: 0; }
+    .embedded-theme .theme-toggle-btn { display: none; }
+
+    /* ── Sidebar / TOC ───────────────────────────────────── */
+    .sidebar {
+      background: var(--bg-sidebar);
+      border-right: 1px solid var(--border);
+      padding: 20px 0;
+      position: sticky;
+      top: 52px;
+      height: calc(100vh - 52px);
+      overflow-y: auto;
+    }
+    .toc-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-faint);
+      padding: 0 18px 10px;
+    }
+    .toc-section {
+      margin-bottom: 4px;
+    }
+    .toc-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      font-size: 13px;
+      color: var(--text-muted);
+      border-radius: 0;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition);
+      border-left: 3px solid transparent;
+    }
+    .toc-link:hover {
+      background: var(--border-soft);
+      color: var(--text);
+      text-decoration: none;
+    }
+    .toc-link.active {
+      color: var(--link);
+      border-left-color: var(--link);
+      background: rgba(26,115,232,.06);
+    }
+    .toc-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .toc-sub {
+      padding-left: 36px;
+    }
+    .toc-sub .toc-link {
+      font-size: 12px;
+      padding-top: 4px;
+      padding-bottom: 4px;
+    }
+    .sidebar-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 12px 18px;
+    }
+
+    /* ── Main Content ────────────────────────────────────── */
+    .main {
+      padding: 28px 36px 60px;
+      max-width: 960px;
+    }
+
+    /* ── Page Header ─────────────────────────────────────── */
+    .page-header {
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+    }
+    .page-title {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .page-meta {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .meta-pill {
+      font-size: 12px;
+      padding: 2px 10px;
+      border-radius: 20px;
+      background: var(--bg-sidebar);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    /* ── What Is box ─────────────────────────────────────── */
+    .what-is-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--link);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow);
+    }
+    .what-is-box h3 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      color: var(--link);
+      margin-bottom: 6px;
+    }
+    .what-is-box p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── Section Title ───────────────────────────────────── */
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin: 36px 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Subsystem Card ──────────────────────────────────── */
+    .subsystem-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: box-shadow var(--transition);
+    }
+    .subsystem-card:hover { box-shadow: var(--shadow-md); }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      cursor: pointer;
+      user-select: none;
+      transition: background var(--transition);
+    }
+    .card-header:hover { background: var(--bg-sidebar); }
+
+    .card-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .card-header-text { flex: 1; }
+    .card-name {
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .card-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+    .card-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: .3px;
+    }
+    .card-chevron {
+      color: var(--text-faint);
+      transition: transform var(--transition);
+      flex-shrink: 0;
+    }
+    .card-chevron.open { transform: rotate(90deg); }
+
+    /* Helium */
+    .helium .card-header { background: var(--helium-bg); border-bottom: 1px solid var(--border-soft); }
+    .helium .card-icon  { background: var(--helium-pill); }
+    .helium .card-name  { color: var(--helium-h); }
+    .helium .card-badge { background: var(--helium-pill); color: var(--helium-h); }
+    /* BCOM */
+    .bcom   .card-header { background: var(--bcom-bg);   border-bottom: 1px solid var(--border-soft); }
+    .bcom   .card-icon  { background: var(--bcom-pill); }
+    .bcom   .card-name  { color: var(--bcom-h); }
+    .bcom   .card-badge { background: var(--bcom-pill); color: var(--bcom-h); }
+    /* Portal */
+    .portal .card-header { background: var(--portal-bg); border-bottom: 1px solid var(--border-soft); }
+    .portal .card-icon  { background: var(--portal-pill); }
+    .portal .card-name  { color: var(--portal-h); }
+    .portal .card-badge { background: var(--portal-pill); color: var(--portal-h); }
+
+    /* ── Feature Modules Grid ────────────────────────────── */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+      padding: 16px 20px 20px;
+    }
+
+    .module {
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: box-shadow var(--transition);
+    }
+    .module:hover { box-shadow: var(--shadow); }
+
+    .module-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .module-icon {
+      font-size: 15px;
+      width: 24px;
+      text-align: center;
+    }
+    .module-name {
+      font-size: 13px;
+      font-weight: 600;
+      flex: 1;
+    }
+    .module-count {
+      font-size: 11px;
+      color: var(--text-faint);
+    }
+    .module-chevron {
+      font-size: 10px;
+      color: var(--text-faint);
+      transition: transform var(--transition);
+    }
+    .module-chevron.open { transform: rotate(90deg); }
+
+    .module-body {
+      display: none;
+      padding: 6px 12px 10px 36px;
+      border-top: 1px solid var(--border-soft);
+    }
+    .module-body.open { display: block; }
+    .module-item {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      padding: 3px 0;
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
+    .module-item::before {
+      content: '–';
+      color: var(--text-faint);
+      flex-shrink: 0;
+    }
+
+    /* Helium module heads */
+    .helium .module-head { background: var(--helium-bg); }
+    .helium .module-name { color: var(--helium-h); }
+    .helium .module-body { background: var(--bg-surface); }
+    /* BCOM module heads */
+    .bcom   .module-head { background: var(--bcom-bg); }
+    .bcom   .module-name { color: var(--bcom-h); }
+    .bcom   .module-body { background: var(--bg-surface); }
+    /* Portal module heads */
+    .portal .module-head { background: var(--portal-bg); }
+    .portal .module-name { color: var(--portal-h); }
+    .portal .module-body { background: var(--bg-surface); }
+
+    /* ── Stats strip ─────────────────────────────────────── */
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .stat-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .stat-num {
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-label { font-size: 12px; color: var(--text-muted); }
+
+    /* ── Highlight / search ──────────────────────────────── */
+    mark {
+      background: #ffe066;
+      color: #000;
+      border-radius: 2px;
+      padding: 0 1px;
+    }
+    [data-theme="dark"] mark { background: #7c6000; color: #fff; }
+    .hidden { display: none !important; }
+
+    /* ── Locale callout ──────────────────────────────────── */
+    .locale-banner {
+      display: none;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid #e67700;
+      border-radius: var(--radius);
+      padding: 10px 16px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    [data-locale="ja"] .locale-banner { display: flex; }
+    .locale-banner strong { color: var(--text); }
+
+    /* ── Scrollbar ───────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--text-faint); }
+
+    /* ── Responsive ──────────────────────────────────────── */
+    @media (max-width: 700px) {
+      .wiki-wrap { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .main { padding: 20px 16px 40px; }
+      .stats-strip { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════
+     TOP BAR
+══════════════════════════════════════════════════════ -->
+<div class="wiki-wrap">
+  <header class="topbar">
+    <div class="topbar-logo">
+      <span class="logo-badge">BYTE</span>
+      <span>Byte Stack</span>
+    </div>
+
+    <div class="topbar-search">
+      <input id="search" type="search" placeholder="Search Byte Stack features…" autocomplete="off" />
+    </div>
+
+    <div class="topbar-controls">
+      <!-- Locale toggle -->
+      <button class="ctrl-btn" id="localeToggle" title="Toggle language">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span id="localeLabel">日本語</span>
+      </button>
+      <!-- Theme toggle -->
+      <button class="ctrl-btn theme-toggle-btn" id="themeToggle" title="Toggle theme">
+        <svg id="themeIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <span id="themeLabel">Dark</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════
+       SIDEBAR
+  ══════════════════════════════════════════════════════ -->
+  <aside class="sidebar">
+    <div class="toc-title" data-en="Contents" data-ja="目次">Byte Stack</div>
+
+    <div class="toc-section">
+      <a class="toc-link" href="#overview">
+        <span class="toc-dot" style="background:#8b949e"></span>
+        <span data-en="Platform Overview" data-ja="プラットフォーム概要">Platform Overview</span>
+      </a>
+    </div>
+
+    <div class="toc-section">
+      <a class="toc-link" href="#helium">
+        <span class="toc-dot" style="background:var(--helium-h)"></span>
+        <span data-en="HELIUM" data-ja="HELIUM">HELIUM</span>
+      </a>
+      <div class="toc-sub">
+        <a class="toc-link" href="#helium-identity" data-en="Identity & Sign-In" data-ja="ID・サインイン">Identity & Sign-In</a>
+        <a class="toc-link" href="#helium-locale" data-en="Localisation & Order Mode" data-ja="ローカライズ・注文モード">Localisation & Order Mode</a>
+        <a class="toc-link" href="#helium-menu" data-en="Menu Browse & PDP" data-ja="メニュー閲覧・商品詳細">Menu Browse & PDP</a>
+        <a class="toc-link" href="#helium-cart" data-en="Cart" data-ja="カート">Cart</a>
+        <a class="toc-link" href="#helium-checkout" data-en="Checkout" data-ja="チェックアウト">Checkout</a>
+        <a class="toc-link" href="#helium-payments" data-en="Payments & Tenders" data-ja="支払い・決済">Payments & Tenders</a>
+        <a class="toc-link" href="#helium-loyalty" data-en="Promotions & Loyalty" data-ja="プロモーション・ロイヤルティ">Promotions & Loyalty</a>
+        <a class="toc-link" href="#helium-donations" data-en="Donations & Tips" data-ja="寄付・チップ">Donations & Tips</a>
+        <a class="toc-link" href="#helium-orders" data-en="Order Tracking" data-ja="注文追跡">Order Tracking</a>
+        <a class="toc-link" href="#helium-content" data-en="Content & Legal" data-ja="コンテンツ・法的情報">Content & Legal</a>
+        <a class="toc-link" href="#helium-messaging" data-en="Messaging" data-ja="メッセージ">Messaging</a>
+      </div>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="toc-section">
+      <a class="toc-link" href="#bcom">
+        <span class="toc-dot" style="background:var(--bcom-h)"></span>
+        <span data-en="Commerce Backend" data-ja="コマースバックエンド">Commerce Backend</span>
+      </a>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="toc-section">
+      <a class="toc-link" href="#portal">
+        <span class="toc-dot" style="background:var(--portal-h)"></span>
+        <span data-en="PORTAL (Admin)" data-ja="ポータル（管理）">PORTAL (Admin)</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- ══════════════════════════════════════════════════════
+       MAIN
+  ══════════════════════════════════════════════════════ -->
+  <main class="main" id="top">
+
+    <!-- Page header -->
+    <div class="page-header" id="overview">
+      <h1 class="page-title">
+        <span data-en="Byte Stack — Platform Hierarchy" data-ja="Byte Stack — プラットフォーム階層構造">Byte Stack — Platform Hierarchy</span>
+      </h1>
+      <div class="page-meta">
+        <span class="meta-pill" data-en="Architecture Reference" data-ja="アーキテクチャ参照">Architecture Reference</span>
+        <span class="meta-pill" data-en="3 Subsystems" data-ja="3サブシステム">3 Subsystems</span>
+        <span class="meta-pill" data-en="v2026 · ja-JP" data-ja="v2026 · ja-JP">v2026 · ja-JP</span>
+      </div>
+    </div>
+
+    <!-- ja-JP locale banner -->
+    <div class="locale-banner">
+      <span style="font-size:20px">🇯🇵</span>
+      <span>
+        <strong data-en="ja-JP Locale Active" data-ja="ja-JPロケール有効">ja-JP Locale Active</strong>
+        &nbsp;— <span data-en="All labels and UI strings support Japanese market localisation." data-ja="すべてのラベルおよびUI文字列は日本市場のローカライズに対応しています。">All labels and UI strings support Japanese market localisation.</span>
+      </span>
+    </div>
+
+    <!-- What is box -->
+    <div class="what-is-box">
+      <h3 data-en="What is the Byte Stack?" data-ja="Byte Stackとは？">What is the Byte Stack?</h3>
+      <p data-en="Byte Stack is a multi-tenant digital commerce platform — the full-stack system powering online ordering, in-restaurant kiosks, loyalty programmes, and back-office operations across all markets and brands. ATLAS is one KFC product built on top of it. The stack is composed of three tightly integrated subsystems: HELIUM (customer-facing app), Commerce Backend, and PORTAL (admin control plane for operators and HQ)." data-ja="Byte Stackは、マルチテナント型デジタルコマースプラットフォームです。オンライン注文、店内キオスク、ロイヤルティプログラム、バックオフィス運営を全市場・全ブランド向けに支えるフルスタックシステムです。ATLASはその上に構築されたKFC製品のひとつです。このスタックは3つの密に連携したサブシステムで構成されています：HELIUM（顧客向けアプリ）、コマースバックエンド、PORTAL（オペレーターおよび本部向け管理コントロールプレーン）。">
+        Byte Stack is a multi-tenant digital commerce platform — the full-stack system powering online ordering, in-restaurant kiosks, loyalty programmes, and back-office operations across all markets and brands. <strong>ATLAS is one KFC product built on top of it.</strong> The stack is composed of three tightly integrated subsystems: <strong>HELIUM</strong> (customer-facing app), <strong>Commerce Backend</strong>, and <strong>PORTAL</strong> (admin control plane for operators and HQ).
+      </p>
+    </div>
+
+    <!-- Stats strip -->
+    <div class="stats-strip">
+      <div class="stat-card">
+        <div class="stat-num" style="color:var(--helium-h)">11</div>
+        <div class="stat-label" data-en="HELIUM Feature Modules" data-ja="HELIUMフィーチャーモジュール">HELIUM Feature Modules</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" style="color:var(--bcom-h)">9</div>
+        <div class="stat-label" data-en="Commerce Backend Services" data-ja="コマースバックエンドサービス">Commerce Backend Services</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" style="color:var(--portal-h)">13</div>
+        <div class="stat-label" data-en="PORTAL Admin Modules" data-ja="ポータル管理モジュール">PORTAL Admin Modules</div>
+      </div>
+    </div>
+
+    <!-- Byte Stack note -->
+    <div style="background:var(--bg-surface);border:1px solid var(--border);border-left:4px solid #8250df;border-radius:var(--radius);padding:12px 18px;margin-bottom:28px;font-size:13px;color:var(--text-muted);">
+      <strong style="color:#8250df" data-en="Note" data-ja="注記">Note</strong>&nbsp;— <span data-en="This document describes the Byte Stack platform architecture. ATLAS is a KFC-specific product deployed on Byte Stack, not the platform itself." data-ja="このドキュメントはByte Stackプラットフォームのアーキテクチャを説明しています。ATLASはByte Stack上にデプロイされたKFC固有の製品であり、プラットフォーム自体ではありません。">This document describes the <strong>Byte Stack</strong> platform architecture. ATLAS is a KFC-specific product deployed on Byte Stack, not the platform itself.</span>
+    </div>
+
+
+    <!-- ════════════════════════
+         HELIUM
+    ════════════════════════ -->
+    <h2 class="section-title" id="helium">
+      <span data-en="Customer Front-End" data-ja="顧客フロントエンド">Customer Front-End</span>
+    </h2>
+
+    <div class="subsystem-card helium">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-icon">🔴</div>
+        <div class="card-header-text">
+          <div class="card-name">HELIUM</div>
+          <div class="card-subtitle" data-en="Customer-facing app · Web &amp; Mobile" data-ja="顧客向けアプリ · ウェブ＆モバイル">Customer-facing app · Web &amp; Mobile</div>
+        </div>
+        <span class="card-badge" data-en="Front-End" data-ja="フロントエンド">Front-End</span>
+        <svg class="card-chevron open" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+
+      <div class="modules-grid">
+
+        <!-- Identity -->
+        <div class="module helium" id="helium-identity">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">🪪</span>
+            <span class="module-name" data-en="Identity &amp; Sign-In" data-ja="ID・サインイン">Identity &amp; Sign-In</span>
+            <span class="module-count">4</span>
+            <span class="module-chevron open">▶</span>
+          </div>
+          <div class="module-body open">
+            <div class="module-item" data-en="Email + OTP sign-in" data-ja="メール＋OTPサインイン">Email + OTP sign-in</div>
+            <div class="module-item" data-en="Google / Apple OAuth" data-ja="Google / Apple OAuth">Google / Apple OAuth</div>
+            <div class="module-item" data-en="Account management &amp; profile" data-ja="アカウント管理・プロフィール">Account management &amp; profile</div>
+            <div class="module-item" data-en="Privacy, consent &amp; account deletion" data-ja="プライバシー・同意・アカウント削除">Privacy, consent &amp; account deletion</div>
+          </div>
+        </div>
+
+        <!-- Localisation -->
+        <div class="module helium" id="helium-locale">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">🌏</span>
+            <span class="module-name" data-en="Localisation &amp; Order Mode" data-ja="ローカライズ・注文モード">Localisation &amp; Order Mode</span>
+            <span class="module-count">4</span>
+            <span class="module-chevron open">▶</span>
+          </div>
+          <div class="module-body open">
+            <div class="module-item" data-en="Market / locale detection" data-ja="マーケット / ロケール検出（ja-JP含む）">Market / locale detection</div>
+            <div class="module-item" data-en="Collection mode selection" data-ja="店舗受取モード選択">Collection mode selection</div>
+            <div class="module-item" data-en="Delivery mode + coverage check" data-ja="デリバリーモード・配達範囲確認">Delivery mode + coverage check</div>
+            <div class="module-item" data-en="Store locator (Find a KFC)" data-ja="店舗検索（KFCを探す）">Store locator (Find a KFC)</div>
+          </div>
+        </div>
+
+        <!-- Menu -->
+        <div class="module helium" id="helium-menu">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">🍗</span>
+            <span class="module-name" data-en="Menu Browse &amp; PDP" data-ja="メニュー閲覧・商品詳細ページ">Menu Browse &amp; PDP</span>
+            <span class="module-count">4</span>
+            <span class="module-chevron open">▶</span>
+          </div>
+          <div class="module-body open">
+            <div class="module-item" data-en="Product Listing Page (PLP)" data-ja="商品一覧ページ（PLP）">Product Listing Page (PLP)</div>
+            <div class="module-item" data-en="Product Detail Page (PDP)" data-ja="商品詳細ページ（PDP）">Product Detail Page (PDP)</div>
+            <div class="module-item" data-en="Item modifiers &amp; options" data-ja="商品オプション・カスタマイズ">Item modifiers &amp; options</div>
+            <div class="module-item" data-en="Nutrition &amp; allergens guide" data-ja="栄養成分・アレルゲンガイド">Nutrition &amp; allergens guide</div>
+          </div>
+        </div>
+
+        <!-- Cart -->
+        <div class="module helium" id="helium-cart">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">🛒</span>
+            <span class="module-name" data-en="Cart" data-ja="カート">Cart</span>
+            <span class="module-count">3</span>
+            <span class="module-chevron open">▶</span>
+          </div>
+          <div class="module-body open">
+            <div class="module-item" data-en="Add / update / remove items" data-ja="商品の追加・更新・削除">Add / update / remove items</div>
+            <div class="module-item" data-en="Apply / remove rewards" data-ja="リワードの適用・削除">Apply / remove rewards</div>
+            <div class="module-item" data-en="Apply promo codes" data-ja="プロモコードの適用">Apply promo codes</div>
+          </div>
+        </div>
+
+        <!-- Checkout -->
+        <div class="module helium" id="helium-checkout">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">✅</span>
+            <span class="module-name" data-en="Checkout" data-ja="チェックアウト">Checkout</span>
+            <span class="module-count">4</span>
+            <span class="module-chevron open">▶</span>
+          </div>
+          <div class="module-body open">
+            <div class="module-item" data-en="Guest checkout" data-ja="ゲストチェックアウト">Guest checkout</div>
+            <div class="module-item" data-en="Registered checkout" data-ja="会員チェックアウト">Registered checkout</div>
+            <div class="module-item" data-en="Delivery variant" data-ja="デリバリー方式">Delivery variant</div>
+            <div class="module-item" data-en="Collection variant" data-ja="店舗受取方式">Collection variant</div>
+          </div>
+        </div>
+
+        <!-- Payments -->
+        <div class="module helium" id="helium-payments">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">💳</span>
+            <span class="module-name" data-en="Payments &amp; Tenders" data-ja="支払い・決済手段">Payments &amp; Tenders</span>
+            <span class="module-count">5</span>
+            <span class="module-chevron open">▶</span>
+          </div>
+          <div class="module-body open">
+            <div class="module-item" data-en="Card payment (tokenised)" data-ja="カード決済（トークン化）">Card payment (tokenised)</div>
+            <div class="module-item" data-en="Voucher-only payment" data-ja="バウチャーのみ支払い">Voucher-only payment</div>
+            <div class="module-item" data-en="Split tender (card + voucher)" data-ja="分割決済（カード＋バウチャー）">Split tender (card + voucher)</div>
+            <div class="module-item" data-en="Gift card resend" data-ja="ギフトカード再送">Gift card resend</div>
+            <div class="module-item" data-en="Saved card management" data-ja="保存カード管理">Saved card management</div>
+          </div>
+        </div>
+
+        <!-- Loyalty -->
+        <div class="module helium" id="helium-loyalty">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">⭐</span>
+            <span class="module-name" data-en="Promotions &amp; Loyalty" data-ja="プロモーション・ロイヤルティ">Promotions &amp; Loyalty</span>
+            <span class="module-count">5</span>
+            <span class="module-chevron open">▶</span>
+          </div>
+          <div class="module-body open">
+            <div class="module-item" data-en="Offers feed (localised)" data-ja="オファーフィード（ローカライズ）">Offers feed (localised)</div>
+            <div class="module-item" data-en="Rewards catalogue" data-ja="リワードカタログ">Rewards catalogue</div>
+            <div class="module-item" data-en="Challenges" data-ja="チャレンジ">Challenges</div>
+            <div class="module-item" data-en="Loyalty onboarding &amp; points" data-ja="ロイヤルティ登録・ポイント">Loyalty onboarding &amp; points</div>
+            <div class="module-item" data-en="Communication preferences" data-ja="通知設定">Communication preferences</div>
+          </div>
+        </div>
+
+        <!-- Donations -->
+        <div class="module helium" id="helium-donations">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">❤️</span>
+            <span class="module-name" data-en="Donations &amp; Tips" data-ja="寄付・チップ">Donations &amp; Tips</span>
+            <span class="module-count">2</span>
+            <span class="module-chevron open">▶</span>
+          </div>
+          <div class="module-body open">
+            <div class="module-item" data-en="Add-Hope donations" data-ja="Add-Hope 寄付">Add-Hope donations</div>
+            <div class="module-item" data-en="Delivery driver tips" data-ja="デリバリードライバーへのチップ">Delivery driver tips</div>
+          </div>
+        </div>
+
+        <!-- Order Tracking -->
+        <div class="module helium" id="helium-orders">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">📦</span>
+            <span class="module-name" data-en="Order Tracking &amp; History" data-ja="注文追跡・履歴">Order Tracking &amp; History</span>
+            <span class="module-count">4</span>
+            <span class="module-chevron open">▶</span>
+          </div>
+          <div class="module-body open">
+            <div class="module-item" data-en="Real-time delivery tracking" data-ja="リアルタイム配達追跡">Real-time delivery tracking</div>
+            <div class="module-item" data-en="Order history &amp; receipts" data-ja="注文履歴・領収書">Order history &amp; receipts</div>
+            <div class="module-item" data-en="Order Again" data-ja="再注文">Order Again</div>
+            <div class="module-item" data-en="Favourite orders" data-ja="お気に入り注文">Favourite orders</div>
+          </div>
+        </div>
+
+        <!-- Content & Legal -->
+        <div class="module helium" id="helium-content">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">📄</span>
+            <span class="module-name" data-en="Content &amp; Legal" data-ja="コンテンツ・法的情報">Content &amp; Legal</span>
+            <span class="module-count">4</span>
+            <span class="module-chevron open">▶</span>
+          </div>
+          <div class="module-body open">
+            <div class="module-item" data-en="CMS pages (About, FAQ, Careers)" data-ja="CMSページ（会社概要、FAQ、採用情報）">CMS pages (About, FAQ, Careers)</div>
+            <div class="module-item" data-en="Terms &amp; Conditions" data-ja="利用規約">Terms &amp; Conditions</div>
+            <div class="module-item" data-en="Privacy Policy" data-ja="プライバシーポリシー">Privacy Policy</div>
+            <div class="module-item" data-en="Cookie settings" data-ja="Cookie設定">Cookie settings</div>
+          </div>
+        </div>
+
+        <!-- Messaging -->
+        <div class="module helium" id="helium-messaging">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">🔔</span>
+            <span class="module-name" data-en="Engagement &amp; Messaging" data-ja="エンゲージメント・メッセージ">Engagement &amp; Messaging</span>
+            <span class="module-count">2</span>
+            <span class="module-chevron open">▶</span>
+          </div>
+          <div class="module-body open">
+            <div class="module-item" data-en="In-app inbox" data-ja="アプリ内受信箱">In-app inbox</div>
+            <div class="module-item" data-en="Push notification preferences" data-ja="プッシュ通知設定">Push notification preferences</div>
+          </div>
+        </div>
+
+      </div><!-- /modules-grid -->
+    </div><!-- /helium card -->
+
+
+    <!-- ════════════════════════
+         Commerce Backend
+    ════════════════════════ -->
+    <h2 class="section-title" id="bcom">
+      <span data-en="Commerce Backend" data-ja="コマースバックエンド">Commerce Backend</span>
+    </h2>
+
+    <div class="subsystem-card bcom">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-icon">🔵</div>
+        <div class="card-header-text">
+          <div class="card-name">Commerce Backend</div>
+          <div class="card-subtitle" data-en="Commerce Backend · APIs &amp; Services" data-ja="コマースバックエンド · API＆サービス">Commerce Backend · APIs &amp; Services</div>
+        </div>
+        <span class="card-badge" data-en="Back-End" data-ja="バックエンド">Back-End</span>
+        <svg class="card-chevron open" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+
+      <div class="modules-grid">
+
+        <div class="module bcom">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">🛍️</span>
+            <span class="module-name" data-en="Cart &amp; Order Lifecycle" data-ja="カート・注文ライフサイクル">Cart &amp; Order Lifecycle</span>
+            <span class="module-count"></span>
+            <span class="module-chevron">▶</span>
+          </div>
+          <div class="module-body">
+            <div class="module-item" data-en="Order creation, amendment &amp; cancellation" data-ja="注文の作成・変更・キャンセル">Order creation, amendment &amp; cancellation</div>
+            <div class="module-item" data-en="Status machine &amp; webhooks" data-ja="ステータス管理・Webhook">Status machine &amp; webhooks</div>
+          </div>
+        </div>
+
+        <div class="module bcom">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">📋</span>
+            <span class="module-name" data-en="Menu, Pricing &amp; Tax" data-ja="メニュー・価格・税金">Menu, Pricing &amp; Tax</span>
+            <span class="module-count"></span>
+            <span class="module-chevron">▶</span>
+          </div>
+          <div class="module-body">
+            <div class="module-item" data-en="Menu consumption &amp; caching" data-ja="メニュー消費・キャッシュ">Menu consumption &amp; caching</div>
+            <div class="module-item" data-en="Dynamic pricing &amp; tax rules" data-ja="動的価格・税金ルール">Dynamic pricing &amp; tax rules</div>
+          </div>
+        </div>
+
+        <div class="module bcom">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">💰</span>
+            <span class="module-name" data-en="Payments &amp; Refunds" data-ja="支払い・返金">Payments &amp; Refunds</span>
+            <span class="module-count"></span>
+            <span class="module-chevron">▶</span>
+          </div>
+          <div class="module-body">
+            <div class="module-item" data-en="PSP gateway abstraction" data-ja="PSPゲートウェイ抽象化">PSP gateway abstraction</div>
+            <div class="module-item" data-en="Refund orchestration" data-ja="返金オーケストレーション">Refund orchestration</div>
+          </div>
+        </div>
+
+        <div class="module bcom">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">👤</span>
+            <span class="module-name" data-en="Customer Accounts &amp; Auth" data-ja="顧客アカウント・認証">Customer Accounts &amp; Auth</span>
+            <span class="module-count"></span>
+            <span class="module-chevron">▶</span>
+          </div>
+          <div class="module-body">
+            <div class="module-item" data-en="JWT / OTP token issuance" data-ja="JWT / OTPトークン発行">JWT / OTP token issuance</div>
+            <div class="module-item" data-en="Identity federation (OAuth)" data-ja="アイデンティティフェデレーション（OAuth）">Identity federation (OAuth)</div>
+          </div>
+        </div>
+
+        <div class="module bcom">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">⚙️</span>
+            <span class="module-name" data-en="Preferences &amp; Loyalty Linking" data-ja="設定・ロイヤルティ連携">Preferences &amp; Loyalty Linking</span>
+            <span class="module-count"></span>
+            <span class="module-chevron">▶</span>
+          </div>
+          <div class="module-body">
+            <div class="module-item" data-en="Marketing consent storage" data-ja="マーケティング同意保存">Marketing consent storage</div>
+            <div class="module-item" data-en="Loyalty provider linking" data-ja="ロイヤルティプロバイダー連携">Loyalty provider linking</div>
+          </div>
+        </div>
+
+        <div class="module bcom">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">🖥️</span>
+            <span class="module-name" data-en="POS / KDS Integration" data-ja="POS / KDS 連携">POS / KDS Integration</span>
+            <span class="module-count"></span>
+            <span class="module-chevron">▶</span>
+          </div>
+          <div class="module-body">
+            <div class="module-item" data-en="Order injection into restaurant systems" data-ja="店舗システムへの注文注入">Order injection into restaurant systems</div>
+            <div class="module-item" data-en="Firestore / polling adapters" data-ja="Firestore / ポーリングアダプター">Firestore / polling adapters</div>
+          </div>
+        </div>
+
+        <div class="module bcom">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">🔗</span>
+            <span class="module-name" data-en="Aggregator Integration" data-ja="アグリゲーター連携">Aggregator Integration</span>
+            <span class="module-count"></span>
+            <span class="module-chevron">▶</span>
+          </div>
+          <div class="module-body">
+            <div class="module-item" data-en="Byte Connect channel adapter" data-ja="Byte Connect チャネルアダプター">Byte Connect channel adapter</div>
+            <div class="module-item" data-en="Third-party delivery platform ingestion" data-ja="サードパーティ配達プラットフォームの取り込み">Third-party delivery platform ingestion</div>
+          </div>
+        </div>
+
+        <div class="module bcom">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">🗄️</span>
+            <span class="module-name" data-en="Data Migration" data-ja="データ移行">Data Migration</span>
+            <span class="module-count"></span>
+            <span class="module-chevron">▶</span>
+          </div>
+          <div class="module-body">
+            <div class="module-item" data-en="Legacy customer &amp; order import" data-ja="レガシー顧客・注文インポート">Legacy customer &amp; order import</div>
+            <div class="module-item" data-en="ETL pipelines &amp; validation" data-ja="ETLパイプライン・バリデーション">ETL pipelines &amp; validation</div>
+          </div>
+        </div>
+
+        <div class="module bcom">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">📊</span>
+            <span class="module-name" data-en="Observability" data-ja="オブザーバビリティ">Observability</span>
+            <span class="module-count"></span>
+            <span class="module-chevron">▶</span>
+          </div>
+          <div class="module-body">
+            <div class="module-item" data-en="Distributed tracing &amp; metrics" data-ja="分散トレーシング・メトリクス">Distributed tracing &amp; metrics</div>
+            <div class="module-item" data-en="Alerting &amp; SLO dashboards" data-ja="アラート・SLOダッシュボード">Alerting &amp; SLO dashboards</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ════════════════════════
+         PORTAL
+    ════════════════════════ -->
+    <h2 class="section-title" id="portal">
+      <span data-en="Admin Control Plane" data-ja="管理コントロールプレーン">Admin Control Plane</span>
+    </h2>
+
+    <div class="subsystem-card portal">
+      <div class="card-header" onclick="toggleCard(this)">
+        <div class="card-icon">🟢</div>
+        <div class="card-header-text">
+          <div class="card-name">PORTAL</div>
+          <div class="card-subtitle" data-en="Admin Control Plane · Operators &amp; HQ" data-ja="管理コントロールプレーン · オペレーター＆本部">Admin Control Plane · Operators &amp; HQ</div>
+        </div>
+        <span class="card-badge" data-en="Admin" data-ja="管理">Admin</span>
+        <svg class="card-chevron open" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+
+      <div class="modules-grid">
+
+        <div class="module portal">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">🔐</span>
+            <span class="module-name" data-en="Users &amp; Roles (RBAC)" data-ja="ユーザー・役割（RBAC）">Users &amp; Roles (RBAC)</span>
+            <span class="module-count"></span>
+            <span class="module-chevron">▶</span>
+          </div>
+          <div class="module-body">
+            <div class="module-item" data-en="Role-based access control" data-ja="ロールベースアクセス制御">Role-based access control</div>
+            <div class="module-item" data-en="Scope Guard enforcement" data-ja="スコープガード適用">Scope Guard enforcement</div>
+          </div>
+        </div>
+
+        <div class="module portal">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">🏪</span>
+            <span class="module-name" data-en="Stores &amp; Store Groups" data-ja="店舗・店舗グループ">Stores &amp; Store Groups</span>
+            <span class="module-count"></span>
+            <span class="module-chevron">▶</span>
+          </div>
+          <div class="module-body">
+            <div class="module-item" data-en="Store configuration &amp; attributes" data-ja="店舗設定・属性">Store configuration &amp; attributes</div>
+            <div class="module-item" data-en="Opening hours &amp; trading zones" data-ja="営業時間・取引ゾーン">Opening hours &amp; trading zones</div>
+          </div>
+        </div>
+
+        <div class="module portal">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">🍽️</span>
+            <span class="module-name" data-en="Menu Assignment &amp; Overrides" data-ja="メニュー割り当て・上書き">Menu Assignment &amp; Overrides</span>
+            <span class="module-count"></span>
+            <span class="module-chevron">▶</span>
+          </div>
+          <div class="module-body">
+            <div class="module-item" data-en="Menu patching per store" data-ja="店舗別メニューパッチ">Menu patching per store</div>
+            <div class="module-item" data-en="Item 86 / availability overrides" data-ja="品切れ / 提供可否上書き">Item 86 / availability overrides</div>
+          </div>
+        </div>
+
+        <div class="module portal">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">🎁</span>
+            <span class="module-name" data-en="Promotions Management" data-ja="プロモーション管理">Promotions Management</span>
+            <span class="module-count"></span>
+            <span class="module-chevron">▶</span>
+          </div>
+          <div class="module-body">
+            <div class="module-item" data-en="Discount &amp; offer builder" data-ja="割引・オファービルダー">Discount &amp; offer builder</div>
+            <div class="module-item" data-en="Campaign scheduling" data-ja="キャンペーンスケジュール">Campaign scheduling</div>
+          </div>
+        </div>
+
+        <div class="module portal">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">🧾</span>
+            <span class="module-name" data-en="Tax Configuration" data-ja="税金設定">Tax Configuration</span>
+            <span class="module-count"></span>
+            <span class="module-chevron">▶</span>
+          </div>
+          <div class="module-body">
+            <div class="module-item" data-en="Tax rate tables by locale" data-ja="ロケール別税率テーブル">Tax rate tables by locale</div>
+            <div class="module-item" data-en="Override rules per product/store" data-ja="商品・店舗別上書きルール">Override rules per product/store</div>
+          </div>
+        </div>
+
+        <div class="module portal">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">💳</span>
+            <span class="module-name" data-en="Payments Configuration" data-ja="支払い設定">Payments Configuration</span>
+            <span class="module-count"></span>
+            <span class="module-chevron">▶</span>
+          </div>
+          <div class="module-body">
+            <div class="module-item" data-en="PSP credentials per market" data-ja="マーケット別PSP認証情報">PSP credentials per market</div>
+            <div class="module-item" data-en="Tender type enablement" data-ja="決済手段の有効化">Tender type enablement</div>
+          </div>
+        </div>
+
+        <div class="module portal">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">📋</span>
+            <span class="module-name" data-en="Orders &amp; Refunds (Ops)" data-ja="注文・返金（運用）">Orders &amp; Refunds (Ops)</span>
+            <span class="module-count"></span>
+            <span class="module-chevron">▶</span>
+          </div>
+          <div class="module-body">
+            <div class="module-item" data-en="Order search &amp; detail view" data-ja="注文検索・詳細表示">Order search &amp; detail view</div>
+            <div class="module-item" data-en="Manual refund processing" data-ja="手動返金処理">Manual refund processing</div>
+          </div>
+        </div>
+
+        <div class="module portal">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">🌐</span>
+            <span class="module-name" data-en="Localisation &amp; Content" data-ja="ローカライズ・コンテンツ">Localisation &amp; Content</span>
+            <span class="module-count"></span>
+            <span class="module-chevron">▶</span>
+          </div>
+          <div class="module-body">
+            <div class="module-item" data-en="String/copy management per locale" data-ja="ロケール別文字列管理">String/copy management per locale</div>
+            <div class="module-item" data-en="ja-JP content overrides" data-ja="ja-JPコンテンツ上書き">ja-JP content overrides</div>
+          </div>
+        </div>
+
+        <div class="module portal">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">📈</span>
+            <span class="module-name" data-en="Reporting &amp; Exports" data-ja="レポート・エクスポート">Reporting &amp; Exports</span>
+            <span class="module-count"></span>
+            <span class="module-chevron">▶</span>
+          </div>
+          <div class="module-body">
+            <div class="module-item" data-en="Sales &amp; transaction reports" data-ja="売上・取引レポート">Sales &amp; transaction reports</div>
+            <div class="module-item" data-en="CSV / scheduled export" data-ja="CSV / スケジュールエクスポート">CSV / scheduled export</div>
+          </div>
+        </div>
+
+        <div class="module portal">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">🪝</span>
+            <span class="module-name" data-en="Webhooks &amp; Integrations" data-ja="Webhook・連携">Webhooks &amp; Integrations</span>
+            <span class="module-count"></span>
+            <span class="module-chevron">▶</span>
+          </div>
+          <div class="module-body">
+            <div class="module-item" data-en="Outbound webhook management" data-ja="アウトバウンドWebhook管理">Outbound webhook management</div>
+            <div class="module-item" data-en="Third-party service keys" data-ja="サードパーティサービスキー">Third-party service keys</div>
+          </div>
+        </div>
+
+        <div class="module portal">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">🚩</span>
+            <span class="module-name" data-en="Settings &amp; Feature Flags" data-ja="設定・機能フラグ">Settings &amp; Feature Flags</span>
+            <span class="module-count"></span>
+            <span class="module-chevron">▶</span>
+          </div>
+          <div class="module-body">
+            <div class="module-item" data-en="Platform-wide feature toggles" data-ja="プラットフォーム全体の機能トグル">Platform-wide feature toggles</div>
+            <div class="module-item" data-en="Maintenance mode scheduling" data-ja="メンテナンスモードスケジュール">Maintenance mode scheduling</div>
+          </div>
+        </div>
+
+        <div class="module portal">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">🔍</span>
+            <span class="module-name" data-en="Audit &amp; Observability" data-ja="監査・オブザーバビリティ">Audit &amp; Observability</span>
+            <span class="module-count"></span>
+            <span class="module-chevron">▶</span>
+          </div>
+          <div class="module-body">
+            <div class="module-item" data-en="Admin action audit log" data-ja="管理者アクション監査ログ">Admin action audit log</div>
+            <div class="module-item" data-en="System health &amp; error dashboards" data-ja="システムヘルス・エラーダッシュボード">System health &amp; error dashboards</div>
+          </div>
+        </div>
+
+        <div class="module portal">
+          <div class="module-head" onclick="toggleModule(this)">
+            <span class="module-icon">📚</span>
+            <span class="module-name" data-en="Shared Catalogues" data-ja="共有カタログ">Shared Catalogues</span>
+            <span class="module-count"></span>
+            <span class="module-chevron">▶</span>
+          </div>
+          <div class="module-body">
+            <div class="module-item" data-en="Central product master data" data-ja="中央商品マスターデータ">Central product master data</div>
+            <div class="module-item" data-en="Shared assets &amp; taxonomy" data-ja="共有アセット・タクソノミー">Shared assets &amp; taxonomy</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     JS
+══════════════════════════════════════════════════════ -->
+<script>
+/* ── Theme toggle ──────────────────────────────── */
+const html     = document.documentElement;
+const themeBtn = document.getElementById('themeToggle');
+const themeLabel = document.getElementById('themeLabel');
+const isEmbedded = window.self !== window.top;
+
+if (isEmbedded) {
+  document.body.classList.add('embedded-theme');
+}
+
+function applyTheme(theme) {
+  const dark = theme === 'dark';
+  html.dataset.theme = dark ? 'dark' : 'light';
+  themeLabel.textContent = dark ? 'Light' : 'Dark';
+  updateThemeIcon(dark);
+}
+
+themeBtn.addEventListener('click', () => {
+  const isDark = html.dataset.theme === 'dark';
+  applyTheme(isDark ? 'light' : 'dark');
+});
+
+function updateThemeIcon(dark) {
+  const icon = document.getElementById('themeIcon');
+  if (dark) {
+    icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+  } else {
+    icon.innerHTML = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+  }
+}
+
+const params = new URLSearchParams(window.location.search);
+const requestedTheme = params.get('theme');
+if (requestedTheme === 'light' || requestedTheme === 'dark') {
+  applyTheme(requestedTheme);
+}
+
+window.addEventListener('message', (event) => {
+  if (event.origin !== window.location.origin) return;
+  if (event.data?.type !== 'byte-stack-hierarchy-theme') return;
+  applyTheme(event.data.theme);
+});
+
+/* ── Locale toggle ─────────────────────────────── */
+const localeBtn   = document.getElementById('localeToggle');
+const localeLabel = document.getElementById('localeLabel');
+
+localeBtn.addEventListener('click', () => {
+  const isJa = html.dataset.locale === 'ja';
+  const next  = isJa ? 'en' : 'ja';
+  html.dataset.locale = next;
+  localeLabel.textContent = isJa ? '日本語' : 'English';
+  applyLocale(next);
+});
+
+function applyLocale(locale) {
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const val = el.getAttribute('data-' + locale);
+    if (val) el.textContent = val;
+  });
+  // Update lang attribute for screen readers / font shaping
+  document.documentElement.lang = locale === 'ja' ? 'ja' : 'en';
+}
+
+/* ── Card collapse ─────────────────────────────── */
+function toggleCard(header) {
+  const grid    = header.nextElementSibling;
+  const chevron = header.querySelector('.card-chevron');
+  const isOpen  = grid.style.display !== 'none';
+  grid.style.display = isOpen ? 'none' : 'grid';
+  chevron.classList.toggle('open', !isOpen);
+}
+
+/* ── Module collapse ───────────────────────────── */
+function toggleModule(head) {
+  const body    = head.nextElementSibling;
+  const chevron = head.querySelector('.module-chevron');
+  const isOpen  = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  chevron.classList.toggle('open', !isOpen);
+}
+
+/* ── Search / highlight ────────────────────────── */
+const searchInput = document.getElementById('search');
+
+searchInput.addEventListener('input', () => {
+  const q = searchInput.value.trim().toLowerCase();
+  clearHighlights();
+
+  if (!q) {
+    // Restore everything
+    document.querySelectorAll('.module').forEach(m => m.classList.remove('hidden'));
+    document.querySelectorAll('.modules-grid').forEach(g => g.style.display = 'grid');
+    return;
+  }
+
+  document.querySelectorAll('.module').forEach(mod => {
+    const text = mod.textContent.toLowerCase();
+    const match = text.includes(q);
+    mod.classList.toggle('hidden', !match);
+    if (match) {
+      highlightIn(mod, q);
+      // Make sure module body is visible
+      const body = mod.querySelector('.module-body');
+      body.classList.add('open');
+      mod.querySelector('.module-chevron').classList.add('open');
+    }
+  });
+
+  // Show/hide grids that have no visible modules
+  document.querySelectorAll('.modules-grid').forEach(grid => {
+    const anyVisible = [...grid.querySelectorAll('.module')].some(m => !m.classList.contains('hidden'));
+    grid.style.display = anyVisible ? 'grid' : 'none';
+  });
+});
+
+function clearHighlights() {
+  document.querySelectorAll('mark').forEach(m => {
+    const parent = m.parentNode;
+    parent.replaceChild(document.createTextNode(m.textContent), m);
+    parent.normalize();
+  });
+}
+
+function highlightIn(el, q) {
+  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+  const nodes  = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach(node => {
+    const idx = node.textContent.toLowerCase().indexOf(q);
+    if (idx === -1) return;
+    const range = document.createRange();
+    range.setStart(node, idx);
+    range.setEnd(node, idx + q.length);
+    const mark = document.createElement('mark');
+    range.surroundContents(mark);
+  });
+}
+
+/* ── Active TOC on scroll ──────────────────────── */
+const tocLinks = document.querySelectorAll('.toc-link[href]');
+const sections = [...document.querySelectorAll('[id]')];
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const active = [...tocLinks].find(l => l.getAttribute('href') === '#' + e.target.id);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-52px 0px -60% 0px', threshold: 0 });
+
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

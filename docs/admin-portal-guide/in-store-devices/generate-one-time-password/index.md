@@ -9,6 +9,12 @@ sidebar_label: Generate One-Time Password
 
 Creates a temporary authentication code for a POS terminal or kiosk, used during initial device setup or when re-authenticating an existing device.
 
+:::note Byte POS Caveat
+This workflow assumes the device is part of a **Byte POS** setup managed through Admin Portal.
+
+If the market is not using Byte POS, Byte Commerce relies on **Byte Connect** as the bridge to the market POS, so the authentication/setup flow may not match the steps on this page.
+:::
+
 ## Steps
 
 **Step 1:** Navigate to the **In-Store Devices** section using the left-hand navigation menu.
@@ -39,6 +45,7 @@ You can search and filter devices by Station Type, Store Number, and Device Stat
 
 - [View In-Store Device Details](/docs/admin-portal-guide/in-store-devices/view-in-store-device-details/)
 - [Deactivate In-Store](/docs/admin-portal-guide/in-store-devices/deactivate-in-store/)
+- [Byte Connect](/docs/byte-capabilities/enablement/byte-connect)
 
 ---
 

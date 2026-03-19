@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "workspace": {
+    "name": "kfc-atlas-portal",
+    "createdAt": 1773853586217,
+    "preset": "starter"
+  },
+  "authorizedRoots": [
+    "/Users/justinpagalilauan/Desktop/kfc-atlas-portal"
+  ]
+}

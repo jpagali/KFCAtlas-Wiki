@@ -15,7 +15,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 Think of a design system as the **single source of truth** for how KFC looks and works digitally — everywhere. It's the set of rules, reusable parts, and shared tools that ensure a button in the KFC Japan app looks and behaves the same as a button in the KFC Australia web experience. Without it, every market would rebuild the same thing from scratch, in slightly different ways. With it, every team works from the same foundation.
 
-The KFC Atlas platform is powered by **Helium**, Yum!'s enterprise design system. Here's how it all fits together.
+The KFC Atlas platform is powered by **Byte Helium**, Yum!'s enterprise design system. Here's how it all fits together.
 
 ---
 
@@ -75,7 +75,7 @@ KFC Global Enablement and Market Success helps each market take full advantage o
 
 ## Platform Architecture Diagram
 
-The diagram below illustrates how the Helium design system flows from design tokens in Figma — through the style build process — into platform components, and finally into the KFC market applications customers use.
+The diagram below illustrates how the Byte Helium design system flows from design tokens in Figma — through the style build process — into platform components, and finally into the KFC market applications customers use.
 
 <iframe
   src={useBaseUrl('/kfc-atlas-design-system-diagram.html')}

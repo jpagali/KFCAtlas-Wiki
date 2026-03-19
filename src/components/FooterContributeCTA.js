@@ -7,7 +7,7 @@ const COPY = {
   'en-US': {
     contribute: {
       eyebrow: 'The 12th Secret',
-      title: 'Contribute to the Knowledge Center',
+      title: 'Contribute to Atlas Wiki',
       body: 'Share the next playbook, guide, or process your team should know.',
       cta: 'Open the Studio',
     },
@@ -21,7 +21,7 @@ const COPY = {
   'ja-JP': {
     contribute: {
       eyebrow: '12番目のシークレット',
-      title: 'Knowledge Center に寄稿する',
+      title: 'Atlas Wiki に寄稿する',
       body: '次にチームへ共有したい手順書、ガイド、プレイブックを追加しましょう。',
       cta: 'Studio を開く',
     },

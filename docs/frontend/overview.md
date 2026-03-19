@@ -20,7 +20,7 @@ The Atlas front-end spans three areas:
 
 ## Design System
 
-The KFC Atlas front-end is built on **Helium**, Yum!'s enterprise design system — a shared set of design tokens, UI components, and style rules that ensures consistency across every market, platform, and device.
+The KFC Atlas front-end is built on **Byte Helium**, Yum!'s enterprise design system — a shared set of design tokens, UI components, and style rules that ensures consistency across every market, platform, and device.
 
 See [Design System](/docs/frontend/design-system) for a full explanation of how the visual identity flows from Figma all the way to the screen.
 

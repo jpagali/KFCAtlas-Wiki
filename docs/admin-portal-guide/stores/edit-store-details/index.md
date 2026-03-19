@@ -26,7 +26,7 @@ Updates an existing store's information such as name, settings, or operational f
 | Field | What to enter | Notes |
 |-------|--------------|-------|
 | **Store Name** * | Full display name of the store | e.g., “KFC George Street Sydney” |
-| **Store Number** * | Unique numeric identifier assigned by market operations | Must match the POS-assigned store number |
+| **Store Number** * | Unique numeric identifier assigned by market operations | Must match the Byte POS-assigned store number, or the mapped store identifier used through Byte Connect for non-Byte POS markets |
 | **Franchise Code** * | Alphanumeric code identifying the franchisee | Provided by your regional manager |
 | **Time Zone** | The store's local time zone | Required for item snooze and future order accuracy |
 | **Accepting Online Orders** | Toggle: Yes or No | Set to No during closures or operational issues |
@@ -36,6 +36,10 @@ Updates an existing store's information such as name, settings, or operational f
 **Step 6:** Once all changes are complete, the **Save** button becomes active. Click **Save** to update the store.
 
 ![Step 3](./img/step-3.png)
+
+:::note Byte POS Caveat
+Updating store details does not by itself create direct connectivity from Byte Commerce to a non-Byte POS. If the market is not on Byte POS, **Byte Connect** is the required bridge.
+:::
 
 :::caution
 Clicking **Cancel** at any time discards all unsaved changes.

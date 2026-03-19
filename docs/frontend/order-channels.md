@@ -65,7 +65,7 @@ For the frontend, this positions scheduled ordering as a managed experience:
 That gives markets room to launch the feature intentionally instead of making it mandatory everywhere.
 
 ### Store operations directly shape the customer experience
-The Admin Portal exposes store controls such as **Accepting Online Orders** and store-specific menu publishing.
+The Byte Portal exposes store controls such as **Accepting Online Orders** and store-specific menu publishing.
 
 This means the frontend is store-sensitive by design:
 
@@ -96,7 +96,7 @@ If you need to document market-specific frontend behavior, verify the actual cha
 - that aggregator behaviour can be inferred from the current Admin Portal Guide alone
 - that any specific market has dine-in, delivery, and takeaway deployed in the same way at every store
 
-## Admin Portal Sources Behind These Presumptions
+## Byte Portal Sources Behind These Presumptions
 
 - [View a Store’s Menu](/docs/admin-portal-guide/stores/view-a-stores-menu/)
 - [Assign New Menu](/docs/admin-portal-guide/stores/assign-new-menu/)

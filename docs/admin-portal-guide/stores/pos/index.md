@@ -9,6 +9,12 @@ sidebar_label: POS
 
 Shows a store's connected point-of-sale devices, their status, and allows operators to update device settings or generate one-time passwords for device authentication.
 
+:::note Byte POS Caveat
+This page describes the Admin Portal flow for **Byte POS-connected** device management.
+
+If the market is not using Byte POS, Byte Commerce does **not** talk directly to that market POS. **Byte Connect** must be onboarded as the bridge, and the exact operational flow may differ from the device-level steps shown here.
+:::
+
 ## Steps
 
 **Step 1:** Navigate to the **Stores** section using the left-hand navigation menu.
@@ -48,6 +54,7 @@ Devices that are offline or not checking in should be investigated to ensure men
 ## Related guides
 
 - [Edit Store Details](/docs/admin-portal-guide/stores/edit-store-details/) — View other store information
+- [Byte Connect](/docs/byte-capabilities/enablement/byte-connect) — Understand when non-Byte POS markets require Byte Connect
 
 ---
 

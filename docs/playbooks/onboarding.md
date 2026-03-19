@@ -8,7 +8,7 @@ sidebar_position: 1
 This playbook shows how KFC teams should create and launch a promotion in Atlas, from the initial campaign brief through store-group assignment and pre-launch checks.
 
 **Estimated time:** 30-60 minutes for setup, plus approval and QA time
-**Who does this:** Regional / BMU Admin, marketing operations, or campaign owners with Admin Portal access
+**Who does this:** Regional / BMU Admin, marketing operations, or campaign owners with Admin Byte Portal access
 
 ---
 
@@ -28,7 +28,7 @@ If you are specifically creating a Buy 1 Get 1 offer, use the dedicated recipe p
 - approved KFC campaign brief with offer details, dates, and target market
 - promotion copy confirmed with the local marketing team
 - store or store-group scope confirmed
-- Admin Portal access to Promotions and Store Groups
+- Admin Byte Portal access to Promotions and Store Groups
 
 ## Step 1: Confirm the promotion structure
 
@@ -46,7 +46,7 @@ For KFC campaigns, always confirm whether the offer should appear in app, web, a
 
 ## Step 2: Create the promotion shell
 
-Use the Admin Portal guide page [Create a Promotion](/docs/admin-portal-guide/promotions/create-a-promotion/) to create the promotion record.
+Use the Byte Portal guide page [Create a Promotion](/docs/admin-portal-guide/promotions/create-a-promotion/) to create the promotion record.
 
 At this stage:
 

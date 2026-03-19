@@ -1,7 +1,16 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import clsx from 'clsx';
 import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import {useEditor, EditorContent} from '@tiptap/react';
+import StarterKit from '@tiptap/starter-kit';
+import Underline from '@tiptap/extension-underline';
+import Link from '@tiptap/extension-link';
+import Image from '@tiptap/extension-image';
+import {Table} from '@tiptap/extension-table';
+import TableRow from '@tiptap/extension-table-row';
+import TableHeader from '@tiptap/extension-table-header';
+import TableCell from '@tiptap/extension-table-cell';
 import styles from './styles.module.css';
 
 const DEFAULT_TEMPLATE = 'howTo';
@@ -106,7 +115,7 @@ const TEMPLATES = {
 
 const COPY = {
   'en-US': {
-    title: 'Contribute to the Knowledge Center',
+    title: 'Contribute to Atlas Wiki',
     subtitle:
       'Turn your process, guide, or operating insight into a publish-ready article with a familiar writing surface and a guided submission flow.',
     metadata: 'Article Setup',
@@ -125,7 +134,7 @@ const COPY = {
       team: 'Team / Function',
       summary: 'Summary',
       audience: 'Intended Audience',
-      location: 'Suggested Knowledge Center Location',
+      location: 'Suggested Atlas Wiki Location',
       videoLinks: 'Video Links',
       notes: 'Notes to Reviewer',
     },
@@ -160,7 +169,7 @@ const COPY = {
     previewShow: 'Show Preview',
     previewHide: 'Hide Preview',
     hiddenPreviewHint: 'Preview is hidden so you can focus on writing. Open it anytime to check the final rendering.',
-    heroEyebrow: 'Knowledge Center Publishing Studio',
+    heroEyebrow: 'Atlas Wiki Publishing Studio',
     heroFlow: 'Draft → Preview → Download → Email',
     structuredStarter: 'Structured starter',
     required: 'Required',
@@ -171,7 +180,7 @@ const COPY = {
     emailNone: 'None provided',
   },
   'ja-JP': {
-    title: 'Knowledge Center に寄稿する',
+    title: 'Atlas Wiki に寄稿する',
     subtitle:
       '親しみやすい編集画面で記事を作成し、プレビュー確認後に Markdown とメールで公開依頼を送信できます。',
     metadata: '記事設定',
@@ -196,7 +205,7 @@ const COPY = {
     },
     fieldHelp: {
       location:
-        'この内容を配置したい Knowledge Center のページまたはセクション URL を入力してください。',
+        'この内容を配置したい Atlas Wiki のページまたはセクション URL を入力してください。',
       videoLinks: '録画やデモを参照する場合は、1 行に 1 件ずつ URL を入力してください。',
     },
     readinessItems: {
@@ -225,7 +234,7 @@ const COPY = {
     previewShow: 'プレビューを表示',
     previewHide: 'プレビューを閉じる',
     hiddenPreviewHint: '執筆に集中できるよう、プレビューは閉じています。必要なときに開いて最終表示を確認してください。',
-    heroEyebrow: 'Knowledge Center Publishing Studio',
+    heroEyebrow: 'Atlas Wiki Publishing Studio',
     heroFlow: '下書き → プレビュー → ダウンロード → メール',
     structuredStarter: '構成済みのテンプレート',
     required: '必須',
@@ -312,6 +321,8 @@ function convertNodeToMarkdown(node, depth = 0) {
     case 'em':
     case 'i':
       return `*${text}*`;
+    case 'u':
+      return `<u>${text}</u>`;
     case 'blockquote':
       return `${text
         .split('\n')
@@ -409,6 +420,7 @@ function renderPreviewNodes(html, onImageStateChange) {
 
   const parser = new window.DOMParser();
   const doc = parser.parseFromString(`<article>${html}</article>`, 'text/html');
+  const voidTags = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr']);
 
   const renderNode = (node, key) => {
     if (node.nodeType === 3) {
@@ -448,6 +460,10 @@ function renderPreviewNodes(html, onImageStateChange) {
       );
     }
 
+    if (voidTags.has(tag)) {
+      return React.createElement(tag, {key});
+    }
+
     return React.createElement(tag, {key}, children);
   };
 
@@ -469,17 +485,553 @@ function isValidUrl(value) {
   }
 }
 
-function ToolbarButton({label, onClick}) {
+function ToolbarGroup({children}) {
+  return <div className={styles.toolbarGroup}>{children}</div>;
+}
+
+// ── Inline SVG icons ──────────────────────────────────────────────────────────
+
+function IconBold() {
   return (
-    <button className={styles.toolbarButton} type="button" onClick={onClick}>
-      {label}
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <path d="M3.5 2.5h4a2.5 2.5 0 0 1 0 5H3.5V2.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+      <path d="M3.5 7.5h4.5a2.5 2.5 0 0 1 0 5H3.5V7.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+
+function IconItalic() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <path d="M5.5 2.5h5M3.5 11.5h5M8.5 2.5 5.5 11.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    </svg>
+  );
+}
+
+function IconUnderline() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <path d="M3.5 2.5v4a3.5 3.5 0 0 0 7 0v-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      <path d="M2.5 12.5h9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    </svg>
+  );
+}
+
+function IconBulletList() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <circle cx="2.5" cy="4" r="1.2" fill="currentColor"/>
+      <circle cx="2.5" cy="7" r="1.2" fill="currentColor"/>
+      <circle cx="2.5" cy="10" r="1.2" fill="currentColor"/>
+      <rect x="5.5" y="3.25" width="6.5" height="1.5" rx="0.75" fill="currentColor"/>
+      <rect x="5.5" y="6.25" width="6.5" height="1.5" rx="0.75" fill="currentColor"/>
+      <rect x="5.5" y="9.25" width="6.5" height="1.5" rx="0.75" fill="currentColor"/>
+    </svg>
+  );
+}
+
+function IconOrderedList() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <text x="0.5" y="5" fontSize="4.5" fontWeight="700" fill="currentColor" fontFamily="sans-serif">1.</text>
+      <text x="0.5" y="8.5" fontSize="4.5" fontWeight="700" fill="currentColor" fontFamily="sans-serif">2.</text>
+      <text x="0.5" y="12" fontSize="4.5" fontWeight="700" fill="currentColor" fontFamily="sans-serif">3.</text>
+      <rect x="5.5" y="3.25" width="6.5" height="1.5" rx="0.75" fill="currentColor"/>
+      <rect x="5.5" y="6.25" width="6.5" height="1.5" rx="0.75" fill="currentColor"/>
+      <rect x="5.5" y="9.25" width="6.5" height="1.5" rx="0.75" fill="currentColor"/>
+    </svg>
+  );
+}
+
+function IconLink() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <path d="M5.5 8.5a3 3 0 0 0 4.24 0l1.77-1.77a3 3 0 0 0-4.24-4.24l-.88.88" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      <path d="M8.5 5.5a3 3 0 0 0-4.24 0L2.49 7.27a3 3 0 0 0 4.24 4.24l.88-.88" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    </svg>
+  );
+}
+
+function IconImage() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <rect x="1.5" y="2.5" width="11" height="9" rx="1.5" stroke="currentColor" strokeWidth="1.5"/>
+      <circle cx="4.75" cy="5.5" r="1.1" stroke="currentColor" strokeWidth="1.3"/>
+      <path d="M1.5 9.5 5 6.5l2.5 2.5 2-1.5 3 4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+
+function IconCode() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <path d="M4.5 4 1.5 7l3 3M9.5 4l3 3-3 3M8 2.5l-2 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+
+function IconTable() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <rect x="1.5" y="2" width="11" height="10" rx="1.5" stroke="currentColor" strokeWidth="1.4"/>
+      <path d="M1.5 5.5h11" stroke="currentColor" strokeWidth="1.3"/>
+      <path d="M5.5 5.5V12" stroke="currentColor" strokeWidth="1.3"/>
+      <path d="M9 5.5V12" stroke="currentColor" strokeWidth="1.3"/>
+    </svg>
+  );
+}
+
+function IconRule() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <rect x="1.5" y="6.25" width="11" height="1.5" rx="0.75" fill="currentColor"/>
+    </svg>
+  );
+}
+
+function IconUndo() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <path d="M3 4.5H8a3.5 3.5 0 0 1 0 7H5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M3 2.5v4h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+
+function IconRedo() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <path d="M11 4.5H6a3.5 3.5 0 0 0 0 7h3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M11 2.5v4H7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+
+// ── URL Popover ───────────────────────────────────────────────────────────────
+
+function UrlPopover({id, label, placeholder, hint, onApply, applyLabel = 'Apply', children}) {
+  const [value, setValue] = useState('');
+  const inputRef = useRef(null);
+
+  const handleApply = () => {
+    if (!value.trim()) return;
+    onApply(value.trim());
+    setValue('');
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      handleApply();
+    }
+  };
+
+  // expose a reset function via the id so the parent can clear and focus
+  useEffect(() => {
+    const el = document.getElementById(id);
+    if (el) {
+      el._focusInput = () => {
+        setValue('');
+        setTimeout(() => inputRef.current?.focus(), 30);
+      };
+      el._setValue = (v) => {
+        setValue(v);
+        setTimeout(() => inputRef.current?.focus(), 30);
+      };
+    }
+  });
+
+  return (
+    <div className={styles.urlPopover} id={id} role="dialog" aria-label={label}>
+      <span className={styles.urlPopoverLabel}>{label}</span>
+      <div className={styles.urlPopoverRow}>
+        <input
+          ref={inputRef}
+          type="url"
+          className={styles.urlPopoverInput}
+          placeholder={placeholder}
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          onKeyDown={handleKeyDown}
+          autoComplete="off"
+          spellCheck={false}
+        />
+        <button type="button" className={styles.urlPopoverApply} onClick={handleApply}>
+          {applyLabel}
+        </button>
+      </div>
+      {children}
+      {hint && <span className={styles.urlPopoverHint}>{hint}</span>}
+    </div>
+  );
+}
+
+// ── Image popover with live preview ──────────────────────────────────────────
+
+function ImagePopover({id, onApply}) {
+  const [url, setUrl] = useState('');
+  const [previewState, setPreviewState] = useState('empty'); // empty | loading | ok | error
+  const inputRef = useRef(null);
+
+  const handleApply = () => {
+    if (!url.trim()) return;
+    onApply(url.trim());
+    setUrl('');
+    setPreviewState('empty');
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      handleApply();
+    }
+  };
+
+  const handleChange = (e) => {
+    const v = e.target.value;
+    setUrl(v);
+    setPreviewState(v.trim() ? 'loading' : 'empty');
+  };
+
+  useEffect(() => {
+    const el = document.getElementById(id);
+    if (el) {
+      el._focusInput = () => {
+        setUrl('');
+        setPreviewState('empty');
+        setTimeout(() => inputRef.current?.focus(), 30);
+      };
+    }
+  });
+
+  return (
+    <div className={styles.urlPopover} id={id} role="dialog" aria-label="Insert image">
+      <span className={styles.urlPopoverLabel}>Insert image</span>
+      <div className={styles.urlPopoverRow}>
+        <input
+          ref={inputRef}
+          type="url"
+          className={styles.urlPopoverInput}
+          placeholder="https://..."
+          value={url}
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+          autoComplete="off"
+          spellCheck={false}
+        />
+        <button type="button" className={styles.urlPopoverApply} onClick={handleApply}>
+          Insert
+        </button>
+      </div>
+      {previewState !== 'empty' && (
+        <div className={styles.imagePreviewStrip}>
+          <img
+            key={url}
+            src={url}
+            alt="preview"
+            className={styles.imagePreviewImg}
+            onLoad={() => setPreviewState('ok')}
+            onError={() => setPreviewState('error')}
+            style={{display: previewState === 'error' ? 'none' : 'block'}}
+          />
+          {previewState === 'error' && (
+            <span className={styles.imagePreviewError}>Could not load image — check the URL</span>
+          )}
+        </div>
+      )}
+      <span className={styles.urlPopoverHint}>
+        Images must be publicly accessible. Broken URLs are flagged in the Submission Readiness panel.
+      </span>
+    </div>
+  );
+}
+
+// ── Tiptap toolbar button ─────────────────────────────────────────────────────
+
+function TbBtn({active, disabled, title, onClick, children}) {
+  return (
+    <button
+      type="button"
+      className={clsx(styles.tbBtn, active && styles.tbBtnActive)}
+      title={title}
+      disabled={disabled}
+      onMouseDown={(e) => {
+        e.preventDefault(); // keep editor focus
+        onClick();
+      }}
+    >
+      {children}
     </button>
   );
 }
 
-function ToolbarGroup({children}) {
-  return <div className={styles.toolbarGroup}>{children}</div>;
+// ── TiptapEditor ──────────────────────────────────────────────────────────────
+
+function TiptapEditor({initialHtml, onChange}) {
+  const [openPopover, setOpenPopover] = useState(null); // 'link' | 'image' | null
+  const popoverRef = useRef(null);
+
+  const editor = useEditor({
+    extensions: [
+      StarterKit.configure({
+        heading: {levels: [1, 2, 3]},
+        link: false,
+        underline: false,
+      }),
+      Underline,
+      Link.configure({openOnClick: false}),
+      Image,
+      Table.configure({resizable: false}),
+      TableRow,
+      TableHeader,
+      TableCell,
+    ],
+    content: initialHtml,
+    onUpdate({editor: e}) {
+      onChange(e.getHTML());
+    },
+  });
+
+  // Close popover on outside click
+  useEffect(() => {
+    if (!openPopover) return;
+    const handler = (e) => {
+      if (popoverRef.current && !popoverRef.current.contains(e.target)) {
+        setOpenPopover(null);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, [openPopover]);
+
+  // Keyboard: close popover on Escape
+  useEffect(() => {
+    if (!openPopover) return;
+    const handler = (e) => {
+      if (e.key === 'Escape') setOpenPopover(null);
+    };
+    document.addEventListener('keydown', handler);
+    return () => document.removeEventListener('keydown', handler);
+  }, [openPopover]);
+
+  const togglePopover = useCallback(
+    (name) => {
+      if (openPopover === name) {
+        setOpenPopover(null);
+        return;
+      }
+      setOpenPopover(name);
+      // focus the popover input after render
+      requestAnimationFrame(() => {
+        const el = document.getElementById(`popover-${name}`);
+        if (el?._focusInput) el._focusInput();
+        // pre-fill link href if cursor is on a link
+        if (name === 'link' && el?._setValue) {
+          const href = editor?.getAttributes('link').href || '';
+          if (href) el._setValue(href);
+        }
+      });
+    },
+    [openPopover, editor],
+  );
+
+  const handleInsertLink = useCallback(
+    (href) => {
+      if (!editor) return;
+      if (editor.state.selection.empty) {
+        editor.chain().focus().setLink({href}).run();
+      } else {
+        editor.chain().focus().setLink({href}).run();
+      }
+      setOpenPopover(null);
+    },
+    [editor],
+  );
+
+  const handleInsertImage = useCallback(
+    (src) => {
+      if (!editor) return;
+      editor.chain().focus().setImage({src}).run();
+      setOpenPopover(null);
+    },
+    [editor],
+  );
+
+  const handleInsertTable = useCallback(() => {
+    if (!editor) return;
+    editor.chain().focus().insertTable({rows: 2, cols: 2, withHeaderRow: true}).run();
+  }, [editor]);
+
+  // Derive current block type for the style dropdown
+  const currentBlockType = (() => {
+    if (!editor) return 'p';
+    if (editor.isActive('heading', {level: 1})) return 'h1';
+    if (editor.isActive('heading', {level: 2})) return 'h2';
+    if (editor.isActive('heading', {level: 3})) return 'h3';
+    if (editor.isActive('blockquote')) return 'blockquote';
+    return 'p';
+  })();
+
+  const applyBlockType = (value) => {
+    if (!editor) return;
+    editor.chain().focus();
+    if (value === 'p') {
+      editor.chain().focus().setParagraph().run();
+    } else if (value === 'blockquote') {
+      editor.chain().focus().setBlockquote().run();
+    } else {
+      const level = parseInt(value.replace('h', ''), 10);
+      editor.chain().focus().toggleHeading({level}).run();
+    }
+  };
+
+  return (
+    <div>
+      {/* ── Toolbar ── */}
+      <div className={styles.toolbar} ref={popoverRef}>
+        {/* Group 1: Text style */}
+        <ToolbarGroup>
+          <select
+            className={styles.toolbarSelect}
+            value={currentBlockType}
+            onChange={(e) => applyBlockType(e.target.value)}
+          >
+            <option value="p">Paragraph</option>
+            <option value="h1">Heading 1</option>
+            <option value="h2">Heading 2</option>
+            <option value="h3">Heading 3</option>
+            <option value="blockquote">Quote</option>
+          </select>
+        </ToolbarGroup>
+
+        {/* Group 2: Inline formatting */}
+        <ToolbarGroup>
+          <TbBtn
+            active={editor?.isActive('bold')}
+            title="Bold (⌘B)"
+            onClick={() => editor?.chain().focus().toggleBold().run()}
+          >
+            <IconBold />
+          </TbBtn>
+          <TbBtn
+            active={editor?.isActive('italic')}
+            title="Italic (⌘I)"
+            onClick={() => editor?.chain().focus().toggleItalic().run()}
+          >
+            <IconItalic />
+          </TbBtn>
+          <TbBtn
+            active={editor?.isActive('underline')}
+            title="Underline (⌘U)"
+            onClick={() => editor?.chain().focus().toggleUnderline().run()}
+          >
+            <IconUnderline />
+          </TbBtn>
+        </ToolbarGroup>
+
+        {/* Group 3: Lists */}
+        <ToolbarGroup>
+          <TbBtn
+            active={editor?.isActive('bulletList')}
+            title="Bullet list"
+            onClick={() => editor?.chain().focus().toggleBulletList().run()}
+          >
+            <IconBulletList />
+          </TbBtn>
+          <TbBtn
+            active={editor?.isActive('orderedList')}
+            title="Ordered list"
+            onClick={() => editor?.chain().focus().toggleOrderedList().run()}
+          >
+            <IconOrderedList />
+          </TbBtn>
+        </ToolbarGroup>
+
+        {/* Group 4: Insert — Link */}
+        <ToolbarGroup>
+          <div className={styles.popoverAnchor}>
+            <TbBtn
+              active={openPopover === 'link' || editor?.isActive('link')}
+              title="Insert link"
+              onClick={() => togglePopover('link')}
+            >
+              <IconLink />
+              <span className={styles.tbBtnLabel}>Link</span>
+            </TbBtn>
+            {openPopover === 'link' && (
+              <UrlPopover
+                id="popover-link"
+                label="Insert link"
+                placeholder="https://..."
+                hint="Select text first to wrap it in a link. Enter or Apply confirms."
+                onApply={handleInsertLink}
+                applyLabel="Apply"
+              />
+            )}
+          </div>
+
+          {/* Insert — Image */}
+          <div className={styles.popoverAnchor}>
+            <TbBtn
+              active={openPopover === 'image'}
+              title="Insert image by URL"
+              onClick={() => togglePopover('image')}
+            >
+              <IconImage />
+              <span className={styles.tbBtnLabel}>Image</span>
+            </TbBtn>
+            {openPopover === 'image' && (
+              <ImagePopover id="popover-image" onApply={handleInsertImage} />
+            )}
+          </div>
+
+          <TbBtn
+            active={editor?.isActive('codeBlock')}
+            title="Code block"
+            onClick={() => editor?.chain().focus().toggleCodeBlock().run()}
+          >
+            <IconCode />
+          </TbBtn>
+          <TbBtn
+            title="Insert table"
+            onClick={handleInsertTable}
+          >
+            <IconTable />
+          </TbBtn>
+          <TbBtn
+            title="Horizontal rule"
+            onClick={() => editor?.chain().focus().setHorizontalRule().run()}
+          >
+            <IconRule />
+          </TbBtn>
+        </ToolbarGroup>
+
+        {/* Group 5: History */}
+        <ToolbarGroup>
+          <TbBtn
+            title="Undo (⌘Z)"
+            disabled={!editor?.can().undo()}
+            onClick={() => editor?.chain().focus().undo().run()}
+          >
+            <IconUndo />
+          </TbBtn>
+          <TbBtn
+            title="Redo (⌘⇧Z)"
+            disabled={!editor?.can().redo()}
+            onClick={() => editor?.chain().focus().redo().run()}
+          >
+            <IconRedo />
+          </TbBtn>
+        </ToolbarGroup>
+      </div>
+
+      {/* ── Editor surface ── */}
+      <EditorContent editor={editor} className={styles.editorSurface} />
+    </div>
+  );
 }
+
+// ── Image health panel ────────────────────────────────────────────────────────
 
 function PreviewImageHealth({images, warningText, emptyText, readyText, checkingText}) {
   if (!images.length) {
@@ -511,12 +1063,13 @@ function PreviewImageHealth({images, warningText, emptyText, readyText, checking
   );
 }
 
+// ── Page ──────────────────────────────────────────────────────────────────────
+
 export default function ContributePage() {
   const {
     i18n: {currentLocale},
   } = useDocusaurusContext();
   const copy = COPY[currentLocale] ?? COPY['en-US'];
-  const editorRef = useRef(null);
   const [meta, setMeta] = useState(INITIAL_META);
   const [selectedTemplate, setSelectedTemplate] = useState(DEFAULT_TEMPLATE);
   const [editorHtml, setEditorHtml] = useState(TEMPLATES[DEFAULT_TEMPLATE].html.trim());
@@ -524,12 +1077,6 @@ export default function ContributePage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [downloaded, setDownloaded] = useState(false);
   const [previewOpen, setPreviewOpen] = useState(false);
-
-  useEffect(() => {
-    if (editorRef.current && editorRef.current.innerHTML !== editorHtml) {
-      editorRef.current.innerHTML = editorHtml;
-    }
-  }, [editorHtml]);
 
   const linkedImages = [];
   if (typeof window !== 'undefined') {
@@ -562,69 +1109,6 @@ export default function ContributePage() {
   const locationValid = isValidUrl(meta.location.trim());
   const markdownReady = Boolean(markdown.trim());
   const imagesReady = linkedImages.every((image) => image.status !== 'error');
-
-  const applyCommand = (command, value = null) => {
-    if (typeof document === 'undefined') {
-      return;
-    }
-
-    editorRef.current?.focus();
-    document.execCommand(command, false, value);
-    setEditorHtml(editorRef.current?.innerHTML || '');
-  };
-
-  const insertLink = () => {
-    const href = window.prompt('Enter a link URL');
-    if (!href) {
-      return;
-    }
-    applyCommand('createLink', href);
-  };
-
-  const insertImage = () => {
-    const src = window.prompt('Enter an image URL');
-    if (!src) {
-      return;
-    }
-    applyCommand('insertImage', src);
-  };
-
-  const insertDivider = () => {
-    if (typeof document === 'undefined') {
-      return;
-    }
-
-    editorRef.current?.focus();
-    document.execCommand('insertHorizontalRule', false);
-    setEditorHtml(editorRef.current?.innerHTML || '');
-  };
-
-  const insertCodeBlock = () => {
-    if (typeof document === 'undefined') {
-      return;
-    }
-
-    const code = window.prompt('Paste the code block content');
-    if (!code) {
-      return;
-    }
-
-    document.execCommand('insertHTML', false, `<pre><code>${escapeHtml(code)}</code></pre>`);
-    setEditorHtml(editorRef.current?.innerHTML || '');
-  };
-
-  const insertTable = () => {
-    if (typeof document === 'undefined') {
-      return;
-    }
-
-    document.execCommand(
-      'insertHTML',
-      false,
-      '<table><thead><tr><th>Column A</th><th>Column B</th></tr></thead><tbody><tr><td>Value</td><td>Value</td></tr><tr><td>Value</td><td>Value</td></tr></tbody></table><p></p>',
-    );
-    setEditorHtml(editorRef.current?.innerHTML || '');
-  };
 
   const updateMetaField = (field, value) => {
     setMeta((current) => ({
@@ -672,7 +1156,7 @@ export default function ContributePage() {
       `Team / Function: ${meta.team}`,
       `Summary: ${meta.summary}`,
       `Intended Audience: ${meta.audience}`,
-      `Suggested Knowledge Center Location: ${meta.location}`,
+      `Suggested Atlas Wiki Location: ${meta.location}`,
       '',
       'Video Links:',
       meta.videoLinks || copy.emailNone,
@@ -848,6 +1332,16 @@ export default function ContributePage() {
                 readyText={copy.ready}
                 checkingText={copy.checking}
               />
+              <div className={styles.panelAction}>
+                <button
+                  type="button"
+                  className={styles.primaryAction}
+                  onClick={() => setModalOpen(true)}
+                  disabled={!markdownReady}
+                >
+                  {copy.send}
+                </button>
+              </div>
             </div>
           </aside>
 
@@ -857,47 +1351,10 @@ export default function ContributePage() {
                 <h2>{copy.content}</h2>
                 <span className={styles.panelPill}>WYSIWYG</span>
               </div>
-              <div className={styles.toolbar}>
-                <ToolbarGroup>
-                  <select
-                    className={styles.toolbarSelect}
-                    defaultValue="p"
-                    onChange={(event) => applyCommand('formatBlock', event.target.value)}
-                  >
-                    <option value="p">Paragraph</option>
-                    <option value="h1">Heading 1</option>
-                    <option value="h2">Heading 2</option>
-                    <option value="h3">Heading 3</option>
-                    <option value="blockquote">Quote</option>
-                  </select>
-                </ToolbarGroup>
-                <ToolbarGroup>
-                  <ToolbarButton label="B" onClick={() => applyCommand('bold')} />
-                  <ToolbarButton label="I" onClick={() => applyCommand('italic')} />
-                  <ToolbarButton label="U" onClick={() => applyCommand('underline')} />
-                </ToolbarGroup>
-                <ToolbarGroup>
-                  <ToolbarButton label="• List" onClick={() => applyCommand('insertUnorderedList')} />
-                  <ToolbarButton label="1. List" onClick={() => applyCommand('insertOrderedList')} />
-                </ToolbarGroup>
-                <ToolbarGroup>
-                  <ToolbarButton label="Link" onClick={insertLink} />
-                  <ToolbarButton label="Image" onClick={insertImage} />
-                  <ToolbarButton label="Code" onClick={insertCodeBlock} />
-                  <ToolbarButton label="Table" onClick={insertTable} />
-                  <ToolbarButton label="Rule" onClick={insertDivider} />
-                </ToolbarGroup>
-                <ToolbarGroup>
-                  <ToolbarButton label="Undo" onClick={() => applyCommand('undo')} />
-                  <ToolbarButton label="Redo" onClick={() => applyCommand('redo')} />
-                </ToolbarGroup>
-              </div>
-              <div
-                ref={editorRef}
-                className={styles.editorSurface}
-                contentEditable
-                suppressContentEditableWarning
-                onInput={(event) => setEditorHtml(event.currentTarget.innerHTML)}
+              <TiptapEditor
+                key={selectedTemplate}
+                initialHtml={editorHtml}
+                onChange={setEditorHtml}
               />
             </div>
 
@@ -960,17 +1417,6 @@ export default function ContributePage() {
             </div>
           </div>
         </section>
-
-        <div className={styles.pageActions}>
-          <button
-            type="button"
-            className={styles.primaryAction}
-            onClick={() => setModalOpen(true)}
-            disabled={!markdownReady}
-          >
-            {copy.send}
-          </button>
-        </div>
 
         {modalOpen ? (
           <div className={styles.modalBackdrop} role="presentation" onClick={() => setModalOpen(false)}>

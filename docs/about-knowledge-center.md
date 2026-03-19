@@ -1,17 +1,17 @@
 ---
-title: About the Knowledge Center
-description: What the KFC Atlas Knowledge Center is, why it exists, who it supports, and how it is meant to be used.
+title: About Atlas Wiki
+description: What the KFC Atlas Wiki is, why it exists, who it supports, and how it is meant to be used.
 ---
 
-# About the Knowledge Center
+# About Atlas Wiki
 
-The **KFC Atlas Knowledge Center** is the self-serve home for understanding how the platform works, how to operate it, and how KFC teams can confidently use it across markets.
+The **KFC Atlas Wiki** is the self-serve home for understanding how the platform works, how to operate it, and how KFC teams can confidently use it across markets.
 
 It brings together product context, operating guidance, and campaign playbooks in one place so users do not have to depend on ad hoc explanations, scattered documents, or direct hand-holding every time they need an answer.
 
-## What Is the Knowledge Center
+## What Is Atlas Wiki
 
-The Knowledge Center is a structured documentation experience for the KFC Atlas platform.
+Atlas Wiki is a structured documentation experience for the KFC Atlas platform.
 
 It is designed to help teams:
 
@@ -23,15 +23,15 @@ It is designed to help teams:
 
 In short, it is meant to make platform knowledge easier to discover, easier to trust, and easier to use.
 
-## Who Created the Knowledge Center
+## Who Created Atlas Wiki
 
-The Knowledge Center was created by **Justin Pagalilauan**.
+Atlas Wiki was created by **Justin Pagalilauan**.
 
-This page exists to acknowledge the ownership and intentionality behind the work. The Knowledge Center was not assembled as a generic document repository. It was built deliberately to support adoption, enablement, and day-to-day platform confidence for KFC teams.
+This page exists to acknowledge the ownership and intentionality behind the work. Atlas Wiki was not assembled as a generic document repository. It was built deliberately to support adoption, enablement, and day-to-day platform confidence for KFC teams.
 
 ## Why We Are Building It
 
-The main reason for building the Knowledge Center is **self-serve enablement**.
+The main reason for building Atlas Wiki is **self-serve enablement**.
 
 As the platform grows, teams need a faster and more reliable way to answer questions such as:
 
@@ -43,7 +43,7 @@ As the platform grows, teams need a faster and more reliable way to answer quest
 
 Without a central knowledge layer, those answers get repeated in meetings, chat threads, and one-off walkthroughs. That slows teams down and makes knowledge harder to scale.
 
-The Knowledge Center helps solve that by creating a single reference point that is:
+Atlas Wiki helps solve that by creating a single reference point that is:
 
 - searchable
 - structured
@@ -53,7 +53,7 @@ The Knowledge Center helps solve that by creating a single reference point that 
 
 ## Who It Aims To Cater To
 
-The Knowledge Center is built for the people who need to understand, operate, support, and scale the platform.
+Atlas Wiki is built for the people who need to understand, operate, support, and scale the platform.
 
 That includes:
 
@@ -64,9 +64,9 @@ That includes:
 - **New team members** who need onboarding context without relying only on live training
 - **Cross-functional stakeholders** who need a clearer view of what the platform actually supports
 
-## What the Knowledge Center Aims To Do
+## What Atlas Wiki Aims To Do
 
-The Knowledge Center aims to:
+Atlas Wiki aims to:
 
 - reduce dependency on one-to-one support for common platform questions
 - give teams a self-serve path to find the right article quickly
@@ -78,7 +78,7 @@ The Knowledge Center aims to:
 
 ## Core Features
 
-The Knowledge Center currently includes:
+Atlas Wiki currently includes:
 
 - **Front-end Guide** for customer-facing platform behaviors and market configurations
 - **Admin Portal Guide** for operating the Byte Commerce Admin Portal
@@ -90,7 +90,7 @@ The Knowledge Center currently includes:
 
 ## Design Principles
 
-The Knowledge Center is being built around a few simple principles:
+Atlas Wiki is being built around a few simple principles:
 
 - **Self-serve first**: users should be able to answer common questions independently
 - **Operationally useful**: content should help people do real work, not just describe concepts
@@ -100,7 +100,7 @@ The Knowledge Center is being built around a few simple principles:
 
 ## Long-Term Role
 
-Over time, the Knowledge Center can become more than a documentation hub.
+Over time, Atlas Wiki can become more than a documentation hub.
 
 It can serve as:
 
@@ -111,4 +111,4 @@ It can serve as:
 
 ## In One Sentence
 
-The KFC Atlas Knowledge Center exists to make platform knowledge **findable, usable, and scalable** for the teams who operate it.
+The KFC Atlas Wiki exists to make platform knowledge **findable, usable, and scalable** for the teams who operate it.

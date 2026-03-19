@@ -15,7 +15,7 @@ This playbook covers the most common issues restaurant and regional teams encoun
 
 | Check | How |
 |---|---|
-| Is the restaurant set to Live? | Admin Portal → Profile → Status |
+| Is the restaurant set to Live? | Byte Portal → Profile → Status |
 | Are all channels disabled? | Channel Settings — at least one must be active |
 | Were GPS coordinates set correctly? | Profile → Location — confirm pin placement |
 
@@ -36,13 +36,13 @@ If all checks pass and the restaurant is still not visible after 30 minutes, esc
 
 ### Menu item showing incorrect price
 
-1. Check **Menu → Items → [Item] → Pricing** to confirm the price in the portal
-2. If the portal price is correct but the app shows differently, wait 15 minutes for cache refresh
+1. Check **Menu → Items → [Item] → Pricing** to confirm the price in Byte Portal
+2. If the Byte Portal price is correct but the app shows differently, wait 15 minutes for cache refresh
 3. If the issue persists after 15 minutes, raise a ticket via the JIRA Service Desk
 
 ---
 
-### Franchisee locked out of Admin Portal
+### Franchisee locked out of Byte Portal
 
 1. Go to the login page and use **Forgot Password** — this sends a reset link to their registered email
 2. If the email is not received within 5 minutes, check spam folders

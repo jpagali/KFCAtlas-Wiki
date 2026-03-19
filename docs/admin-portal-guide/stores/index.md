@@ -7,6 +7,12 @@ sidebar_label: Stores
 
 This section covers all stores-related tasks in the Byte Commerce Admin Portal, including store setup, menu management, item visibility, and donation handling.
 
+:::note Byte POS Caveat
+Store tasks that mention **POS**, **device authentication**, or **store numbers matching POS records** assume the market is using **Byte POS**.
+
+If the market is not using Byte POS, teams should treat **Byte Connect** as part of Byte Commerce onboarding so the store integration path is **Byte Commerce -> Byte Connect -> POS**.
+:::
+
 ## Topics
 
 ### Store Setup

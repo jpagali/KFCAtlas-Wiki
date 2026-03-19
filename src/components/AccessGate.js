@@ -6,21 +6,21 @@ const ACCESS_PASSWORD = 'jyp4013';
 
 const CONTENT = {
   'en-US': {
-    title: 'Knowledge Center Access',
+    title: 'Atlas Wiki Access',
     subtitle:
-      'This knowledge center is currently protected. Enter the shared password to continue.',
+      'This wiki is currently protected. Enter the shared password to continue.',
     label: 'Password',
     placeholder: 'Enter password',
-    action: 'Enter Knowledge Center',
+    action: 'Enter Atlas Wiki',
     error: 'That password is incorrect.',
   },
   'ja-JP': {
-    title: 'ナレッジセンターへのアクセス',
+    title: 'Atlas Wiki へのアクセス',
     subtitle:
-      'このナレッジセンターは現在保護されています。共有パスワードを入力して続行してください。',
+      'この Wiki は現在保護されています。共有パスワードを入力して続行してください。',
     label: 'パスワード',
     placeholder: 'パスワードを入力',
-    action: 'ナレッジセンターに入る',
+    action: 'Atlas Wiki に入る',
     error: 'パスワードが正しくありません。',
   },
 };

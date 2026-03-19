@@ -3,33 +3,29 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import clsx from 'clsx';
+import {normalizeText} from '@site/src/utils/searchNormalization.mjs';
 
 const MAX_RESULTS = 8;
 
-function normalizeText(value) {
-  return (value || '')
-    .normalize('NFKC')
-    .toLocaleLowerCase()
-    .replace(/\s+/g, ' ')
-    .trim();
-}
-
 function scoreRecord(record, query, tokens) {
-  const title = normalizeText(record.title);
-  const headings = normalizeText(record.headings.join(' '));
-  const body = normalizeText(record.body);
+  const title = record.normalizedTitle || '';
+  const headings = record.normalizedHeadings || '';
+  const summary = record.normalizedSummary || '';
+  const section = record.normalizedSection || '';
   let score = 0;
 
   if (title.startsWith(query)) score += 120;
   else if (title.includes(query)) score += 80;
 
   if (headings.includes(query)) score += 40;
-  if (body.includes(query)) score += 20;
+  if (summary.includes(query)) score += 24;
+  if (section.includes(query)) score += 18;
 
   tokens.forEach((token) => {
     if (title.includes(token)) score += 25;
     if (headings.includes(token)) score += 12;
-    if (body.includes(token)) score += 6;
+    if (summary.includes(token)) score += 8;
+    if (section.includes(token)) score += 6;
   });
 
   return score;
@@ -50,7 +46,7 @@ export default function SearchBox({
     i18n: {currentLocale},
     siteConfig,
   } = useDocusaurusContext();
-  const searchIndexUrl = useBaseUrl('/search-index.json', {forcePrependBaseUrl: true});
+  const searchIndexUrl = useBaseUrl(`/search-index.${currentLocale}.json`, {forcePrependBaseUrl: true});
   const [searchIndex, setSearchIndex] = useState([]);
   const [query, setQuery] = useState('');
   const [isOpen, setIsOpen] = useState(false);
@@ -92,7 +88,7 @@ export default function SearchBox({
   const messages = {
     placeholder:
       placeholder ||
-      (currentLocale === 'ja-JP' ? '記事や見出しを検索' : 'Search articles and headings'),
+      (currentLocale === 'ja-JP' ? '気になることは？' : "What's on your mind?"),
     empty:
       emptyMessage ||
       (currentLocale === 'ja-JP' ? '一致する記事が見つかりません。' : 'No matching articles found.'),
@@ -103,9 +99,8 @@ export default function SearchBox({
     if (!normalizedQuery) return [];
 
     const tokens = normalizedQuery.split(' ').filter(Boolean);
-    const localeRecords = searchIndex.filter((record) => record.locale === currentLocale);
 
-    return localeRecords
+    return searchIndex
       .map((record) => ({
         ...record,
         score: scoreRecord(record, normalizedQuery, tokens),
@@ -113,7 +108,7 @@ export default function SearchBox({
       .filter((record) => record.score > 0)
       .sort((a, b) => b.score - a.score || a.title.localeCompare(b.title))
       .slice(0, MAX_RESULTS);
-  }, [currentLocale, query, searchIndex]);
+  }, [query, searchIndex]);
 
   function handleSubmit(event) {
     if (event.key !== 'Enter' || results.length === 0) return;

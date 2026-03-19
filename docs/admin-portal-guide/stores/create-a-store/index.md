@@ -22,7 +22,7 @@ Registers a new store location in Atlas with its required details, making it ava
 | Field | What to enter | Notes |
 |-------|--------------|-------|
 | **Store Name** * | Full display name of the store | e.g., “KFC George Street Sydney” |
-| **Store Number** * | Unique numeric identifier assigned by market operations | Must match the POS-assigned store number |
+| **Store Number** * | Unique numeric identifier assigned by market operations | Must match the Byte POS-assigned store number, or the mapped store identifier used through Byte Connect for non-Byte POS markets |
 | **Franchise Code** * | Alphanumeric code identifying the franchisee | Provided by your regional manager |
 | **Time Zone** | The store’s local time zone | Required for item snooze and future order accuracy |
 
@@ -32,6 +32,10 @@ Registers a new store location in Atlas with its required details, making it ava
 
 :::tip
 Before creating a new store, search the Stores list by Name, Number, or Franchise Code to confirm it doesn’t already exist.
+:::
+
+:::note Byte POS Caveat
+If the market does not use Byte POS, do not assume Byte Commerce will connect directly to the market POS from the store record alone. **Byte Connect** must be onboarded as part of Byte Commerce onboarding.
 :::
 
 :::caution

@@ -5,7 +5,7 @@ sidebar_label: Promotions Setup Guide
 
 # Promotions Setup Guide
 
-A practical, field-by-field reference for building promotions in the Byte Commerce Admin Portal. This guide walks you through every step of the wizard, explains every option, and ends with a recipe sheet of the most common promotion types you can build with the platform today.
+A practical, field-by-field reference for building promotions in the Byte Commerce Byte Portal. This guide walks you through every step of the wizard, explains every option, and ends with a recipe sheet of the most common promotion types you can build with the platform today.
 
 :::note
 Promotions are always assigned to a **Store Group**, never to a single store. Make sure your target stores are already grouped before creating a promotion.

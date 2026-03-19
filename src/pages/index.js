@@ -1,25 +1,42 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import SearchBox from '@site/src/components/SearchBox';
+import styles from './index.module.css';
 
 const HOME_CONTENT = {
   'en-US': {
-    description: 'KFC Atlas Platform Knowledge Center',
-    badge: 'Atlas Platform · Knowledge Center',
-    titleLead: 'The secret recipe for',
-    titleAccent: 'running the platform.',
+    description: 'KFC Atlas Platform Wiki',
+    badge: 'Atlas Platform · Wiki',
+    titleLead: 'Atlas.',
+    titleAccent: 'Done right.',
     summary:
-      'Your complete guide to the KFC Atlas Platform — from the customer ordering experience to day-to-day restaurant operations across Japan and Australia.',
+      'Everything you need to launch, operate, and scale Atlas — from customer experience to restaurant operations.',
     heroSearchPlaceholder: 'Search guides, articles, and headings',
     heroPrimaryCta: 'Start with the Front-end Guide →',
     heroSecondaryCta: 'Start with the Admin Portal Guide →',
+    heroPrototypeCta: 'Atlas Peek →',
     sectionEyebrow: 'Three sections',
     sectionTitle: 'Built for everyone who operates the platform',
+    prototypeCardEyebrow: 'Interactive preview',
+    prototypeCardTitle: 'Atlas Peek',
+    prototypeCardBody:
+      'Explore a stateful multilingual customer journey prototype that behaves like a mini app instead of a linear slideshow.',
+    prototypeCardCta: 'Open the sneak peek',
     marketsLabel: 'Markets',
+    marketsSublabel: 'Onboarding — rolling out through end of 2026',
+    upcomingMarketsLabel: 'Coming after',
+    upcomingMarkets: [
+      { flagCode: 'ca', name: 'Canada' },
+      { flagCode: 'fr', name: 'France' },
+      { flagCode: 'de', name: 'Germany' },
+      { flagCode: 'es', name: 'Spain' },
+      { flagCode: 'th', name: 'Thailand' },
+    ],
     stats: [
-      { value: 'stores', label: 'Stores', sub: 'Stores Onboard' },
+      { value: 2000, suffix: '+', label: 'Stores', sub: 'Stores Onboard' },
       { value: '3', label: 'Core Modules', sub: 'Front-End · Admin · Martech' },
       { value: '1', label: 'Platform', sub: 'Atlas by KFC Global' },
     ],
@@ -53,13 +70,13 @@ const HOME_CONTENT = {
       },
     ],
     markets: [
-      { flag: '🇯🇵', name: 'Japan' },
-      { flag: '🇦🇺', name: 'Australia' },
+      { flagCode: 'jp', name: 'Japan' },
+      { flagCode: 'au', name: 'Australia' },
     ],
   },
   'ja-JP': {
-    description: 'KFC Atlas Platform Knowledge Center',
-    badge: 'Atlas Platform ・ Knowledge Center',
+    description: 'KFC Atlas Platform Wiki',
+    badge: 'Atlas Platform ・ Wiki',
     titleLead: 'プラットフォーム運用に必要な',
     titleAccent: 'すべてを、ひとつに。',
     summary:
@@ -67,11 +84,26 @@ const HOME_CONTENT = {
     heroSearchPlaceholder: 'ガイド、記事、見出しを検索',
     heroPrimaryCta: 'フロントエンドガイドから始める →',
     heroSecondaryCta: 'Admin Portal Guideから始める →',
+    heroPrototypeCta: 'Atlas Peek →',
     sectionEyebrow: '3つのセクション',
     sectionTitle: 'プラットフォームを運用するすべての人のために設計されています',
+    prototypeCardEyebrow: 'インタラクティブ プレビュー',
+    prototypeCardTitle: 'Atlas Peek',
+    prototypeCardBody:
+      '直線的なスライドではなく、小さなアプリのように動く多言語の顧客体験プロトタイプを確認できます。',
+    prototypeCardCta: 'Sneak Peek を開く',
     marketsLabel: '市場',
+    marketsSublabel: 'Onboarding — rolling out through end of 2026',
+    upcomingMarketsLabel: 'Coming after',
+    upcomingMarkets: [
+      { flagCode: 'ca', name: 'Canada' },
+      { flagCode: 'fr', name: 'France' },
+      { flagCode: 'de', name: 'Germany' },
+      { flagCode: 'es', name: 'Spain' },
+      { flagCode: 'th', name: 'Thailand' },
+    ],
     stats: [
-      { value: 'stores', label: '店舗数', sub: '導入済み店舗' },
+      { value: 2000, suffix: '+', label: '店舗数', sub: '導入済み店舗' },
       { value: '3', label: '主要モジュール', sub: 'フロントエンド ・ Admin ・ Martech' },
       { value: '1', label: 'プラットフォーム', sub: 'Atlas by KFC Global' },
     ],
@@ -105,175 +137,167 @@ const HOME_CONTENT = {
       },
     ],
     markets: [
-      { flag: '🇯🇵', name: '日本' },
-      { flag: '🇦🇺', name: 'オーストラリア' },
+      { flagCode: 'jp', name: '日本' },
+      { flagCode: 'au', name: 'オーストラリア' },
     ],
   },
 };
+
+function formatStatValue(stat, locale) {
+  if (typeof stat.value === 'number') {
+    return `${stat.value.toLocaleString(locale)}${stat.suffix ?? ''}`;
+  }
+
+  return `${stat.value}${stat.suffix ?? ''}`;
+}
+
+function localeClass(baseClass, isJapanese) {
+  return isJapanese ? `${baseClass} ${styles.localeJa}` : baseClass;
+}
+
+function MarketFlag({ flagCode, name, compact = false }) {
+  const flagSrc = useBaseUrl(`/img/flags/${flagCode}.svg`);
+  const frameClassName = compact ? styles.upcomingMarketFlag : styles.marketFlag;
+  const imageClassName = compact ? styles.upcomingMarketFlagImage : styles.marketFlagImage;
+
+  return (
+    <div className={frameClassName}>
+      <img className={imageClassName} src={flagSrc} alt={`${name} flag`} loading="lazy" />
+    </div>
+  );
+}
 
 export default function Home() {
   const { i18n } = useDocusaurusContext();
   const locale = HOME_CONTENT[i18n.currentLocale] ? i18n.currentLocale : 'en-US';
   const content = HOME_CONTENT[locale];
   const isJapanese = locale === 'ja-JP';
-  const [storeCount, setStoreCount] = useState(2000);
-
-  useEffect(() => {
-    const intervalId = window.setInterval(() => {
-      setStoreCount((currentCount) => currentCount + 1);
-    }, 4000);
-
-    return () => window.clearInterval(intervalId);
-  }, []);
+  const heroVideoSrc = useBaseUrl('/video/colonel-sanders-cooking-chicken.mp4');
 
   return (
     <Layout title="Home" description={content.description}>
+      <div className={styles.hero}>
+        <div className={styles.heroTexture} />
+        <div className={styles.heroMedia} aria-hidden="true">
+          <video className={styles.heroVideo} autoPlay muted loop playsInline preload="metadata">
+            <source src={heroVideoSrc} type="video/mp4" />
+          </video>
+          <div className={styles.heroMediaOverlay} />
+        </div>
 
-      {/* ── HERO ── */}
-      <div style={{
-        background: 'linear-gradient(135deg, #0a0705 0%, #1a0a08 50%, #0f0705 100%)',
-        padding: '80px 24px 64px',
-        textAlign: 'center',
-        borderBottom: '3px solid #E4002B',
-        position: 'relative',
-        overflow: 'visible',
-      }}>
-        {/* Background texture */}
-        <div style={{
-          position: 'absolute', inset: 0,
-          backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(228,0,43,0.08) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(228,0,43,0.05) 0%, transparent 40%)',
-          pointerEvents: 'none',
-        }} />
+        <div className={styles.heroInner}>
+          <div className={styles.heroContent}>
+            <div className={styles.badge}>
+              <div className={styles.badgeDot} />
+              <span className={localeClass(styles.badgeText, isJapanese)}>{content.badge}</span>
+            </div>
 
-        <div style={{ position: 'relative', zIndex: 1 }}>
-          <div style={{
-            display: 'inline-flex', alignItems: 'center', gap: 8,
-            background: 'rgba(228,0,43,0.15)', border: '1px solid rgba(228,0,43,0.3)',
-            borderRadius: 20, padding: '5px 16px', marginBottom: 28, flexWrap: 'wrap', justifyContent: 'center',
-          }}>
-            <div style={{ width: 6, height: 6, background: '#E4002B', borderRadius: '50%' }} />
-            <span style={{ color: '#E4002B', fontSize: 11, fontWeight: 700, letterSpacing: isJapanese ? 1 : 2, textTransform: isJapanese ? 'none' : 'uppercase' }}>
-              {content.badge}
-            </span>
-          </div>
+            <h1 className={localeClass(styles.heroTitle, isJapanese)}>
+              {content.titleLead}
+              <br />
+              <span className={styles.heroTitleAccent}>{content.titleAccent}</span>
+            </h1>
 
-          <h1 style={{
-            color: 'white', fontSize: isJapanese ? 'clamp(2rem, 4.6vw, 3.2rem)' : 'clamp(2.2rem, 5vw, 3.6rem)',
-            fontWeight: 900, margin: '0 0 16px',
-            lineHeight: isJapanese ? 1.25 : 1.1, letterSpacing: isJapanese ? 0 : '-0.5px',
-          }}>
-            {content.titleLead}<br />
-            <span style={{ color: '#E4002B' }}>{content.titleAccent}</span>
-          </h1>
+            <p className={localeClass(styles.heroSummary, isJapanese)}>{content.summary}</p>
 
-          <p style={{
-            color: '#999', fontSize: isJapanese ? '1rem' : '1.1rem', maxWidth: 640,
-            margin: '0 auto 28px', lineHeight: 1.7,
-          }}>
-            {content.summary}
-          </p>
+            <div className={styles.searchWrap}>
+              <SearchBox
+                className="hero-search"
+                inputClassName="hero-search__input"
+                dropdownClassName="hero-search__dropdown"
+                resultClassName="hero-search__result"
+                titleClassName="hero-search__title"
+                metaClassName="hero-search__meta"
+                emptyClassName="hero-search__empty"
+                placeholder={content.heroSearchPlaceholder}
+              />
+            </div>
 
-          <div style={{ maxWidth: 720, margin: '0 auto 30px', position: 'relative', zIndex: 2 }}>
-            <SearchBox
-              className="hero-search"
-              inputClassName="hero-search__input"
-              dropdownClassName="hero-search__dropdown"
-              resultClassName="hero-search__result"
-              titleClassName="hero-search__title"
-              metaClassName="hero-search__meta"
-              emptyClassName="hero-search__empty"
-              placeholder={content.heroSearchPlaceholder}
-            />
-          </div>
-
-          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link to="/docs/frontend/overview" style={{
-              background: '#E4002B', color: 'white', padding: '13px 28px',
-              borderRadius: 6, fontWeight: 700, textDecoration: 'none', fontSize: '0.95rem', textAlign: 'center',
-            }}>
-              {content.heroPrimaryCta}
-            </Link>
-            <Link to="/docs/admin-portal-guide/" style={{
-              background: 'white', color: '#13100C', padding: '13px 28px',
-              borderRadius: 6, fontWeight: 600, textDecoration: 'none', fontSize: '0.95rem',
-              border: '1.5px solid white', textAlign: 'center',
-            }}>
-              {content.heroSecondaryCta}
-            </Link>
+            <div className={styles.heroActions}>
+              <Link to="/docs/frontend/overview" className={`${styles.button} ${styles.buttonPrimary}`}>
+                {content.heroPrimaryCta}
+              </Link>
+              <Link to="/docs/admin-portal-guide/" className={`${styles.button} ${styles.buttonSecondary}`}>
+                {content.heroSecondaryCta}
+              </Link>
+              <Link to="/sneak-peek" className={`${styles.button} ${styles.buttonTertiary}`}>
+                {content.heroPrototypeCta}
+              </Link>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* ── STATS BAR ── */}
-      <div style={{
-        background: '#E4002B', padding: '20px 24px',
-        display: 'flex', justifyContent: 'center', gap: '64px', flexWrap: 'wrap',
-      }}>
-        {content.stats.map(s => (
-          <div key={s.label} style={{ textAlign: 'center' }}>
-            <div style={{ color: 'white', fontSize: '1.6rem', fontWeight: 900, lineHeight: 1 }}>
-              {s.value === 'stores' ? `${storeCount.toLocaleString(locale)}+` : s.value}
-            </div>
-            <div style={{ color: 'rgba(255,255,255,0.9)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: isJapanese ? 0 : 1, textTransform: isJapanese ? 'none' : 'uppercase', marginTop: 2 }}>{s.label}</div>
-            <div style={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.72rem', marginTop: 1 }}>{s.sub}</div>
+      <div className={styles.statsBar}>
+        {content.stats.map((stat) => (
+          <div key={stat.label} className={styles.statCard}>
+            <div className={styles.statValue}>{formatStatValue(stat, locale)}</div>
+            <div className={localeClass(styles.statLabel, isJapanese)}>{stat.label}</div>
+            <div className={styles.statSub}>{stat.sub}</div>
           </div>
         ))}
       </div>
 
-      {/* ── MARKETS BANNER ── */}
-      <div style={{ background: '#13100C', padding: '48px 24px', textAlign: 'center' }}>
-        <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: isJapanese ? 0.6 : 2, textTransform: isJapanese ? 'none' : 'uppercase', color: '#E4002B', marginBottom: 12 }}>{content.marketsLabel}</div>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: 32, flexWrap: 'wrap' }}>
-          {content.markets.map(m => (
-            <div key={m.name} style={{
-              background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)',
-              borderRadius: 8, padding: '16px 32px', textAlign: 'center',
-            }}>
-              <div style={{ fontSize: 32 }}>{m.flag}</div>
-              <div style={{ color: 'white', fontWeight: 700, fontSize: '1rem', marginTop: 6 }}>{m.name}</div>
+      <div className={styles.marketsSection}>
+        <div className={styles.prototypeCallout}>
+          <div className={localeClass(styles.prototypeEyebrow, isJapanese)}>{content.prototypeCardEyebrow}</div>
+          <h2 className={localeClass(styles.prototypeTitle, isJapanese)}>{content.prototypeCardTitle}</h2>
+          <p className={styles.prototypeBody}>{content.prototypeCardBody}</p>
+          <Link to="/sneak-peek" className={`${styles.button} ${styles.prototypeButton}`}>
+            {content.prototypeCardCta} →
+          </Link>
+        </div>
+        <div className={localeClass(styles.sectionLabel, isJapanese)}>{content.marketsLabel}</div>
+        <div className={styles.marketsSublabel}>{content.marketsSublabel}</div>
+        <div className={styles.marketsGrid}>
+          {content.markets.map((market) => (
+            <div key={market.name} className={styles.marketCard}>
+              <MarketFlag flagCode={market.flagCode} name={market.name} />
+              <div className={styles.marketName}>{market.name}</div>
+            </div>
+          ))}
+        </div>
+        <div className={styles.upcomingDivider} />
+        <div className={styles.upcomingMarketsLabel}>{content.upcomingMarketsLabel}</div>
+        <div className={styles.upcomingMarketsGrid}>
+          {content.upcomingMarkets.map((market) => (
+            <div key={market.name} className={styles.upcomingMarketCard}>
+              <MarketFlag flagCode={market.flagCode} name={market.name} compact />
+              <div className={styles.upcomingMarketName}>{market.name}</div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* ── SECTION CARDS ── */}
-      <div style={{ background: '#f8f4ee', padding: '64px 24px' }}>
-        <div style={{ maxWidth: 1080, margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: 48 }}>
-            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: isJapanese ? 0.6 : 2, textTransform: isJapanese ? 'none' : 'uppercase', color: '#E4002B', marginBottom: 8 }}>{content.sectionEyebrow}</div>
-            <h2 style={{ fontSize: isJapanese ? '1.8rem' : '2rem', fontWeight: 800, color: '#13100C', margin: 0, lineHeight: 1.3 }}>{content.sectionTitle}</h2>
+      <div className={styles.sectionsSection}>
+        <div className={styles.sectionsInner}>
+          <div className={styles.sectionHeader}>
+            <div className={localeClass(styles.sectionLabel, isJapanese)}>{content.sectionEyebrow}</div>
+            <h2 className={localeClass(styles.sectionTitle, isJapanese)}>{content.sectionTitle}</h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 24 }}>
-            {content.sections.map(s => (
-              <div key={s.label} style={{
-                background: 'white', borderRadius: 10,
-                border: '1.5px solid #ece6dc',
-                borderTop: '4px solid #E4002B',
-                padding: 28, display: 'flex', flexDirection: 'column',
-              }}>
-                <div style={{ fontSize: 28, marginBottom: 8 }}>{s.emoji}</div>
-                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: isJapanese ? 0.6 : 2, textTransform: isJapanese ? 'none' : 'uppercase', color: '#E4002B', marginBottom: 6 }}>{s.label}</div>
-                <h3 style={{ fontSize: isJapanese ? '1.02rem' : '1.1rem', fontWeight: 800, color: '#13100C', margin: '0 0 10px', lineHeight: 1.4 }}>{s.title}</h3>
-                <p style={{ fontSize: '0.88rem', color: '#666', lineHeight: 1.7, margin: '0 0 20px', flex: 1 }}>{s.desc}</p>
-                <ul style={{ margin: '0 0 24px', paddingLeft: 16 }}>
-                  {s.items.map(item => (
-                    <li key={item} style={{ fontSize: '0.82rem', color: '#444', lineHeight: 1.8 }}>{item}</li>
+          <div className={styles.sectionGrid}>
+            {content.sections.map((section) => (
+              <div key={section.label} className={styles.sectionCard}>
+                <div className={styles.sectionEmoji}>{section.emoji}</div>
+                <div className={localeClass(styles.cardLabel, isJapanese)}>{section.label}</div>
+                <h3 className={localeClass(styles.cardTitle, isJapanese)}>{section.title}</h3>
+                <p className={styles.cardDescription}>{section.desc}</p>
+                <ul className={styles.cardList}>
+                  {section.items.map((item) => (
+                    <li key={item} className={styles.cardListItem}>
+                      {item}
+                    </li>
                   ))}
                 </ul>
-                <Link to={s.link} style={{
-                  display: 'inline-block', background: '#13100C', color: 'white',
-                  padding: '10px 20px', borderRadius: 5, fontWeight: 600,
-                  textDecoration: 'none', fontSize: '0.85rem', textAlign: 'center',
-                }}>
-                  {s.cta} →
+                <Link to={section.link} className={`${styles.button} ${styles.cardButton}`}>
+                  {section.cta} →
                 </Link>
               </div>
             ))}
           </div>
         </div>
       </div>
-
     </Layout>
   );
 }

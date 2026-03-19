@@ -9,6 +9,12 @@ sidebar_label: Deactivate In-Store
 
 Disables a POS terminal or kiosk from receiving menu updates and processing orders. This action is reversible — the device can be reactivated at any time.
 
+:::note Byte POS Caveat
+This guide assumes the device is managed as part of a **Byte POS** deployment in Admin Portal.
+
+If the market is not using Byte POS, **Byte Connect** must be part of Byte Commerce onboarding, and the operational controls for the market POS may differ from the device deactivation flow shown here.
+:::
+
 ## Steps
 
 **Step 1:** Navigate to the **In-Store Devices** section using the left-hand navigation menu.
@@ -37,6 +43,7 @@ Deactivation is reversible. If you need to reactivate the device later, you can 
 
 - [Generate One-Time Password](/docs/admin-portal-guide/in-store-devices/generate-one-time-password/)
 - [View In-Store Device Details](/docs/admin-portal-guide/in-store-devices/view-in-store-device-details/)
+- [Byte Connect](/docs/byte-capabilities/enablement/byte-connect)
 
 ---
 

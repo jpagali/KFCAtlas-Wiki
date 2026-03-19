@@ -1,0 +1,3626 @@
+[
+  {
+    "locale": "ja-JP",
+    "title": "Atlas Wiki について",
+    "headings": [
+      "Atlas Wiki とは何か",
+      "Atlas Wiki の作成者",
+      "なぜ作っているのか",
+      "誰のためのものか",
+      "Atlas Wiki が目指すこと",
+      "主な機能",
+      "設計の考え方",
+      "長期的な役割",
+      "ひとことで言うと"
+    ],
+    "summary": "Atlas Wiki について",
+    "section": "about-knowledge-center.md",
+    "url": "/ja-JP/docs/about-knowledge-center/",
+    "normalizedTitle": "atlas wiki について",
+    "normalizedHeadings": "atlas wiki とは何か atlas wiki の作成者 なぜ作っているのか 誰のためのものか atlas wiki が目指すこと 主な機能 設計の考え方 長期的な役割 ひとことで言うと",
+    "normalizedSummary": "atlas wiki について",
+    "normalizedSection": "about knowledge center md"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "エージェントを作成する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でエージェントを作成する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/agents/create-an-agent/",
+    "normalizedTitle": "エージェントを作成する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でエージェントを作成する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "エージェントを編集する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でエージェントを編集する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/agents/edit-an-agent/",
+    "normalizedTitle": "エージェントを編集する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でエージェントを編集する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "エージェント",
+    "headings": [
+      "トピック"
+    ],
+    "summary": "エージェント",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/agents/",
+    "normalizedTitle": "エージェント",
+    "normalizedHeadings": "トピック",
+    "normalizedSummary": "エージェント",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "バンドルに画像を追加する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でバンドルに画像を追加する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/bundles/add-an-image-to-a-bundle/",
+    "normalizedTitle": "バンドルに画像を追加する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でバンドルに画像を追加する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "バンドルにメタフィールドを追加する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でバンドルにメタフィールドを追加する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/bundles/add-metafields-to-a-bundle/",
+    "normalizedTitle": "バンドルにメタフィールドを追加する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でバンドルにメタフィールドを追加する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "バンドルをコピーする",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でバンドルをコピーする手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/bundles/copy-a-bundle/",
+    "normalizedTitle": "バンドルをコピーする",
+    "normalizedHeadings": "このガイドで扱う内容 手順 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でバンドルをコピーする手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "選択肢をコピーする",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で選択肢をコピーする手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/bundles/copy-a-choice/",
+    "normalizedTitle": "選択肢をコピーする",
+    "normalizedHeadings": "このガイドで扱う内容 手順 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で選択肢をコピーする手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "バンドルを作成する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でバンドルを作成する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/bundles/create-a-bundle/",
+    "normalizedTitle": "バンドルを作成する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でバンドルを作成する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "選択肢を作成する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で選択肢を作成する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/bundles/create-a-choice/",
+    "normalizedTitle": "選択肢を作成する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で選択肢を作成する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "バンドルを削除する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でバンドルを削除する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/bundles/delete-a-bundle/",
+    "normalizedTitle": "バンドルを削除する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でバンドルを削除する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "選択肢を削除する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で選択肢を削除する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/bundles/delete-a-choice/",
+    "normalizedTitle": "選択肢を削除する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で選択肢を削除する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "バンドルを編集する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でバンドルを編集する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/bundles/edit-a-bundle/",
+    "normalizedTitle": "バンドルを編集する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でバンドルを編集する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "選択肢を編集する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で選択肢を編集する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/bundles/edit-a-choice/",
+    "normalizedTitle": "選択肢を編集する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で選択肢を編集する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "バンドル",
+    "headings": [
+      "トピック",
+      "バンドル",
+      "選択肢"
+    ],
+    "summary": "バンドル",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/bundles/",
+    "normalizedTitle": "バンドル",
+    "normalizedHeadings": "トピック バンドル 選択肢",
+    "normalizedSummary": "バンドル",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "顧客検索",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で顧客検索手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/customer-support/customer-search/",
+    "normalizedTitle": "顧客検索",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で顧客検索手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "カスタマーサポート",
+    "headings": [
+      "トピック",
+      "注文",
+      "顧客"
+    ],
+    "summary": "カスタマーサポート",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/customer-support/",
+    "normalizedTitle": "カスタマーサポート",
+    "normalizedHeadings": "トピック 注文 顧客",
+    "normalizedSummary": "カスタマーサポート",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "注文検索",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で注文検索手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/customer-support/order-search/",
+    "normalizedTitle": "注文検索",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で注文検索手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "店内デバイスを無効化する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で店内デバイスを無効化する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/in-store-devices/deactivate-in-store/",
+    "normalizedTitle": "店内デバイスを無効化する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で店内デバイスを無効化する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "ワンタイムパスワードを生成する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でワンタイムパスワードを生成する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/in-store-devices/generate-one-time-password/",
+    "normalizedTitle": "ワンタイムパスワードを生成する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でワンタイムパスワードを生成する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "店内デバイス",
+    "headings": [
+      "トピック"
+    ],
+    "summary": "店内デバイス",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/in-store-devices/",
+    "normalizedTitle": "店内デバイス",
+    "normalizedHeadings": "トピック",
+    "normalizedSummary": "店内デバイス",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "店内デバイス詳細を確認する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で店内デバイス詳細を確認する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/in-store-devices/view-in-store-device-details/",
+    "normalizedTitle": "店内デバイス詳細を確認する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で店内デバイス詳細を確認する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "Admin Portal Guide",
+    "headings": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "summary": "Admin Portal Guide",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/",
+    "normalizedTitle": "admin portal guide",
+    "normalizedHeadings": "",
+    "normalizedSummary": "admin portal guide",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "カテゴリにメタフィールドを追加する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でカテゴリにメタフィールドを追加する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/menus/add-metafields-to-a-category/",
+    "normalizedTitle": "カテゴリにメタフィールドを追加する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でカテゴリにメタフィールドを追加する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "a メニューを割り当てる",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でa メニューを割り当てる手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/menus/assign-a-menu/",
+    "normalizedTitle": "a メニューを割り当てる",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でa メニューを割り当てる手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "a パッチ (Add to パッチ List)を割り当てる",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でa パッチ (Add to パッチ List)を割り当てる手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/menus/assign-a-patch-add-to-patch-list/",
+    "normalizedTitle": "a パッチ add to パッチ list を割り当てる",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でa パッチ add to パッチ list を割り当てる手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "a パッチ (Replace Existing List)を割り当てる",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でa パッチ (Replace Existing List)を割り当てる手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/menus/assign-a-patch-replace-existing-list/",
+    "normalizedTitle": "a パッチ replace existing list を割り当てる",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でa パッチ replace existing list を割り当てる手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "カテゴリをコピーする",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でカテゴリをコピーする手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/menus/copy-a-category/",
+    "normalizedTitle": "カテゴリをコピーする",
+    "normalizedHeadings": "このガイドで扱う内容 手順 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でカテゴリをコピーする手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "メニューをコピーする",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でメニューをコピーする手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/menus/copy-a-menu/",
+    "normalizedTitle": "メニューをコピーする",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でメニューをコピーする手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "パッチをコピーする",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でパッチをコピーする手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/menus/copy-a-patch/",
+    "normalizedTitle": "パッチをコピーする",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でパッチをコピーする手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "カテゴリを作成する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でカテゴリを作成する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/menus/create-a-category/",
+    "normalizedTitle": "カテゴリを作成する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でカテゴリを作成する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "メニューを作成する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でメニューを作成する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/menus/create-a-menu/",
+    "normalizedTitle": "メニューを作成する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でメニューを作成する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "指名価格を作成する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で指名価格を作成する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/menus/create-a-named-price/",
+    "normalizedTitle": "指名価格を作成する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で指名価格を作成する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "パッチを作成する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でパッチを作成する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/menus/create-a-patch/",
+    "normalizedTitle": "パッチを作成する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でパッチを作成する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "カテゴリを削除する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でカテゴリを削除する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/menus/delete-a-category/",
+    "normalizedTitle": "カテゴリを削除する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でカテゴリを削除する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "メニューを削除する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でメニューを削除する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/menus/delete-a-menu/",
+    "normalizedTitle": "メニューを削除する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でメニューを削除する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "パッチを削除する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でパッチを削除する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/menus/delete-a-patch/",
+    "normalizedTitle": "パッチを削除する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でパッチを削除する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "指名価格を削除する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で指名価格を削除する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/menus/delete-named-price/",
+    "normalizedTitle": "指名価格を削除する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で指名価格を削除する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "カテゴリを編集する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でカテゴリを編集する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/menus/edit-a-category/",
+    "normalizedTitle": "カテゴリを編集する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でカテゴリを編集する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "メニューを編集する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でメニューを編集する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/menus/edit-a-menu/",
+    "normalizedTitle": "メニューを編集する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でメニューを編集する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "パッチを編集する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でパッチを編集する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/menus/edit-a-patch/",
+    "normalizedTitle": "パッチを編集する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でパッチを編集する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "指名価格を編集する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で指名価格を編集する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/menus/edit-named-price/",
+    "normalizedTitle": "指名価格を編集する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で指名価格を編集する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "メニュー",
+    "headings": [
+      "トピック",
+      "指名価格",
+      "カテゴリ",
+      "パッチ",
+      "メニュー"
+    ],
+    "summary": "メニュー",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/menus/",
+    "normalizedTitle": "メニュー",
+    "normalizedHeadings": "トピック 指名価格 カテゴリ パッチ メニュー",
+    "normalizedSummary": "メニュー",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "メニューを公開する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でメニューを公開する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/menus/publish-a-menu/",
+    "normalizedTitle": "メニューを公開する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でメニューを公開する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "商品に画像を追加する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で商品に画像を追加する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/add-an-image-to-a-product/",
+    "normalizedTitle": "商品に画像を追加する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で商品に画像を追加する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "モディファイアにメタフィールドを追加する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でモディファイアにメタフィールドを追加する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/add-metafields-to-a-modifier/",
+    "normalizedTitle": "モディファイアにメタフィールドを追加する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でモディファイアにメタフィールドを追加する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "商品にメタフィールドを追加する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で商品にメタフィールドを追加する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/add-metafields-to-a-product/",
+    "normalizedTitle": "商品にメタフィールドを追加する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で商品にメタフィールドを追加する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "スロットにメタフィールドを追加する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でスロットにメタフィールドを追加する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/add-metafields-to-a-slot/",
+    "normalizedTitle": "スロットにメタフィールドを追加する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でスロットにメタフィールドを追加する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "バリエーションにメタフィールドを追加する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でバリエーションにメタフィールドを追加する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/add-metafields-to-a-variant/",
+    "normalizedTitle": "バリエーションにメタフィールドを追加する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でバリエーションにメタフィールドを追加する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "重みにメタフィールドを追加する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で重みにメタフィールドを追加する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/add-metafields-to-a-weight/",
+    "normalizedTitle": "重みにメタフィールドを追加する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で重みにメタフィールドを追加する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "オプション値にメタフィールドを追加する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でオプション値にメタフィールドを追加する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/add-metafields-to-an-option-value/",
+    "normalizedTitle": "オプション値にメタフィールドを追加する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でオプション値にメタフィールドを追加する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "モディファイアをコピーする",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でモディファイアをコピーする手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/copy-a-modifier/",
+    "normalizedTitle": "モディファイアをコピーする",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でモディファイアをコピーする手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "商品をコピーする",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で商品をコピーする手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/copy-a-product/",
+    "normalizedTitle": "商品をコピーする",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で商品をコピーする手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "スロットをコピーする",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でスロットをコピーする手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/copy-a-slot/",
+    "normalizedTitle": "スロットをコピーする",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でスロットをコピーする手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "重みをコピーする",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で重みをコピーする手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/copy-a-weight/",
+    "normalizedTitle": "重みをコピーする",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で重みをコピーする手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "オプションをコピーする",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でオプションをコピーする手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/copy-an-option/",
+    "normalizedTitle": "オプションをコピーする",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でオプションをコピーする手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "オプション値をコピーする",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でオプション値をコピーする手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/copy-an-option-value/",
+    "normalizedTitle": "オプション値をコピーする",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でオプション値をコピーする手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "モディファイアを作成する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でモディファイアを作成する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/create-a-modifier/",
+    "normalizedTitle": "モディファイアを作成する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でモディファイアを作成する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "商品を作成する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で商品を作成する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/create-a-product/",
+    "normalizedTitle": "商品を作成する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で商品を作成する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "スロットを作成する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でスロットを作成する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/create-a-slot/",
+    "normalizedTitle": "スロットを作成する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でスロットを作成する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "重みを作成する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で重みを作成する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/create-a-weight/",
+    "normalizedTitle": "重みを作成する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で重みを作成する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "オプションを作成する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でオプションを作成する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/create-an-option/",
+    "normalizedTitle": "オプションを作成する",
+    "normalizedHeadings": "このガイドで扱う内容 手順",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でオプションを作成する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "オプション値を作成する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でオプション値を作成する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/create-an-option-value/",
+    "normalizedTitle": "オプション値を作成する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でオプション値を作成する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "モディファイアを削除する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でモディファイアを削除する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/delete-a-modifier/",
+    "normalizedTitle": "モディファイアを削除する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でモディファイアを削除する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "商品を削除する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で商品を削除する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/delete-a-product/",
+    "normalizedTitle": "商品を削除する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で商品を削除する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "スロットを削除する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でスロットを削除する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/delete-a-slot/",
+    "normalizedTitle": "スロットを削除する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でスロットを削除する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "重みを削除する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で重みを削除する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/delete-a-weight/",
+    "normalizedTitle": "重みを削除する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で重みを削除する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "オプションを削除する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でオプションを削除する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/delete-an-option/",
+    "normalizedTitle": "オプションを削除する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でオプションを削除する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "オプション値を削除する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でオプション値を削除する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/delete-an-option-value/",
+    "normalizedTitle": "オプション値を削除する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でオプション値を削除する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "モディファイアを編集する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でモディファイアを編集する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/edit-a-modifier/",
+    "normalizedTitle": "モディファイアを編集する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でモディファイアを編集する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "商品を編集する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で商品を編集する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/edit-a-product/",
+    "normalizedTitle": "商品を編集する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で商品を編集する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "スロットを編集する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でスロットを編集する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/edit-a-slot/",
+    "normalizedTitle": "スロットを編集する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でスロットを編集する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "バリエーションを編集する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でバリエーションを編集する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/edit-a-variant/",
+    "normalizedTitle": "バリエーションを編集する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でバリエーションを編集する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "重みを編集する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で重みを編集する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/edit-a-weight/",
+    "normalizedTitle": "重みを編集する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で重みを編集する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "オプションを編集する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でオプションを編集する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/edit-an-option/",
+    "normalizedTitle": "オプションを編集する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でオプションを編集する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "オプション値を編集する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でオプション値を編集する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/edit-an-option-value/",
+    "normalizedTitle": "オプション値を編集する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でオプション値を編集する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "商品在庫設定を編集する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で商品在庫設定を編集する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/edit-item-availability/",
+    "normalizedTitle": "商品在庫設定を編集する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で商品在庫設定を編集する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "商品",
+    "headings": [
+      "トピック",
+      "商品",
+      "オプション",
+      "オプション値",
+      "スロット",
+      "モディファイア",
+      "重み",
+      "バリエーション"
+    ],
+    "summary": "商品",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/products/",
+    "normalizedTitle": "商品",
+    "normalizedHeadings": "トピック 商品 オプション オプション値 スロット モディファイア 重み バリエーション",
+    "normalizedSummary": "商品",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "プロモーションにメタデータを追加する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でプロモーションにメタデータを追加する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/promotions/add-metadata-to-promotion/",
+    "normalizedTitle": "プロモーションにメタデータを追加する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でプロモーションにメタデータを追加する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "高度なプロモーション検索",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で高度なプロモーション検索手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/promotions/advanced-promotions-search/",
+    "normalizedTitle": "高度なプロモーション検索",
+    "normalizedHeadings": "このガイドで扱う内容 手順 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で高度なプロモーション検索手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "プロモーションをアーカイブする",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でプロモーションをアーカイブする手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/promotions/archive-a-promotion/",
+    "normalizedTitle": "プロモーションをアーカイブする",
+    "normalizedHeadings": "このガイドで扱う内容 手順 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でプロモーションをアーカイブする手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "プロモーションをストアグループに割り当てる",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でプロモーションをストアグループに割り当てる手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/promotions/assign-promotions-to-store-groups/",
+    "normalizedTitle": "プロモーションをストアグループに割り当てる",
+    "normalizedHeadings": "このガイドで扱う内容 手順 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でプロモーションをストアグループに割り当てる手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "プロモーションをコピーする",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でプロモーションをコピーする手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/promotions/copy-promotion/",
+    "normalizedTitle": "プロモーションをコピーする",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でプロモーションをコピーする手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "プロモーションIDをコピーする",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でプロモーションIDをコピーする手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/promotions/copy-promotion-id/",
+    "normalizedTitle": "プロモーションidをコピーする",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でプロモーションidをコピーする手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "プロモーションを作成する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でプロモーションを作成する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/promotions/create-a-promotion/",
+    "normalizedTitle": "プロモーションを作成する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でプロモーションを作成する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "ストアグループを作成する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でストアグループを作成する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/promotions/create-a-store-group/",
+    "normalizedTitle": "ストアグループを作成する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でストアグループを作成する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "シリアルコードを作成する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でシリアルコードを作成する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/promotions/create-serialized-code/",
+    "normalizedTitle": "シリアルコードを作成する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でシリアルコードを作成する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "ストアグループを削除する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でストアグループを削除する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/promotions/delete-a-store-group/",
+    "normalizedTitle": "ストアグループを削除する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でストアグループを削除する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "プロモーションを編集する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でプロモーションを編集する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/promotions/edit-a-promotion/",
+    "normalizedTitle": "プロモーションを編集する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でプロモーションを編集する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "ストアグループを編集する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でストアグループを編集する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/promotions/edit-a-store-group/",
+    "normalizedTitle": "ストアグループを編集する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でストアグループを編集する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "シリアルコードを検索する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でシリアルコードを検索する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/promotions/find-serialized-code/",
+    "normalizedTitle": "シリアルコードを検索する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でシリアルコードを検索する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "ストアグループ向けプロモーションをインポートする",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でストアグループ向けプロモーションをインポートする手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/promotions/import-promotions-for-a-store-group/",
+    "normalizedTitle": "ストアグループ向けプロモーションをインポートする",
+    "normalizedHeadings": "このガイドで扱う内容 手順 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でストアグループ向けプロモーションをインポートする手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "プロモーション",
+    "headings": [
+      "トピック",
+      "プロモーション",
+      "ストアグループ",
+      "高度なプロモーション検索"
+    ],
+    "summary": "プロモーション",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/promotions/",
+    "normalizedTitle": "プロモーション",
+    "normalizedHeadings": "トピック プロモーション ストアグループ 高度なプロモーション検索",
+    "normalizedSummary": "プロモーション",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "ストアグループのプロモーションを確認する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でストアグループのプロモーションを確認する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/promotions/view-promotions-for-a-store-group/",
+    "normalizedTitle": "ストアグループのプロモーションを確認する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でストアグループのプロモーションを確認する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "プロモーションを割り当てる",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でプロモーションを割り当てる手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/store-groups/assign-promotions/",
+    "normalizedTitle": "プロモーションを割り当てる",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でプロモーションを割り当てる手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "ストアグループをコピーする",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でストアグループをコピーする手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/store-groups/copy-a-store-group/",
+    "normalizedTitle": "ストアグループをコピーする",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でストアグループをコピーする手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "ストアグループを作成する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でストアグループを作成する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/store-groups/create-a-store-group/",
+    "normalizedTitle": "ストアグループを作成する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でストアグループを作成する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "税ルールグループを作成する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で税ルールグループを作成する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/store-groups/create-tax-rule-group/",
+    "normalizedTitle": "税ルールグループを作成する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で税ルールグループを作成する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "税ルールを作成する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で税ルールを作成する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/store-groups/create-tax-rules/",
+    "normalizedTitle": "税ルールを作成する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で税ルールを作成する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "ストアグループを削除する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でストアグループを削除する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/store-groups/delete-a-store-group/",
+    "normalizedTitle": "ストアグループを削除する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でストアグループを削除する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "ストアグループを編集する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でストアグループを編集する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/store-groups/edit-a-store-group/",
+    "normalizedTitle": "ストアグループを編集する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でストアグループを編集する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "プロモーションを編集する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でプロモーションを編集する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/store-groups/edit-promotions/",
+    "normalizedTitle": "プロモーションを編集する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でプロモーションを編集する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "ストアグループ向けプロモーションをインポートする",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でストアグループ向けプロモーションをインポートする手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/store-groups/import-promotions-for-a-store-group/",
+    "normalizedTitle": "ストアグループ向けプロモーションをインポートする",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でストアグループ向けプロモーションをインポートする手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "ストアグループ",
+    "headings": [
+      "トピック",
+      "ストアグループ Taxes",
+      "ストアグループ Promotions"
+    ],
+    "summary": "ストアグループ",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/store-groups/",
+    "normalizedTitle": "ストアグループ",
+    "normalizedHeadings": "トピック ストアグループ taxes ストアグループ promotions",
+    "normalizedSummary": "ストアグループ",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "ストアグループからプロモーションを解除する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でストアグループからプロモーションを解除する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/store-groups/unassign-promotions-from-store-group/",
+    "normalizedTitle": "ストアグループからプロモーションを解除する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でストアグループからプロモーションを解除する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "ストアグループ内の店舗を確認する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でストアグループ内の店舗を確認する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/store-groups/view-stores-in-a-store-group/",
+    "normalizedTitle": "ストアグループ内の店舗を確認する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でストアグループ内の店舗を確認する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "オンライン注文を受け付ける（オン / オフ）",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でオンライン注文を受け付ける（オン / オフ）手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/stores/2a-accept-online-orders-turn-on-or-off/",
+    "normalizedTitle": "オンライン注文を受け付ける オン オフ",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でオンライン注文を受け付ける オン オフ 手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "検索結果に表示する（オン / オフ）",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で検索結果に表示する（オン / オフ）手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/stores/2b-appear-in-search-result-turn-on-or-off/",
+    "normalizedTitle": "検索結果に表示する オン オフ",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で検索結果に表示する オン オフ 手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "将来注文を許可する（オン / オフ）",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で将来注文を許可する（オン / オフ）手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/stores/2c-allow-future-orders-turn-on-or-off/",
+    "normalizedTitle": "将来注文を許可する オン オフ",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で将来注文を許可する オン オフ 手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "メニューにメタフィールドを追加する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でメニューにメタフィールドを追加する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/stores/add-metafields-to-a-menu/",
+    "normalizedTitle": "メニューにメタフィールドを追加する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でメニューにメタフィールドを追加する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "新しいメニューを割り当てる",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で新しいメニューを割り当てる手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/stores/assign-new-menu/",
+    "normalizedTitle": "新しいメニューを割り当てる",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で新しいメニューを割り当てる手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "受益者を作成する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で受益者を作成する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/stores/create-a-beneficiary/",
+    "normalizedTitle": "受益者を作成する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で受益者を作成する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "店舗を作成する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で店舗を作成する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/stores/create-a-store/",
+    "normalizedTitle": "店舗を作成する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で店舗を作成する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "パッチリストを編集する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でパッチリストを編集する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/stores/edit-patch-list/",
+    "normalizedTitle": "パッチリストを編集する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でパッチリストを編集する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "店舗詳細を編集する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で店舗詳細を編集する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/stores/edit-store-details/",
+    "normalizedTitle": "店舗詳細を編集する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で店舗詳細を編集する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "受益者を編集 / 削除する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で受益者を編集 / 削除する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/stores/editdelete-a-beneficiary/",
+    "normalizedTitle": "受益者を編集 削除する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で受益者を編集 削除する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "店舗",
+    "headings": [
+      "トピック",
+      "公開履歴",
+      "店舗",
+      "受益者"
+    ],
+    "summary": "店舗",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/stores/",
+    "normalizedTitle": "店舗",
+    "normalizedHeadings": "トピック 公開履歴 店舗 受益者",
+    "normalizedSummary": "店舗",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "商品を一時停止する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で商品を一時停止する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/stores/item-snooze/",
+    "normalizedTitle": "商品を一時停止する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で商品を一時停止する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "POS",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でPOS手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/stores/pos/",
+    "normalizedTitle": "pos",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でpos手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "メニューを公開する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でメニューを公開する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/stores/publish-a-menu/",
+    "normalizedTitle": "メニューを公開する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でメニューを公開する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "メニューを公開する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でメニューを公開する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/stores/publish-menu/",
+    "normalizedTitle": "メニューを公開する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でメニューを公開する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "パッチリストを移行する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でパッチリストを移行する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/stores/transfer-patch-list/",
+    "normalizedTitle": "パッチリストを移行する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でパッチリストを移行する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "a 店舗's Beneficiariesを確認する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でa 店舗's Beneficiariesを確認する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/stores/view-a-stores-beneficiaries/",
+    "normalizedTitle": "a 店舗 s beneficiariesを確認する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でa 店舗 s beneficiariesを確認する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "a 店舗’s メニューを確認する",
+    "headings": [
+      "手順",
+      "注意事項"
+    ],
+    "summary": "a 店舗’s メニューを確認する",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/stores/view-a-stores-menu/",
+    "normalizedTitle": "a 店舗 s メニューを確認する",
+    "normalizedHeadings": "手順 注意事項",
+    "normalizedSummary": "a 店舗 s メニューを確認する",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "店舗の公開履歴を確認する / メニュー公開ジョブIDをコピーする",
+    "headings": [
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "店舗の公開履歴を確認する / メニュー公開ジョブIDをコピーする",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/stores/view-a-stores-publish-history-copy-menu-publish-job-id/",
+    "normalizedTitle": "店舗の公開履歴を確認する メニュー公開ジョブidをコピーする",
+    "normalizedHeadings": "手順 注意事項 追加情報",
+    "normalizedSummary": "店舗の公開履歴を確認する メニュー公開ジョブidをコピーする",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "プロモーションを確認する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal でプロモーションを確認する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/stores/view-promotions/",
+    "normalizedTitle": "プロモーションを確認する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal でプロモーションを確認する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "税設定を確認する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で税設定を確認する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/stores/view-taxes/",
+    "normalizedTitle": "税設定を確認する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で税設定を確認する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "店舗のストアグループを確認 / 解除する",
+    "headings": [
+      "このガイドで扱う内容",
+      "手順",
+      "注意事項",
+      "追加情報"
+    ],
+    "summary": "このガイドでは、Byte Commerce Admin Portal で店舗のストアグループを確認 / 解除する手順を説明します。",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/stores/viewunassign-a-stores-store-groups/",
+    "normalizedTitle": "店舗のストアグループを確認 解除する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
+    "normalizedSummary": "このガイドでは byte commerce admin portal で店舗のストアグループを確認 解除する手順を説明します",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "デプロイ運用ランブック",
+    "headings": [
+      "基本ルール",
+      "標準フロー",
+      "昇格ルール",
+      "リリースノート",
+      "クイックチェック"
+    ],
+    "summary": "デプロイ運用ランブック",
+    "section": "deployment-runbook.md",
+    "url": "/ja-JP/docs/deployment-runbook/",
+    "normalizedTitle": "デプロイ運用ランブック",
+    "normalizedHeadings": "基本ルール 標準フロー 昇格ルール リリースノート クイックチェック",
+    "normalizedSummary": "デプロイ運用ランブック",
+    "normalizedSection": "deployment runbook md"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ガイド: バンドルとディール\"",
+    "headings": [
+      "フロントエンドでの表示箇所",
+      "Contentfulで設定する内容",
+      "Bundle に表示用コンテンツを追加する",
+      "Deal に表示用コンテンツを追加する",
+      "利用例"
+    ],
+    "summary": "ガイド: バンドルとディール",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/contentful/guide-bundles-deals/",
+    "normalizedTitle": "ガイド バンドルとディール",
+    "normalizedHeadings": "フロントエンドでの表示箇所 contentfulで設定する内容 bundle に表示用コンテンツを追加する deal に表示用コンテンツを追加する 利用例",
+    "normalizedSummary": "ガイド バンドルとディール",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ガイド: カテゴリコンテンツ\"",
+    "headings": [
+      "フロントエンドでの表示箇所",
+      "Contentfulで設定する内容",
+      "カテゴリ内の商品順を設定する",
+      "サブカテゴリを作成する",
+      "サブカテゴリをカテゴリに追加する",
+      "サブカテゴリの順序を変更する",
+      "サブカテゴリ内の商品順を変更する",
+      "利用例"
+    ],
+    "summary": "ガイド: カテゴリコンテンツ",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/contentful/guide-category/",
+    "normalizedTitle": "ガイド カテゴリコンテンツ",
+    "normalizedHeadings": "フロントエンドでの表示箇所 contentfulで設定する内容 カテゴリ内の商品順を設定する サブカテゴリを作成する サブカテゴリをカテゴリに追加する サブカテゴリの順序を変更する サブカテゴリ内の商品順を変更する 利用例",
+    "normalizedSummary": "ガイド カテゴリコンテンツ",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ガイド: カート内クロスセル\"",
+    "headings": [
+      "フロントエンドでの表示箇所",
+      "Contentfulで設定する内容",
+      "利用例"
+    ],
+    "summary": "ガイド: カート内クロスセル",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/contentful/guide-cross-sell/",
+    "normalizedTitle": "ガイド カート内クロスセル",
+    "normalizedHeadings": "フロントエンドでの表示箇所 contentfulで設定する内容 利用例",
+    "normalizedSummary": "ガイド カート内クロスセル",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ガイド: フッターコンテンツ\"",
+    "headings": [
+      "フロントエンドでの表示箇所",
+      "Contentfulで設定する内容",
+      "フッターエントリを開く",
+      "新しいセクションを追加する",
+      "フッターリンクを作成する",
+      "PDF をリンクする",
+      "利用例"
+    ],
+    "summary": "ガイド: フッターコンテンツ",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/contentful/guide-footer/",
+    "normalizedTitle": "ガイド フッターコンテンツ",
+    "normalizedHeadings": "フロントエンドでの表示箇所 contentfulで設定する内容 フッターエントリを開く 新しいセクションを追加する フッターリンクを作成する pdf をリンクする 利用例",
+    "normalizedSummary": "ガイド フッターコンテンツ",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ガイド: ホームページコンテンツ\"",
+    "headings": [
+      "フロントエンドでの表示箇所",
+      "Contentfulで設定する内容",
+      "ホームページタイトルを更新する",
+      "ヒーローバナーを更新する",
+      "利用例"
+    ],
+    "summary": "ガイド: ホームページコンテンツ",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/contentful/guide-homepage/",
+    "normalizedTitle": "ガイド ホームページコンテンツ",
+    "normalizedHeadings": "フロントエンドでの表示箇所 contentfulで設定する内容 ホームページタイトルを更新する ヒーローバナーを更新する 利用例",
+    "normalizedSummary": "ガイド ホームページコンテンツ",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ガイド: 商品コンテンツ\"",
+    "headings": [
+      "フロントエンドでの表示箇所",
+      "Contentfulで設定する内容",
+      "商品コンテンツを公開する",
+      "Pizza Crust コンテンツを公開する",
+      "Pizza Size コンテンツを公開する",
+      "Pizza Topping コンテンツを公開する",
+      "利用例"
+    ],
+    "summary": "ガイド: 商品コンテンツ",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/contentful/guide-product/",
+    "normalizedTitle": "ガイド 商品コンテンツ",
+    "normalizedHeadings": "フロントエンドでの表示箇所 contentfulで設定する内容 商品コンテンツを公開する pizza crust コンテンツを公開する pizza size コンテンツを公開する pizza topping コンテンツを公開する 利用例",
+    "normalizedSummary": "ガイド 商品コンテンツ",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ガイド: プロモーションコンテンツ\"",
+    "headings": [
+      "フロントエンドでの表示箇所",
+      "Contentfulで設定する内容",
+      "利用例"
+    ],
+    "summary": "ガイド: プロモーションコンテンツ",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/contentful/guide-promo/",
+    "normalizedTitle": "ガイド プロモーションコンテンツ",
+    "normalizedHeadings": "フロントエンドでの表示箇所 contentfulで設定する内容 利用例",
+    "normalizedSummary": "ガイド プロモーションコンテンツ",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ガイド: SEOタグと管理\"",
+    "headings": [
+      "フロントエンドでの表示箇所",
+      "Contentfulで設定する内容",
+      "利用例"
+    ],
+    "summary": "ガイド: SEOタグと管理",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/contentful/guide-seo/",
+    "normalizedTitle": "ガイド seoタグと管理",
+    "normalizedHeadings": "フロントエンドでの表示箇所 contentfulで設定する内容 利用例",
+    "normalizedSummary": "ガイド seoタグと管理",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ガイド: コンテンツ翻訳\"",
+    "headings": [
+      "フロントエンドでの表示箇所",
+      "Contentfulで設定する内容",
+      "Translator Mode を有効にする",
+      "翻訳文言を更新する",
+      "利用例"
+    ],
+    "summary": "ガイド: コンテンツ翻訳",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/contentful/guide-translations/",
+    "normalizedTitle": "ガイド コンテンツ翻訳",
+    "normalizedHeadings": "フロントエンドでの表示箇所 contentfulで設定する内容 translator mode を有効にする 翻訳文言を更新する 利用例",
+    "normalizedSummary": "ガイド コンテンツ翻訳",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"Contentful概要\"",
+    "headings": [
+      "利用する人",
+      "管理できる内容",
+      "公開の流れ",
+      "対応プラットフォーム"
+    ],
+    "summary": "Contentful概要",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/contentful/",
+    "normalizedTitle": "contentful概要",
+    "normalizedHeadings": "利用する人 管理できる内容 公開の流れ 対応プラットフォーム",
+    "normalizedSummary": "contentful概要",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"カスタマーエンゲージメント調査\"",
+    "headings": [
+      "この機能でできること",
+      "カスタマージャーニー上のどこで表示されるか",
+      "市場がこれを使う理由",
+      "代表的な運用モデル",
+      "現在の調査プラットフォーム"
+    ],
+    "summary": "カスタマーエンゲージメント調査",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-engagement-surveys/",
+    "normalizedTitle": "カスタマーエンゲージメント調査",
+    "normalizedHeadings": "この機能でできること カスタマージャーニー上のどこで表示されるか 市場がこれを使う理由 代表的な運用モデル 現在の調査プラットフォーム",
+    "normalizedSummary": "カスタマーエンゲージメント調査",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"Qualtrics\"",
+    "headings": [
+      "Qualtrics が担うこと",
+      "代表的な KFC Listens フロー",
+      "代表的に収集されるデータ",
+      "運用上の考慮点",
+      "アンケート配信タイミング",
+      "インセンティブ",
+      "エスカレーション",
+      "連携メモ"
+    ],
+    "summary": "Qualtrics",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-engagement-surveys/qualtrics/",
+    "normalizedTitle": "qualtrics",
+    "normalizedHeadings": "qualtrics が担うこと 代表的な kfc listens フロー 代表的に収集されるデータ 運用上の考慮点 アンケート配信タイミング インセンティブ エスカレーション 連携メモ",
+    "normalizedSummary": "qualtrics",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"アカウント\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "アカウント",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/access-account-and-manage-profile/account/",
+    "normalizedTitle": "アカウント",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "アカウント",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"アカウントとプロフィール管理\"",
+    "headings": [
+      "このセクションのページ"
+    ],
+    "summary": "アカウントとプロフィール管理",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/access-account-and-manage-profile/",
+    "normalizedTitle": "アカウントとプロフィール管理",
+    "normalizedHeadings": "このセクションのページ",
+    "normalizedSummary": "アカウントとプロフィール管理",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"サインイン\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "サインイン",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/access-account-and-manage-profile/sign-in/",
+    "normalizedTitle": "サインイン",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "サインイン",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"新規登録\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "新規登録",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/access-account-and-manage-profile/sign-up/",
+    "normalizedTitle": "新規登録",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "新規登録",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"KFCを探す\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "KFCを探す",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-a-store/find-a-kfc/",
+    "normalizedTitle": "kfcを探す",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "kfcを探す",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"店舗を探す\"",
+    "headings": [
+      "このセクションのページ"
+    ],
+    "summary": "店舗を探す",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-a-store/",
+    "normalizedTitle": "店舗を探す",
+    "normalizedHeadings": "このセクションのページ",
+    "normalizedSummary": "店舗を探す",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"KFC店舗詳細\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "KFC店舗詳細",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-a-store/kfc-store-details/",
+    "normalizedTitle": "kfc店舗詳細",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "kfc店舗詳細",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"チャレンジ\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "チャレンジ",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-deals-and-rewards/challenge/",
+    "normalizedTitle": "チャレンジ",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "チャレンジ",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ステップ3 ディールと特典を探す\"",
+    "headings": [
+      "このセクションのページ"
+    ],
+    "summary": "このステップでは、お客様がオファーを見つけ、価値を理解し、そのまま注文可能な体験へ進む流れを扱います。",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-deals-and-rewards/",
+    "normalizedTitle": "ステップ3 ディールと特典を探す",
+    "normalizedHeadings": "このセクションのページ",
+    "normalizedSummary": "このステップでは お客様がオファーを見つけ 価値を理解し そのまま注文可能な体験へ進む流れを扱います",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ロイヤルティタイル\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "ロイヤルティタイル",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-deals-and-rewards/loyalty-tile/",
+    "normalizedTitle": "ロイヤルティタイル",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "ロイヤルティタイル",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"プロモオプション\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "プロモオプション",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-deals-and-rewards/promo-options/",
+    "normalizedTitle": "プロモオプション",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "プロモオプション",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"特典一覧\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "特典一覧",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-deals-and-rewards/rewards-listing/",
+    "normalizedTitle": "特典一覧",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "特典一覧",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"BYOB選択\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "BYOB選択",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-products/byob-select/",
+    "normalizedTitle": "byob選択",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "byob選択",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ケータリングメニュー\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "ケータリングメニュー",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-products/catering-menu/",
+    "normalizedTitle": "ケータリングメニュー",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "ケータリングメニュー",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"キッズ向けメニュー\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "キッズ向けメニュー",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-products/childrens-only/",
+    "normalizedTitle": "キッズ向けメニュー",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "キッズ向けメニュー",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"フォーマットオプション\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "フォーマットオプション",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-products/format-options/",
+    "normalizedTitle": "フォーマットオプション",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "フォーマットオプション",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ホームページ\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "ホームページ",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-products/home-page/",
+    "normalizedTitle": "ホームページ",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "ホームページ",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ステップ2 商品を探す\"",
+    "headings": [
+      "このセクションのページ"
+    ],
+    "summary": "このステップでは、注文条件が決まった後にお客様が購入可能な商品を見つける流れを扱います。",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-products/",
+    "normalizedTitle": "ステップ2 商品を探す",
+    "normalizedHeadings": "このセクションのページ",
+    "normalizedSummary": "このステップでは 注文条件が決まった後にお客様が購入可能な商品を見つける流れを扱います",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"メニューランディング\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "メニューランディング",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-products/menu-landing/",
+    "normalizedTitle": "メニューランディング",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "メニューランディング",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"メニュー一覧\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "メニュー一覧",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/find-products/menu-listing/",
+    "normalizedTitle": "メニュー一覧",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "メニュー一覧",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"KFCに連絡する\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "KFCに連絡する",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/get-help/contact-kfc/",
+    "normalizedTitle": "kfcに連絡する",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "kfcに連絡する",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"お問い合わせフォーム\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "お問い合わせフォーム",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/get-help/enquiry-form/",
+    "normalizedTitle": "お問い合わせフォーム",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "お問い合わせフォーム",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"よくある質問\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "よくある質問",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/get-help/faqs/",
+    "normalizedTitle": "よくある質問",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "よくある質問",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ヘルプを受ける\"",
+    "headings": [
+      "このセクションのページ"
+    ],
+    "summary": "ヘルプを受ける",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/get-help/",
+    "normalizedTitle": "ヘルプを受ける",
+    "normalizedHeadings": "このセクションのページ",
+    "normalizedSummary": "ヘルプを受ける",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"カスタマージャーニー\"",
+    "headings": [
+      "主要な注文ジャーニー",
+      "補助ジャーニー",
+      "この構成が適している理由",
+      "対象範囲チェックリスト"
+    ],
+    "summary": "カスタマージャーニー",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/",
+    "normalizedTitle": "カスタマージャーニー",
+    "normalizedHeadings": "主要な注文ジャーニー 補助ジャーニー この構成が適している理由 対象範囲チェックリスト",
+    "normalizedSummary": "カスタマージャーニー",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"アプリツアー\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "アプリツアー",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/learn-about-kfc/app-tour/",
+    "normalizedTitle": "アプリツアー",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "アプリツアー",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"コンテンツランディング\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "コンテンツランディング",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/learn-about-kfc/content-landing/",
+    "normalizedTitle": "コンテンツランディング",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "コンテンツランディング",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"KFCを知る\"",
+    "headings": [
+      "このセクションのページ"
+    ],
+    "summary": "KFCを知る",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/learn-about-kfc/",
+    "normalizedTitle": "kfcを知る",
+    "normalizedHeadings": "このセクションのページ",
+    "normalizedSummary": "kfcを知る",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"栄養・アレルゲン情報\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "栄養・アレルゲン情報",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/learn-about-kfc/nutrition-and-allergen/",
+    "normalizedTitle": "栄養 アレルゲン情報",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "栄養 アレルゲン情報",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"カート\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "カート",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/order-and-get/cart/",
+    "normalizedTitle": "カート",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "カート",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"チェックアウト\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "チェックアウト",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/order-and-get/checkout/",
+    "normalizedTitle": "チェックアウト",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "チェックアウト",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ステップ5 注文と受け取り\"",
+    "headings": [
+      "このセクションのページ"
+    ],
+    "summary": "このステップでは、お客様の購入意図が実際の注文完了へ変わるコンバージョン段階を扱います。",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/order-and-get/",
+    "normalizedTitle": "ステップ5 注文と受け取り",
+    "normalizedHeadings": "このセクションのページ",
+    "normalizedSummary": "このステップでは お客様の購入意図が実際の注文完了へ変わるコンバージョン段階を扱います",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"アドオンとクロスセル\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "アドオンとクロスセル",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/preview-product-and-customize/add-on-and-cross-sell/",
+    "normalizedTitle": "アドオンとクロスセル",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "アドオンとクロスセル",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"カスタマイズ\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "カスタマイズ",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/preview-product-and-customize/customize/",
+    "normalizedTitle": "カスタマイズ",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "カスタマイズ",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ステップ4 商品確認とカスタマイズ\"",
+    "headings": [
+      "このセクションのページ"
+    ],
+    "summary": "このステップでは、お客様が候補商品を確認し、内容を理解し、注文に追加する前にカスタマイズする流れを扱います。",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/preview-product-and-customize/",
+    "normalizedTitle": "ステップ4 商品確認とカスタマイズ",
+    "normalizedHeadings": "このセクションのページ",
+    "normalizedSummary": "このステップでは お客様が候補商品を確認し 内容を理解し 注文に追加する前にカスタマイズする流れを扱います",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"栄養・アレルゲン情報\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "栄養・アレルゲン情報",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/preview-product-and-customize/nutrition-and-allergen/",
+    "normalizedTitle": "栄養 アレルゲン情報",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "栄養 アレルゲン情報",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"商品詳細\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "商品詳細",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/preview-product-and-customize/product-detail/",
+    "normalizedTitle": "商品詳細",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "商品詳細",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"住所または店舗を選択する\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "住所または店舗を選択する",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/setup-order/address-or-store-selection/",
+    "normalizedTitle": "住所または店舗を選択する",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "住所または店舗を選択する",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"注文モードを変更する\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "注文モードを変更する",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/setup-order/change-order-mode/",
+    "normalizedTitle": "注文モードを変更する",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "注文モードを変更する",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ステップ1 注文設定\"",
+    "headings": [
+      "このセクションのページ",
+      "なぜ最初に必要か"
+    ],
+    "summary": "このステップでは、メニュー閲覧前にお客様が決める必要のある条件を扱います。これらの条件によって、表示される商品、購入可否、予約可否、再注文可否が決まります。",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/setup-order/",
+    "normalizedTitle": "ステップ1 注文設定",
+    "normalizedHeadings": "このセクションのページ なぜ最初に必要か",
+    "normalizedSummary": "このステップでは メニュー閲覧前にお客様が決める必要のある条件を扱います これらの条件によって 表示される商品 購入可否 予約可否 再注文可否が決まります",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"再注文\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "再注文",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/setup-order/reorder/",
+    "normalizedTitle": "再注文",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "再注文",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"注文設定を確認する\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "注文設定を確認する",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/setup-order/review-order-settings/",
+    "normalizedTitle": "注文設定を確認する",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "注文設定を確認する",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"注文モードを設定する\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "注文モードを設定する",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/setup-order/set-order-mode/",
+    "normalizedTitle": "注文モードを設定する",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "注文モードを設定する",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"店舗利用不可時の案内\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "店舗利用不可時の案内",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/setup-order/store-unavailable-handling/",
+    "normalizedTitle": "店舗利用不可時の案内",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "店舗利用不可時の案内",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"配送\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "配送",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/track-order/delivery/",
+    "normalizedTitle": "配送",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "配送",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ステップ6 注文追跡\"",
+    "headings": [
+      "このセクションのページ"
+    ],
+    "summary": "このステップでは、注文完了後の購入後体験を扱います。",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/track-order/",
+    "normalizedTitle": "ステップ6 注文追跡",
+    "normalizedHeadings": "このセクションのページ",
+    "normalizedSummary": "このステップでは 注文完了後の購入後体験を扱います",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"受け取り\"",
+    "headings": [
+      "この体験設計の意図"
+    ],
+    "summary": "受け取り",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/customer-journey/track-order/pickup/",
+    "normalizedTitle": "受け取り",
+    "normalizedHeadings": "この体験設計の意図",
+    "normalizedSummary": "受け取り",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "KFC Atlasデザインシステム",
+    "headings": [
+      "プラットフォームがどう作られているか — ビジュアルアイデンティティから画面表示まで",
+      "デザインシステムとは",
+      "3つのレイヤー",
+      "レイヤー1 — Design（見た目を定義する）",
+      "レイヤー2 — Code（実装に変換する）",
+      "レイヤー3 — Market Applications（実際に公開されるもの）",
+      "Atlas 市場にとっての意味",
+      "プラットフォームアーキテクチャ図"
+    ],
+    "summary": "import useBaseUrl from '@docusaurus/useBaseUrl';",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/design-system/",
+    "normalizedTitle": "kfc atlasデザインシステム",
+    "normalizedHeadings": "プラットフォームがどう作られているか ビジュアルアイデンティティから画面表示まで デザインシステムとは 3つのレイヤー レイヤー1 design 見た目を定義する レイヤー2 code 実装に変換する レイヤー3 market applications 実際に公開されるもの atlas 市場にとっての意味 プラットフォームアーキテクチャ図",
+    "normalizedSummary": "import usebaseurl from docusaurus usebaseurl",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"Branch Deeplink\"",
+    "headings": [
+      "機能概要",
+      "主な機能",
+      "Universal Links との違い",
+      "対応プラットフォーム"
+    ],
+    "summary": "Branch Deeplink",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/features/branch-deeplink/",
+    "normalizedTitle": "branch deeplink",
+    "normalizedHeadings": "機能概要 主な機能 universal links との違い 対応プラットフォーム",
+    "normalizedSummary": "branch deeplink",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"機能概要\"",
+    "headings": [
+      "Atlas での「機能」とは",
+      "現在の機能一覧",
+      "機能ごとの依存関係"
+    ],
+    "summary": "機能概要",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/features/",
+    "normalizedTitle": "機能概要",
+    "normalizedHeadings": "atlas での 機能 とは 現在の機能一覧 機能ごとの依存関係",
+    "normalizedSummary": "機能概要",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"KFC Deeplink Universal Link\"",
+    "headings": [
+      "機能概要",
+      "なぜ重要か",
+      "対応範囲",
+      "主な流入元",
+      "対応プラットフォーム"
+    ],
+    "summary": "KFC Deeplink Universal Link",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/features/kfc-deeplink-universal-link/",
+    "normalizedTitle": "kfc deeplink universal link",
+    "normalizedHeadings": "機能概要 なぜ重要か 対応範囲 主な流入元 対応プラットフォーム",
+    "normalizedSummary": "kfc deeplink universal link",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"MarTech\"",
+    "headings": [
+      "機能概要",
+      "データの流れ",
+      "構成要素",
+      "Event Tracking",
+      "mParticle",
+      "Braze",
+      "対応プラットフォーム"
+    ],
+    "summary": "MarTech",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/features/martech/",
+    "normalizedTitle": "martech",
+    "normalizedHeadings": "機能概要 データの流れ 構成要素 event tracking mparticle braze 対応プラットフォーム",
+    "normalizedSummary": "martech",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"日本 — クリスマス注文\"",
+    "headings": [
+      "背景",
+      "商品例: KFC クリスマス パーティーバーレル",
+      "日本での予約フロー",
+      "1. キャンペーン開始（10月〜11月）",
+      "2. 顧客が予約する",
+      "3. 予約確認",
+      "4. 受け取り（12月23日〜25日）",
+      "なぜ事前決済が必要か",
+      "需要とキャパシティ管理",
+      "設定サマリー",
+      "他市場への示唆"
+    ],
+    "summary": "日本 — クリスマス注文",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/features/menu-item-reservation-japan-christmas/",
+    "normalizedTitle": "日本 クリスマス注文",
+    "normalizedHeadings": "背景 商品例 kfc クリスマス パーティーバーレル 日本での予約フロー 1 キャンペーン開始 10月 11月 2 顧客が予約する 3 予約確認 4 受け取り 12月23日 25日 なぜ事前決済が必要か 需要とキャパシティ管理 設定サマリー 他市場への示唆",
+    "normalizedSummary": "日本 クリスマス注文",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"メニュー商品の予約\"",
+    "headings": [
+      "機能概要",
+      "なぜ必要か",
+      "仕組み",
+      "予約受付期間",
+      "時間帯",
+      "支払い",
+      "設定項目",
+      "対応プラットフォーム",
+      "市場別ユースケース"
+    ],
+    "summary": "メニュー商品の予約",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/features/menu-item-reservation/",
+    "normalizedTitle": "メニュー商品の予約",
+    "normalizedHeadings": "機能概要 なぜ必要か 仕組み 予約受付期間 時間帯 支払い 設定項目 対応プラットフォーム 市場別ユースケース",
+    "normalizedSummary": "メニュー商品の予約",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"ソーシャルサインイン\"",
+    "headings": [
+      "機能概要",
+      "対応プロバイダー",
+      "仕組み",
+      "市場での有効化",
+      "対応プラットフォーム"
+    ],
+    "summary": "ソーシャルサインイン",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/features/social-sign-in/",
+    "normalizedTitle": "ソーシャルサインイン",
+    "normalizedHeadings": "機能概要 対応プロバイダー 仕組み 市場での有効化 対応プラットフォーム",
+    "normalizedSummary": "ソーシャルサインイン",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"市場設定\"",
+    "headings": [
+      "市場ごとに設定できる項目",
+      "Japan 🇯🇵 — 現在の設定",
+      "Australia 🇦🇺 — 現在の設定",
+      "設定変更の依頼方法"
+    ],
+    "summary": "市場設定",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/market-configurations/",
+    "normalizedTitle": "市場設定",
+    "normalizedHeadings": "市場ごとに設定できる項目 japan 現在の設定 australia 現在の設定 設定変更の依頼方法",
+    "normalizedSummary": "市場設定",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"注文チャネル\"",
+    "headings": [
+      "チャネルごとの機能",
+      "市場別チャネル状況",
+      "Japan 🇯🇵",
+      "Australia 🇦🇺",
+      "チャネル設定"
+    ],
+    "summary": "注文チャネル",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/order-channels/",
+    "normalizedTitle": "注文チャネル",
+    "normalizedHeadings": "チャネルごとの機能 市場別チャネル状況 japan australia チャネル設定",
+    "normalizedSummary": "注文チャネル",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"フロントエンド概要\"",
+    "headings": [
+      "フロントエンドで扱う内容",
+      "対象市場",
+      "このガイドを読むべき人"
+    ],
+    "summary": "フロントエンド概要",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/overview/",
+    "normalizedTitle": "フロントエンド概要",
+    "normalizedHeadings": "フロントエンドで扱う内容 対象市場 このガイドを読むべき人",
+    "normalizedSummary": "フロントエンド概要",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "プロモーションを作成する",
+    "headings": [
+      "このプレイブックで扱う内容",
+      "事前準備",
+      "ステップ1: プロモーション構成を確認する",
+      "ステップ2: プロモーションの土台を作る",
+      "ステップ3: 条件と効果を設定する",
+      "ステップ4: 店舗に割り当てる",
+      "ステップ5: 公開前 QA",
+      "ステップ6: 公開後のモニタリング",
+      "関連する Admin Portal Guide",
+      "KFC 向けメモ"
+    ],
+    "summary": "プロモーションを作成する",
+    "section": "playbooks",
+    "url": "/ja-JP/docs/playbooks/onboarding/",
+    "normalizedTitle": "プロモーションを作成する",
+    "normalizedHeadings": "このプレイブックで扱う内容 事前準備 ステップ1 プロモーション構成を確認する ステップ2 プロモーションの土台を作る ステップ3 条件と効果を設定する ステップ4 店舗に割り当てる ステップ5 公開前 qa ステップ6 公開後のモニタリング 関連する admin portal guide kfc 向けメモ",
+    "normalizedSummary": "プロモーションを作成する",
+    "normalizedSection": "playbooks"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "アプリ限定オファー",
+    "headings": [
+      "目的",
+      "Requirements",
+      "Effects"
+    ],
+    "summary": "KFC モバイルアプリでのみ利用できる 20% オフ施策です。",
+    "section": "playbooks",
+    "url": "/ja-JP/docs/playbooks/promotion-recipes/app-exclusive-deal/",
+    "normalizedTitle": "アプリ限定オファー",
+    "normalizedHeadings": "目的 requirements effects",
+    "normalizedSummary": "kfc モバイルアプリでのみ利用できる 20 オフ施策です",
+    "normalizedSection": "playbooks"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "レシピ 1 Buy 1 Get 1 Free (BOGO)",
+    "headings": [
+      "目的",
+      "Requirements",
+      "Effects"
+    ],
+    "summary": "お客様が Zinger Burger を 1 つ購入すると、2 つ目を無料にする施策です。",
+    "section": "playbooks",
+    "url": "/ja-JP/docs/playbooks/promotion-recipes/buy-1-get-1-free-bogo/",
+    "normalizedTitle": "レシピ 1 buy 1 get 1 free bogo",
+    "normalizedHeadings": "目的 requirements effects",
+    "normalizedSummary": "お客様が zinger burger を 1 つ購入すると 2 つ目を無料にする施策です",
+    "normalizedSection": "playbooks"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "クーポンコード割引",
+    "headings": [
+      "目的",
+      "Basic Information",
+      "Requirements",
+      "Effects"
+    ],
+    "summary": "コード を入力したお客様に $10 オフを適用する施策です。",
+    "section": "playbooks",
+    "url": "/ja-JP/docs/playbooks/promotion-recipes/coupon-code-discount/",
+    "normalizedTitle": "クーポンコード割引",
+    "normalizedHeadings": "目的 basic information requirements effects",
+    "normalizedSummary": "コード を入力したお客様に 10 オフを適用する施策です",
+    "normalizedSection": "playbooks"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "デイリーディール（1日1回）",
+    "headings": [
+      "目的",
+      "Requirements",
+      "Effects"
+    ],
+    "summary": "任意の Meal 商品を購入したお客様に無料のドリンクを付与し、1 顧客 1 日 1 回までに制限する施策です。",
+    "section": "playbooks",
+    "url": "/ja-JP/docs/playbooks/promotion-recipes/daily-deal-once-per-customer-per-day/",
+    "normalizedTitle": "デイリーディール 1日1回",
+    "normalizedHeadings": "目的 requirements effects",
+    "normalizedSummary": "任意の meal 商品を購入したお客様に無料のドリンクを付与し 1 顧客 1 日 1 回までに制限する施策です",
+    "normalizedSection": "playbooks"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "ドライブスルー限定オファー",
+    "headings": [
+      "目的",
+      "Requirements",
+      "Effects"
+    ],
+    "summary": "Drive Thru でのみ利用できる無料アップグレード施策です。",
+    "section": "playbooks",
+    "url": "/ja-JP/docs/playbooks/promotion-recipes/drive-thru-only-deal/",
+    "normalizedTitle": "ドライブスルー限定オファー",
+    "normalizedHeadings": "目的 requirements effects",
+    "normalizedSummary": "drive thru でのみ利用できる無料アップグレード施策です",
+    "normalizedSection": "playbooks"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "大口注文の配送料無料",
+    "headings": [
+      "目的",
+      "Requirements",
+      "Effects"
+    ],
+    "summary": "カート合計が $40 を超えた場合に、配送料を無料にする施策です。",
+    "section": "playbooks",
+    "url": "/ja-JP/docs/playbooks/promotion-recipes/free-delivery-on-large-orders/",
+    "normalizedTitle": "大口注文の配送料無料",
+    "normalizedHeadings": "目的 requirements effects",
+    "normalizedSummary": "カート合計が 40 を超えた場合に 配送料を無料にする施策です",
+    "normalizedSection": "playbooks"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "ランチスペシャル（時間限定）",
+    "headings": [
+      "目的",
+      "Requirements",
+      "Effects"
+    ],
+    "summary": "月曜から金曜の 11:00 から 14:00 までの注文に対して、$2 オフを適用する施策です。",
+    "section": "playbooks",
+    "url": "/ja-JP/docs/playbooks/promotion-recipes/lunch-special-time-limited/",
+    "normalizedTitle": "ランチスペシャル 時間限定",
+    "normalizedHeadings": "目的 requirements effects",
+    "normalizedSummary": "月曜から金曜の 11 00 から 14 00 までの注文に対して 2 オフを適用する施策です",
+    "normalizedSection": "playbooks"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "最低購入金額割引",
+    "headings": [
+      "目的",
+      "Requirements",
+      "Effects"
+    ],
+    "summary": "注文金額が $30 を超えた場合に、$5 オフを適用する施策です。",
+    "section": "playbooks",
+    "url": "/ja-JP/docs/playbooks/promotion-recipes/minimum-spend-discount/",
+    "normalizedTitle": "最低購入金額割引",
+    "normalizedHeadings": "目的 requirements effects",
+    "normalizedSummary": "注文金額が 30 を超えた場合に 5 オフを適用する施策です",
+    "normalizedSection": "playbooks"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "登録顧客限定オファー",
+    "headings": [
+      "目的",
+      "Requirements",
+      "Effects"
+    ],
+    "summary": "ログイン済みのロイヤルティ会員だけに 15% オフを提供する施策です。",
+    "section": "playbooks",
+    "url": "/ja-JP/docs/playbooks/promotion-recipes/registered-customer-exclusive/",
+    "normalizedTitle": "登録顧客限定オファー",
+    "normalizedHeadings": "目的 requirements effects",
+    "normalizedSummary": "ログイン済みのロイヤルティ会員だけに 15 オフを提供する施策です",
+    "normalizedSection": "playbooks"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "複合条件プロモーション",
+    "headings": [
+      "目的",
+      "Requirements",
+      "Effects"
+    ],
+    "summary": "週末限定で、アプリ利用かつ登録済みユーザーに対し、$25 以上の注文で 10% オフを適用する施策です。",
+    "section": "playbooks",
+    "url": "/ja-JP/docs/playbooks/promotion-recipes/stacked-multi-condition-promotion/",
+    "normalizedTitle": "複合条件プロモーション",
+    "normalizedHeadings": "目的 requirements effects",
+    "normalizedSummary": "週末限定で アプリ利用かつ登録済みユーザーに対し 25 以上の注文で 10 オフを適用する施策です",
+    "normalizedSection": "playbooks"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "プロモーション設定ガイド",
+    "headings": [
+      "What You Can Build",
+      "Recipe Pages",
+      "全体の流れ",
+      "Step 1: Basic Information",
+      "主要フィールド",
+      "Automatic と Redemption Code",
+      "Additional Options",
+      "Step 2: Requirements",
+      "よく使う Requirement",
+      "KFC でよくある使い方",
+      "Step 3: Effects",
+      "主な Effect パターン",
+      "ここで特に確認したいこと",
+      "Step 4: Review",
+      "KFC でよくあるユースケース",
+      "Buy One Get One",
+      "最低購入金額割引",
+      "アプリ限定プロモーション",
+      "配送料無料",
+      "このガイドが向いている人",
+      "関連ガイド"
+    ],
+    "summary": "プロモーション設定ガイド",
+    "section": "playbooks",
+    "url": "/ja-JP/docs/playbooks/promotions-setup-guide/",
+    "normalizedTitle": "プロモーション設定ガイド",
+    "normalizedHeadings": "what you can build recipe pages 全体の流れ step 1 basic information 主要フィールド automatic と redemption code additional options step 2 requirements よく使う requirement kfc でよくある使い方 step 3 effects 主な effect パターン ここで特に確認したいこと step 4 review kfc でよくあるユースケース buy one get one 最低購入金額割引 アプリ限定プロモーション 配送料無料 このガイドが向いている人 関連ガイド",
+    "normalizedSummary": "プロモーション設定ガイド",
+    "normalizedSection": "playbooks"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "Braze 歓迎特典キャンバス",
+    "headings": [
+      "目的",
+      "事前準備",
+      "ステップ1: エントリー audience を定義する",
+      "ステップ2: トリガーと遅延を決める",
+      "ステップ3: メッセージ構成を決める",
+      "ステップ4: 特典ロジックを紐づける",
+      "ステップ5: 顧客ジャーニーを QA する",
+      "ステップ6: 公開後のモニタリング",
+      "KFC 向けメモ"
+    ],
+    "summary": "KFC が新規または新規識別済みの顧客に対して、自動の歓迎特典ジャーニーを配信したい時に使います。",
+    "section": "playbooks",
+    "url": "/ja-JP/docs/playbooks/runbook/",
+    "normalizedTitle": "braze 歓迎特典キャンバス",
+    "normalizedHeadings": "目的 事前準備 ステップ1 エントリー audience を定義する ステップ2 トリガーと遅延を決める ステップ3 メッセージ構成を決める ステップ4 特典ロジックを紐づける ステップ5 顧客ジャーニーを qa する ステップ6 公開後のモニタリング kfc 向けメモ",
+    "normalizedSummary": "kfc が新規または新規識別済みの顧客に対して 自動の歓迎特典ジャーニーを配信したい時に使います",
+    "normalizedSection": "playbooks"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "\"トラブル対応とエスカレーション\"",
+    "headings": [
+      "Common Issues & Fixes",
+      "Restaurant not appearing in the customer app",
+      "Customer cannot complete checkout",
+      "Menu item showing incorrect price",
+      "Franchisee locked out of Admin Portal",
+      "注文 not coming through on delivery",
+      "Escalation Path",
+      "Severity Levels",
+      "JIRA Service Desk"
+    ],
+    "summary": "トラブル対応とエスカレーション",
+    "section": "playbooks",
+    "url": "/ja-JP/docs/playbooks/troubleshooting/",
+    "normalizedTitle": "トラブル対応とエスカレーション",
+    "normalizedHeadings": "common issues fixes restaurant not appearing in the customer app customer cannot complete checkout menu item showing incorrect price franchisee locked out of admin portal 注文 not coming through on delivery escalation path severity levels jira service desk",
+    "normalizedSummary": "トラブル対応とエスカレーション",
+    "normalizedSection": "playbooks"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "リリース 2026.03.12",
+    "headings": [
+      "ハイライト",
+      "わかりやすく言うと"
+    ],
+    "summary": "リリース 2026.03.12",
+    "section": "release-notes",
+    "url": "/ja-JP/docs/release-notes/2026-03-12/",
+    "normalizedTitle": "リリース 2026 03 12",
+    "normalizedHeadings": "ハイライト わかりやすく言うと",
+    "normalizedSummary": "リリース 2026 03 12",
+    "normalizedSection": "release notes"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "リリース 2026.03.13",
+    "headings": [
+      "ハイライト",
+      "わかりやすく言うと"
+    ],
+    "summary": "リリース 2026.03.13",
+    "section": "release-notes",
+    "url": "/ja-JP/docs/release-notes/2026-03-13/",
+    "normalizedTitle": "リリース 2026 03 13",
+    "normalizedHeadings": "ハイライト わかりやすく言うと",
+    "normalizedSummary": "リリース 2026 03 13",
+    "normalizedSection": "release notes"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "リリース 2026.03.14",
+    "headings": [
+      "ハイライト",
+      "わかりやすく言うと"
+    ],
+    "summary": "リリース 2026.03.14",
+    "section": "release-notes",
+    "url": "/ja-JP/docs/release-notes/2026-03-14/",
+    "normalizedTitle": "リリース 2026 03 14",
+    "normalizedHeadings": "ハイライト わかりやすく言うと",
+    "normalizedSummary": "リリース 2026 03 14",
+    "normalizedSection": "release notes"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "リリース 2026.03.15",
+    "headings": [
+      "ハイライト",
+      "変更内容",
+      "ナビゲーションと導線",
+      "What's New 体験",
+      "ローカライズ",
+      "レイアウト調整",
+      "わかりやすく言うと"
+    ],
+    "summary": "リリース 2026.03.15",
+    "section": "release-notes",
+    "url": "/ja-JP/docs/release-notes/2026-03-15/",
+    "normalizedTitle": "リリース 2026 03 15",
+    "normalizedHeadings": "ハイライト 変更内容 ナビゲーションと導線 what s new 体験 ローカライズ レイアウト調整 わかりやすく言うと",
+    "normalizedSummary": "リリース 2026 03 15",
+    "normalizedSection": "release notes"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "リリース 2026.03.16",
+    "headings": [
+      "ハイライト",
+      "変更内容",
+      "ホームページ体験",
+      "Atlas Peek プレビュー",
+      "ナビゲーションと情報設計",
+      "レスポンシブ対応",
+      "わかりやすく言うと"
+    ],
+    "summary": "リリース 2026.03.16",
+    "section": "release-notes",
+    "url": "/ja-JP/docs/release-notes/2026-03-16/",
+    "normalizedTitle": "リリース 2026 03 16",
+    "normalizedHeadings": "ハイライト 変更内容 ホームページ体験 atlas peek プレビュー ナビゲーションと情報設計 レスポンシブ対応 わかりやすく言うと",
+    "normalizedSummary": "リリース 2026 03 16",
+    "normalizedSection": "release notes"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "リリース 2026.03.17",
+    "headings": [
+      "ハイライト",
+      "変更内容",
+      "Theme Infrastructure",
+      "Atlas Peek Prototype",
+      "Global Visual System",
+      "Atlas Wiki Chrome",
+      "Homepage and What's New",
+      "Design System Docs",
+      "Contribution Studio",
+      "Documentation Readability",
+      "わかりやすく言うと"
+    ],
+    "summary": "リリース 2026.03.17",
+    "section": "release-notes",
+    "url": "/ja-JP/docs/release-notes/2026-03-17/",
+    "normalizedTitle": "リリース 2026 03 17",
+    "normalizedHeadings": "ハイライト 変更内容 theme infrastructure atlas peek prototype global visual system atlas wiki chrome homepage and what s new design system docs contribution studio documentation readability わかりやすく言うと",
+    "normalizedSummary": "リリース 2026 03 17",
+    "normalizedSection": "release notes"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "変更履歴",
+    "headings": [
+      "最近のリリース"
+    ],
+    "summary": "変更履歴",
+    "section": "release-notes",
+    "url": "/ja-JP/docs/release-notes/",
+    "normalizedTitle": "変更履歴",
+    "normalizedHeadings": "最近のリリース",
+    "normalizedSummary": "変更履歴",
+    "normalizedSection": "release notes"
+  }
+]

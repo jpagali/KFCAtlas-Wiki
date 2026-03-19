@@ -46,7 +46,7 @@ The Atlas Platform uses a **feature flag architecture** — a single shared code
 
 ## Requesting a Configuration Change
 
-Configuration changes for existing features are self-serve through the Admin Portal. If a feature is **greyed out**, it either:
+Configuration changes for existing features are self-serve through the Byte Portal. If a feature is **greyed out**, it either:
 1. Has not been built for your market yet — raise a request via the JIRA Service Desk
 2. Requires regional admin access — contact your BMU
 

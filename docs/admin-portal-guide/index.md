@@ -7,6 +7,12 @@ sidebar_label: Admin Portal Guide
 
 This guide covers all tasks available in the Byte Commerce Admin Portal. Select a section below to get started.
 
+:::note Byte POS Caveat
+Admin Portal tasks that reference **POS**, **in-store devices**, or store-to-POS communication assume the market is using **Byte POS**.
+
+If a market is **not** using Byte POS, **Byte Connect** must be onboarded as part of the Byte Commerce bundle so the integration path becomes **Byte Commerce -> Byte Connect -> POS**.
+:::
+
 ## [Stores](/docs/admin-portal-guide/stores/)
 Manage restaurant locations, menus, and store settings.
 

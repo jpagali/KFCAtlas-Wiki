@@ -3,8 +3,8 @@
   padding: 1rem 0 3rem;
   background:
     radial-gradient(circle at top left, rgba(228, 0, 43, 0.22), transparent 24%),
-    radial-gradient(circle at top right, rgba(255, 255, 255, 0.05), transparent 24%),
-    linear-gradient(180deg, #050505 0%, #0c0807 55%, #120909 100%);
+    radial-gradient(circle at top right, rgba(210, 165, 92, 0.1), transparent 24%),
+    linear-gradient(180deg, var(--kc-canvas) 0%, var(--kc-surface-strong) 55%, var(--kc-canvas) 100%);
 }
 
 .shell {
@@ -12,15 +12,15 @@
   margin: 0 auto;
   border-radius: 32px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(10, 8, 7, 0.82);
+  border: 1px solid var(--kc-border);
+  background: color-mix(in srgb, var(--kc-surface) 86%, transparent);
   backdrop-filter: blur(18px);
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.34);
+  box-shadow: 0 28px 80px rgba(20, 8, 5, 0.16);
 }
 
 .content {
   padding: 22px;
-  color: #fff8f2;
+  color: var(--kc-ink);
   font-family: 'DM Sans', system-ui, sans-serif;
 }
 
@@ -32,17 +32,17 @@
 }
 
 .card {
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--kc-border);
   border-radius: 20px;
-  background: rgba(18, 14, 12, 0.92);
-  box-shadow: 0 14px 40px rgba(45, 22, 10, 0.06);
+  background: var(--kc-surface);
+  box-shadow: 0 14px 40px rgba(45, 22, 10, 0.08);
 }
 
 .heroCard {
   padding: 28px;
   background:
     radial-gradient(circle at 85% 15%, rgba(228, 0, 43, 0.18), transparent 22%),
-    linear-gradient(135deg, rgba(10, 7, 5, 0.96), rgba(51, 14, 18, 0.92));
+    linear-gradient(135deg, var(--kc-surface), var(--kc-surface-alt));
 }
 
 .eyebrow {
@@ -52,7 +52,7 @@
   text-transform: uppercase;
   letter-spacing: 0.18em;
   font-weight: 800;
-  color: #e4002b;
+  color: var(--ifm-color-primary);
 }
 
 .heroTitle {
@@ -65,13 +65,13 @@
 }
 
 .heroAccent {
-  color: #e4002b;
+  color: var(--ifm-color-primary);
 }
 
 .heroBody {
   margin: 0;
   max-width: 58ch;
-  color: rgba(255, 244, 238, 0.72);
+  color: var(--kc-ink-muted);
   line-height: 1.7;
   font-size: 1rem;
 }
@@ -83,8 +83,8 @@
 
 .metricCard {
   padding: 18px;
-  background: linear-gradient(180deg, #1a1410, #281a14);
-  color: white;
+  background: linear-gradient(180deg, var(--kc-surface), var(--kc-surface-alt));
+  color: var(--kc-ink);
   border-radius: 20px;
   position: relative;
   overflow: hidden;
@@ -108,7 +108,7 @@
 
 .metricLabel {
   display: block;
-  color: rgba(255, 255, 255, 0.76);
+  color: var(--kc-ink-muted);
   font-size: 0.88rem;
   line-height: 1.5;
 }
@@ -137,9 +137,9 @@
   letter-spacing: 0.1em;
   padding: 8px 11px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: rgba(255, 244, 238, 0.68);
+  background: var(--kc-pill-bg);
+  border: 1px solid var(--kc-border);
+  color: var(--kc-ink-muted);
 }
 
 .roadmap {
@@ -152,8 +152,8 @@
 .roadmapColumn {
   border-radius: 18px;
   padding: 16px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, var(--kc-surface-alt), var(--kc-surface));
+  border: 1px solid var(--kc-border);
 }
 
 .roadmapColumn h3 {
@@ -167,7 +167,7 @@
 .listBox ul {
   margin: 0;
   padding-left: 18px;
-  color: rgba(255, 244, 238, 0.68);
+  color: var(--kc-ink-muted);
   line-height: 1.8;
 }
 
@@ -182,9 +182,9 @@
   padding: 24px;
   border-radius: 22px;
   background:
-    linear-gradient(135deg, rgba(228, 0, 43, 0.16), rgba(228, 0, 43, 0.04)),
-    #140f0f;
-  border: 1px solid rgba(228, 0, 43, 0.22);
+    linear-gradient(135deg, rgba(228, 0, 43, 0.1), rgba(228, 0, 43, 0.03)),
+    var(--kc-surface-alt);
+  border: 1px solid var(--kc-border-strong);
 }
 
 .kicker {
@@ -195,7 +195,7 @@
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: #ff9bb1;
+  color: var(--ifm-color-primary);
   margin-bottom: 12px;
 }
 
@@ -212,16 +212,16 @@
   height: 64px;
   border-radius: 18px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid var(--kc-border);
   background: white;
-  box-shadow: 0 16px 28px rgba(228, 0, 43, 0.16);
+  box-shadow: 0 16px 28px rgba(228, 0, 43, 0.1);
   flex: 0 0 auto;
 }
 
 .brandNote {
   font-size: 0.84rem;
   font-weight: 700;
-  color: rgba(255, 244, 238, 0.84);
+  color: var(--kc-ink);
 }
 
 .featuredMain h3 {
@@ -233,7 +233,7 @@
 .featureCard p,
 .comingCard p {
   margin: 0 0 12px;
-  color: rgba(255, 244, 238, 0.68);
+  color: var(--kc-ink-muted);
   line-height: 1.65;
   font-size: 0.9rem;
 }
@@ -249,8 +249,8 @@
 .detailItem {
   padding: 12px 14px;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--kc-pill-bg);
+  border: 1px solid var(--kc-border);
 }
 
 .impactItem strong,
@@ -262,7 +262,7 @@
 
 .impactItem span,
 .detailItem span {
-  color: rgba(255, 244, 238, 0.68);
+  color: var(--kc-ink-muted);
   font-size: 0.85rem;
   line-height: 1.5;
 }
@@ -272,7 +272,7 @@
   margin-top: 18px;
   padding: 12px 16px;
   border-radius: 999px;
-  background: linear-gradient(135deg, #e4002b, #ff4f63);
+  background: linear-gradient(135deg, var(--ifm-color-primary), var(--ifm-color-primary-light));
   color: white;
   text-decoration: none;
   font-weight: 800;
@@ -284,13 +284,28 @@
   text-decoration: none;
 }
 
+.buttonDisabled {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: var(--kc-pill-bg);
+  color: var(--kc-ink-soft);
+  font-weight: 800;
+  font-size: 0.9rem;
+  cursor: not-allowed;
+  border: 1px solid var(--kc-border);
+  user-select: none;
+  pointer-events: none;
+}
+
 .visualCard {
   position: relative;
   min-height: 150px;
   border-radius: 18px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(135deg, #090707, #321014);
+  border: 1px solid var(--kc-border);
+  background: linear-gradient(135deg, var(--kc-surface-strong), #321014);
 }
 
 .visualCard svg {
@@ -310,7 +325,7 @@
 .featureCard,
 .comingCard {
   padding: 18px;
-  background: #120f0e;
+  background: var(--kc-surface);
 }
 
 .status {
@@ -327,18 +342,18 @@
 }
 
 .statusNew {
-  background: rgba(27, 122, 79, 0.12);
-  color: #46d38c;
+  background: rgba(228, 0, 43, 0.1);
+  color: var(--ifm-color-primary-dark);
 }
 
 .statusRolling {
-  background: rgba(33, 77, 157, 0.12);
-  color: #7fb0ff;
+  background: rgba(210, 165, 92, 0.16);
+  color: #8b611d;
 }
 
 .statusPlanned {
-  background: rgba(255, 207, 102, 0.22);
-  color: #ffcf66;
+  background: var(--kc-pill-bg);
+  color: var(--kc-ink-muted);
 }
 
 .meta {
@@ -353,16 +368,16 @@
   font-weight: 700;
   padding: 7px 10px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  color: rgba(255, 244, 238, 0.68);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--kc-pill-bg);
+  color: var(--kc-ink-muted);
+  border: 1px solid var(--kc-border);
 }
 
 .listBox {
   padding: 16px;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--kc-surface-alt);
+  border: 1px solid var(--kc-border);
 }
 
 .listBox h3,
@@ -376,9 +391,9 @@
   margin-top: 8px;
   padding: 14px 16px;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: rgba(255, 244, 238, 0.74);
+  background: var(--kc-surface-alt);
+  border: 1px solid var(--kc-border);
+  color: var(--kc-ink-muted);
   font-size: 0.86rem;
   line-height: 1.55;
 }

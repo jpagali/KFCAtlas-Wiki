@@ -3,6 +3,8 @@
 /** @type {import('@docusaurus/types').Config} */
 const isGitHubPagesBuild =
   process.env.GITHUB_PAGES === 'true' || process.env.GITHUB_ACTIONS === 'true';
+const githubRepository = process.env.GITHUB_REPOSITORY ?? 'jpagali/KFCAtlas-Wiki';
+const [, githubProjectName = 'KFCAtlas-Wiki'] = githubRepository.split('/');
 const buildUpdatedDate = new Intl.DateTimeFormat('en-US', {
   month: '2-digit',
   day: '2-digit',
@@ -10,26 +12,26 @@ const buildUpdatedDate = new Intl.DateTimeFormat('en-US', {
 }).format(new Date());
 
 const config = {
-  title: 'KFC Atlas Knowledge Center',
+  title: 'KFC Atlas Wiki',
   tagline: 'Everything you need to operate the KFC Atlas Platform.',
   customFields: {
     ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY,
   },
   favicon: 'img/atlas-favicon.png',
   organizationName: 'jpagali',
-  projectName: 'KFC-Atlas-Knowledge-Center',
+  projectName: githubProjectName,
 
   url: isGitHubPagesBuild
     ? 'https://jpagali.github.io'
     : 'https://kfc-atlas-portal.vercel.app',
-  baseUrl: isGitHubPagesBuild ? '/KFC-Atlas-Knowledge-Center/' : '/',
+  baseUrl: isGitHubPagesBuild ? `/${githubProjectName}/` : '/',
 
   onBrokenLinks: 'warn',
   markdown: {
-    hooks: {
-      onBrokenMarkdownLinks: 'warn',
-    },
+    mermaid: true,
   },
+
+  themes: ['@docusaurus/theme-mermaid'],
 
   i18n: {
     defaultLocale: 'en-US',
@@ -70,14 +72,14 @@ const config = {
 
       announcementBar: {
         id: 'welcome',
-        content: '👋 Welcome to the KFC Atlas Knowledge Center — your guide to operating the platform.',
+        content: '👋 Welcome to the KFC Atlas Wiki — your guide to operating the platform.',
         backgroundColor: '#13100C',
         textColor: '#ffffff',
         isCloseable: true,
       },
 
       navbar: {
-        title: 'Atlas Knowledge Center',
+        title: 'Atlas Wiki',
         style: 'dark',
         logo: {
           alt: 'KFC Atlas Logo',
@@ -86,38 +88,58 @@ const config = {
         items: [
           {
             type: 'docSidebar',
-            sidebarId: 'frontendSidebar',
+            sidebarId: 'byteCapabilitiesSidebar',
             position: 'left',
-            label: '🖥️ Front-end Guide',
+            label: 'Byte Capabilities',
+            className: 'navbar-item--byte-capabilities',
           },
           {
             type: 'doc',
             docId: 'admin-portal-guide/index',
             position: 'left',
-            label: 'Admin Portal (KFC)',
+            label: 'Byte Portal Guide',
+            className: 'navbar-item--admin',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'frontendSidebar',
+            position: 'left',
+            label: 'Front-End Guide',
+            className: 'navbar-item--frontend',
           },
           {
             type: 'docSidebar',
             sidebarId: 'playbooksSidebar',
             position: 'left',
-            label: '📋 Playbooks',
+            label: 'Playbooks',
+            className: 'navbar-item--playbooks',
           },
           {
             to: '/whats-new',
             position: 'left',
             label: "What's New",
+            className: 'navbar-item--whats-new',
+          },
+          {
+            to: '/sneak-peek',
+            position: 'left',
+            label: 'Atlas Peek',
+            className: 'navbar__cta navbar__cta--sneak-peek navbar-item--rna',
           },
           {
             type: 'custom-search',
             position: 'right',
-          },
-          {
-            type: 'custom-contribute',
-            position: 'right',
+            className: 'navbar-item--search',
           },
           {
             type: 'localeDropdown',
             position: 'right',
+            className: 'navbar-item--locale',
+          },
+          {
+            type: 'custom-theme-toggle',
+            position: 'right',
+            className: 'navbar-item--theme',
           },
         ],
       },
@@ -162,9 +184,20 @@ const config = {
             ],
           },
           {
+            title: '🧩 Byte Capabilities',
+            items: [
+              { label: 'Start Here', to: '/docs/byte-capabilities/' },
+              { label: 'Mental Model', to: '/docs/byte-capabilities/mental-model' },
+              { label: 'Domains', to: '/docs/byte-capabilities/domains/identity' },
+              { label: 'Reality Check', to: '/docs/byte-capabilities/enablement/reality-check' },
+              { label: 'Market Launch Checklist', to: '/docs/byte-capabilities/enablement/market-launch-checklist' },
+              { label: 'Glossary', to: '/docs/byte-capabilities/reference/glossary' },
+            ],
+          },
+          {
             title: 'About',
             items: [
-              { label: 'About the Knowledge Center', to: '/docs/about-knowledge-center' },
+              { label: 'About Atlas Wiki', to: '/docs/about-knowledge-center' },
               { label: 'Changelog', to: '/docs/release-notes' },
             ],
           },
@@ -178,7 +211,7 @@ const config = {
       },
 
       colorMode: {
-        defaultMode: 'light',
+        defaultMode: 'dark',
         disableSwitch: true,
         respectPrefersColorScheme: false,
       },

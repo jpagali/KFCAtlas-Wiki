@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Knowledge Center Video Hero Brainstorm</title>
+    <style>
+      :root {
+        --bg: #120907;
+        --bg-soft: #1a100d;
+        --card: rgba(22, 14, 11, 0.86);
+        --card-strong: rgba(14, 8, 7, 0.92);
+        --line: rgba(255, 255, 255, 0.1);
+        --text: #fff8f1;
+        --muted: rgba(255, 244, 235, 0.76);
+        --muted-soft: rgba(255, 244, 235, 0.54);
+        --red: #e4002b;
+        --gold: #ffbe55;
+        --shadow: 0 30px 80px rgba(0, 0, 0, 0.38);
+        --hero-min-height: 620px;
+        --content-max: 1220px;
+        --video-opacity: 0.7;
+        --content-max-width: 720px;
+        --panel-display: none;
+        --text-align: center;
+        --actions-justify: center;
+        --content-margin: 0 auto;
+        --badge-bg: rgba(228, 0, 43, 0.18);
+        --overlay: linear-gradient(180deg, rgba(8, 5, 4, 0.2), rgba(8, 5, 4, 0.65));
+        --overlay-accent:
+          radial-gradient(circle at 18% 18%, rgba(255, 190, 85, 0.26), transparent 34%),
+          radial-gradient(circle at 82% 20%, rgba(228, 0, 43, 0.22), transparent 28%),
+          radial-gradient(circle at 52% 78%, rgba(255, 122, 0, 0.16), transparent 24%);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Avenir Next", "Segoe UI", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top, rgba(228, 0, 43, 0.18), transparent 24%),
+          linear-gradient(180deg, #0b0706 0%, #1a0f0c 50%, #100907 100%);
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      .page {
+        min-height: 100vh;
+      }
+
+      .hero-shell {
+        position: relative;
+        overflow: hidden;
+        min-height: var(--hero-min-height);
+        border-bottom: 3px solid var(--red);
+        background: #120907;
+      }
+
+      .hero-shell::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--overlay);
+        z-index: 1;
+      }
+
+      .hero-shell::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--overlay-accent);
+        mix-blend-mode: screen;
+        opacity: 0.9;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .hero-video-wrap {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+      }
+
+      .hero-video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: var(--video-opacity);
+        transform: scale(1.04);
+        filter: saturate(1.08) contrast(1.04) brightness(0.82);
+      }
+
+      .hero-fallback {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(120deg, rgba(255, 173, 46, 0.18), transparent 38%),
+          linear-gradient(200deg, rgba(228, 0, 43, 0.3), transparent 46%),
+          radial-gradient(circle at 25% 35%, rgba(255, 190, 85, 0.26), transparent 25%),
+          radial-gradient(circle at 68% 42%, rgba(255, 255, 255, 0.12), transparent 14%),
+          radial-gradient(circle at 78% 28%, rgba(255, 130, 20, 0.24), transparent 16%),
+          linear-gradient(90deg, #1a0906 0%, #24110c 46%, #120907 100%);
+        animation: shimmer 8s linear infinite alternate;
+        opacity: 0;
+        transition: opacity 180ms ease;
+      }
+
+      .hero-fallback.is-visible {
+        opacity: 1;
+      }
+
+      .hero-grid {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 380px);
+        gap: 24px;
+        align-items: center;
+        max-width: var(--content-max);
+        min-height: var(--hero-min-height);
+        margin: 0 auto;
+        padding: 84px 24px 72px;
+      }
+
+      .hero-copy {
+        max-width: var(--content-max-width);
+        margin: var(--content-margin);
+        text-align: var(--text-align);
+      }
+
+      .hero-panel {
+        display: var(--panel-display);
+        padding: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 24px;
+        background: linear-gradient(180deg, rgba(31, 18, 15, 0.84), rgba(12, 7, 6, 0.92));
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(18px);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 7px 16px;
+        margin-bottom: 26px;
+        border: 1px solid rgba(228, 0, 43, 0.28);
+        border-radius: 999px;
+        background: var(--badge-bg);
+        color: #ffd8df;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--red);
+        box-shadow: 0 0 18px rgba(228, 0, 43, 0.68);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(3rem, 6vw, 5.6rem);
+        line-height: 0.98;
+        letter-spacing: -0.06em;
+      }
+
+      .accent {
+        color: #ffccb3;
+      }
+
+      .accent strong {
+        color: var(--red);
+      }
+
+      .summary {
+        max-width: 680px;
+        margin: 22px auto 0;
+        color: var(--muted);
+        font-size: 1.08rem;
+        line-height: 1.72;
+      }
+
+      .hero-copy .summary {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .search {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        max-width: 760px;
+        margin: 28px auto 0;
+        padding: 12px 14px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 20px;
+        background: rgba(19, 11, 8, 0.82);
+        box-shadow: 0 18px 48px rgba(0, 0, 0, 0.24);
+        backdrop-filter: blur(14px);
+      }
+
+      .search-icon {
+        flex: 0 0 auto;
+        width: 18px;
+        height: 18px;
+        border: 2px solid rgba(255, 255, 255, 0.8);
+        border-radius: 50%;
+        opacity: 0.7;
+        position: relative;
+      }
+
+      .search-icon::after {
+        content: "";
+        position: absolute;
+        width: 8px;
+        height: 2px;
+        right: -7px;
+        bottom: -2px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.8);
+        transform: rotate(45deg);
+      }
+
+      .search input {
+        width: 100%;
+        border: 0;
+        outline: 0;
+        color: white;
+        background: transparent;
+      }
+
+      .search button {
+        flex: 0 0 auto;
+        padding: 11px 16px;
+        border: 0;
+        border-radius: 14px;
+        color: white;
+        background: rgba(228, 0, 43, 0.88);
+        cursor: pointer;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        justify-content: var(--actions-justify);
+        margin-top: 28px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 50px;
+        padding: 0 24px;
+        border-radius: 14px;
+        text-decoration: none;
+        font-weight: 700;
+        transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-1px);
+      }
+
+      .button-primary {
+        color: white;
+        background: var(--red);
+        box-shadow: 0 16px 34px rgba(228, 0, 43, 0.25);
+      }
+
+      .button-secondary {
+        color: white;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+
+      .hero-notes {
+        display: grid;
+        gap: 12px;
+      }
+
+      .note-card {
+        padding: 16px 18px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .note-label {
+        margin: 0 0 8px;
+        color: var(--gold);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .note-card p,
+      .note-card li {
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      .note-card ul {
+        margin: 0;
+        padding-left: 18px;
+      }
+
+      .controls {
+        position: sticky;
+        top: 0;
+        z-index: 5;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(10, 6, 5, 0.88);
+        backdrop-filter: blur(14px);
+      }
+
+      .segmented {
+        display: inline-flex;
+        gap: 8px;
+        padding: 7px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .segmented button,
+      .toggle {
+        padding: 10px 14px;
+        border: 0;
+        border-radius: 999px;
+        color: var(--muted);
+        background: transparent;
+        cursor: pointer;
+      }
+
+      .segmented button.is-active,
+      .toggle.is-active {
+        color: white;
+        background: rgba(228, 0, 43, 0.84);
+      }
+
+      .field {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: min(100%, 420px);
+        padding: 8px 10px 8px 14px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .field label {
+        flex: 0 0 auto;
+        color: var(--muted-soft);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .field input {
+        width: 100%;
+        border: 0;
+        outline: 0;
+        color: white;
+        background: transparent;
+      }
+
+      .field button {
+        flex: 0 0 auto;
+        padding: 8px 14px;
+        border: 0;
+        border-radius: 999px;
+        color: white;
+        background: rgba(255, 255, 255, 0.08);
+        cursor: pointer;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1px;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .stat {
+        padding: 24px;
+        text-align: center;
+        background: rgba(228, 0, 43, 0.94);
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.8rem;
+        line-height: 1;
+      }
+
+      .stat span {
+        display: block;
+        margin-top: 8px;
+        color: rgba(255, 255, 255, 0.76);
+        font-size: 0.82rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .discussion {
+        max-width: 1220px;
+        margin: 0 auto;
+        padding: 44px 24px 64px;
+      }
+
+      .discussion-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .discussion-card {
+        padding: 22px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 24px;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+        box-shadow: var(--shadow);
+      }
+
+      .discussion-card h2 {
+        margin: 0 0 12px;
+        font-size: 1.2rem;
+      }
+
+      .discussion-card p,
+      .discussion-card li {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .discussion-card ul {
+        margin: 14px 0 0;
+        padding-left: 18px;
+      }
+
+      .tag {
+        display: inline-block;
+        padding: 6px 10px;
+        margin-bottom: 12px;
+        border-radius: 999px;
+        color: #ffd9e0;
+        background: rgba(228, 0, 43, 0.14);
+        font-size: 0.74rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      body[data-treatment="cinematic"] {
+        --panel-display: none;
+        --content-max-width: 760px;
+        --text-align: center;
+        --actions-justify: center;
+        --content-margin: 0 auto;
+        --video-opacity: 0.78;
+        --overlay: linear-gradient(180deg, rgba(10, 6, 5, 0.1), rgba(10, 6, 5, 0.64));
+      }
+
+      body[data-treatment="split"] {
+        --panel-display: block;
+        --content-max-width: 680px;
+        --text-align: left;
+        --actions-justify: flex-start;
+        --content-margin: 0;
+        --video-opacity: 0.56;
+        --overlay:
+          linear-gradient(90deg, rgba(8, 5, 4, 0.9) 0%, rgba(8, 5, 4, 0.74) 40%, rgba(8, 5, 4, 0.26) 100%);
+      }
+
+      body[data-treatment="window"] {
+        --panel-display: none;
+        --content-max-width: 720px;
+        --text-align: center;
+        --actions-justify: center;
+        --content-margin: 0 auto;
+        --video-opacity: 0.22;
+        --overlay: linear-gradient(180deg, rgba(10, 6, 5, 0.88), rgba(10, 6, 5, 0.9));
+      }
+
+      body[data-treatment="window"] .hero-video-wrap {
+        inset: auto 50% 48px auto;
+        width: min(32vw, 380px);
+        height: min(46vw, 520px);
+        transform: translateX(0);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 30px;
+        box-shadow: var(--shadow);
+      }
+
+      body[data-treatment="window"] .hero-video,
+      body[data-treatment="window"] .hero-fallback {
+        border-radius: 30px;
+      }
+
+      body[data-treatment="window"] .hero-shell::after {
+        opacity: 0.56;
+      }
+
+      @media (max-width: 980px) {
+        .hero-grid,
+        .discussion-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-copy {
+          max-width: 100%;
+          text-align: center;
+          margin: 0 auto;
+        }
+
+        .hero-panel {
+          display: grid;
+          gap: 12px;
+        }
+
+        .actions {
+          justify-content: center;
+        }
+
+        body[data-treatment="window"] .hero-video-wrap {
+          position: relative;
+          inset: auto;
+          width: min(100%, 500px);
+          height: 280px;
+          margin: 0 auto 24px;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .controls {
+          justify-content: stretch;
+        }
+
+        .segmented,
+        .field {
+          width: 100%;
+        }
+
+        .field {
+          min-width: 0;
+        }
+
+        .stats {
+          grid-template-columns: 1fr;
+        }
+
+        .search {
+          flex-wrap: wrap;
+          border-radius: 20px;
+        }
+
+        .search button {
+          width: 100%;
+        }
+
+        h1 {
+          font-size: clamp(2.6rem, 12vw, 4rem);
+        }
+      }
+
+      @keyframes shimmer {
+        0% {
+          transform: scale(1) translateX(0);
+          filter: saturate(1);
+        }
+
+        100% {
+          transform: scale(1.05) translateX(-1.5%);
+          filter: saturate(1.16);
+        }
+      }
+    </style>
+  </head>
+  <body data-treatment="split">
+    <div class="page">
+      <div class="controls">
+        <div class="segmented" aria-label="Video treatment selector">
+          <button data-treatment-button="cinematic">Cinematic Full Bleed</button>
+          <button class="is-active" data-treatment-button="split">Split Focus</button>
+          <button data-treatment-button="window">Subtle Motion Window</button>
+        </div>
+
+        <button class="toggle is-active" id="toggleMotion">Motion On</button>
+
+        <div class="field">
+          <label for="videoSrc">Video URL</label>
+          <input
+            id="videoSrc"
+            type="text"
+            value="../../../Colonel%20Sanders%20Cooking%20Chicken.mp4"
+          />
+          <button id="applyVideo">Swap</button>
+        </div>
+      </div>
+
+      <section class="hero-shell">
+        <div class="hero-video-wrap">
+          <video
+            id="heroVideo"
+            class="hero-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+            poster=""
+          >
+            <source
+              id="heroVideoSource"
+              src="../../../Colonel%20Sanders%20Cooking%20Chicken.mp4"
+              type="video/mp4"
+            />
+          </video>
+          <div class="hero-fallback" id="heroFallback"></div>
+        </div>
+
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">Atlas Platform · Knowledge Center</div>
+            <h1>
+              The secret recipe for
+              <span class="accent"><br /><strong>running the platform.</strong></span>
+            </h1>
+            <p class="summary">
+              This preview explores putting cooking footage behind the hero so the homepage feels more unmistakably KFC.
+              The motion is intentionally dramatic here: a cooking/commercial clip that makes the hero feel more unmistakably KFC before the visitor reads the first line.
+            </p>
+
+            <div class="search">
+              <div class="search-icon" aria-hidden="true"></div>
+              <input value="Search guides, articles, and headings" aria-label="Search preview" />
+              <button type="button">Search</button>
+            </div>
+
+            <div class="actions">
+              <a class="button button-primary" href="#">Start with the Front-end Guide</a>
+              <a class="button button-secondary" href="#">Start with the Admin Portal Guide</a>
+            </div>
+          </div>
+
+          <aside class="hero-panel">
+            <div class="hero-notes">
+              <div class="note-card">
+                <p class="note-label">Why this treatment</p>
+                <p>
+                  Keeps text readable by darkening the left side while letting the right side show the motion more clearly.
+                </p>
+              </div>
+
+              <div class="note-card">
+                <p class="note-label">Best for</p>
+                <ul>
+                  <li>Close-up footage of breading, frying, or steam</li>
+                  <li>Cases where legal wants the brand treatment to feel deliberate, not decorative</li>
+                  <li>Homepages where search still needs to stay dominant</li>
+                </ul>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="stats" aria-label="Knowledge Center stats preview">
+        <div class="stat">
+          <strong>2000+</strong>
+          <span>Stores onboard</span>
+        </div>
+        <div class="stat">
+          <strong>3</strong>
+          <span>Core modules</span>
+        </div>
+        <div class="stat">
+          <strong>1</strong>
+          <span>Atlas platform</span>
+        </div>
+      </section>
+
+      <section class="discussion">
+        <div class="discussion-grid">
+          <article class="discussion-card">
+            <div class="tag">Direction</div>
+            <h2>Cinematic full bleed</h2>
+            <p>
+              The strongest brand move. This is the version that makes the homepage feel less like internal docs and more like a product surface with KFC energy.
+            </p>
+            <ul>
+              <li>Best if we want immediate visual impact.</li>
+              <li>Needs the most discipline on contrast and compression.</li>
+              <li>Works best with slower, close-cropped footage.</li>
+            </ul>
+          </article>
+
+          <article class="discussion-card">
+            <div class="tag">Direction</div>
+            <h2>Split focus</h2>
+            <p>
+              The safest middle ground. The content feels stable on the left while the right side becomes a controlled stage for motion.
+            </p>
+            <ul>
+              <li>Best balance of readability and storytelling.</li>
+              <li>Makes the search box feel less visually vulnerable.</li>
+              <li>Easiest version to defend in review.</li>
+            </ul>
+          </article>
+
+          <article class="discussion-card">
+            <div class="tag">Direction</div>
+            <h2>Subtle motion window</h2>
+            <p>
+              Keeps the current hero mostly intact, but adds a premium moving accent. Useful if we want motion without redesigning the whole page.
+            </p>
+            <ul>
+              <li>Lowest implementation and performance risk.</li>
+              <li>Feels more editorial than immersive.</li>
+              <li>Good fallback if autoplay policy or file weight becomes a concern.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      const body = document.body;
+      const treatmentButtons = document.querySelectorAll("[data-treatment-button]");
+      const motionToggle = document.getElementById("toggleMotion");
+      const video = document.getElementById("heroVideo");
+      const source = document.getElementById("heroVideoSource");
+      const fallback = document.getElementById("heroFallback");
+      const videoInput = document.getElementById("videoSrc");
+      const applyVideo = document.getElementById("applyVideo");
+
+      function activateTreatment(nextTreatment) {
+        body.dataset.treatment = nextTreatment;
+        treatmentButtons.forEach((button) => {
+          button.classList.toggle("is-active", button.dataset.treatmentButton === nextTreatment);
+        });
+      }
+
+      function setFallbackVisible(isVisible) {
+        fallback.classList.toggle("is-visible", isVisible);
+      }
+
+      function refreshVideo(url) {
+        source.src = url.trim();
+        video.load();
+        const promise = video.play();
+        if (promise && typeof promise.catch === "function") {
+          promise.catch(() => {
+            setFallbackVisible(true);
+          });
+        }
+      }
+
+      treatmentButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          activateTreatment(button.dataset.treatmentButton);
+        });
+      });
+
+      motionToggle.addEventListener("click", async () => {
+        const isPaused = video.paused;
+
+        if (isPaused) {
+          try {
+            await video.play();
+            motionToggle.textContent = "Motion On";
+            motionToggle.classList.add("is-active");
+            setFallbackVisible(false);
+          } catch (error) {
+            setFallbackVisible(true);
+          }
+        } else {
+          video.pause();
+          motionToggle.textContent = "Motion Off";
+          motionToggle.classList.remove("is-active");
+        }
+      });
+
+      applyVideo.addEventListener("click", () => {
+        refreshVideo(videoInput.value);
+      });
+
+      video.addEventListener("loadeddata", () => {
+        setFallbackVisible(false);
+      });
+
+      video.addEventListener("error", () => {
+        setFallbackVisible(true);
+      });
+
+      video.addEventListener("pause", () => {
+        motionToggle.textContent = "Motion Off";
+        motionToggle.classList.remove("is-active");
+      });
+
+      video.addEventListener("play", () => {
+        motionToggle.textContent = "Motion On";
+        motionToggle.classList.add("is-active");
+      });
+
+      window.addEventListener("load", () => {
+        const playAttempt = video.play();
+        if (playAttempt && typeof playAttempt.catch === "function") {
+          playAttempt.catch(() => {
+            setFallbackVisible(true);
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -36,7 +36,7 @@ Before creating a new agent, search by First Name, Last Name, Email Address, or 
 
 ![Step 4](./img/step-4.png)
 
-**Step 5:** Review the available roles and check all that apply to this agent. Roles control which sections of the portal the agent can access and what actions they can perform.
+**Step 5:** Review the available roles and check all that apply to this agent. Roles control which sections of Byte Portal the agent can access and what actions they can perform.
 
 | Role | What it does |
 |------|-------------|
@@ -44,7 +44,7 @@ Before creating a new agent, search by First Name, Last Name, Email Address, or 
 | **Store Manager** | Can manage store settings and configurations |
 | **Promotions Manager** | Can create and manage promotions |
 | **Customer Support Agent** | Can search orders and customers, issue refunds |
-| **System Administrator** | Full access to all portal sections |
+| **System Administrator** | Full access to all Byte Portal sections |
 
 :::note
 Available roles may vary depending on your organization. Check the boxes for every role this agent needs.
