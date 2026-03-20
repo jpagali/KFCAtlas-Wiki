@@ -1141,23 +1141,6 @@ html[lang='ja-JP'] .footer__title {
 
 /* Mobile/tablet responsive */
 @media (max-width: 996px) {
-  .theme-doc-markdown table {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .theme-doc-markdown table th,
-  .theme-doc-markdown table td {
-    min-width: 8rem;
-  }
-
-  .theme-doc-markdown h2[id='feature-table'] + table {
-    min-width: 960px;
-  }
-
   .navbar {
     height: auto;
     padding-bottom: 0.8rem;
