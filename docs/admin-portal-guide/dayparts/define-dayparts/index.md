@@ -11,11 +11,7 @@ Dayparts are configured at the top-level of an organization, at the same level a
 
 Each daypart consists of a name, a unique daypart code, and a list of supported occasions, each with their own list of timeframes. For convenience when initially creating a daypart, a single set of timeframes can be applied to all supported occasions. Once a daypart has been created, occasion timeframes can be customized individually.
 
-**Image 1: Dayparts hierarchy**
-
-Organization-level dayparts flow down into supported occasions and then into the timeframes that define when each daypart applies.
-
-<!-- Insert Image 1 here: organization -> dayparts -> occasions -> timeframes diagram -->
+**Screenshot placeholder:** Put screenshot showing the defining dayparts hierarchy diagram with organization, dayparts, occasions, and timeframes here.
 
 ## Defining dayparts in Byte Portal
 
@@ -31,7 +27,7 @@ Organization-level dayparts flow down into supported occasions and then into the
 
 | Field | What to enter | Notes |
 |-------|--------------|-------|
-| **Name** | A human-readable label for the daypart that's visible to both data managers and end-users | For example, `Breakfast`. |
+| **Name** | A human-readable label for the daypart that’s visible to both data managers and end-users | For example, `Breakfast`. |
 | **Daypart code** | A brand-provided, unique identifier intended for external systems to consume | This code will be provided in the published menu. |
 
 **Screenshot placeholder:** Put screenshot showing the Create New Daypart drawer with Daypart Name and Daypart Code fields here.
@@ -88,10 +84,10 @@ Dayparts are created at the **org level**, but their hours and supported occasio
 
 ## Related guides
 
-- [Introduction](/docs/admin-portal-guide/menus/dayparts-overview/) — Learn how dayparts are used across Byte
-- [Customizing Dayparts at the Store-level](/docs/admin-portal-guide/menus/customizing-dayparts-at-the-store-level/) — Adjust org-level dayparts for a store
-- [Setting Daypart Prices and Availability](/docs/admin-portal-guide/menus/setting-daypart-prices-and-availability/) — Apply pricing and availability rules to entities
+- [Dayparts Overview](/docs/admin-portal-guide/dayparts/) — Learn how dayparts are used across Byte
+- [Customizing Dayparts at the Store-level](/docs/admin-portal-guide/dayparts/customizing-dayparts-at-the-store-level/) — Adjust org-level dayparts for a store
+- [Setting Daypart Prices and Availability](/docs/admin-portal-guide/dayparts/setting-daypart-prices-and-availability/) — Apply pricing and availability rules to entities
 
 ---
 
-*Part of the [Admin Portal Guide](/docs/admin-portal-guide) · Section: Stores*
+*Part of the [Admin Portal Guide](/docs/admin-portal-guide) · Section: Dayparts*

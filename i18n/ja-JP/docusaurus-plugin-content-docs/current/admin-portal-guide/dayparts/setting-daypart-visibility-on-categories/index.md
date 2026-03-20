@@ -35,10 +35,10 @@ sidebar_label: カテゴリのデイパート表示を設定する
 
 ## 関連ガイド
 
-- [デイパートを定義する](/docs/admin-portal-guide/menus/create-a-daypart/) - 先にデイパートを作成する
+- [デイパートを定義する](/docs/admin-portal-guide/dayparts/define-dayparts/) - 先にデイパートを作成する
 - [Edit a Category](/docs/admin-portal-guide/menus/edit-a-category/) - デイパート以外のカテゴリ設定を更新する
-- [デイパートの価格と提供可否を設定する](/docs/admin-portal-guide/menus/setting-daypart-prices-and-availability/) - 商品、バリアント、バンドルへデイパート設定を適用する
+- [デイパートの価格と提供可否を設定する](/docs/admin-portal-guide/dayparts/setting-daypart-prices-and-availability/) - 商品、バリアント、バンドルへデイパート設定を適用する
 
 ---
 
-*Part of the [Admin Portal Guide](/docs/admin-portal-guide) · Section: Menus*
+*Part of the [Admin Portal Guide](/docs/admin-portal-guide) · Section: Dayparts*

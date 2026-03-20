@@ -1,9 +1,9 @@
 ---
-title: 概要
-sidebar_label: 概要
+title: デイパート
+sidebar_label: デイパート
 ---
 
-# 概要
+# デイパート
 
 ## デイパートとは
 
@@ -51,11 +51,11 @@ sidebar_label: 概要
 
 ## 関連ガイド
 
-- [デイパートを定義する](/docs/admin-portal-guide/menus/create-a-daypart/) - 新しいデイパートを追加し、最初の時間枠を定義する
-- [店舗レベルでデイパートをカスタマイズする](/docs/admin-portal-guide/menus/customizing-dayparts-at-the-store-level/) - 特定店舗向けに組織レベル設定を上書きする
-- [デイパートの価格と提供可否を設定する](/docs/admin-portal-guide/menus/setting-daypart-prices-and-availability/) - 時間帯別の価格と提供可否ルールを適用する
-- [カテゴリのデイパート表示を設定する](/docs/admin-portal-guide/menus/setting-daypart-visibility-on-categories/) - デイパート中に表示するカテゴリを制御する
+- [デイパートを定義する](/docs/admin-portal-guide/dayparts/define-dayparts/) - 新しいデイパートを追加し、最初の時間枠を定義する
+- [店舗レベルでデイパートをカスタマイズする](/docs/admin-portal-guide/dayparts/customizing-dayparts-at-the-store-level/) - 特定店舗向けに組織レベル設定を上書きする
+- [デイパートの価格と提供可否を設定する](/docs/admin-portal-guide/dayparts/setting-daypart-prices-and-availability/) - 時間帯別の価格と提供可否ルールを適用する
+- [カテゴリのデイパート表示を設定する](/docs/admin-portal-guide/dayparts/setting-daypart-visibility-on-categories/) - デイパート中に表示するカテゴリを制御する
 
 ---
 
-*Part of the [Admin Portal Guide](/docs/admin-portal-guide) · Section: Menus*
+*Part of the [Admin Portal Guide](/docs/admin-portal-guide) · Section: Dayparts*

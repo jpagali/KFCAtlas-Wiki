@@ -236,7 +236,6 @@ const sidebars = {
                 'admin-portal-guide/stores/2a-accept-online-orders-turn-on-or-off/index',
                 'admin-portal-guide/stores/2b-appear-in-search-result-turn-on-or-off/index',
                 'admin-portal-guide/stores/assign-new-menu/index',
-                'admin-portal-guide/stores/create-a-daypart/index',
                 'admin-portal-guide/stores/edit-patch-list/index',
                 'admin-portal-guide/stores/publish-menu/index',
                 'admin-portal-guide/stores/transfer-patch-list/index',
@@ -256,6 +255,17 @@ const sidebars = {
         },
         {
           type: 'category',
+          label: 'Dayparts',
+          link: { type: 'doc', id: 'admin-portal-guide/dayparts/index' },
+          items: [
+            'admin-portal-guide/dayparts/define-dayparts/index',
+            'admin-portal-guide/dayparts/customizing-dayparts-at-the-store-level/index',
+            'admin-portal-guide/dayparts/setting-daypart-prices-and-availability/index',
+            'admin-portal-guide/dayparts/setting-daypart-visibility-on-categories/index',
+          ],
+        },
+        {
+          type: 'category',
           label: 'Menus',
           link: { type: 'doc', id: 'admin-portal-guide/menus/index' },
           items: [
@@ -266,17 +276,6 @@ const sidebars = {
                 'admin-portal-guide/menus/create-a-named-price/index',
                 'admin-portal-guide/menus/edit-named-price/index',
                 'admin-portal-guide/menus/delete-named-price/index',
-              ],
-            },
-            {
-              type: 'category',
-              label: 'Dayparts',
-              items: [
-                'admin-portal-guide/menus/dayparts-overview/index',
-                'admin-portal-guide/menus/create-a-daypart/index',
-                'admin-portal-guide/menus/customizing-dayparts-at-the-store-level/index',
-                'admin-portal-guide/menus/setting-daypart-prices-and-availability/index',
-                'admin-portal-guide/menus/setting-daypart-visibility-on-categories/index',
               ],
             },
             {

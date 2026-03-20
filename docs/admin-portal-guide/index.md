@@ -7,6 +7,22 @@ sidebar_label: Admin Portal Guide
 
 This guide covers all tasks available in the Byte Commerce Admin Portal. Select a section below to get started.
 
+:::info Source Acknowledgement
+This Admin Portal Guide was built from the **Byte Team's Prototype User Guide** and adapted for Atlas Wiki.
+
+<iframe
+  src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2Fm9ZEcpVsET4bezePwGqvsQ%2FAdmin-Portal-Training-Guide%3Fpage-id%3D0%253A1%26starting-point-node-id%3D12%253A2%26node-id%3D12-2"
+  width="100%"
+  height="520px"
+  style={{border: '1px solid var(--ifm-toc-border-color)', borderRadius: '12px'}}
+  allowFullScreen
+/>
+
+[Open the Byte Team Prototype User Guide in Figma](https://www.figma.com/proto/m9ZEcpVsET4bezePwGqvsQ/Admin-Portal-Training-Guide?page-id=0%3A1&starting-point-node-id=12%3A2&node-id=12-2)
+
+- [YumKnowledge Base: Admin Portal User Guide](https://yumkb.yumconnect.dev/docs/Guides/Admin/Admin%20Portal%20User%20Guide)
+:::
+
 :::note Byte POS Caveat
 Admin Portal tasks that reference **POS**, **in-store devices**, or store-to-POS communication assume the market is using **Byte POS**.
 
@@ -18,6 +34,9 @@ Manage restaurant locations, menus, and store settings.
 
 ## [Menus](/docs/admin-portal-guide/menus/)
 Create and organize product menus and categories for each store.
+
+## [Dayparts](/docs/admin-portal-guide/dayparts/)
+Manage time-based menu behavior, including org-level daypart setup, store-level overrides, pricing, availability, and category visibility.
 
 ## [Products](/docs/admin-portal-guide/products/)
 Define individual menu items, ingredients, pricing, and variants.

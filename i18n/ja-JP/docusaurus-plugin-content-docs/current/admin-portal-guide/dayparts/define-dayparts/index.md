@@ -84,10 +84,10 @@ sidebar_label: デイパートを定義する
 
 ## 関連ガイド
 
-- [概要](/docs/admin-portal-guide/menus/dayparts-overview/) - Byte 全体でデイパートがどう使われるかを理解する
-- [店舗レベルでデイパートをカスタマイズする](/docs/admin-portal-guide/menus/customizing-dayparts-at-the-store-level/) - 特定店舗向けに組織レベルのデイパートを調整する
-- [デイパートの価格と提供可否を設定する](/docs/admin-portal-guide/menus/setting-daypart-prices-and-availability/) - 商品へ価格と提供可否ルールを適用する
+- [デイパート概要](/docs/admin-portal-guide/dayparts/) - Byte 全体でデイパートがどう使われるかを理解する
+- [店舗レベルでデイパートをカスタマイズする](/docs/admin-portal-guide/dayparts/customizing-dayparts-at-the-store-level/) - 特定店舗向けに組織レベルのデイパートを調整する
+- [デイパートの価格と提供可否を設定する](/docs/admin-portal-guide/dayparts/setting-daypart-prices-and-availability/) - 商品へ価格と提供可否ルールを適用する
 
 ---
 
-*Part of the [Admin Portal Guide](/docs/admin-portal-guide) · Section: Menus*
+*Part of the [Admin Portal Guide](/docs/admin-portal-guide) · Section: Dayparts*

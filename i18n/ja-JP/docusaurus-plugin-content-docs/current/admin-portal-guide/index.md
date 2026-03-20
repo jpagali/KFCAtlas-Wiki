@@ -11,6 +11,8 @@ sidebar_label: Admin Portal Guide
 
 ## [メニュー](/docs/admin-portal-guide/menus/)
 
+## [デイパート](/docs/admin-portal-guide/dayparts/)
+
 ## [商品](/docs/admin-portal-guide/products/)
 
 ## [プロモーション](/docs/admin-portal-guide/promotions/)

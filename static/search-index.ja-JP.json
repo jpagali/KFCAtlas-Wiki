@@ -300,6 +300,96 @@
   },
   {
     "locale": "ja-JP",
+    "title": "店舗レベルでデイパートをカスタマイズする",
+    "headings": [
+      "概要",
+      "Byte Portal で店舗レベルのデイパートをカスタマイズする方法",
+      "デイパートを組織レベル設定へ戻す方法",
+      "関連ガイド"
+    ],
+    "summary": "店舗レベルでデイパートをカスタマイズする",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/dayparts/customizing-dayparts-at-the-store-level/",
+    "normalizedTitle": "店舗レベルでデイパートをカスタマイズする",
+    "normalizedHeadings": "概要 byte portal で店舗レベルのデイパートをカスタマイズする方法 デイパートを組織レベル設定へ戻す方法 関連ガイド",
+    "normalizedSummary": "店舗レベルでデイパートをカスタマイズする",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "デイパートを定義する",
+    "headings": [
+      "概要",
+      "Byte Portal でデイパートを定義する方法",
+      "デイパートを編集する",
+      "デイパートを削除する",
+      "関連ガイド"
+    ],
+    "summary": "デイパートを定義する",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/dayparts/define-dayparts/",
+    "normalizedTitle": "デイパートを定義する",
+    "normalizedHeadings": "概要 byte portal でデイパートを定義する方法 デイパートを編集する デイパートを削除する 関連ガイド",
+    "normalizedSummary": "デイパートを定義する",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "デイパート",
+    "headings": [
+      "デイパートとは",
+      "よくあるデイパートの利用例",
+      "Byte プラットフォームでできること",
+      "関連ガイド"
+    ],
+    "summary": "デイパート",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/dayparts/",
+    "normalizedTitle": "デイパート",
+    "normalizedHeadings": "デイパートとは よくあるデイパートの利用例 byte プラットフォームでできること 関連ガイド",
+    "normalizedSummary": "デイパート",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "デイパートの価格と提供可否を設定する",
+    "headings": [
+      "概要",
+      "価格",
+      "提供可否",
+      "バリアントにデイパート価格を設定する",
+      "バンドルにデイパート価格を設定する",
+      "商品にデイパート提供可否を設定する",
+      "バリアントにデイパート提供可否を設定する",
+      "バンドルにデイパート提供可否を設定する",
+      "関連ガイド"
+    ],
+    "summary": "デイパートの価格と提供可否を設定する",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/dayparts/setting-daypart-prices-and-availability/",
+    "normalizedTitle": "デイパートの価格と提供可否を設定する",
+    "normalizedHeadings": "概要 価格 提供可否 バリアントにデイパート価格を設定する バンドルにデイパート価格を設定する 商品にデイパート提供可否を設定する バリアントにデイパート提供可否を設定する バンドルにデイパート提供可否を設定する 関連ガイド",
+    "normalizedSummary": "デイパートの価格と提供可否を設定する",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
+    "title": "カテゴリのデイパート表示を設定する",
+    "headings": [
+      "概要",
+      "カテゴリにデイパート表示を設定する",
+      "関連ガイド"
+    ],
+    "summary": "カテゴリのデイパート表示を設定する",
+    "section": "admin-portal-guide",
+    "url": "/ja-JP/docs/admin-portal-guide/dayparts/setting-daypart-visibility-on-categories/",
+    "normalizedTitle": "カテゴリのデイパート表示を設定する",
+    "normalizedHeadings": "概要 カテゴリにデイパート表示を設定する 関連ガイド",
+    "normalizedSummary": "カテゴリのデイパート表示を設定する",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "ja-JP",
     "title": "店内デバイスを無効化する",
     "headings": [
       "このガイドで扱う内容",
@@ -364,6 +454,7 @@
     "locale": "ja-JP",
     "title": "Admin Portal Guide",
     "headings": [
+      "",
       "",
       "",
       "",
@@ -515,24 +606,6 @@
   },
   {
     "locale": "ja-JP",
-    "title": "デイパートを定義する",
-    "headings": [
-      "概要",
-      "Byte Portal でデイパートを定義する方法",
-      "デイパートを編集する",
-      "デイパートを削除する",
-      "関連ガイド"
-    ],
-    "summary": "デイパートを定義する",
-    "section": "admin-portal-guide",
-    "url": "/ja-JP/docs/admin-portal-guide/menus/create-a-daypart/",
-    "normalizedTitle": "デイパートを定義する",
-    "normalizedHeadings": "概要 byte portal でデイパートを定義する方法 デイパートを編集する デイパートを削除する 関連ガイド",
-    "normalizedSummary": "デイパートを定義する",
-    "normalizedSection": "admin portal guide"
-  },
-  {
-    "locale": "ja-JP",
     "title": "メニューを作成する",
     "headings": [
       "このガイドで扱う内容",
@@ -580,40 +653,6 @@
     "normalizedTitle": "パッチを作成する",
     "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
     "normalizedSummary": "このガイドでは byte commerce admin portal でパッチを作成する手順を説明します",
-    "normalizedSection": "admin portal guide"
-  },
-  {
-    "locale": "ja-JP",
-    "title": "店舗レベルでデイパートをカスタマイズする",
-    "headings": [
-      "概要",
-      "Byte Portal で店舗レベルのデイパートをカスタマイズする方法",
-      "デイパートを組織レベル設定へ戻す方法",
-      "関連ガイド"
-    ],
-    "summary": "店舗レベルでデイパートをカスタマイズする",
-    "section": "admin-portal-guide",
-    "url": "/ja-JP/docs/admin-portal-guide/menus/customizing-dayparts-at-the-store-level/",
-    "normalizedTitle": "店舗レベルでデイパートをカスタマイズする",
-    "normalizedHeadings": "概要 byte portal で店舗レベルのデイパートをカスタマイズする方法 デイパートを組織レベル設定へ戻す方法 関連ガイド",
-    "normalizedSummary": "店舗レベルでデイパートをカスタマイズする",
-    "normalizedSection": "admin portal guide"
-  },
-  {
-    "locale": "ja-JP",
-    "title": "概要",
-    "headings": [
-      "デイパートとは",
-      "よくあるデイパートの利用例",
-      "Byte プラットフォームでできること",
-      "関連ガイド"
-    ],
-    "summary": "概要",
-    "section": "admin-portal-guide",
-    "url": "/ja-JP/docs/admin-portal-guide/menus/dayparts-overview/",
-    "normalizedTitle": "概要",
-    "normalizedHeadings": "デイパートとは よくあるデイパートの利用例 byte プラットフォームでできること 関連ガイド",
-    "normalizedSummary": "概要",
     "normalizedSection": "admin portal guide"
   },
   {
@@ -757,13 +796,14 @@
       "指名価格",
       "カテゴリ",
       "パッチ",
-      "メニュー"
+      "メニュー",
+      "関連ドメイン"
     ],
     "summary": "メニュー",
     "section": "admin-portal-guide",
     "url": "/ja-JP/docs/admin-portal-guide/menus/",
     "normalizedTitle": "メニュー",
-    "normalizedHeadings": "トピック 指名価格 カテゴリ パッチ メニュー",
+    "normalizedHeadings": "トピック 指名価格 カテゴリ パッチ メニュー 関連ドメイン",
     "normalizedSummary": "メニュー",
     "normalizedSection": "admin portal guide"
   },
@@ -781,44 +821,6 @@
     "normalizedTitle": "メニューを公開する",
     "normalizedHeadings": "このガイドで扱う内容 手順 追加情報",
     "normalizedSummary": "このガイドでは byte commerce admin portal でメニューを公開する手順を説明します",
-    "normalizedSection": "admin portal guide"
-  },
-  {
-    "locale": "ja-JP",
-    "title": "デイパートの価格と提供可否を設定する",
-    "headings": [
-      "概要",
-      "価格",
-      "提供可否",
-      "バリアントにデイパート価格を設定する",
-      "バンドルにデイパート価格を設定する",
-      "商品にデイパート提供可否を設定する",
-      "バリアントにデイパート提供可否を設定する",
-      "バンドルにデイパート提供可否を設定する",
-      "関連ガイド"
-    ],
-    "summary": "デイパートの価格と提供可否を設定する",
-    "section": "admin-portal-guide",
-    "url": "/ja-JP/docs/admin-portal-guide/menus/setting-daypart-prices-and-availability/",
-    "normalizedTitle": "デイパートの価格と提供可否を設定する",
-    "normalizedHeadings": "概要 価格 提供可否 バリアントにデイパート価格を設定する バンドルにデイパート価格を設定する 商品にデイパート提供可否を設定する バリアントにデイパート提供可否を設定する バンドルにデイパート提供可否を設定する 関連ガイド",
-    "normalizedSummary": "デイパートの価格と提供可否を設定する",
-    "normalizedSection": "admin portal guide"
-  },
-  {
-    "locale": "ja-JP",
-    "title": "カテゴリのデイパート表示を設定する",
-    "headings": [
-      "概要",
-      "カテゴリにデイパート表示を設定する",
-      "関連ガイド"
-    ],
-    "summary": "カテゴリのデイパート表示を設定する",
-    "section": "admin-portal-guide",
-    "url": "/ja-JP/docs/admin-portal-guide/menus/setting-daypart-visibility-on-categories/",
-    "normalizedTitle": "カテゴリのデイパート表示を設定する",
-    "normalizedHeadings": "概要 カテゴリにデイパート表示を設定する 関連ガイド",
-    "normalizedSummary": "カテゴリのデイパート表示を設定する",
     "normalizedSection": "admin portal guide"
   },
   {
@@ -1956,24 +1958,6 @@
   },
   {
     "locale": "ja-JP",
-    "title": "デイパートを定義する",
-    "headings": [
-      "概要",
-      "Byte Portal でデイパートを定義する方法",
-      "デイパートを編集する",
-      "デイパートを削除する",
-      "関連ガイド"
-    ],
-    "summary": "デイパートを定義する",
-    "section": "admin-portal-guide",
-    "url": "/ja-JP/docs/admin-portal-guide/stores/create-a-daypart/",
-    "normalizedTitle": "デイパートを定義する",
-    "normalizedHeadings": "概要 byte portal でデイパートを定義する方法 デイパートを編集する デイパートを削除する 関連ガイド",
-    "normalizedSummary": "デイパートを定義する",
-    "normalizedSection": "admin portal guide"
-  },
-  {
-    "locale": "ja-JP",
     "title": "店舗を作成する",
     "headings": [
       "このガイドで扱う内容",
@@ -2047,13 +2031,14 @@
       "トピック",
       "公開履歴",
       "店舗",
+      "関連ドメイン",
       "受益者"
     ],
     "summary": "店舗",
     "section": "admin-portal-guide",
     "url": "/ja-JP/docs/admin-portal-guide/stores/",
     "normalizedTitle": "店舗",
-    "normalizedHeadings": "トピック 公開履歴 店舗 受益者",
+    "normalizedHeadings": "トピック 公開履歴 店舗 関連ドメイン 受益者",
     "normalizedSummary": "店舗",
     "normalizedSection": "admin portal guide"
   },

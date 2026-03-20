@@ -31,6 +31,10 @@ sidebar_label: 店舗
 - [メニューを公開する（別手順）](/docs/admin-portal-guide/stores/publish-menu/)
 - [パッチリストを移行する](/docs/admin-portal-guide/stores/transfer-patch-list/)
 - [将来注文を許可する（オン / オフ）](/docs/admin-portal-guide/stores/2c-allow-future-orders-turn-on-or-off/)
+
+### 関連ドメイン
+
+- [デイパート](/docs/admin-portal-guide/dayparts/)
 ### 受益者
 
 - [受益者を作成する](/docs/admin-portal-guide/stores/create-a-beneficiary/)

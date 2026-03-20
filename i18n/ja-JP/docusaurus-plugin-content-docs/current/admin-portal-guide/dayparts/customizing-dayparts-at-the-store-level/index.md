@@ -63,9 +63,9 @@ sidebar_label: 店舗レベルでデイパートをカスタマイズする
 
 ## 関連ガイド
 
-- [デイパートを定義する](/docs/admin-portal-guide/menus/create-a-daypart/) - まず組織レベルのデイパートを作成する
-- [概要](/docs/admin-portal-guide/menus/dayparts-overview/) - 組織レベルと店舗レベルの関係を確認する
+- [デイパートを定義する](/docs/admin-portal-guide/dayparts/define-dayparts/) - まず組織レベルのデイパートを作成する
+- [デイパート概要](/docs/admin-portal-guide/dayparts/) - 組織レベルと店舗レベルの関係を確認する
 
 ---
 
-*Part of the [Admin Portal Guide](/docs/admin-portal-guide) · Section: Menus*
+*Part of the [Admin Portal Guide](/docs/admin-portal-guide) · Section: Dayparts*

@@ -158,9 +158,9 @@ sidebar_label: デイパートの価格と提供可否を設定する
 
 ## 関連ガイド
 
-- [デイパートを定義する](/docs/admin-portal-guide/menus/create-a-daypart/) - メニュー挙動へ割り当てる前にデイパートを作成する
+- [デイパートを定義する](/docs/admin-portal-guide/dayparts/define-dayparts/) - メニュー挙動へ割り当てる前にデイパートを作成する
 - [Create a Patch](/docs/admin-portal-guide/menus/create-a-patch/) - 大量の対象へ上書きを適用する
 
 ---
 
-*Part of the [Admin Portal Guide](/docs/admin-portal-guide) · Section: Menus*
+*Part of the [Admin Portal Guide](/docs/admin-portal-guide) · Section: Dayparts*

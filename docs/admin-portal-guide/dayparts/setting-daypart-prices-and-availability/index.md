@@ -158,9 +158,9 @@ If no dayparts are selected for availability, the product, variant, or bundle wi
 
 ## Related guides
 
-- [Defining Dayparts](/docs/admin-portal-guide/menus/create-a-daypart/) — Create the daypart before assigning menu behavior to it
+- [Defining Dayparts](/docs/admin-portal-guide/dayparts/define-dayparts/) — Create the daypart before assigning menu behavior to it
 - [Create a Patch](/docs/admin-portal-guide/menus/create-a-patch/) — Apply targeted overrides at scale
 
 ---
 
-*Part of the [Admin Portal Guide](/docs/admin-portal-guide) · Section: Menus*
+*Part of the [Admin Portal Guide](/docs/admin-portal-guide) · Section: Dayparts*

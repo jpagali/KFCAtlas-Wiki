@@ -37,3 +37,7 @@ sidebar_label: メニュー
 - [メニューをコピーする](/docs/admin-portal-guide/menus/copy-a-menu/)
 - [メニューを割り当てる](/docs/admin-portal-guide/menus/assign-a-menu/)
 - [メニューを削除する](/docs/admin-portal-guide/menus/delete-a-menu/)
+
+### 関連ドメイン
+
+- [デイパート](/docs/admin-portal-guide/dayparts/)

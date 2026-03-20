@@ -28,7 +28,6 @@ If the market is not using Byte POS, teams should treat **Byte Connect** as part
 
 - [View a Store’s Menu](/docs/admin-portal-guide/stores/view-a-stores-menu/) — See all assigned menus by channel
 - [Assign New Menu](/docs/admin-portal-guide/stores/assign-new-menu/) — Link a menu to an ordering channel
-- [Defining Dayparts](/docs/admin-portal-guide/stores/create-a-daypart/) — Create an org-level daypart that stores can inherit and override
 - [Publish a Menu](/docs/admin-portal-guide/stores/publish-a-menu/) — Publish menus across multiple stores
 - [Publish Menu](/docs/admin-portal-guide/stores/publish-menu/) — Publish from the store’s menu view
 - [Edit Patch List](/docs/admin-portal-guide/stores/edit-patch-list/) — Add, remove, or reorder menu patches
@@ -38,7 +37,11 @@ If the market is not using Byte POS, teams should treat **Byte Connect** as part
 ### Item & Availability Management
 
 - [Item Snooze](/docs/admin-portal-guide/stores/item-snooze/) — Temporarily remove items from the menu
-- [Customizing Dayparts at the Store-level](/docs/admin-portal-guide/menus/customizing-dayparts-at-the-store-level/) — Override org-level daypart behavior for a specific store
+- [Customizing Dayparts at the Store-level](/docs/admin-portal-guide/dayparts/customizing-dayparts-at-the-store-level/) — Override org-level daypart behavior for a specific store
+
+### Related Domain
+
+- [Dayparts](/docs/admin-portal-guide/dayparts/) — Manage org-level dayparts and store-level daypart behavior in a dedicated section
 
 ### Store Information & Compliance
 

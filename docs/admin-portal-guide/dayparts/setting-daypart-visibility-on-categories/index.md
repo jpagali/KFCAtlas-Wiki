@@ -35,10 +35,10 @@ Category visibility does not change whether the items inside the category are or
 
 ## Related guides
 
-- [Defining Dayparts](/docs/admin-portal-guide/menus/create-a-daypart/) — Create the daypart first
+- [Defining Dayparts](/docs/admin-portal-guide/dayparts/define-dayparts/) — Create the daypart first
 - [Edit a Category](/docs/admin-portal-guide/menus/edit-a-category/) — Update category settings outside of daypart rules
-- [Setting Daypart Prices and Availability](/docs/admin-portal-guide/menus/setting-daypart-prices-and-availability/) — Configure daypart behavior for products, variants, and bundles
+- [Setting Daypart Prices and Availability](/docs/admin-portal-guide/dayparts/setting-daypart-prices-and-availability/) — Configure daypart behavior for products, variants, and bundles
 
 ---
 
-*Part of the [Admin Portal Guide](/docs/admin-portal-guide) · Section: Menus*
+*Part of the [Admin Portal Guide](/docs/admin-portal-guide) · Section: Dayparts*

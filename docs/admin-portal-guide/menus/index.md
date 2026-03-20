@@ -39,10 +39,6 @@ This section covers all menu management tasks in the Byte Commerce Admin Portal,
 - [Edit Named Price](/docs/admin-portal-guide/menus/edit-named-price/) — Update the value of an existing named price
 - [Delete Named Price](/docs/admin-portal-guide/menus/delete-named-price/) — Remove a named price from the system
 
-## Dayparts
+## Related Domain
 
-- [Introduction](/docs/admin-portal-guide/menus/dayparts-overview/) — Understand what dayparts are and how Byte supports them
-- [Defining Dayparts](/docs/admin-portal-guide/menus/create-a-daypart/) — Create a reusable daypart with one or more time frames
-- [Customizing Dayparts at the Store-level](/docs/admin-portal-guide/menus/customizing-dayparts-at-the-store-level/) — Override org-level daypart behavior for a specific store
-- [Setting Daypart Prices and Availability](/docs/admin-portal-guide/menus/setting-daypart-prices-and-availability/) — Apply time-based pricing and availability to products, variants, or bundles
-- [Setting Daypart Visibility on Categories](/docs/admin-portal-guide/menus/setting-daypart-visibility-on-categories/) — Control which categories appear during a daypart
+- [Dayparts](/docs/admin-portal-guide/dayparts/) — Manage org-level dayparts, store-level overrides, time-based pricing, availability, and category visibility

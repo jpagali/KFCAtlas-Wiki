@@ -296,6 +296,96 @@
   },
   {
     "locale": "en-US",
+    "title": "Customizing Dayparts at the Store level",
+    "headings": [
+      "Summary",
+      "How to customize dayparts at the store level in Byte Portal",
+      "How to reset a daypart back to org level settings",
+      "Related guides"
+    ],
+    "summary": "Customizing Dayparts at the Store level",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/dayparts/customizing-dayparts-at-the-store-level/",
+    "normalizedTitle": "customizing dayparts at the store level",
+    "normalizedHeadings": "summary how to customize dayparts at the store level in byte portal how to reset a daypart back to org level settings related guides",
+    "normalizedSummary": "customizing dayparts at the store level",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Defining Dayparts",
+    "headings": [
+      "Summary",
+      "Defining dayparts in Byte Portal",
+      "Editing dayparts",
+      "Deleting dayparts",
+      "Related guides"
+    ],
+    "summary": "Defining Dayparts",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/dayparts/define-dayparts/",
+    "normalizedTitle": "defining dayparts",
+    "normalizedHeadings": "summary defining dayparts in byte portal editing dayparts deleting dayparts related guides",
+    "normalizedSummary": "defining dayparts",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Dayparts",
+    "headings": [
+      "What is a daypart?",
+      "Common daypart use cases",
+      "Byte platform capabilities",
+      "Related guides"
+    ],
+    "summary": "Dayparts",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/dayparts/",
+    "normalizedTitle": "dayparts",
+    "normalizedHeadings": "what is a daypart common daypart use cases byte platform capabilities related guides",
+    "normalizedSummary": "dayparts",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Setting Daypart Prices and Availability",
+    "headings": [
+      "Summary",
+      "Pricing",
+      "Availability",
+      "Setting daypart prices on variants",
+      "Setting daypart prices on bundles",
+      "Setting daypart availability on products",
+      "Setting daypart availability on variants",
+      "Setting daypart availability on bundles",
+      "Related guides"
+    ],
+    "summary": "Setting Daypart Prices and Availability",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/dayparts/setting-daypart-prices-and-availability/",
+    "normalizedTitle": "setting daypart prices and availability",
+    "normalizedHeadings": "summary pricing availability setting daypart prices on variants setting daypart prices on bundles setting daypart availability on products setting daypart availability on variants setting daypart availability on bundles related guides",
+    "normalizedSummary": "setting daypart prices and availability",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
+    "title": "Setting Daypart Visibility on Categories",
+    "headings": [
+      "Summary",
+      "Setting daypart visibility on categories",
+      "Related guides"
+    ],
+    "summary": "Setting Daypart Visibility on Categories",
+    "section": "admin-portal-guide",
+    "url": "/docs/admin-portal-guide/dayparts/setting-daypart-visibility-on-categories/",
+    "normalizedTitle": "setting daypart visibility on categories",
+    "normalizedHeadings": "summary setting daypart visibility on categories related guides",
+    "normalizedSummary": "setting daypart visibility on categories",
+    "normalizedSection": "admin portal guide"
+  },
+  {
+    "locale": "en-US",
     "title": "Deactivate In Store",
     "headings": [
       "What this guide covers",
@@ -360,6 +450,7 @@
     "locale": "en-US",
     "title": "Admin Portal Guide",
     "headings": [
+      "",
       "",
       "",
       "",
@@ -508,24 +599,6 @@
   },
   {
     "locale": "en-US",
-    "title": "Defining Dayparts",
-    "headings": [
-      "Summary",
-      "Defining dayparts in Byte Portal",
-      "Editing dayparts",
-      "Deleting dayparts",
-      "Related guides"
-    ],
-    "summary": "Defining Dayparts",
-    "section": "admin-portal-guide",
-    "url": "/docs/admin-portal-guide/menus/create-a-daypart/",
-    "normalizedTitle": "defining dayparts",
-    "normalizedHeadings": "summary defining dayparts in byte portal editing dayparts deleting dayparts related guides",
-    "normalizedSummary": "defining dayparts",
-    "normalizedSection": "admin portal guide"
-  },
-  {
-    "locale": "en-US",
     "title": "Create a Menu",
     "headings": [
       "What this guide covers",
@@ -570,40 +643,6 @@
     "normalizedTitle": "create a patch",
     "normalizedHeadings": "what this guide covers steps related guides",
     "normalizedSummary": "creates a menu patch a targeted override that modifies specific items products bundles or variants in a menu without replacing the entire menu",
-    "normalizedSection": "admin portal guide"
-  },
-  {
-    "locale": "en-US",
-    "title": "Customizing Dayparts at the Store level",
-    "headings": [
-      "Summary",
-      "How to customize dayparts at the store level in Byte Portal",
-      "How to reset a daypart back to org level settings",
-      "Related guides"
-    ],
-    "summary": "Customizing Dayparts at the Store level",
-    "section": "admin-portal-guide",
-    "url": "/docs/admin-portal-guide/menus/customizing-dayparts-at-the-store-level/",
-    "normalizedTitle": "customizing dayparts at the store level",
-    "normalizedHeadings": "summary how to customize dayparts at the store level in byte portal how to reset a daypart back to org level settings related guides",
-    "normalizedSummary": "customizing dayparts at the store level",
-    "normalizedSection": "admin portal guide"
-  },
-  {
-    "locale": "en-US",
-    "title": "Introduction",
-    "headings": [
-      "What is a daypart?",
-      "Common daypart use cases",
-      "Byte platform capabilities",
-      "Related guides"
-    ],
-    "summary": "Introduction",
-    "section": "admin-portal-guide",
-    "url": "/docs/admin-portal-guide/menus/dayparts-overview/",
-    "normalizedTitle": "introduction",
-    "normalizedHeadings": "what is a daypart common daypart use cases byte platform capabilities related guides",
-    "normalizedSummary": "introduction",
     "normalizedSection": "admin portal guide"
   },
   {
@@ -742,13 +781,13 @@
       "Categories",
       "Patches",
       "Named Prices",
-      "Dayparts"
+      "Related Domain"
     ],
     "summary": "Menus",
     "section": "admin-portal-guide",
     "url": "/docs/admin-portal-guide/menus/",
     "normalizedTitle": "menus",
-    "normalizedHeadings": "menus categories patches named prices dayparts",
+    "normalizedHeadings": "menus categories patches named prices related domain",
     "normalizedSummary": "menus",
     "normalizedSection": "admin portal guide"
   },
@@ -766,44 +805,6 @@
     "normalizedTitle": "publish a menu",
     "normalizedHeadings": "what this guide covers steps related guides",
     "normalizedSummary": "pushes an assigned menu to live digital ordering channels this process makes the menu available to customers for ordering",
-    "normalizedSection": "admin portal guide"
-  },
-  {
-    "locale": "en-US",
-    "title": "Setting Daypart Prices and Availability",
-    "headings": [
-      "Summary",
-      "Pricing",
-      "Availability",
-      "Setting daypart prices on variants",
-      "Setting daypart prices on bundles",
-      "Setting daypart availability on products",
-      "Setting daypart availability on variants",
-      "Setting daypart availability on bundles",
-      "Related guides"
-    ],
-    "summary": "Setting Daypart Prices and Availability",
-    "section": "admin-portal-guide",
-    "url": "/docs/admin-portal-guide/menus/setting-daypart-prices-and-availability/",
-    "normalizedTitle": "setting daypart prices and availability",
-    "normalizedHeadings": "summary pricing availability setting daypart prices on variants setting daypart prices on bundles setting daypart availability on products setting daypart availability on variants setting daypart availability on bundles related guides",
-    "normalizedSummary": "setting daypart prices and availability",
-    "normalizedSection": "admin portal guide"
-  },
-  {
-    "locale": "en-US",
-    "title": "Setting Daypart Visibility on Categories",
-    "headings": [
-      "Summary",
-      "Setting daypart visibility on categories",
-      "Related guides"
-    ],
-    "summary": "Setting Daypart Visibility on Categories",
-    "section": "admin-portal-guide",
-    "url": "/docs/admin-portal-guide/menus/setting-daypart-visibility-on-categories/",
-    "normalizedTitle": "setting daypart visibility on categories",
-    "normalizedHeadings": "summary setting daypart visibility on categories related guides",
-    "normalizedSummary": "setting daypart visibility on categories",
     "normalizedSection": "admin portal guide"
   },
   {
@@ -1939,24 +1940,6 @@
   },
   {
     "locale": "en-US",
-    "title": "Defining Dayparts",
-    "headings": [
-      "Summary",
-      "Defining dayparts in Byte Portal",
-      "Editing dayparts",
-      "Deleting dayparts",
-      "Related guides"
-    ],
-    "summary": "Defining Dayparts",
-    "section": "admin-portal-guide",
-    "url": "/docs/admin-portal-guide/stores/create-a-daypart/",
-    "normalizedTitle": "defining dayparts",
-    "normalizedHeadings": "summary defining dayparts in byte portal editing dayparts deleting dayparts related guides",
-    "normalizedSummary": "defining dayparts",
-    "normalizedSection": "admin portal guide"
-  },
-  {
-    "locale": "en-US",
     "title": "Create a Store",
     "headings": [
       "What this guide covers",
@@ -2029,6 +2012,7 @@
       "Store Setup",
       "Menu Management",
       "Item & Availability Management",
+      "Related Domain",
       "Store Information & Compliance",
       "Beneficiary Management"
     ],
@@ -2036,7 +2020,7 @@
     "section": "admin-portal-guide",
     "url": "/docs/admin-portal-guide/stores/",
     "normalizedTitle": "stores",
-    "normalizedHeadings": "topics store setup menu management item availability management store information compliance beneficiary management",
+    "normalizedHeadings": "topics store setup menu management item availability management related domain store information compliance beneficiary management",
     "normalizedSummary": "stores",
     "normalizedSection": "admin portal guide"
   },
