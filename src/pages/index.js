@@ -37,8 +37,8 @@ const HOME_CONTENT = {
     ],
     stats: [
       { value: 2000, suffix: '+', label: 'Stores', sub: 'Stores Onboard' },
-      { value: '3', label: 'Core Modules', sub: 'Front-End · Admin · Martech' },
-      { value: '1', label: 'Platform', sub: 'Atlas by KFC Global' },
+      { value: '3', label: 'Core Modules', sub: 'Front-End Byte Commerce Byte Connect' },
+      { value: '1', label: 'Platform', sub: 'Atlas by KFC Global - Brand Experience Team' },
     ],
     sections: [
       {

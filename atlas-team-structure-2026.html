@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 – ATLAS Team Structure</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; overflow: hidden; }
+
+body {
+  font-family: -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  background: #eceff1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* ── TOP BAR ────────────────────────────────────────────────────── */
+.topbar {
+  background: linear-gradient(115deg, #0a1a5c 0%, #4a0e82 48%, #8b0000 100%);
+  color: #fff;
+  text-align: center;
+  padding: 14px 20px 12px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.5);
+  position: relative;
+  z-index: 10;
+}
+.topbar h1 {
+  font-size: 1.45rem;
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+.topbar p {
+  font-size: 0.72rem;
+  opacity: 0.72;
+  margin-top: 3px;
+  letter-spacing: 1px;
+}
+
+/* ── LEGEND ─────────────────────────────────────────────────────── */
+.legend {
+  background: #fff;
+  border-bottom: 1px solid #cfd8dc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  padding: 9px 20px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+.leg-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #455a64;
+  white-space: nowrap;
+}
+.swatch {
+  width: 30px;
+  height: 13px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.18);
+}
+
+/* ── CHART WRAP ──────────────────────────────────────────────────── */
+#chart-wrap {
+  flex: 1;
+  overflow: hidden;
+  cursor: grab;
+  position: relative;
+  background-color: #e8ecf0;
+  background-image: radial-gradient(circle, #b0bec5 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+#chart-wrap:active { cursor: grabbing; }
+
+/* ── ZOOM CONTROLS ───────────────────────────────────────────────── */
+.controls {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 200;
+}
+.cb {
+  width: 34px;
+  height: 34px;
+  background: rgba(255,255,255,0.96);
+  border: 1.5px solid #90a4ae;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 700;
+  color: #37474f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  line-height: 1;
+  user-select: none;
+}
+.cb:hover { background: #e3f2fd; border-color: #1565c0; color: #1565c0; }
+
+/* ── HINT ────────────────────────────────────────────────────────── */
+.hint {
+  position: fixed;
+  left: 14px;
+  bottom: 14px;
+  font-size: 10px;
+  color: #90a4ae;
+  font-weight: 500;
+  pointer-events: none;
+  z-index: 200;
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <h1>2026 – Atlas Team Structure</h1>
+  <p>Global KFC Experience &nbsp;·&nbsp; Byte Engineering &nbsp;·&nbsp; Shared Support Resources</p>
+</div>
+
+<div class="legend">
+  <div class="leg-item">
+    <div class="swatch" style="background:#1565C0;"></div>
+    Byte Team
+  </div>
+  <div class="leg-item">
+    <div class="swatch" style="background:#C62828;"></div>
+    KFC Team
+  </div>
+  <div class="leg-item">
+    <div class="swatch" style="background:linear-gradient(90deg,#1a237e 0%,#6a1b9a 50%,#880e0e 100%);"></div>
+    Shared Resource
+  </div>
+  <div class="leg-item">
+    <div class="swatch" style="background:#FFFDE7; border:1.5px dashed #F57F17;"></div>
+    Contractor / Open Role
+  </div>
+  <div class="leg-item">
+    <div class="swatch" style="background:#37474F;"></div>
+    Executive Leadership
+  </div>
+</div>
+
+<div id="chart-wrap"></div>
+
+<div class="controls">
+  <button class="cb" id="zin"  title="Zoom in">+</button>
+  <button class="cb" id="zout" title="Zoom out">−</button>
+  <button class="cb" id="zfit" title="Fit to view" style="font-size:12px;">⊞</button>
+</div>
+<div class="hint">Scroll to zoom · Drag to pan</div>
+
+<script>
+/* ════════════════════════════════════════════
+   ORG DATA
+   k = type: byte | kfc | shared | open | neutral
+════════════════════════════════════════════ */
+const ORG = {
+  n:"Jim Dausch", t:"Executive Sponsor", k:"neutral",
+  c:[
+    {
+      n:"Justin Pagalilauan", t:"Product Success Mgr.", k:"kfc",
+      c:[
+        {
+          n:"Haley Janke", t:"Head of Brand Experience", k:"kfc",
+          c:[
+            { n:"Market Product Owners", t:"KFC Brands", k:"kfc" }
+          ]
+        }
+      ]
+    },
+    {
+      n:"Judd Knight", t:"KFCG CDTO", k:"kfc",
+      c:[
+        { n:"Mark Ma",         t:"BYTE Product Mgr.",   k:"byte" },
+        { n:"TBH – July '26",  t:"Head of UX/UI",       k:"open" },
+        { n:"TBH – July '26",  t:"CRO",                 k:"open" },
+        { n:"TBD Program Mgr.",t:"Contractor",           k:"open" }
+      ]
+    },
+    {
+      n:"Matt McDole", t:"CTO, Byte", k:"byte",
+      c:[
+        { n:"Jonathan Edwards", t:"Architect", k:"byte" },
+        {
+          n:"Brendan Hurley", t:"Director, Engineering (50%)", k:"shared",
+          c:[
+            { n:"Don Abshire", t:"Solution Architect", k:"byte" },
+            {
+              n:"Phong Bui", t:"Eng. & Delivery Dir. (50%)", k:"shared",
+              c:[
+                {
+                  n:"Steve Winberg", t:"Sr. Eng. Mgr.", k:"byte",
+                  c:[
+                    { n:"Quang Tran",          t:"Eng. III",    k:"byte" },
+                    { n:"Hiring in Progress",  t:"Sr. Eng. II", k:"open" },
+                    { n:"Hiring in Progress",  t:"Sr. Eng. II", k:"open" }
+                  ]
+                },
+                {
+                  n:"Nguyen Minh Tuan", t:"Sr. Eng. I", k:"byte",
+                  c:[
+                    { n:"Theo Tran",           t:"Sr. Eng. I",  k:"byte" },
+                    { n:"Hiring in Progress",  t:"Sr. Eng. I",  k:"open" },
+                    { n:"Hiring in Progress",  t:"QE III",      k:"open" },
+                    { n:"Hiring in Progress",  t:"QE III",      k:"open" }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      n:"Shiv Adhiappan", t:"VP, Site Reliability", k:"shared",
+      c:[
+        {
+          n:"Kip Hurley", t:"Dir., Site Reliability (15%)", k:"shared",
+          c:[
+            {
+              n:"Anh Nguyen", t:"SOC Manager", k:"kfc",
+              c:[
+                { n:"Dung Le",       t:"SOC", k:"kfc"  },
+                { n:"Nhien Anh Le",  t:"SOC", k:"kfc"  },
+                { n:"Tri Phan",      t:"SOC", k:"kfc"  },
+                { n:"TBH May '28",   t:"SOC", k:"open" }
+              ]
+            },
+            {
+              n:"Khoa Truong", t:"SOC", k:"kfc",
+              c:[
+                { n:"Nguyen Phuc",   t:"SOC", k:"kfc"  },
+                { n:"Phuoc Duong",   t:"SOC", k:"kfc"  },
+                { n:"Ninh Do",       t:"SOC", k:"kfc"  },
+                { n:"TBH Oct '26",   t:"SOC", k:"open" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      n:"Dain Davlea", t:"Chief Data Officer", k:"shared",
+      c:[
+        {
+          n:"Rachel Lorraine", t:"Sr. Dir, D&A", k:"shared",
+          c:[
+            {
+              n:"Leanne Haas", t:"Sr. Mgr, Data Analytics", k:"shared",
+              c:[
+                { n:"Steve Bowshar",       t:"Digital Analytics",  k:"shared" },
+                { n:"Andrea BaronRuiz",    t:"(CTR) Analytics",    k:"open"   },
+                { n:"Rajni S",             t:"Data Engineer",       k:"shared" },
+                { n:"Juan Martinez",       t:"(CTR) Analytics",    k:"open"   },
+                { n:"TBH – Data ?",        t:"Analytics",           k:"open"   },
+                { n:"TBH – Data ?",        t:"Analytics",           k:"open"   }
+              ]
+            },
+            { n:"Lucy Johnson",      t:"(CTR) Analytics", k:"open" },
+            { n:"Bianca Villamizar", t:"(CTR) Analytics", k:"open" },
+            { n:"Ivan Jimenez",      t:"(CTR) Analytics", k:"open" },
+            { n:"TBH – Data ?",      t:"Analytics",        k:"open" }
+          ]
+        }
+      ]
+    }
+  ]
+};
+
+/* ════════════════════════════════════════════
+   PALETTE
+════════════════════════════════════════════ */
+const P = {
+  byte:    { fill:"#1565C0", stroke:"#0d47a1", nc:"#fff",    tc:"rgba(255,255,255,0.78)", ac:"#42a5f5" },
+  kfc:     { fill:"#C62828", stroke:"#7f0000", nc:"#fff",    tc:"rgba(255,255,255,0.78)", ac:"#e57373" },
+  shared:  { fill:"url(#gshared)", stroke:"#4a148c", nc:"#fff", tc:"rgba(255,255,255,0.78)", ac:"#ba68c8" },
+  open:    { fill:"#FFFDE7", stroke:"#F57F17", nc:"#4e3800", tc:"#7b5300", ac:"#ffe082" },
+  neutral: { fill:"#37474F", stroke:"#1c313a", nc:"#fff",    tc:"rgba(255,255,255,0.72)", ac:"#78909c" }
+};
+
+/* ════════════════════════════════════════════
+   REMAP  (shorthand → D3 format)
+════════════════════════════════════════════ */
+function remap(n) {
+  return {
+    name: n.n, title: n.t, type: n.k,
+    children: n.c ? n.c.map(remap) : undefined
+  };
+}
+
+/* ════════════════════════════════════════════
+   SETUP
+════════════════════════════════════════════ */
+const NW = 148, NH = 56;
+const wrap = document.getElementById('chart-wrap');
+const W = wrap.clientWidth  || window.innerWidth;
+const H = wrap.clientHeight || (window.innerHeight - 130);
+
+const svg = d3.select('#chart-wrap').append('svg')
+  .attr('width',  W)
+  .attr('height', H)
+  .style('display', 'block');
+
+/* ─ DEFS ─ */
+const defs = svg.append('defs');
+
+// Shared gradient (blue → purple → dark red)
+const sg = defs.append('linearGradient')
+  .attr('id', 'gshared')
+  .attr('x1','0%').attr('y1','0%')
+  .attr('x2','100%').attr('y2','100%');
+sg.append('stop').attr('offset','0%').attr('stop-color','#1a237e');
+sg.append('stop').attr('offset','48%').attr('stop-color','#6a1b9a');
+sg.append('stop').attr('offset','100%').attr('stop-color','#880e0e');
+
+// Drop shadow
+const flt = defs.append('filter').attr('id','sh')
+  .attr('x','-20%').attr('y','-20%')
+  .attr('width','140%').attr('height','140%');
+flt.append('feGaussianBlur').attr('in','SourceAlpha').attr('stdDeviation','2.5').attr('result','b');
+flt.append('feOffset').attr('in','b').attr('dx','1').attr('dy','2').attr('result','b2');
+const fm = flt.append('feMerge');
+fm.append('feMergeNode').attr('in','b2');
+fm.append('feMergeNode').attr('in','SourceGraphic');
+
+/* ─ ZOOM ─ */
+const g  = svg.append('g');
+const zb = d3.zoom().scaleExtent([0.12, 3]).on('zoom', e => g.attr('transform', e.transform));
+svg.call(zb);
+
+// Also allow mouse wheel on the wrap
+wrap.addEventListener('wheel', (e) => e.stopPropagation());
+
+/* ─ TREE LAYOUT ─ */
+const root       = d3.hierarchy(remap(ORG));
+const treeLayout = d3.tree().nodeSize([NW + 14, NH + 48]);
+treeLayout(root);
+
+const allNodes = root.descendants();
+const allLinks = root.links();
+
+const xs   = allNodes.map(d => d.x);
+const ys   = allNodes.map(d => d.y);
+const minX = Math.min(...xs), maxX = Math.max(...xs);
+const minY = Math.min(...ys), maxY = Math.max(...ys);
+const treeW = maxX - minX + NW + 40;
+const treeH = maxY - minY + NH + 60;
+
+/* ═══ FIT VIEW ═══════════════════════════════ */
+function fitView(animate) {
+  const scale = Math.min(W / treeW, H / treeH) * 0.93;
+  const tx    = W / 2 - (minX + maxX) / 2 * scale;
+  const ty    = 22  - minY * scale;
+  const t     = d3.zoomIdentity.translate(tx, ty).scale(scale);
+  if (animate) svg.transition().duration(480).call(zb.transform, t);
+  else         svg.call(zb.transform, t);
+}
+
+/* ═══ LINKS ══════════════════════════════════ */
+g.selectAll('.lk')
+  .data(allLinks)
+  .enter().append('path')
+  .attr('fill',   'none')
+  .attr('stroke', d => {
+    const t = d.target.data.type;
+    if (t === 'byte')   return '#90caf9';
+    if (t === 'kfc')    return '#ef9a9a';
+    if (t === 'shared') return '#ce93d8';
+    return '#b0bec5';
+  })
+  .attr('stroke-width',     1.8)
+  .attr('stroke-dasharray', d => d.target.data.type === 'open' ? '5 3' : '0')
+  .attr('d', d => {
+    const sx = d.source.x,   sy = d.source.y + NH;
+    const tx = d.target.x,   ty = d.target.y;
+    const my = (sy + ty) / 2;
+    return `M${sx},${sy} C${sx},${my} ${tx},${my} ${tx},${ty}`;
+  });
+
+/* ═══ NODES ══════════════════════════════════ */
+const ng = g.selectAll('.nd')
+  .data(allNodes)
+  .enter().append('g')
+  .attr('transform', d => `translate(${d.x - NW/2},${d.y})`);
+
+// Shadow + body rect
+ng.append('rect')
+  .attr('width',  NW)
+  .attr('height', NH)
+  .attr('rx', 9).attr('ry', 9)
+  .attr('fill',   d => P[d.data.type].fill)
+  .attr('stroke', d => P[d.data.type].stroke)
+  .attr('stroke-width', d => d.data.type === 'open' ? 1.5 : 0)
+  .attr('stroke-dasharray', d => d.data.type === 'open' ? '5 3' : '0')
+  .attr('filter', 'url(#sh)');
+
+// Top accent strip (colorful band at top of card)
+ng.filter(d => d.data.type !== 'open')
+  .append('rect')
+  .attr('width', NW)
+  .attr('height', 4)
+  .attr('rx', 9).attr('ry', 9)
+  .attr('fill',    d => P[d.data.type].ac)
+  .attr('opacity', 0.7);
+
+// Connector dot (circle on top edge when has parent)
+ng.filter(d => d.parent != null)
+  .append('circle')
+  .attr('cx', NW / 2)
+  .attr('cy', 0)
+  .attr('r',  3.5)
+  .attr('fill',   d => d.data.type === 'open' ? '#F57F17' : P[d.data.type].ac)
+  .attr('stroke', '#fff')
+  .attr('stroke-width', 1.5);
+
+// Name text
+ng.append('text')
+  .attr('x', NW / 2)
+  .attr('y', 23)
+  .attr('text-anchor', 'middle')
+  .attr('font-size',   '11px')
+  .attr('font-weight', '700')
+  .attr('font-family', '-apple-system, Segoe UI, sans-serif')
+  .attr('fill', d => P[d.data.type].nc)
+  .text(d => {
+    const n = d.data.name;
+    return n.length > 20 ? n.slice(0,19) + '…' : n;
+  });
+
+// Title text
+ng.append('text')
+  .attr('x', NW / 2)
+  .attr('y', 41)
+  .attr('text-anchor', 'middle')
+  .attr('font-size',   '9.5px')
+  .attr('font-weight', '400')
+  .attr('font-family', '-apple-system, Segoe UI, sans-serif')
+  .attr('fill', d => P[d.data.type].tc)
+  .text(d => {
+    const t = d.data.title;
+    return t.length > 25 ? t.slice(0,24) + '…' : t;
+  });
+
+/* ═══ TEAM GROUP LABELS ══════════════════════ */
+// Helper: get bbox of a set of nodes
+function groupBBox(filter, padX, padY) {
+  const filtered = allNodes.filter(filter);
+  if (!filtered.length) return null;
+  const xs2 = filtered.map(d => d.x);
+  const ys2 = filtered.map(d => d.y);
+  return {
+    x:  Math.min(...xs2) - NW/2 - padX,
+    y:  Math.min(...ys2) - padY,
+    w:  Math.max(...xs2) - Math.min(...xs2) + NW + padX*2,
+    h:  Math.max(...ys2) - Math.min(...ys2) + NH + padY*2
+  };
+}
+
+// KFC Experience Team box
+const kfcNodes  = allNodes.filter(d => ['Justin Pagalilauan','Judd Knight','Haley Janke',
+  'Market Product Owners','Mark Ma',"TBH – July '26","TBD Program Mgr."].includes(d.data.name));
+const kfcBox    = groupBBox(d => kfcNodes.includes(d), 14, 20);
+
+// Byte Engineering Team box
+const byteLeader = allNodes.find(d => d.data.name === 'Matt McDole');
+function isUnderNode(node, target) {
+  let curr = node;
+  while (curr) { if (curr === target) return true; curr = curr.parent; }
+  return false;
+}
+const byteEngNodes = allNodes.filter(d => isUnderNode(d, byteLeader));
+const byteBox      = groupBBox(d => byteEngNodes.includes(d), 14, 20);
+
+// Shared Support box
+const sharedLeaders = ['Shiv Adhiappan','Dain Davlea'];
+const sharedRoots   = allNodes.filter(d => sharedLeaders.includes(d.data.name));
+const sharedNodes   = allNodes.filter(d => sharedRoots.some(r => isUnderNode(d, r)));
+const sharedBox     = groupBBox(d => sharedNodes.includes(d), 14, 20);
+
+const groupDefs = [
+  { box: kfcBox,    label:'Global KFC Experience Team',    fill:'rgba(198,40,40,0.06)',   stroke:'rgba(198,40,40,0.3)'  },
+  { box: byteBox,   label:'Global KFC Engineering Team',   fill:'rgba(21,101,192,0.06)',  stroke:'rgba(21,101,192,0.3)' },
+  { box: sharedBox, label:'Global KFC Shared Support Team',fill:'rgba(106,27,154,0.06)', stroke:'rgba(106,27,154,0.3)' }
+];
+
+// Insert group rects BEFORE links/nodes (by inserting in the g before everything else)
+const groupG = svg.insert('g', ':first-child').attr('class','groups');
+// Re-apply transform from zoom
+svg.on('zoom.groups', e => groupG.attr('transform', e.transform));
+// Manually set current transform
+const cur = d3.zoomTransform(svg.node());
+groupG.attr('transform', `translate(${cur.x},${cur.y}) scale(${cur.k})`);
+
+// Update groupG on zoom too
+const origZoom = zb.on('zoom');
+zb.on('zoom', function(e) {
+  g.attr('transform', e.transform);
+  groupG.attr('transform', e.transform);
+});
+
+groupDefs.forEach(({ box, label, fill, stroke }) => {
+  if (!box) return;
+  groupG.append('rect')
+    .attr('x', box.x).attr('y', box.y)
+    .attr('width', box.w).attr('height', box.h)
+    .attr('rx', 14).attr('ry', 14)
+    .attr('fill', fill)
+    .attr('stroke', stroke)
+    .attr('stroke-width', 1.5)
+    .attr('stroke-dasharray', '6 3');
+
+  groupG.append('text')
+    .attr('x', box.x + 12)
+    .attr('y', box.y + box.h - 10)
+    .attr('font-size', '9.5px')
+    .attr('font-weight', '700')
+    .attr('fill',   stroke.replace('0.3','0.7'))
+    .attr('letter-spacing', '0.5px')
+    .text(label.toUpperCase());
+});
+
+/* ═══ INITIAL FIT ════════════════════════════ */
+fitView(false);
+
+/* ═══ BUTTONS ════════════════════════════════ */
+document.getElementById('zin') .onclick = () => svg.transition().duration(220).call(zb.scaleBy, 1.35);
+document.getElementById('zout').onclick = () => svg.transition().duration(220).call(zb.scaleBy, 0.74);
+document.getElementById('zfit').onclick = () => fitView(true);
+
+/* ═══ RESIZE ═════════════════════════════════ */
+window.addEventListener('resize', () => {
+  const nw = wrap.clientWidth, nh = wrap.clientHeight;
+  svg.attr('width', nw).attr('height', nh);
+  fitView(false);
+});
+</script>
+</body>
+</html>

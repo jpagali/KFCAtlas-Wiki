@@ -1,6 +1,7 @@
 ---
 title: About Atlas Wiki
 description: What the KFC Atlas Wiki is, why it exists, who it supports, and how it is meant to be used.
+displayed_sidebar: aboutSidebar
 ---
 
 # About Atlas Wiki
@@ -28,6 +29,8 @@ In short, it is meant to make platform knowledge easier to discover, easier to t
 Atlas Wiki was created by **Justin Pagalilauan**.
 
 This page exists to acknowledge the ownership and intentionality behind the work. Atlas Wiki was not assembled as a generic document repository. It was built deliberately to support adoption, enablement, and day-to-day platform confidence for KFC teams.
+
+If you want the team context behind the work, see [Brand Experience Team](/docs/brand-experience-team).
 
 ## Why We Are Building It
 

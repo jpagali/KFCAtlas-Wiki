@@ -653,6 +653,19 @@ const sidebars = {
     },
   ],
 
+  aboutSidebar: [
+    {
+      type: 'category',
+      label: 'About',
+      collapsed: false,
+      items: [
+        'about-knowledge-center',
+        'brand-experience-team',
+        'release-notes/index',
+      ],
+    },
+  ],
+
 };
 
 module.exports = sidebars;

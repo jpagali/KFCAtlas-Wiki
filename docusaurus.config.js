@@ -198,6 +198,7 @@ const config = {
             title: 'About',
             items: [
               { label: 'About Atlas Wiki', to: '/docs/about-knowledge-center' },
+              { label: 'Brand Experience Team', to: '/docs/brand-experience-team' },
               { label: 'Changelog', to: '/docs/release-notes' },
             ],
           },

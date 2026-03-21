@@ -165,25 +165,25 @@
 
 .buttonSecondary {
   color: #fff;
-  background: #6e40c9;
-  border: 1.5px solid #6e40c9;
+  background: #2a3f98;
+  border: 1.5px solid #2a3f98;
   font-weight: 700;
 }
 
 .buttonSecondary:hover {
   color: #fff;
-  box-shadow: 0 12px 24px rgba(110, 64, 201, 0.28);
+  box-shadow: 0 12px 24px rgba(42, 63, 152, 0.28);
 }
 
 .buttonTertiary {
   color: #fff;
-  background: #6e40c9;
-  border: 1px solid #6e40c9;
+  background: #2a3f98;
+  border: 1px solid #2a3f98;
 }
 
 .buttonTertiary:hover {
   color: #fff;
-  box-shadow: 0 12px 24px rgba(110, 64, 201, 0.28);
+  box-shadow: 0 12px 24px rgba(42, 63, 152, 0.28);
 }
 
 .statsBar {
