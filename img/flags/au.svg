@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 48" role="img" aria-labelledby="title">
+  <title>Australia flag</title>
+  <defs>
+    <clipPath id="r">
+      <rect width="64" height="48" rx="6"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#r)">
+    <rect width="64" height="48" fill="#012169"/>
+    <rect width="30" height="22" fill="#012169"/>
+    <path d="M0 0 30 22M30 0 0 22" stroke="#fff" stroke-width="6"/>
+    <path d="M0 0 30 22M30 0 0 22" stroke="#c8102e" stroke-width="3"/>
+    <path d="M15 0v22M0 11h30" stroke="#fff" stroke-width="10"/>
+    <path d="M15 0v22M0 11h30" stroke="#c8102e" stroke-width="6"/>
+    <g fill="#fff">
+      <circle cx="48" cy="12" r="2.3"/>
+      <circle cx="54" cy="22" r="2.7"/>
+      <circle cx="46" cy="31" r="2.3"/>
+      <circle cx="57" cy="36" r="2"/>
+      <circle cx="41" cy="19" r="3"/>
+    </g>
+  </g>
+</svg>

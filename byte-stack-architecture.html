@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Byte Commerce — System Architecture</title>
+  <style>
+    :root {
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --bg: #edf2f8;
+      --surface: rgba(255, 255, 255, 0.88);
+      --surface-strong: #ffffff;
+      --border: rgba(24, 39, 75, 0.14);
+      --text: #162033;
+      --muted: #5f6c84;
+      --shadow: 0 18px 45px rgba(17, 24, 39, 0.12);
+      --panel-shadow: 0 22px 60px rgba(17, 24, 39, 0.18);
+    }
+
+    html[data-theme="dark"] {
+      --bg: #09111f;
+      --surface: rgba(17, 24, 39, 0.9);
+      --surface-strong: #111827;
+      --border: rgba(148, 163, 184, 0.18);
+      --text: #edf2fb;
+      --muted: #99a7bd;
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.34);
+      --panel-shadow: 0 22px 60px rgba(0, 0, 0, 0.42);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background:
+        radial-gradient(circle at top left, rgba(79, 70, 229, 0.08), transparent 22%),
+        radial-gradient(circle at top right, rgba(234, 88, 12, 0.08), transparent 22%),
+        linear-gradient(180deg, var(--bg) 0%, color-mix(in srgb, var(--bg) 94%, #000 6%) 100%);
+      color: var(--text);
+      padding: 28px 22px 34px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 8px;
+      letter-spacing: -0.03em;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0 auto 26px;
+      max-width: 780px;
+      line-height: 1.6;
+    }
+
+    .diagram-wrap {
+      position: relative;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .diagram-wrap.has-pinned-popup {
+      padding-top: var(--pinned-offset, 0px);
+    }
+
+    .diagram {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 1120px;
+      margin: 0 auto;
+      transition: filter 180ms ease;
+    }
+
+    .diagram.dimmed .box:not(.active) {
+      opacity: 0.68;
+    }
+
+    .layer {
+      display: flex;
+      align-items: stretch;
+      position: relative;
+    }
+
+    .layer-label {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #fff;
+      padding: 14px 8px;
+      border-radius: 12px 0 0 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 34px;
+    }
+
+    .layer-content {
+      flex: 1;
+      display: flex;
+      gap: 10px;
+      padding: 14px 16px;
+      border-radius: 0 12px 12px 0;
+      align-items: stretch;
+      border: 1.5px solid transparent;
+      background: var(--surface);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+
+    .connector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 30px;
+      position: relative;
+      margin-left: 34px;
+    }
+
+    .connector::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: color-mix(in srgb, var(--muted) 45%, transparent);
+    }
+
+    .connector-arrow {
+      width: 22px;
+      height: 22px;
+      position: relative;
+      z-index: 1;
+      background: var(--bg);
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .connector-arrow::after {
+      content: "▼";
+      line-height: 1;
+    }
+
+    .box {
+      border-radius: 12px;
+      padding: 13px 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
+      min-width: 0;
+      min-height: 102px;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      transition: transform 140ms ease, box-shadow 140ms ease, opacity 140ms ease, border-color 140ms ease;
+      position: relative;
+    }
+
+    .box:hover,
+    .box:focus-visible,
+    .box.active {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(17, 24, 39, 0.16);
+      outline: none;
+    }
+
+    .box.active {
+      border-color: rgba(255, 255, 255, 0.7);
+    }
+
+    .box-title {
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 5px;
+      letter-spacing: -0.01em;
+    }
+
+    .box-sub {
+      font-size: 10.5px;
+      opacity: 0.88;
+      line-height: 1.45;
+    }
+
+    .layer-frontend .layer-label { background: #4f46e5; }
+    .layer-frontend .layer-content { background: color-mix(in srgb, #ede9fe 86%, var(--surface)); border-color: #c4b5fd; }
+    .layer-frontend .box { background: #4f46e5; color: #fff; }
+
+    .layer-identity .layer-label { background: #0ea5e9; }
+    .layer-identity .layer-content { background: color-mix(in srgb, #e0f2fe 82%, var(--surface)); border-color: #7dd3fc; }
+    .layer-identity .box { background: #0284c7; color: #fff; }
+
+    .layer-localisation .layer-label { background: #0891b2; }
+    .layer-localisation .layer-content { background: color-mix(in srgb, #cffafe 82%, var(--surface)); border-color: #67e8f9; }
+    .layer-localisation .box { background: #0891b2; color: #fff; }
+
+    .layer-catalogue .layer-label { background: #7c3aed; }
+    .layer-catalogue .layer-content { background: color-mix(in srgb, #f3e8ff 82%, var(--surface)); border-color: #d8b4fe; }
+    .layer-catalogue .box { background: #7c3aed; color: #fff; }
+
+    .layer-commerce .layer-label { background: #ea580c; }
+    .layer-commerce .layer-content { background: color-mix(in srgb, #fff7ed 84%, var(--surface)); border-color: #fdba74; }
+    .layer-commerce .box { background: #c2410c; color: #fff; }
+    .layer-commerce .box.accent { background: #ea580c; }
+
+    .layer-payments .layer-label { background: #16a34a; }
+    .layer-payments .layer-content { background: color-mix(in srgb, #f0fdf4 84%, var(--surface)); border-color: #86efac; }
+    .layer-payments .box { background: #15803d; color: #fff; }
+
+    .layer-promotions .layer-label { background: #ca8a04; }
+    .layer-promotions .layer-content { background: color-mix(in srgb, #fefce8 84%, var(--surface)); border-color: #fde047; }
+    .layer-promotions .box { background: #a16207; color: #fff; }
+
+    .layer-fulfilment .layer-label { background: #be123c; }
+    .layer-fulfilment .layer-content { background: color-mix(in srgb, #fff1f2 84%, var(--surface)); border-color: #fda4af; }
+    .layer-fulfilment .box { background: #be123c; color: #fff; }
+
+    .layer-observability .layer-label { background: #475569; }
+    .layer-observability .layer-content { background: color-mix(in srgb, #f1f5f9 84%, var(--surface)); border-color: #cbd5e1; }
+    .layer-observability .box { background: #475569; color: #fff; }
+
+    .flow-arrow {
+      display: flex;
+      align-items: center;
+      color: #ea580c;
+      font-size: 18px;
+      padding: 0 2px;
+      flex-shrink: 0;
+    }
+
+    .legend {
+      max-width: 1120px;
+      margin: 24px auto 0;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 20px;
+    }
+
+    .info-pop {
+      position: absolute;
+      width: min(380px, calc(100vw - 32px));
+      background: var(--surface-strong);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--panel-shadow);
+      padding: 18px;
+      display: none;
+      z-index: 20;
+    }
+
+    .info-pop.visible {
+      display: block;
+    }
+
+    .info-pop.pinned {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 1120px;
+      margin: 0;
+      z-index: 40;
+    }
+
+    .info-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .info-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .info-title {
+      font-size: 22px;
+      line-height: 1.1;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .info-summary {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+
+    .info-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .info-block {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 11px 12px;
+      background: color-mix(in srgb, var(--surface-strong) 88%, var(--bg) 12%);
+    }
+
+    .info-block strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 5px;
+      color: var(--muted);
+    }
+
+    .info-block p {
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--text);
+    }
+
+    .info-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+
+    .info-btn {
+      appearance: none;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      background: color-mix(in srgb, var(--surface-strong) 88%, var(--bg) 12%);
+      color: var(--text);
+    }
+
+    .info-btn.primary {
+      background: #111827;
+      color: #f8fafc;
+      border-color: #111827;
+    }
+
+    .info-btn.close {
+      display: none;
+    }
+
+    .info-pop.pinned .info-btn.close {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .info-pop.pinned .info-btn.primary {
+      background: color-mix(in srgb, var(--surface-strong) 88%, var(--bg) 12%);
+      color: var(--text);
+      border-color: var(--border);
+    }
+
+    .info-meta {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    @media (max-width: 1180px) {
+      .diagram-wrap {
+        display: grid;
+        gap: 18px;
+      }
+
+      .info-pop,
+      .info-pop.pinned {
+        position: sticky;
+        top: auto;
+        left: auto;
+        transform: none;
+        inset: auto;
+        width: 100%;
+        max-width: 1120px;
+        margin: 0 auto;
+        order: -1;
+      }
+    }
+
+    @media (max-width: 860px) {
+      body {
+        padding: 18px 12px 24px;
+      }
+
+      .layer-content {
+        flex-direction: column;
+      }
+
+      .flow-arrow {
+        justify-content: center;
+        transform: rotate(90deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1 id="pageTitle">Byte Commerce — System Architecture</h1>
+  <p id="pageSubtitle" class="subtitle">Hover any system block for a readable explainer. Click <strong>Pin this note</strong> to keep it open in the sticky layout while you explore, then use <strong>Close</strong> when you are done.</p>
+
+  <div class="diagram-wrap">
+    <aside id="infoPop" class="info-pop" aria-live="polite">
+      <div class="info-top">
+        <div>
+          <div id="infoEyebrow" class="info-eyebrow">Frontend</div>
+          <div id="infoTitle" class="info-title">Helium App</div>
+        </div>
+      </div>
+      <p id="infoSummary" class="info-summary">Web and mobile front-end where the customer browses, configures, and checks out.</p>
+      <div class="info-grid">
+        <div class="info-block">
+          <strong id="labelOwns">Owns</strong>
+          <p id="infoOwns">Customer-facing presentation and intent capture.</p>
+        </div>
+        <div class="info-block">
+          <strong id="labelConsumes">Consumes</strong>
+          <p id="infoConsumes">Identity, menu, pricing, promo, payment, and fulfilment data from downstream services.</p>
+        </div>
+        <div class="info-block">
+          <strong id="labelOutputs">Sends / triggers</strong>
+          <p id="infoOutputs">Cart actions, checkout actions, payment intent, and order tracking requests.</p>
+        </div>
+        <div class="info-block">
+          <strong id="labelWhy">Why it matters</strong>
+          <p id="infoWhy">This is the surface users blame first, even when the real issue is deeper in the stack.</p>
+        </div>
+      </div>
+      <div class="info-actions">
+        <button id="pinBtn" class="info-btn primary" type="button">Pin this note</button>
+        <button id="closeBtn" class="info-btn close" type="button">Close</button>
+      </div>
+      <div id="infoMeta" class="info-meta">Hover-based preview</div>
+    </aside>
+
+    <div id="diagram" class="diagram">
+      <div class="layer layer-frontend">
+        <div class="layer-label">Frontend</div>
+        <div class="layer-content">
+          <button class="box" data-layer="Frontend" data-title="Helium App" data-summary="The customer-facing web and mobile front-end that turns browsing and checkout intent into service calls." data-owns="UI rendering, localisation surfaces, cart interactions, checkout flow, tender selection, loyalty moments, donations, and order tracking UI." data-consumes="Identity state, context session, menu projection, pricing, promo eligibility, payment outcomes, and fulfilment statuses." data-outputs="Add-to-cart requests, checkout requests, payment intent handoff, promo actions, and order tracking lookups." data-why="This is where customers experience the platform, but it is not the source of truth for prices, payment settlement, or order state." style="flex: 2;">
+            <div class="box-title">Helium App</div>
+            <div class="box-sub">Web &amp; mobile front-end · Localisation · Menu PLP/PDP · Cart · Checkout · Delivery &amp; Collection · Guest Checkout · Card / Voucher / Mixed Tenders · Promos · Loyalty Onboarding · Donations &amp; Tips · Order Tracking</div>
+          </button>
+        </div>
+      </div>
+
+      <div class="connector"><div class="connector-arrow"></div></div>
+
+      <div class="layer layer-identity">
+        <div class="layer-label">Identity</div>
+        <div class="layer-content">
+          <button class="box" data-layer="Identity" data-title="Identity / SSO Service" data-summary="Authenticates the customer and manages session lifecycle and profile-linked access." data-owns="Email and OTP sign-in, social sign-in, session lifecycle, and profile-level identity concerns." data-consumes="Credentials, token exchanges, and account recovery requests." data-outputs="Authenticated customer state back into Helium and downstream services." data-why="Helium shows the sign-in journey, but the real auth truth usually lives here.">
+            <div class="box-title">Identity / SSO Service</div>
+            <div class="box-sub">Email/OTP · Google · Apple Sign-In · Session lifecycle · AuthN · Profile</div>
+          </button>
+          <button class="box" data-layer="Identity" data-title="CMP / Legal CMS" data-summary="Stores policy text, consent content, and signed document versions by market and locale." data-owns="Consent records, privacy document versions, and locale-aware legal copy publishing." data-consumes="Legal team updates and policy publication workflows." data-outputs="Consent surfaces and legal content rendered back in Helium." data-why="If a consent or privacy screen looks wrong, the content source is often here rather than the front-end implementation.">
+            <div class="box-title">CMP / Legal CMS</div>
+            <div class="box-sub">Consent surfaces · Privacy docs · Signed doc versions · Versioned by locale</div>
+          </button>
+        </div>
+      </div>
+
+      <div class="connector"><div class="connector-arrow"></div></div>
+
+      <div class="layer layer-localisation">
+        <div class="layer-label">Localisation</div>
+        <div class="layer-content">
+          <button class="box" data-layer="Localisation" data-title="Context Service" data-summary="Builds the shopping context that decides market, locale, store, channel, and occasion." data-owns="Market and locale session state plus the ordering mode context used by the rest of the platform." data-consumes="Customer selections, device defaults, and routing context." data-outputs="Resolved context passed into menu projection, pricing, and eligibility services." data-why="A bad context decision makes many downstream systems look wrong even when they are behaving correctly for the context they were given.">
+            <div class="box-title">Context Service</div>
+            <div class="box-sub">Market / locale selection · Delivery &amp; Collection mode · Context session · Resolves channel, store, occasion</div>
+          </button>
+          <button class="box" data-layer="Localisation" data-title="Geo / Locator" data-summary="Figures out which store or delivery area applies to the customer’s location." data-owns="Coverage checks, nearest-store lookup, locator search, and mapping decisions." data-consumes="Address input, device location, and market geography data." data-outputs="Available store and fulfilment options back into context and Helium." data-why="Store and fulfilment issues often start here before they ever become a cart or checkout issue.">
+            <div class="box-title">Geo / Locator</div>
+            <div class="box-sub">Coverage check · Nearest store resolution · Maps / GeoIP · Store locator search</div>
+          </button>
+        </div>
+      </div>
+
+      <div class="connector"><div class="connector-arrow"></div></div>
+
+      <div class="layer layer-catalogue">
+        <div class="layer-label">Catalogue</div>
+        <div class="layer-content">
+          <button class="box" data-layer="Catalogue" data-title="Menu Service" data-summary="Provides the market-aware product catalogue and product detail structure used across browse and cart flows." data-owns="Category and item feed, modifiers, and effective menu projection inputs." data-consumes="Published menu artifacts, store/channel context, and menu assignment configuration." data-outputs="PLP, PDP, and modifier data returned into Helium and backend services." data-why="People often attribute menu defects to Helium when the actual product or modifier source is here.">
+            <div class="box-title">Menu Service</div>
+            <div class="box-sub">PLP category/item feed · PDP item detail &amp; modifiers · Market/menu graph · Menu Projection (effective menu per store/channel/occasion)</div>
+          </button>
+          <button class="box" data-layer="Catalogue" data-title="CMS / CDN" data-summary="Serves the richer marketing and brand assets that complement menu and legal experiences." data-owns="Images, rich content, legal copy fragments, and CDN-delivered brand assets." data-consumes="Content publication workflows from brand, content, or legal teams." data-outputs="Media and authored content rendered in the front-end." data-why="If an image or rich content block is stale, the source is usually here instead of the product feed itself.">
+            <div class="box-title">CMS / CDN</div>
+            <div class="box-sub">PDP rich content · Images · Legal copy · Brand assets · CDN-served</div>
+          </button>
+        </div>
+      </div>
+
+      <div class="connector"><div class="connector-arrow"></div></div>
+
+      <div class="layer layer-commerce">
+        <div class="layer-label">Commerce Backend</div>
+        <div class="layer-content">
+          <button class="box accent" data-layer="Commerce Backend" data-title="Cart Service" data-summary="Owns cart state and item-level operations before checkout turns a cart into an order." data-owns="Create, update, retrieve, and persist carts plus orderability checks and pricing requests." data-consumes="Helium actions, context, menu data, and pricing inputs." data-outputs="Updated cart state into checkout and front-end rendering." data-why="This is the first backend system customers feel when add-to-cart or cart refresh goes wrong.">
+            <div class="box-title">Cart Service</div>
+            <div class="box-sub">Create / update / retrieve cart · Item operations · Pricing requests · Orderability checks · Conflict resolution · Cart persistence</div>
+          </button>
+          <div class="flow-arrow">→</div>
+          <button class="box" data-layer="Commerce Backend" data-title="Checkout Orchestrator" data-summary="Bridges the cart world into the order world by validating readiness and coordinating the final transaction path." data-owns="Cart validation, pricing lock, payment coordination, and order creation handoff." data-consumes="Validated cart state, customer details, fulfilment selections, and tender inputs." data-outputs="Order creation requests plus payment and fulfilment orchestration events." data-why="This is the line between browsing intent and a committed commercial transaction.">
+            <div class="box-title">Checkout Orchestrator</div>
+            <div class="box-sub">Validate cart · Lock pricing · Coordinate payment domain · Create internal order record · Bridges cart → order world</div>
+          </button>
+          <div class="flow-arrow">→</div>
+          <button class="box" data-layer="Commerce Backend" data-title="Order Service" data-summary="Creates the order record and manages the lifecycle of digital orders after checkout succeeds." data-owns="Order persistence and lifecycle states such as created, confirmed, or cancelled." data-consumes="Checkout-confirmed payloads, payment outcomes, and fulfilment events." data-outputs="Authoritative order state used by support, history, and downstream integrations." data-why="If one downstream system disagrees with another, this is often the order system of record to inspect first.">
+            <div class="box-title">Order Service</div>
+            <div class="box-sub">Persist orders · Manage order lifecycle (created → confirmed → cancelled) · System of record for digital orders</div>
+          </button>
+          <div class="flow-arrow">→</div>
+          <button class="box" data-layer="Commerce Backend" data-title="Order Query / History" data-summary="Provides read-optimised order lookups for customers and support experiences." data-owns="Customer history, order-detail lookup, and read-model oriented order views." data-consumes="Order lifecycle updates and persisted order data." data-outputs="Fast order retrieval for front-end history and operational support journeys." data-why="This makes the order history experience feel responsive without overloading the transactional write path.">
+            <div class="box-title">Order Query / History</div>
+            <div class="box-sub">Read-optimised views · Customer order history · Order detail lookup · Logical read model</div>
+          </button>
+          <div style="width: 10px; flex-shrink: 0;"></div>
+          <button class="box" style="background:#78350f; border: 1.5px dashed #fbbf24;" data-layer="Cross-cutting Commerce" data-title="Context Resolver" data-summary="Normalises the context needed by pricing, menu projection, and eligibility logic across the backend." data-owns="Sales-channel, store, locale, and occasion resolution for backend decisions." data-consumes="Context signals from localisation and ordering flows." data-outputs="Shared resolution inputs into menu, pricing, and promotion decisions." data-why="This is cross-cutting glue. If it resolves the wrong store or channel, many systems drift together.">
+            <div class="box-title">Context Resolver</div>
+            <div class="box-sub">Resolves sales channel, store, locale &amp; occasion · Feeds menu projection, pricing &amp; eligibility rules</div>
+          </button>
+          <div style="width: 6px; flex-shrink: 0;"></div>
+          <button class="box" style="background:#78350f; border: 1.5px dashed #fbbf24;" data-layer="Cross-cutting Commerce" data-title="Pricing & Tax Engine" data-summary="Calculates line-level and cart-level totals and locks the final amount used at checkout." data-owns="Discounts, fees, taxes, and final pricing calculations." data-consumes="Menu data, context, market rules, and promo effects." data-outputs="Pricing responses to cart and locked totals for checkout." data-why="A lot of apparent front-end ‘price bugs’ are really the result of rules or configuration here.">
+            <div class="box-title">Pricing &amp; Tax Engine</div>
+            <div class="box-sub">Line-level &amp; cart-level pricing · Discounts · Fees · Tax calculation · Pricing lock at checkout</div>
+          </button>
+        </div>
+      </div>
+
+      <div class="connector"><div class="connector-arrow"></div></div>
+
+      <div class="layer layer-payments">
+        <div class="layer-label">Payments</div>
+        <div class="layer-content">
+          <button class="box" data-layer="Payments" data-title="PSP / Payment Gateway" data-summary="Handles the actual payment rails behind tender selection and payment orchestration." data-owns="Payment API, auth, capture, and settlement coordination for card transactions." data-consumes="Payment intents and payment routing requests from the checkout and payment domain." data-outputs="Authorisation and capture results back into the order path." data-why="Helium collects the customer’s choice, but this is where the real transaction happens.">
+            <div class="box-title">PSP / Payment Gateway</div>
+            <div class="box-sub">Card payment intent &amp; capture · Payment API · Auth &amp; settlement coordination</div>
+          </button>
+          <button class="box" data-layer="Payments" data-title="Voucher & Gift Card Service" data-summary="Supports voucher redemption, gift card balance flows, and mixed tender scenarios." data-owns="Voucher redemption, balance checks, mixed-tender combinations, and related refund logic." data-consumes="Tender selections and voucher or gift-card identifiers." data-outputs="Redemption results and balance effects back into the checkout process." data-why="This is what keeps non-card tender complexity out of the main front-end flow.">
+            <div class="box-title">Voucher &amp; Gift Card Service</div>
+            <div class="box-sub">Voucher redemption · GC balance · Mixed tender support · Refunds</div>
+          </button>
+        </div>
+      </div>
+
+      <div class="connector"><div class="connector-arrow"></div></div>
+
+      <div class="layer layer-promotions">
+        <div class="layer-label">Promotions</div>
+        <div class="layer-content">
+          <button class="box" data-layer="Promotions" data-title="Promo Engine" data-summary="Evaluates whether an offer applies and computes the benefit that should be used in pricing." data-owns="Eligibility logic, promo application and removal, and benefit evaluation." data-consumes="Cart, customer, market, and programme rules." data-outputs="Promo outcomes that influence front-end display and backend totals." data-why="A missing or invalid offer is often a rules issue here, not a rendering issue in Helium.">
+            <div class="box-title">Promo Engine</div>
+            <div class="box-sub">Promo eligibility &amp; exposure · Promo application / removal · Benefit evaluation · Programme rule execution</div>
+          </button>
+          <button class="box" data-layer="Promotions" data-title="Loyalty Service / CRM" data-summary="Tracks loyalty enrolment, rewards, preferences, and campaign-oriented customer data." data-owns="Loyalty onboarding, rewards state, preference records, and campaign-linked customer attributes." data-consumes="Customer identity, engagement signals, and programme configuration." data-outputs="Rewards, preference state, and campaign context back into Helium and promo flows." data-why="Customers see loyalty in the UI, but the rewards truth usually sits here.">
+            <div class="box-title">Loyalty Service / CRM</div>
+            <div class="box-sub">Loyalty onboarding · Promo &amp; rewards programme stores · Customer preferences · Abandonment &amp; engagement campaigns</div>
+          </button>
+        </div>
+      </div>
+
+      <div class="connector"><div class="connector-arrow"></div></div>
+
+      <div class="layer layer-fulfilment">
+        <div class="layer-label">Fulfilment</div>
+        <div class="layer-content">
+          <button class="box" data-layer="Fulfilment" data-title="POS" data-summary="Receives digital orders in-store and provides order-state feedback into the backend." data-owns="Store-side order ingestion for supported POS-connected flows." data-consumes="Confirmed digital orders from the commerce backend." data-outputs="POS order status and acknowledgements back to BCOM." data-why="This is the operational handoff where a digital order becomes a store workload.">
+            <div class="box-title">POS</div>
+            <div class="box-sub">In-store point-of-sale · Order injection · POS Order API · Order status events back to BCOM</div>
+          </button>
+          <button class="box" data-layer="Fulfilment" data-title="KDS" data-summary="Drives kitchen-side execution signals and status changes once the order is accepted." data-owns="Kitchen workflow status and preparation progress events." data-consumes="Operational order payloads from store systems." data-outputs="Accepted, in-progress, and ready-style fulfilment updates." data-why="This is often where internal operational progress becomes customer-visible order tracking.">
+            <div class="box-title">KDS</div>
+            <div class="box-sub">Kitchen Display System · KDS Order Event stream · Fulfilment status updates (accepted → in-progress → ready)</div>
+          </button>
+          <button class="box" data-layer="Fulfilment" data-title="Aggregator Gateways" data-summary="Represents external delivery marketplaces and their channel-specific integration paths." data-owns="External order channel integration and status relay for marketplace orders." data-consumes="Aggregator order payloads and channel-specific status events." data-outputs="Normalised order traffic and relay statuses into backend systems." data-why="Marketplace ordering follows a different path than first-party Helium ordering even if the customer eventually sees the same brand.">
+            <div class="box-title">Aggregator Gateways</div>
+            <div class="box-sub">Third-party delivery aggregators · External channel integration · Aggregator Order API · Order status relay</div>
+          </button>
+          <button class="box" data-layer="Fulfilment" data-title="Order Tracking" data-summary="Feeds customer-visible order progress based on fulfilment and delivery status updates." data-owns="Delivery or fulfilment status retrieval used by the customer-facing tracking experience." data-consumes="Order and fulfilment events from operational systems." data-outputs="Tracking updates displayed back in Helium." data-why="Tracking quality shapes customer trust even after checkout is complete.">
+            <div class="box-title">Order Tracking</div>
+            <div class="box-sub">Delivery order status retrieval · Real-time tracking surface · Status events consumed by Helium front-end</div>
+          </button>
+        </div>
+      </div>
+
+      <div class="connector"><div class="connector-arrow"></div></div>
+
+      <div class="layer layer-observability">
+        <div class="layer-label">Observability</div>
+        <div class="layer-content">
+          <button class="box" data-layer="Observability" data-title="Telemetry & Logging" data-summary="Captures the operational signals used to detect, debug, and measure system health." data-owns="Metrics, traces, error logs, correlation IDs, and service-level health signals." data-consumes="Events and instrumentation from across Helium and backend services." data-outputs="Operational visibility for incident response and engineering diagnosis." data-why="Without this layer, teams cannot explain why a journey failed or where latency is building.">
+            <div class="box-title">Telemetry &amp; Logging</div>
+            <div class="box-sub">Metrics · Traces · Structured error logs · Correlation IDs · KPIs (cart abandonment, error rates, latency)</div>
+          </button>
+          <button class="box" data-layer="Observability" data-title="Data / Analytics" data-summary="Provides analytics-grade event analysis, conversion reporting, and experience-level monitoring." data-owns="RUM, APM, telemetry event modelling, and funnel-level KPI reporting." data-consumes="Operational and behavioural events from front-end and backend journeys." data-outputs="Business and product insight plus experience monitoring." data-why="This is where the platform turns from ‘working’ into ‘understood.’">
+            <div class="box-title">Data / Analytics</div>
+            <div class="box-sub">RUM (Real User Monitoring) · APM · Telemetry events · Funnel &amp; conversion KPIs · Health endpoints</div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#4f46e5;"></div> Frontend (Helium)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#0284c7;"></div> Identity &amp; Consent</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#0891b2;"></div> Localisation</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#7c3aed;"></div> Catalogue</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#ea580c;"></div> Commerce Backend</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#15803d;"></div> Payments</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#a16207;"></div> Promotions &amp; Loyalty</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#be123c;"></div> Fulfilment</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#475569;"></div> Observability</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#78350f; border: 1.5px dashed #fbbf24;"></div> Cross-cutting (Context &amp; Pricing)</div>
+  </div>
+
+  <p id="footerNote" class="footer-note">Source style based on the scratch architecture diagram. Interaction model: hover to preview, pin to keep open, close to release.</p>
+
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const initialTheme = params.get("theme");
+      const initialLocale = params.get("locale");
+      if (initialTheme === "dark" || initialTheme === "light") {
+        document.documentElement.setAttribute("data-theme", initialTheme);
+      }
+
+      const diagram = document.getElementById("diagram");
+      const diagramWrap = document.querySelector(".diagram-wrap");
+      const popup = document.getElementById("infoPop");
+      const pinBtn = document.getElementById("pinBtn");
+      const closeBtn = document.getElementById("closeBtn");
+      const fields = {
+        eyebrow: document.getElementById("infoEyebrow"),
+        title: document.getElementById("infoTitle"),
+        summary: document.getElementById("infoSummary"),
+        owns: document.getElementById("infoOwns"),
+        consumes: document.getElementById("infoConsumes"),
+        outputs: document.getElementById("infoOutputs"),
+        why: document.getElementById("infoWhy"),
+        meta: document.getElementById("infoMeta")
+      };
+      const uiLabels = {
+        pageTitle: document.getElementById("pageTitle"),
+        pageSubtitle: document.getElementById("pageSubtitle"),
+        labelOwns: document.getElementById("labelOwns"),
+        labelConsumes: document.getElementById("labelConsumes"),
+        labelOutputs: document.getElementById("labelOutputs"),
+        labelWhy: document.getElementById("labelWhy"),
+        pinBtn: document.getElementById("pinBtn"),
+        closeBtn: document.getElementById("closeBtn"),
+        footerNote: document.getElementById("footerNote")
+      };
+      const layerLabels = Array.from(document.querySelectorAll(".layer-label"));
+      const legendItems = Array.from(document.querySelectorAll(".legend-item"));
+
+      const boxes = Array.from(document.querySelectorAll(".box"));
+      let activeBox = null;
+      let pinnedBox = null;
+      let popupHover = false;
+      let lastReportedHeight = 0;
+      let currentLocale = initialLocale === "ja-JP" ? "ja-JP" : "en-US";
+
+      const localeCopy = {
+        "en-US": {
+          pageTitle: "Byte Commerce — System Architecture",
+          pageSubtitle:
+            'Hover any system block for a readable explainer. Click <strong>Pin this note</strong> to keep it open in the sticky layout while you explore, then use <strong>Close</strong> when you are done.',
+          labelOwns: "Owns",
+          labelConsumes: "Consumes",
+          labelOutputs: "Sends / triggers",
+          labelWhy: "Why it matters",
+          pinBtn: "Pin this note",
+          closeBtn: "Close",
+          footerNote:
+            "Source style based on the scratch architecture diagram. Interaction model: hover to preview, pin to keep open, close to release.",
+          metaPinned: "Pinned note",
+          metaHover: "Hover-based preview"
+        },
+        "ja-JP": {
+          pageTitle: "Byte Commerce - システムアーキテクチャ",
+          pageSubtitle:
+            '各システムブロックにホバーすると説明を読めます。<strong>このノートを固定</strong> をクリックすると、探索中も固定レイアウトで開いたままにできます。終了したら <strong>閉じる</strong> を使ってください。',
+          labelOwns: "担うこと",
+          labelConsumes: "受け取るもの",
+          labelOutputs: "送信 / 発火するもの",
+          labelWhy: "重要な理由",
+          pinBtn: "このノートを固定",
+          closeBtn: "閉じる",
+          footerNote:
+            "表示スタイルは scratch 側のアーキテクチャ図をベースにしています。操作モデルは、ホバーでプレビュー、固定で保持、閉じるで解除です。",
+          metaPinned: "固定中のノート",
+          metaHover: "ホバープレビュー"
+        }
+      };
+
+      const boxTranslations = {
+        "Helium App": {
+          "ja-JP": {
+            layer: "フロントエンド",
+            title: "Helium アプリ",
+            sub: "Web / モバイル フロントエンド · ローカライズ · メニュー PLP / PDP · カート · チェックアウト · デリバリー / 受取 · ゲストチェックアウト · カード / バウチャー / 混合決済 · プロモ · ロイヤルティ導線 · 寄付 / チップ · 注文追跡",
+            summary: "顧客向けの Web / モバイル フロントエンドで、閲覧やチェックアウトの意図を各サービス呼び出しへ変換します。",
+            owns: "UI 描画、ローカライズ表示、カート操作、チェックアウト導線、支払い手段選択、ロイヤルティ導線、寄付、注文追跡 UI。",
+            consumes: "認証状態、コンテキストセッション、メニュー投影、価格、プロモーション適用可否、決済結果、フルフィルメント状態。",
+            outputs: "カート追加、チェックアウト要求、決済意図の引き渡し、プロモーション操作、注文追跡参照。",
+            why: "顧客が最初に触れる面ですが、価格、決済確定、注文状態の真実源ではありません。"
+          }
+        },
+        "Identity / SSO Service": {
+          "ja-JP": {
+            layer: "認証",
+            title: "Identity / SSO サービス",
+            sub: "メール / OTP · Google · Apple Sign-In · セッション管理 · 認証 · プロフィール",
+            summary: "顧客認証を行い、セッションライフサイクルとプロフィールに紐づくアクセスを管理します。",
+            owns: "メール / OTP サインイン、ソーシャルログイン、セッション管理、プロフィール単位の ID 管理。",
+            consumes: "認証情報、トークン交換、アカウント復旧リクエスト。",
+            outputs: "認証済み顧客状態を Helium と下流サービスへ返します。",
+            why: "サインイン UI は Helium に見えますが、認証の真実源は通常ここにあります。"
+          }
+        },
+        "CMP / Legal CMS": {
+          "ja-JP": {
+            layer: "認証",
+            title: "CMP / Legal CMS",
+            sub: "同意画面 · プライバシー文書 · 署名済み文書バージョン · ロケール別管理",
+            summary: "ポリシー文言、同意コンテンツ、署名済み文書バージョンを市場 / ロケール単位で保持します。",
+            owns: "同意記録、プライバシー文書のバージョン、ロケール対応の法務文言公開。",
+            consumes: "Legal チームによる更新と公開フロー。",
+            outputs: "同意 UI と法務コンテンツを Helium へ返します。",
+            why: "同意やプライバシー画面の内容が誤っている場合、原因はフロント実装ではなくここにあることが多いです。"
+          }
+        },
+        "Context Service": {
+          "ja-JP": {
+            layer: "ローカライズ",
+            title: "Context サービス",
+            sub: "市場 / ロケール選択 · デリバリー / 受取モード · コンテキストセッション · チャネル / 店舗 / オケージョン解決",
+            summary: "市場、ロケール、店舗、チャネル、オケージョンを決める購買コンテキストを構築します。",
+            owns: "市場 / ロケールのセッション状態と、他機能が参照する注文モードコンテキスト。",
+            consumes: "顧客選択、端末デフォルト、ルーティング情報。",
+            outputs: "解決済みコンテキストをメニュー投影、価格、適用可否サービスへ渡します。",
+            why: "ここで誤ったコンテキストを解決すると、下流システムが正しく動いていても全体が壊れて見えます。"
+          }
+        },
+        "Geo / Locator": {
+          "ja-JP": {
+            layer: "ローカライズ",
+            title: "Geo / Locator",
+            sub: "配達範囲確認 · 最寄り店舗判定 · Maps / GeoIP · 店舗検索",
+            summary: "顧客位置に対してどの店舗や配達エリアが有効かを判断します。",
+            owns: "配達範囲判定、最寄り店舗検索、地図判断。",
+            consumes: "住所入力、端末位置、地理データ。",
+            outputs: "利用可能な店舗とフルフィルメント候補を Context と Helium に返します。",
+            why: "店舗や受取方式の問題は、カートやチェックアウトより前にここから始まることがあります。"
+          }
+        },
+        "Menu Service": {
+          "ja-JP": {
+            layer: "カタログ",
+            title: "Menu サービス",
+            sub: "PLP カテゴリ / 商品フィード · PDP 商品詳細 / モディファイア · 市場 / メニューグラフ · Menu Projection",
+            summary: "市場に応じた商品カタログと商品詳細構造を提供します。",
+            owns: "カテゴリ / 商品フィード、モディファイア、有効メニュー投影入力。",
+            consumes: "公開済みメニュー、店舗 / チャネルコンテキスト、メニュー割当設定。",
+            outputs: "PLP、PDP、モディファイア情報を Helium とバックエンドへ返します。",
+            why: "メニュー不具合は Helium ではなく、ここが原因であることが多いです。"
+          }
+        },
+        "CMS / CDN": {
+          "ja-JP": {
+            layer: "カタログ",
+            title: "CMS / CDN",
+            sub: "PDP リッチコンテンツ · 画像 · 法務文言 · ブランドアセット · CDN 配信",
+            summary: "メニューや法務体験を補完するリッチコンテンツやブランド資産を配信します。",
+            owns: "画像、リッチコンテンツ、法務文言断片、CDN 配信アセット。",
+            consumes: "ブランド / コンテンツ / Legal チームの公開フロー。",
+            outputs: "メディアや作成済みコンテンツをフロントエンドへ返します。",
+            why: "画像やリッチコンテンツが古い場合、原因は商品フィードよりここにあることが多いです。"
+          }
+        },
+        "Cart Service": {
+          "ja-JP": {
+            layer: "コマースバックエンド",
+            title: "Cart サービス",
+            sub: "カート作成 / 更新 / 取得 · 商品操作 · 価格リクエスト · 注文可否判定 · 競合解決 · カート永続化",
+            summary: "チェックアウトで注文になる前のカート状態と商品単位の操作を管理します。",
+            owns: "カートの作成、更新、取得、永続化、および注文可否判定と価格確認。",
+            consumes: "Helium の操作、コンテキスト、メニューデータ、価格入力。",
+            outputs: "更新済みカート状態をチェックアウトとフロントエンドへ返します。",
+            why: "カート追加や更新が壊れたとき、顧客が最初に影響を感じるバックエンドです。"
+          }
+        },
+        "Checkout Orchestrator": {
+          "ja-JP": {
+            layer: "コマースバックエンド",
+            title: "Checkout Orchestrator",
+            sub: "カート検証 · 価格ロック · 決済ドメイン調整 · 内部注文レコード作成 · カートから注文への橋渡し",
+            summary: "カートの世界から注文の世界へ橋渡しをし、最終取引経路を調整します。",
+            owns: "カート検証、価格ロック、決済調整、注文生成への引き渡し。",
+            consumes: "検証済みカート、顧客情報、フルフィルメント選択、支払い入力。",
+            outputs: "注文作成要求と決済 / フルフィルメントのオーケストレーションイベント。",
+            why: "閲覧意図が商取引として確定する境界線です。"
+          }
+        },
+        "Order Service": {
+          "ja-JP": {
+            layer: "コマースバックエンド",
+            title: "Order サービス",
+            sub: "注文永続化 · 注文ライフサイクル管理（created → confirmed → cancelled） · デジタル注文の真実源",
+            summary: "注文レコードを作成し、注文確定後のライフサイクルを管理します。",
+            owns: "注文の永続化と created / confirmed / cancelled などの状態管理。",
+            consumes: "チェックアウト確定ペイロード、決済結果、フルフィルメントイベント。",
+            outputs: "サポート、履歴、下流連携が参照する正式な注文状態。",
+            why: "システム間で注文状態が食い違うとき、まずここが記録の真実源になります。"
+          }
+        },
+        "Order Query / History": {
+          "ja-JP": {
+            layer: "コマースバックエンド",
+            title: "Order Query / 履歴",
+            sub: "読取最適化ビュー · 顧客注文履歴 · 注文詳細参照 · 論理リードモデル",
+            summary: "顧客やサポート向けに最適化された注文参照ビューを提供します。",
+            owns: "顧客履歴、注文詳細参照、リードモデル向け注文ビュー。",
+            consumes: "注文ライフサイクル更新と永続化済み注文データ。",
+            outputs: "履歴画面やサポート導線向けの高速な注文参照。",
+            why: "トランザクション書込み経路を圧迫せずに履歴体験を高速化します。"
+          }
+        },
+        "Context Resolver": {
+          "ja-JP": {
+            layer: "コマース横断",
+            title: "Context Resolver",
+            sub: "販売チャネル、店舗、ロケール、オケージョンを解決 · メニュー投影、価格、適用可否ルールへ供給",
+            summary: "価格、メニュー投影、適用可否ロジックに必要なコンテキストを正規化します。",
+            owns: "販売チャネル、店舗、ロケール、オケージョンのバックエンド向け解決。",
+            consumes: "ローカライズや注文導線からのコンテキストシグナル。",
+            outputs: "メニュー、価格、プロモーション判定に共通入力を渡します。",
+            why: "ここで誤った店舗やチャネルを解決すると、多くのシステムが同時にずれます。"
+          }
+        },
+        "Pricing & Tax Engine": {
+          "ja-JP": {
+            layer: "コマース横断",
+            title: "Pricing & Tax Engine",
+            sub: "明細 / カート単位の価格計算 · 割引 · 手数料 · 税計算 · チェックアウト時の価格ロック",
+            summary: "明細単位とカート単位の合計を計算し、チェックアウト時の最終金額を固定します。",
+            owns: "割引、手数料、税、最終価格計算。",
+            consumes: "メニューデータ、コンテキスト、市場ルール、プロモーション効果。",
+            outputs: "カート向け価格応答とチェックアウト向けロック済み合計。",
+            why: "見た目上の価格バグの多くは、フロントではなくここや設定に原因があります。"
+          }
+        },
+        "PSP / Payment Gateway": {
+          "ja-JP": {
+            layer: "決済",
+            title: "PSP / Payment Gateway",
+            sub: "カード決済意図と売上確定 · Payment API · 認証と精算調整",
+            summary: "支払い手段選択の裏で実際の決済レールを処理します。",
+            owns: "カード取引の Payment API、認証、売上確定、精算調整。",
+            consumes: "チェックアウト / 決済ドメインからの payment intent とルーティング要求。",
+            outputs: "認証と売上確定結果を注文経路へ返します。",
+            why: "顧客の選択は Helium 上ですが、実際の取引はここで行われます。"
+          }
+        },
+        "Voucher & Gift Card Service": {
+          "ja-JP": {
+            layer: "決済",
+            title: "Voucher & Gift Card サービス",
+            sub: "バウチャー利用 · GC 残高 · 混合決済サポート · 返金",
+            summary: "バウチャー利用、ギフトカード残高、混合決済を支えます。",
+            owns: "バウチャー利用、残高確認、混合決済、関連返金ロジック。",
+            consumes: "支払い手段選択とバウチャー / ギフトカード識別子。",
+            outputs: "利用結果と残高影響をチェックアウトへ返します。",
+            why: "カード以外の複雑さをフロントの主導線から切り離します。"
+          }
+        },
+        "Promo Engine": {
+          "ja-JP": {
+            layer: "プロモーション",
+            title: "Promo Engine",
+            sub: "プロモ適用可否と露出 · プロモ適用 / 解除 · 特典評価 · ルール実行",
+            summary: "オファーが適用されるかを判定し、価格に反映する特典を計算します。",
+            owns: "適用可否ロジック、プロモ適用 / 解除、特典評価。",
+            consumes: "カート、顧客、市場、プログラムルール。",
+            outputs: "フロント表示とバックエンド合計へ影響するプロモ結果。",
+            why: "オファー欠落や無効化は、Helium ではなくここやルール設定が原因のことが多いです。"
+          }
+        },
+        "Loyalty Service / CRM": {
+          "ja-JP": {
+            layer: "プロモーション",
+            title: "Loyalty Service / CRM",
+            sub: "ロイヤルティ登録 · プロモ / 特典プログラム保持 · 顧客設定 · 離脱 / エンゲージメント施策",
+            summary: "ロイヤルティ登録、特典状態、設定情報、キャンペーン用顧客データを管理します。",
+            owns: "ロイヤルティ導線、特典状態、設定記録、キャンペーン連動属性。",
+            consumes: "顧客 ID、エンゲージメントシグナル、プログラム設定。",
+            outputs: "特典、設定状態、キャンペーン文脈を Helium とプロモ導線へ返します。",
+            why: "UI 上で見えるロイヤルティ情報の真実源は通常ここにあります。"
+          }
+        },
+        "POS": {
+          "ja-JP": {
+            layer: "フルフィルメント",
+            title: "POS",
+            sub: "店内 POS · 注文投入 · POS Order API · BCOM への注文状態イベント",
+            summary: "デジタル注文を店舗内で受け取り、注文状態をバックエンドへ返します。",
+            owns: "対応 POS 連携フロー向けの店舗側注文取り込み。",
+            consumes: "Commerce Backend からの確定済みデジタル注文。",
+            outputs: "POS 側の注文状態と受領結果を BCOM へ返します。",
+            why: "デジタル注文が店舗業務へ変わる運用上の受け渡し地点です。"
+          }
+        },
+        "KDS": {
+          "ja-JP": {
+            layer: "フルフィルメント",
+            title: "KDS",
+            sub: "Kitchen Display System · KDS Order Event ストリーム · フルフィルメント状態更新",
+            summary: "注文受領後のキッチン側進行と状態変化を駆動します。",
+            owns: "キッチン作業状態と調理進捗イベント。",
+            consumes: "店舗システムからの運用注文ペイロード。",
+            outputs: "accepted、in-progress、ready などの状態更新。",
+            why: "店舗内の進行が顧客向け追跡表示へつながる地点です。"
+          }
+        },
+        "Aggregator Gateways": {
+          "ja-JP": {
+            layer: "フルフィルメント",
+            title: "Aggregator Gateways",
+            sub: "サードパーティ配達アグリゲーター · 外部チャネル連携 · Aggregator Order API · 状態中継",
+            summary: "外部配達マーケットプレイスとチャネル別統合経路を表します。",
+            owns: "外部注文チャネル連携と状態中継。",
+            consumes: "アグリゲーター注文ペイロードと状態イベント。",
+            outputs: "正規化された注文トラフィックと状態をバックエンドへ渡します。",
+            why: "マーケットプレイス注文は、一次チャネルの Helium 注文とは別経路を通ります。"
+          }
+        },
+        "Order Tracking": {
+          "ja-JP": {
+            layer: "フルフィルメント",
+            title: "Order Tracking",
+            sub: "配達注文状態取得 · リアルタイム追跡表示 · Helium が参照する状態イベント",
+            summary: "フルフィルメントと配達状態に基づき、顧客向け注文進捗を返します。",
+            owns: "顧客向け追跡体験で使う配達 / フルフィルメント状態取得。",
+            consumes: "運用システムからの注文 / フルフィルメントイベント。",
+            outputs: "Helium に表示される追跡更新。",
+            why: "チェックアウト後でも、追跡品質は顧客信頼に大きく影響します。"
+          }
+        },
+        "Telemetry & Logging": {
+          "ja-JP": {
+            layer: "可観測性",
+            title: "Telemetry & Logging",
+            sub: "メトリクス · トレース · 構造化エラーログ · Correlation ID · KPI",
+            summary: "システム健全性を検知、調査、計測するための運用シグナルを集めます。",
+            owns: "メトリクス、トレース、エラーログ、correlation ID、ヘルスシグナル。",
+            consumes: "Helium と各バックエンドサービスからのイベントと計測。",
+            outputs: "障害対応と調査のための運用可視性。",
+            why: "この層がなければ、なぜ失敗したか、どこで遅延しているかを説明できません。"
+          }
+        },
+        "Data / Analytics": {
+          "ja-JP": {
+            layer: "可観測性",
+            title: "Data / Analytics",
+            sub: "RUM · APM · テレメトリエベント · ファネル / 転換 KPI · ヘルスエンドポイント",
+            summary: "分析用イベント解析、転換レポート、体験監視を提供します。",
+            owns: "RUM、APM、テレメトリモデリング、ファネル KPI レポート。",
+            consumes: "フロント / バックエンド導線からの運用イベントと行動イベント。",
+            outputs: "ビジネス / プロダクト洞察と体験監視。",
+            why: "プラットフォームを“動いている”状態から“理解されている”状態へ進める層です。"
+          }
+        }
+      };
+
+      function applyLocale(locale) {
+        currentLocale = locale === "ja-JP" ? "ja-JP" : "en-US";
+        const copy = localeCopy[currentLocale];
+        uiLabels.pageTitle.textContent = copy.pageTitle;
+        uiLabels.pageSubtitle.innerHTML = copy.pageSubtitle;
+        uiLabels.labelOwns.textContent = copy.labelOwns;
+        uiLabels.labelConsumes.textContent = copy.labelConsumes;
+        uiLabels.labelOutputs.textContent = copy.labelOutputs;
+        uiLabels.labelWhy.textContent = copy.labelWhy;
+        uiLabels.pinBtn.textContent = copy.pinBtn;
+        uiLabels.closeBtn.textContent = copy.closeBtn;
+        uiLabels.footerNote.textContent = copy.footerNote;
+        const nextLayerLabels =
+          currentLocale === "ja-JP"
+            ? ["フロントエンド", "認証", "ローカライズ", "カタログ", "コマースバックエンド", "決済", "プロモーション", "フルフィルメント", "可観測性"]
+            : ["Frontend", "Identity", "Localisation", "Catalogue", "Commerce Backend", "Payments", "Promotions", "Fulfilment", "Observability"];
+        layerLabels.forEach((el, index) => {
+          if (nextLayerLabels[index]) el.textContent = nextLayerLabels[index];
+        });
+        const nextLegendLabels =
+          currentLocale === "ja-JP"
+            ? [
+                "フロントエンド（Helium）",
+                "認証と同意",
+                "ローカライズ",
+                "カタログ",
+                "コマースバックエンド",
+                "決済",
+                "プロモーションとロイヤルティ",
+                "フルフィルメント",
+                "可観測性",
+                "横断領域（コンテキストと価格）"
+              ]
+            : [
+                "Frontend (Helium)",
+                "Identity & Consent",
+                "Localisation",
+                "Catalogue",
+                "Commerce Backend",
+                "Payments",
+                "Promotions & Loyalty",
+                "Fulfilment",
+                "Observability",
+                "Cross-cutting (Context & Pricing)"
+              ];
+        legendItems.forEach((el, index) => {
+          const dot = el.querySelector(".legend-dot");
+          if (!dot || !nextLegendLabels[index]) return;
+          el.innerHTML = "";
+          el.appendChild(dot);
+          el.append(" " + nextLegendLabels[index]);
+        });
+
+        boxes.forEach((box) => {
+          const baseTitle = box.dataset.titleEn || box.dataset.title;
+          box.dataset.titleEn = baseTitle;
+          box.dataset.layerEn = box.dataset.layerEn || box.dataset.layer;
+          box.dataset.summaryEn = box.dataset.summaryEn || box.dataset.summary;
+          box.dataset.ownsEn = box.dataset.ownsEn || box.dataset.owns;
+          box.dataset.consumesEn = box.dataset.consumesEn || box.dataset.consumes;
+          box.dataset.outputsEn = box.dataset.outputsEn || box.dataset.outputs;
+          box.dataset.whyEn = box.dataset.whyEn || box.dataset.why;
+          const titleEl = box.querySelector(".box-title");
+          const subEl = box.querySelector(".box-sub");
+          const subEn = box.dataset.subEn || subEl?.innerHTML || "";
+          box.dataset.subEn = subEn;
+
+          const translated = boxTranslations[baseTitle]?.[currentLocale];
+          if (translated) {
+            box.dataset.layer = translated.layer;
+            box.dataset.title = translated.title;
+            box.dataset.summary = translated.summary;
+            box.dataset.owns = translated.owns;
+            box.dataset.consumes = translated.consumes;
+            box.dataset.outputs = translated.outputs;
+            box.dataset.why = translated.why;
+            if (titleEl) titleEl.textContent = translated.title;
+            if (subEl) subEl.innerHTML = translated.sub;
+          } else {
+            box.dataset.layer = box.dataset.layerEn;
+            box.dataset.title = box.dataset.titleEn;
+            box.dataset.summary = box.dataset.summaryEn;
+            box.dataset.owns = box.dataset.ownsEn;
+            box.dataset.consumes = box.dataset.consumesEn;
+            box.dataset.outputs = box.dataset.outputsEn;
+            box.dataset.why = box.dataset.whyEn;
+            if (titleEl) titleEl.textContent = box.dataset.titleEn;
+            if (subEl) subEl.innerHTML = box.dataset.subEn;
+          }
+        });
+
+        if (activeBox) {
+          updateContent(activeBox, Boolean(pinnedBox));
+        }
+      }
+
+      function reportHeight() {
+        const nextHeight = Math.max(
+          document.body.scrollHeight,
+          document.documentElement.scrollHeight,
+          document.body.offsetHeight,
+          document.documentElement.offsetHeight
+        );
+
+        if (Math.abs(nextHeight - lastReportedHeight) < 2) {
+          return;
+        }
+
+        lastReportedHeight = nextHeight;
+        window.parent.postMessage(
+          {
+            type: "byte-stack-architecture-height",
+            height: nextHeight
+          },
+          window.location.origin
+        );
+      }
+
+      function updateContent(box, pinned) {
+        fields.eyebrow.textContent = box.dataset.layer || "";
+        fields.title.textContent = box.dataset.title || "";
+        fields.summary.textContent = box.dataset.summary || "";
+        fields.owns.textContent = box.dataset.owns || "";
+        fields.consumes.textContent = box.dataset.consumes || "";
+        fields.outputs.textContent = box.dataset.outputs || "";
+        fields.why.textContent = box.dataset.why || "";
+        fields.meta.textContent = pinned ? localeCopy[currentLocale].metaPinned : localeCopy[currentLocale].metaHover;
+        popup.classList.toggle("pinned", pinned);
+      }
+
+      function syncPinnedOffset() {
+        if (!diagramWrap) {
+          return;
+        }
+
+        if (!popup.classList.contains("pinned") || window.innerWidth <= 1180) {
+          diagramWrap.classList.remove("has-pinned-popup");
+          diagramWrap.style.removeProperty("--pinned-offset");
+          return;
+        }
+
+        const offset = popup.offsetHeight + 18;
+        diagramWrap.classList.add("has-pinned-popup");
+        diagramWrap.style.setProperty("--pinned-offset", offset + "px");
+      }
+
+      function setActive(box) {
+        boxes.forEach((item) => item.classList.toggle("active", item === box));
+        diagram.classList.toggle("dimmed", Boolean(box));
+      }
+
+      function placePopup(box) {
+        if (popup.classList.contains("pinned")) {
+          popup.style.left = "";
+          popup.style.top = "";
+          return;
+        }
+
+        if (window.innerWidth <= 1180) {
+          popup.style.left = "";
+          popup.style.top = "";
+          return;
+        }
+
+        const wrapRect = document.querySelector(".diagram-wrap").getBoundingClientRect();
+        const boxRect = box.getBoundingClientRect();
+        const popupWidth = Math.min(380, window.innerWidth - 32);
+        const rightRoom = window.innerWidth - boxRect.right;
+        let left = boxRect.right - wrapRect.left + 18;
+        if (rightRoom < popupWidth + 26) {
+          left = boxRect.left - wrapRect.left - popupWidth - 18;
+        }
+        left = Math.max(0, Math.min(left, wrapRect.width - popupWidth));
+
+        let top = boxRect.top - wrapRect.top;
+        top = Math.max(0, Math.min(top, wrapRect.height - popup.offsetHeight));
+
+        popup.style.left = left + "px";
+        popup.style.top = top + "px";
+      }
+
+      function showPopup(box, pinned) {
+        activeBox = box;
+        updateContent(box, pinned);
+        popup.classList.add("visible");
+        setActive(box);
+        requestAnimationFrame(() => {
+          placePopup(box);
+          syncPinnedOffset();
+          reportHeight();
+        });
+      }
+
+      function clearPopup() {
+        if (pinnedBox) {
+          return;
+        }
+        popup.classList.remove("visible", "pinned");
+        activeBox = null;
+        setActive(null);
+        syncPinnedOffset();
+        reportHeight();
+      }
+
+      boxes.forEach((box) => {
+        box.addEventListener("mouseenter", () => {
+          if (pinnedBox) return;
+          showPopup(box, false);
+        });
+
+        box.addEventListener("focus", () => {
+          if (pinnedBox) return;
+          showPopup(box, false);
+        });
+
+        box.addEventListener("mouseleave", () => {
+          if (pinnedBox) return;
+          window.setTimeout(() => {
+            if (!popupHover && !pinnedBox) {
+              clearPopup();
+            }
+          }, 80);
+        });
+
+        box.addEventListener("click", () => {
+          if (pinnedBox) {
+            pinnedBox = box;
+            showPopup(box, true);
+            return;
+          }
+
+          if (activeBox === box) {
+            return;
+          }
+          showPopup(box, false);
+        });
+      });
+
+      popup.addEventListener("mouseenter", () => {
+        popupHover = true;
+      });
+
+      popup.addEventListener("mouseleave", () => {
+        popupHover = false;
+        if (!pinnedBox) {
+          clearPopup();
+        }
+      });
+
+      pinBtn.addEventListener("click", () => {
+        if (!activeBox) {
+          return;
+        }
+        pinnedBox = activeBox;
+        showPopup(activeBox, true);
+      });
+
+      closeBtn.addEventListener("click", () => {
+        pinnedBox = null;
+        popupHover = false;
+        clearPopup();
+      });
+
+      window.addEventListener("resize", () => {
+        if (activeBox) {
+          placePopup(activeBox);
+        }
+        syncPinnedOffset();
+        reportHeight();
+      });
+
+      window.addEventListener("message", (event) => {
+        if (event.origin !== window.location.origin) {
+          return;
+        }
+
+        if (event.data?.type === "byte-stack-architecture-theme") {
+          const theme = event.data.theme === "dark" ? "dark" : "light";
+          document.documentElement.setAttribute("data-theme", theme);
+          return;
+        }
+
+        if (event.data?.type === "byte-stack-architecture-locale") {
+          applyLocale(event.data.locale);
+        }
+      });
+
+      applyLocale(currentLocale);
+      const resizeObserver = new ResizeObserver(() => {
+        syncPinnedOffset();
+        reportHeight();
+      });
+
+      resizeObserver.observe(document.body);
+      reportHeight();
+    })();
+  </script>
+</body>
+</html>

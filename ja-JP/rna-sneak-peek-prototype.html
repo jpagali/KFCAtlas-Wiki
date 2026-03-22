@@ -1,0 +1,5976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>RNA Ordering Prototype</title>
+  <style>
+    @font-face {
+      font-family: "Kentucky Fried Sans";
+      src: url("fonts/kfc/KentuckyFriedSans-Regular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: "Kentucky Fried Sans";
+      src: url("fonts/kfc/KentuckyFriedSans-Semibold.ttf") format("truetype");
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: "Kentucky Fried Serif";
+      src: url("fonts/kfc/KentuckyFriedSerif-BlackItalic.ttf") format("truetype");
+      font-weight: 800 900;
+      font-style: italic;
+    }
+
+    :root {
+      --bg: #080808;
+      --panel: #121212;
+      --panel-2: #1b1b1b;
+      --panel-3: #252525;
+      --line: rgba(255, 255, 255, 0.08);
+      --text: #fff8f1;
+      --muted: rgba(255, 248, 241, 0.64);
+      --red: #e4002b;
+      --red-soft: rgba(228, 0, 43, 0.18);
+      --gold: #ffbf5b;
+      --green: #52d890;
+      --shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+      --font-display: "Kentucky Fried Serif", Georgia, serif;
+      --font-body: "Kentucky Fried Serif", Georgia, serif;
+      --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    html[data-theme="light"] {
+      --bg: #f6efe8;
+      --panel: #fff9f3;
+      --panel-2: #f4ece4;
+      --panel-3: #ede2d8;
+      --line: rgba(66, 40, 30, 0.1);
+      --text: #231815;
+      --muted: rgba(35, 24, 21, 0.64);
+      --red-soft: rgba(228, 0, 43, 0.08);
+      --shadow: 0 24px 60px rgba(71, 47, 36, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      min-height: 100dvh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      background:
+        radial-gradient(circle at top left, rgba(228, 0, 43, 0.14), transparent 22%),
+        radial-gradient(circle at bottom right, rgba(255, 191, 91, 0.1), transparent 20%),
+        #050505;
+      font-family: var(--font-body);
+      font-style: normal;
+      font-weight: 800;
+      color: var(--text);
+      font-synthesis: none;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .status-bar,
+    .web-brand-title,
+    .web-brand-subtitle,
+    .web-link,
+    .web-locale-switch .toggle-btn,
+    .eyebrow,
+    .screen-title,
+    .screen-subtitle,
+    .journey-shell-chip,
+    .mini-hero-card h4,
+    .mini-hero-card p,
+    .promo-banner h3,
+    .promo-banner p,
+    .mode-warning,
+    .map-pin,
+    .map-store-badge,
+    .map-rider,
+    .hero-card h3,
+    .hero-card p,
+    .card p,
+    .meta,
+    .store-address,
+    .store-note,
+    .helper,
+    .cart-meta,
+    .product-card .meta,
+    .product-card .helper,
+    .search input,
+    .search input::placeholder,
+    .rank-meta,
+    .support-display,
+    .rank-card-title,
+    .rank-meter,
+    .perk-card strong,
+    .perk-card p,
+    .context-strip strong,
+    .section-head h4,
+    .section-tag,
+    .pill,
+    .pill small,
+    .store-name,
+    .badge,
+    .category-tab,
+    .product-title,
+    .mini-btn,
+    .price,
+    .detail-name,
+    .option-label,
+    .qty-value,
+    .cta,
+    .ghost-btn,
+    .cart-title,
+    .summary-row,
+    .pay-summary .summary-row strong,
+    .total,
+    .checkout-field input,
+    .track-labels,
+    .nav-btn-label {
+      font-style: normal;
+    }
+
+    html[data-theme="light"] body {
+      background:
+        radial-gradient(circle at top left, rgba(228, 0, 43, 0.08), transparent 22%),
+        radial-gradient(circle at bottom right, rgba(255, 191, 91, 0.08), transparent 20%),
+        #f7f0e8;
+    }
+
+    button, input {
+      font: inherit;
+    }
+
+    .stage {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: grid;
+      place-items: center;
+      padding: clamp(8px, 2vw, 24px);
+    }
+
+    .phone-wrap {
+      position: relative;
+      width: min(390px, calc(100vw - 16px));
+      height: min(844px, calc(100vh - 16px));
+      height: min(844px, calc(100dvh - 16px));
+      aspect-ratio: 390 / 844;
+      border-radius: 54px;
+      padding: 12px;
+      background: linear-gradient(180deg, #1f1f1f 0%, #0d0d0d 100%);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    html[data-theme="light"] .phone-wrap {
+      background: linear-gradient(180deg, #efe5dc 0%, #d9cec3 100%);
+      border-color: rgba(66, 40, 30, 0.12);
+    }
+
+    .phone-wrap::before {
+      content: "";
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 124px;
+      height: 30px;
+      border-radius: 999px;
+      background: #050505;
+      z-index: 30;
+    }
+
+    html[data-theme="light"] .phone-wrap::before {
+      background: #dad0c7;
+    }
+
+    .phone {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 42px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 18%),
+        #0b0b0b;
+    }
+
+    html[data-theme="light"] .phone {
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.55), transparent 18%),
+        #fff9f3;
+    }
+
+    .ambient {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 85% 18%, rgba(228, 0, 43, 0.18), transparent 22%),
+        radial-gradient(circle at 18% 78%, rgba(255, 191, 91, 0.08), transparent 24%);
+      opacity: 0.9;
+    }
+
+    html[data-theme="light"] .ambient {
+      background:
+        radial-gradient(circle at 85% 18%, rgba(228, 0, 43, 0.1), transparent 22%),
+        radial-gradient(circle at 18% 78%, rgba(255, 191, 91, 0.08), transparent 24%);
+    }
+
+    .status-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 25;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 22px 0;
+      height: 52px;
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 13px;
+      font-family: var(--font-body);
+      font-weight: 700;
+    }
+
+    html[data-theme="light"] .status-bar {
+      color: rgba(35, 24, 21, 0.86);
+    }
+
+    .viewport {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topbar {
+      padding: 88px 18px 10px;
+      display: block;
+      border-bottom: 1px solid var(--line);
+      background: rgba(10, 10, 10, 0.84);
+      backdrop-filter: blur(18px);
+      position: relative;
+    }
+
+     html[data-theme="light"] .topbar {
+       border-bottom-color: rgba(66, 40, 30, 0.08);
+       background: #ffffff;
+     }
+
+     html[data-theme="light"] .web-nav {
+       background: #ffffff;
+     }
+
+    .topbar-left {
+      min-width: 0;
+    }
+
+    .topbar.journey-mode {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+      column-gap: 18px;
+    }
+
+    .topbar.journey-mode .topbar-left {
+      display: flex;
+      align-items: end;
+      min-height: 72px;
+    }
+
+    .topbar.journey-mode .eyebrow,
+    .topbar.journey-mode .screen-subtitle {
+      display: none;
+    }
+
+    .web-nav {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(12, 12, 12, 0.92);
+      backdrop-filter: blur(18px);
+    }
+
+    .web-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .web-brand img {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 4px;
+    }
+
+    .web-brand-copy {
+      min-width: 0;
+    }
+
+    .web-brand-title {
+      font-family: var(--font-body);
+      font-size: 23px;
+      line-height: 0.98;
+      letter-spacing: 0;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .web-brand-subtitle {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-family: var(--font-body);
+      font-weight: 800;
+    }
+
+    .web-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .web-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: auto;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .web-locale-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    html[data-theme="light"] .web-locale-switch {
+      background: rgba(255, 255, 255, 0.78);
+      border-color: rgba(66, 40, 30, 0.1);
+    }
+
+    .web-link {
+      border: 0;
+      min-height: 38px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0;
+      font-family: var(--font-body);
+      font-style: italic;
+      text-transform: uppercase;
+    }
+
+    .web-link.active {
+      background: rgba(228, 0, 43, 0.16);
+      color: white;
+    }
+
+    .web-locale-switch .toggle-btn {
+      min-width: 40px;
+      height: 32px;
+      padding: 0 12px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      font-family: var(--font-body);
+      font-weight: 800;
+      font-style: italic;
+    }
+
+    .web-locale-switch .toggle-btn.active {
+      background: var(--red);
+      color: white;
+    }
+    .eyebrow:empty {
+      display: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #ff9eb1;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      font-family: var(--font-body);
+      font-style: italic;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 0 16px rgba(228, 0, 43, 0.45);
+    }
+
+    .screen-title {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 38px;
+      line-height: 0.9;
+      letter-spacing: 0.01em;
+      font-style: italic;
+      text-transform: uppercase;
+    }
+
+    .screen-title.hero-xl {
+      line-height: 0.88;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .screen-title.screen-title-logo {
+      display: flex;
+      align-items: center;
+      min-height: 45px;
+      letter-spacing: 0;
+    }
+
+    .screen-title-logo-link {
+      display: inline-flex;
+      align-items: center;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .screen-title-logo-image {
+      display: block;
+      width: 74px;
+      max-width: min(20vw, 74px);
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.24));
+    }
+
+    .topbar.compact .screen-title {
+      font-size: 22px;
+      line-height: 0.95;
+    }
+
+    .screen-subtitle {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+      max-width: 210px;
+      font-family: var(--font-body);
+      font-style: italic;
+      font-weight: 800;
+    }
+
+    .topbar.compact .screen-subtitle {
+      display: none;
+    }
+
+    .journey-shell-bar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0;
+      margin-top: 0;
+      padding: 0;
+      border-top: 0;
+      background: transparent;
+      position: relative;
+      z-index: 18;
+      align-self: end;
+    }
+
+    .journey-shell-bar[hidden] {
+      display: none;
+    }
+
+    .journey-shell-meta {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 22px;
+      min-width: 0;
+      flex: 0 0 auto;
+      flex-wrap: nowrap;
+      overflow: visible;
+      padding: 16px 18px;
+      border-radius: 0;
+      background: rgba(0, 0, 0, 0.9);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    }
+
+    .journey-shell-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-width: auto;
+      border: 0;
+      background: transparent;
+      color: #ffffff;
+      padding: 0;
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1;
+      white-space: nowrap;
+      text-decoration: none;
+      font-style: italic;
+      text-transform: uppercase;
+    }
+
+    html[data-theme="light"] .journey-shell-chip {
+      color: #000000;
+      background: #ffffff;
+    }
+
+    html[data-theme="light"] .journey-shell-bar {
+      background: #ffffff;
+    }
+
+    html[data-theme="light"] .journey-shell-chevron svg path {
+      stroke: #000000;
+    }
+
+    html[data-theme="light"] .journey-shell-chip span {
+      overflow: visible;
+      text-overflow: clip;
+    }
+
+    html[data-theme="light"] .journey-shell-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-width: auto;
+      border: 0;
+      padding: 0;
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1;
+      white-space: nowrap;
+      text-decoration: none;
+      font-style: italic;
+      text-transform: uppercase;
+    }
+
+    .journey-shell-chevron {
+      width: 13px;
+      height: 13px;
+      flex: 0 0 auto;
+      opacity: 0.95;
+    }
+
+    .screen-back-row {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 8px;
+    }
+
+    .screen-back-row .screen-back-btn {
+      width: fit-content;
+      min-width: 0;
+      max-width: max-content;
+      min-height: clamp(20px, 3vw, 24px);
+      height: auto;
+      flex: 0 0 auto;
+      align-self: flex-start;
+      padding: 0 4px 0 0;
+      border-radius: 0;
+      font-size: clamp(9px, 1.8vw, 10px);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      background: transparent;
+      color: var(--muted);
+      justify-content: flex-start;
+      box-shadow: none;
+      display: inline-flex;
+    }
+
+    .toolbar {
+      position: absolute;
+      top: 42px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      align-items: center;
+      z-index: 28;
+    }
+
+    .nav-cluster,
+    .locale-switch,
+    .view-switch {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      padding: 4px;
+      border-radius: 999px;
+      background: rgba(22, 22, 22, 0.94);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+    }
+
+    html[data-theme="light"] .nav-cluster,
+    html[data-theme="light"] .locale-switch,
+    html[data-theme="light"] .view-switch {
+      background: rgba(255, 249, 243, 0.98);
+      border-color: rgba(66, 40, 30, 0.1);
+      box-shadow: 0 10px 24px rgba(71, 47, 36, 0.12);
+    }
+
+    .icon-btn,
+    .toggle-btn,
+    .pill,
+    .nav-btn,
+    .cta,
+    .ghost-btn,
+    .qty-btn {
+      border: 0;
+      cursor: pointer;
+      transition: transform 0.15s var(--ease), background 0.15s var(--ease), opacity 0.15s var(--ease);
+    }
+
+    .icon-btn,
+    .toggle-btn,
+    .pill,
+    .ghost-btn,
+    .qty-btn {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+    }
+
+    .icon-btn,
+    .toggle-btn {
+      min-width: 38px;
+      height: 34px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .toggle-btn {
+      padding: 0 14px;
+      min-width: auto;
+    }
+
+    .view-btn {
+      min-width: auto;
+      padding: 0 14px;
+      font-size: 11px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .mini-hero-card {
+      padding: 14px 16px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at top right, rgba(228, 0, 43, 0.16), transparent 30%),
+        linear-gradient(135deg, rgba(30, 8, 10, 0.9), rgba(15, 14, 14, 0.92));
+    }
+
+    html[data-theme="light"] .mini-hero-card {
+      background:
+        radial-gradient(circle at top right, rgba(228, 0, 43, 0.08), transparent 30%),
+        linear-gradient(135deg, rgba(255, 249, 243, 0.98), rgba(248, 238, 231, 0.98));
+    }
+
+    .mini-hero-card h4 {
+      margin: 0 0 4px;
+      font-size: 18px;
+      font-weight: 900;
+      font-family: var(--font-display);
+      font-style: italic;
+      line-height: 1;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .mini-hero-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.5;
+      font-family: var(--font-body);
+      font-style: italic;
+    }
+
+    .promo-banner {
+      position: relative;
+      overflow: hidden;
+      min-height: 184px;
+      border-radius: var(--radius-lg);
+      border: 0;
+      background:
+        linear-gradient(180deg, rgba(8, 8, 8, 0.08), rgba(8, 8, 8, 0.55)),
+        url("https://images.ctfassets.net/a2mgcrjjefyo/5VacEuaF9u5SJ5bOx5bsd9/5922fe00c43d0d18120d50006576b2ac/Web_750x1040_EN.png?w=430&fm=webp") center/cover no-repeat;
+      box-shadow: inset 0 0 0 1px rgba(94, 43, 24, 0.9);
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+    }
+
+    .promo-banner::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8, 8, 8, 0.04), rgba(8, 8, 8, 0.82));
+    }
+
+    .promo-banner-body {
+      position: relative;
+      z-index: 1;
+      max-width: 78%;
+    }
+
+    .promo-banner h3 {
+      margin: 0 0 6px;
+      font-size: 20px;
+      line-height: 1.05;
+      font-weight: 900;
+      font-family: var(--font-display);
+      font-style: italic;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .promo-banner p {
+      margin: 0;
+      color: rgba(255, 248, 241, 0.84);
+      font-size: 12px;
+      line-height: 1.45;
+      font-family: var(--font-body);
+      font-style: italic;
+    }
+
+    .mode-warning {
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(255, 191, 91, 0.12);
+      border: 1px solid rgba(255, 191, 91, 0.2);
+      color: var(--gold);
+      font-size: 11px;
+      line-height: 1.45;
+      font-family: var(--font-body);
+      font-style: italic;
+    }
+
+    .map-card {
+      position: relative;
+      min-height: 190px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(244, 112, 137, 0.08), transparent 35%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01)),
+        #101010;
+    }
+
+    html[data-theme="light"] .map-card {
+      background:
+        linear-gradient(135deg, rgba(244, 112, 137, 0.08), transparent 35%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(246, 238, 230, 0.94));
+    }
+
+    .map-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 34px 34px;
+      opacity: 0.36;
+    }
+
+    html[data-theme="light"] .map-grid {
+      background-image:
+        linear-gradient(rgba(66, 40, 30, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(66, 40, 30, 0.08) 1px, transparent 1px);
+    }
+
+    .map-route {
+      position: absolute;
+      left: 18%;
+      top: 25%;
+      width: 56%;
+      height: 46%;
+      border: 3px solid rgba(228, 0, 43, 0.4);
+      border-color: transparent transparent rgba(228, 0, 43, 0.68) rgba(228, 0, 43, 0.68);
+      border-radius: 50px 0 80px 50px;
+      transform: rotate(-8deg);
+    }
+
+    .map-pin,
+    .map-store-badge,
+    .map-rider {
+      position: absolute;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      font-family: var(--font-body);
+      font-style: italic;
+      background: rgba(18, 18, 18, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    html[data-theme="light"] .map-pin,
+    html[data-theme="light"] .map-store-badge,
+    html[data-theme="light"] .map-rider {
+      background: rgba(255, 249, 243, 0.96);
+      border-color: rgba(66, 40, 30, 0.1);
+    }
+
+    .map-pin {
+      right: 18px;
+      bottom: 18px;
+    }
+
+    .map-store-badge {
+      left: 16px;
+      top: 16px;
+      color: var(--green);
+    }
+
+    .map-rider {
+      left: 42%;
+      top: 48%;
+      color: var(--gold);
+    }
+
+    .toggle-btn.active {
+      background: var(--red);
+    }
+
+    .icon-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+      padding: 18px 18px 108px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.26) rgba(255, 255, 255, 0.06);
+    }
+
+    .content::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .content::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 999px;
+    }
+
+    .content::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.26);
+      border-radius: 999px;
+    }
+
+    .content::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.38);
+    }
+
+    .stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .card,
+    .hero-card,
+    .product-card,
+    .cart-item,
+    .sheet {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+    }
+
+    /* ── Reward item cards ──────────────────────────── */
+    .reward-item {
+      position: relative;
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+      min-height: 130px;
+    }
+
+    .reward-item.redeemed {
+      opacity: 0.55;
+    }
+
+    .reward-item-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 14px 8px 14px 16px;
+    }
+
+    .reward-item-title {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-style: italic;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.95;
+      letter-spacing: 0.01em;
+      margin: 2px 0 0;
+    }
+
+    .reward-item-desc {
+      margin: 0;
+      font-size: 12px;
+      font-family: var(--font-body);
+      font-style: italic;
+      line-height: 1.4;
+      opacity: 0.65;
+    }
+
+    .reward-item-cta {
+      margin-top: auto;
+      padding-top: 10px;
+    }
+
+    .reward-item-cta .ghost-btn {
+      min-height: 36px;
+      font-size: 13px;
+      padding: 0 14px;
+      width: auto;
+    }
+
+    .reward-item-img-wrap {
+      flex-shrink: 0;
+      width: 120px;
+      position: relative;
+      overflow: visible;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .reward-item-img {
+      width: 130px;
+      height: 130px;
+      object-fit: contain;
+      transform: rotate(-6deg) translate(8px, 4px);
+      filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.5));
+      transition: transform 0.2s ease;
+    }
+
+    .card,
+    .hero-card,
+    .cart-item,
+    .sheet {
+      padding: 16px;
+    }
+
+    .hero-card {
+      padding: 18px;
+      background:
+        radial-gradient(circle at top right, rgba(228, 0, 43, 0.22), transparent 26%),
+        linear-gradient(135deg, rgba(30, 8, 10, 0.98), rgba(15, 14, 14, 0.96));
+    }
+
+    html[data-theme="light"] .card,
+    html[data-theme="light"] .product-card,
+    html[data-theme="light"] .cart-item,
+    html[data-theme="light"] .sheet {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(246, 238, 230, 0.94));
+    }
+
+    html[data-theme="light"] .hero-card {
+      background:
+        radial-gradient(circle at top right, rgba(228, 0, 43, 0.12), transparent 26%),
+        linear-gradient(135deg, rgba(255, 249, 243, 0.98), rgba(248, 238, 231, 0.98));
+    }
+
+    .kicker {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 8px;
+      font-family: var(--font-body);
+    }
+
+    .hero-card h3 {
+      margin: 0 0 8px;
+      font-family: var(--font-display);
+      font-size: 34px;
+      line-height: 0.92;
+      letter-spacing: 0.01em;
+      font-style: italic;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .hero-card h3.hero-xl {
+      font-size: 36px;
+      line-height: 0.88;
+      font-weight: 900;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .hero-card p,
+    .card p,
+    .meta,
+    .store-address,
+    .store-note,
+    .helper,
+    .cart-meta {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+      font-style: italic;
+      font-weight: 800;
+    }
+
+    .product-card .meta,
+    .product-card .helper,
+    .search input::placeholder {
+      font-family: var(--font-display);
+      font-style: italic;
+    }
+
+    .rank-inline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-top: 14px;
+    }
+
+    .rank-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 88px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-family: var(--font-body);
+      border: 1px solid transparent;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+    }
+
+    .rank-badge.rank-bronze {
+      color: #ffd8ba;
+      background: linear-gradient(135deg, rgba(110, 67, 44, 0.96), rgba(61, 35, 24, 0.96));
+      border-color: rgba(255, 208, 177, 0.24);
+    }
+
+    .rank-badge.rank-silver {
+      color: #f6f6f8;
+      background: linear-gradient(135deg, rgba(137, 145, 161, 0.96), rgba(78, 84, 96, 0.96));
+      border-color: rgba(241, 244, 255, 0.24);
+    }
+
+    .rank-badge.rank-gold {
+      color: #221204;
+      background: linear-gradient(135deg, rgba(255, 213, 107, 0.98), rgba(255, 166, 40, 0.98));
+      border-color: rgba(255, 240, 194, 0.36);
+    }
+
+    .rank-badge.rank-platinum {
+      color: #f8fbff;
+      background: linear-gradient(135deg, rgba(145, 232, 255, 0.96), rgba(111, 147, 255, 0.96));
+      border-color: rgba(234, 249, 255, 0.34);
+    }
+
+    .rank-meta {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.45;
+      font-family: var(--font-body);
+      font-style: italic;
+      font-weight: 800;
+    }
+
+    .support-display {
+      font-family: var(--font-display);
+      font-size: 12px;
+      line-height: 1.38;
+      font-style: italic;
+      font-weight: 800;
+      letter-spacing: 0;
+      color: var(--muted);
+    }
+
+    .rank-card {
+      position: relative;
+      overflow: hidden;
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background:
+        radial-gradient(circle at top right, rgba(255, 213, 107, 0.22), transparent 26%),
+        radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.08), transparent 24%),
+        linear-gradient(135deg, rgba(24, 20, 13, 0.98), rgba(12, 11, 12, 0.98));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    html[data-theme="light"] .rank-card {
+      border-color: rgba(66, 40, 30, 0.1);
+      background:
+        radial-gradient(circle at top right, rgba(255, 213, 107, 0.18), transparent 26%),
+        radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.36), transparent 24%),
+        linear-gradient(135deg, rgba(255, 250, 241, 0.98), rgba(247, 238, 228, 0.98));
+    }
+
+    .rank-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -20% -55% 40%;
+      height: 180px;
+      background: radial-gradient(circle, rgba(255, 209, 92, 0.2), transparent 64%);
+      pointer-events: none;
+    }
+
+    .rank-card-top {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+
+    .rank-card-title {
+      margin: 4px 0 0;
+      font-family: var(--font-display);
+      font-size: 34px;
+      line-height: 0.92;
+      letter-spacing: 0.01em;
+      font-style: italic;
+      text-transform: uppercase;
+    }
+
+    .rank-card-title.hero-xl {
+      line-height: 0.88;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .rank-progress {
+      position: relative;
+      z-index: 1;
+      height: 12px;
+      margin-top: 14px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.28);
+    }
+
+    .rank-progress-fill {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #ffe191 0%, #ffbf5b 42%, #ff9a24 100%);
+      box-shadow: 0 0 18px rgba(255, 191, 91, 0.42);
+    }
+
+    .rank-meter {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-family: var(--font-body);
+      font-style: italic;
+    }
+
+    .perk-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .perk-card {
+      padding: 10px 10px 11px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(6px);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    html[data-theme="light"] .perk-card {
+      border-color: rgba(66, 40, 30, 0.08);
+      background: rgba(255, 255, 255, 0.68);
+    }
+
+    .perk-card strong {
+      display: block;
+      font-size: 10px;
+      font-family: var(--font-body);
+      font-weight: 900;
+      font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      opacity: 0.55;
+    }
+
+    .perk-card p {
+      margin: 0;
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .context-strip {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--line);
+    }
+
+    .promo-carousel {
+      display: grid;
+      gap: 10px;
+    }
+
+    .promo-rail {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      scroll-snap-type: x proximity;
+      padding-bottom: 2px;
+      scrollbar-width: none;
+    }
+
+    .promo-rail::-webkit-scrollbar {
+      display: none;
+    }
+
+    .promo-slide {
+      position: relative;
+      flex: 0 0 min(84%, 280px);
+      min-height: 158px;
+      padding: 16px;
+      border-radius: var(--radius-lg);
+      border: 1px solid #3d1010;
+      background: linear-gradient(145deg, #1e0808 0%, #2c1010 100%);
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      overflow: hidden;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .promo-slide-locked {
+      opacity: 0.6;
+      border-color: #2a2a2a !important;
+      background: linear-gradient(145deg, #161616 0%, #1e1e1e 100%) !important;
+      cursor: not-allowed;
+    }
+
+    .promo-slide-glow {
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    html[data-theme="light"] .promo-slide {
+      background: linear-gradient(145deg, rgba(255, 249, 243, 0.98), rgba(248, 238, 231, 0.98));
+      border-color: rgba(228, 0, 43, 0.2);
+    }
+
+    .promo-slide-badge {
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      border-radius: 4px;
+      padding: 2px 8px;
+      display: inline-block;
+      text-transform: uppercase;
+      align-self: flex-start;
+      border: 1px solid;
+      font-family: var(--font-body);
+      font-style: normal;
+    }
+
+    .promo-slide-locked .promo-slide-badge {
+      color: #555 !important;
+      border-color: #333 !important;
+      background: transparent !important;
+    }
+
+    .promo-slide-main {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 80px;
+      gap: 12px;
+      align-items: center;
+      margin-top: 2px;
+    }
+
+    .promo-slide-media {
+      justify-self: end;
+      align-self: center;
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      border-radius: 0;
+      pointer-events: none;
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.24));
+    }
+
+    .promo-slide-locked .promo-slide-media {
+      filter: grayscale(1) drop-shadow(0 10px 20px rgba(0, 0, 0, 0.24));
+    }
+
+    .promo-slide-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .promo-slide-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      line-height: 1.02;
+      font-weight: 900;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--text);
+      font-style: italic;
+    }
+
+    .promo-slide-locked .promo-slide-title {
+      color: #444;
+    }
+
+    .promo-slide-subtitle {
+      font-size: 11px;
+      font-weight: 600;
+      font-family: var(--font-body);
+      font-style: normal;
+    }
+
+    .promo-slide-locked .promo-slide-subtitle {
+      color: #3a3a3a !important;
+    }
+
+    .promo-slide-copy {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.4;
+      font-style: italic;
+      margin: 2px 0 0;
+    }
+
+    .promo-slide-locked .promo-slide-copy {
+      color: #3a3a3a;
+    }
+
+    .promo-slide-divider {
+      height: 1px;
+      background: rgba(255, 255, 255, 0.06);
+      margin: 2px 0;
+    }
+
+    html[data-theme="light"] .promo-slide-divider {
+      background: rgba(66, 40, 30, 0.1);
+    }
+
+    .promo-slide-action {
+      margin-top: 0;
+      width: 100%;
+      min-height: 34px;
+      padding: 0 14px;
+      border-radius: var(--radius-sm);
+      border: none;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      position: relative;
+      z-index: 1;
+      font-family: var(--font-body);
+      font-style: normal;
+      cursor: pointer;
+      transition: filter 0.15s ease;
+    }
+
+    .promo-slide-action:disabled {
+      cursor: not-allowed;
+    }
+
+    .promo-slide-claimed-check {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #2d7a2d;
+      border: 2px solid #4CAF50;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #4CAF50;
+      z-index: 2;
+    }
+
+    html[data-theme="light"] .context-strip,
+    html[data-theme="light"] .store-row,
+    html[data-theme="light"] .product-visual {
+      background: rgba(92, 63, 50, 0.04);
+    }
+
+    .context-strip strong,
+    .section-head strong,
+    .price,
+    .total {
+      display: block;
+      font-weight: 700;
+    }
+
+    .context-strip strong {
+      font-family: var(--font-body);
+      font-weight: 900;
+      font-style: italic;
+      text-transform: uppercase;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .section-head h4 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 900;
+      font-family: var(--font-body);
+      font-style: italic;
+      text-transform: uppercase;
+    }
+
+    .section-tag {
+      color: #ff9eb1;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 800;
+      font-family: var(--font-body);
+      font-style: italic;
+    }
+
+    .choice-grid,
+    .slot-grid,
+    .store-list,
+    .menu-grid,
+    .cart-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .choice-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .slot-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 10px;
+    }
+
+    .pill {
+      min-height: 48px;
+      padding: 10px 12px;
+      border-radius: 16px;
+      text-align: left;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.35;
+      font-family: var(--font-body);
+      font-style: italic;
+    }
+
+    .pill small {
+      display: block;
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 2px;
+      font-weight: 800;
+      font-family: var(--font-body);
+      font-style: italic;
+    }
+
+    .pill.active {
+      background: linear-gradient(180deg, rgba(228, 0, 43, 0.96), rgba(182, 0, 35, 0.96));
+      color: white;
+    }
+
+    html[data-theme="light"] .pill {
+      background: rgba(0, 0, 0, 0.06);
+      color: var(--text);
+    }
+
+    html[data-theme="light"] .pill small {
+      color: rgba(35, 24, 21, 0.64);
+    }
+
+    html[data-theme="light"] .pill.active {
+      background: linear-gradient(180deg, #e4002b 0%, #b30021 100%);
+      color: white;
+    }
+
+    html[data-theme="light"] .pill.active small {
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .pill.disabled {
+      opacity: 0.34;
+      cursor: not-allowed;
+    }
+
+    .store-row {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: border-color 0.15s var(--ease), background 0.15s var(--ease), transform 0.15s var(--ease);
+    }
+
+    .store-row.active {
+      border-color: rgba(228, 0, 43, 0.6);
+      background: rgba(228, 0, 43, 0.12);
+    }
+
+    .store-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.08);
+      font-size: 22px;
+    }
+
+    .store-name {
+      font-size: 14px;
+      font-weight: 900;
+      margin-bottom: 3px;
+      font-family: var(--font-body);
+      font-style: italic;
+      text-transform: uppercase;
+    }
+
+    .store-note {
+      font-family: var(--font-body);
+      font-style: italic;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      background: rgba(255, 255, 255, 0.06);
+      font-family: var(--font-body);
+    }
+
+    .badge.live {
+      background: rgba(82, 216, 144, 0.14);
+      color: var(--green);
+    }
+
+    .badge.warn {
+      background: rgba(255, 191, 91, 0.14);
+      color: var(--gold);
+    }
+
+    .search {
+      position: relative;
+    }
+
+    .search input {
+      width: 100%;
+      height: 50px;
+      padding: 0 14px 0 44px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      outline: none;
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-style: italic;
+      font-weight: 800;
+    }
+
+    .search::before {
+      content: "⌕";
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 18px;
+      pointer-events: none;
+    }
+
+    .chip-row {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      scrollbar-width: none;
+    }
+
+    .chip-row::-webkit-scrollbar {
+      display: none;
+    }
+
+    .category-tabs {
+      display: flex;
+      align-items: flex-end;
+      gap: 18px;
+      overflow-x: auto;
+      padding: 2px 0 6px;
+      scrollbar-width: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    html[data-theme="light"] .category-tabs {
+      border-bottom-color: rgba(66, 40, 30, 0.1);
+    }
+
+    .category-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .category-tab {
+      position: relative;
+      min-height: auto;
+      padding: 0 0 8px;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      color: var(--text);
+      white-space: nowrap;
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-style: italic;
+      font-weight: 900;
+      line-height: 0.92;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      flex: 0 0 auto;
+    }
+
+    .category-tab::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 3px;
+      background: transparent;
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 0.18s var(--ease), background 0.18s var(--ease);
+    }
+
+    .category-tab.active {
+      color: var(--red);
+      background: transparent;
+    }
+
+    .category-tab.active::after {
+      background: var(--red);
+      transform: scaleX(1);
+    }
+
+    .menu-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .product-card {
+      padding: 0;
+      cursor: pointer;
+      transition: transform 0.15s var(--ease), border-color 0.15s var(--ease);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card.unavailable {
+      opacity: 0.48;
+      cursor: default;
+    }
+
+    .product-visual {
+      height: 118px;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at top right, rgba(228, 0, 43, 0.18), transparent 25%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .product-visual img,
+    .detail-emoji img,
+    .cart-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .product-body {
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .product-title {
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1.4;
+      margin-bottom: 6px;
+      font-family: var(--font-display);
+      font-style: italic;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .product-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 8px;
+    }
+
+    .product-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .mini-btn {
+      flex: 1;
+      min-height: 34px;
+      border-radius: 10px;
+      border: 0;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      font-size: 11px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-style: italic;
+    }
+
+    .mini-btn.primary {
+      flex: 0 0 34px;
+      width: 34px;
+      min-width: 34px;
+      padding: 0;
+      background: var(--red);
+      color: white;
+      font-size: 22px;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .price {
+      color: var(--gold);
+      font-size: 14px;
+      font-family: var(--font-display);
+      font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+    }
+
+    .add-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      border: 0;
+      background: var(--red);
+      color: white;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .unavailable-note {
+      margin-top: 8px;
+      color: rgba(255, 255, 255, 0.54);
+      font-size: 10px;
+      line-height: 1.45;
+    }
+
+    .detail-hero {
+      display: grid;
+      grid-template-columns: 146px 1fr;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .detail-emoji {
+      width: 146px;
+      height: 146px;
+      border-radius: 30px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top right, rgba(228, 0, 43, 0.24), transparent 24%),
+        rgba(255, 255, 255, 0.05);
+      cursor: zoom-in;
+      outline: none;
+    }
+
+    .detail-emoji img {
+      transform: scale(1.12);
+      transform-origin: center center;
+      transition: transform 0.22s var(--ease);
+      will-change: transform;
+    }
+
+    .detail-emoji:hover img,
+    .detail-emoji:active img,
+    .detail-emoji:focus img {
+      transform: scale(1.34);
+    }
+
+    .detail-name {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.1;
+      font-weight: 900;
+      font-family: var(--font-display);
+      font-style: italic;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .option-group {
+      display: grid;
+      gap: 8px;
+    }
+
+    .option-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ff9eb1;
+      font-weight: 800;
+      font-family: var(--font-body);
+      font-style: italic;
+    }
+
+    .detail-footer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 72px;
+      z-index: 10;
+      padding: 14px 18px 18px;
+      background:
+        linear-gradient(180deg, rgba(11, 11, 11, 0), rgba(11, 11, 11, 0.96) 20%, rgba(11, 11, 11, 1) 100%);
+      display: grid;
+      gap: 12px;
+    }
+
+    .detail-footer[hidden] {
+      display: none !important;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .qty {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .qty-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .qty-value {
+      min-width: 20px;
+      text-align: center;
+      font-weight: 700;
+      font-family: var(--font-display);
+      font-style: italic;
+    }
+
+    .cta,
+    .ghost-btn {
+      width: 100%;
+      min-height: 52px;
+      border-radius: 18px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .cta {
+      background: linear-gradient(180deg, #f1224f 0%, #d4002a 100%);
+      color: white;
+      box-shadow: 0 12px 30px rgba(228, 0, 43, 0.28);
+      font-family: var(--font-display);
+      font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+    }
+
+    .ghost-btn {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      font-family: var(--font-body);
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .cart-art {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .cart-title {
+      font-size: 14px;
+      font-weight: 900;
+      margin-bottom: 4px;
+      font-family: var(--font-display);
+      font-style: italic;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .cart-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .summary {
+      display: grid;
+      gap: 10px;
+    }
+
+    .pay-summary {
+      gap: 14px;
+      padding: 14px 14px 16px;
+      border-radius: 28px;
+      border-color: rgba(255, 255, 255, 0.08);
+      background: #020202;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .pay-summary::before {
+      content: "";
+      width: 52px;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+      margin: 0 auto 8px;
+      display: block;
+    }
+
+    .pay-summary .section-head {
+      display: none;
+    }
+
+    .summary-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 13px;
+      font-family: var(--font-body);
+      font-style: italic;
+      font-weight: 800;
+    }
+
+    .summary-row span:first-child {
+      color: var(--muted);
+    }
+
+    .pay-summary .summary-row {
+      font-size: 17px;
+      line-height: 1.2;
+    }
+
+    .pay-summary .summary-row span:first-child {
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .pay-summary .summary-row strong {
+      font-family: var(--font-display);
+      font-size: 22px;
+      line-height: 0.9;
+      font-style: italic;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      color: #ffffff;
+      flex: 0 0 auto;
+    }
+
+    .pay-summary .summary-row--minor strong {
+      font-size: 18px;
+    }
+
+    .pay-summary .summary-total {
+      margin-top: 12px;
+      padding-top: 14px;
+    }
+
+    .pay-summary .summary-total strong {
+      font-size: 34px;
+    }
+
+    .total {
+      color: var(--gold);
+      font-size: 20px;
+      font-family: var(--font-display);
+      font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+    }
+
+    .pay-summary .total {
+      color: #ffffff;
+      font-size: 34px;
+      line-height: 0.88;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .pay-summary .cta {
+      min-height: 42px;
+      border-radius: 0;
+      margin-top: 6px;
+      box-shadow: none;
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .checkout-field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .coupon-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .coupon-row input {
+      flex: 1;
+      min-width: 0;
+      height: 48px;
+      padding: 0 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      outline: none;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-style: italic;
+      font-weight: 800;
+      transition: border-color 0.15s;
+    }
+
+    .coupon-row input:focus {
+      border-color: rgba(255, 255, 255, 0.22);
+    }
+
+    .coupon-row input.applied {
+      border-color: rgba(82, 216, 144, 0.5);
+      background: rgba(82, 216, 144, 0.06);
+    }
+
+    .coupon-row .apply-btn {
+      flex: 0 0 auto;
+      height: 48px;
+      padding: 0 16px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 800;
+      font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .coupon-row .apply-btn:active {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .coupon-row .apply-btn.applied {
+      border-color: rgba(82, 216, 144, 0.4);
+      color: var(--green);
+    }
+
+    .coupon-or {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 12px 0;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .coupon-or::before,
+    .coupon-or::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .checkout-field input {
+      width: 100%;
+      height: 48px;
+      padding: 0 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      outline: none;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-style: italic;
+      font-weight: 800;
+    }
+
+    .tracking {
+      display: grid;
+      gap: 12px;
+    }
+
+    .track-line {
+      display: grid;
+      grid-template-columns: auto 1fr auto 1fr auto;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .track-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .track-dot.done {
+      background: var(--green);
+    }
+
+    .track-dot.current {
+      background: var(--red);
+      box-shadow: 0 0 0 8px rgba(228, 0, 43, 0.12);
+    }
+
+    .track-bar {
+      height: 2px;
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .track-labels {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      font-size: 11px;
+      color: var(--muted);
+      font-family: var(--font-body);
+      font-style: italic;
+      font-weight: 800;
+    }
+
+    .bottom-nav {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 60;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 2px;
+      padding: 10px 10px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      background: #000000;
+      backdrop-filter: blur(20px);
+    }
+
+    html[data-theme="light"] .bottom-nav {
+      background: #000000;
+      border-top-color: rgba(66, 40, 30, 0.08);
+    }
+
+    .nav-btn {
+      min-height: 66px;
+      border-radius: 0;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      text-align: center;
+      line-height: 1.15;
+      padding: 2px 1px;
+    }
+
+    .nav-btn-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .nav-btn-icon {
+      position: relative;
+      width: 28px;
+      height: 28px;
+      flex: 0 0 28px;
+      display: grid;
+      place-items: center;
+      color: currentColor;
+      overflow: visible;
+    }
+
+    .nav-btn-icon svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      overflow: visible;
+    }
+
+    .nav-btn-label {
+      display: block;
+      width: 100%;
+      font-size: 9px;
+      line-height: 1.1;
+      white-space: nowrap;
+      overflow: visible;
+      text-overflow: clip;
+      font-family: var(--font-body);
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      font-style: italic;
+    }
+
+    .nav-btn.active {
+      background: transparent;
+      color: var(--red);
+    }
+
+    .nav-btn.active .nav-btn-label {
+      color: var(--red);
+    }
+
+    .nav-btn:not(.active) .nav-btn-label {
+      color: #ffffff;
+    }
+
+    .toast {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 120px;
+      z-index: 24;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(24, 24, 24, 0.94);
+      border: 1px solid var(--line);
+      color: white;
+      transform: translateY(18px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s var(--ease), transform 0.2s var(--ease);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    html[data-theme="light"] .toast {
+      background: rgba(255, 249, 243, 0.96);
+      border-color: rgba(66, 40, 30, 0.1);
+      color: var(--text);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .empty {
+      padding: 36px 20px;
+      border-radius: var(--radius-lg);
+      border: 1px dashed rgba(255, 255, 255, 0.12);
+      text-align: center;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .stage.fullscreen-mode {
+      padding: 0;
+    }
+
+    .stage.fullscreen-mode .phone-wrap {
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      max-width: none;
+      max-height: none;
+      border-radius: 0;
+      padding: 0;
+    }
+
+    .stage.fullscreen-mode .phone-wrap::before {
+      display: none;
+    }
+
+    .stage.fullscreen-mode .phone {
+      border-radius: 0;
+    }
+
+    @media (max-width: 440px) {
+      html, body {
+        min-height: 100vh;
+        min-height: 100dvh;
+      }
+
+      .stage {
+        min-height: 100vh;
+        min-height: 100dvh;
+        padding: 0;
+      }
+
+      .phone-wrap {
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        border-radius: 0;
+        padding: 0;
+      }
+
+      .phone {
+        border-radius: 0;
+      }
+    }
+
+    @media (max-width: 390px), (max-height: 760px) {
+      .status-bar {
+        padding: 14px 18px 0;
+        height: 46px;
+        font-size: 12px;
+      }
+
+      .topbar {
+        padding: 80px 14px 10px;
+      }
+
+      .topbar.journey-mode {
+        grid-template-columns: 1fr auto;
+        column-gap: 12px;
+      }
+
+      .topbar.journey-mode .topbar-left {
+        min-height: 56px;
+      }
+
+      .journey-shell-bar {
+        margin-top: 0;
+        padding: 0;
+      }
+
+      .journey-shell-meta {
+        gap: 14px;
+        padding: 12px 14px;
+      }
+
+      .journey-shell-chip {
+        font-size: 11px;
+      }
+
+      .toolbar {
+        top: 38px;
+        gap: 6px;
+      }
+
+      .stage.shell-browser .toolbar {
+        top: 10px;
+        right: 12px;
+      }
+
+      .web-nav {
+        padding: 12px 14px;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .web-nav-actions {
+        width: 100%;
+        margin-left: 0;
+        justify-content: space-between;
+      }
+
+      .web-links {
+        width: 100%;
+        justify-content: flex-start;
+      }
+      .nav-cluster,
+      .locale-switch,
+      .view-switch {
+        gap: 4px;
+        padding: 3px;
+      }
+
+      .icon-btn,
+      .toggle-btn {
+        min-width: 34px;
+        height: 30px;
+        font-size: 11px;
+      }
+
+      .toggle-btn,
+      .view-btn {
+        padding: 0 10px;
+      }
+
+      .screen-title {
+        font-size: 30px;
+      }
+
+      .topbar.compact .screen-title {
+        font-size: 19px;
+      }
+
+      .screen-subtitle {
+        font-size: 11px;
+        max-width: 190px;
+      }
+
+      .content {
+        padding: 14px 14px 92px;
+      }
+
+      .card,
+      .hero-card,
+      .cart-item,
+      .sheet {
+        padding: 14px;
+      }
+
+      .promo-banner {
+        min-height: 150px;
+      }
+
+      .product-visual {
+        height: 96px;
+      }
+
+      .detail-hero {
+        grid-template-columns: 96px 1fr;
+        gap: 14px;
+      }
+
+      .detail-emoji {
+        width: 96px;
+        height: 96px;
+        border-radius: 22px;
+      }
+
+      .bottom-nav {
+        gap: 2px;
+        bottom: 0;
+        padding: 8px 6px 0;
+      }
+
+      .nav-btn {
+        min-height: 60px;
+        font-size: 9px;
+        padding: 2px 1px;
+      }
+
+      .nav-btn-inner {
+        gap: 6px;
+      }
+
+      .nav-btn-icon {
+        width: 24px;
+        height: 24px;
+        flex-basis: 24px;
+      }
+
+      .nav-btn-label {
+        font-size: 8px;
+        line-height: 1.05;
+      }
+
+      .detail-footer {
+        bottom: 60px;
+        padding: 12px 14px 14px;
+      }
+
+      .toast {
+        left: 14px;
+        right: 14px;
+        bottom: 102px;
+      }
+    }
+
+    /* ─── Action Sheet ──────────────────────────────────────────── */
+    .action-sheet-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      border-radius: inherit;
+    }
+
+    .action-sheet-overlay[hidden] {
+      display: none;
+    }
+
+    .action-sheet-scrim {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.52);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .action-sheet-panel {
+      position: relative;
+      background: var(--panel);
+      border-top: 1px solid var(--line);
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+      padding: 8px 18px 40px;
+      max-height: 72%;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      animation: sheetIn 0.26s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    }
+
+    @keyframes sheetIn {
+      from { transform: translateY(100%); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+
+    .action-sheet-handle {
+      width: 36px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.14);
+      border-radius: 2px;
+      margin: 0 auto 18px;
+    }
+
+    html[data-theme="light"] .action-sheet-handle {
+      background: rgba(0, 0, 0, 0.12);
+    }
+
+    html[data-theme="light"] .action-sheet-scrim {
+      background: rgba(0, 0, 0, 0.32);
+    }
+
+    .action-sheet-title {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 800;
+      font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--muted);
+      margin: 0 0 14px;
+    }
+
+    .action-sheet-section {
+      margin-top: 18px;
+    }
+
+    .action-sheet-section:first-of-type {
+      margin-top: 0;
+    }
+    /* ─── Nutrition Modal ──────────────────────────────────────── */
+    .nutrition-scrim {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 48;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.28s ease;
+    }
+
+    .nutrition-scrim.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .nutrition-modal {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 87%;
+      background: var(--panel);
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+      z-index: 49;
+      display: flex;
+      flex-direction: column;
+      transform: translateY(100%);
+      transition: transform 0.32s var(--ease);
+      overflow: hidden;
+      border-top: 1px solid var(--line);
+    }
+
+    html[data-theme="light"] .nutrition-modal {
+      background: var(--panel);
+      border-top-color: rgba(66, 40, 30, 0.1);
+    }
+
+    .nutrition-modal.open {
+      transform: translateY(0);
+    }
+
+    .nutrition-handle {
+      width: 36px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      margin: 12px auto 0;
+      flex-shrink: 0;
+    }
+
+    html[data-theme="light"] .nutrition-handle {
+      background: rgba(66, 40, 30, 0.18);
+    }
+
+    .nutrition-modal-head {
+      padding: 14px 18px 0;
+      flex-shrink: 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .nutrition-modal-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 900;
+      font-style: italic;
+      text-transform: uppercase;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .nutrition-modal-kj {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      font-family: var(--font-body);
+      font-style: normal;
+    }
+
+    .nutrition-close-btn {
+      flex-shrink: 0;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: var(--panel-2);
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-family: var(--font-body);
+      margin-top: 2px;
+    }
+
+    .nutrition-tabs {
+      display: flex;
+      padding: 12px 18px 0;
+      flex-shrink: 0;
+      border-bottom: 1px solid var(--line);
+      gap: 0;
+    }
+
+    .nutrition-tab {
+      flex: 1;
+      height: 36px;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 800;
+      font-style: normal;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      cursor: pointer;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .nutrition-tab.active {
+      color: var(--text);
+      border-bottom-color: var(--red);
+    }
+
+    .nutrition-modal-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 18px 24px;
+      scrollbar-width: none;
+    }
+
+    .nutrition-modal-body::-webkit-scrollbar { display: none; }
+
+    /* Nutrition table */
+    .nutrition-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .nutrition-table thead th {
+      padding: 0 0 8px;
+      color: var(--muted);
+      font-family: var(--font-body);
+      font-style: normal;
+      font-weight: 800;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: right;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nutrition-table thead th:first-child { text-align: left; }
+
+    .nutrition-table tbody td {
+      padding: 9px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+      text-align: right;
+    }
+
+    .nutrition-table tbody td:first-child {
+      text-align: left;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 11px;
+      padding-right: 12px;
+    }
+
+    .nutrition-table tbody tr.nt-highlight td {
+      color: var(--text);
+      font-weight: 900;
+    }
+
+    .nutrition-table tbody tr.nt-highlight td:first-child {
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .nutrition-table tbody tr.nt-sub td:first-child {
+      padding-left: 14px;
+    }
+
+    /* Allergens */
+    .allergen-legend {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 12px;
+    }
+
+    .allergen-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-body);
+      font-style: normal;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .allergen-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .allergen-dot.present { background: var(--red); }
+    .allergen-dot.na { background: rgba(255, 255, 255, 0.14); }
+
+    html[data-theme="light"] .allergen-dot.na { background: rgba(66, 40, 30, 0.14); }
+
+    .allergen-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--line);
+      gap: 12px;
+    }
+
+    .allergen-name {
+      font-size: 11px;
+      font-family: var(--font-body);
+      font-style: normal;
+      font-weight: 600;
+      color: var(--muted);
+      flex: 1;
+      min-width: 0;
+    }
+
+    .allergen-status {
+      font-size: 9px;
+      font-family: var(--font-body);
+      font-style: normal;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .allergen-status.present {
+      background: rgba(228, 0, 43, 0.16);
+      color: #ff7b8f;
+    }
+
+    .allergen-status.na {
+      color: rgba(255, 255, 255, 0.2);
+      padding: 3px 0;
+    }
+
+    html[data-theme="light"] .allergen-status.na {
+      color: rgba(66, 40, 30, 0.2);
+    }
+
+    .nutrition-disclaimer {
+      margin-top: 16px;
+      padding: 12px 14px;
+      background: var(--panel-2);
+      border-radius: var(--radius-sm);
+      font-size: 10px;
+      font-family: var(--font-body);
+      font-style: normal;
+      font-weight: 600;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .nutrition-disclaimer p { margin: 0 0 4px; }
+    .nutrition-disclaimer p:last-child { margin-bottom: 0; }
+
+    .product-kj {
+      opacity: 0.55;
+      font-style: normal;
+    }
+
+    /* Nutrition link stacked above + button */
+    .quick-add-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nutrition-link-btn {
+      border: none;
+      background: none;
+      padding: 0;
+      color: var(--muted);
+      font-family: var(--font-body);
+      font-style: normal;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      cursor: pointer;
+      opacity: 0.7;
+    }
+
+    .nutrition-link-btn:hover { opacity: 1; }
+
+    /* ── Login Screen ──────────────────────────────────────────── */
+    .login-screen {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      padding: 0 24px 40px;
+    }
+
+    .login-hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 0 28px;
+      gap: 0;
+    }
+
+    .login-logo {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      margin-bottom: 20px;
+    }
+
+    .login-heading {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 34px;
+      font-weight: 900;
+      font-style: italic;
+      text-transform: uppercase;
+      line-height: 0.9;
+      text-align: center;
+    }
+
+    .login-sub {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 1.55;
+      text-align: center;
+      max-width: 220px;
+    }
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .login-field-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .login-label {
+      font-size: 10px;
+      font-weight: 800;
+      font-style: normal;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .login-input {
+      width: 100%;
+      height: 52px;
+      padding: 0 16px;
+      border-radius: 16px;
+      border: 1.5px solid var(--line);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 700;
+      font-style: normal;
+      font-family: var(--font-body);
+      outline: none;
+      transition: border-color 0.15s var(--ease);
+    }
+
+    html[data-theme="light"] .login-input {
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    .login-input:focus {
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    html[data-theme="light"] .login-input:focus {
+      border-color: rgba(35, 24, 21, 0.3);
+    }
+
+    .login-input.error {
+      border-color: var(--red);
+    }
+
+    .login-error-msg {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: var(--red-soft);
+      border: 1px solid rgba(228, 0, 43, 0.22);
+      color: #ff9eb1;
+      font-size: 12px;
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    .login-error-msg.visible {
+      display: flex;
+    }
+
+    .login-error-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+
+    .sign-out-btn {
+      width: 100%;
+      min-height: 52px;
+      padding: 0 18px;
+      border-radius: 16px;
+      border: 1.5px solid rgba(228, 0, 43, 0.28);
+      background: transparent;
+      color: var(--red);
+      font-size: 14px;
+      font-weight: 900;
+      font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      font-family: var(--font-body);
+      transition: background 0.15s var(--ease), opacity 0.15s var(--ease);
+    }
+
+    .sign-out-btn:active {
+      background: var(--red-soft);
+      opacity: 0.8;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <div class="phone-wrap">
+      <div class="phone">
+        <div class="ambient"></div>
+        <div class="status-bar">
+          <span>9:41</span>
+          <span>5G ▰▰▰ 🔋</span>
+        </div>
+        <div class="viewport">
+          <div class="web-nav" id="web-nav">
+            <div class="web-brand">
+              <img src="https://images.ctfassets.net/wtodlh47qxpt/30HPXFOIOQLBBfuwplbndu/992a3b2157906181dc39be71202f4f3f/kfc_logo_icon.svg" alt="KFC logo">
+              <div class="web-brand-copy">
+                <div class="web-brand-title">KFC Order</div>
+                <div class="web-brand-subtitle" id="web-nav-subtitle">Website shell</div>
+              </div>
+            </div>
+            <div class="web-nav-actions">
+              <div class="web-links" id="web-links"></div>
+              <div class="web-locale-switch" aria-label="Language switch">
+                <button class="toggle-btn" data-locale="en-US">EN</button>
+                <button class="toggle-btn" data-locale="ja-JP">JP</button>
+              </div>
+            </div>
+          </div>
+          <div class="topbar">
+            <div class="topbar-left">
+              <div class="eyebrow" id="preview-badge"></div>
+              <h1 class="screen-title" id="screen-title"></h1>
+              <div class="screen-subtitle" id="screen-subtitle"></div>
+            </div>
+            <div class="toolbar">
+              <div class="nav-cluster">
+                <button class="icon-btn" id="back-btn">←</button>
+                <button class="icon-btn" id="forward-btn">→</button>
+              </div>
+              <div class="view-switch">
+                <button class="toggle-btn view-btn" id="fullscreen-btn">Fullscreen</button>
+              </div>
+              <div class="locale-switch" aria-label="Language switch">
+                <button class="toggle-btn" data-locale="en-US">EN</button>
+                <button class="toggle-btn" data-locale="ja-JP">JP</button>
+              </div>
+            </div>
+            <div class="journey-shell-bar" id="journey-shell-bar" hidden>
+              <div class="journey-shell-meta">
+                <button class="journey-shell-chip" type="button" id="shell-chip-mode">
+                  <span id="journey-shell-mode"></span>
+                  <svg class="journey-shell-chevron" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                    <path d="M2 3.5L5 6.5L8 3.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <button class="journey-shell-chip" type="button" id="shell-chip-time">
+                  <span id="journey-shell-time"></span>
+                  <svg class="journey-shell-chevron" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                    <path d="M2 3.5L5 6.5L8 3.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="content" id="content"></div>
+          <div class="detail-footer" id="detail-footer" hidden></div>
+          <div class="toast" id="toast">
+            <span id="toast-text"></span>
+            <strong id="toast-points"></strong>
+          </div>
+          <div class="bottom-nav" id="bottom-nav"></div>
+          <div class="action-sheet-overlay" id="action-sheet" hidden>
+            <div class="action-sheet-scrim" id="action-sheet-scrim"></div>
+            <div class="action-sheet-panel" id="action-sheet-panel"></div>
+          </div>
+
+          <!-- Nutrition & Allergens Modal -->
+          <div class="nutrition-scrim" id="nutrition-scrim"></div>
+          <div class="nutrition-modal" id="nutrition-modal" aria-modal="true" role="dialog" aria-label="Nutrition & Allergens">
+            <div class="nutrition-handle"></div>
+            <div class="nutrition-modal-head">
+              <div>
+                <div class="nutrition-modal-title" id="nutrition-modal-title"></div>
+                <div class="nutrition-modal-kj" id="nutrition-modal-kj"></div>
+              </div>
+              <button class="nutrition-close-btn" id="nutrition-close-btn" aria-label="Close">✕</button>
+            </div>
+            <div class="nutrition-tabs">
+              <button class="nutrition-tab active" id="nutrition-tab-nutrition" data-ntab="nutrition">Nutrition</button>
+              <button class="nutrition-tab" id="nutrition-tab-allergens" data-ntab="allergens">Allergens</button>
+            </div>
+            <div class="nutrition-modal-body" id="nutrition-modal-body"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const queryParams = new URLSearchParams(window.location.search);
+    const themeParam = queryParams.get("theme");
+    const localeParam = queryParams.get("locale");
+    if (themeParam === "light" || themeParam === "dark") {
+      document.documentElement.dataset.theme = themeParam;
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.origin !== window.location.origin) return;
+      if (event.data?.type !== "rna-prototype-theme") return;
+      if (event.data.theme === "light" || event.data.theme === "dark") {
+        document.documentElement.dataset.theme = event.data.theme;
+      }
+    });
+
+    const stageEl = document.querySelector(".stage");
+    const fullscreenBtn = document.getElementById("fullscreen-btn");
+    let embeddedFullscreenMode = false;
+
+    const copy = {
+      "en-US": {
+        previewBadge: "",
+        nav: {
+          home: "Home",
+          menu: "Menu",
+          cart: "Cart",
+          rewards: "Rewards",
+          account: "More"
+        },
+        screens: {
+          location: {
+            title: "Start My Order",
+            subtitle: ""
+          },
+          deliveryLocation: {
+            title: "Set Location",
+            subtitle: "Use Justin's saved places or type any destination. The prototype assigns a default store after address confirmation."
+          },
+          deliveryMap: {
+            title: "Confirm Destination",
+            subtitle: "Review the mock map, confirm the delivery pin, and let the app assign the closest store."
+          },
+          store: {
+            title: "Find a Store",
+            subtitle: "Choose the store that will shape ETA, availability, and the rest of Justin's order flow."
+          },
+          home: {
+            title: "Featured Today",
+            subtitle: ""
+          },
+          menu: {
+            title: "Live Menu",
+            subtitle: "Filters and search affect a stateful product grid instead of stepping through staged cards."
+          },
+          detail: {
+            title: "Customize Item",
+            subtitle: "Product choices persist while you move back to cart or menu."
+          },
+          cart: {
+            title: "Basket",
+            subtitle: "The basket persists across navigation and reflects the current store session."
+          },
+          checkout: {
+            title: "Checkout",
+            subtitle: "Delivery details and payment remain editable without collapsing the rest of the flow."
+          },
+          confirmation: {
+            title: "Order Placed",
+            subtitle: "The prototype ends on a believable tracking snapshot instead of a dead-end slide."
+          },
+          rewards: {
+            title: "Deals & Rewards",
+            subtitle: "Wallet value and promos stay visible inside ordering, not buried off to the side."
+          },
+          account: {
+            title: "Account Hub",
+            subtitle: "Review orders, manage profile, get help, and reach adjacent surfaces without leaving the app."
+          }
+        },
+        labels: {
+          currentSession: "Current Session",
+          back: "Back",
+          welcomeBack: "Welcome back",
+          startOrder: "Start your order",
+          startMyOrder: "Start My Order",
+          reorder: "Reorder favorite",
+          journeyFlow: "Current journey",
+          startHereHeadline: "Justin starts here",
+          resumeOrder: "Resume order",
+          browseMenu: "Browse menu",
+          reviewJourney: "Journey checkpoints",
+          needHelp: "Need help?",
+          orderForOthers: "Order for others",
+          orderForOthersBody: "Keep this lightweight, but show that shared or delegated ordering is part of the real app surface.",
+          termsAccept: "I accept the order terms and simulated handoff policy.",
+          orderNotes: "Delivery notes",
+          postOrderAssumption: "Assumed after-order",
+          dealsRewards: "Deals & Rewards",
+          account: "Account",
+          on: "On",
+          off: "Off",
+          storeJourneyNote: "Justin has chosen a fulfillment path. The next meaningful step is menu discovery shaped by this store's availability.",
+          setLocation: "Set Location",
+          savedPlaces: "Saved & suggested locations",
+          recentPlaces: "Recent and nearby",
+          useThisAddress: "Use this address",
+          assignedStore: "Assigned store",
+          change: "Change",
+          deliveringTo: "Delivering to",
+          pickupFrom: "Pickup from",
+          confirmPin: "Confirm destination",
+          mapHint: "Mock map only. Confirming this address assigns the delivery store automatically.",
+          eta: "ETA",
+          rider: "Delivery rider",
+          nearbyKfc: "Nearby KFC",
+          switchModeWarning: "Changing order mode resets your selected pickup store or delivery location.",
+          browseOnly: "Full catalogue",
+          browseOnlyBody: "You're seeing every item we offer. Once you select a store, availability and pricing are confirmed live from that location's menu.",
+          browseOnlyCta: "Set a store",
+          browseOnlyAlert: "Choose a store to confirm what's available near you and start adding items.",
+          accountTools: "Account tools",
+          orderTypeTitle: "How would you like to receive your order?",
+          orderTypeBody: "Menu availability and pricing may vary between order types.",
+          continueToStores: "Continue to stores",
+          continueToMenu: "Continue to menu",
+          storeSection: "Nearby Stores",
+          modeSection: "Fulfillment",
+          timingSection: "Order Timing",
+          dateSection: "Date",
+          slotSection: "Scheduled Slots",
+          livePreview: "Live preview",
+          featuredKicker: "RNA Sneak Peek",
+          featuredTitle: "A real ordering app should feel alive",
+          featuredBody: "Store, order mode, and timing should all reshape what the guest can buy. This version behaves like a miniature iPhone ordering app instead of a slideshow.",
+          featuredCta: "Open live menu",
+          recommendations: "Recommended For You",
+          searchPlaceholder: "Search items, bundles, drinks...",
+          categoryAll: "All",
+          categoryChicken: "Chicken",
+          categoryBurger: "Burgers",
+          categoryCombos: "Combos",
+          categorySides: "Sides",
+          categoryDrinks: "Drinks",
+          categoryWraps: "Wraps",
+          categoryBuckets: "Buckets",
+          categoryDesserts: "Desserts",
+          categorySauces: "Sauces",
+          detail: "Details",
+          heat: "Heat Level",
+          size: "Size",
+          extras: "Extras",
+          addToCart: "Add to cart",
+          continueShopping: "Continue shopping",
+          viewProduct: "View details",
+          quickAdd: "Quick add",
+          proceedCheckout: "Proceed to checkout",
+          deliveryAddress: "Delivery Address",
+          payment: "Payment",
+          orderSummary: "Order Summary",
+          placeOrder: "Place order",
+          tracking: "Tracking Snapshot",
+          backHome: "Back to home",
+          emptyCart: "Your cart is empty. Add something from the menu to keep exploring the flow.",
+          rewardsHeadline: "Colonel's Club",
+          rewardsBody: "Because the experience is one app now, loyalty stays accessible instead of feeling like a disconnected demo screen.",
+          tierStatusLine: "Gold status is live across rewards, checkout, and your account.",
+          currentTier: "Current tier",
+          nextTier: "Next tier",
+          pointsToNext: "to Platinum",
+          tierProgress: "Tier progress",
+          tierPerks: "Unlocked perks",
+          rankMomentum: "Status secured",
+          rankPerk1Title: "Priority drops",
+          rankPerk1Body: "New meals hit your app before anyone else even knows they exist.",
+          rankPerk2Title: "Combo boost",
+          rankPerk2Body: "Premium orders stack points faster. Order more, earn more.",
+          rankPerk3Title: "VIP surprises",
+          rankPerk3Body: "Something good is coming — and you've earned the right to find out first.",
+          support: "Get help",
+          orderHistory: "Review orders",
+          giftCard: "Gift card",
+          aboutKfc: "Learn about KFC",
+          points: "points",
+          redeem: "Redeem",
+          redeemed: "Redeemed",
+          available: "Available",
+          unavailable: "Unavailable",
+          asap: "ASAP",
+          schedule: "Schedule",
+          promoCode: "Promo code or reward",
+          promoCodePlaceholder: "Enter code",
+          applyCode: "Apply",
+          promoApplied: "Code applied",
+          promoInvalid: "Invalid code — try again",
+          browseRewards: "Browse my rewards",
+          subtotal: "Subtotal",
+          delivery: "Delivery",
+          free: "FREE",
+          total: "Total",
+          earned: "Points earned",
+          placed: "Placed",
+          cooking: "Cooking",
+          dispatch: "Dispatch"
+        },
+        helper: {
+          location: "Switching store or fulfillment mode updates the whole session, including availability and delivery promise.",
+          menu: "Unavailable items stay visible with reasons, so the prototype explains system behavior instead of hiding it.",
+          checkout: "This is still simulated. The goal is to test app behavior, not connect to real APIs."
+        },
+        storeModes: {
+          delivery: "Delivery",
+          pickup: "Pickup",
+          dinein: "Dine-in"
+        },
+        timings: {
+          asapMeta: "Fastest route",
+          scheduleMeta: "Choose a slot"
+        },
+        toasts: {
+          added: "Added to basket",
+          redeemed: "Reward redeemed"
+        },
+        itemReasons: {
+          outOfStock: "Sold out at this store",
+          pickupOnly: "Pickup only here",
+          deliveryBlocked: "Not available for delivery",
+          eveningOnly: "Only available for scheduled evening slots",
+          closedAsap: "Store is closed for ASAP"
+        }
+      },
+      "ja-JP": {
+        previewBadge: "",
+        nav: {
+          home: "ホーム",
+          menu: "メニュー",
+          cart: "カート",
+          rewards: "Rewards",
+          account: "その他"
+        },
+        screens: {
+          location: {
+            title: "注文を開始",
+            subtitle: ""
+          },
+          deliveryLocation: {
+            title: "配送先を設定",
+            subtitle: "Justin の保存先や候補を使うか、任意の住所を入力します。確認後に仮の店舗が自動で割り当てられます。"
+          },
+          deliveryMap: {
+            title: "配送先を確認",
+            subtitle: "モックの地図で配送ピンを確認し、最寄り店舗を自動割当します。"
+          },
+          store: {
+            title: "店舗を探す",
+            subtitle: "どの店舗を選ぶかで ETA、在庫、注文フロー全体が変わります。"
+          },
+          home: {
+            title: "おすすめ",
+            subtitle: ""
+          },
+          menu: {
+            title: "ライブメニュー",
+            subtitle: "検索とフィルターが、演出用の固定カードではなく状態保持型のグリッドに反映されます。"
+          },
+          detail: {
+            title: "商品カスタマイズ",
+            subtitle: "商品オプションを選んだ状態のまま、カートやメニューに戻れます。"
+          },
+          cart: {
+            title: "カート",
+            subtitle: "カートはナビゲーション全体で維持され、現在の店舗セッションを反映します。"
+          },
+          checkout: {
+            title: "チェックアウト",
+            subtitle: "配送情報や支払い方法を変更しても、他の状態は崩れません。"
+          },
+          confirmation: {
+            title: "注文完了",
+            subtitle: "最後は行き止まりのスライドではなく、追跡画面らしい終点になります。"
+          },
+          rewards: {
+            title: "Deals & Rewards",
+            subtitle: "wallet value や promo は注文体験の中で見えるべきです。"
+          },
+          account: {
+            title: "アカウントハブ",
+            subtitle: "注文履歴、プロフィール、サポート、周辺導線をアプリ内で自然に行き来できます。"
+          }
+        },
+        labels: {
+          currentSession: "現在のセッション",
+          back: "戻る",
+          welcomeBack: "おかえりなさい",
+          startOrder: "注文を開始",
+          startMyOrder: "注文を開始",
+          reorder: "再注文",
+          journeyFlow: "現在の導線",
+          startHereHeadline: "Justin の開始地点",
+          resumeOrder: "注文を再開",
+          browseMenu: "メニューを見る",
+          reviewJourney: "主要ステップ",
+          needHelp: "サポート",
+          orderForOthers: "代理注文",
+          orderForOthersBody: "ここは軽めでよいですが、代理注文や共有注文が実アプリ上の導線に含まれることは見せます。",
+          termsAccept: "注文条件とシミュレーション上の受け渡し条件に同意します。",
+          orderNotes: "配達メモ",
+          postOrderAssumption: "注文後の想定",
+          dealsRewards: "Deals & Rewards",
+          account: "アカウント",
+          on: "オン",
+          off: "オフ",
+          storeJourneyNote: "受け取り方法が決まったので、次はこの店舗の在庫に基づいたメニュー探索に進みます。",
+          setLocation: "配送先を設定",
+          savedPlaces: "保存先と候補",
+          recentPlaces: "最近使った場所・周辺候補",
+          useThisAddress: "この住所を使う",
+          assignedStore: "割当店舗",
+          change: "変更",
+          deliveringTo: "お届け先",
+          pickupFrom: "受取店舗",
+          confirmPin: "配送先を確認",
+          mapHint: "これはモック地図です。住所を確定すると配送店舗が自動で割り当てられます。",
+          eta: "到着目安",
+          rider: "配達員",
+          nearbyKfc: "近くのKFC",
+          switchModeWarning: "受取方法を変更すると、選択済みの店舗または配送先がリセットされます。",
+          browseOnly: "全カタログ表示",
+          browseOnlyBody: "現在、提供中の全メニューを表示しています。店舗を選択すると、その店舗のメニューAPIをもとに在庫と価格がリアルタイムで確定されます。",
+          browseOnlyCta: "店舗を選ぶ",
+          browseOnlyAlert: "近くの店舗を選んで、在庫確認とカート追加を始めましょう。",
+          accountTools: "アカウント機能",
+          orderTypeTitle: "どの受け取り方法にしますか？",
+          orderTypeBody: "受け取り方法によってメニューや価格が変わる場合があります。",
+          continueToStores: "店舗選択へ進む",
+          continueToMenu: "メニューへ進む",
+          storeSection: "近くの店舗",
+          modeSection: "受取方法",
+          timingSection: "注文タイミング",
+          dateSection: "日付",
+          slotSection: "予約枠",
+          livePreview: "ライブプレビュー",
+          featuredKicker: "RNA Sneak Peek",
+          featuredTitle: "本物の注文アプリは、体験が生きているべき",
+          featuredBody: "店舗、注文方法、時間帯によって購入可能商品が変わるべきです。この版はスライドではなく、iPhone 向けの小さな注文アプリとして動きます。",
+          featuredCta: "ライブメニューを開く",
+          recommendations: "おすすめ",
+          searchPlaceholder: "商品、セット、ドリンクを検索...",
+          categoryAll: "すべて",
+          categoryChicken: "チキン",
+          categoryBurger: "バーガー",
+          categoryCombos: "セット",
+          categorySides: "サイド",
+          categoryDrinks: "ドリンク",
+          categoryWraps: "ラップ",
+          categoryBuckets: "バケット",
+          categoryDesserts: "デザート",
+          categorySauces: "ソース",
+          detail: "詳細",
+          heat: "辛さ",
+          size: "サイズ",
+          extras: "追加",
+          addToCart: "カートに追加",
+          continueShopping: "買い物を続ける",
+          viewProduct: "詳細を見る",
+          quickAdd: "追加する",
+          proceedCheckout: "チェックアウトへ",
+          deliveryAddress: "配送先住所",
+          payment: "支払い方法",
+          orderSummary: "注文内容",
+          placeOrder: "注文する",
+          tracking: "追跡スナップショット",
+          backHome: "ホームに戻る",
+          emptyCart: "カートは空です。メニューから商品を追加してフローを続けてください。",
+          rewardsHeadline: "Colonel's Club",
+          rewardsBody: "アプリ全体がつながっているため、ロイヤルティも独立したデモ画面ではなく自然に確認できます。",
+          tierStatusLine: "Gold ステータスが rewards、checkout、account 全体に反映されています。",
+          currentTier: "現在のティア",
+          nextTier: "次のティア",
+          pointsToNext: "で Platinum",
+          tierProgress: "ティア進行状況",
+          tierPerks: "利用中の特典",
+          rankMomentum: "現在のステータス",
+          rankPerk1Title: "先行ドロップ",
+          rankPerk1Body: "新作ミールは、一般公開より前にあなたのアプリに届きます。",
+          rankPerk2Title: "コンボブースト",
+          rankPerk2Body: "プレミアム注文でポイントが加速。注文するほど、どんどん貯まる。",
+          rankPerk3Title: "VIP サプライズ",
+          rankPerk3Body: "何かいいことが来る — あなたはそれを最初に知る権利を手に入れた。",
+          support: "ヘルプ",
+          orderHistory: "注文履歴",
+          giftCard: "ギフトカード",
+          aboutKfc: "KFC について",
+          points: "ポイント",
+          redeem: "交換する",
+          redeemed: "交換済み",
+          available: "利用可能",
+          unavailable: "利用不可",
+          asap: "今すぐ",
+          schedule: "予約",
+          promoCode: "プロモコード・特典",
+          promoCodePlaceholder: "コードを入力",
+          applyCode: "適用",
+          promoApplied: "コードが適用されました",
+          promoInvalid: "無効なコードです。もう一度お試しください",
+          browseRewards: "特典を見る",
+          subtotal: "小計",
+          delivery: "配達料",
+          free: "無料",
+          total: "合計",
+          earned: "獲得ポイント",
+          placed: "受付済み",
+          cooking: "調理中",
+          dispatch: "配達準備"
+        },
+        helper: {
+          location: "店舗や受取方法を変えると、在庫や配達時間を含むセッション全体が変わります。",
+          menu: "利用不可の商品も理由付きで表示するため、システム挙動を説明できます。",
+          checkout: "これはシミュレーションです。目的は API 接続ではなく、アプリらしい挙動の確認です。"
+        },
+        storeModes: {
+          delivery: "デリバリー",
+          pickup: "受け取り",
+          dinein: "店内利用"
+        },
+        timings: {
+          asapMeta: "最短ルート",
+          scheduleMeta: "時間を選ぶ"
+        },
+        toasts: {
+          added: "カートに追加しました",
+          redeemed: "特典を交換しました"
+        },
+        itemReasons: {
+          outOfStock: "この店舗では売り切れ",
+          pickupOnly: "この店舗では受け取りのみ",
+          deliveryBlocked: "デリバリー対象外",
+          eveningOnly: "夜の予約枠のみ利用可",
+          closedAsap: "今すぐ注文では営業時間外"
+        }
+      }
+    };
+
+    const stores = [
+      {
+        id: "downtown",
+        emoji: "🍗",
+        name: { "en-US": "KFC Downtown", "ja-JP": "KFC Downtown" },
+        address: { "en-US": "142 S Grand Ave, Los Angeles", "ja-JP": "142 S Grand Ave, Los Angeles" },
+        distance: "0.8 km",
+        eta: { delivery: "15-20 min", pickup: "10 min", dinein: "Walk in" },
+        modes: ["delivery", "pickup", "dinein"],
+        note: { "en-US": "Full menu · Halal certified", "ja-JP": "フルメニュー ・ ハラール認証" }
+      },
+      {
+        id: "westside",
+        emoji: "🍔",
+        name: { "en-US": "KFC Westside", "ja-JP": "KFC Westside" },
+        address: { "en-US": "8900 Santa Monica Blvd", "ja-JP": "8900 Santa Monica Blvd" },
+        distance: "2.1 km",
+        eta: { delivery: "25-30 min", pickup: "12 min", dinein: "Walk in" },
+        modes: ["pickup", "dinein"],
+        note: { "en-US": "Pickup-first site", "ja-JP": "受け取り中心の店舗" }
+      },
+      {
+        id: "airport",
+        emoji: "✈️",
+        name: { "en-US": "KFC LAX Airport", "ja-JP": "KFC LAX Airport" },
+        address: { "en-US": "Terminal 5, LAX", "ja-JP": "Terminal 5, LAX" },
+        distance: "4.2 km",
+        eta: { delivery: "Closed", pickup: "20 min", dinein: "12 min wait" },
+        modes: ["pickup", "dinein"],
+        note: { "en-US": "Restricted access menu", "ja-JP": "限定メニュー" }
+      }
+    ];
+
+    const addressSuggestions = [
+      {
+        id: "home",
+        label: { "en-US": "Home", "ja-JP": "自宅" },
+        address: { "en-US": "123 Main Street, Los Angeles, CA", "ja-JP": "123 Main Street, Los Angeles, CA" },
+        eta: "22 min",
+        storeId: "downtown"
+      },
+      {
+        id: "work",
+        label: { "en-US": "Work", "ja-JP": "職場" },
+        address: { "en-US": "801 W Olympic Blvd, Los Angeles, CA", "ja-JP": "801 W Olympic Blvd, Los Angeles, CA" },
+        eta: "28 min",
+        storeId: "westside"
+      },
+      {
+        id: "justin",
+        label: { "en-US": "Justin's Apartment", "ja-JP": "Justin のアパート" },
+        address: { "en-US": "515 Flower Street, Los Angeles, CA", "ja-JP": "515 Flower Street, Los Angeles, CA" },
+        eta: "19 min",
+        storeId: "downtown"
+      },
+      {
+        id: "beach",
+        label: { "en-US": "Santa Monica Beach", "ja-JP": "サンタモニカビーチ" },
+        address: { "en-US": "1550 Pacific Coast Hwy, Santa Monica, CA", "ja-JP": "1550 Pacific Coast Hwy, Santa Monica, CA" },
+        eta: "31 min",
+        storeId: "westside"
+      }
+    ];
+
+    const products = [
+      {
+        id: "original",
+        emoji: "🍗",
+        image: "https://images.ctfassets.net/a2mgcrjjefyo/2izD0hmvm82nJynChwGKaD/9fd08b40807da4c556580c38fc8e1bad/Original_Recipe_Chicken_2pcs_1600x1600.png?h=600&w=800&fm=webp&fit=fill",
+        category: "chicken",
+        basePrice: 6.99,
+        kj: 1260,
+        name: { "en-US": "Original Recipe", "ja-JP": "オリジナルチキン" },
+        desc: {
+          "en-US": "11 herbs & spices",
+          "ja-JP": "11種のハーブ＆スパイス"
+        },
+        options: {
+          heat: { "en-US": ["Original", "Spicy"], "ja-JP": ["オリジナル", "スパイシー"] },
+          size: { "en-US": ["2 pcs", "4 pcs"], "ja-JP": ["2 ピース", "4 ピース"] },
+          extras: { "en-US": ["Extra dip +$0.50"], "ja-JP": ["ディップ追加 +$0.50"] }
+        }
+      },
+      {
+        id: "zinger",
+        emoji: "🍔",
+        image: "https://images.ctfassets.net/a2mgcrjjefyo/5zKY5PaPLsvUQ11iBuyobt/caf0486d088dc5dc984ef46338e82c61/Chili_Crunch_Sandwich_ALC_1600x1600.png?h=600&w=800&fm=webp&fit=fill",
+        category: "burger",
+        basePrice: 8.99,
+        kj: 2380,
+        name: { "en-US": "Zinger Tower Burger", "ja-JP": "ジンガータワーバーガー" },
+        desc: {
+          "en-US": "Crispy fillet, tower stacked",
+          "ja-JP": "クリスピーフィレのタワー"
+        },
+        options: {
+          heat: { "en-US": ["Mild", "Spicy", "Fire"], "ja-JP": ["マイルド", "スパイシー", "ファイア"] },
+          size: { "en-US": ["Regular", "Large"], "ja-JP": ["レギュラー", "ラージ"] },
+          extras: { "en-US": ["Extra sauce +$0.50", "Double fillet +$2.00"], "ja-JP": ["ソース追加 +$0.50", "ダブルフィレ +$2.00"] }
+        }
+      },
+      {
+        id: "feast",
+        emoji: "🪣",
+        image: "https://images.ctfassets.net/a2mgcrjjefyo/7LTKFKEVrGsQ0BYPxJKaHD/73854d6e8efd5dc4bbb1fd5cf388cf57/OrigRecipeBucket_10pcs_8_1600x1600_v2.png?h=600&w=800&fm=webp&fit=fill",
+        category: "combos",
+        basePrice: 24.99,
+        kj: 8400,
+        name: { "en-US": "Family Feast Bucket", "ja-JP": "ファミリーフィーストバケット" },
+        desc: {
+          "en-US": "Feeds 4–6, mix & match",
+          "ja-JP": "4〜6人分、選べるミックス"
+        },
+        options: {
+          heat: { "en-US": ["Original", "Mixed"], "ja-JP": ["オリジナル", "ミックス"] },
+          size: { "en-US": ["8 pcs", "12 pcs"], "ja-JP": ["8 ピース", "12 ピース"] },
+          extras: { "en-US": ["Add gravy +$1.00"], "ja-JP": ["グレービー追加 +$1.00"] }
+        }
+      },
+      {
+        id: "fries",
+        emoji: "🍟",
+        image: "https://images.ctfassets.net/a2mgcrjjefyo/6OblWnUazdc1ijzadMiE8c/a32131d3ed73e448b9c04dcdd1088707/Snack_Poutine.png?h=600&w=800&fm=webp&fit=fill",
+        category: "sides",
+        basePrice: 2.99,
+        kj: 1180,
+        name: { "en-US": "Crispy Fries", "ja-JP": "クリスピーフライ" },
+        desc: {
+          "en-US": "Golden, seasoned cut",
+          "ja-JP": "ゴールデン、シーズニング"
+        },
+        options: {
+          heat: { "en-US": ["Classic seasoning"], "ja-JP": ["クラシックシーズニング"] },
+          size: { "en-US": ["Small", "Regular", "Large"], "ja-JP": ["スモール", "レギュラー", "ラージ"] },
+          extras: { "en-US": ["Cheese sauce +$0.80"], "ja-JP": ["チーズソース +$0.80"] }
+        }
+      },
+      {
+        id: "pepsi",
+        emoji: "🥤",
+        image: "https://images.ctfassets.net/a2mgcrjjefyo/1oYe6SLVP9vTIhaiDlinz7/dc4b332b76b99c834afe2e5ca27ea0e6/23-FS-1704_1600_x_1600px_Pepsi_LOGO_Blue_BIL.png?h=600&w=800&fm=webp&fit=fill",
+        category: "drinks",
+        basePrice: 2.49,
+        kj: 9,
+        name: { "en-US": "Pepsi Max", "ja-JP": "ペプシマックス" },
+        desc: {
+          "en-US": "Zero sugar, full flavour",
+          "ja-JP": "砂糖ゼロ、フルフレーバー"
+        },
+        options: {
+          heat: { "en-US": ["Original"], "ja-JP": ["オリジナル"] },
+          size: { "en-US": ["Regular", "Large"], "ja-JP": ["レギュラー", "ラージ"] },
+          extras: { "en-US": ["No ice"], "ja-JP": ["氷なし"] }
+        }
+      },
+      {
+        id: "twister",
+        emoji: "🌯",
+        image: "https://images.ctfassets.net/a2mgcrjjefyo/70zQ7ypdxGtHAbcEZcpv0z/1680949bf35dcc9f78ac6b4131f7e2c0/Chili_Crunch_Snacker_Wrap_1600x1600.png?h=600&w=800&fm=webp&fit=fill",
+        category: "burger",
+        basePrice: 7.49,
+        kj: 1680,
+        name: { "en-US": "Twister Wrap", "ja-JP": "ツイスターラップ" },
+        desc: {
+          "en-US": "Grilled or crispy, wrapped",
+          "ja-JP": "グリルまたはクリスピー"
+        },
+        options: {
+          heat: { "en-US": ["Original"], "ja-JP": ["オリジナル"] },
+          size: { "en-US": ["Regular"], "ja-JP": ["レギュラー"] },
+          extras: { "en-US": ["Extra lettuce +$0.40"], "ja-JP": ["レタス追加 +$0.40"] }
+        }
+      },
+      {
+        id: "breakfast",
+        emoji: "🥞",
+        image: "https://images.ctfassets.net/a2mgcrjjefyo/6OblWnUazdc1ijzadMiE8c/a32131d3ed73e448b9c04dcdd1088707/Snack_Poutine.png?h=600&w=800&fm=webp&fit=fill",
+        category: "combos",
+        basePrice: 5.99,
+        kj: 1950,
+        name: { "en-US": "Breakfast Box", "ja-JP": "ブレックファストボックス" },
+        desc: {
+          "en-US": "Morning set, limited slots",
+          "ja-JP": "朝限定セット"
+        },
+        options: {
+          heat: { "en-US": ["Classic"], "ja-JP": ["クラシック"] },
+          size: { "en-US": ["Regular"], "ja-JP": ["レギュラー"] },
+          extras: { "en-US": ["Coffee add-on +$1.20"], "ja-JP": ["コーヒー追加 +$1.20"] }
+        }
+      },
+      {
+        id: "snacker-wrap",
+        emoji: "🌯",
+        image: "https://images.ctfassets.net/a2mgcrjjefyo/70zQ7ypdxGtHAbcEZcpv0z/1680949bf35dcc9f78ac6b4131f7e2c0/Chili_Crunch_Snacker_Wrap_1600x1600.png?h=600&w=800&fm=webp&fit=fill",
+        category: "wraps",
+        basePrice: 6.49,
+        kj: 1450,
+        name: { "en-US": "Snacker Wrap", "ja-JP": "スナッカーラップ" },
+        desc: {
+          "en-US": "Light bite, bold flavour",
+          "ja-JP": "軽食、濃厚な風味"
+        },
+        options: {
+          heat: { "en-US": ["Original", "Spicy"], "ja-JP": ["オリジナル", "スパイシー"] },
+          size: { "en-US": ["Regular"], "ja-JP": ["レギュラー"] },
+          extras: { "en-US": ["Extra sauce +$0.50"], "ja-JP": ["ソース追加 +$0.50"] }
+        }
+      },
+      {
+        id: "party-bucket",
+        emoji: "🪣",
+        image: "https://images.ctfassets.net/a2mgcrjjefyo/7LTKFKEVrGsQ0BYPxJKaHD/73854d6e8efd5dc4bbb1fd5cf388cf57/OrigRecipeBucket_10pcs_8_1600x1600_v2.png?h=600&w=800&fm=webp&fit=fill",
+        category: "buckets",
+        basePrice: 29.99,
+        kj: 10500,
+        name: { "en-US": "Party Bucket", "ja-JP": "パーティーバケット" },
+        desc: {
+          "en-US": "Feeds 8–10, shareable",
+          "ja-JP": "8〜10人分、シェアサイズ"
+        },
+        options: {
+          heat: { "en-US": ["Original", "Mixed"], "ja-JP": ["オリジナル", "ミックス"] },
+          size: { "en-US": ["10 pcs", "14 pcs"], "ja-JP": ["10 ピース", "14 ピース"] },
+          extras: { "en-US": ["Add gravy +$1.00"], "ja-JP": ["グレービー追加 +$1.00"] }
+        }
+      },
+      {
+        id: "choco-krusher",
+        emoji: "🍨",
+        image: "https://images.ctfassets.net/a2mgcrjjefyo/1oYe6SLVP9vTIhaiDlinz7/dc4b332b76b99c834afe2e5ca27ea0e6/23-FS-1704_1600_x_1600px_Pepsi_LOGO_Blue_BIL.png?h=600&w=800&fm=webp&fit=fill",
+        category: "desserts",
+        basePrice: 3.99,
+        kj: 1100,
+        name: { "en-US": "Choco Krusher", "ja-JP": "チョコクラッシャー" },
+        desc: {
+          "en-US": "Iced chocolate blended",
+          "ja-JP": "アイスチョコブレンド"
+        },
+        options: {
+          heat: { "en-US": ["Cold"], "ja-JP": ["コールド"] },
+          size: { "en-US": ["Regular"], "ja-JP": ["レギュラー"] },
+          extras: { "en-US": ["Whipped cream +$0.50"], "ja-JP": ["ホイップ追加 +$0.50"] }
+        }
+      },
+      {
+        id: "hot-gravy",
+        emoji: "🥣",
+        image: "https://images.ctfassets.net/a2mgcrjjefyo/6OblWnUazdc1ijzadMiE8c/a32131d3ed73e448b9c04dcdd1088707/Snack_Poutine.png?h=600&w=800&fm=webp&fit=fill",
+        category: "sauces",
+        basePrice: 1.29,
+        kj: 250,
+        name: { "en-US": "Hot Gravy Pot", "ja-JP": "ホットグレービー" },
+        desc: {
+          "en-US": "Rich, peppery dipping gravy",
+          "ja-JP": "濃厚ペッパーグレービー"
+        },
+        options: {
+          heat: { "en-US": ["Classic"], "ja-JP": ["クラシック"] },
+          size: { "en-US": ["Single"], "ja-JP": ["シングル"] },
+          extras: { "en-US": ["Extra pot +$0.60"], "ja-JP": ["追加ポット +$0.60"] }
+        }
+      }
+    ];
+
+    const scheduleDates = [
+      { id: "today", label: { "en-US": "Today", "ja-JP": "今日" }, date: "Mar 17" },
+      { id: "tomorrow", label: { "en-US": "Tomorrow", "ja-JP": "明日" }, date: "Mar 18" },
+      { id: "friday", label: { "en-US": "Friday", "ja-JP": "金曜" }, date: "Mar 19" }
+    ];
+
+    const scheduleSlots = ["12:30", "13:00", "18:30", "19:00", "19:30", "20:00"];
+
+    // ─── Nutrition & Allergen Data ────────────────────────────────
+    const nutritionData = {
+      name: "Loaded Nacho Chips",
+      kj: 4151,
+      nutrition: [
+        { label: "Average serving size", value: "424", unit: "g", highlight: true },
+        { label: "Energy",               value: "4151", unit: "kJ", highlight: true },
+        { label: "Protein",              value: "25.9", unit: "g" },
+        { label: "Fat, total",           value: "52.8", unit: "g", highlight: true },
+        { label: "Fat, saturated",       value: "8.4",  unit: "g", sub: true },
+        { label: "Carbohydrate",         value: "104.0", unit: "g", highlight: true },
+        { label: "Carbohydrate, sugars", value: "4.0",  unit: "g", sub: true },
+        { label: "Sodium",               value: "1215", unit: "mg" }
+      ],
+      allergens: [
+        { name: "Cereals containing gluten – Wheat",                    status: "present" },
+        { name: "Cereals containing gluten – Barley",                   status: "na" },
+        { name: "Cereals containing gluten – Oats",                     status: "na" },
+        { name: "Cereals containing gluten – Rye",                      status: "na" },
+        { name: "Cereals containing gluten – Spelt",                    status: "na" },
+        { name: "Crustacea & their Products",                           status: "na" },
+        { name: "Egg & Egg Products",                                   status: "present" },
+        { name: "Fish & Fish Products",                                 status: "na" },
+        { name: "Milk & Milk Products",                                 status: "present" },
+        { name: "Molluscs and mollusc products",                        status: "na" },
+        { name: "Tree Nuts – Almonds",                                  status: "na" },
+        { name: "Tree Nuts – Beech nuts",                               status: "na" },
+        { name: "Tree Nuts – Brazil Nuts",                              status: "na" },
+        { name: "Tree Nuts – Cashews",                                  status: "na" },
+        { name: "Tree Nuts – Chestnut",                                 status: "na" },
+        { name: "Tree Nuts – Hazelnuts",                                status: "na" },
+        { name: "Tree Nuts – Hickory nut",                              status: "na" },
+        { name: "Tree Nuts – Japanese horse-chestnut",                  status: "na" },
+        { name: "Tree Nuts – Macadamia nuts",                           status: "na" },
+        { name: "Tree Nuts – Pecans",                                   status: "na" },
+        { name: "Tree Nuts – Pine nuts",                                status: "na" },
+        { name: "Tree Nuts – Pili nut",                                 status: "na" },
+        { name: "Tree Nuts – Pistachio nuts",                           status: "na" },
+        { name: "Tree Nuts – Sapucaia (Paradise Nut)",                  status: "na" },
+        { name: "Tree Nuts – Shea nuts",                                status: "na" },
+        { name: "Tree Nuts – Walnuts",                                  status: "na" },
+        { name: "Sesame seeds and their products",                      status: "na" },
+        { name: "Peanuts and their products",                           status: "na" },
+        { name: "Soybeans and their products",                          status: "present" },
+        { name: "Lupin & their Products",                               status: "na" },
+        { name: "Sulphites # (≥10 mg/kg)",                             status: "na" }
+      ],
+      disclaimer: [
+        "Visit /nutrition-allergen to view more allergen details.",
+        "Almost everything we eat and drink gives us energy, measured in kilojoules (kJ). Maintaining a healthy weight is about balancing kJs consumed with energy used.",
+        "The average daily energy intake for an adult is around 8,700 kJ.",
+        "The average daily energy intake for children varies by age, gender, weight and level of physical activity.",
+        "# Sulphites P = quantities 10 mg/kg or more."
+      ]
+    };
+
+    let nutritionModalTab = "nutrition";
+
+    const state = {
+      locale: localeParam === "ja-JP" ? "ja-JP" : "en-US",
+      isSignedIn: true,
+      screen: "home",
+      storeId: null,
+      mode: "pickup",
+      timing: "asap",
+      scheduleDate: "today",
+      slot: "18:30",
+      search: "",
+      category: "all",
+      selectedProductId: "zinger",
+      detailQty: 1,
+      selectedOptions: {},
+      cart: [],
+      claimedPromos: [],
+      deliveryAddressInput: "",
+      selectedAddressId: null,
+      confirmedAddress: "",
+      hasChosenStore: false,
+      browseOnlyMenu: false,
+      checkout: {
+        address1: "123 Main Street, Apt 4B",
+        address2: "Los Angeles, CA 90001",
+        payment: "Apple Pay",
+        notes: "Call Justin on arrival",
+        orderForOthers: false,
+        acceptedTerms: true,
+        couponCode: "",
+        couponApplied: false
+      }
+    };
+
+    const historyStack = [];
+    const futureStack = [];
+
+    const els = {
+      content: document.getElementById("content"),
+      title: document.getElementById("screen-title"),
+      subtitle: document.getElementById("screen-subtitle"),
+      previewBadge: document.getElementById("preview-badge"),
+      journeyShellBar: document.getElementById("journey-shell-bar"),
+      journeyShellMode: document.getElementById("journey-shell-mode"),
+      journeyShellTime: document.getElementById("journey-shell-time"),
+      back: document.getElementById("back-btn"),
+      forward: document.getElementById("forward-btn"),
+      bottomNav: document.getElementById("bottom-nav"),
+      detailFooter: document.getElementById("detail-footer"),
+      toast: document.getElementById("toast"),
+      toastText: document.getElementById("toast-text"),
+      toastPoints: document.getElementById("toast-points"),
+      fullscreenBtn
+    };
+
+    // ─── Action Sheet ────────────────────────────────────────────
+    const actionSheetEl = document.getElementById("action-sheet");
+    const actionSheetPanel = document.getElementById("action-sheet-panel");
+    const actionSheetScrim = document.getElementById("action-sheet-scrim");
+
+    function openSheet(type) {
+      actionSheetPanel.innerHTML = renderSheetContent(type);
+      actionSheetPanel.dataset.sheetType = type;
+      actionSheetEl.hidden = false;
+      // Force animation restart
+      actionSheetPanel.style.animation = "none";
+      requestAnimationFrame(() => {
+        actionSheetPanel.style.animation = "";
+      });
+      attachSheetEvents();
+    }
+
+    function closeSheet() {
+      actionSheetEl.hidden = true;
+      actionSheetPanel.innerHTML = "";
+    }
+
+    function renderSheetContent(type) {
+      if (type === "mode") {
+        return `
+          <div class="action-sheet-handle"></div>
+          <div class="action-sheet-title">${t().labels.modeSection}</div>
+          <div class="choice-grid" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+            <button class="pill ${state.mode === "delivery" ? "active" : ""}" data-sheet-mode="delivery">
+              ${t().storeModes.delivery}
+              <small>${state.confirmedAddress ? getDeliveryEta() : "Address first"}</small>
+            </button>
+            <button class="pill ${state.mode === "pickup" ? "active" : ""}" data-sheet-mode="pickup">
+              ${t().storeModes.pickup}
+              <small>${state.hasChosenStore && state.storeId ? getStore().eta.pickup : "Choose store"}</small>
+            </button>
+          </div>
+        `;
+      }
+      if (type === "time") {
+        return `
+          <div class="action-sheet-handle"></div>
+          <div class="action-sheet-title">${t().labels.timingSection}</div>
+          <div class="choice-grid" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+            <button class="pill ${state.timing === "asap" ? "active" : ""}" data-sheet-timing="asap">
+              ${t().labels.asap}
+              <small>${t().timings.asapMeta}</small>
+            </button>
+            <button class="pill ${state.timing === "schedule" ? "active" : ""}" data-sheet-timing="schedule">
+              ${t().labels.schedule}
+              <small>${t().timings.scheduleMeta}</small>
+            </button>
+          </div>
+          ${state.timing === "schedule" ? `
+            <div class="action-sheet-section">
+              <div class="action-sheet-title">${t().labels.dateSection}</div>
+              <div class="chip-row">
+                ${scheduleDates.map((item) => `
+                  <button class="pill ${state.scheduleDate === item.id ? "active" : ""}" data-sheet-date="${item.id}" style="min-height:40px;padding:0 14px;white-space:nowrap">
+                    ${item.label[state.locale]}<small>${item.date}</small>
+                  </button>`).join("")}
+              </div>
+            </div>
+            <div class="action-sheet-section">
+              <div class="action-sheet-title">${t().labels.slotSection}</div>
+              <div class="slot-grid">
+                ${scheduleSlots.map((slot) => `
+                  <button class="pill ${state.slot === slot ? "active" : ""}" data-sheet-slot="${slot}">${slot}</button>`).join("")}
+              </div>
+            </div>
+          ` : ""}
+        `;
+      }
+      return "";
+    }
+
+    function attachSheetEvents() {
+      actionSheetPanel.querySelectorAll("[data-sheet-mode]").forEach((el) => {
+        el.addEventListener("click", () => {
+          const next = el.dataset.sheetMode;
+          if (state.mode !== next && (state.hasChosenStore || state.confirmedAddress)) {
+            if (!window.confirm(t().labels.switchModeWarning)) return;
+          }
+          commit(() => {
+            state.mode = next;
+            state.storeId = null;
+            state.hasChosenStore = false;
+            state.confirmedAddress = "";
+            state.selectedAddressId = null;
+            state.deliveryAddressInput = "";
+            state.browseOnlyMenu = false;
+          });
+          closeSheet();
+        });
+      });
+
+      actionSheetPanel.querySelectorAll("[data-sheet-timing]").forEach((el) => {
+        el.addEventListener("click", () => {
+          const next = el.dataset.sheetTiming;
+          state.timing = next;
+          if (next === "asap") {
+            render();
+            closeSheet();
+          } else {
+            // Stay open, re-render sheet to show date/slot pickers
+            actionSheetPanel.innerHTML = renderSheetContent("time");
+            attachSheetEvents();
+          }
+        });
+      });
+
+      actionSheetPanel.querySelectorAll("[data-sheet-date]").forEach((el) => {
+        el.addEventListener("click", () => {
+          state.scheduleDate = el.dataset.sheetDate;
+          actionSheetPanel.innerHTML = renderSheetContent("time");
+          attachSheetEvents();
+        });
+      });
+
+      actionSheetPanel.querySelectorAll("[data-sheet-slot]").forEach((el) => {
+        el.addEventListener("click", () => {
+          commit(() => {
+            state.slot = el.dataset.sheetSlot;
+            state.timing = "schedule";
+          });
+          closeSheet();
+        });
+      });
+    }
+
+    actionSheetScrim.addEventListener("click", closeSheet);
+
+    function t() {
+      return copy[state.locale];
+    }
+
+    function getStore() {
+      return stores.find((store) => store.id === state.storeId) || stores[0];
+    }
+
+    function getProduct(id) {
+      return products.find((product) => product.id === id) || products[0];
+    }
+
+    function clone(value) {
+      return JSON.parse(JSON.stringify(value));
+    }
+
+    function snapshot() {
+      return clone(state);
+    }
+
+    function restore(next) {
+      Object.assign(state, clone(next));
+      render();
+    }
+
+    function commit(mutator) {
+      historyStack.push(snapshot());
+      futureStack.length = 0;
+      mutator();
+      render();
+    }
+
+    function goBack() {
+      if (!historyStack.length) return;
+      futureStack.unshift(snapshot());
+      restore(historyStack.pop());
+    }
+
+    function goForward() {
+      if (!futureStack.length) return;
+      historyStack.push(snapshot());
+      restore(futureStack.shift());
+    }
+
+    function setLocale(locale) {
+      state.locale = locale;
+      render();
+    }
+
+    function navigate(screen) {
+      if (requiresAuth(screen) && !state.isSignedIn) {
+        screen = "login";
+      }
+      if (screen === "menu") {
+        if (state.mode === "delivery" && !state.confirmedAddress && (state.selectedAddressId || state.deliveryAddressInput.trim())) {
+          resolveDeliverySetup();
+        }
+        state.browseOnlyMenu = !(state.mode === "delivery" ? state.confirmedAddress : (state.hasChosenStore && state.storeId));
+      }
+      if (state.screen === screen) {
+        render();
+        return;
+      }
+      commit(() => {
+        state.screen = screen;
+      });
+    }
+
+    function getAvailability(product) {
+      return { available: true, reason: t().labels.available };
+    }
+
+    function getVisibleProducts() {
+      if (state.browseOnlyMenu) {
+        return products;
+      }
+      return products.filter((product) => {
+        if (state.timing !== "schedule" && product.id === "breakfast") return false;
+        if (state.mode === "pickup" && state.storeId === "airport" && product.id === "feast") return false;
+        if (state.mode === "pickup" && state.storeId === "westside" && product.id === "twister") return false;
+        return true;
+      });
+    }
+
+    function filteredAddressSuggestions() {
+      const query = state.deliveryAddressInput.trim().toLowerCase();
+      if (!query) return addressSuggestions;
+      return addressSuggestions.filter((item) => {
+        const label = item.label[state.locale].toLowerCase();
+        const address = item.address[state.locale].toLowerCase();
+        return label.includes(query) || address.includes(query);
+      });
+    }
+
+    function getDeliveryEta() {
+      const match = addressSuggestions.find((item) => item.id === state.selectedAddressId);
+      return match ? match.eta : getStore().eta.delivery || "22 min";
+    }
+
+    function resolveDeliverySetup() {
+      const typedAddress = state.deliveryAddressInput.trim();
+      const suggestion = addressSuggestions.find((item) => item.id === state.selectedAddressId) || addressSuggestions[0];
+      const resolvedAddress = state.confirmedAddress || typedAddress || suggestion.address[state.locale];
+      state.selectedAddressId = state.selectedAddressId || suggestion.id;
+      state.confirmedAddress = resolvedAddress;
+      state.storeId = state.storeId || suggestion.storeId;
+      state.hasChosenStore = false;
+      state.checkout.address1 = resolvedAddress;
+      state.checkout.address2 = state.checkout.address2 || "Los Angeles, CA";
+    }
+
+    function displaySessionContext() {
+      if (state.browseOnlyMenu) {
+        return t().labels.browseOnlyBody;
+      }
+      if (state.mode === "delivery" && state.confirmedAddress) {
+        return `${t().labels.deliveringTo} ${state.confirmedAddress} · ${t().labels.eta} ${getDeliveryEta()}`;
+      }
+      if (state.mode === "pickup" && state.hasChosenStore && state.storeId) {
+        return `${t().labels.pickupFrom} ${getStore().name[state.locale]} · ${getStore().eta.pickup}`;
+      }
+      return `${t().storeModes[state.mode]} · ${state.timing === "schedule" ? `${t().labels.schedule} ${state.slot}` : t().labels.asap}`;
+    }
+
+    function shouldShowJourneyShellBar() {
+      return ["location", "deliveryLocation", "deliveryMap", "store", "home", "menu", "detail", "cart"].includes(state.screen);
+    }
+
+    function requiresAuth(screen) {
+      return screen === "account";
+    }
+
+    function formatShellTime() {
+      const raw = state.timing === "schedule" ? state.slot : t().labels.asap;
+      return raw.replace(/\s+/g, "");
+    }
+
+    function renderJourneyShellBar() {
+      const visible = shouldShowJourneyShellBar();
+      els.journeyShellBar.hidden = !visible;
+      if (!visible) return;
+      els.journeyShellMode.textContent = t().storeModes[state.mode];
+      els.journeyShellTime.textContent = formatShellTime();
+    }
+
+    function getSelectedOptions(product) {
+      if (!state.selectedOptions[product.id]) {
+        state.selectedOptions[product.id] = {
+          heat: product.options.heat[state.locale][0],
+          size: product.options.size[state.locale][0],
+          extras: []
+        };
+      }
+      return state.selectedOptions[product.id];
+    }
+
+    function money(value) {
+      return value === 0 ? `<span style="color:#4CAF50;font-weight:800">FREE</span>` : `$${value.toFixed(2)}`;
+    }
+
+    function cartCount() {
+      return state.cart.reduce((sum, item) => sum + item.qty, 0);
+    }
+
+    function cartTotal() {
+      return state.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    }
+
+    function pointsEarned() {
+      return cartCount() * 50;
+    }
+
+    function getLoyaltyStatus() {
+      const tiers = [
+        { key: "bronze", label: "Bronze", floor: 0 },
+        { key: "silver", label: "Silver", floor: 1200 },
+        { key: "gold", label: "Gold", floor: 2400 },
+        { key: "platinum", label: "Platinum", floor: 4000 }
+      ];
+      const points = 2840;
+      const current = tiers.find((tier) => tier.key === "gold");
+      const next = tiers[tiers.indexOf(current) + 1] || current;
+      const currentFloor = current.floor;
+      const nextFloor = next.floor;
+      const span = Math.max(1, nextFloor - currentFloor);
+      const progress = Math.min(100, Math.max(0, ((points - currentFloor) / span) * 100));
+
+      return {
+        points,
+        current,
+        next,
+        progress,
+        pointsToNext: Math.max(0, nextFloor - points)
+      };
+    }
+
+    function showToast(text, points = "") {
+      els.toastText.textContent = text;
+      els.toastPoints.textContent = points;
+      els.toast.classList.add("show");
+      clearTimeout(showToast.timer);
+      showToast.timer = setTimeout(() => els.toast.classList.remove("show"), 2200);
+    }
+
+    function renderBottomNav() {
+      const navKeys = ["home", "menu", "cart", "rewards", "account"];
+      const activeScreen = (
+        state.screen === "location" || state.screen === "store" || state.screen === "deliveryLocation" || state.screen === "deliveryMap" ? "home" :
+        state.screen === "detail" ? "menu" :
+        state.screen === "checkout" || state.screen === "confirmation" ? "cart" :
+        state.screen === "login" ? "account" :
+        state.screen
+      );
+      els.bottomNav.innerHTML = navKeys.map((key) => {
+        const label = t().nav[key];
+        const active = activeScreen === key ? "active" : "";
+        const count = key === "cart" ? cartCount() : 0;
+        return `<button class="nav-btn ${active}" data-nav="${key}" aria-label="${label}">
+          <div class="nav-btn-inner">
+            <div class="nav-btn-icon">${getBottomNavIcon(key, active === "active", count)}</div>
+            <span class="nav-btn-label">${label}</span>
+          </div>
+        </button>`;
+      }).join("");
+      els.bottomNav.querySelectorAll("[data-nav]").forEach((button) => {
+        button.addEventListener("click", () => navigate(button.dataset.nav));
+      });
+    }
+
+    function renderBackCta() {
+      if (!historyStack.length) return "";
+      return `
+        <div class="screen-back-row">
+          <button class="ghost-btn screen-back-btn" type="button" data-action="go-back">${t().labels.back}</button>
+        </div>
+      `;
+    }
+
+    function getPromoSlides() {
+      return [
+        {
+          id: "gold-achievement",
+          badge: "REWARD",
+          badgeColor: "#FFD700",
+          type: "reward",
+          emoji: "🏆",
+          title: "Gold Achievement",
+          subtitle: "You've reached Gold status!",
+          copy: "Unlock exclusive perks available only to Gold members.",
+          image: "https://images.ctfassets.net/a2mgcrjjefyo/7LTKFKEVrGsQ0BYPxJKaHD/73854d6e8efd5dc4bbb1fd5cf388cf57/OrigRecipeBucket_10pcs_8_1600x1600_v2.png?h=600&w=800&fm=webp&fit=fill",
+          cta: "Claim Reward",
+          locked: false
+        },
+        {
+          id: "free-fries",
+          badge: "PROMO",
+          badgeColor: "#E4002B",
+          type: "promo",
+          emoji: "🍟",
+          title: "Free Fries",
+          subtitle: "Min. order $5",
+          copy: "Add any fries to your order — on us. Today only.",
+          image: "https://images.ctfassets.net/a2mgcrjjefyo/6OblWnUazdc1ijzadMiE8c/a32131d3ed73e448b9c04dcdd1088707/Snack_Poutine.png?h=600&w=800&fm=webp&fit=fill",
+          cta: "Add to Order",
+          locked: false
+        },
+        {
+          id: "free-shirt",
+          badge: "PLATINUM REWARD",
+          badgeColor: "#888",
+          type: "reward",
+          emoji: "👕",
+          title: "Free Shirt",
+          subtitle: "Reach Platinum to unlock",
+          copy: "Keep earning points to unlock this exclusive reward.",
+          image: "https://images.ctfassets.net/wtodlh47qxpt/30HPXFOIOQLBBfuwplbndu/992a3b2157906181dc39be71202f4f3f/kfc_logo_icon.svg",
+          cta: "Locked",
+          locked: true
+        }
+      ];
+    }
+
+    function renderPromoCarousel() {
+      const promos = getPromoSlides();
+      return `
+        <div class="promo-carousel">
+          <div class="promo-rail">
+            ${promos.map((promo) => {
+              const isClaimed = state.claimedPromos.includes(promo.id);
+              const glowColor = promo.locked
+                ? "transparent"
+                : promo.type === "promo"
+                ? "rgba(228,0,43,0.18)"
+                : "rgba(255,191,91,0.14)";
+              const badgeBg = promo.locked
+                ? "transparent"
+                : promo.type === "promo"
+                ? "rgba(228,0,43,0.1)"
+                : "rgba(255,191,91,0.12)";
+              const subtitleColor = promo.locked ? "#3a3a3a" : promo.type === "promo" ? "#E4002B" : "#b8960a";
+              const btnBg = promo.locked
+                ? "#1e1e1e"
+                : isClaimed
+                ? "#1a3a1a"
+                : promo.type === "promo"
+                ? "#E4002B"
+                : "linear-gradient(90deg, #a07000, #FFD700, #a07000)";
+              const btnColor = promo.locked ? "#444" : isClaimed ? "#4CAF50" : "#fff";
+              const btnShadow = promo.locked || isClaimed
+                ? "none"
+                : promo.type === "promo"
+                ? "0 4px 16px rgba(228,0,43,0.3)"
+                : "0 4px 16px rgba(255,191,91,0.2)";
+              const btnLabel = promo.locked
+                ? "🔒  Locked"
+                : isClaimed
+                ? "✓  Added to Order"
+                : escapeHtml(promo.cta);
+              return `
+              <div class="promo-slide${promo.locked ? " promo-slide-locked" : ""}">
+                <div class="promo-slide-glow" style="background: radial-gradient(circle, ${glowColor} 0%, transparent 70%);"></div>
+                ${isClaimed ? `<div class="promo-slide-claimed-check">✓</div>` : ""}
+                <span class="promo-slide-badge" style="color: ${promo.locked ? "#555" : promo.badgeColor}; border-color: ${promo.locked ? "#333" : promo.badgeColor}; background: ${badgeBg};">${escapeHtml(promo.badge)}</span>
+                <div class="promo-slide-main">
+                  <div class="promo-slide-content">
+                    <div class="promo-slide-title">${escapeHtml(promo.title)}</div>
+                    <div class="promo-slide-subtitle" style="color: ${subtitleColor};">${escapeHtml(promo.subtitle)}</div>
+                  </div>
+                  <img class="promo-slide-media" src="${promo.image}" alt="${escapeHtml(promo.title)}">
+                </div>
+                <p class="promo-slide-copy">${escapeHtml(promo.copy)}</p>
+                <div class="promo-slide-divider"></div>
+                <button
+                  class="promo-slide-action"
+                  data-claim-promo="${promo.id}"
+                  ${promo.locked || isClaimed ? "disabled" : ""}
+                  style="background: ${btnBg}; color: ${btnColor}; box-shadow: ${btnShadow};"
+                >${btnLabel}</button>
+              </div>
+            `}).join("")}
+          </div>
+        </div>
+      `;
+    }
+
+    function getBottomNavIcon(key, isActive, count = 0) {
+      const color = isActive ? "#E4002B" : "#FFFFFF";
+      if (key === "home") {
+        return `
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <path fill="${color}" d="M12 17h24v4.5c0 1.38-.56 2.63-1.46 3.54A4.98 4.98 0 0 1 31 26.5a4.93 4.93 0 0 1-3.5-1.44A4.93 4.93 0 0 1 24 26.5a4.93 4.93 0 0 1-3.5-1.44A4.93 4.93 0 0 1 17 26.5a4.98 4.98 0 0 1-3.54-1.46A5 5 0 0 1 12 21.5V17Z"/>
+            <path fill="${color}" d="M13.5 15.5c.16-2.18 1.99-3.87 4.18-3.87h12.64c2.19 0 4.02 1.69 4.18 3.87H13.5Z"/>
+            <path fill="${color}" d="M14.5 26h19v12h-19z"/>
+            <path fill="#000000" d="M21.5 29.5h5v8.5h-5z"/>
+          </svg>`;
+      }
+      if (key === "menu") {
+        return `
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <rect x="12" y="10" width="24" height="28" rx="3.5" fill="${color}"/>
+            <rect x="14" y="7" width="20" height="7" rx="2.5" fill="${color}"/>
+            <rect x="17" y="14" width="10" height="20" rx="1" fill="#000000"/>
+            <text x="24" y="31" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-size="10" fill="${color}" transform="rotate(-90 24 24)">KFC</text>
+          </svg>`;
+      }
+      if (key === "cart") {
+        const bucketCount = Math.min(99, count || 0);
+        return `
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <path fill="${color}" d="M12 12.3C12 10.47 19.16 9 28 9s16 1.47 16 3.3-7.16 3.3-16 3.3-16-1.47-16-3.3Zm1.8 4.2h28.4l-3.14 21.07A3.5 3.5 0 0 1 35.6 40.5H20.4a3.5 3.5 0 0 1-3.46-2.93L13.8 16.5Z"/>
+            ${bucketCount ? `<text x="28" y="31" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-size="${bucketCount > 9 ? 11 : 14}" fill="#FFFFFF">${bucketCount}</text>` : ``}
+          </svg>`;
+      }
+      if (key === "rewards") {
+        return `
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <path fill="${color}" d="M24 40.8 9.82 26.9c-3.58-3.5-3.76-9.27-.39-13 3.2-3.56 8.7-3.95 12.37-.87l2.2 1.84 2.2-1.84c3.67-3.08 9.17-2.69 12.37.86 3.37 3.74 3.19 9.51-.39 13L24 40.8Z"/>
+            <path fill="#000000" opacity="0.14" d="M32.9 11.7c3.46 4.22 2.92 10.46-1.24 14.05l-9.75 8.43-1.13-1.1L34.2 18.4c2.87-3.13 2.88-7.76.04-10.75-.44-.46-.9-.77-1.34-.95Z"/>
+          </svg>`;
+      }
+      return `
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <path fill="${color}" d="M10 15.5A2.5 2.5 0 0 1 12.5 13h23a2.5 2.5 0 1 1 0 5h-23A2.5 2.5 0 0 1 10 15.5Zm4 9A2.5 2.5 0 0 1 16.5 22h19a2.5 2.5 0 1 1 0 5h-19A2.5 2.5 0 0 1 14 24.5Zm-4 9A2.5 2.5 0 0 1 12.5 31h23a2.5 2.5 0 1 1 0 5h-23A2.5 2.5 0 0 1 10 33.5Z"/>
+        </svg>`;
+    }
+
+    function renderTopbar() {
+      const screenCopy = t().screens[state.screen] || { title: "", subtitle: "" };
+      const showJourneyShell = shouldShowJourneyShellBar();
+      els.previewBadge.textContent = t().previewBadge;
+      const isHomeScreen = state.screen === "home";
+      const isLoginScreen = state.screen === "login";
+      const useLogoTitle = isHomeScreen || isLoginScreen || showJourneyShell;
+      els.title.classList.toggle("screen-title-logo", useLogoTitle);
+      if (useLogoTitle) {
+        els.title.innerHTML = '<button class="screen-title-logo-link" type="button" data-nav="home" aria-label="Home"><img class="screen-title-logo-image" src="https://images.ctfassets.net/wtodlh47qxpt/30HPXFOIOQLBBfuwplbndu/992a3b2157906181dc39be71202f4f3f/kfc_logo_icon.svg" alt="KFC logo"></button>';
+      } else {
+        els.title.textContent = screenCopy.title;
+      }
+      els.title.classList.toggle("hero-xl", state.screen === "rewards");
+      els.subtitle.textContent = showJourneyShell ? "" : screenCopy.subtitle;
+      const topbar = document.querySelector(".topbar");
+      topbar.classList.toggle("compact", state.screen === "menu");
+      topbar.classList.toggle("journey-mode", showJourneyShell);
+      els.back.disabled = historyStack.length === 0;
+      els.forward.disabled = futureStack.length === 0;
+      els.fullscreenBtn.textContent = (document.fullscreenElement || embeddedFullscreenMode) ? "Exit Fullscreen" : "Fullscreen";
+      document.querySelectorAll("[data-locale]").forEach((button) => {
+        button.classList.toggle("active", button.dataset.locale === state.locale);
+      });
+    }
+
+    function renderLocation() {
+      return `
+        <div class="stack">
+          <div class="card">
+            <div class="section-head">
+              <h4>${t().labels.orderTypeTitle}</h4>
+              <span class="section-tag">${t().labels.livePreview}</span>
+            </div>
+            <div class="choice-grid" style="grid-template-columns:repeat(2,minmax(0,1fr));margin-top:16px">
+              <button class="pill ${state.mode === "delivery" ? "active" : ""}" data-mode="delivery">
+                ${t().storeModes.delivery}
+                <small>${state.confirmedAddress ? getDeliveryEta() : "Address first"}</small>
+              </button>
+              <button class="pill ${state.mode === "pickup" ? "active" : ""}" data-mode="pickup">
+                ${t().storeModes.pickup}
+                <small>${state.hasChosenStore && state.storeId ? getStore().eta.pickup : "Choose store"}</small>
+              </button>
+            </div>
+            <button class="cta" data-action="start-order-flow" style="margin-top:14px">${t().labels.startMyOrder}</button>
+          </div>
+
+          <div class="card">
+            <div class="section-head"><h4>${t().labels.reviewJourney}</h4></div>
+            <div class="stack">
+              <div class="context-strip">
+                <div>
+                  <strong>1. ${t().labels.startMyOrder}</strong>
+                  <div class="meta">${t().labels.orderTypeTitle}</div>
+                </div>
+                <span class="badge live">${t().storeModes[state.mode]}</span>
+              </div>
+              <div class="context-strip">
+                <div>
+                  <strong>2. ${state.mode === "delivery" ? t().labels.setLocation : t().labels.storeSection}</strong>
+                  <div class="meta">${state.mode === "delivery" ? (state.confirmedAddress || "Justin's destination") : (state.hasChosenStore && state.storeId ? getStore().name[state.locale] : "No store selected")}</div>
+                </div>
+                <span class="badge warn">${state.mode === "delivery" ? getDeliveryEta() : (state.hasChosenStore && state.storeId ? getStore().eta.pickup : "--")}</span>
+              </div>
+              <div class="context-strip">
+                <div>
+                  <strong>3. ${t().labels.browseMenu}</strong>
+                  <div class="meta">${t().labels.dealsRewards} → ${t().labels.proceedCheckout}</div>
+                </div>
+                <span class="badge warn">${cartCount()} in cart</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="section-head"><h4>${t().labels.timingSection}</h4></div>
+            <div class="choice-grid" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+              <button class="pill ${state.timing === "asap" ? "active" : ""}" data-timing="asap">${t().labels.asap}<small>${t().timings.asapMeta}</small></button>
+              <button class="pill ${state.timing === "schedule" ? "active" : ""}" data-timing="schedule">${t().labels.schedule}<small>${t().timings.scheduleMeta}</small></button>
+            </div>
+            ${state.timing === "schedule" ? `
+              <div class="section-head" style="margin-top:12px"><h4>${t().labels.dateSection}</h4></div>
+              <div class="chip-row">
+                ${scheduleDates.map((item) => `<button class="pill ${state.scheduleDate === item.id ? "active" : ""}" data-date="${item.id}" style="min-height:40px;padding:0 14px;white-space:nowrap">${item.label[state.locale]}<small>${item.date}</small></button>`).join("")}
+              </div>
+              <div class="slot-grid">
+                ${scheduleSlots.map((slot) => `<button class="pill ${state.slot === slot ? "active" : ""}" data-slot="${slot}">${slot}</button>`).join("")}
+              </div>
+            ` : ""}
+          </div>
+
+          <div class="card">
+            <p class="helper">${t().helper.location}</p>
+            <div class="mode-warning" style="margin-top:12px">${t().labels.switchModeWarning}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderDeliveryLocation() {
+      const suggestions = filteredAddressSuggestions();
+      return `
+        <div class="stack">
+          ${renderBackCta()}
+          <div class="card">
+            <div class="section-head"><h4>${t().labels.setLocation}</h4><span class="section-tag">${t().storeModes.delivery}</span></div>
+            <div class="search">
+              <input id="delivery-address-input" value="${escapeHtml(state.deliveryAddressInput)}" placeholder="123 Main Street, Los Angeles">
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="section-head"><h4>${t().labels.savedPlaces}</h4></div>
+            <div class="store-list">
+              ${suggestions.map((item) => `
+                <div class="store-row ${state.selectedAddressId === item.id ? "active" : ""}" data-address="${item.id}">
+                  <div class="store-icon">📍</div>
+                  <div>
+                    <div class="store-name">${item.label[state.locale]}</div>
+                    <div class="store-address">${item.address[state.locale]}</div>
+                    <div class="store-note">${t().labels.eta} ${item.eta}</div>
+                  </div>
+                  <span class="badge warn">${item.eta}</span>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+
+          <button class="cta" data-action="to-delivery-map">${t().labels.confirmPin}</button>
+        </div>
+      `;
+    }
+
+    function renderDeliveryMap() {
+      const address = state.deliveryAddressInput || state.confirmedAddress || "123 Main Street, Los Angeles, CA";
+      return `
+        <div class="stack">
+          ${renderBackCta()}
+          <div class="map-card">
+            <div class="map-grid"></div>
+            <div class="map-route"></div>
+            <div class="map-store-badge">🍗 ${t().labels.nearbyKfc}</div>
+            <div class="map-rider">🛵 ${t().labels.rider}</div>
+            <div class="map-pin">📍 Justin</div>
+          </div>
+
+          <div class="card">
+            <div class="section-head"><h4>${t().labels.confirmPin}</h4><span class="section-tag">${t().labels.eta} ${getDeliveryEta()}</span></div>
+            <p class="helper">${address}</p>
+            <p class="helper" style="margin-top:10px">${t().labels.mapHint}</p>
+          </div>
+
+          <button class="cta" data-action="confirm-delivery-address">${t().labels.useThisAddress}</button>
+        </div>
+      `;
+    }
+
+    function renderStore() {
+      const store = getStore();
+      return `
+        <div class="stack">
+          ${renderBackCta()}
+          <div class="hero-card">
+            <div class="kicker">${t().labels.storeSection}</div>
+            <h3>${store.name[state.locale]}</h3>
+            <p>${store.address[state.locale]} · ${store.note[state.locale]}</p>
+          </div>
+
+          <div class="context-strip">
+            <div>
+              <strong>${t().labels.currentSession}</strong>
+              <div class="meta">${displaySessionContext()}</div>
+            </div>
+            <span class="badge live">${store.eta[state.mode] || store.eta.pickup}</span>
+          </div>
+
+          <div class="card">
+            <div class="section-head">
+              <h4>${t().labels.storeSection}</h4>
+              <span class="section-tag">${t().labels.storeSection}</span>
+            </div>
+            <div class="store-list">
+              ${stores.map((storeItem) => `
+                <div class="store-row ${storeItem.id === state.storeId ? "active" : ""}" data-store="${storeItem.id}">
+                  <div class="store-icon">${storeItem.emoji}</div>
+                  <div>
+                    <div class="store-name">${storeItem.name[state.locale]}</div>
+                    <div class="store-address">${storeItem.address[state.locale]} · ${storeItem.distance}</div>
+                    <div class="store-note">${storeItem.note[state.locale]}</div>
+                  </div>
+                  <span class="badge ${storeItem.id === state.storeId ? "live" : "warn"}">${storeItem.eta.pickup}</span>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="section-head"><h4>${t().labels.reviewJourney}</h4></div>
+            <p class="helper">${t().labels.storeJourneyNote}</p>
+          </div>
+
+          <button class="cta" data-nav="menu">${t().labels.browseMenu}</button>
+        </div>
+      `;
+    }
+
+    function renderHome() {
+      const visible = getVisibleProducts().slice(0, 4);
+      const loyalty = getLoyaltyStatus();
+      return `
+        <div class="stack">
+          <div class="promo-banner">
+            <div class="promo-banner-body">
+              <h3 class="hero-xl">Crunchin' Chicken Burger Combo</h3>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <div class="kicker">${t().labels.welcomeBack}</div>
+            <h3 class="hero-xl">Justin · ${loyalty.current.label}</h3>
+            <p>${t().labels.tierStatusLine}</p>
+            <div class="rank-inline">
+              <span class="rank-badge rank-${loyalty.current.key}">${loyalty.current.label}</span>
+              <span class="rank-meta">${loyalty.pointsToNext.toLocaleString(state.locale)} ${t().labels.points} ${t().labels.pointsToNext}</span>
+            </div>
+          </div>
+
+          ${renderPromoCarousel()}
+
+          <div class="card">
+            <div class="section-head">
+              <h4>${t().labels.recommendations}</h4>
+              <span class="section-tag">${cartCount()} in cart</span>
+            </div>
+            <div class="menu-grid">
+              ${visible.map((product) => `
+                <div class="product-card" data-detail="${product.id}">
+                  <div class="product-visual"><img src="${product.image}" alt="${escapeHtml(product.name[state.locale])}"></div>
+                  <div class="product-body">
+                    <div class="product-title">${product.name[state.locale]}</div>
+                    <div class="meta">${product.desc[state.locale]}<span class="product-kj"> · ${product.kj.toLocaleString()} kJ</span></div>
+                    <div class="product-foot">
+                      <span class="price">${money(product.basePrice)}</span>
+                      <button class="nutrition-link-btn" data-open-nutrition="1">N&amp;A</button>
+                    </div>
+                    <div class="product-actions">
+                      <button class="mini-btn" data-detail-cta="${product.id}">${t().labels.viewProduct}</button>
+                      <button class="mini-btn primary" data-quick-add="${product.id}" aria-label="${t().labels.quickAdd}">+</button>
+                    </div>
+                  </div>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderMenu() {
+      const loyalty = getLoyaltyStatus();
+      const categories = [
+        ["all", t().labels.categoryAll],
+        ["chicken", t().labels.categoryChicken],
+        ["burger", t().labels.categoryBurger],
+        ["combos", t().labels.categoryCombos],
+        ["sides", t().labels.categorySides],
+        ["drinks", t().labels.categoryDrinks],
+        ["wraps", t().labels.categoryWraps],
+        ["buckets", t().labels.categoryBuckets],
+        ["desserts", t().labels.categoryDesserts],
+        ["sauces", t().labels.categorySauces]
+      ];
+
+      const visibleProducts = getVisibleProducts().filter((product) => {
+        const categoryMatch = state.category === "all" || product.category === state.category;
+        const searchMatch = product.name[state.locale].toLowerCase().includes(state.search.toLowerCase());
+        return categoryMatch && searchMatch;
+      });
+
+      return `
+        <div class="stack">
+          ${renderBackCta()}
+          ${state.browseOnlyMenu ? `
+            <div class="mode-warning">${t().labels.browseOnlyBody}</div>
+          ` : `
+            <div class="context-strip">
+              <div>
+                <strong>${state.mode === "delivery" ? t().labels.deliveringTo : t().labels.pickupFrom}</strong>
+                <div class="meta">${displaySessionContext()}</div>
+              </div>
+              <button class="ghost-btn" data-nav="${state.mode === "delivery" ? "deliveryLocation" : "store"}" style="width:auto;min-height:44px;padding:0 14px">${t().labels.change}</button>
+            </div>
+          `}
+
+          ${state.browseOnlyMenu ? "" : `
+            <div class="card">
+              <div class="section-head"><h4>${t().labels.assignedStore}</h4><span class="section-tag">${state.mode === "delivery" ? t().labels.deliveringTo : t().labels.pickupFrom}</span></div>
+              <p class="helper">${state.mode === "delivery" ? `${state.confirmedAddress} · ${t().labels.eta} ${getDeliveryEta()}` : getStore().name[state.locale]}</p>
+            </div>
+          `}
+
+          <div class="mini-hero-card">
+            <div class="section-head" style="margin-bottom:8px">
+              <h4>${t().labels.dealsRewards}</h4>
+              <span class="section-tag">${loyalty.current.label}</span>
+            </div>
+            <p>${loyalty.pointsToNext.toLocaleString(state.locale)} ${t().labels.points} ${t().labels.pointsToNext}</p>
+            <button class="ghost-btn" data-nav="rewards" style="margin-top:12px;min-height:42px">${t().labels.dealsRewards}</button>
+          </div>
+
+          <div class="search">
+            <input id="menu-search" value="${escapeHtml(state.search)}" placeholder="${t().labels.searchPlaceholder}">
+          </div>
+
+          <div class="category-tabs">
+            ${categories.map(([id, label]) => `<button class="category-tab ${state.category === id ? "active" : ""}" data-category="${id}">${label}</button>`).join("")}
+          </div>
+
+          <div class="menu-grid">
+            ${visibleProducts.map((product) => `
+              <div class="product-card" data-detail="${product.id}">
+                <div class="product-visual"><img src="${product.image}" alt="${escapeHtml(product.name[state.locale])}"></div>
+                <div class="product-body">
+                  <div class="product-title">${product.name[state.locale]}</div>
+                  <div class="meta">${product.desc[state.locale]}</div>
+                  <div class="product-foot">
+                    <span class="price">${money(product.basePrice)}</span>
+                    <button class="nutrition-link-btn" data-open-nutrition="1">N&amp;A</button>
+                  </div>
+                  <div class="product-actions">
+                    <button class="mini-btn" data-detail-cta="${product.id}">${t().labels.viewProduct}</button>
+                    <button class="mini-btn primary" data-quick-add="${product.id}" aria-label="${t().labels.quickAdd}">+</button>
+                  </div>
+                </div>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderDetail() {
+      const product = getProduct(state.selectedProductId);
+      const options = getSelectedOptions(product);
+      const availability = getAvailability(product);
+      const extraPrice = options.extras.length * 0.5;
+      const total = (product.basePrice + extraPrice) * state.detailQty;
+
+      els.detailFooter.hidden = false;
+      els.detailFooter.innerHTML = `
+        ${state.browseOnlyMenu ? `
+          <div class="stack">
+            <div class="mode-warning">${t().labels.browseOnlyBody}</div>
+            <button class="ghost-btn" data-nav="${state.mode === "delivery" ? "deliveryLocation" : "store"}" style="min-height:44px;margin-top:4px">${t().labels.browseOnlyCta}</button>
+          </div>
+        ` : `
+          <div class="price-row">
+            <div>
+              <div class="meta">${t().labels.total}</div>
+              <strong class="total">${money(total)}</strong>
+            </div>
+            <div class="qty">
+              <button class="qty-btn" data-qty="-1">−</button>
+              <div class="qty-value">${state.detailQty}</div>
+              <button class="qty-btn" data-qty="1">+</button>
+            </div>
+          </div>
+          <button class="cta" data-action="detail-add" ${availability.available ? "" : "disabled"}>${t().labels.addToCart}</button>
+        `}
+      `;
+
+      return `
+        <div class="stack" style="padding-bottom:120px">
+          ${renderBackCta()}
+          <div class="card">
+            <div class="detail-hero">
+              <div class="detail-emoji" tabindex="0"><img src="${product.image}" alt="${escapeHtml(product.name[state.locale])}"></div>
+              <div>
+                <h3 class="detail-name">${product.name[state.locale]}</h3>
+                <p>${product.desc[state.locale]}</p>
+                ${!availability.available ? `<div class="badge warn" style="margin-top:10px">${availability.reason}</div>` : ""}
+              </div>
+            </div>
+          </div>
+
+          <div class="card option-group">
+            <div class="option-label">${t().labels.heat}</div>
+            <div class="chip-row">
+              ${product.options.heat[state.locale].map((value) => `<button class="pill ${options.heat === value ? "active" : ""}" data-option="heat" data-value="${escapeHtml(value)}" style="min-height:40px;padding:0 14px;white-space:nowrap">${value}</button>`).join("")}
+            </div>
+          </div>
+
+          <div class="card option-group">
+            <div class="option-label">${t().labels.size}</div>
+            <div class="chip-row">
+              ${product.options.size[state.locale].map((value) => `<button class="pill ${options.size === value ? "active" : ""}" data-option="size" data-value="${escapeHtml(value)}" style="min-height:40px;padding:0 14px;white-space:nowrap">${value}</button>`).join("")}
+            </div>
+          </div>
+
+          <div class="card option-group">
+            <div class="option-label">${t().labels.extras}</div>
+            <div class="stack">
+              ${product.options.extras[state.locale].map((value) => `<button class="pill ${options.extras.includes(value) ? "active" : ""}" data-option="extras" data-value="${escapeHtml(value)}">${value}</button>`).join("")}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderCart() {
+      const loyalty = getLoyaltyStatus();
+      els.detailFooter.hidden = true;
+      return `
+        <div class="stack">
+          ${renderBackCta()}
+          ${state.cart.length ? `
+            <div class="cart-list">
+              ${state.cart.map((item) => `
+                <div class="cart-item">
+                  <div class="cart-art"><img src="${item.image}" alt="${escapeHtml(item.name)}"></div>
+                  <div>
+                    <div class="cart-title">${item.name}</div>
+                    <div class="cart-meta">${item.summary}</div>
+                  </div>
+                  <div class="cart-actions">
+                    <button class="qty-btn" data-cart-qty="${item.key}" data-change="-1">−</button>
+                    <strong>${item.qty}</strong>
+                    <button class="qty-btn" data-cart-qty="${item.key}" data-change="1">+</button>
+                  </div>
+                </div>
+              `).join("")}
+            </div>
+
+            <div class="card summary pay-summary">
+              ${state.cart.map((item) => `<div class="summary-row"><span>${item.name} ${item.qty > 1 ? `×${item.qty}` : ""}</span><strong>${money(item.price * item.qty)}</strong></div>`).join("")}
+              <div class="summary-row summary-row--minor"><span>${t().labels.delivery}</span><strong>${t().labels.free}</strong></div>
+              <div class="summary-row summary-total"><span>${t().labels.total}</span><strong class="total">${money(cartTotal())}</strong></div>
+              <button class="cta" data-nav="checkout">${t().labels.proceedCheckout}</button>
+            </div>
+
+            <div class="card">
+              <div class="section-head"><h4>${t().labels.orderForOthers}</h4><span class="section-tag">${t().labels.orderSummary}</span></div>
+              <p class="helper">${t().labels.orderForOthersBody}</p>
+            </div>
+          ` : `
+            <div class="empty">
+              ${t().labels.emptyCart}
+              <div style="margin-top:16px"><button class="ghost-btn" data-nav="menu" style="padding:0 18px">${t().labels.continueShopping}</button></div>
+            </div>
+          `}
+        </div>
+      `;
+    }
+
+    function renderCheckout() {
+      const loyalty = getLoyaltyStatus();
+      els.detailFooter.hidden = true;
+      return `
+        <div class="stack">
+          ${renderBackCta()}
+          <div class="card">
+            <div class="section-head"><h4>${t().labels.deliveryAddress}</h4></div>
+            <div class="checkout-field">
+              <input id="address1" value="${escapeHtml(state.checkout.address1)}">
+              <input id="address2" value="${escapeHtml(state.checkout.address2)}">
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="section-head"><h4>${t().labels.payment}</h4></div>
+            <div class="choice-grid">
+              ${["Apple Pay", "Card", "PayPal"].map((method) => `<button class="pill ${state.checkout.payment === method ? "active" : ""}" data-payment="${method}">${method}</button>`).join("")}
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="section-head">
+              <h4>${t().labels.promoCode}</h4>
+              ${state.checkout.couponApplied ? `<span class="badge live">${t().labels.promoApplied}</span>` : ""}
+            </div>
+            <div class="coupon-row">
+              <input
+                id="coupon-code-input"
+                class="${state.checkout.couponApplied ? "applied" : ""}"
+                value="${escapeHtml(state.checkout.couponCode)}"
+                placeholder="${t().labels.promoCodePlaceholder}"
+                ${state.checkout.couponApplied ? "readonly" : ""}
+              >
+              <button class="apply-btn ${state.checkout.couponApplied ? "applied" : ""}" data-action="apply-coupon">
+                ${state.checkout.couponApplied ? "✓" : t().labels.applyCode}
+              </button>
+            </div>
+            <div class="coupon-or">or</div>
+            <button class="ghost-btn" data-nav="rewards" style="min-height:42px">${t().labels.browseRewards}</button>
+          </div>
+
+          <div class="card">
+            <div class="section-head"><h4>${t().labels.orderForOthers}</h4></div>
+            <button class="pill ${state.checkout.orderForOthers ? "active" : ""}" data-checkout-toggle="orderForOthers">${state.checkout.orderForOthers ? t().labels.on : t().labels.off}</button>
+          </div>
+
+          <div class="card">
+            <div class="section-head"><h4>${t().labels.orderNotes}</h4></div>
+            <div class="checkout-field">
+              <input id="order-notes" value="${escapeHtml(state.checkout.notes)}">
+            </div>
+          </div>
+
+          <div class="card summary pay-summary">
+            ${state.cart.map((item) => `<div class="summary-row"><span>${item.emoji} ${item.name} ×${item.qty}</span><strong>${money(item.price * item.qty)}</strong></div>`).join("")}
+            <div class="summary-row summary-row--minor"><span>${t().labels.delivery}</span><strong>${t().labels.free}</strong></div>
+            <div class="summary-row summary-total"><span>${t().labels.total}</span><strong class="total">${money(cartTotal())}</strong></div>
+            <button class="cta" data-action="place-order" ${state.checkout.acceptedTerms ? "" : "disabled"}>Pay Now</button>
+          </div>
+
+          <div class="card">
+            <div class="section-head"><h4>${t().labels.reviewJourney}</h4></div>
+            <p class="helper">${t().helper.checkout}</p>
+            <button class="pill ${state.checkout.acceptedTerms ? "active" : ""}" data-checkout-toggle="acceptedTerms" style="margin-top:12px">${t().labels.termsAccept}</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderConfirmation() {
+      const loyalty = getLoyaltyStatus();
+      els.detailFooter.hidden = true;
+      return `
+        <div class="stack">
+          ${renderBackCta()}
+          <div class="hero-card">
+            <div class="kicker">${t().labels.postOrderAssumption}</div>
+            <h3>RNA-2048</h3>
+            <p>${displaySessionContext()}</p>
+          </div>
+
+          <div class="map-card">
+            <div class="map-grid"></div>
+            <div class="map-route"></div>
+            <div class="map-store-badge">🍗 ${getStore().name[state.locale]}</div>
+            <div class="map-rider">🛵 ${t().labels.rider} · 6 min</div>
+            <div class="map-pin">📍 ${state.confirmedAddress || "Justin"}</div>
+          </div>
+
+          <div class="card tracking">
+            <div class="section-head"><h4>${t().labels.tracking}</h4></div>
+            <div class="track-line">
+              <div class="track-dot done"></div>
+              <div class="track-bar"></div>
+              <div class="track-dot current"></div>
+              <div class="track-bar"></div>
+              <div class="track-dot"></div>
+            </div>
+            <div class="track-labels">
+              <div>${t().labels.placed}</div>
+              <div>${t().labels.cooking}</div>
+              <div>${t().labels.dispatch}</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="section-head"><h4>${state.mode === "delivery" ? t().labels.deliveringTo : t().labels.pickupFrom}</h4><span class="section-tag">${t().labels.eta} ${state.mode === "delivery" ? getDeliveryEta() : getStore().eta.pickup}</span></div>
+            <p class="helper">${state.mode === "delivery" ? (state.confirmedAddress || "123 Main Street, Los Angeles, CA") : getStore().name[state.locale]}</p>
+          </div>
+
+          <div class="card summary">
+            <div class="summary-row"><span>${t().labels.total}</span><strong class="total">${money(cartTotal())}</strong></div>
+            <div class="summary-row"><span>${t().labels.earned}</span><strong>+${pointsEarned()} ${t().labels.points}</strong></div>
+            <div class="summary-row"><span>${t().labels.nextTier}</span><strong>${loyalty.pointsToNext.toLocaleString(state.locale)} ${t().labels.pointsToNext}</strong></div>
+          </div>
+
+          <div class="product-actions">
+            <button class="mini-btn" data-nav="account">${t().labels.needHelp}</button>
+            <button class="mini-btn" data-action="reset">${t().labels.backHome}</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderRewards() {
+      const loyalty = getLoyaltyStatus();
+      els.detailFooter.hidden = true;
+      return `
+        <div class="stack">
+          ${renderPromoCarousel()}
+          ${renderBackCta()}
+          <div class="hero-card">
+            <div class="kicker">${t().labels.rewardsHeadline}</div>
+            <h3 class="hero-xl">${loyalty.points.toLocaleString(state.locale)} ${t().labels.points}</h3>
+            <p class="support-display">${t().labels.rewardsBody}</p>
+          </div>
+
+          <div class="rank-card">
+            <div class="rank-card-top">
+              <div>
+                <div class="kicker">${t().labels.currentTier}</div>
+                <div class="rank-card-title hero-xl">${loyalty.current.label}</div>
+                <div class="rank-meta support-display">${t().labels.rankMomentum} · ${t().labels.tierStatusLine}</div>
+              </div>
+              <span class="rank-badge rank-${loyalty.current.key}">${loyalty.current.label}</span>
+            </div>
+            <div class="section-head" style="position:relative;z-index:1;margin-bottom:0">
+              <h4>${t().labels.tierProgress}</h4>
+              <span class="section-tag">${loyalty.pointsToNext.toLocaleString(state.locale)} ${t().labels.pointsToNext}</span>
+            </div>
+            <div class="rank-progress">
+              <div class="rank-progress-fill" style="width:${loyalty.progress}%"></div>
+            </div>
+            <div class="rank-meter">
+              <span>${loyalty.current.label} ${loyalty.current.floor.toLocaleString(state.locale)}</span>
+              <span>${loyalty.next.label} ${loyalty.next.floor.toLocaleString(state.locale)}</span>
+            </div>
+            <div class="perk-grid">
+              <div class="perk-card">
+                <strong>${t().labels.rankPerk1Title}</strong>
+                <p>${t().labels.rankPerk1Body}</p>
+              </div>
+              <div class="perk-card">
+                <strong>${t().labels.rankPerk2Title}</strong>
+                <p>${t().labels.rankPerk2Body}</p>
+              </div>
+              <div class="perk-card">
+                <strong>${t().labels.rankPerk3Title}</strong>
+                <p>${t().labels.rankPerk3Body}</p>
+              </div>
+            </div>
+          </div>
+
+          ${[
+            {
+              cost: 500,
+              title: "Free Side",
+              desc: "Any side, on us. Fries, poutine, coleslaw — you pick it at checkout.",
+              img: "https://images.ctfassets.net/a2mgcrjjefyo/6OblWnUazdc1ijzadMiE8c/a32131d3ed73e448b9c04dcdd1088707/Snack_Poutine.png?h=400&w=400&fm=webp&fit=fill"
+            },
+            {
+              cost: 1000,
+              title: "Meal Upgrade",
+              desc: "Make your next order a big one. Apply this at checkout to level up.",
+              img: "https://images.ctfassets.net/a2mgcrjjefyo/5zKY5PaPLsvUQ11iBuyobt/caf0486d088dc5dc984ef46338e82c61/Chili_Crunch_Sandwich_ALC_1600x1600.png?h=400&w=400&fm=webp&fit=fill"
+            },
+            {
+              cost: 2000,
+              title: "Premium Bundle",
+              desc: "The full spread. An exclusive bundle lands straight in your cart.",
+              img: "https://images.ctfassets.net/a2mgcrjjefyo/7LTKFKEVrGsQ0BYPxJKaHD/73854d6e8efd5dc4bbb1fd5cf388cf57/OrigRecipeBucket_10pcs_8_1600x1600_v2.png?h=400&w=400&fm=webp&fit=fill"
+            }
+          ].map(({ cost, title, desc, img }) => `
+            <div class="reward-item${cost > 1000 ? " redeemed" : ""}">
+              <div class="reward-item-body">
+                <span class="badge warn">${cost} ${t().labels.points}</span>
+                <div class="reward-item-title">${title}</div>
+                <p class="reward-item-desc">${desc}</p>
+                <div class="reward-item-cta">
+                  <button class="ghost-btn" data-redeem="${cost}">${cost <= 1000 ? t().labels.redeem : t().labels.redeemed}</button>
+                </div>
+              </div>
+              <div class="reward-item-img-wrap">
+                <img class="reward-item-img" src="${img}" alt="${title}" loading="lazy" />
+              </div>
+            </div>
+          `).join("")}
+          <button class="cta" data-nav="menu">${t().labels.browseMenu}</button>
+        </div>
+      `;
+    }
+
+    function renderLogin() {
+      els.detailFooter.hidden = true;
+      return `
+        <div class="login-screen">
+          <div class="login-hero">
+            <img class="login-logo" src="https://images.ctfassets.net/wtodlh47qxpt/30HPXFOIOQLBBfuwplbndu/992a3b2157906181dc39be71202f4f3f/kfc_logo_icon.svg" alt="KFC logo">
+            <h2 class="login-heading">Welcome back</h2>
+            <p class="login-sub">Sign in to access your account, rewards &amp; order history.</p>
+          </div>
+          <div class="login-form">
+            <div class="login-field-wrap">
+              <label class="login-label" for="login-username">Username</label>
+              <input class="login-input" id="login-username" type="text" value="jyp4013" autocomplete="username" spellcheck="false">
+            </div>
+            <div class="login-field-wrap">
+              <label class="login-label" for="login-password">Password</label>
+              <input class="login-input" id="login-password" type="password" placeholder="Enter your password" autocomplete="current-password">
+            </div>
+            <div class="login-error-msg" id="login-error">
+              <div class="login-error-dot"></div>
+              Incorrect password. Please try again.
+            </div>
+            <button class="cta" data-action="login-submit" style="margin-top:4px">Sign In</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderAccount() {
+      const loyalty = getLoyaltyStatus();
+      els.detailFooter.hidden = true;
+      return `
+        <div class="stack">
+          ${renderBackCta()}
+          <div class="hero-card">
+            <div class="kicker">${t().labels.accountTools}</div>
+            <h3>Justin</h3>
+            <p>${t().screens.account.subtitle}</p>
+            <div class="rank-inline">
+              <span class="rank-badge rank-${loyalty.current.key}">${loyalty.current.label}</span>
+              <span class="rank-meta">${loyalty.points.toLocaleString(state.locale)} ${t().labels.points} · ${t().labels.rankMomentum}</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="section-head"><h4>${t().labels.orderHistory}</h4><span class="section-tag">${t().labels.account}</span></div>
+            <div class="context-strip">
+              <div>
+                <strong>Zinger Tower Burger Meal</strong>
+                <div class="meta">Placed 2 days ago · ${getStore().name[state.locale]}</div>
+              </div>
+              <button class="ghost-btn" data-quick-add="zinger" style="width:auto;min-height:44px;padding:0 14px">${t().labels.reorder}</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="section-head"><h4>${t().labels.support}</h4><span class="section-tag">${t().labels.account}</span></div>
+            <div class="product-actions">
+              <button class="mini-btn">${t().labels.support}</button>
+              <button class="mini-btn">${t().labels.giftCard}</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="section-head"><h4>${t().labels.aboutKfc}</h4><span class="section-tag">${t().labels.account}</span></div>
+            <div class="product-actions">
+              <button class="mini-btn">${t().labels.aboutKfc}</button>
+              <button class="mini-btn">${t().labels.payment}</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="section-head"><h4>Session</h4><span class="section-tag">Account</span></div>
+            <button class="sign-out-btn" data-action="sign-out">Sign Out</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderScreen() {
+      switch (state.screen) {
+        case "location":
+          return renderLocation();
+        case "deliveryLocation":
+          return renderDeliveryLocation();
+        case "deliveryMap":
+          return renderDeliveryMap();
+        case "store":
+          return renderStore();
+        case "home":
+          return renderHome();
+        case "menu":
+          return renderMenu();
+        case "detail":
+          return renderDetail();
+        case "cart":
+          return renderCart();
+        case "checkout":
+          return renderCheckout();
+        case "confirmation":
+          return renderConfirmation();
+        case "rewards":
+          return renderRewards();
+        case "account":
+          return renderAccount();
+        case "login":
+          return renderLogin();
+        default:
+          return renderHome();
+      }
+    }
+
+    function attachEvents() {
+      document.querySelectorAll("[data-store]").forEach((el) => {
+        el.addEventListener("click", () => {
+          commit(() => {
+            state.storeId = el.dataset.store;
+            state.hasChosenStore = true;
+            state.confirmedAddress = "";
+            state.selectedAddressId = null;
+            state.deliveryAddressInput = "";
+            state.browseOnlyMenu = false;
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-mode]").forEach((el) => {
+        el.addEventListener("click", () => {
+          if (el.disabled) return;
+          if (state.mode !== el.dataset.mode && (state.hasChosenStore || state.confirmedAddress)) {
+            const shouldSwitch = window.confirm(t().labels.switchModeWarning);
+            if (!shouldSwitch) return;
+          }
+          commit(() => {
+            state.mode = el.dataset.mode;
+            state.storeId = null;
+            state.hasChosenStore = false;
+            state.confirmedAddress = "";
+            state.selectedAddressId = null;
+            state.deliveryAddressInput = "";
+            state.browseOnlyMenu = false;
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-timing]").forEach((el) => {
+        el.addEventListener("click", () => {
+          commit(() => {
+            state.timing = el.dataset.timing;
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-slot]").forEach((el) => {
+        el.addEventListener("click", () => {
+          commit(() => {
+            state.slot = el.dataset.slot;
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-date]").forEach((el) => {
+        el.addEventListener("click", () => {
+          commit(() => {
+            state.scheduleDate = el.dataset.date;
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-nav]").forEach((el) => {
+        el.addEventListener("click", () => navigate(el.dataset.nav));
+      });
+
+      document.querySelectorAll("[data-action='go-back']").forEach((el) => {
+        el.addEventListener("click", () => goBack());
+      });
+
+      document.querySelectorAll("[data-action='sign-out']").forEach((el) => {
+        el.addEventListener("click", () => {
+          commit(() => {
+            state.isSignedIn = false;
+            state.screen = "login";
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-action='login-submit']").forEach((el) => {
+        el.addEventListener("click", () => {
+          const passwordInput = document.getElementById("login-password");
+          const errorMsg = document.getElementById("login-error");
+          const password = passwordInput ? passwordInput.value : "";
+          if (password === "jyp4013") {
+            commit(() => {
+              state.isSignedIn = true;
+              state.screen = "account";
+            });
+          } else {
+            if (errorMsg) errorMsg.classList.add("visible");
+            if (passwordInput) passwordInput.classList.add("error");
+          }
+        });
+      });
+
+      document.querySelectorAll("[data-category]").forEach((el) => {
+        el.addEventListener("click", () => {
+          state.category = el.dataset.category;
+          render();
+        });
+      });
+
+      document.querySelectorAll("[data-detail]").forEach((el) => {
+        el.addEventListener("click", (event) => {
+          if (event.target.closest("[data-quick-add]") || event.target.closest("[data-detail-cta]")) return;
+          commit(() => {
+            state.selectedProductId = el.dataset.detail;
+            state.detailQty = 1;
+            state.screen = "detail";
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-detail-cta]").forEach((el) => {
+        el.addEventListener("click", () => {
+          commit(() => {
+            state.selectedProductId = el.dataset.detailCta;
+            state.detailQty = 1;
+            state.screen = "detail";
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-quick-add]").forEach((el) => {
+        el.addEventListener("click", (event) => {
+          event.stopPropagation();
+          quickAdd(el.dataset.quickAdd);
+        });
+      });
+
+      document.querySelectorAll("[data-option]").forEach((el) => {
+        el.addEventListener("click", () => {
+          const product = getProduct(state.selectedProductId);
+          const options = getSelectedOptions(product);
+          const type = el.dataset.option;
+          const value = el.dataset.value;
+          if (type === "extras") {
+            const exists = options.extras.includes(value);
+            options.extras = exists ? options.extras.filter((item) => item !== value) : [...options.extras, value];
+          } else {
+            options[type] = value;
+          }
+          render();
+        });
+      });
+
+      document.querySelectorAll("[data-qty]").forEach((el) => {
+        el.addEventListener("click", () => {
+          const change = Number(el.dataset.qty);
+          state.detailQty = Math.max(1, state.detailQty + change);
+          render();
+        });
+      });
+
+      document.querySelectorAll("[data-cart-qty]").forEach((el) => {
+        el.addEventListener("click", () => {
+          const key = el.dataset.cartQty;
+          const change = Number(el.dataset.change);
+          commit(() => {
+            state.cart = state.cart
+              .map((item) => item.key === key ? { ...item, qty: item.qty + change } : item)
+              .filter((item) => item.qty > 0);
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-payment]").forEach((el) => {
+        el.addEventListener("click", () => {
+          commit(() => {
+            state.checkout.payment = el.dataset.payment;
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-checkout-toggle]").forEach((el) => {
+        el.addEventListener("click", () => {
+          const key = el.dataset.checkoutToggle;
+          commit(() => {
+            state.checkout[key] = !state.checkout[key];
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-action='to-home']").forEach((el) => {
+        el.addEventListener("click", () => navigate("home"));
+      });
+
+      document.querySelectorAll("[data-action='start-order-flow']").forEach((el) => {
+        el.addEventListener("click", () => navigate(state.mode === "delivery" ? "deliveryLocation" : "store"));
+      });
+
+      document.querySelectorAll("[data-action='to-delivery-map']").forEach((el) => {
+        el.addEventListener("click", () => {
+          if (!state.deliveryAddressInput.trim() && !state.selectedAddressId) return;
+          navigate("deliveryMap");
+        });
+      });
+
+      document.querySelectorAll("[data-address]").forEach((el) => {
+        el.addEventListener("click", () => {
+          const suggestion = addressSuggestions.find((item) => item.id === el.dataset.address);
+          if (!suggestion) return;
+          commit(() => {
+            state.selectedAddressId = suggestion.id;
+            state.deliveryAddressInput = suggestion.address[state.locale];
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-action='confirm-delivery-address']").forEach((el) => {
+        el.addEventListener("click", () => {
+          commit(() => {
+            resolveDeliverySetup();
+            state.browseOnlyMenu = false;
+            state.screen = "menu";
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-action='detail-add']").forEach((el) => {
+        el.addEventListener("click", addFromDetail);
+      });
+
+      document.querySelectorAll("[data-action='start-order-prompt']").forEach((el) => {
+        el.addEventListener("click", () => {
+          window.alert(t().labels.browseOnlyAlert);
+          navigate("location");
+        });
+      });
+
+      document.querySelectorAll("[data-action='place-order']").forEach((el) => {
+        el.addEventListener("click", () => {
+          commit(() => {
+            state.screen = "confirmation";
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-action='reset']").forEach((el) => {
+        el.addEventListener("click", () => {
+          commit(() => {
+            state.screen = "home";
+            state.cart = [];
+            state.claimedPromos = [];
+            state.storeId = null;
+            state.hasChosenStore = false;
+            state.confirmedAddress = "";
+            state.selectedAddressId = null;
+            state.deliveryAddressInput = "";
+            state.mode = "pickup";
+            state.browseOnlyMenu = false;
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-open-nutrition]").forEach((el) => {
+        el.addEventListener("click", (event) => {
+          event.stopPropagation();
+          openNutritionModal();
+        });
+      });
+
+      document.querySelectorAll("[data-claim-promo]").forEach((el) => {
+        el.addEventListener("click", () => {
+          const promoId = el.dataset.claimPromo;
+          if (state.claimedPromos.includes(promoId)) return;
+          const promos = getPromoSlides();
+          const promo = promos.find((p) => p.id === promoId);
+          if (!promo || promo.locked) return;
+          commit(() => {
+            state.claimedPromos.push(promoId);
+            state.cart.push({
+              key: `promo-${promoId}`,
+              id: promoId,
+              emoji: promo.emoji,
+              image: promo.image,
+              name: promo.title,
+              price: 0,
+              qty: 1,
+              summary: promo.badge
+            });
+          });
+          showToast(`${promo.title} added to order!`, "FREE");
+        });
+      });
+
+      document.querySelectorAll("[data-redeem]").forEach((el) => {
+        el.addEventListener("click", () => {
+          const cost = Number(el.dataset.redeem);
+          if (cost > 1000) return;
+          showToast(t().toasts.redeemed, `-${cost}`);
+        });
+      });
+
+      const search = document.getElementById("menu-search");
+      if (search) {
+        search.addEventListener("input", () => {
+          state.search = search.value;
+          render();
+        });
+      }
+
+      const address1 = document.getElementById("address1");
+      const address2 = document.getElementById("address2");
+      const deliveryAddressInput = document.getElementById("delivery-address-input");
+      const orderNotes = document.getElementById("order-notes");
+      if (address1) address1.addEventListener("input", () => { state.checkout.address1 = address1.value; });
+      if (address2) address2.addEventListener("input", () => { state.checkout.address2 = address2.value; });
+      if (deliveryAddressInput) {
+        deliveryAddressInput.addEventListener("input", () => {
+          state.deliveryAddressInput = deliveryAddressInput.value;
+          state.selectedAddressId = null;
+          render();
+        });
+      }
+      if (orderNotes) orderNotes.addEventListener("input", () => { state.checkout.notes = orderNotes.value; });
+
+      const couponInput = document.getElementById("coupon-code-input");
+      if (couponInput) {
+        couponInput.addEventListener("input", () => {
+          state.checkout.couponCode = couponInput.value;
+          state.checkout.couponApplied = false;
+        });
+      }
+
+      document.querySelectorAll("[data-action='apply-coupon']").forEach((el) => {
+        el.addEventListener("click", () => {
+          const code = state.checkout.couponCode.trim().toUpperCase();
+          if (!code) return;
+          // Prototype: any non-empty code "works" to demo the applied state
+          commit(() => {
+            state.checkout.couponApplied = true;
+            state.checkout.couponCode = code;
+          });
+          showToast(t().labels.promoApplied, "−10%");
+        });
+      });
+    }
+
+    function quickAdd(productId) {
+      if (state.browseOnlyMenu) {
+        window.alert(t().labels.browseOnlyAlert);
+        navigate("location");
+        return;
+      }
+      const product = getProduct(productId);
+      const options = getSelectedOptions(product);
+      const key = [product.id, options.heat, options.size, ...options.extras].join("|");
+      const existing = state.cart.find((item) => item.key === key);
+
+      commit(() => {
+        if (existing) {
+          existing.qty += 1;
+        } else {
+          state.cart.push({
+            key,
+            id: product.id,
+            emoji: product.emoji,
+            image: product.image,
+            name: product.name[state.locale],
+            price: product.basePrice,
+            qty: 1,
+            summary: [options.heat, options.size, ...options.extras].filter(Boolean).join(" · ")
+          });
+        }
+      });
+
+      showToast(t().toasts.added, "+50");
+    }
+
+    function addFromDetail() {
+      if (state.browseOnlyMenu) {
+        window.alert(t().labels.browseOnlyAlert);
+        navigate("location");
+        return;
+      }
+      const product = getProduct(state.selectedProductId);
+      const options = getSelectedOptions(product);
+      const key = [product.id, options.heat, options.size, ...options.extras].join("|");
+      const existing = state.cart.find((item) => item.key === key);
+
+      commit(() => {
+        if (existing) {
+          existing.qty += state.detailQty;
+        } else {
+          state.cart.push({
+            key,
+            id: product.id,
+            emoji: product.emoji,
+            image: product.image,
+            name: product.name[state.locale],
+            price: product.basePrice + (options.extras.length * 0.5),
+            qty: state.detailQty,
+            summary: [options.heat, options.size, ...options.extras].filter(Boolean).join(" · ")
+          });
+        }
+        state.screen = "cart";
+      });
+
+      showToast(t().toasts.added, `+${state.detailQty * 50}`);
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    // ─── Nutrition Modal ──────────────────────────────────────────
+    const nutritionModalEl   = document.getElementById("nutrition-modal");
+    const nutritionScrimEl   = document.getElementById("nutrition-scrim");
+    const nutritionBodyEl    = document.getElementById("nutrition-modal-body");
+    const nutritionTitleEl   = document.getElementById("nutrition-modal-title");
+    const nutritionKjEl      = document.getElementById("nutrition-modal-kj");
+    const nutritionCloseBtn  = document.getElementById("nutrition-close-btn");
+
+    function renderNutritionBody() {
+      if (nutritionModalTab === "nutrition") {
+        nutritionBodyEl.innerHTML = `
+          <table class="nutrition-table">
+            <thead>
+              <tr>
+                <th>Nutrient</th>
+                <th>Per Serve</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${nutritionData.nutrition.map((row) => `
+                <tr class="${row.highlight ? "nt-highlight" : ""}${row.sub ? " nt-sub" : ""}">
+                  <td>${escapeHtml(row.label)}</td>
+                  <td>${escapeHtml(row.value)} ${escapeHtml(row.unit)}</td>
+                </tr>
+              `).join("")}
+            </tbody>
+          </table>
+        `;
+      } else {
+        nutritionBodyEl.innerHTML = `
+          <div class="allergen-legend">
+            <div class="allergen-legend-item"><div class="allergen-dot present"></div>Present</div>
+            <div class="allergen-legend-item"><div class="allergen-dot na"></div>N/A</div>
+          </div>
+          <div>
+            ${nutritionData.allergens.map((a) => `
+              <div class="allergen-row">
+                <span class="allergen-name">${escapeHtml(a.name)}</span>
+                <span class="allergen-status ${a.status}">${a.status === "present" ? "Present" : "N/A"}</span>
+              </div>
+            `).join("")}
+          </div>
+          <div class="nutrition-disclaimer">
+            ${nutritionData.disclaimer.map((line) => `<p>${escapeHtml(line)}</p>`).join("")}
+          </div>
+        `;
+      }
+    }
+
+    function openNutritionModal() {
+      nutritionModalTab = "nutrition";
+      nutritionTitleEl.textContent = nutritionData.name;
+      nutritionKjEl.textContent = `${nutritionData.kj.toLocaleString()} kJ per serve`;
+      document.querySelectorAll(".nutrition-tab").forEach((tab) => {
+        tab.classList.toggle("active", tab.dataset.ntab === nutritionModalTab);
+      });
+      renderNutritionBody();
+      nutritionModalEl.classList.add("open");
+      nutritionScrimEl.classList.add("open");
+    }
+
+    function closeNutritionModal() {
+      nutritionModalEl.classList.remove("open");
+      nutritionScrimEl.classList.remove("open");
+    }
+
+    nutritionCloseBtn.addEventListener("click", closeNutritionModal);
+    nutritionScrimEl.addEventListener("click", closeNutritionModal);
+
+    document.querySelectorAll(".nutrition-tab").forEach((tab) => {
+      tab.addEventListener("click", () => {
+        nutritionModalTab = tab.dataset.ntab;
+        document.querySelectorAll(".nutrition-tab").forEach((t) => {
+          t.classList.toggle("active", t.dataset.ntab === nutritionModalTab);
+        });
+        renderNutritionBody();
+      });
+    });
+
+    function render() {
+      closeSheet();
+      renderTopbar();
+      renderJourneyShellBar();
+      renderBottomNav();
+      els.content.innerHTML = renderScreen();
+      if (state.screen !== "detail") {
+        els.detailFooter.hidden = true;
+        els.detailFooter.innerHTML = "";
+      }
+      attachEvents();
+    }
+
+    els.back.addEventListener("click", goBack);
+    els.forward.addEventListener("click", goForward);
+    fullscreenBtn.addEventListener("click", async () => {
+      if (window.self !== window.top) {
+        embeddedFullscreenMode = !embeddedFullscreenMode;
+        stageEl.classList.toggle("fullscreen-mode", embeddedFullscreenMode);
+        window.parent.postMessage(
+          { type: "rna-prototype-fullscreen", enabled: embeddedFullscreenMode },
+          window.location.origin
+        );
+        renderTopbar();
+        return;
+      }
+
+      if (document.fullscreenElement) {
+        await document.exitFullscreen();
+      } else if (stageEl.requestFullscreen) {
+        await stageEl.requestFullscreen();
+      } else {
+        stageEl.classList.toggle("fullscreen-mode");
+      }
+      renderTopbar();
+    });
+    document.addEventListener("fullscreenchange", () => {
+      renderTopbar();
+    });
+    document.querySelectorAll("[data-locale]").forEach((button) => {
+      button.addEventListener("click", () => setLocale(button.dataset.locale));
+    });
+
+    document.getElementById("shell-chip-mode").addEventListener("click", () => openSheet("mode"));
+    document.getElementById("shell-chip-time").addEventListener("click", () => openSheet("time"));
+
+    render();
+  </script>
+</body>
+</html>

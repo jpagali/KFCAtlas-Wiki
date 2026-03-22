@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brand Experience Team Org</title>
+    <style>
+      :root {
+        --bg: #f5f1e8;
+        --panel: rgba(255, 250, 243, 0.9);
+        --ink: #211c16;
+        --muted: #6d6258;
+        --line: #9bb0c5;
+        --red: #c8102e;
+        --red-dark: #8e0d22;
+        --blue: #2a3f98;
+        --blue-dark: #23367f;
+        --yellow: #f0d700;
+        --shadow: 0 22px 45px rgba(51, 34, 22, 0.12);
+        --radius: 24px;
+        --card-radius: 14px;
+        --card-width: 220px;
+        --card-height: 88px;
+        --card-width-sm: 168px;
+        --card-height-sm: 62px;
+      }
+
+      html[data-theme="dark"] {
+        --bg: #17120f;
+        --panel: rgba(34, 26, 21, 0.92);
+        --ink: #f8efe7;
+        --muted: #c8b8ac;
+        --line: #90a7d2;
+        --red: #ea3b5a;
+        --red-dark: #9f1731;
+        --blue: #647ef2;
+        --blue-dark: #3149b4;
+        --yellow: #f5df4d;
+        --shadow: 0 24px 48px rgba(0, 0, 0, 0.34);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Avenir Next", "Segoe UI", sans-serif;
+        color: var(--ink);
+        background: var(--bg);
+      }
+
+      html[data-theme="dark"] body {
+        background: var(--bg);
+      }
+
+      .canvas {
+        max-width: 1380px;
+        margin: 0 auto;
+        padding: 28px 18px 40px;
+      }
+
+      .eyebrow {
+        margin: 0 0 8px;
+        text-align: center;
+        color: var(--red);
+        font-size: 0.8rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        text-align: center;
+        font-size: clamp(2rem, 4vw, 3rem);
+        line-height: 1;
+      }
+
+      .hint {
+        margin: 0 0 18px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.92rem;
+        font-style: italic;
+      }
+
+      .viewToolbar,
+      .focusToolbar {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .viewToolbar {
+        margin-bottom: 12px;
+      }
+
+      .focusToolbar {
+        margin-bottom: 22px;
+      }
+
+      .btn {
+        appearance: none;
+        border-radius: 999px;
+        padding: 10px 14px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+      }
+
+      .btn:hover,
+      .btn:focus-visible {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 20px rgba(34, 24, 18, 0.08);
+        outline: none;
+      }
+
+      .viewBtn {
+        border: 1px solid rgba(200, 16, 46, 0.18);
+        background: rgba(255, 255, 255, 0.84);
+        color: var(--ink);
+      }
+
+      html[data-theme="dark"] .viewBtn {
+        border-color: rgba(234, 59, 90, 0.26);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .viewBtn.active {
+        background: var(--red);
+        border-color: var(--red);
+        color: #fff;
+      }
+
+      .focusBtn {
+        border: 1px solid rgba(42, 63, 152, 0.2);
+        background: rgba(255, 255, 255, 0.84);
+        color: var(--ink);
+      }
+
+      html[data-theme="dark"] .focusBtn {
+        border-color: rgba(100, 126, 242, 0.28);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .focusBtn.active {
+        background: var(--blue);
+        border-color: var(--blue);
+        color: #fff;
+      }
+
+      .frame {
+        position: relative;
+        background: var(--panel);
+        border: 1px solid rgba(135, 161, 184, 0.34);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 24px 20px 28px;
+        overflow: hidden;
+      }
+
+      html[data-theme="dark"] .frame {
+        border-color: rgba(102, 124, 154, 0.42);
+      }
+
+      .frame::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.45), transparent 26%),
+          radial-gradient(circle at top right, rgba(255, 255, 255, 0.38), transparent 32%);
+      }
+
+      .panel {
+        position: relative;
+        z-index: 1;
+      }
+
+      .panel.hidden {
+        display: none;
+      }
+
+      .sectionLabel {
+        margin: 0 0 14px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .cluster {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .lineV {
+        width: 2px;
+        background: var(--line);
+      }
+
+      .lineVDashed {
+        width: 2px;
+        border-left: 2px dashed var(--blue);
+      }
+
+      html[data-theme="dark"] .lineV,
+      html[data-theme="dark"] .bar {
+        box-shadow: 0 0 0 1px rgba(144, 167, 210, 0.16);
+      }
+
+      html[data-theme="dark"] .lineVDashed {
+        border-left-color: #8ea5ff;
+        filter: drop-shadow(0 0 1px rgba(142, 165, 255, 0.38));
+      }
+
+      html[data-theme="dark"] .dottedBridge {
+        border-top-color: #8ea5ff;
+        filter: drop-shadow(0 0 1px rgba(142, 165, 255, 0.38));
+      }
+
+      .bar {
+        height: 2px;
+        background: var(--line);
+      }
+
+      .cardLink {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .cardLink:focus-visible {
+        outline: none;
+      }
+
+      .card {
+        width: var(--card-width);
+        min-height: var(--card-height);
+        padding: 14px 16px;
+        border-radius: var(--card-radius);
+        border: 2px solid rgba(18, 16, 14, 0.92);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+        box-shadow: 0 14px 24px rgba(36, 22, 16, 0.18);
+        transition: transform 160ms ease, box-shadow 160ms ease;
+      }
+
+      .card.small {
+        width: var(--card-width-sm);
+        min-height: var(--card-height-sm);
+        padding: 10px 12px;
+      }
+
+      .cardLink:hover .card,
+      .cardLink:focus-visible .card {
+        transform: translateY(-2px);
+        box-shadow: 0 18px 30px rgba(36, 22, 16, 0.22);
+      }
+
+      .red {
+        background: linear-gradient(180deg, var(--red) 0%, var(--red-dark) 100%);
+      }
+
+      .blue {
+        background: linear-gradient(180deg, var(--blue) 0%, var(--blue-dark) 100%);
+      }
+
+      .bridge {
+        background: linear-gradient(135deg, var(--red) 0%, #b41646 45%, var(--blue) 100%);
+      }
+
+      .future {
+        border-color: var(--yellow);
+      }
+
+      .name {
+        font-size: 1.02rem;
+        font-weight: 800;
+        line-height: 1.15;
+      }
+
+      .card.small .name {
+        font-size: 0.9rem;
+      }
+
+      .role {
+        margin-top: 6px;
+        font-size: 0.88rem;
+        line-height: 1.2;
+        opacity: 0.95;
+      }
+
+      .card.small .role {
+        font-size: 0.74rem;
+        margin-top: 4px;
+      }
+
+      .overview {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+      }
+
+      .overviewTopSplit {
+        width: min(100%, 1120px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .overviewTopSplit .bar {
+        width: calc(100% - 280px);
+      }
+
+      .overviewTopDrops {
+        width: min(100%, 1120px);
+        display: flex;
+        justify-content: center;
+        gap: 96px;
+      }
+
+      .overviewTopDrop {
+        width: 280px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .overviewBranches {
+        width: min(100%, 1120px);
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+        align-items: start;
+      }
+
+      .overviewBranch {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 8px 8px;
+        background: rgba(255,255,255,0.22);
+        border-radius: 16px;
+        border: 1px solid rgba(135, 161, 184, 0.18);
+      }
+
+      html[data-theme="dark"] .overviewBranch {
+        background: rgba(255,255,255,0.04);
+        border-color: rgba(102,124,154,0.22);
+      }
+
+      .overviewBranchLabel {
+        margin: 0 0 12px;
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .overviewBranchLabel.redLabel {
+        background: rgba(200, 16, 46, 0.1);
+        color: var(--red);
+      }
+
+      .overviewBranchLabel.blueLabel {
+        background: rgba(42, 63, 152, 0.12);
+        color: var(--blue);
+      }
+
+      .overviewMiniGrid {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 14px;
+        width: 100%;
+      }
+
+      .focusSection {
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(135, 161, 184, 0.28);
+      }
+
+      .focusSection--inline {
+        width: 100%;
+        margin-top: 22px;
+        padding-top: 0;
+        border-top: 0;
+      }
+
+      html[data-theme="dark"] .focusSection {
+        border-top-color: rgba(102, 124, 154, 0.34);
+      }
+
+      .focusPanel {
+        display: none;
+      }
+
+      .focusPanel.active {
+        display: block;
+      }
+
+      .overviewBranches.hidden,
+      .focusSection.hidden {
+        display: none;
+      }
+
+      .focusTitle {
+        margin: 0 0 8px;
+        text-align: center;
+        font-size: 1.35rem;
+      }
+
+      .focusCopy {
+        margin: 0 0 18px;
+        text-align: center;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .haleyCardWrap {
+        padding: 14px 16px;
+        background: rgba(255, 255, 255, 0.46);
+        box-shadow: 0 18px 34px rgba(51, 34, 22, 0.08);
+        width: fit-content;
+        margin: 0 auto;
+      }
+
+      html[data-theme="dark"] .haleyCardWrap {
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .haleyCol {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .haleyBarWrap {
+        width: min(100%, 696px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 22px;
+      }
+
+      .haleyBarWrap .bar {
+        width: 100%;
+      }
+
+      .haleyDrops {
+        width: min(100%, 934px);
+        display: flex;
+        justify-content: center;
+        gap: 18px;
+      }
+
+      .haleyDrop {
+        width: var(--card-width);
+        display: flex;
+        justify-content: center;
+      }
+
+      .haleyRow {
+        width: min(100%, 934px);
+        display: flex;
+        justify-content: center;
+        gap: 18px;
+        align-items: flex-start;
+      }
+
+      .donBox {
+        padding: 8px;
+        border: 2px dashed var(--blue);
+        border-radius: 14px;
+      }
+
+      .engineeringCluster {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .engineeringBarWrap {
+        width: min(100%, 900px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .engineeringBarWrap .bar {
+        width: 100%;
+      }
+
+      .engineeringLeadCol {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .engineeringChainCol {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+        max-width: 640px;
+      }
+
+      .engineeringTop {
+        width: min(100%, 900px);
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+        flex-wrap: wrap;
+        align-items: flex-start;
+      }
+
+      /* Steve's sub-team branch — lives inside engineeringChainCol */
+      .steveTeamBranchWrap {
+        width: min(100%, 530px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .steveTeamBranchWrap .bar {
+        width: 100%;
+      }
+
+      .steveTeamDrops {
+        width: min(100%, 530px);
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .steveTeamDrop {
+        width: var(--card-width-sm);
+        display: flex;
+        justify-content: center;
+      }
+
+      .steveTeamRow {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .supportGrid {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+        max-width: 720px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .supportCount {
+        width: min(100%, 320px);
+        min-height: 132px;
+        padding: 18px 20px;
+        border-radius: 18px;
+        background: linear-gradient(180deg, var(--blue) 0%, var(--blue-dark) 100%);
+        color: #fff;
+        border: 2px solid rgba(18, 16, 14, 0.92);
+        box-shadow: 0 16px 28px rgba(34, 24, 18, 0.18);
+        text-align: center;
+        margin: 0 auto;
+      }
+
+      .supportCount strong {
+        display: block;
+        font-size: 2.2rem;
+        line-height: 1;
+        margin-bottom: 8px;
+      }
+
+      .supportCount span {
+        display: block;
+        font-size: 0.94rem;
+        line-height: 1.45;
+        opacity: 0.96;
+      }
+
+      .futurePanelWrap {
+        display: grid;
+        gap: 20px;
+      }
+
+      .futureColumns {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .futureColumn {
+        padding: 14px 12px 10px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.28);
+      }
+
+      html[data-theme="dark"] .futureColumn {
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .futureChildren {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .futureOrg {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .futureLeaderWrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+
+      .futureBarWrap {
+        width: min(100%, 720px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 14px;
+      }
+
+      .futureBarWrap .bar {
+        width: 100%;
+      }
+
+      .futureDrops {
+        width: min(100%, 720px);
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+      }
+
+      .futureDrop {
+        width: 210px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .futureSubgroup {
+        margin-top: 14px;
+      }
+
+      .miniCard {
+        width: 210px;
+        min-height: 78px;
+      }
+
+      @media (max-width: 1180px) {
+        .overviewBranches {
+          grid-template-columns: 1fr;
+        }
+        .futureColumns {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 820px) {
+        .overviewBranches {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 820px) {
+        .overviewTopSplit .bar,
+        .haleyBarWrap .bar,
+        .engineeringBarWrap .bar {
+          width: 2px;
+          height: 18px;
+        }
+
+        .overviewTopDrops,
+        .haleyDrops,
+        .futureDrops,
+        .engineeringTopGuides,
+        .engineeringBottomGuides {
+          display: none;
+        }
+
+        .haleyRow,
+        .engineeringTop {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .canvas {
+          padding: 22px 12px 28px;
+        }
+
+        .frame {
+          padding: 20px 10px 20px;
+        }
+
+        .card,
+        .card.small,
+        .miniCard {
+          width: min(100%, 320px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="canvas">
+      <p class="eyebrow">Atlas Org View</p>
+      <h1>Brand Experience Team</h1>
+      <p class="hint">*Click a linked card to open the LinkedIn profile.</p>
+
+      <div class="viewToolbar">
+        <button class="btn viewBtn active" data-view="current" type="button">Current Team</button>
+        <button class="btn viewBtn" data-view="future" type="button">Future Team</button>
+      </div>
+
+      <div class="focusToolbar">
+        <button class="btn focusBtn" data-focus="brand" type="button">KFC Brand Experience</button>
+        <button class="btn focusBtn" data-focus="engineering" type="button">Byte Engineering</button>
+        <button class="btn focusBtn" data-focus="support" type="button">Shared Support</button>
+      </div>
+
+      <section class="frame">
+        <div id="currentPanel" class="panel">
+          <p class="sectionLabel">Overview</p>
+
+          <div class="overview">
+            <a class="cardLink" href="https://www.linkedin.com/in/james-dausch/" target="_blank" rel="noreferrer">
+              <div class="card blue">
+                <div class="name">Jim Dausch</div>
+                <div class="role">Leadership</div>
+              </div>
+            </a>
+
+            <div id="focusInlineSection" class="focusSection focusSection--inline hidden">
+              <div id="focus-brand" class="focusPanel">
+                <h2 class="focusTitle">KFC Brand Experience</h2>
+                <p class="focusCopy">Judd leads the KFC Brand Experience branch, with Haley leading the core brand experience team underneath him. Don sits in the same peer row with a dotted-line relationship from engineering.</p>
+
+                <div class="cluster" style="margin-bottom: 18px;">
+                  <a class="cardLink" href="https://www.linkedin.com/in/juddknight/" target="_blank" rel="noreferrer">
+                    <div class="card red">
+                      <div class="name">Judd Knight</div>
+                      <div class="role">KFC Global CDTO</div>
+                    </div>
+                  </a>
+
+                  <div class="lineV" style="height: 20px;"></div>
+                </div>
+
+                <div class="haleyCol">
+                  <div class="haleyCardWrap">
+                    <a class="cardLink" href="https://www.linkedin.com/in/haleybethel/" target="_blank" rel="noreferrer">
+                      <div class="card red">
+                        <div class="name">Haley Janke</div>
+                        <div class="role">Director, Head of Brand Experience</div>
+                      </div>
+                    </a>
+                  </div>
+
+                  <div class="haleyBarWrap">
+                    <div class="lineV" style="height:24px;"></div>
+                    <div class="bar"></div>
+                  </div>
+
+                  <div class="haleyDrops" aria-hidden="true">
+                    <div class="haleyDrop"><div class="lineV" style="height:26px;"></div></div>
+                    <div class="haleyDrop"><div class="lineV" style="height:26px;"></div></div>
+                    <div class="haleyDrop"><div class="lineV" style="height:26px;"></div></div>
+                    <div class="haleyDrop"><div class="lineV" style="height:26px;"></div></div>
+                  </div>
+
+                  <div class="haleyRow">
+                    <a class="cardLink" href="https://www.linkedin.com/in/yijun-mark-ma-80710043/" target="_blank" rel="noreferrer">
+                      <div class="card red">
+                        <div class="name">Mark Ma</div>
+                        <div class="role">Atlas Product Manager</div>
+                      </div>
+                    </a>
+
+                    <a class="cardLink" href="https://www.linkedin.com/in/justincredible100/" target="_blank" rel="noreferrer">
+                      <div class="card red">
+                        <div class="name">Justin Pagalilauan</div>
+                        <div class="role">Market Enablement and Success Lead</div>
+                      </div>
+                    </a>
+
+                    <a class="cardLink" href="https://www.linkedin.com/in/percival-wesley-weidemann-4b727515/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_all%3BqWwD47OHTVeA3ajKgEIdjw%3D%3D" target="_blank" rel="noreferrer">
+                      <div class="card red">
+                        <div class="name">Wesley Weidemann</div>
+                        <div class="role">Program Manager</div>
+                      </div>
+                    </a>
+
+                    <div class="donBox">
+                      <a class="cardLink" href="https://www.linkedin.com/in/donovan-abshire-28ba5977/" target="_blank" rel="noreferrer">
+                        <div class="card red">
+                          <div class="name">Don Abshire</div>
+                          <div class="role">Solution Architect</div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- /focus-brand -->
+
+              <div id="focus-engineering" class="focusPanel">
+                <h2 class="focusTitle">Byte Engineering</h2>
+                <p class="focusCopy">Matthew reports to Jim. Brendan reports to Matthew, Phong reports to Brendan, Steve reports to Phong, and Don reports to Jonathan while keeping a dotted-line relationship to Haley on the KFC side.</p>
+
+                <div class="engineeringCluster">
+                  <a class="cardLink" href="https://www.linkedin.com/in/matthewmcdole/" target="_blank" rel="noreferrer">
+                    <div class="card blue">
+                      <div class="name">Matthew McDole</div>
+                      <div class="role">VP, Engineering</div>
+                    </div>
+                  </a>
+
+                  <div class="engineeringBarWrap">
+                    <div class="lineV" style="height:16px;"></div>
+                    <div class="bar"></div>
+                    <div style="width:100%;display:flex;justify-content:center;gap:32px;" aria-hidden="true">
+                      <div style="width:var(--card-width);display:flex;justify-content:center;"><div class="lineV" style="height:14px;"></div></div>
+                      <div style="flex:1;max-width:640px;display:flex;justify-content:center;"><div class="lineV" style="height:14px;"></div></div>
+                    </div>
+                  </div>
+
+                  <div class="engineeringTop">
+                    <div class="engineeringLeadCol">
+                      <div class="card blue">
+                        <div class="name">Jonathan Edwards</div>
+                        <div class="role">Architect</div>
+                      </div>
+                      <div class="lineV" style="height:18px;"></div>
+                      <a class="cardLink" href="https://www.linkedin.com/in/donovan-abshire-28ba5977/" target="_blank" rel="noreferrer">
+                        <div class="card red">
+                          <div class="name">Don Abshire</div>
+                          <div class="role">Solution Architect</div>
+                        </div>
+                      </a>
+                    </div>
+
+                    <div class="engineeringChainCol">
+                      <a class="cardLink" href="https://www.linkedin.com/in/brendanhurley1/" target="_blank" rel="noreferrer">
+                        <div class="card blue">
+                          <div class="name">Brendan Hurley</div>
+                          <div class="role">Director, Engineering</div>
+                        </div>
+                      </a>
+
+                      <div class="lineV" style="height:18px;"></div>
+
+                      <a class="cardLink" href="https://www.linkedin.com/in/bqphong/" target="_blank" rel="noreferrer">
+                        <div class="card bridge">
+                          <div class="name">Phong Bui</div>
+                          <div class="role">Eng. &amp; Delivery Director (50%)</div>
+                        </div>
+                      </a>
+
+                      <div class="lineV" style="height:18px;"></div>
+
+                      <a class="cardLink" href="https://www.linkedin.com/in/stevewinberg/" target="_blank" rel="noreferrer">
+                        <div class="card red">
+                          <div class="name">Steve Winberg</div>
+                          <div class="role">Sr. Eng. Mgr.</div>
+                        </div>
+                      </a>
+
+                      <div class="steveTeamBranchWrap">
+                        <div class="lineV" style="height:14px;"></div>
+                        <div class="bar"></div>
+                      </div>
+                      <div class="steveTeamDrops" aria-hidden="true">
+                        <div class="steveTeamDrop"><div class="lineV" style="height:14px;"></div></div>
+                        <div class="steveTeamDrop"><div class="lineV" style="height:14px;"></div></div>
+                        <div class="steveTeamDrop"><div class="lineV" style="height:14px;"></div></div>
+                      </div>
+                      <div class="steveTeamRow">
+                        <div class="card small red">
+                          <div class="name">Nguyen Minh Tuan</div>
+                          <div class="role">Sr. Eng. I</div>
+                        </div>
+                        <div class="card small red">
+                          <div class="name">Quang Tran</div>
+                          <div class="role">Eng. III</div>
+                        </div>
+                        <div class="card small red">
+                          <div class="name">Thao Tran</div>
+                          <div class="role">Sr. Eng. I</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="focus-support" class="focusPanel">
+                <h2 class="focusTitle">Shared Support</h2>
+                <p class="focusCopy">The shared support structure already exists today with fewer people, and the future-state expands that same support model with more dedicated capacity.</p>
+
+                <div class="supportGrid">
+                  <div class="card blue miniCard"><div class="name">Shiv Adhippann</div><div class="role">VP, Site Reliability</div></div>
+                  <div class="card blue miniCard"><div class="name">Cam Davies</div><div class="role">Chief Data Officer</div></div>
+                  <div class="card blue miniCard"><div class="name">Rachel Lorraine</div><div class="role">Sr. Dir. D&amp;A</div></div>
+                  <div class="card red miniCard"><div class="name">Kip Hurley</div><div class="role">Director, Site Reliability (5%)</div></div>
+                  <div class="card red miniCard"><div class="name">Leanna Haas</div><div class="role">Sr. Mgr, Data Analytics</div></div>
+                </div>
+
+                <div class="supportCount">
+                  <strong>20 Today</strong>
+                  <span>This is the current shared support army around the team across site reliability, SOC, data, analytics, and partner leadership.</span>
+                </div>
+              </div>
+            </div>
+
+            <div id="overviewBranches" class="overviewBranches">
+              <section class="overviewBranch">
+                <div class="overviewBranchLabel redLabel">KFC Brand Experience</div>
+                <a class="cardLink" href="https://www.linkedin.com/in/juddknight/" target="_blank" rel="noreferrer">
+                  <div class="card small red">
+                    <div class="name">Judd Knight</div>
+                    <div class="role">KFC Global CDTO</div>
+                  </div>
+                </a>
+                <div class="lineV" style="height:14px;"></div>
+                <a class="cardLink" href="https://www.linkedin.com/in/haleybethel/" target="_blank" rel="noreferrer">
+                  <div class="card small red">
+                    <div class="name">Haley Janke</div>
+                    <div class="role">Director, Head of Brand Experience</div>
+                  </div>
+                </a>
+                <div class="overviewMiniGrid">
+                  <div class="card small red"><div class="name">Mark</div><div class="role">Product</div></div>
+                  <div class="card small red"><div class="name">Justin</div><div class="role">Enablement</div></div>
+                  <div class="card small red"><div class="name">Wes</div><div class="role">Program</div></div>
+                  <div class="card small red"><div class="name">Don</div><div class="role">Solution Arch</div></div>
+                </div>
+              </section>
+
+              <section class="overviewBranch">
+                <div class="overviewBranchLabel blueLabel">Byte Engineering</div>
+                <a class="cardLink" href="https://www.linkedin.com/in/matthewmcdole/" target="_blank" rel="noreferrer">
+                  <div class="card small blue">
+                    <div class="name">Matthew McDole</div>
+                    <div class="role">VP, Engineering</div>
+                  </div>
+                </a>
+                <div class="lineV" style="height:14px;"></div>
+                <div class="overviewMiniGrid">
+                  <div class="card small blue"><div class="name">Jonathan</div><div class="role">Architect</div></div>
+                  <div class="card small blue"><div class="name">Brendan</div><div class="role">Director</div></div>
+                  <div class="card small bridge"><div class="name">Phong</div><div class="role">Delivery</div></div>
+                  <div class="card small red"><div class="name">Steve</div><div class="role">Eng. Mgr.</div></div>
+                </div>
+              </section>
+
+              <section class="overviewBranch">
+                <div class="overviewBranchLabel blueLabel">Shared Support</div>
+                <div class="card small blue">
+                  <div class="name">Existing Support</div>
+                  <div class="role">20 people today</div>
+                </div>
+                <div class="lineV" style="height:14px;"></div>
+                <div class="overviewMiniGrid">
+                  <div class="card small blue"><div class="name">Site Reliability</div><div class="role">Shiv / Kip</div></div>
+                  <div class="card small blue"><div class="name">Data &amp; Analytics</div><div class="role">Cam / Rachel / Leanna</div></div>
+                </div>
+              </section>
+            </div>
+          </div>
+
+        </div>
+
+        <div id="futurePanel" class="panel hidden">
+          <div class="futurePanelWrap">
+            <div class="futureColumns">
+              <section class="futureColumn">
+                <div class="overviewBranchLabel redLabel" style="display:table;margin:0 auto 14px;">Future Experience</div>
+                <div class="futureOrg">
+                  <div class="futureLeaderWrap">
+                    <a class="cardLink" href="https://www.linkedin.com/in/juddknight/" target="_blank" rel="noreferrer"><div class="card red miniCard"><div class="name">Judd Knight</div><div class="role">KFC Global CDTO</div></div></a>
+                    <div class="lineV" style="height:16px;"></div>
+                    <a class="cardLink" href="https://www.linkedin.com/in/haleybethel/" target="_blank" rel="noreferrer"><div class="card red miniCard"><div class="name">Haley Janke</div><div class="role">Director, Head of Brand Experience</div></div></a>
+                  </div>
+                  <div class="futureBarWrap">
+                    <div class="lineV" style="height:16px;"></div>
+                    <div class="bar"></div>
+                  </div>
+                  <div class="futureDrops" aria-hidden="true">
+                    <div class="futureDrop"><div class="lineV" style="height:16px;"></div></div>
+                    <div class="futureDrop"><div class="lineV" style="height:16px;"></div></div>
+                    <div class="futureDrop"><div class="lineV" style="height:16px;"></div></div>
+                  </div>
+                  <div class="futureChildren">
+                    <a class="cardLink" href="https://www.linkedin.com/in/yijun-mark-ma-80710043/" target="_blank" rel="noreferrer"><div class="card red miniCard"><div class="name">Mark Ma</div><div class="role">Atlas Product Manager</div></div></a>
+                    <a class="cardLink" href="https://www.linkedin.com/in/justincredible100/" target="_blank" rel="noreferrer"><div class="card red miniCard"><div class="name">Justin Pagalilauan</div><div class="role">Market Enablement and Success Lead</div></div></a>
+                    <a class="cardLink" href="https://www.linkedin.com/in/percival-wesley-weidemann-4b727515/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_all%3BqWwD47OHTVeA3ajKgEIdjw%3D%3D" target="_blank" rel="noreferrer"><div class="card red miniCard"><div class="name">Wesley Weidemann</div><div class="role">Program Manager</div></div></a>
+                    <a class="cardLink" href="https://www.linkedin.com/in/donovan-abshire-28ba5977/" target="_blank" rel="noreferrer"><div class="card red miniCard"><div class="name">Don Abshire</div><div class="role">Solution Architect</div></div></a>
+                    <div class="card red miniCard"><div class="name">Market Product Owners</div><div class="role">Future market-facing support</div></div>
+                    <div class="card red miniCard future"><div class="name">Head of UX/UI</div><div class="role">TBH - July '26</div></div>
+                    <div class="card red miniCard future"><div class="name">CRO</div><div class="role">TBH - July '26</div></div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="futureColumn">
+                <div class="overviewBranchLabel blueLabel" style="display:table;margin:0 auto 14px;">Future Engineering</div>
+                <div class="futureOrg">
+                  <div class="futureLeaderWrap">
+                    <a class="cardLink" href="https://www.linkedin.com/in/matthewmcdole/" target="_blank" rel="noreferrer"><div class="card blue miniCard"><div class="name">Matthew McDole</div><div class="role">VP, Engineering</div></div></a>
+                  </div>
+                  <div class="futureBarWrap">
+                    <div class="lineV" style="height:16px;"></div>
+                    <div class="bar"></div>
+                  </div>
+                  <div class="futureDrops" aria-hidden="true">
+                    <div class="futureDrop"><div class="lineV" style="height:16px;"></div></div>
+                    <div class="futureDrop"><div class="lineV" style="height:16px;"></div></div>
+                    <div class="futureDrop"><div class="lineV" style="height:16px;"></div></div>
+                  </div>
+                  <div class="futureChildren">
+                    <div class="card blue miniCard"><div class="name">Jonathan Edwards</div><div class="role">Architect</div></div>
+                    <a class="cardLink" href="https://www.linkedin.com/in/brendanhurley1/" target="_blank" rel="noreferrer"><div class="card blue miniCard"><div class="name">Brendan Hurley</div><div class="role">Director, Engineering</div></div></a>
+                    <a class="cardLink" href="https://www.linkedin.com/in/bqphong/" target="_blank" rel="noreferrer"><div class="card bridge miniCard"><div class="name">Phong Bui</div><div class="role">Eng. &amp; Delivery Director (50%)</div></div></a>
+                    <a class="cardLink" href="https://www.linkedin.com/in/stevewinberg/" target="_blank" rel="noreferrer"><div class="card red miniCard"><div class="name">Steve Winberg</div><div class="role">Sr. Eng. Mgr.</div></div></a>
+                  </div>
+                  <div class="futureBarWrap futureSubgroup">
+                    <div class="lineV" style="height:16px;"></div>
+                    <div class="bar"></div>
+                  </div>
+                  <div class="futureDrops" aria-hidden="true">
+                    <div class="futureDrop"><div class="lineV" style="height:16px;"></div></div>
+                    <div class="futureDrop"><div class="lineV" style="height:16px;"></div></div>
+                    <div class="futureDrop"><div class="lineV" style="height:16px;"></div></div>
+                    <div class="futureDrop"><div class="lineV" style="height:16px;"></div></div>
+                  </div>
+                  <div class="futureChildren">
+                    <div class="card red miniCard"><div class="name">Nguyen Minh Tuan</div><div class="role">Sr. Eng. I</div></div>
+                    <div class="card red miniCard"><div class="name">Quang Tran</div><div class="role">Eng. III</div></div>
+                    <div class="card red miniCard"><div class="name">Thao Tran</div><div class="role">Sr. Eng. I</div></div>
+                    <div class="card red miniCard future"><div class="name">Hiring in Progress</div><div class="role">Sr. Eng. I</div></div>
+                    <div class="card red miniCard future"><div class="name">Hiring in Progress</div><div class="role">Sr. Eng. I</div></div>
+                    <div class="card red miniCard future"><div class="name">Hiring in Progress</div><div class="role">QE III</div></div>
+                    <div class="card red miniCard future"><div class="name">Hiring in Progress</div><div class="role">QE III</div></div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="futureColumn">
+                <div class="overviewBranchLabel blueLabel" style="display:table;margin:0 auto 14px;">Shared Support</div>
+                <div class="supportGrid">
+                  <div class="card blue miniCard"><div class="name">Shiv Adhippann</div><div class="role">VP, Site Reliability</div></div>
+                  <div class="card blue miniCard"><div class="name">Cam Davies</div><div class="role">Chief Data Officer</div></div>
+                  <div class="card blue miniCard"><div class="name">Rachel Lorraine</div><div class="role">Sr. Dir. D&amp;A</div></div>
+                  <div class="card red miniCard"><div class="name">Kip Hurley</div><div class="role">Director, Site Reliability (5%)</div></div>
+                  <div class="card red miniCard"><div class="name">Leanna Haas</div><div class="role">Sr. Mgr, Data Analytics</div></div>
+                </div>
+                <div class="supportCount">
+                  <strong>25 Future</strong>
+                  <span>This shared support structure already exists today, and the future-state reflects the same model with more people and more dedicated capacity.</span>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const initialTheme = params.get("theme") === "light" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", initialTheme);
+
+      const viewButtons = document.querySelectorAll(".viewBtn");
+      const focusButtons = document.querySelectorAll(".focusBtn");
+      const currentPanel = document.getElementById("currentPanel");
+      const futurePanel = document.getElementById("futurePanel");
+      const overviewBranches = document.getElementById("overviewBranches");
+      const focusInlineSection = document.getElementById("focusInlineSection");
+      const focusPanels = {
+        brand: document.getElementById("focus-brand"),
+        engineering: document.getElementById("focus-engineering"),
+        support: document.getElementById("focus-support"),
+      };
+
+      viewButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const view = button.dataset.view;
+          viewButtons.forEach((btn) => btn.classList.toggle("active", btn === button));
+          currentPanel.classList.toggle("hidden", view !== "current");
+          futurePanel.classList.toggle("hidden", view !== "future");
+
+          if (view === "current") {
+            focusButtons.forEach((btn) => btn.classList.remove("active"));
+            focusInlineSection.classList.add("hidden");
+            overviewBranches.classList.remove("hidden");
+            Object.values(focusPanels).forEach((panel) => panel.classList.remove("active"));
+          }
+
+          reportHeight();
+        });
+      });
+
+      focusButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const focus = button.dataset.focus;
+          const isAlreadyActive = button.classList.contains("active");
+
+          if (isAlreadyActive) {
+            focusButtons.forEach((btn) => btn.classList.remove("active"));
+            focusInlineSection.classList.add("hidden");
+            overviewBranches.classList.remove("hidden");
+            Object.values(focusPanels).forEach((panel) => panel.classList.remove("active"));
+            reportHeight();
+            return;
+          }
+
+          focusButtons.forEach((btn) => btn.classList.toggle("active", btn === button));
+          focusInlineSection.classList.remove("hidden");
+          overviewBranches.classList.add("hidden");
+          Object.entries(focusPanels).forEach(([key, panel]) => {
+            panel.classList.toggle("active", key === focus);
+          });
+          reportHeight();
+        });
+      });
+
+      function reportHeight() {
+        window.parent.postMessage(
+          {
+            type: "brand-experience-team-org-height",
+            height: document.documentElement.scrollHeight,
+          },
+          window.location.origin,
+        );
+      }
+
+      window.addEventListener("message", (event) => {
+        if (event.origin !== window.location.origin) {
+          return;
+        }
+
+        if (event.data?.type === "brand-experience-team-org-theme") {
+          const theme = event.data.theme === "light" ? "light" : "dark";
+          document.documentElement.setAttribute("data-theme", theme);
+          reportHeight();
+        }
+      });
+
+      const resizeObserver = new ResizeObserver(reportHeight);
+      resizeObserver.observe(document.body);
+      window.addEventListener("load", reportHeight);
+      window.addEventListener("resize", reportHeight);
+      reportHeight();
+    </script>
+  </body>
+</html>

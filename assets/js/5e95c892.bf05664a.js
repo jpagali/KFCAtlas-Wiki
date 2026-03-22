@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkkfc_atlas_portal=globalThis.webpackChunkkfc_atlas_portal||[]).push([[9647],{7121(a,s,e){e.r(s),e.d(s,{default:()=>h});e(96540);var r=e(34164),l=e(17559),t=e(45500),c=e(22831),u=e(51156),o=e(74848);function h(a){return(0,o.jsx)(t.e3,{className:(0,r.A)(l.G.wrapper.docsPages),children:(0,o.jsx)(u.A,{children:(0,c.v)(a.route.routes)})})}}}]);
