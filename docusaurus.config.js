@@ -6,26 +6,33 @@ const isGitHubPagesBuild =
 const isGitLabPagesBuild = process.env.GITLAB_CI === 'true';
 const githubRepository = process.env.GITHUB_REPOSITORY ?? 'jpagali/KFCAtlas-Wiki';
 const [, githubProjectName = 'KFCAtlas-Wiki'] = githubRepository.split('/');
-const gitlabProjectPath = process.env.CI_PROJECT_PATH ?? 'jpagali/kfc-atlas-wiki';
-const gitlabNamespace = process.env.CI_PROJECT_NAMESPACE ?? 'jpagali';
-const [, gitlabProjectName = 'kfc-atlas-wiki'] = gitlabProjectPath.split('/');
-const gitLabPagesHost = `https://${gitlabNamespace}.gitlab.io`;
+const gitLabPagesUrl = process.env.CI_PAGES_URL;
 const buildUpdatedDate = new Intl.DateTimeFormat('en-US', {
   month: '2-digit',
   day: '2-digit',
   year: 'numeric',
 }).format(new Date());
 
+const normalizeBaseUrl = (pathname) => {
+  if (!pathname || pathname === '/') {
+    return '/';
+  }
+
+  return pathname.endsWith('/') ? pathname : `${pathname}/`;
+};
+
+const gitLabSiteUrl = gitLabPagesUrl ? new URL(gitLabPagesUrl) : null;
+
 const siteUrl = isGitHubPagesBuild
   ? 'https://jpagali.github.io'
   : isGitLabPagesBuild
-    ? gitLabPagesHost
+    ? gitLabSiteUrl?.origin ?? 'https://jpagali.gitlab.io'
     : 'https://kfc-atlas-portal.vercel.app';
 
 const siteBaseUrl = isGitHubPagesBuild
   ? `/${githubProjectName}/`
   : isGitLabPagesBuild
-    ? `/${gitlabProjectName}/`
+    ? normalizeBaseUrl(gitLabSiteUrl?.pathname)
     : '/';
 
 const config = {
