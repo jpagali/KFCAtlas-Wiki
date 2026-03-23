@@ -23,6 +23,11 @@
   --studio-input-bg: var(--kc-surface);
   --studio-input-text: var(--kc-ink);
   --studio-input-placeholder: rgba(46, 38, 32, 0.4);
+  --studio-surface-light: #fff8f4;
+  --studio-surface-light-strong: #fffdf9;
+  --studio-surface-light-border: rgba(105, 71, 26, 0.14);
+  --studio-surface-light-text: #2f221c;
+  --studio-surface-light-muted: rgba(47, 34, 28, 0.72);
   --studio-toolbar-bg: var(--kc-surface-strong);
   --studio-toolbar-button-bg: linear-gradient(180deg, var(--kc-surface), var(--kc-surface-alt));
   --studio-toolbar-button-text: var(--kc-ink);
@@ -65,6 +70,11 @@
   --studio-input-bg: #171211;
   --studio-input-text: #fff7f3;
   --studio-input-placeholder: rgba(255, 244, 238, 0.35);
+  --studio-surface-light: #fff8f4;
+  --studio-surface-light-strong: #fffdf9;
+  --studio-surface-light-border: rgba(105, 71, 26, 0.14);
+  --studio-surface-light-text: #2f221c;
+  --studio-surface-light-muted: rgba(47, 34, 28, 0.72);
   --studio-toolbar-bg: #120f0e;
   --studio-toolbar-button-bg: linear-gradient(180deg, #27201e, #1b1513);
   --studio-toolbar-button-text: #fff5f1;
@@ -141,6 +151,7 @@
 }
 
 .templateStrip,
+.studioStrip,
 .panel {
   border-radius: 24px;
   background: var(--studio-surface);
@@ -148,13 +159,15 @@
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
 }
 
-.templateStrip {
+.templateStrip,
+.studioStrip {
   max-width: 1380px;
   margin: 0 auto 1.5rem;
   padding: 1.4rem;
 }
 
-.templateStripHeader {
+.templateStripHeader,
+.studioStripHeader {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
@@ -163,13 +176,15 @@
 }
 
 .templateStripHeader h2,
+.studioStripHeader h2,
 .panelHeader h2 {
   margin: 0;
   font-size: 1.15rem;
   color: var(--studio-text);
 }
 
-.templateStripHeader p {
+.templateStripHeader p,
+.studioStripHeader p {
   margin: 0;
   max-width: 58ch;
   color: var(--studio-muted);
@@ -267,7 +282,8 @@
 }
 
 .field input,
-.field textarea {
+.field textarea,
+.fieldSelect {
   width: 100%;
   border: 1px solid var(--studio-border);
   background: var(--studio-input-bg);
@@ -283,13 +299,18 @@
   color: var(--studio-input-placeholder);
 }
 
+.fieldSelect {
+  appearance: none;
+}
+
 .field textarea {
   resize: vertical;
   min-height: 110px;
 }
 
 .field input:focus,
-.field textarea:focus {
+.field textarea:focus,
+.fieldSelect:focus {
   outline: none;
   border-color: rgba(228, 0, 43, 0.42);
   box-shadow: 0 0 0 4px rgba(228, 0, 43, 0.08);
@@ -299,6 +320,43 @@
   color: var(--studio-soft);
   font-size: 0.82rem;
   line-height: 1.5;
+}
+
+.readOnlyInput {
+  opacity: 0.86;
+  cursor: default;
+}
+
+.tabBar {
+  display: inline-flex;
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+  padding: 0.35rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--studio-toolbar-bg) 88%, transparent);
+  border: 1px solid var(--studio-border);
+}
+
+.tabButton {
+  border: none;
+  border-radius: 999px;
+  padding: 0.72rem 1rem;
+  background: transparent;
+  color: var(--studio-muted);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease, transform 120ms ease;
+}
+
+.tabButton:hover {
+  color: var(--studio-text);
+}
+
+.tabButtonActive {
+  background: linear-gradient(135deg, rgba(228, 0, 43, 0.16), rgba(228, 0, 43, 0.08));
+  color: var(--studio-text);
+  box-shadow: inset 0 0 0 1px rgba(228, 0, 43, 0.22);
 }
 
 .toolbar {
@@ -353,12 +411,12 @@
   min-height: 620px;
   padding: 1.4rem;
   border-radius: 20px;
-  background: var(--studio-input-bg);
-  border: 1px solid var(--studio-border);
+  background: linear-gradient(180deg, var(--studio-surface-light-strong), var(--studio-surface-light));
+  border: 1px solid var(--studio-surface-light-border);
   box-shadow: inset 0 1px 1px rgba(36, 23, 14, 0.03);
   font-size: 1rem;
   line-height: 1.8;
-  color: var(--studio-input-text);
+  color: var(--studio-surface-light-text);
 }
 
 /* Tiptap focuses the inner .ProseMirror div, not the wrapper */
@@ -372,14 +430,29 @@
 .editorSurface :global(.ProseMirror) {
   outline: none;
   min-height: 560px;
+  color: var(--studio-surface-light-text);
 }
 
 .editorSurface :global(.ProseMirror p.is-editor-empty:first-child::before) {
   content: attr(data-placeholder);
-  color: var(--studio-input-placeholder);
+  color: var(--studio-surface-light-muted);
   pointer-events: none;
   float: left;
   height: 0;
+}
+
+.editorSurface :global(.ProseMirror h1),
+.editorSurface :global(.ProseMirror h2),
+.editorSurface :global(.ProseMirror h3),
+.editorSurface :global(.ProseMirror p),
+.editorSurface :global(.ProseMirror li),
+.editorSurface :global(.ProseMirror blockquote),
+.editorSurface :global(.ProseMirror code) {
+  color: var(--studio-surface-light-text);
+}
+
+.editorSurface :global(.ProseMirror a) {
+  color: #a12a37;
 }
 
 .previewHelp {
@@ -390,9 +463,10 @@
 .previewSurface {
   padding: 1.6rem;
   border-radius: 20px;
-  background: var(--studio-preview-bg);
-  border: 1px solid var(--studio-border);
+  background: linear-gradient(180deg, var(--studio-surface-light-strong), var(--studio-surface-light));
+  border: 1px solid var(--studio-surface-light-border);
   box-shadow: inset 0 1px 1px rgba(36, 23, 14, 0.03);
+  color: var(--studio-surface-light-text);
 }
 
 .previewCollapsed {
@@ -413,12 +487,12 @@
   margin: 0;
   font-size: 2rem;
   font-weight: 900;
-  color: var(--studio-text);
+  color: var(--studio-surface-light-text);
 }
 
 .previewSummary {
   margin: 0.75rem 0 0;
-  color: var(--studio-muted);
+  color: var(--studio-surface-light-muted);
   line-height: 1.7;
 }
 
@@ -443,7 +517,7 @@
   padding: 0.9rem;
   border-radius: 18px;
   background: color-mix(in srgb, var(--studio-preview-bg) 88%, white);
-  border: 1px solid var(--studio-border-strong);
+  border: 1px solid var(--studio-surface-light-border);
 }
 
 .previewImageCard img {
@@ -465,8 +539,84 @@
   overflow-x: auto;
 }
 
+.previewSurface :global(h1),
+.previewSurface :global(h2),
+.previewSurface :global(h3),
+.previewSurface :global(h4),
+.previewSurface :global(p),
+.previewSurface :global(li),
+.previewSurface :global(blockquote),
+.previewSurface :global(code),
+.previewSurface :global(th),
+.previewSurface :global(td) {
+  color: var(--studio-surface-light-text);
+}
+
+.previewSurface :global(a) {
+  color: #a12a37;
+}
+
 .previewVideos {
   margin-top: 1.5rem;
+}
+
+.markupPanel {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.markupHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 1rem;
+}
+
+.markupActions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.markupLabel {
+  font-weight: 700;
+  color: var(--studio-text);
+}
+
+.markupSurface {
+  min-height: 620px;
+  width: 100%;
+  padding: 1.1rem 1rem;
+  border-radius: 20px;
+  border: 1px solid var(--studio-surface-light-border);
+  background: linear-gradient(180deg, var(--studio-surface-light-strong), var(--studio-surface-light));
+  color: var(--studio-surface-light-text);
+  font: 500 0.95rem/1.7 'DM Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  resize: vertical;
+}
+
+.markupSurface:focus {
+  outline: none;
+  border-color: rgba(228, 0, 43, 0.42);
+  box-shadow: 0 0 0 4px rgba(228, 0, 43, 0.08);
+}
+
+.syncStatus {
+  padding: 0.42rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.syncStatusPending {
+  background: #fff4e7;
+  color: #8a5512;
+}
+
+.syncStatusReady {
+  background: var(--studio-success-bg);
+  color: var(--studio-success-text);
 }
 
 .readinessList {
@@ -675,6 +825,7 @@
 
   .hero,
   .templateStrip,
+  .studioStrip,
   .panel,
   .modal {
     border-radius: 22px;
@@ -700,11 +851,13 @@
   }
 
   .templateStrip,
+  .studioStrip,
   .panel {
     padding: 1rem;
   }
 
   .templateStripHeader,
+  .studioStripHeader,
   .panelHeader {
     flex-direction: column;
     align-items: flex-start;
@@ -736,6 +889,16 @@
     min-width: 132px;
   }
 
+  .tabBar {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .tabButton {
+    text-align: center;
+  }
+
   .editorSurface {
     min-height: 360px;
     padding: 1rem;
@@ -752,6 +915,17 @@
 
   .previewMeta {
     gap: 0.45rem;
+  }
+
+  .markupHeader,
+  .markupActions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .markupSurface {
+    min-height: 360px;
   }
 
   .panelHeaderActions {

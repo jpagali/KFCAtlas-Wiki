@@ -335,19 +335,19 @@
   },
   {
     "locale": "ja-JP",
-    "title": "デイパート",
+    "title": "Dayparts / デイパート",
     "headings": [
       "デイパートとは",
       "よくあるデイパートの利用例",
       "Byte プラットフォームでできること",
       "関連ガイド"
     ],
-    "summary": "デイパート",
+    "summary": "Dayparts / デイパート",
     "section": "admin-portal-guide",
     "url": "/ja-JP/docs/admin-portal-guide/dayparts/",
-    "normalizedTitle": "デイパート",
+    "normalizedTitle": "dayparts デイパート",
     "normalizedHeadings": "デイパートとは よくあるデイパートの利用例 byte プラットフォームでできること 関連ガイド",
-    "normalizedSummary": "デイパート",
+    "normalizedSummary": "dayparts デイパート",
     "normalizedSection": "admin portal guide"
   },
   {
@@ -491,53 +491,53 @@
   },
   {
     "locale": "ja-JP",
-    "title": "a メニューを割り当てる",
+    "title": "メニューを割り当てる",
     "headings": [
       "このガイドで扱う内容",
       "手順",
       "注意事項",
-      "追加情報"
+      "関連ガイド"
     ],
-    "summary": "このガイドでは、Byte Commerce Admin Portal でa メニューを割り当てる手順を説明します。",
+    "summary": "特定の店舗と注文チャネルにメニューを紐付け、顧客に正しいカタログが表示されるようにする手順です。",
     "section": "admin-portal-guide",
     "url": "/ja-JP/docs/admin-portal-guide/menus/assign-a-menu/",
-    "normalizedTitle": "a メニューを割り当てる",
-    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
-    "normalizedSummary": "このガイドでは byte commerce admin portal でa メニューを割り当てる手順を説明します",
+    "normalizedTitle": "メニューを割り当てる",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 関連ガイド",
+    "normalizedSummary": "特定の店舗と注文チャネルにメニューを紐付け 顧客に正しいカタログが表示されるようにする手順です",
     "normalizedSection": "admin portal guide"
   },
   {
     "locale": "ja-JP",
-    "title": "a パッチ (Add to パッチ List)を割り当てる",
+    "title": "パッチを割り当てる（Add to Patch List）",
     "headings": [
       "このガイドで扱う内容",
       "手順",
       "注意事項",
-      "追加情報"
+      "関連ガイド"
     ],
-    "summary": "このガイドでは、Byte Commerce Admin Portal でa パッチ (Add to パッチ List)を割り当てる手順を説明します。",
+    "summary": "既存のパッチを削除せずに、店舗のアクティブな patch list に新しいパッチを追加する手順です。パッチは順番に適用され、後から重ねた内容が前の内容に上書きされます。",
     "section": "admin-portal-guide",
     "url": "/ja-JP/docs/admin-portal-guide/menus/assign-a-patch-add-to-patch-list/",
-    "normalizedTitle": "a パッチ add to パッチ list を割り当てる",
-    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
-    "normalizedSummary": "このガイドでは byte commerce admin portal でa パッチ add to パッチ list を割り当てる手順を説明します",
+    "normalizedTitle": "パッチを割り当てる add to patch list",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 関連ガイド",
+    "normalizedSummary": "既存のパッチを削除せずに 店舗のアクティブな patch list に新しいパッチを追加する手順です パッチは順番に適用され 後から重ねた内容が前の内容に上書きされます",
     "normalizedSection": "admin portal guide"
   },
   {
     "locale": "ja-JP",
-    "title": "a パッチ (Replace Existing List)を割り当てる",
+    "title": "パッチを割り当てる（Replace Existing List）",
     "headings": [
       "このガイドで扱う内容",
       "手順",
       "注意事項",
-      "追加情報"
+      "関連ガイド"
     ],
-    "summary": "このガイドでは、Byte Commerce Admin Portal でa パッチ (Replace Existing List)を割り当てる手順を説明します。",
+    "summary": "店舗の patch list 全体を新しい単一パッチで置き換え、以前に割り当てられていたパッチをすべて外す手順です。店舗やチャネルのパッチを完全にリセットしたい場合に使います。",
     "section": "admin-portal-guide",
     "url": "/ja-JP/docs/admin-portal-guide/menus/assign-a-patch-replace-existing-list/",
-    "normalizedTitle": "a パッチ replace existing list を割り当てる",
-    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
-    "normalizedSummary": "このガイドでは byte commerce admin portal でa パッチ replace existing list を割り当てる手順を説明します",
+    "normalizedTitle": "パッチを割り当てる replace existing list",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 関連ガイド",
+    "normalizedSummary": "店舗の patch list 全体を新しい単一パッチで置き換え 以前に割り当てられていたパッチをすべて外す手順です 店舗やチャネルのパッチを完全にリセットしたい場合に使います",
     "normalizedSection": "admin portal guide"
   },
   {
@@ -2129,19 +2129,19 @@
   },
   {
     "locale": "ja-JP",
-    "title": "a 店舗's Beneficiariesを確認する",
+    "title": "店舗の Beneficiaries を確認する",
     "headings": [
       "このガイドで扱う内容",
       "手順",
       "注意事項",
-      "追加情報"
+      "関連ガイド"
     ],
-    "summary": "このガイドでは、Byte Commerce Admin Portal でa 店舗's Beneficiariesを確認する手順を説明します。",
+    "summary": "特定の店舗に紐付いている beneficiaries を確認し、内容を把握するための手順です。",
     "section": "admin-portal-guide",
     "url": "/ja-JP/docs/admin-portal-guide/stores/view-a-stores-beneficiaries/",
-    "normalizedTitle": "a 店舗 s beneficiariesを確認する",
-    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 追加情報",
-    "normalizedSummary": "このガイドでは byte commerce admin portal でa 店舗 s beneficiariesを確認する手順を説明します",
+    "normalizedTitle": "店舗の beneficiaries を確認する",
+    "normalizedHeadings": "このガイドで扱う内容 手順 注意事項 関連ガイド",
+    "normalizedSummary": "特定の店舗に紐付いている beneficiaries を確認し 内容を把握するための手順です",
     "normalizedSection": "admin portal guide"
   },
   {
@@ -4038,21 +4038,21 @@
     "locale": "ja-JP",
     "title": "\"トラブル対応とエスカレーション\"",
     "headings": [
-      "Common Issues & Fixes",
-      "Restaurant not appearing in the customer app",
-      "Customer cannot complete checkout",
-      "Menu item showing incorrect price",
-      "Franchisee locked out of Admin Portal",
-      "注文 not coming through on delivery",
-      "Escalation Path",
-      "Severity Levels",
+      "よくある問題と対処",
+      "店舗が顧客向けアプリに表示されない",
+      "顧客がチェックアウトを完了できない",
+      "メニュー商品に誤った価格が表示される",
+      "フランチャイジーが Admin Portal にログインできない",
+      "配達注文が入ってこない",
+      "エスカレーション経路",
+      "重要度レベル",
       "JIRA Service Desk"
     ],
     "summary": "トラブル対応とエスカレーション",
     "section": "playbooks",
     "url": "/ja-JP/docs/playbooks/troubleshooting/",
     "normalizedTitle": "トラブル対応とエスカレーション",
-    "normalizedHeadings": "common issues fixes restaurant not appearing in the customer app customer cannot complete checkout menu item showing incorrect price franchisee locked out of admin portal 注文 not coming through on delivery escalation path severity levels jira service desk",
+    "normalizedHeadings": "よくある問題と対処 店舗が顧客向けアプリに表示されない 顧客がチェックアウトを完了できない メニュー商品に誤った価格が表示される フランチャイジーが admin portal にログインできない 配達注文が入ってこない エスカレーション経路 重要度レベル jira service desk",
     "normalizedSummary": "トラブル対応とエスカレーション",
     "normalizedSection": "playbooks"
   },
@@ -4222,13 +4222,14 @@
       "Current Team の表示挙動",
       "Byte Engineering / Shared Support",
       "Future Team とページ整理",
+      "日本語 localisation cleanup",
       "ひとことで言うと"
     ],
     "summary": "リリース 2026.03.22",
     "section": "release-notes",
     "url": "/ja-JP/docs/release-notes/2026-03-22/",
     "normalizedTitle": "リリース 2026 03 22",
-    "normalizedHeadings": "ハイライト 変更内容 brand experience org chart current team の表示挙動 byte engineering shared support future team とページ整理 ひとことで言うと",
+    "normalizedHeadings": "ハイライト 変更内容 brand experience org chart current team の表示挙動 byte engineering shared support future team とページ整理 日本語 localisation cleanup ひとことで言うと",
     "normalizedSummary": "リリース 2026 03 22",
     "normalizedSection": "release notes"
   },

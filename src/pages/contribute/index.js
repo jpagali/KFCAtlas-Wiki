@@ -13,105 +13,82 @@ import TableHeader from '@tiptap/extension-table-header';
 import TableCell from '@tiptap/extension-table-cell';
 import styles from './styles.module.css';
 
-const DEFAULT_TEMPLATE = 'howTo';
+const MARKUP_SYNC_DELAY_MS = 30000;
 
-const TEMPLATES = {
-  howTo: {
+const DEFAULT_EDITOR_HTML = `
+  <h1>How to complete the task</h1>
+  <p>Start with a short overview that explains the goal and the outcome.</p>
+  <h2>Before you begin</h2>
+  <ul>
+    <li>List prerequisites</li>
+    <li>List permissions or tools needed</li>
+  </ul>
+  <h2>Steps</h2>
+  <ol>
+    <li>Describe the first step clearly.</li>
+    <li>Describe the next step and expected outcome.</li>
+    <li>Close with what success looks like.</li>
+  </ol>
+`.trim();
+
+const LOCATION_PRESETS = [
+  {
+    key: 'byte-capabilities',
+    path: '/docs/byte-capabilities/',
     label: {
-      'en-US': 'How-to Guide',
-      'ja-JP': '操作ガイド',
+      'en-US': 'Byte Capabilities',
+      'ja-JP': 'Byte Capabilities',
     },
-    html: `
-      <h1>How to complete the task</h1>
-      <p>Start with a short overview that explains the goal and the outcome.</p>
-      <h2>Before you begin</h2>
-      <ul>
-        <li>List prerequisites</li>
-        <li>List permissions or tools needed</li>
-      </ul>
-      <h2>Steps</h2>
-      <ol>
-        <li>Describe the first step clearly.</li>
-        <li>Describe the next step and expected outcome.</li>
-        <li>Close with what success looks like.</li>
-      </ol>
-    `,
   },
-  troubleshooting: {
+  {
+    key: 'admin-portal-guide',
+    path: '/docs/admin-portal-guide/',
     label: {
-      'en-US': 'Troubleshooting',
-      'ja-JP': 'トラブルシューティング',
+      'en-US': 'Byte Admin Portal',
+      'ja-JP': 'Byte Admin Portal',
     },
-    html: `
-      <h1>Troubleshooting issue name</h1>
-      <p>Summarize the issue and when it appears.</p>
-      <h2>Symptoms</h2>
-      <ul>
-        <li>What the user sees</li>
-        <li>What the system does</li>
-      </ul>
-      <h2>Likely causes</h2>
-      <ul>
-        <li>Cause 1</li>
-        <li>Cause 2</li>
-      </ul>
-      <h2>Resolution</h2>
-      <ol>
-        <li>Explain the first check.</li>
-        <li>Explain how to resolve the issue.</li>
-      </ol>
-    `,
   },
-  faq: {
+  {
+    key: 'frontend',
+    path: '/docs/frontend/overview',
     label: {
-      'en-US': 'FAQ',
-      'ja-JP': 'FAQ',
+      'en-US': 'Front-End Guide',
+      'ja-JP': 'Front-End Guide',
     },
-    html: `
-      <h1>Frequently asked questions</h1>
-      <h2>Question one?</h2>
-      <p>Answer the question clearly and directly.</p>
-      <h2>Question two?</h2>
-      <p>Add another answer with context and examples.</p>
-    `,
   },
-  runbook: {
+  {
+    key: 'playbooks',
+    path: '/docs/playbooks/',
     label: {
-      'en-US': 'Runbook',
-      'ja-JP': 'ランブック',
+      'en-US': 'Playbooks',
+      'ja-JP': 'Playbooks',
     },
-    html: `
-      <h1>Runbook title</h1>
-      <p>Summarize when this runbook should be used.</p>
-      <h2>Trigger</h2>
-      <p>Describe the trigger or incident condition.</p>
-      <h2>Actions</h2>
-      <ol>
-        <li>First response action</li>
-        <li>Second response action</li>
-        <li>Escalation path</li>
-      </ol>
-      <blockquote>Call out critical warnings or approvals here.</blockquote>
-    `,
   },
-  policy: {
+  {
+    key: 'release-notes',
+    path: '/docs/release-notes/',
     label: {
-      'en-US': 'Policy / Reference',
-      'ja-JP': 'ポリシー / リファレンス',
+      'en-US': 'Release Notes',
+      'ja-JP': 'Release Notes',
     },
-    html: `
-      <h1>Policy title</h1>
-      <p>State the policy or reference summary.</p>
-      <h2>Scope</h2>
-      <p>Explain what teams, systems, or cases are covered.</p>
-      <h2>Requirements</h2>
-      <ul>
-        <li>Requirement 1</li>
-        <li>Requirement 2</li>
-      </ul>
-    `,
   },
-};
+  {
+    key: 'brand-experience-team',
+    path: '/docs/brand-experience-team',
+    label: {
+      'en-US': 'Brand Experience Team',
+      'ja-JP': 'Brand Experience Team',
+    },
+  },
+  {
+    key: 'deployment-runbook',
+    path: '/docs/deployment-runbook',
+    label: {
+      'en-US': 'Deployment Runbook',
+      'ja-JP': 'Deployment Runbook',
+    },
+  },
+];
 
 const COPY = {
   'en-US': {
@@ -119,8 +96,10 @@ const COPY = {
     subtitle:
       'Turn your process, guide, or operating insight into a publish-ready article with a familiar writing surface and a guided submission flow.',
     metadata: 'Article Setup',
-    content: 'Editor',
+    content: 'Contribution Studio',
+    editor: 'Editor',
     preview: 'Preview',
+    markup: 'Markup',
     readiness: 'Submission Readiness',
     modalTitle: 'Send Publishing Request',
     download: 'Download Markdown File',
@@ -128,6 +107,11 @@ const COPY = {
     send: 'Send Publishing Request',
     linkedImageError: 'Please upload the images in the publishing request',
     previewHelp: 'Preview your article as it will appear after publishing.',
+    markupHelp: 'Paste or edit markdown here. The studio auto-syncs it back into the editor every 30 seconds while you type.',
+    markupSyncPending: 'Markup changes waiting to sync',
+    markupSyncReady: 'Markup synced',
+    markupSyncButton: 'Sync now',
+    markupSyncBodyLabel: 'Article markdown',
     fieldLabels: {
       title: 'Document Title',
       author: 'Author Name',
@@ -135,14 +119,18 @@ const COPY = {
       summary: 'Summary',
       audience: 'Intended Audience',
       location: 'Suggested Atlas Wiki Location',
+      locationTree: 'Suggested Atlas Wiki Section',
+      locationOther: 'Other location URL',
       videoLinks: 'Video Links',
       notes: 'Notes to Reviewer',
     },
     fieldHelp: {
       location:
-        'Paste the URL of the page or section where you believe this content belongs.',
+        'Choose the closest doc tree first. If the right section is not listed, select Other and paste the exact target URL.',
       videoLinks: 'Add one video URL per line if the article references recordings or demos.',
     },
+    locationPlaceholder: 'Select a doc tree',
+    locationOther: 'Other',
     readinessItems: {
       metadata: 'Required metadata complete',
       location: 'Suggested location URL is valid',
@@ -155,8 +143,7 @@ const COPY = {
       'Attach the Markdown file and any relevant images.',
       'Send the publishing request.',
     ],
-    templateLabel: 'Start from a template',
-    helperBar: 'Use the toolbar to shape the article, add links, insert image URLs, and prepare a clean submission package.',
+    helperBar: 'Use the current WYSIWYG editor, switch into Preview when you want final rendering, or paste directly into Markup when source markdown is easier to work with.',
     imageHealthEmpty: 'No linked images in the article yet.',
     close: 'Close',
     draftTitle: 'Untitled draft',
@@ -166,26 +153,27 @@ const COPY = {
     audiencePending: 'Audience pending',
     checking: 'Checking...',
     ready: 'Ready',
-    previewShow: 'Show Preview',
-    previewHide: 'Hide Preview',
-    hiddenPreviewHint: 'Preview is hidden so you can focus on writing. Open it anytime to check the final rendering.',
     heroEyebrow: 'Atlas Wiki 公開スタジオ',
-    heroFlow: 'Draft → Preview → Download → Email',
-    structuredStarter: 'Structured starter',
+    heroFlow: 'Editor ↔ Preview ↔ Markup',
     required: 'Required',
     live: 'Live',
     rendered: 'Rendered',
     modalReminder: 'Attach the downloaded Markdown file and any relevant local images before sending.',
     modalReminderDownload: 'Download the Markdown file first to enable the email draft action.',
     emailNone: 'None provided',
+    editorBadge: 'WYSIWYG',
+    previewBadge: 'Rendered',
+    markupBadge: 'Markdown',
   },
   'ja-JP': {
     title: 'Atlas Wiki に寄稿する',
     subtitle:
       '親しみやすい編集画面で記事を作成し、プレビュー確認後に Markdown とメールで公開依頼を送信できます。',
     metadata: '記事設定',
-    content: 'エディタ',
-    preview: 'プレビュー',
+    content: 'Contribution Studio',
+    editor: 'Editor',
+    preview: 'Preview',
+    markup: 'Markup',
     readiness: '公開依頼の準備状況',
     modalTitle: '公開依頼を送信',
     download: 'Markdown をダウンロード',
@@ -193,6 +181,12 @@ const COPY = {
     send: '公開依頼を送信',
     linkedImageError: '画像が表示されない場合は、公開依頼メールに画像を添付してください',
     previewHelp: '公開後の見え方をここで確認できます。',
+    markupHelp:
+      'ここに Markdown を貼り付けるか編集してください。編集中は 30 秒ごとにエディタへ自動同期し、必要ならすぐに手動同期もできます。',
+    markupSyncPending: 'Markup の変更を同期待ちです',
+    markupSyncReady: 'Markup は同期済みです',
+    markupSyncButton: '今すぐ同期',
+    markupSyncBodyLabel: '記事 Markdown',
     fieldLabels: {
       title: 'ドキュメントタイトル',
       author: '作成者名',
@@ -200,14 +194,18 @@ const COPY = {
       summary: '概要',
       audience: '想定読者',
       location: '掲載先の候補 URL',
+      locationTree: '掲載先の候補セクション',
+      locationOther: 'その他の掲載先 URL',
       videoLinks: '動画リンク',
       notes: 'レビュー担当者へのメモ',
     },
     fieldHelp: {
       location:
-        'この内容を配置したい Atlas Wiki のページまたはセクション URL を入力してください。',
+        'まず Atlas Wiki の文書ツリーから近い場所を選択してください。該当がない場合は Other を選び、正確な URL を入力します。',
       videoLinks: '録画やデモを参照する場合は、1 行に 1 件ずつ URL を入力してください。',
     },
+    locationPlaceholder: 'ドキュメントツリーを選択',
+    locationOther: 'Other',
     readinessItems: {
       metadata: '必須メタデータの入力完了',
       location: '掲載先 URL が有効',
@@ -220,8 +218,8 @@ const COPY = {
       'Markdown ファイルと必要な画像を添付します。',
       '公開依頼メールを送信します。',
     ],
-    templateLabel: 'テンプレートから開始',
-    helperBar: 'ツールバーで文書を整え、リンクや画像 URL を追加し、公開依頼用のパッケージを準備します。',
+    helperBar:
+      '現在の WYSIWYG editor をそのまま使いながら、Preview で最終表示を確認し、必要なら Markup に直接 Markdown を貼り付けて同期できます。',
     imageHealthEmpty: 'まだ画像リンクは追加されていません。',
     close: '閉じる',
     draftTitle: '無題の下書き',
@@ -231,18 +229,17 @@ const COPY = {
     audiencePending: '想定読者未入力',
     checking: '確認中...',
     ready: '準備完了',
-    previewShow: 'プレビューを表示',
-    previewHide: 'プレビューを閉じる',
-    hiddenPreviewHint: '執筆に集中できるよう、プレビューは閉じています。必要なときに開いて最終表示を確認してください。',
     heroEyebrow: 'Atlas Wiki Publishing Studio',
-    heroFlow: '下書き → プレビュー → ダウンロード → メール',
-    structuredStarter: '構成済みのテンプレート',
+    heroFlow: 'Editor ↔ Preview ↔ Markup',
     required: '必須',
     live: 'ライブ',
     rendered: 'レンダリング',
     modalReminder: '送信前に、ダウンロードした Markdown ファイルと必要なローカル画像を添付してください。',
     modalReminderDownload: '先に Markdown ファイルをダウンロードすると、メール下書きボタンが有効になります。',
     emailNone: '未入力',
+    editorBadge: 'WYSIWYG',
+    previewBadge: 'Rendered',
+    markupBadge: 'Markdown',
   },
 };
 
@@ -289,6 +286,44 @@ function wrapParagraphs(text) {
     .map((line) => line.trim())
     .filter(Boolean)
     .join('\n\n');
+}
+
+function splitTableRow(line) {
+  return line
+    .trim()
+    .replace(/^\|/, '')
+    .replace(/\|$/, '')
+    .split('|')
+    .map((cell) => cell.trim());
+}
+
+function parseInlineMarkdown(text) {
+  const tokens = [];
+  let html = escapeHtml(text);
+
+  html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, src) => {
+    const token = `__IMAGE_${tokens.length}__`;
+    tokens.push(`<img src="${escapeHtml(src.trim())}" alt="${escapeHtml(alt.trim())}" />`);
+    return token;
+  });
+
+  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, href) => {
+    const token = `__LINK_${tokens.length}__`;
+    tokens.push(`<a href="${escapeHtml(href.trim())}">${label.trim()}</a>`);
+    return token;
+  });
+
+  html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+  html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  html = html.replace(/(^|[^*])\*([^*]+)\*/g, '$1<em>$2</em>');
+  html = html.replace(/&lt;u&gt;([\s\S]*?)&lt;\/u&gt;/g, '<u>$1</u>');
+
+  tokens.forEach((tokenHtml, index) => {
+    html = html.replace(`__IMAGE_${index}__`, tokenHtml);
+    html = html.replace(`__LINK_${index}__`, tokenHtml);
+  });
+
+  return html;
 }
 
 function convertNodeToMarkdown(node, depth = 0) {
@@ -390,17 +425,20 @@ function parseArticleHtml(html) {
   return parser.parseFromString(`<article>${html}</article>`, 'text/html');
 }
 
-function buildMarkdown(meta, articleDoc) {
+function buildBodyMarkdownFromHtml(html) {
+  const articleDoc = parseArticleHtml(html);
   if (!articleDoc?.body?.firstChild) {
     return '';
   }
 
-  const body = Array.from(articleDoc.body.firstChild.childNodes)
+  return Array.from(articleDoc.body.firstChild.childNodes)
     .map((node) => convertNodeToMarkdown(node))
     .join('')
     .replace(/\n{3,}/g, '\n\n')
     .trim();
+}
 
+function buildMarkdown(meta, bodyMarkdown) {
   const videos = meta.videoLinks
     .split('\n')
     .map((link) => link.trim())
@@ -415,9 +453,179 @@ audience: ${yamlValue(meta.audience)}
 suggested_location: ${yamlValue(meta.location)}
 ---
 
-${body}
+${bodyMarkdown.trim()}
 
 ${videos.length ? `## Video Links\n\n${videos.map((link) => `- ${link}`).join('\n')}\n\n` : ''}${meta.notes ? `## Notes to Reviewer\n\n${meta.notes.trim()}\n` : ''}`.trim();
+}
+
+function parseYamlScalar(value) {
+  const trimmed = value.trim();
+  if (!trimmed) {
+    return '';
+  }
+
+  if ((trimmed.startsWith('"') && trimmed.endsWith('"')) || (trimmed.startsWith("'") && trimmed.endsWith("'"))) {
+    try {
+      return JSON.parse(trimmed);
+    } catch (error) {
+      return trimmed.slice(1, -1);
+    }
+  }
+
+  return trimmed;
+}
+
+function extractFrontMatter(markdown) {
+  const normalized = markdown.replace(/\r\n/g, '\n');
+  if (!normalized.startsWith('---\n')) {
+    return {meta: {}, body: normalized};
+  }
+
+  const endIndex = normalized.indexOf('\n---\n', 4);
+  if (endIndex === -1) {
+    return {meta: {}, body: normalized};
+  }
+
+  const frontMatterBlock = normalized.slice(4, endIndex);
+  const body = normalized.slice(endIndex + 5);
+  const meta = {};
+
+  frontMatterBlock.split('\n').forEach((line) => {
+    const separatorIndex = line.indexOf(':');
+    if (separatorIndex === -1) {
+      return;
+    }
+
+    const key = line.slice(0, separatorIndex).trim();
+    const value = parseYamlScalar(line.slice(separatorIndex + 1));
+    meta[key] = value;
+  });
+
+  return {meta, body};
+}
+
+function markdownToHtml(markdown) {
+  const normalized = markdown.replace(/\r\n/g, '\n').trim();
+  if (!normalized) {
+    return '';
+  }
+
+  const lines = normalized.split('\n');
+  const blocks = [];
+  let index = 0;
+
+  while (index < lines.length) {
+    const line = lines[index];
+    const trimmed = line.trim();
+
+    if (!trimmed) {
+      index += 1;
+      continue;
+    }
+
+    if (trimmed.startsWith('```')) {
+      const codeLines = [];
+      index += 1;
+      while (index < lines.length && !lines[index].trim().startsWith('```')) {
+        codeLines.push(lines[index]);
+        index += 1;
+      }
+      if (index < lines.length) {
+        index += 1;
+      }
+      blocks.push(`<pre><code>${escapeHtml(codeLines.join('\n'))}</code></pre>`);
+      continue;
+    }
+
+    if (/^---+$/.test(trimmed)) {
+      blocks.push('<hr />');
+      index += 1;
+      continue;
+    }
+
+    if (/^#{1,3}\s+/.test(trimmed)) {
+      const level = trimmed.match(/^#+/)[0].length;
+      blocks.push(`<h${level}>${parseInlineMarkdown(trimmed.replace(/^#{1,3}\s+/, ''))}</h${level}>`);
+      index += 1;
+      continue;
+    }
+
+    if (trimmed.startsWith('>')) {
+      const quoteLines = [];
+      while (index < lines.length && lines[index].trim().startsWith('>')) {
+        quoteLines.push(lines[index].trim().replace(/^>\s?/, ''));
+        index += 1;
+      }
+      blocks.push(`<blockquote><p>${quoteLines.map(parseInlineMarkdown).join('<br />')}</p></blockquote>`);
+      continue;
+    }
+
+    if (
+      trimmed.includes('|') &&
+      index + 1 < lines.length &&
+      /^\s*\|?[\-:\s|]+\|?\s*$/.test(lines[index + 1])
+    ) {
+      const headerCells = splitTableRow(trimmed);
+      const bodyRows = [];
+      index += 2;
+      while (index < lines.length && lines[index].trim().includes('|')) {
+        bodyRows.push(splitTableRow(lines[index].trim()));
+        index += 1;
+      }
+
+      const headHtml = `<tr>${headerCells.map((cell) => `<th>${parseInlineMarkdown(cell)}</th>`).join('')}</tr>`;
+      const bodyHtml = bodyRows
+        .map((row) => `<tr>${row.map((cell) => `<td>${parseInlineMarkdown(cell)}</td>`).join('')}</tr>`)
+        .join('');
+      blocks.push(`<table><thead>${headHtml}</thead>${bodyHtml ? `<tbody>${bodyHtml}</tbody>` : ''}</table>`);
+      continue;
+    }
+
+    if (/^\s*[-*]\s+/.test(line)) {
+      const items = [];
+      while (index < lines.length && /^\s*[-*]\s+/.test(lines[index])) {
+        items.push(lines[index].replace(/^\s*[-*]\s+/, ''));
+        index += 1;
+      }
+      blocks.push(`<ul>${items.map((item) => `<li>${parseInlineMarkdown(item.trim())}</li>`).join('')}</ul>`);
+      continue;
+    }
+
+    if (/^\s*\d+\.\s+/.test(line)) {
+      const items = [];
+      while (index < lines.length && /^\s*\d+\.\s+/.test(lines[index])) {
+        items.push(lines[index].replace(/^\s*\d+\.\s+/, ''));
+        index += 1;
+      }
+      blocks.push(`<ol>${items.map((item) => `<li>${parseInlineMarkdown(item.trim())}</li>`).join('')}</ol>`);
+      continue;
+    }
+
+    const paragraphLines = [trimmed];
+    index += 1;
+    while (index < lines.length) {
+      const nextLine = lines[index].trim();
+      if (
+        !nextLine ||
+        nextLine.startsWith('```') ||
+        nextLine.startsWith('>') ||
+        /^#{1,3}\s+/.test(nextLine) ||
+        /^---+$/.test(nextLine) ||
+        /^\s*[-*]\s+/.test(lines[index]) ||
+        /^\s*\d+\.\s+/.test(lines[index]) ||
+        (nextLine.includes('|') && index + 1 < lines.length && /^\s*\|?[\-:\s|]+\|?\s*$/.test(lines[index + 1]))
+      ) {
+        break;
+      }
+
+      paragraphLines.push(nextLine);
+      index += 1;
+    }
+
+    blocks.push(`<p>${paragraphLines.map(parseInlineMarkdown).join(' ')}</p>`);
+  }
+
+  return blocks.join('');
 }
 
 function collectLinkedImages(articleDoc, imageStatuses) {
@@ -455,8 +663,8 @@ function renderPreviewNodes(articleDoc, onImageStateChange) {
     }
 
     const tag = node.tagName.toLowerCase();
-    const children = Array.from(node.childNodes).map((child, index) =>
-      renderNode(child, `${key}-${index}`),
+    const children = Array.from(node.childNodes).map((child, childIndex) =>
+      renderNode(child, `${key}-${childIndex}`),
     );
 
     if (tag === 'img') {
@@ -487,7 +695,11 @@ function renderPreviewNodes(articleDoc, onImageStateChange) {
       return React.createElement(tag, {key});
     }
 
-    return React.createElement(tag, {key}, children);
+    const props = tag === 'a'
+      ? {key, href: node.getAttribute('href') || '#', target: '_blank', rel: 'noreferrer'}
+      : {key};
+
+    return React.createElement(tag, props, children);
   };
 
   return Array.from(articleDoc.body.firstChild.childNodes).map((node, index) =>
@@ -508,11 +720,38 @@ function isValidUrl(value) {
   }
 }
 
+function getAtlasWikiOrigin() {
+  if (typeof window !== 'undefined' && window.location?.origin) {
+    return window.location.origin;
+  }
+
+  return 'https://atlas-wiki.yum.com';
+}
+
+function buildLocationUrl(path) {
+  return `${getAtlasWikiOrigin()}${path}`;
+}
+
+function deriveLocationChoice(location) {
+  if (!location) {
+    return '';
+  }
+
+  const preset = LOCATION_PRESETS.find((option) => location.startsWith(buildLocationUrl(option.path)));
+  return preset ? preset.key : 'other';
+}
+
+function deriveCustomLocation(location) {
+  if (!location) {
+    return '';
+  }
+
+  return deriveLocationChoice(location) === 'other' ? location : '';
+}
+
 function ToolbarGroup({children}) {
   return <div className={styles.toolbarGroup}>{children}</div>;
 }
-
-// ── Inline SVG icons ──────────────────────────────────────────────────────────
 
 function IconBold() {
   return (
@@ -630,8 +869,6 @@ function IconRedo() {
   );
 }
 
-// ── URL Popover ───────────────────────────────────────────────────────────────
-
 function UrlPopover({id, label, placeholder, hint, onApply, applyLabel = 'Apply', children}) {
   const [value, setValue] = useState('');
   const inputRef = useRef(null);
@@ -649,7 +886,6 @@ function UrlPopover({id, label, placeholder, hint, onApply, applyLabel = 'Apply'
     }
   };
 
-  // expose a reset function via the id so the parent can clear and focus
   useEffect(() => {
     const el = document.getElementById(id);
     if (el) {
@@ -674,7 +910,7 @@ function UrlPopover({id, label, placeholder, hint, onApply, applyLabel = 'Apply'
           className={styles.urlPopoverInput}
           placeholder={placeholder}
           value={value}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={(event) => setValue(event.target.value)}
           onKeyDown={handleKeyDown}
           autoComplete="off"
           spellCheck={false}
@@ -689,11 +925,9 @@ function UrlPopover({id, label, placeholder, hint, onApply, applyLabel = 'Apply'
   );
 }
 
-// ── Image popover with live preview ──────────────────────────────────────────
-
 function ImagePopover({id, onApply}) {
   const [url, setUrl] = useState('');
-  const [previewState, setPreviewState] = useState('empty'); // empty | loading | ok | error
+  const [previewState, setPreviewState] = useState('empty');
   const inputRef = useRef(null);
 
   const handleApply = () => {
@@ -710,10 +944,10 @@ function ImagePopover({id, onApply}) {
     }
   };
 
-  const handleChange = (e) => {
-    const v = e.target.value;
-    setUrl(v);
-    setPreviewState(v.trim() ? 'loading' : 'empty');
+  const handleChange = (event) => {
+    const value = event.target.value;
+    setUrl(value);
+    setPreviewState(value.trim() ? 'loading' : 'empty');
   };
 
   useEffect(() => {
@@ -758,7 +992,7 @@ function ImagePopover({id, onApply}) {
             style={{display: previewState === 'error' ? 'none' : 'block'}}
           />
           {previewState === 'error' && (
-            <span className={styles.imagePreviewError}>Could not load image — check the URL</span>
+            <span className={styles.imagePreviewError}>Could not load image, check the URL.</span>
           )}
         </div>
       )}
@@ -769,8 +1003,6 @@ function ImagePopover({id, onApply}) {
   );
 }
 
-// ── Tiptap toolbar button ─────────────────────────────────────────────────────
-
 function TbBtn({active, disabled, title, onClick, children}) {
   return (
     <button
@@ -778,8 +1010,8 @@ function TbBtn({active, disabled, title, onClick, children}) {
       className={clsx(styles.tbBtn, active && styles.tbBtnActive)}
       title={title}
       disabled={disabled}
-      onMouseDown={(e) => {
-        e.preventDefault(); // keep editor focus
+      onMouseDown={(event) => {
+        event.preventDefault();
         onClick();
       }}
     >
@@ -788,10 +1020,8 @@ function TbBtn({active, disabled, title, onClick, children}) {
   );
 }
 
-// ── TiptapEditor ──────────────────────────────────────────────────────────────
-
-function TiptapEditor({initialHtml, onChange}) {
-  const [openPopover, setOpenPopover] = useState(null); // 'link' | 'image' | null
+function TiptapEditor({contentHtml, onChange}) {
+  const [openPopover, setOpenPopover] = useState(null);
   const popoverRef = useRef(null);
 
   const editor = useEditor({
@@ -809,17 +1039,27 @@ function TiptapEditor({initialHtml, onChange}) {
       TableHeader,
       TableCell,
     ],
-    content: initialHtml,
-    onUpdate({editor: e}) {
-      onChange(e.getHTML());
+    content: contentHtml,
+    onUpdate({editor: currentEditor}) {
+      onChange(currentEditor.getHTML());
     },
   });
 
-  // Close popover on outside click
   useEffect(() => {
-    if (!openPopover) return;
-    const handler = (e) => {
-      if (popoverRef.current && !popoverRef.current.contains(e.target)) {
+    if (!editor) {
+      return;
+    }
+
+    const nextHtml = contentHtml || '';
+    if (nextHtml !== editor.getHTML()) {
+      editor.commands.setContent(nextHtml, false);
+    }
+  }, [contentHtml, editor]);
+
+  useEffect(() => {
+    if (!openPopover) return undefined;
+    const handler = (event) => {
+      if (popoverRef.current && !popoverRef.current.contains(event.target)) {
         setOpenPopover(null);
       }
     };
@@ -827,11 +1067,10 @@ function TiptapEditor({initialHtml, onChange}) {
     return () => document.removeEventListener('mousedown', handler);
   }, [openPopover]);
 
-  // Keyboard: close popover on Escape
   useEffect(() => {
-    if (!openPopover) return;
-    const handler = (e) => {
-      if (e.key === 'Escape') setOpenPopover(null);
+    if (!openPopover) return undefined;
+    const handler = (event) => {
+      if (event.key === 'Escape') setOpenPopover(null);
     };
     document.addEventListener('keydown', handler);
     return () => document.removeEventListener('keydown', handler);
@@ -844,28 +1083,22 @@ function TiptapEditor({initialHtml, onChange}) {
         return;
       }
       setOpenPopover(name);
-      // focus the popover input after render
       requestAnimationFrame(() => {
         const el = document.getElementById(`popover-${name}`);
         if (el?._focusInput) el._focusInput();
-        // pre-fill link href if cursor is on a link
         if (name === 'link' && el?._setValue) {
           const href = editor?.getAttributes('link').href || '';
           if (href) el._setValue(href);
         }
       });
     },
-    [openPopover, editor],
+    [editor, openPopover],
   );
 
   const handleInsertLink = useCallback(
     (href) => {
       if (!editor) return;
-      if (editor.state.selection.empty) {
-        editor.chain().focus().setLink({href}).run();
-      } else {
-        editor.chain().focus().setLink({href}).run();
-      }
+      editor.chain().focus().setLink({href}).run();
       setOpenPopover(null);
     },
     [editor],
@@ -885,7 +1118,6 @@ function TiptapEditor({initialHtml, onChange}) {
     editor.chain().focus().insertTable({rows: 2, cols: 2, withHeaderRow: true}).run();
   }, [editor]);
 
-  // Derive current block type for the style dropdown
   const currentBlockType = (() => {
     if (!editor) return 'p';
     if (editor.isActive('heading', {level: 1})) return 'h1';
@@ -897,7 +1129,6 @@ function TiptapEditor({initialHtml, onChange}) {
 
   const applyBlockType = (value) => {
     if (!editor) return;
-    editor.chain().focus();
     if (value === 'p') {
       editor.chain().focus().setParagraph().run();
     } else if (value === 'blockquote') {
@@ -910,14 +1141,12 @@ function TiptapEditor({initialHtml, onChange}) {
 
   return (
     <div>
-      {/* ── Toolbar ── */}
       <div className={styles.toolbar} ref={popoverRef}>
-        {/* Group 1: Text style */}
         <ToolbarGroup>
           <select
             className={styles.toolbarSelect}
             value={currentBlockType}
-            onChange={(e) => applyBlockType(e.target.value)}
+            onChange={(event) => applyBlockType(event.target.value)}
           >
             <option value="p">Paragraph</option>
             <option value="h1">Heading 1</option>
@@ -927,57 +1156,30 @@ function TiptapEditor({initialHtml, onChange}) {
           </select>
         </ToolbarGroup>
 
-        {/* Group 2: Inline formatting */}
         <ToolbarGroup>
-          <TbBtn
-            active={editor?.isActive('bold')}
-            title="Bold (⌘B)"
-            onClick={() => editor?.chain().focus().toggleBold().run()}
-          >
+          <TbBtn active={editor?.isActive('bold')} title="Bold (Cmd+B)" onClick={() => editor?.chain().focus().toggleBold().run()}>
             <IconBold />
           </TbBtn>
-          <TbBtn
-            active={editor?.isActive('italic')}
-            title="Italic (⌘I)"
-            onClick={() => editor?.chain().focus().toggleItalic().run()}
-          >
+          <TbBtn active={editor?.isActive('italic')} title="Italic (Cmd+I)" onClick={() => editor?.chain().focus().toggleItalic().run()}>
             <IconItalic />
           </TbBtn>
-          <TbBtn
-            active={editor?.isActive('underline')}
-            title="Underline (⌘U)"
-            onClick={() => editor?.chain().focus().toggleUnderline().run()}
-          >
+          <TbBtn active={editor?.isActive('underline')} title="Underline (Cmd+U)" onClick={() => editor?.chain().focus().toggleUnderline().run()}>
             <IconUnderline />
           </TbBtn>
         </ToolbarGroup>
 
-        {/* Group 3: Lists */}
         <ToolbarGroup>
-          <TbBtn
-            active={editor?.isActive('bulletList')}
-            title="Bullet list"
-            onClick={() => editor?.chain().focus().toggleBulletList().run()}
-          >
+          <TbBtn active={editor?.isActive('bulletList')} title="Bullet list" onClick={() => editor?.chain().focus().toggleBulletList().run()}>
             <IconBulletList />
           </TbBtn>
-          <TbBtn
-            active={editor?.isActive('orderedList')}
-            title="Ordered list"
-            onClick={() => editor?.chain().focus().toggleOrderedList().run()}
-          >
+          <TbBtn active={editor?.isActive('orderedList')} title="Ordered list" onClick={() => editor?.chain().focus().toggleOrderedList().run()}>
             <IconOrderedList />
           </TbBtn>
         </ToolbarGroup>
 
-        {/* Group 4: Insert — Link */}
         <ToolbarGroup>
           <div className={styles.popoverAnchor}>
-            <TbBtn
-              active={openPopover === 'link' || editor?.isActive('link')}
-              title="Insert link"
-              onClick={() => togglePopover('link')}
-            >
+            <TbBtn active={openPopover === 'link' || editor?.isActive('link')} title="Insert link" onClick={() => togglePopover('link')}>
               <IconLink />
               <span className={styles.tbBtnLabel}>Link</span>
             </TbBtn>
@@ -993,68 +1195,39 @@ function TiptapEditor({initialHtml, onChange}) {
             )}
           </div>
 
-          {/* Insert — Image */}
           <div className={styles.popoverAnchor}>
-            <TbBtn
-              active={openPopover === 'image'}
-              title="Insert image by URL"
-              onClick={() => togglePopover('image')}
-            >
+            <TbBtn active={openPopover === 'image'} title="Insert image by URL" onClick={() => togglePopover('image')}>
               <IconImage />
               <span className={styles.tbBtnLabel}>Image</span>
             </TbBtn>
-            {openPopover === 'image' && (
-              <ImagePopover id="popover-image" onApply={handleInsertImage} />
-            )}
+            {openPopover === 'image' && <ImagePopover id="popover-image" onApply={handleInsertImage} />}
           </div>
 
-          <TbBtn
-            active={editor?.isActive('codeBlock')}
-            title="Code block"
-            onClick={() => editor?.chain().focus().toggleCodeBlock().run()}
-          >
+          <TbBtn active={editor?.isActive('codeBlock')} title="Code block" onClick={() => editor?.chain().focus().toggleCodeBlock().run()}>
             <IconCode />
           </TbBtn>
-          <TbBtn
-            title="Insert table"
-            onClick={handleInsertTable}
-          >
+          <TbBtn title="Insert table" onClick={handleInsertTable}>
             <IconTable />
           </TbBtn>
-          <TbBtn
-            title="Horizontal rule"
-            onClick={() => editor?.chain().focus().setHorizontalRule().run()}
-          >
+          <TbBtn title="Horizontal rule" onClick={() => editor?.chain().focus().setHorizontalRule().run()}>
             <IconRule />
           </TbBtn>
         </ToolbarGroup>
 
-        {/* Group 5: History */}
         <ToolbarGroup>
-          <TbBtn
-            title="Undo (⌘Z)"
-            disabled={!editor?.can().undo()}
-            onClick={() => editor?.chain().focus().undo().run()}
-          >
+          <TbBtn title="Undo (Cmd+Z)" disabled={!editor?.can().undo()} onClick={() => editor?.chain().focus().undo().run()}>
             <IconUndo />
           </TbBtn>
-          <TbBtn
-            title="Redo (⌘⇧Z)"
-            disabled={!editor?.can().redo()}
-            onClick={() => editor?.chain().focus().redo().run()}
-          >
+          <TbBtn title="Redo (Cmd+Shift+Z)" disabled={!editor?.can().redo()} onClick={() => editor?.chain().focus().redo().run()}>
             <IconRedo />
           </TbBtn>
         </ToolbarGroup>
       </div>
 
-      {/* ── Editor surface ── */}
       <EditorContent editor={editor} className={styles.editorSurface} />
     </div>
   );
 }
-
-// ── Image health panel ────────────────────────────────────────────────────────
 
 function PreviewImageHealth({images, warningText, emptyText, readyText, checkingText}) {
   if (!images.length) {
@@ -1086,56 +1259,26 @@ function PreviewImageHealth({images, warningText, emptyText, readyText, checking
   );
 }
 
-// ── Page ──────────────────────────────────────────────────────────────────────
-
 export default function ContributePage() {
   const {
     i18n: {currentLocale},
   } = useDocusaurusContext();
   const copy = COPY[currentLocale] ?? COPY['en-US'];
   const [meta, setMeta] = useState(INITIAL_META);
-  const [selectedTemplate, setSelectedTemplate] = useState(DEFAULT_TEMPLATE);
-  const [editorHtml, setEditorHtml] = useState(TEMPLATES[DEFAULT_TEMPLATE].html.trim());
+  const [editorHtml, setEditorHtml] = useState(DEFAULT_EDITOR_HTML);
+  const [markupBody, setMarkupBody] = useState(() => buildBodyMarkdownFromHtml(DEFAULT_EDITOR_HTML));
   const [imageStatuses, setImageStatuses] = useState({});
   const [modalOpen, setModalOpen] = useState(false);
   const [downloaded, setDownloaded] = useState(false);
-  const [previewOpen, setPreviewOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState('editor');
+  const [markupDirty, setMarkupDirty] = useState(false);
+  const [locationChoice, setLocationChoice] = useState('');
+  const [customLocation, setCustomLocation] = useState('');
   const parsedArticle = useMemo(() => parseArticleHtml(editorHtml), [editorHtml]);
   const linkedImages = useMemo(
     () => collectLinkedImages(parsedArticle, imageStatuses),
-    [parsedArticle, imageStatuses],
+    [imageStatuses, parsedArticle],
   );
-  const markdown = useMemo(() => buildMarkdown(meta, parsedArticle), [meta, parsedArticle]);
-
-  useEffect(() => {
-    setDownloaded(false);
-  }, [markdown]);
-
-  const metadataComplete = Boolean(
-    meta.title.trim() &&
-      meta.author.trim() &&
-      meta.team.trim() &&
-      meta.summary.trim() &&
-      meta.audience.trim(),
-  );
-  const locationValid = isValidUrl(meta.location.trim());
-  const markdownReady = Boolean(markdown.trim());
-  const imagesReady = linkedImages.every((image) => image.status !== 'error');
-
-  const updateMetaField = (field, value) => {
-    setMeta((current) => ({
-      ...current,
-      [field]: value,
-    }));
-  };
-
-  const applyTemplate = (templateKey) => {
-    const template = TEMPLATES[templateKey];
-    setSelectedTemplate(templateKey);
-    setEditorHtml(template.html.trim());
-    setImageStatuses({});
-  };
-
   const updateImageStatus = useCallback((src, loaded) => {
     setImageStatuses((current) => {
       const nextStatus = loaded ? 'loaded' : 'error';
@@ -1149,10 +1292,116 @@ export default function ContributePage() {
       };
     });
   }, []);
+
   const previewNodes = useMemo(
     () => renderPreviewNodes(parsedArticle, updateImageStatus),
     [parsedArticle, updateImageStatus],
   );
+
+  const markdown = useMemo(() => buildMarkdown(meta, markupBody), [meta, markupBody]);
+
+  useEffect(() => {
+    setDownloaded(false);
+  }, [markdown]);
+
+  useEffect(() => {
+    if (activeTab !== 'markup' && markupDirty) {
+      applyMarkupToStudio(markupBody, {source: 'tab-switch'});
+    }
+  }, [activeTab, markupBody, markupDirty]);
+
+  useEffect(() => {
+    if (!markupDirty) {
+      return undefined;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      applyMarkupToStudio(markupBody, {source: 'timer'});
+    }, MARKUP_SYNC_DELAY_MS);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [markupBody, markupDirty]);
+
+  const metadataComplete = Boolean(
+    meta.title.trim() &&
+      meta.author.trim() &&
+      meta.team.trim() &&
+      meta.summary.trim() &&
+      meta.audience.trim(),
+  );
+  const locationValid = isValidUrl(meta.location.trim());
+  const markdownReady = Boolean(markdown.trim());
+  const imagesReady = linkedImages.every((image) => image.status !== 'error');
+
+  function updateMetaField(field, value) {
+    setMeta((current) => ({
+      ...current,
+      [field]: value,
+    }));
+  }
+
+  function handleEditorHtmlChange(nextHtml) {
+    setEditorHtml(nextHtml);
+    const nextMarkdown = buildBodyMarkdownFromHtml(nextHtml);
+    setMarkupBody(nextMarkdown);
+    setMarkupDirty(false);
+    setImageStatuses({});
+  }
+
+  function updateLocationState(nextLocation) {
+    setMeta((current) => ({
+      ...current,
+      location: nextLocation,
+    }));
+    setLocationChoice(deriveLocationChoice(nextLocation));
+    setCustomLocation(deriveCustomLocation(nextLocation));
+  }
+
+  function applyFrontMatterToMeta(frontMatterMeta) {
+    const nextMeta = {
+      title: frontMatterMeta.title,
+      author: frontMatterMeta.author,
+      team: frontMatterMeta.team,
+      summary: frontMatterMeta.summary,
+      audience: frontMatterMeta.audience,
+      location: frontMatterMeta.suggested_location,
+    };
+
+    setMeta((current) => ({
+      ...current,
+      title: nextMeta.title ?? current.title,
+      author: nextMeta.author ?? current.author,
+      team: nextMeta.team ?? current.team,
+      summary: nextMeta.summary ?? current.summary,
+      audience: nextMeta.audience ?? current.audience,
+      location: nextMeta.location ?? current.location,
+    }));
+
+    if (nextMeta.location !== undefined) {
+      setLocationChoice(deriveLocationChoice(nextMeta.location));
+      setCustomLocation(deriveCustomLocation(nextMeta.location));
+    }
+  }
+
+  function applyMarkupToStudio(sourceMarkdown) {
+    const {meta: frontMatterMeta, body} = extractFrontMatter(sourceMarkdown);
+    const normalizedBody = body.trim();
+    const nextHtml = markdownToHtml(normalizedBody);
+
+    if (Object.keys(frontMatterMeta).length) {
+      applyFrontMatterToMeta(frontMatterMeta);
+    }
+
+    setEditorHtml(nextHtml);
+    setMarkupBody(normalizedBody);
+    setMarkupDirty(false);
+    setImageStatuses({});
+  }
+
+  const handleMarkupChange = (event) => {
+    setMarkupBody(event.target.value);
+    setMarkupDirty(true);
+  };
 
   const downloadMarkdown = () => {
     const blob = new Blob([markdown], {type: 'text/markdown;charset=utf-8'});
@@ -1208,6 +1457,12 @@ export default function ContributePage() {
     },
   ];
 
+  const tabItems = [
+    {key: 'editor', label: copy.editor, badge: copy.editorBadge},
+    {key: 'preview', label: copy.preview, badge: copy.previewBadge},
+    {key: 'markup', label: copy.markup, badge: copy.markupBadge},
+  ];
+
   return (
     <Layout title={copy.title} description={copy.subtitle}>
       <main className={styles.page}>
@@ -1218,30 +1473,15 @@ export default function ContributePage() {
             <p>{copy.subtitle}</p>
           </div>
           <div className={styles.heroBadge}>
-            <span className={styles.heroBadgeLabel}>Submission Flow</span>
+            <span className={styles.heroBadgeLabel}>Studio Mode</span>
             <strong>{copy.heroFlow}</strong>
           </div>
         </section>
 
-        <section className={styles.templateStrip}>
-          <div className={styles.templateStripHeader}>
-            <h2>{copy.templateLabel}</h2>
+        <section className={styles.studioStrip}>
+          <div className={styles.studioStripHeader}>
+            <h2>{copy.content}</h2>
             <p>{copy.helperBar}</p>
-          </div>
-          <div className={styles.templateGrid}>
-            {Object.entries(TEMPLATES).map(([key, template]) => (
-              <button
-                key={key}
-                type="button"
-                className={clsx(styles.templateCard, selectedTemplate === key && styles.templateCardActive)}
-                onClick={() => applyTemplate(key)}
-              >
-                <span className={styles.templateCardLabel}>
-                  {template.label?.[currentLocale] ?? template.label?.['en-US'] ?? template.label}
-                </span>
-                <span className={styles.templateCardMeta}>{copy.structuredStarter}</span>
-              </button>
-            ))}
           </div>
         </section>
 
@@ -1294,14 +1534,62 @@ export default function ContributePage() {
                     placeholder="Summarize the outcome and what the article helps the reader do."
                   />
                 </label>
+                <div className={styles.field}>
+                  <span>{copy.fieldLabels.locationTree}</span>
+                  <select
+                    className={styles.fieldSelect}
+                    value={locationChoice}
+                    onChange={(event) => {
+                      const nextChoice = event.target.value;
+                      setLocationChoice(nextChoice);
+
+                      if (!nextChoice) {
+                        updateLocationState('');
+                        return;
+                      }
+
+                      if (nextChoice === 'other') {
+                        setMeta((current) => ({
+                          ...current,
+                          location: customLocation,
+                        }));
+                        return;
+                      }
+
+                      const preset = LOCATION_PRESETS.find((option) => option.key === nextChoice);
+                      updateLocationState(preset ? buildLocationUrl(preset.path) : '');
+                    }}
+                  >
+                    <option value="">{copy.locationPlaceholder}</option>
+                    {LOCATION_PRESETS.map((option) => (
+                      <option key={option.key} value={option.key}>
+                        {option.label[currentLocale] ?? option.label['en-US']}
+                      </option>
+                    ))}
+                    <option value="other">{copy.locationOther}</option>
+                  </select>
+                  <small>{copy.fieldHelp.location}</small>
+                </div>
+                {locationChoice === 'other' ? (
+                  <label className={styles.field}>
+                    <span>{copy.fieldLabels.locationOther}</span>
+                    <input
+                      value={customLocation}
+                      onChange={(event) => {
+                        const value = event.target.value;
+                        setCustomLocation(value);
+                        setMeta((current) => ({
+                          ...current,
+                          location: value,
+                        }));
+                      }}
+                      placeholder={`${getAtlasWikiOrigin()}/docs/...`}
+                    />
+                  </label>
+                ) : null}
                 <label className={styles.field}>
                   <span>{copy.fieldLabels.location}</span>
-                  <input
-                    value={meta.location}
-                    onChange={(event) => updateMetaField('location', event.target.value)}
-                    placeholder="https://kfc-atlas-portal.vercel.app/docs/..."
-                  />
-                  <small>{copy.fieldHelp.location}</small>
+                  <input value={meta.location} readOnly className={styles.readOnlyInput} />
                 </label>
                 <label className={styles.field}>
                   <span>{copy.fieldLabels.videoLinks}</span>
@@ -1365,30 +1653,31 @@ export default function ContributePage() {
             <div className={styles.panel}>
               <div className={styles.panelHeader}>
                 <h2>{copy.content}</h2>
-                <span className={styles.panelPill}>WYSIWYG</span>
+                <span className={styles.panelPill}>
+                  {tabItems.find((tab) => tab.key === activeTab)?.badge}
+                </span>
               </div>
-              <TiptapEditor
-                key={selectedTemplate}
-                initialHtml={editorHtml}
-                onChange={setEditorHtml}
-              />
-            </div>
 
-            <div className={styles.panel}>
-              <div className={styles.panelHeader}>
-                <h2>{copy.preview}</h2>
-                <div className={styles.panelHeaderActions}>
+              <div className={styles.tabBar} role="tablist" aria-label="Contribution Studio views">
+                {tabItems.map((tab) => (
                   <button
+                    key={tab.key}
                     type="button"
-                    className={styles.previewToggle}
-                    onClick={() => setPreviewOpen((current) => !current)}
+                    role="tab"
+                    aria-selected={activeTab === tab.key}
+                    className={clsx(styles.tabButton, activeTab === tab.key && styles.tabButtonActive)}
+                    onClick={() => setActiveTab(tab.key)}
                   >
-                    {previewOpen ? copy.previewHide : copy.previewShow}
+                    {tab.label}
                   </button>
-                  <span className={styles.panelPill}>{copy.rendered}</span>
-                </div>
+                ))}
               </div>
-              {previewOpen ? (
+
+              {activeTab === 'editor' ? (
+                <TiptapEditor contentHtml={editorHtml} onChange={handleEditorHtmlChange} />
+              ) : null}
+
+              {activeTab === 'preview' ? (
                 <>
                   <p className={styles.previewHelp}>{copy.previewHelp}</p>
                   <article className={clsx('markdown', styles.previewSurface)}>
@@ -1425,11 +1714,38 @@ export default function ContributePage() {
                     ) : null}
                   </article>
                 </>
-              ) : (
-                <div className={styles.previewCollapsed}>
-                  <p>{copy.hiddenPreviewHint}</p>
+              ) : null}
+
+              {activeTab === 'markup' ? (
+                <div className={styles.markupPanel}>
+                  <div className={styles.markupHeader}>
+                    <p className={styles.previewHelp}>{copy.markupHelp}</p>
+                    <div className={styles.markupActions}>
+                      <span className={clsx(styles.syncStatus, markupDirty ? styles.syncStatusPending : styles.syncStatusReady)}>
+                        {markupDirty ? copy.markupSyncPending : copy.markupSyncReady}
+                      </span>
+                      <button
+                        type="button"
+                        className={styles.secondaryAction}
+                        onClick={() => applyMarkupToStudio(markupBody)}
+                        disabled={!markupDirty}
+                      >
+                        {copy.markupSyncButton}
+                      </button>
+                    </div>
+                  </div>
+                  <label className={styles.markupLabel} htmlFor="markup-body">
+                    {copy.markupSyncBodyLabel}
+                  </label>
+                  <textarea
+                    id="markup-body"
+                    className={styles.markupSurface}
+                    value={markupBody}
+                    onChange={handleMarkupChange}
+                    spellCheck={false}
+                  />
                 </div>
-              )}
+              ) : null}
             </div>
           </div>
         </section>
