@@ -160,11 +160,6 @@ const config = {
             className: 'navbar-item--search',
           },
           {
-            type: 'localeDropdown',
-            position: 'right',
-            className: 'navbar-item--locale',
-          },
-          {
             type: 'custom-theme-toggle',
             position: 'right',
             className: 'navbar-item--theme',

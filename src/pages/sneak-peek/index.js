@@ -16,7 +16,7 @@ const PAGE_CONTENT = {
       'This page turns the prototype into a miniature product sandbox inside Atlas Wiki so stakeholders can inspect flows, locale behavior, and navigation state in one place.',
     bullets: [
       'Demonstrates a real session model: store, fulfillment mode, timing, cart, and checkout all stay connected.',
-      'Lets reviewers switch between English and Japanese inside the same prototype without restarting.',
+      'Keeps the localized prototype content ready so we can bring Japanese review flows back quickly when needed.',
       'Frames Atlas as a preview surface, not production, with explicit simulated-data labeling.',
     ],
     disclaimer:
@@ -32,7 +32,7 @@ const PAGE_CONTENT = {
       'このページでは、Atlas Wiki 内で Atlas Peek プロトタイプを小さな製品サンドボックスとして体験でき、フロー、ロケール挙動、ナビゲーション状態を 1 か所で確認できます。',
     bullets: [
       '店舗、受取方法、時間帯、カート、チェックアウトがつながった実セッション型の状態を確認できます。',
-      'プロトタイプ内で英語と日本語を切り替えても、セッションをやり直さずに確認できます。',
+      '必要になったときにすぐ戻せるよう、日本語向けのプロトタイプ内容も維持しています。',
       'シミュレーションデータであることを明示しつつ、Atlas をレビュー用プレビューとして位置づけます。',
     ],
     disclaimer:
@@ -110,6 +110,15 @@ function SneakPeekContent({content, locale}) {
     `/rna-sneak-peek-prototype.html?theme=${prototypeTheme}&locale=${encodeURIComponent(locale)}`,
   );
 
+  const handleResetJourney = React.useCallback(() => {
+    iframeRef.current?.contentWindow?.postMessage(
+      {
+        type: 'sneak-peek-prototype-reset',
+      },
+      window.location.origin,
+    );
+  }, []);
+
   return (
     <div className={styles.page}>
       <div className={styles.hero}>
@@ -130,20 +139,34 @@ function SneakPeekContent({content, locale}) {
       </div>
 
       <div className={styles.prototypeWrap}>
-        <div
-          ref={frameShellRef}
-          className={`${styles.frameShell} ${immersiveMode ? styles.frameShellImmersive : ''}`}
-        >
-          <iframe
-            key={`${locale}-${prototypeTheme}`}
-            ref={iframeRef}
-            className={styles.prototypeFrame}
-            src={prototypeSrc}
-            title={content.title}
-            loading="lazy"
-            allow="fullscreen"
-            allowFullScreen
-          />
+        <div className={styles.prototypeStage}>
+          <div
+            ref={frameShellRef}
+            className={`${styles.frameShell} ${immersiveMode ? styles.frameShellImmersive : ''}`}
+          >
+            <iframe
+              key={`${locale}-${prototypeTheme}`}
+              ref={iframeRef}
+              className={styles.prototypeFrame}
+              src={prototypeSrc}
+              title={content.title}
+              loading="lazy"
+              allow="fullscreen"
+              allowFullScreen
+            />
+          </div>
+
+          {!immersiveMode ? (
+            <aside className={styles.sideControls} aria-label="Prototype controls">
+              <div className={styles.sideControlsKicker}>Prototype Controls</div>
+              <p className={styles.sideControlsCopy}>
+                Reset auth, store, delivery, cart, and checkout state so you can replay the journey from the start.
+              </p>
+              <button className={styles.sideControlsButton} type="button" onClick={handleResetJourney}>
+                Reset Journey
+              </button>
+            </aside>
+          ) : null}
         </div>
       </div>
     </div>

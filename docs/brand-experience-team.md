@@ -1,18 +1,18 @@
 ---
-title: Brand Experience Team
-description: The named people shown in the red boxes of the current Atlas org structure.
+title: KFC Full Journey QRG
+description: Full customer journey parity quick reference for Renegade, Byte Commerce, and Helium.
 displayed_sidebar: aboutSidebar
 ---
 
 import ThemeSyncedIframe from '@site/src/components/ThemeSyncedIframe';
 
-# Brand Experience Team
+# KFC Full Journey QRG
 
 ## Diagram
 
 <ThemeSyncedIframe
   src="/brand-experience-team-org.html"
-  title="Brand Experience Team Org Chart"
+  title="KFC Full Journey QRG"
   height={2200}
   messageType="brand-experience-team-org-theme"
   heightMessageType="brand-experience-team-org-height"
