@@ -121,6 +121,12 @@ const config = {
             className: 'navbar-item--whats-new',
           },
           {
+            to: '/renegade-atlas-parity-qrg',
+            position: 'left',
+            label: 'Renegade-Atlas Parity QRG',
+            className: 'navbar-item--parity-qrg',
+          },
+          {
             to: '/sneak-peek',
             position: 'left',
             label: 'Atlas Peek',
