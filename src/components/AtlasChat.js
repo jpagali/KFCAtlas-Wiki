@@ -10,7 +10,7 @@ const searchIndexRequests = new Map();
 
 const PAGE_CONTEXT = {
   '/docs/frontend/overview/':
-    'Front-end Overview — the Atlas platform customer-facing layer, markets in scope (Japan and Australia), and audience roles.',
+    'Front-end Overview — the Atlas platform customer-facing layer, markets in scope, and audience roles.',
   '/docs/frontend/customer-journey/':
     'Customer Journey — the six-step ordering flow, loyalty and promotions by market, and the market configuration matrix.',
   '/docs/frontend/order-channels/':
@@ -41,7 +41,7 @@ const PAGE_CONTEXT = {
 
 const SUGGESTED_QUERIES = {
   '/docs/frontend/customer-journey/': [
-    'How does loyalty work in Japan?',
+    'How does loyalty work by market?',
     'What order channels are available?',
     'What can be configured by market?',
   ],

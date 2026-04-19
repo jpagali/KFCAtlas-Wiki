@@ -3680,30 +3680,6 @@
   },
   {
     "locale": "ja-JP",
-    "title": "\"日本 — クリスマス注文\"",
-    "headings": [
-      "背景",
-      "商品例: KFC クリスマス パーティーバーレル",
-      "日本での予約フロー",
-      "1. キャンペーン開始（10月〜11月）",
-      "2. 顧客が予約する",
-      "3. 予約確認",
-      "4. 受け取り（12月23日〜25日）",
-      "なぜ事前決済が必要か",
-      "需要とキャパシティ管理",
-      "設定サマリー",
-      "他市場への示唆"
-    ],
-    "summary": "日本 — クリスマス注文",
-    "section": "frontend",
-    "url": "/ja-JP/docs/frontend/features/menu-item-reservation-japan-christmas/",
-    "normalizedTitle": "日本 クリスマス注文",
-    "normalizedHeadings": "背景 商品例 kfc クリスマス パーティーバーレル 日本での予約フロー 1 キャンペーン開始 10月 11月 2 顧客が予約する 3 予約確認 4 受け取り 12月23日 25日 なぜ事前決済が必要か 需要とキャパシティ管理 設定サマリー 他市場への示唆",
-    "normalizedSummary": "日本 クリスマス注文",
-    "normalizedSection": "frontend"
-  },
-  {
-    "locale": "ja-JP",
     "title": "\"メニュー商品の予約\"",
     "headings": [
       "機能概要",
@@ -3713,14 +3689,13 @@
       "時間帯",
       "支払い",
       "設定項目",
-      "対応プラットフォーム",
-      "市場別ユースケース"
+      "対応プラットフォーム"
     ],
     "summary": "メニュー商品の予約",
     "section": "frontend",
     "url": "/ja-JP/docs/frontend/features/menu-item-reservation/",
     "normalizedTitle": "メニュー商品の予約",
-    "normalizedHeadings": "機能概要 なぜ必要か 仕組み 予約受付期間 時間帯 支払い 設定項目 対応プラットフォーム 市場別ユースケース",
+    "normalizedHeadings": "機能概要 なぜ必要か 仕組み 予約受付期間 時間帯 支払い 設定項目 対応プラットフォーム",
     "normalizedSummary": "メニュー商品の予約",
     "normalizedSection": "frontend"
   },
@@ -3747,7 +3722,6 @@
     "title": "\"市場設定\"",
     "headings": [
       "市場ごとに設定できる項目",
-      "Japan 🇯🇵 — 現在の設定",
       "Australia 🇦🇺 — 現在の設定",
       "設定変更の依頼方法"
     ],
@@ -3755,7 +3729,7 @@
     "section": "frontend",
     "url": "/ja-JP/docs/frontend/market-configurations/",
     "normalizedTitle": "市場設定",
-    "normalizedHeadings": "市場ごとに設定できる項目 japan 現在の設定 australia 現在の設定 設定変更の依頼方法",
+    "normalizedHeadings": "市場ごとに設定できる項目 australia 現在の設定 設定変更の依頼方法",
     "normalizedSummary": "市場設定",
     "normalizedSection": "frontend"
   },
@@ -3765,7 +3739,6 @@
     "headings": [
       "チャネルごとの機能",
       "市場別チャネル状況",
-      "Japan 🇯🇵",
       "Australia 🇦🇺",
       "チャネル設定"
     ],
@@ -3773,7 +3746,7 @@
     "section": "frontend",
     "url": "/ja-JP/docs/frontend/order-channels/",
     "normalizedTitle": "注文チャネル",
-    "normalizedHeadings": "チャネルごとの機能 市場別チャネル状況 japan australia チャネル設定",
+    "normalizedHeadings": "チャネルごとの機能 市場別チャネル状況 australia チャネル設定",
     "normalizedSummary": "注文チャネル",
     "normalizedSection": "frontend"
   },

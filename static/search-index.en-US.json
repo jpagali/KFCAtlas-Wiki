@@ -2203,14 +2203,14 @@
   },
   {
     "locale": "en-US",
-    "title": "Brand Experience Team",
+    "title": "KFC Full Journey QRG",
     "headings": [
       "Diagram"
     ],
     "summary": "import ThemeSyncedIframe from '@site/src/components/ThemeSyncedIframe';",
     "section": "brand-experience-team.md",
     "url": "/docs/brand-experience-team/",
-    "normalizedTitle": "brand experience team",
+    "normalizedTitle": "kfc full journey qrg",
     "normalizedHeadings": "diagram",
     "normalizedSummary": "import themesyncediframe from site src components themesyncediframe",
     "normalizedSection": "brand experience team md"
@@ -3706,14 +3706,13 @@
       "Time Slots",
       "Payment",
       "Configuration",
-      "Platforms",
-      "Market Specific Use Cases"
+      "Platforms"
     ],
     "summary": "Menu Item Reservation",
     "section": "frontend",
     "url": "/docs/frontend/features/menu-item-reservation/",
     "normalizedTitle": "menu item reservation",
-    "normalizedHeadings": "what it does why it exists how it works reservation window time slots payment configuration platforms market specific use cases",
+    "normalizedHeadings": "what it does why it exists how it works reservation window time slots payment configuration platforms",
     "normalizedSummary": "menu item reservation",
     "normalizedSection": "frontend"
   },
@@ -3740,7 +3739,6 @@
     "title": "Market Configurations",
     "headings": [
       "What Can Be Configured Per Market",
-      "Japan 🇯🇵 — Current Configuration",
       "Australia 🇦🇺 — Current Configuration",
       "Requesting a Configuration Change"
     ],
@@ -3748,7 +3746,7 @@
     "section": "frontend",
     "url": "/docs/frontend/market-configurations/",
     "normalizedTitle": "market configurations",
-    "normalizedHeadings": "what can be configured per market japan current configuration australia current configuration requesting a configuration change",
+    "normalizedHeadings": "what can be configured per market australia current configuration requesting a configuration change",
     "normalizedSummary": "market configurations",
     "normalizedSection": "frontend"
   },
@@ -3780,6 +3778,7 @@
     "headings": [
       "What the Front end Covers",
       "Design System",
+      "Design Philosophy",
       "Markets in Scope",
       "Who Should Read This"
     ],
@@ -3787,7 +3786,7 @@
     "section": "frontend",
     "url": "/docs/frontend/overview/",
     "normalizedTitle": "front end overview",
-    "normalizedHeadings": "what the front end covers design system markets in scope who should read this",
+    "normalizedHeadings": "what the front end covers design system design philosophy markets in scope who should read this",
     "normalizedSummary": "front end overview",
     "normalizedSection": "frontend"
   },

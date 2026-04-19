@@ -52,5 +52,5 @@ The current documented survey platform for customer engagement surveys is:
 - [Qualtrics](./qualtrics)
 
 :::info
-Survey programmes are market-configured. Trigger timing, channels, incentives, and escalation rules may differ between Japan, Australia, and future markets.
+Survey programmes are market-configured. Trigger timing, channels, incentives, and escalation rules may differ between Australia and future markets.
 :::

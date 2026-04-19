@@ -88,7 +88,7 @@ Raise tickets at: `support.atlas.yum.com`
 
 Include in every ticket:
 - Restaurant ID
-- Market (Japan / Australia)
+- Market
 - Issue description
 - Steps already taken
 - Screenshot or screen recording if possible

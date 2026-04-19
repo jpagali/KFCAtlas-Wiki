@@ -33,4 +33,4 @@ Features are enabled per market via configuration — not separate code deployme
 
 Each feature in Atlas is built to be reusable across markets. That said, some features may carry dependencies on third-party systems — such as a market's Point of Sale (POS) or Delivery Management System (DMS) — and will require an integration assessment before they can go live.
 
-Menu Item Reservation is an example: KFC Japan's Christmas Ordering flow depends on stock and timeslot APIs from **C-BOH**, their bespoke POS system. Markets without equivalent API support from their POS would need to complete that integration before the feature could be enabled.
+Menu Item Reservation is an example: any market-specific reservation flow depends on stock and timeslot APIs from the relevant POS or inventory system. Markets without equivalent API support from their POS would need to complete that integration before the feature could be enabled.

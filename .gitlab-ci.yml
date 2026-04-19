@@ -1,5 +1,24 @@
 image: node:20
 
+stages:
+  - build
+  - deploy
+
+docs_artifact:
+  stage: build
+  script:
+    - mkdir -p artifacts
+    - tar -czf artifacts/source-docs.tgz docs README.md i18n/ja-JP/docusaurus-plugin-content-docs/current
+    - find docs i18n/ja-JP/docusaurus-plugin-content-docs/current -type f | sort > artifacts/source-docs-file-list.txt
+  artifacts:
+    name: "docs-$CI_COMMIT_REF_SLUG-$CI_COMMIT_SHORT_SHA"
+    paths:
+      - artifacts/source-docs.tgz
+      - artifacts/source-docs-file-list.txt
+    expire_in: 30 days
+  only:
+    - main
+
 pages:
   stage: deploy
   cache:

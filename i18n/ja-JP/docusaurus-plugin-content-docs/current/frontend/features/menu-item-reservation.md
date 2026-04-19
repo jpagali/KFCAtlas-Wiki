@@ -62,10 +62,6 @@ Menu Item Reservation は、**Contentful**（主に Web 向け設定）と市場
 | Android | ✅ |
 | Web | ✅ |
 
-## 市場別ユースケース
-
-- 🇯🇵 [日本 — クリスマス注文](./menu-item-reservation-japan-christmas)
-
 :::info
 Menu Item Reservation は市場単位で有効化する機能です。利用を開始する場合は、**KFC Global Enablement and Market Success** と連携して対象市場の設定を進めてください。
 :::

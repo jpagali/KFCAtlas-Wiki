@@ -62,10 +62,6 @@ Menu Item Reservation is enabled at the product level via **Contentful** (for we
 | Android | ✅ |
 | Web | ✅ |
 
-## Market-Specific Use Cases
-
-- 🇯🇵 [Japan — Christmas Ordering](./menu-item-reservation-japan-christmas)
-
 :::info
 Menu Item Reservation is a market-activated feature. Contact **KFC Global Enablement and Market Success** to enable it for your market and configure the reservation parameters.
 :::

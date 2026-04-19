@@ -88,7 +88,7 @@ Yum! Brands Tech — Emergency Line
 
 すべてのチケットに次を含めてください:
 - Restaurant ID
-- Market (Japan / Australia)
+- Market
 - Issue description
 - Steps already taken
 - Screenshot or screen recording if possible

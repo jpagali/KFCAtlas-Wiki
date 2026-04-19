@@ -45,7 +45,7 @@ const HOME_CONTENT = {
         emoji: '🖥️',
         label: 'Front-end Guide',
         title: 'What your customers experience',
-        desc: 'Understand the end-to-end ordering journey — from discovery through checkout. Covers market-specific configurations for loyalty, promotions, and order channels in Japan and Australia.',
+        desc: 'Understand the end-to-end ordering journey — from discovery through checkout. Covers market-specific configurations for loyalty, promotions, and order channels in Australia and future rollout markets.',
         link: '/docs/frontend/overview',
         cta: 'Read the guide',
         items: ['Customer Journey', 'Order Channels', 'Customer Engagement Surveys'],
@@ -70,7 +70,6 @@ const HOME_CONTENT = {
       },
     ],
     markets: [
-      { flagCode: 'jp', name: 'Japan' },
       { flagCode: 'au', name: 'Australia' },
     ],
   },
@@ -112,7 +111,7 @@ const HOME_CONTENT = {
         emoji: '🖥️',
         label: 'フロントエンドガイド',
         title: 'お客様が体験する内容',
-        desc: '発見からチェックアウトまで、エンドツーエンドの注文ジャーニーを理解できます。日本とオーストラリアにおけるロイヤルティ、プロモーション、注文チャネルの市場別設定もカバーしています。',
+        desc: '発見からチェックアウトまで、エンドツーエンドの注文ジャーニーを理解できます。オーストラリアと今後展開される市場におけるロイヤルティ、プロモーション、注文チャネルの市場別設定もカバーしています。',
         link: '/docs/frontend/overview',
         cta: 'ガイドを見る',
         items: ['カスタマージャーニー', '注文チャネル', '顧客エンゲージメント調査'],
@@ -137,7 +136,6 @@ const HOME_CONTENT = {
       },
     ],
     markets: [
-      { flagCode: 'jp', name: '日本' },
       { flagCode: 'au', name: 'オーストラリア' },
     ],
   },

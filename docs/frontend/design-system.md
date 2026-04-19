@@ -13,7 +13,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## What Is a Design System?
 
-Think of a design system as the **single source of truth** for how KFC looks and works digitally — everywhere. It's the set of rules, reusable parts, and shared tools that ensure a button in the KFC Japan app looks and behaves the same as a button in the KFC Australia web experience. Without it, every market would rebuild the same thing from scratch, in slightly different ways. With it, every team works from the same foundation.
+Think of a design system as the **single source of truth** for how KFC looks and works digitally — everywhere. It's the set of rules, reusable parts, and shared tools that ensure a button in the KFC Australia app looks and behaves consistently across web and native experiences. Without it, every market would rebuild the same thing from scratch, in slightly different ways. With it, every team works from the same foundation.
 
 The KFC Atlas platform is powered by **Byte Helium**, Yum!'s enterprise design system. Here's how it all fits together.
 
@@ -62,7 +62,7 @@ Each market's front-end is assembled from the Core apps and DSC Components above
 
 ## Why This Matters for Atlas Markets
 
-For markets like **Japan, Australia, UK, Germany, and Singapore**, this architecture means:
+For markets like **Australia, UK, Germany, and Singapore**, this architecture means:
 
 - **Speed** — No rebuilding common elements from scratch. New features built on the design system ship faster.
 - **Consistency** — The KFC brand looks right on every screen, in every market, on every device.

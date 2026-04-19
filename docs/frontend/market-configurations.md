@@ -22,17 +22,6 @@ The Atlas Platform uses a **feature flag architecture** — a single shared code
 | Guest checkout | ✅ | Market Settings → Customer Journey |
 | Scheduled future orders | ✅ | Market Settings → Customer Journey |
 
-## Japan 🇯🇵 — Current Configuration
-
-| Setting | Value |
-|---|---|
-| Loyalty type | Points-based (KFC Japan Rewards) |
-| Earning rate | 1 point per ¥100 spent |
-| Promo codes | Enabled |
-| Scheduled orders | Enabled (up to 7 days ahead) |
-| Guest checkout | Enabled |
-| Aggregator integration | Uber Eats, Demae-can |
-
 ## Australia 🇦🇺 — Current Configuration
 
 | Setting | Value |

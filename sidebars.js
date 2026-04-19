@@ -166,15 +166,7 @@ const sidebars = {
             'frontend/features/branch-deeplink',
             'frontend/features/martech',
             'frontend/features/social-sign-in',
-            {
-              type: 'category',
-              label: 'Menu Item Reservation',
-              link: { type: 'doc', id: 'frontend/features/menu-item-reservation' },
-              collapsed: false,
-              items: [
-                'frontend/features/menu-item-reservation-japan-christmas',
-              ],
-            },
+            'frontend/features/menu-item-reservation',
           ],
         },
         {
