@@ -26,7 +26,7 @@ The KFC Atlas front-end is built on **Byte Helium**, Yum!'s enterprise design sy
 
 ### Design Philosophy
 
-Atlas is intentionally designed around a **focused buying flow**, not simply the fewest possible clicks. As Tim Marshall has explained, some journeys may use more steps when that gives customers clearer choices, makes the product easier to understand, and presents relevant trade-up options at the moment they are deciding what to buy.
+Atlas is intentionally designed around a **focused buying flow**, not simply the fewest possible clicks. Some journeys may use more steps when that gives customers clearer choices, makes the product easier to understand, and presents relevant trade-up options at the moment they are deciding what to buy.
 
 That means the front-end should be judged by whether the journey is clear, confident, and commercially useful — not only by whether it is short. A meal flow, for example, may expose size upgrades, add-ons, or customization choices step by step because those decisions are easier to understand in context than if every option is collapsed into one dense screen.
 
