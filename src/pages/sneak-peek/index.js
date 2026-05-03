@@ -23,22 +23,6 @@ const PAGE_CONTENT = {
       'This is a clickable simulation for planning and review. It does not connect to live APIs, production content, or real order processing.',
     backLink: 'Return to homepage',
   },
-  'ja-JP': {
-    title: 'Atlas Peek',
-    description: 'Atlas Wiki 内で確認できる、最新の KFC AU プロトタイプです。',
-    eyebrow: 'KFC AU プロトタイプ',
-    heroTitle: 'Atlas Peek',
-    heroBody:
-      'このページでは、ローカルで管理している最新の KFC Australia プロトタイプを Atlas Wiki 内でそのまま確認できます。',
-    bullets: [
-      '現在の AU メニュー駆動プロトタイプを、そのままホスト版へ反映しています。',
-      '商品閲覧、カート変更、Checkout WIP 表現、注文コンテキストの挙動をローカル版と同じ前提で確認できます。',
-      '本番体験ではなく、レビュー用シミュレーションとして提供しています。',
-    ],
-    disclaimer:
-      'これは計画とレビューのためのクリック可能なシミュレーションです。実際の API、プロダクションコンテンツ、注文処理には接続していません。',
-    backLink: 'ホームへ戻る',
-  },
 };
 
 export default function SneakPeekPage() {

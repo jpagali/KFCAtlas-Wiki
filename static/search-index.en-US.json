@@ -3681,30 +3681,6 @@
   },
   {
     "locale": "en-US",
-    "title": "\"Japan — Christmas Ordering\"",
-    "headings": [
-      "Background",
-      "The Product: KFC Christmas Party Barrel",
-      "How the Reservation Flow Works in Japan",
-      "1. Campaign Opens (October–November)",
-      "2. Customer Reserves",
-      "3. Confirmation",
-      "4. Pickup (December 23–25)",
-      "Why Pre Payment Is Required",
-      "Volume and Capacity Management",
-      "Configuration Summary",
-      "Learnings for Other Markets"
-    ],
-    "summary": "Japan — Christmas Ordering",
-    "section": "frontend",
-    "url": "/docs/frontend/features/menu-item-reservation-japan-christmas/",
-    "normalizedTitle": "japan christmas ordering",
-    "normalizedHeadings": "background the product kfc christmas party barrel how the reservation flow works in japan 1 campaign opens october november 2 customer reserves 3 confirmation 4 pickup december 23 25 why pre payment is required volume and capacity management configuration summary learnings for other markets",
-    "normalizedSummary": "japan christmas ordering",
-    "normalizedSection": "frontend"
-  },
-  {
-    "locale": "en-US",
     "title": "Menu Item Reservation",
     "headings": [
       "What It Does",
@@ -4250,6 +4226,18 @@
     "normalizedTitle": "release 2026 03 23",
     "normalizedHeadings": "",
     "normalizedSummary": "div classname release notes page div classname release detail hero div classname release card topline span classname release card date march 23 2026 span span cla",
+    "normalizedSection": "release notes"
+  },
+  {
+    "locale": "en-US",
+    "title": "Release 2026.05.04",
+    "headings": [],
+    "summary": "<div className=\"release notes page\" <div className=\"release detail hero\" <div className=\"release card topline\" <span className=\"release card date\" May 4, 2026</span <span classN...",
+    "section": "release-notes",
+    "url": "/docs/release-notes/2026-05-04/",
+    "normalizedTitle": "release 2026 05 04",
+    "normalizedHeadings": "",
+    "normalizedSummary": "div classname release notes page div classname release detail hero div classname release card topline span classname release card date may 4 2026 span span classn",
     "normalizedSection": "release notes"
   },
   {

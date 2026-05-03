@@ -31,13 +31,13 @@ sidebar_position: 3
       </div>
       <h3>Release 2026.05.04</h3>
       <p>
-        The hosted Atlas Peek experience now reflects the current KFC AU prototype, adds cleaner restart and
-        fullscreen review controls, and carries the runtime assets needed for the real AU menu-driven flow.
+        Atlas Peek now reflects the current KFC AU prototype, the wiki has cleaner restart and fullscreen review
+        controls, and the retired Japan locale has been removed to simplify the site and shrink the build footprint.
       </p>
       <div className="release-pill-row">
         <span className="release-pill">Atlas Peek</span>
         <span className="release-pill">KFC AU prototype</span>
-        <span className="release-pill">Fullscreen review</span>
+        <span className="release-pill">Single-locale cleanup</span>
       </div>
       <a className="release-link" href="/docs/release-notes/2026-05-04">
         Open release 2026.05.04
@@ -59,8 +59,8 @@ sidebar_position: 3
         </div>
         <h3>Release 2026.05.04</h3>
         <p>
-          Atlas Peek now runs the current AU prototype in the wiki, with restart and prototype-only fullscreen controls
-          that make stakeholder walkthroughs easier to manage.
+          Atlas Peek now runs the current AU prototype in the wiki, and the retired Japan locale has been removed to
+          simplify Atlas Wiki and reduce the amount of content and build output it carries.
         </p>
         <a className="release-link" href="/docs/release-notes/2026-05-04">
           View details
@@ -89,8 +89,8 @@ sidebar_position: 3
         </div>
         <h3>Release 2026.03.20</h3>
         <p>
-          Pinned architecture notes now stay visible while people keep exploring the diagram, Japanese coverage spans
-          the full docs set, and Byte capability references now deep-link back to source requirements.
+          Pinned architecture notes now stay visible while people keep exploring the diagram, and Byte capability
+          references now deep-link back to source requirements.
         </p>
         <a className="release-link" href="/docs/release-notes/2026-03-20">
           View details

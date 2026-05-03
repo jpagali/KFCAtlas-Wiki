@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import SearchBox from '@site/src/components/SearchBox';
@@ -73,72 +72,6 @@ const HOME_CONTENT = {
       { flagCode: 'au', name: 'Australia' },
     ],
   },
-  'ja-JP': {
-    description: 'KFC Atlas Platform Wiki',
-    badge: 'Atlas Platform ・ Wiki',
-    titleLead: 'Atlas.',
-    titleAccent: '正しく進めるために。',
-    summary:
-      'Atlas の立ち上げ、運用、拡張に必要なすべてをまとめています。顧客体験から店舗運用までをカバーします。',
-    heroSearchPlaceholder: 'ガイド、記事、見出しを検索',
-    heroPrimaryCta: 'フロントエンドガイドから始める →',
-    heroSecondaryCta: 'Byte Portal ガイドから始める →',
-    heroCapabilitiesCta: 'Byte 機能を見る →',
-    sectionEyebrow: '3つのセクション',
-    sectionTitle: 'プラットフォームを運用するすべての人のために設計されています',
-    prototypeCardEyebrow: 'インタラクティブ プレビュー',
-    prototypeCardTitle: 'Atlas Peek',
-    prototypeCardBody:
-      '直線的なスライドショーではなく、小さなアプリのように動作する、状態を持った多言語の顧客ジャーニープロトタイプを確認できます。',
-    prototypeCardCta: 'スニークピークを開く',
-    marketsLabel: '市場',
-    marketsSublabel: '導入中 ー 2026年末まで順次展開予定',
-    upcomingMarketsLabel: 'その後に展開予定',
-    upcomingMarkets: [
-      { flagCode: 'ca', name: 'カナダ' },
-      { flagCode: 'fr', name: 'フランス' },
-      { flagCode: 'de', name: 'ドイツ' },
-      { flagCode: 'es', name: 'スペイン' },
-      { flagCode: 'th', name: 'タイ' },
-    ],
-    stats: [
-      { value: 2000, suffix: '+', label: '店舗数', sub: '導入済み店舗数' },
-      { value: '3', label: 'コアモジュール', subItems: ['フロントエンド', 'Byte Commerce', 'Byte Connect'] },
-      { value: '1', label: 'プラットフォーム', sub: 'Atlas by KFC Global - Brand Experience Team' },
-    ],
-    sections: [
-      {
-        emoji: '🖥️',
-        label: 'フロントエンドガイド',
-        title: 'お客様が体験する内容',
-        desc: '発見からチェックアウトまで、エンドツーエンドの注文ジャーニーを理解できます。オーストラリアと今後展開される市場におけるロイヤルティ、プロモーション、注文チャネルの市場別設定もカバーしています。',
-        link: '/docs/frontend/overview',
-        cta: 'ガイドを見る',
-        items: ['カスタマージャーニー', '注文チャネル', '顧客エンゲージメント調査'],
-      },
-      {
-        emoji: '⚙️',
-        label: 'Admin Portal ガイド',
-        title: 'プラットフォームの運用方法',
-        desc: 'Byte Commerce Admin Portal の使い方を、店舗チームと地域チーム向けにステップごとに案内します。店舗設定、メニュー管理、アクセス制御をカバーします。',
-        link: '/docs/admin-portal-guide/',
-        cta: 'ガイドを見る',
-        items: ['店舗プロフィール設定', 'メニュー管理', 'ユーザーと権限'],
-      },
-      {
-        emoji: '📋',
-        label: 'プレイブック',
-        title: 'KFC向けキャンペーン実行プレイブック',
-        desc: 'Atlas でのプロモーション作成から、Braze でのライフサイクル報酬の配信まで、キャンペーン実行のための運用プレイブックをまとめています。',
-        link: '/docs/playbooks/onboarding',
-        cta: 'プレイブックを見る',
-        items: ['プロモーションを作成する', '1つ買うと1つ無料プロモ', 'Braze歓迎特典キャンバス'],
-      },
-    ],
-    markets: [
-      { flagCode: 'au', name: 'オーストラリア' },
-    ],
-  },
 };
 
 function formatStatValue(stat, locale) {
@@ -149,8 +82,8 @@ function formatStatValue(stat, locale) {
   return `${stat.value}${stat.suffix ?? ''}`;
 }
 
-function localeClass(baseClass, isJapanese) {
-  return isJapanese ? `${baseClass} ${styles.localeJa}` : baseClass;
+function localeClass(baseClass) {
+  return baseClass;
 }
 
 function MarketFlag({ flagCode, name, compact = false }) {
@@ -166,10 +99,8 @@ function MarketFlag({ flagCode, name, compact = false }) {
 }
 
 export default function Home() {
-  const { i18n } = useDocusaurusContext();
-  const locale = HOME_CONTENT[i18n.currentLocale] ? i18n.currentLocale : 'en-US';
+  const locale = 'en-US';
   const content = HOME_CONTENT[locale];
-  const isJapanese = locale === 'ja-JP';
   const heroVideoSrc = useBaseUrl('/video/colonel-sanders-cooking-chicken.mp4');
 
   return (
@@ -187,16 +118,16 @@ export default function Home() {
           <div className={styles.heroContent}>
             <div className={styles.badge}>
               <div className={styles.badgeDot} />
-              <span className={localeClass(styles.badgeText, isJapanese)}>{content.badge}</span>
+              <span className={localeClass(styles.badgeText)}>{content.badge}</span>
             </div>
 
-            <h1 className={localeClass(styles.heroTitle, isJapanese)}>
+            <h1 className={localeClass(styles.heroTitle)}>
               {content.titleLead}
               <br />
               <span className={styles.heroTitleAccent}>{content.titleAccent}</span>
             </h1>
 
-            <p className={localeClass(styles.heroSummary, isJapanese)}>{content.summary}</p>
+            <p className={localeClass(styles.heroSummary)}>{content.summary}</p>
 
             <div className={styles.searchWrap}>
               <SearchBox
@@ -230,7 +161,7 @@ export default function Home() {
         {content.stats.map((stat) => (
           <div key={stat.label} className={styles.statCard}>
             <div className={styles.statValue}>{formatStatValue(stat, locale)}</div>
-            <div className={localeClass(styles.statLabel, isJapanese)}>{stat.label}</div>
+            <div className={localeClass(styles.statLabel)}>{stat.label}</div>
             <div className={styles.statSub}>
               {stat.subItems ? (
                 <span className={styles.statSubList}>
@@ -250,14 +181,14 @@ export default function Home() {
 
       <div className={styles.marketsSection}>
         <div className={styles.prototypeCallout}>
-          <div className={localeClass(styles.prototypeEyebrow, isJapanese)}>{content.prototypeCardEyebrow}</div>
-          <h2 className={localeClass(styles.prototypeTitle, isJapanese)}>{content.prototypeCardTitle}</h2>
+          <div className={localeClass(styles.prototypeEyebrow)}>{content.prototypeCardEyebrow}</div>
+          <h2 className={localeClass(styles.prototypeTitle)}>{content.prototypeCardTitle}</h2>
           <p className={styles.prototypeBody}>{content.prototypeCardBody}</p>
           <Link to="/sneak-peek" className={`${styles.button} ${styles.prototypeButton}`}>
             {content.prototypeCardCta} →
           </Link>
         </div>
-        <div className={localeClass(styles.sectionLabel, isJapanese)}>{content.marketsLabel}</div>
+        <div className={localeClass(styles.sectionLabel)}>{content.marketsLabel}</div>
         <div className={styles.marketsSublabel}>{content.marketsSublabel}</div>
         <div className={styles.marketsGrid}>
           {content.markets.map((market) => (
@@ -282,16 +213,16 @@ export default function Home() {
       <div className={styles.sectionsSection}>
         <div className={styles.sectionsInner}>
           <div className={styles.sectionHeader}>
-            <div className={localeClass(styles.sectionLabel, isJapanese)}>{content.sectionEyebrow}</div>
-            <h2 className={localeClass(styles.sectionTitle, isJapanese)}>{content.sectionTitle}</h2>
+            <div className={localeClass(styles.sectionLabel)}>{content.sectionEyebrow}</div>
+            <h2 className={localeClass(styles.sectionTitle)}>{content.sectionTitle}</h2>
           </div>
 
           <div className={styles.sectionGrid}>
             {content.sections.map((section) => (
               <div key={section.label} className={styles.sectionCard}>
                 <div className={styles.sectionEmoji}>{section.emoji}</div>
-                <div className={localeClass(styles.cardLabel, isJapanese)}>{section.label}</div>
-                <h3 className={localeClass(styles.cardTitle, isJapanese)}>{section.title}</h3>
+                <div className={localeClass(styles.cardLabel)}>{section.label}</div>
+                <h3 className={localeClass(styles.cardTitle)}>{section.title}</h3>
                 <p className={styles.cardDescription}>{section.desc}</p>
                 <ul className={styles.cardList}>
                   {section.items.map((item) => (

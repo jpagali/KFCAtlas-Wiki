@@ -14,15 +14,6 @@ const CONTENT = {
     action: 'Enter Atlas Wiki',
     error: 'That password is incorrect.',
   },
-  'ja-JP': {
-    title: 'Atlas Wiki へのアクセス',
-    subtitle:
-      'この Wiki は現在保護されています。共有パスワードを入力して続行してください。',
-    label: 'パスワード',
-    placeholder: 'パスワードを入力',
-    action: 'Atlas Wiki に入る',
-    error: 'パスワードが正しくありません。',
-  },
 };
 
 export default function AccessGate({children}) {

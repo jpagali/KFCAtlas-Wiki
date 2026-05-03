@@ -92,59 +92,6 @@ const SUGGESTED_QUERIES = {
   ],
 };
 
-const JAPANESE_SUGGESTED_QUERIES = {
-  '/docs/frontend/customer-journey/': [
-    '日本でのロイヤルティはどうなっていますか？',
-    '利用できる注文チャネルは？',
-    '市場ごとに何を設定できますか？',
-  ],
-  '/docs/frontend/order-channels/': [
-    '利用できる注文チャネルは？',
-    '市場ごとの違いは？',
-    '公開前に何を確認すべきですか？',
-  ],
-  '/docs/frontend/customer-engagement-surveys/': [
-    'この調査機能は何をカバーしますか？',
-    'Qualtrics はどう関係しますか？',
-    'どのチームが使いますか？',
-  ],
-  '/docs/frontend/customer-engagement-surveys/qualtrics/': [
-    'Qualtrics はどう関係しますか？',
-    'どんな調査データを取得しますか？',
-    '運用上のフォロー体制は？',
-  ],
-  '/docs/admin-portal-guide/stores/': [
-    '店舗を作成するには？',
-    '新しいメニューを割り当てるには？',
-    'よくある店舗タスクは？',
-  ],
-  '/docs/admin-portal-guide/menus/': [
-    'メニューを作成するには？',
-    'メニューを公開するには？',
-    'よくあるメニュータスクは？',
-  ],
-  '/docs/playbooks/onboarding/': [
-    'Atlas で KFC のプロモーションを作成するには？',
-    'プロモーションをストアグループに割り当てるには？',
-    '公開前に何を QA すべきですか？',
-  ],
-  '/docs/playbooks/promotion-recipes/buy-1-get-1-free-bogo/': [
-    'BOGO を設定するには？',
-    'このレシピに関連する管理画面は？',
-    '公開前に何を確認すべきですか？',
-  ],
-  '/docs/playbooks/troubleshooting/': [
-    '障害をエスカレーションするには？',
-    '重大度レベルはどう定義されていますか？',
-    'まずどこから確認すべきですか？',
-  ],
-  '/docs/playbooks/runbook/': [
-    'Welcome Reward Canvas を設定するには？',
-    '公開前に何を確認すべきですか？',
-    'どんな audience 定義が必要ですか？',
-  ],
-};
-
 const LOCALE_COPY = {
   'en-US': {
     assistantName: 'Atlas Assistant',
@@ -182,42 +129,6 @@ const LOCALE_COPY = {
     minimise: 'Minimise',
     expand: 'Expand',
   },
-  'ja-JP': {
-    assistantName: 'Atlas Assistant',
-    status: 'Atlas Wiki に基づく回答',
-    trustLabel: '検索ベースの案内',
-    buttonTitle: 'Atlas Assistant に質問する',
-    placeholder: 'タスク、ガイド、市場差分について質問する',
-    searching: 'Atlas Wiki を検索しています',
-    loadingIndex: 'Atlas Wiki の索引を読み込んでいます…',
-    openTopSource: '最上位ソースを開く',
-    askAnother: '別の質問をする',
-    noResultsTitle: '根拠のある回答が見つかりませんでした',
-    noResultsBody:
-      '質問に強く一致する Atlas Wiki のページが見つかりませんでした。もう少し具体的なタスク名、機能領域、市場名で試してください。',
-    lowConfidenceTitle: '近い関連ページ',
-    highConfidenceTitle: '最も関連性の高いページ',
-    sourcesLabel: 'ソース',
-    relatedLabel: '次に役立つページ',
-    suggestedLabel: 'おすすめの質問',
-    askLabel: 'この領域について質問する',
-    pageLabel: '現在の文脈',
-    sourceCount: (count) => `${count} 件の Atlas Wiki ソースに基づく回答`,
-    currentContext: (topic) => `現在 **${topic}** を表示しています。`,
-    welcome:
-      'タスクに近い形で質問してください。Atlas Wiki をローカル検索し、最も近いページを返しながら、必ずソース記事に結び付けて案内します。',
-    answerLead: (title) => `まず **${title}** から確認してください。`,
-    answerBody: (summary) => summary,
-    answerFollowUp: (title) => `次の手順や補足として **${title}** も確認すると役立ちます。`,
-    lowConfidenceBody:
-      '関連ページは見つかりましたが、単独で質問全体に答えきれるページは見当たりませんでした。',
-    sourceOpen: '開く',
-    sourceBestMatch: '最適候補',
-    sourceRelated: '関連ページ',
-    close: '閉じる',
-    minimise: '最小化',
-    expand: '開く',
-  },
 };
 
 function getCachedSearchIndex(searchIndexUrl) {
@@ -251,7 +162,7 @@ function normalizeDocPath(path) {
 }
 
 function pathWithoutLocale(path) {
-  return normalizeDocPath((path || '').replace(/^\/ja-JP(?=\/)/, ''));
+  return normalizeDocPath(path || '/');
 }
 
 function extractTopic(pageContext) {
@@ -580,7 +491,6 @@ export default function AtlasChat() {
   const {withBaseUrl} = useBaseUrlUtils();
   const locale = LOCALE_COPY[i18n.currentLocale] ? i18n.currentLocale : 'en-US';
   const copy = LOCALE_COPY[locale];
-  const isJapanese = locale === 'ja-JP';
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimised, setIsMinimised] = useState(false);
   const [query, setQuery] = useState('');
@@ -597,22 +507,17 @@ export default function AtlasChat() {
     basePath && basePath !== '/' && rawPath.startsWith(basePath)
       ? rawPath.slice(basePath.length) || '/'
       : rawPath;
-  const pathWithoutAnyLocale = pathWithoutBase.replace(/^\/(?:en-US|ja-JP)(?=\/|$)/, '') || '/';
-  const localePrefix = `/${locale}`;
-  const currentPath = pathWithoutBase.startsWith(localePrefix)
-    ? pathWithoutBase.slice(localePrefix.length) || '/'
-    : pathWithoutBase;
+  const pathWithoutAnyLocale = pathWithoutBase.replace(/^\/en-US(?=\/|$)/, '') || '/';
+  const localePrefix = '/en-US';
+  const currentPath = pathWithoutBase.startsWith(localePrefix) ? pathWithoutBase.slice(localePrefix.length) || '/' : pathWithoutBase;
   const normalizedPath = normalizeDocPath(currentPath);
   const currentSection = normalizedPath.split('/')[2] || 'docs';
   const hideOnRoute = pathWithoutAnyLocale === '/sneak-peek';
   const pageContext = PAGE_CONTEXT[normalizedPath] || null;
   const topic = extractTopic(pageContext);
-  const promptSuggestionsMap = isJapanese ? JAPANESE_SUGGESTED_QUERIES : SUGGESTED_QUERIES;
   const promptSuggestions =
-    promptSuggestionsMap[normalizedPath] ||
-    (isJapanese
-      ? ['このページの要点は？', '次に読むべきガイドは？', '市場差分はありますか？']
-      : ['What does this page cover?', 'What should I read next?', 'Are there market differences?']);
+    SUGGESTED_QUERIES[normalizedPath] ||
+    ['What does this page cover?', 'What should I read next?', 'Are there market differences?'];
 
   const welcomeMessage = useMemo(
     () => ({

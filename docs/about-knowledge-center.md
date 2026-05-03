@@ -86,7 +86,7 @@ Atlas Wiki currently includes:
 - **Front-end Guide** for customer-facing platform behaviors and market configurations
 - **Admin Portal Guide** for operating the Byte Commerce Admin Portal
 - **Playbooks** for execution workflows such as promotions and lifecycle campaigns
-- **English and Japanese support** so content is more accessible across markets
+- **English-first support** so the active market audience has one maintained source of truth
 - **Search across titles, headings, and article content** to help users find the right guide faster
 - **Structured navigation** to make complex documentation easier to browse
 - **Localized documentation experiences** that preserve route structure by language

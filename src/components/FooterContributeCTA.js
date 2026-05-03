@@ -18,20 +18,6 @@ const COPY = {
       cta: 'Open What’s New',
     },
   },
-  'ja-JP': {
-    contribute: {
-      eyebrow: '12番目のシークレット',
-      title: 'Atlas Wiki に寄稿する',
-      body: '次にチームへ共有したい手順書、ガイド、プレイブックを追加しましょう。',
-      cta: 'Studio を開く',
-    },
-    whatsNew: {
-      eyebrow: '最新情報',
-      title: 'Atlas の新機能を見る',
-      body: '最近のリリース、改善、今後の機能をまとめて確認できます。',
-      cta: 'What’s New を開く',
-    },
-  },
 };
 
 export default function FooterContributeCTA() {

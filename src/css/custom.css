@@ -1050,46 +1050,6 @@ table tr:nth-child(even) td {
   }
 }
 
-html[lang='ja-JP'] {
-  font-size: 15px;
-}
-
-html[lang='ja-JP'] body,
-html[lang='ja-JP'] .markdown,
-html[lang='ja-JP'] .menu__link,
-html[lang='ja-JP'] .navbar__link,
-html[lang='ja-JP'] .footer__link-item,
-html[lang='ja-JP'] button,
-html[lang='ja-JP'] a {
-  word-break: keep-all;
-  overflow-wrap: anywhere;
-  line-break: strict;
-}
-
-html[lang='ja-JP'] .footer__link-item {
-  line-height: 1.8;
-}
-
-html[lang='ja-JP'] .footer-contribute-cta__title {
-  font-size: 1.06rem;
-  line-height: 1.3;
-}
-
-html[lang='ja-JP'] .footer-contribute-cta__body {
-  font-size: 0.9rem;
-}
-
-html[lang='ja-JP'] .navbar__title {
-  font-size: 1.15rem;
-  letter-spacing: 0.8px;
-}
-
-html[lang='ja-JP'] .menu__list > .menu__list-item > .menu__list-item-collapsible .menu__link,
-html[lang='ja-JP'] .footer__title {
-  letter-spacing: 0.3px;
-  text-transform: none;
-}
-
 .DocSearch-Button-Placeholder {
   color: var(--kc-theme-toggle-text) !important;
   font-size: 0.82rem !important;

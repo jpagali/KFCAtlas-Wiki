@@ -4,23 +4,11 @@ import {buildNormalizedSearchFields} from '../src/utils/searchNormalization.mjs'
 
 const rootDir = process.cwd();
 const docsDir = path.join(rootDir, 'docs');
-const jaDocsDir = path.join(
-  rootDir,
-  'i18n',
-  'ja-JP',
-  'docusaurus-plugin-content-docs',
-  'current',
-);
 const localeConfigs = [
   {
     locale: 'en-US',
     docsDir,
     outputPath: path.join(rootDir, 'static', 'search-index.en-US.json'),
-  },
-  {
-    locale: 'ja-JP',
-    docsDir: jaDocsDir,
-    outputPath: path.join(rootDir, 'static', 'search-index.ja-JP.json'),
   },
 ];
 
@@ -75,10 +63,7 @@ function extractHeadings(source) {
 }
 
 function extractSummary(source, locale) {
-  const summaryHeadingPatterns =
-    locale === 'ja-JP'
-      ? [/^##\s+このガイドで扱う内容\s*$/m, /^##\s+目的\s*$/m]
-      : [/^##\s+What this guide covers\s*$/m, /^##\s+Goal\s*$/m];
+  const summaryHeadingPatterns = [/^##\s+What this guide covers\s*$/m, /^##\s+Goal\s*$/m];
 
   for (const pattern of summaryHeadingPatterns) {
     const match = source.match(pattern);
@@ -97,9 +82,8 @@ function extractSummary(source, locale) {
     .filter(Boolean)
     .filter((block) => !block.startsWith('---'))
     .filter((block) => !/^Part of the\b/.test(block))
-    .filter((block) => !/^.*の一部/.test(block))
     .filter((block) => !/^Step\s+\d+/i.test(block))
-    .filter((block) => !/^ステップ\s*\d+/i.test(block));
+    .filter((block) => !/^Step\s+\d+/i.test(block));
 
   return limitSummary(fallbackParagraphs[0] || '');
 }
@@ -126,11 +110,11 @@ function stripMarkdown(source) {
 }
 
 function toDocUrl(locale, filePath) {
-  const docsRoot = locale === 'ja-JP' ? jaDocsDir : docsDir;
+  const docsRoot = docsDir;
   const relativePath = path.relative(docsRoot, filePath).replace(/\\/g, '/');
   const withoutExtension = relativePath.replace(/\.md$/, '');
   const normalizedPath = withoutExtension.replace(/\/index$/, '');
-  const prefix = locale === 'ja-JP' ? '/ja-JP/docs' : '/docs';
+  const prefix = '/docs';
   return normalizedPath ? `${prefix}/${normalizedPath}/` : `${prefix}/`;
 }
 
@@ -141,7 +125,7 @@ function createRecord(locale, filePath) {
   const title = stripMarkdown(frontMatter.title || headings[0] || path.basename(path.dirname(filePath)));
   const summary = extractSummary(content, locale);
 
-  const relativePath = path.relative(locale === 'ja-JP' ? jaDocsDir : docsDir, filePath).replace(/\\/g, '/');
+  const relativePath = path.relative(docsDir, filePath).replace(/\\/g, '/');
   const section = relativePath.split('/')[0] || 'docs';
 
   return {

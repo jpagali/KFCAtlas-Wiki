@@ -4,13 +4,6 @@ import {spawnSync} from 'node:child_process';
 
 const rootDir = process.cwd();
 const docsDir = path.join(rootDir, 'docs');
-const jaDocsDir = path.join(
-  rootDir,
-  'i18n',
-  'ja-JP',
-  'docusaurus-plugin-content-docs',
-  'current',
-);
 const buildDir = path.join(rootDir, 'build');
 const localeConfigs = [
   {
@@ -18,13 +11,6 @@ const localeConfigs = [
     docsDir,
     searchIndexPath: path.join(rootDir, 'static', 'search-index.en-US.json'),
     buildAssetPath: path.join(buildDir, 'search-index.en-US.json'),
-    sizeBudgetBytes: 250 * 1024,
-  },
-  {
-    locale: 'ja-JP',
-    docsDir: jaDocsDir,
-    searchIndexPath: path.join(rootDir, 'static', 'search-index.ja-JP.json'),
-    buildAssetPath: path.join(buildDir, 'search-index.ja-JP.json'),
     sizeBudgetBytes: 250 * 1024,
   },
 ];
@@ -36,10 +22,6 @@ const criticalPaths = [
   '/docs/release-notes/',
   '/docs/admin-portal-guide/agents/',
   '/docs/frontend/customer-journey/',
-  '/ja-JP/',
-  '/ja-JP/docs/about-knowledge-center/',
-  '/ja-JP/docs/admin-portal-guide/',
-  '/ja-JP/docs/frontend/customer-journey/',
 ];
 
 const failures = [];
@@ -99,11 +81,11 @@ function walkMarkdownFiles(dir) {
 }
 
 function toDocUrl(locale, filePath) {
-  const docsRoot = locale === 'ja-JP' ? jaDocsDir : docsDir;
+  const docsRoot = docsDir;
   const relativePath = path.relative(docsRoot, filePath).replace(/\\/g, '/');
   const withoutExtension = relativePath.replace(/\.md$/, '');
   const normalizedPath = withoutExtension.replace(/\/index$/, '');
-  const prefix = locale === 'ja-JP' ? '/ja-JP/docs' : '/docs';
+  const prefix = '/docs';
   return normalizedPath ? `${prefix}/${normalizedPath}/` : `${prefix}/`;
 }
 
@@ -248,25 +230,6 @@ function validateBuildOutput() {
   ensureFileMissing(path.join(buildDir, 'search-index.json'), 'legacy combined build search index');
 }
 
-function validateLocaleParity() {
-  logSection('Validate locale parity');
-
-  const englishUrls = new Set(walkMarkdownFiles(docsDir).map((filePath) => toDocUrl('en-US', filePath)));
-  const japaneseUrls = new Set(walkMarkdownFiles(jaDocsDir).map((filePath) => toDocUrl('ja-JP', filePath).replace('/ja-JP', '')));
-
-  const missingJapanese = [...englishUrls].filter((url) => !japaneseUrls.has(url));
-
-  if (missingJapanese.length > 0) {
-    warn(
-      `Japanese docs are missing ${missingJapanese.length} English routes. Sample: ${missingJapanese
-        .slice(0, 5)
-        .join(', ')}`,
-    );
-  } else {
-    pass('Japanese docs mirror all English doc routes');
-  }
-}
-
 function printSummary() {
   logSection('Summary');
   if (warnings.length === 0) {
@@ -295,7 +258,5 @@ if (runStep('node', ['scripts/generate-search-index.mjs'], 'Generate search inde
 if (runStep('npm', ['run', 'build'], 'Production build')) {
   validateBuildOutput();
 }
-
-validateLocaleParity();
 
 process.exitCode = printSummary();

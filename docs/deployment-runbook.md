@@ -34,7 +34,7 @@ This repo should follow a `staging` first, `main` second promotion model.
 
 - User-visible release notes belong with the `main` promotion by default
 - If staging needs its own internal breadcrumb, keep it brief and do not present it like a production launch
-- When a change affects both English and Japanese experiences, update both locales together before promotion
+- When a change affects multiple locales, update or retire those locales together before promotion
 
 ## Quick Checklist
 

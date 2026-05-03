@@ -6,7 +6,6 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 const LABELS = {
   'en-US': 'Contribute',
-  'ja-JP': '寄稿',
 };
 
 function getViewportMode() {

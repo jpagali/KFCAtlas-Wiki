@@ -10,7 +10,6 @@
     "docusaurus": "docusaurus",
     "start": "docusaurus build && docusaurus serve --dir build --port 3000",
     "start:dev-en": "docusaurus start --locale en-US --port 3001",
-    "start:dev-ja": "docusaurus start --locale ja-JP --port 3002",
     "start:dev": "docusaurus build && docusaurus serve --dir build --port 3001",
     "build": "docusaurus build",
     "preview": "docusaurus serve --dir build --port 3005",

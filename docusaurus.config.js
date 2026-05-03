@@ -57,15 +57,11 @@ const config = {
 
   i18n: {
     defaultLocale: 'en-US',
-    locales: ['en-US', 'ja-JP'],
+    locales: ['en-US'],
     localeConfigs: {
       'en-US': {
         htmlLang: 'en-US',
         label: 'EN',
-      },
-      'ja-JP': {
-        htmlLang: 'ja-JP',
-        label: 'JP',
       },
     },
   },
