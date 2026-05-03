@@ -13,6 +13,15 @@ html[data-theme='light'] .page {
     linear-gradient(180deg, var(--kc-canvas) 0%, var(--kc-canvas) 100%);
 }
 
+.pagePrototypeOnly {
+  padding: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background:
+    radial-gradient(circle at top left, rgba(228, 0, 43, 0.16), transparent 26%),
+    linear-gradient(180deg, #120c0a 0%, #120c0a 100%);
+}
+
 .hero,
 .prototypeWrap {
   width: min(1280px, 100%);
@@ -109,6 +118,61 @@ html[data-theme='light'] .heroCopy .notice {
   margin-top: 24px;
 }
 
+.prototypeWrapPrototypeOnly {
+  width: 100%;
+  margin-top: 0;
+  padding: 18px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.prototypeToolbar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.secondaryButton,
+.restartButton {
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid rgba(74, 45, 35, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 251, 246, 0.9);
+  color: #231815;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.secondaryButton {
+  background: rgba(46, 30, 24, 0.82);
+  color: #fff7f1;
+}
+
+.secondaryButton:hover,
+.restartButton:hover {
+  text-decoration: none;
+}
+
+.secondaryButton:hover {
+  background: rgba(62, 42, 35, 0.94);
+  color: #fff7f1;
+}
+
+.restartButton:hover {
+  background: rgba(255, 255, 255, 0.98);
+}
+
 .prototypeStage {
   position: relative;
   width: 100%;
@@ -122,66 +186,15 @@ html[data-theme='light'] .heroCopy .notice {
   background: rgba(10, 10, 10, 0.92);
 }
 
-.frameShellImmersive {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  border-radius: 0;
-  border: 0;
-  background: #050505;
-}
-
 html[data-theme='light'] .frameShell {
   border: 1px solid rgba(74, 45, 35, 0.08);
   background: rgba(255, 250, 245, 0.96);
 }
 
-.sideControls {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 220px;
-  padding: 16px;
+.frameShellPrototypeOnly {
+  height: calc(100vh - 48px - 18px - 18px - 12px);
+  height: calc(100dvh - 48px - 18px - 18px - 12px);
   border-radius: 24px;
-  background:
-    linear-gradient(180deg, rgba(255, 251, 246, 0.98), rgba(245, 236, 227, 0.98));
-  border: 1px solid rgba(74, 45, 35, 0.08);
-  box-shadow: 0 20px 44px rgba(47, 25, 16, 0.12);
-  z-index: 2;
-}
-
-.sideControlsKicker {
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #e4002b;
-}
-
-.sideControlsCopy {
-  margin: 10px 0 16px;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: rgba(35, 24, 21, 0.74);
-}
-
-.sideControlsButton {
-  width: 100%;
-  min-height: 46px;
-  border: 0;
-  border-radius: 999px;
-  background: #231815;
-  color: #fff8f2;
-  font-family: 'Barlow Condensed', 'Bebas Neue', sans-serif;
-  font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
-.sideControlsButton:hover {
-  filter: brightness(1.05);
 }
 
 .prototypeFrame {
@@ -194,11 +207,22 @@ html[data-theme='light'] .frameShell {
   background: #050505;
 }
 
-.frameShellImmersive .prototypeFrame {
-  height: 100vh;
-  height: 100dvh;
-  min-height: 100vh;
-  min-height: 100dvh;
+.frameShellPrototypeOnly .prototypeFrame {
+  height: 100%;
+  min-height: 100%;
+}
+
+body.prototype-only-view .navbar,
+body.prototype-only-view footer,
+body.prototype-only-view .locale-disclaimer {
+  display: none;
+}
+
+body.prototype-only-view main[class*='docMainContainer'],
+body.prototype-only-view main[class*='blogWrapper'],
+body.prototype-only-view main[class*='container'],
+body.prototype-only-view main {
+  max-width: none;
 }
 
 @media (max-width: 640px) {
@@ -206,23 +230,35 @@ html[data-theme='light'] .frameShell {
     padding: 20px 14px 40px;
   }
 
-  .prototypeStage {
-    display: grid;
-    gap: 14px;
-  }
-
-  .sideControls {
-    position: static;
-    order: -1;
-    width: auto;
-  }
-
   .heroCopy {
     padding: 22px;
   }
+
+  .prototypeToolbar {
+    justify-content: stretch;
+  }
+
+  .prototypeWrapPrototypeOnly {
+    padding: 12px;
+  }
+
+  .secondaryButton,
+  .restartButton {
+    width: 100%;
+  }
+
+  .prototypeToolbar {
+    flex-direction: column;
+  }
+
   .prototypeFrame {
     height: calc(100vh - 90px);
     height: calc(100dvh - 90px);
     min-height: 720px;
+  }
+
+  .frameShellPrototypeOnly {
+    height: calc(100vh - 12px - 12px - 88px);
+    height: calc(100dvh - 12px - 12px - 88px);
   }
 }

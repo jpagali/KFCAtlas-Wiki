@@ -3680,6 +3680,30 @@
   },
   {
     "locale": "ja-JP",
+    "title": "\"日本 — クリスマス注文\"",
+    "headings": [
+      "背景",
+      "商品例: KFC クリスマス パーティーバーレル",
+      "日本での予約フロー",
+      "1. キャンペーン開始（10月〜11月）",
+      "2. 顧客が予約する",
+      "3. 予約確認",
+      "4. 受け取り（12月23日〜25日）",
+      "なぜ事前決済が必要か",
+      "需要とキャパシティ管理",
+      "設定サマリー",
+      "他市場への示唆"
+    ],
+    "summary": "日本 — クリスマス注文",
+    "section": "frontend",
+    "url": "/ja-JP/docs/frontend/features/menu-item-reservation-japan-christmas/",
+    "normalizedTitle": "日本 クリスマス注文",
+    "normalizedHeadings": "背景 商品例 kfc クリスマス パーティーバーレル 日本での予約フロー 1 キャンペーン開始 10月 11月 2 顧客が予約する 3 予約確認 4 受け取り 12月23日 25日 なぜ事前決済が必要か 需要とキャパシティ管理 設定サマリー 他市場への示唆",
+    "normalizedSummary": "日本 クリスマス注文",
+    "normalizedSection": "frontend"
+  },
+  {
+    "locale": "ja-JP",
     "title": "\"メニュー商品の予約\"",
     "headings": [
       "機能概要",

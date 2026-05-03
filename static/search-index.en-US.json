@@ -3173,13 +3173,21 @@
     "locale": "en-US",
     "title": "Menu Landing",
     "headings": [
-      "Why This Step Is Designed This Way"
+      "Why This Step Is Designed This Way",
+      "What The Design Is Doing",
+      "Why The Design Works",
+      "1. Improved Structure And Comprehension",
+      "2. Strategic Nudges And Education",
+      "3. High Impact Craveability",
+      "4. Better Secret Menu Entry Point",
+      "5. Stronger Convention With Better Scalability",
+      "Design Takeaway"
     ],
     "summary": "Menu Landing",
     "section": "frontend",
     "url": "/docs/frontend/customer-journey/find-products/menu-landing/",
     "normalizedTitle": "menu landing",
-    "normalizedHeadings": "why this step is designed this way",
+    "normalizedHeadings": "why this step is designed this way what the design is doing why the design works 1 improved structure and comprehension 2 strategic nudges and education 3 high impact craveability 4 better secret menu entry point 5 stronger convention with better scalability design takeaway",
     "normalizedSummary": "menu landing",
     "normalizedSection": "frontend"
   },
