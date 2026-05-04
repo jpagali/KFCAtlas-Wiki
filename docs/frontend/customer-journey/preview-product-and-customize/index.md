@@ -1,16 +1,14 @@
 ---
-title: Step 4 - Preview Product and Customize
+title: Preview Product and Customize (Moved)
 ---
 
-# Step 4 - Preview Product and Customize
+# Preview Product and Customize (Moved)
 
-This step covers the point where customers inspect a likely product, understand what is included, and personalize it before adding it to the order.
+This breakdown now sits under **Step 2 - Find Products**, inside the **Product Detail Page (PDP)** section.
 
-## Pages in This Section
+Use these pages instead:
 
-- [Product Detail](/docs/frontend/customer-journey/preview-product-and-customize/product-detail)
+- [Meal Size Prompt](/docs/frontend/customer-journey/preview-product-and-customize/product-detail)
+- [Product Customization](/docs/frontend/customer-journey/preview-product-and-customize/customize)
 - [Add-on and Cross-sell](/docs/frontend/customer-journey/preview-product-and-customize/add-on-and-cross-sell)
-- [Customize](/docs/frontend/customer-journey/preview-product-and-customize/customize)
 - [Nutrition and Allergen](/docs/frontend/customer-journey/preview-product-and-customize/nutrition-and-allergen)
-
-`<Mockup to be provided here>`

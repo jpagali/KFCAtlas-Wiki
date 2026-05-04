@@ -16,11 +16,10 @@ Each interaction in this journey has its own subpage. Those pages are where we c
 | Step | Journey Stage | What the customer is trying to do |
 |---|---|---|
 | 1 | **Setup Order** | Set location, order mode, store, and schedule so the platform can show the right menu |
-| 2 | **Find Products** | Browse the menu, categories, and product entry points |
+| 2 | **Find Products** | Browse the menu, move into PDP, choose size, customize products, and review add-ons |
 | 3 | **Find Deals and Rewards** | Discover promotions, vouchers, loyalty benefits, and value-led offers |
-| 4 | **Preview Product and Customize** | Understand a product, choose modifiers, and review add-ons before adding it |
-| 5 | **Order and Get** | Review the cart, apply promos, choose payment, and place the order |
-| 6 | **Track Order** | Follow pickup or delivery status until handoff is complete |
+| 4 | **Order and Get** | Review the cart, apply promos, choose payment, and place the order |
+| 5 | **Track Order** | Follow pickup or delivery status until handoff is complete |
 
 ## Supporting Journeys
 
@@ -44,7 +43,6 @@ Each interaction in this journey has its own subpage. Those pages are where we c
 - Get Help
 - Find Products
 - Find Deals & Rewards
-- Preview Product & Customize
 - Order + Get
 - Track Order
 - Find a Store

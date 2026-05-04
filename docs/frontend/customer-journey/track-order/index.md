@@ -1,8 +1,8 @@
 ---
-title: Step 6 - Track Order
+title: Step 5 - Track Order
 ---
 
-# Step 6 - Track Order
+# Step 5 - Track Order
 
 This step covers the post-purchase experience after the order is placed.
 

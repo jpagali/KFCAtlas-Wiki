@@ -43,7 +43,17 @@ const sidebars = {
                     'frontend/customer-journey/find-products/home-page',
                     'frontend/customer-journey/find-products/menu-landing',
                     'frontend/customer-journey/find-products/menu-listing',
-                    'frontend/customer-journey/find-products/format-options',
+                    {
+                      type: 'category',
+                      label: 'Product Detail Page (PDP)',
+                      link: { type: 'doc', id: 'frontend/customer-journey/find-products/format-options' },
+                      items: [
+                        'frontend/customer-journey/preview-product-and-customize/product-detail',
+                        'frontend/customer-journey/preview-product-and-customize/customize',
+                        'frontend/customer-journey/preview-product-and-customize/add-on-and-cross-sell',
+                        'frontend/customer-journey/preview-product-and-customize/nutrition-and-allergen',
+                      ],
+                    },
                     'frontend/customer-journey/find-products/byob-select',
                     'frontend/customer-journey/find-products/childrens-only',
                     'frontend/customer-journey/find-products/catering-menu',
@@ -62,18 +72,7 @@ const sidebars = {
                 },
                 {
                   type: 'category',
-                  label: 'Step 4 - Preview Product and Customize',
-                  link: { type: 'doc', id: 'frontend/customer-journey/preview-product-and-customize/index' },
-                  items: [
-                    'frontend/customer-journey/preview-product-and-customize/product-detail',
-                    'frontend/customer-journey/preview-product-and-customize/add-on-and-cross-sell',
-                    'frontend/customer-journey/preview-product-and-customize/customize',
-                    'frontend/customer-journey/preview-product-and-customize/nutrition-and-allergen',
-                  ],
-                },
-                {
-                  type: 'category',
-                  label: 'Step 5 - Order and Get',
+                  label: 'Step 4 - Order and Get',
                   link: { type: 'doc', id: 'frontend/customer-journey/order-and-get/index' },
                   items: [
                     'frontend/customer-journey/order-and-get/cart',
@@ -82,7 +81,7 @@ const sidebars = {
                 },
                 {
                   type: 'category',
-                  label: 'Step 6 - Track Order',
+                  label: 'Step 5 - Track Order',
                   link: { type: 'doc', id: 'frontend/customer-journey/track-order/index' },
                   items: [
                     'frontend/customer-journey/track-order/pickup',

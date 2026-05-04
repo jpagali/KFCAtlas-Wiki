@@ -1,8 +1,8 @@
 ---
-title: Step 5 - Order and Get
+title: Step 4 - Order and Get
 ---
 
-# Step 5 - Order and Get
+# Step 4 - Order and Get
 
 This step covers the conversion stage, where the customer moves from intent into a completed order.
 
