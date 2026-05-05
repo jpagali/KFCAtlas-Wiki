@@ -151,6 +151,7 @@ sidebar_position: 3
     </div>
 
     <div className="release-archive">
+      <a href="/docs/release-notes/2026-05-06">2026.05.06</a>
       <a href="/docs/release-notes/2026-05-04">2026.05.04</a>
       <a href="/docs/release-notes/2026-03-23">2026.03.23</a>
       <a href="/docs/release-notes/2026-03-22">2026.03.22</a>

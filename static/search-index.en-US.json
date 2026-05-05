@@ -3129,16 +3129,29 @@
   },
   {
     "locale": "en-US",
-    "title": "Format Options",
+    "title": "Product Detail Page (PDP)",
     "headings": [
-      "Why This Step Is Designed This Way"
+      "Why This Step Is Designed This Way",
+      "PDP Flow At A Glance",
+      "What The Design Is Doing",
+      "Why The Design Works",
+      "1. It Improves Decision Clarity",
+      "2. It Preserves Forward Momentum",
+      "3. It Supports Better Merchandising Without Confusion",
+      "4. It Keeps The Product Feel Intentional",
+      "Screen Breakdown",
+      "1. Meal Size Prompt",
+      "2. Product Customization",
+      "3. Add on and Cross sell",
+      "Design Takeaway",
+      "Related Deep Dive Pages"
     ],
-    "summary": "Format Options",
+    "summary": "Product Detail Page (PDP)",
     "section": "frontend",
     "url": "/docs/frontend/customer-journey/find-products/format-options/",
-    "normalizedTitle": "format options",
-    "normalizedHeadings": "why this step is designed this way",
-    "normalizedSummary": "format options",
+    "normalizedTitle": "product detail page pdp",
+    "normalizedHeadings": "why this step is designed this way pdp flow at a glance what the design is doing why the design works 1 it improves decision clarity 2 it preserves forward momentum 3 it supports better merchandising without confusion 4 it keeps the product feel intentional screen breakdown 1 meal size prompt 2 product customization 3 add on and cross sell design takeaway related deep dive pages",
+    "normalizedSummary": "product detail page pdp",
     "normalizedSection": "frontend"
   },
   {
@@ -3159,13 +3172,14 @@
     "locale": "en-US",
     "title": "Step 2 Find Products",
     "headings": [
-      "Pages in This Section"
+      "Pages in This Section",
+      "PDP Subpages"
     ],
     "summary": "This step covers how customers discover what they can order once the ordering context is set.",
     "section": "frontend",
     "url": "/docs/frontend/customer-journey/find-products/",
     "normalizedTitle": "step 2 find products",
-    "normalizedHeadings": "pages in this section",
+    "normalizedHeadings": "pages in this section pdp subpages",
     "normalizedSummary": "this step covers how customers discover what they can order once the ordering context is set",
     "normalizedSection": "frontend"
   },
@@ -3173,6 +3187,8 @@
     "locale": "en-US",
     "title": "Menu Landing",
     "headings": [
+      "Screen Summary",
+      "Placeholder Notes",
       "Why This Step Is Designed This Way",
       "What The Design Is Doing",
       "Why The Design Works",
@@ -3181,28 +3197,34 @@
       "3. High Impact Craveability",
       "4. Better Secret Menu Entry Point",
       "5. Stronger Convention With Better Scalability",
-      "Design Takeaway"
+      "Design Takeaway",
+      "Next Screen"
     ],
     "summary": "Menu Landing",
     "section": "frontend",
     "url": "/docs/frontend/customer-journey/find-products/menu-landing/",
     "normalizedTitle": "menu landing",
-    "normalizedHeadings": "why this step is designed this way what the design is doing why the design works 1 improved structure and comprehension 2 strategic nudges and education 3 high impact craveability 4 better secret menu entry point 5 stronger convention with better scalability design takeaway",
+    "normalizedHeadings": "screen summary placeholder notes why this step is designed this way what the design is doing why the design works 1 improved structure and comprehension 2 strategic nudges and education 3 high impact craveability 4 better secret menu entry point 5 stronger convention with better scalability design takeaway next screen",
     "normalizedSummary": "menu landing",
     "normalizedSection": "frontend"
   },
   {
     "locale": "en-US",
-    "title": "Menu Listing",
+    "title": "PLP (Product Listing Page)",
     "headings": [
-      "Why This Step Is Designed This Way"
+      "Why This Is A PLP",
+      "Why This Step Is Designed This Way",
+      "Placeholder Notes",
+      "What This Screen Should Usually Communicate",
+      "Design Read On This Screen",
+      "Placeholder Commentary To Reuse For Future Uploads"
     ],
-    "summary": "Menu Listing",
+    "summary": "PLP (Product Listing Page)",
     "section": "frontend",
     "url": "/docs/frontend/customer-journey/find-products/menu-listing/",
-    "normalizedTitle": "menu listing",
-    "normalizedHeadings": "why this step is designed this way",
-    "normalizedSummary": "menu listing",
+    "normalizedTitle": "plp product listing page",
+    "normalizedHeadings": "why this is a plp why this step is designed this way placeholder notes what this screen should usually communicate design read on this screen placeholder commentary to reuse for future uploads",
+    "normalizedSummary": "plp product listing page",
     "normalizedSection": "frontend"
   },
   {
@@ -3364,14 +3386,14 @@
   },
   {
     "locale": "en-US",
-    "title": "Step 5 Order and Get",
+    "title": "Step 4 Order and Get",
     "headings": [
       "Pages in This Section"
     ],
     "summary": "This step covers the conversion stage, where the customer moves from intent into a completed order.",
     "section": "frontend",
     "url": "/docs/frontend/customer-journey/order-and-get/",
-    "normalizedTitle": "step 5 order and get",
+    "normalizedTitle": "step 4 order and get",
     "normalizedHeadings": "pages in this section",
     "normalizedSummary": "this step covers the conversion stage where the customer moves from intent into a completed order",
     "normalizedSection": "frontend"
@@ -3380,42 +3402,57 @@
     "locale": "en-US",
     "title": "Add on and Cross sell",
     "headings": [
-      "Why This Step Is Designed This Way"
+      "Why This Step Is Designed This Way",
+      "What This Screen Is Doing",
+      "Why The Design Works",
+      "1. It Respects The Primary Decision",
+      "2. It Keeps Merchandising Timed Correctly",
+      "3. It Makes Optionality Feel Lightweight",
+      "4. It Extends The KFC Decision Moment",
+      "Design Principle",
+      "Design Takeaway"
     ],
     "summary": "Add on and Cross sell",
     "section": "frontend",
     "url": "/docs/frontend/customer-journey/preview-product-and-customize/add-on-and-cross-sell/",
     "normalizedTitle": "add on and cross sell",
-    "normalizedHeadings": "why this step is designed this way",
+    "normalizedHeadings": "why this step is designed this way what this screen is doing why the design works 1 it respects the primary decision 2 it keeps merchandising timed correctly 3 it makes optionality feel lightweight 4 it extends the kfc decision moment design principle design takeaway",
     "normalizedSummary": "add on and cross sell",
     "normalizedSection": "frontend"
   },
   {
     "locale": "en-US",
-    "title": "Customize",
+    "title": "Product Customization",
     "headings": [
-      "Why This Step Is Designed This Way"
+      "Why This Step Is Designed This Way",
+      "What This Screen Should Communicate",
+      "What The Design Is Doing",
+      "Why The Design Works",
+      "1. It Supports Confidence Through Structure",
+      "2. It Keeps The Product Legible",
+      "3. It Makes Personalization Feel Safe",
+      "4. It Prepares The Customer For Confirmation",
+      "Design Notes",
+      "Design Takeaway"
     ],
-    "summary": "Customize",
+    "summary": "Product Customization",
     "section": "frontend",
     "url": "/docs/frontend/customer-journey/preview-product-and-customize/customize/",
-    "normalizedTitle": "customize",
-    "normalizedHeadings": "why this step is designed this way",
-    "normalizedSummary": "customize",
+    "normalizedTitle": "product customization",
+    "normalizedHeadings": "why this step is designed this way what this screen should communicate what the design is doing why the design works 1 it supports confidence through structure 2 it keeps the product legible 3 it makes personalization feel safe 4 it prepares the customer for confirmation design notes design takeaway",
+    "normalizedSummary": "product customization",
     "normalizedSection": "frontend"
   },
   {
     "locale": "en-US",
-    "title": "Step 4 Preview Product and Customize",
-    "headings": [
-      "Pages in This Section"
-    ],
-    "summary": "This step covers the point where customers inspect a likely product, understand what is included, and personalize it before adding it to the order.",
+    "title": "Preview Product and Customize (Moved)",
+    "headings": [],
+    "summary": "Preview Product and Customize (Moved)",
     "section": "frontend",
     "url": "/docs/frontend/customer-journey/preview-product-and-customize/",
-    "normalizedTitle": "step 4 preview product and customize",
-    "normalizedHeadings": "pages in this section",
-    "normalizedSummary": "this step covers the point where customers inspect a likely product understand what is included and personalize it before adding it to the order",
+    "normalizedTitle": "preview product and customize moved",
+    "normalizedHeadings": "",
+    "normalizedSummary": "preview product and customize moved",
     "normalizedSection": "frontend"
   },
   {
@@ -3434,16 +3471,24 @@
   },
   {
     "locale": "en-US",
-    "title": "Product Detail",
+    "title": "Meal Size Prompt",
     "headings": [
-      "Why This Step Is Designed This Way"
+      "Why This Step Is Designed This Way",
+      "What This Screen Is Doing",
+      "Why The Design Works",
+      "1. It Reduces Hidden Complexity",
+      "2. It Makes Trade offs Easy To Compare",
+      "3. It Protects Momentum",
+      "4. It Creates A Better Foundation For Customization",
+      "Why This Is PDP",
+      "Design Takeaway"
     ],
-    "summary": "Product Detail",
+    "summary": "Meal Size Prompt",
     "section": "frontend",
     "url": "/docs/frontend/customer-journey/preview-product-and-customize/product-detail/",
-    "normalizedTitle": "product detail",
-    "normalizedHeadings": "why this step is designed this way",
-    "normalizedSummary": "product detail",
+    "normalizedTitle": "meal size prompt",
+    "normalizedHeadings": "why this step is designed this way what this screen is doing why the design works 1 it reduces hidden complexity 2 it makes trade offs easy to compare 3 it protects momentum 4 it creates a better foundation for customization why this is pdp design takeaway",
+    "normalizedSummary": "meal size prompt",
     "normalizedSection": "frontend"
   },
   {
@@ -3561,14 +3606,14 @@
   },
   {
     "locale": "en-US",
-    "title": "Step 6 Track Order",
+    "title": "Step 5 Track Order",
     "headings": [
       "Pages in This Section"
     ],
     "summary": "This step covers the post purchase experience after the order is placed.",
     "section": "frontend",
     "url": "/docs/frontend/customer-journey/track-order/",
-    "normalizedTitle": "step 6 track order",
+    "normalizedTitle": "step 5 track order",
     "normalizedHeadings": "pages in this section",
     "normalizedSummary": "this step covers the post purchase experience after the order is placed",
     "normalizedSection": "frontend"
